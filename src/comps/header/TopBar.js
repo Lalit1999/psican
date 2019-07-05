@@ -10,13 +10,14 @@ class TopBar extends React.Component
 	{
 		return (
 			<div className="topbar"> 
-				<div>
+				<div className="logo">
 					<p> PSICAN </p>
 				</div>
 				<div className="right-topbar">
-					<BarItem link="tel:09564328921" text=" +91 - 9564-328-921" icon={faPhoneAlt}/>
-					<BarItem link="mailto:b.tiles@gmail.com" text=" b.tiles@gmail.com" 
-					icon={faEnvelope}/>
+					<BarItem link="tel:09555235231" text=" +91-9555-235-231" icon={faPhoneAlt}
+						msg="Call Us At"/>
+					<BarItem link="mailto:psican@gmail.com" text=" b.tiles@gmail.com" 
+					icon={faEnvelope} msg="E-Mail Us" />
 				</div>
 			</div>
 			) ;

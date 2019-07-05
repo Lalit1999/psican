@@ -1,12 +1,13 @@
 .topbar
 {
-	background-color: rgb(35, 35, 35) ;
+	background-color: rgb(70, 130, 180) ;
 	display: flex ;
 	position: fixed; 
   	width: 100% ;
   	top: 0 ;
   	z-index: 14 ;
   	overflow: hidden;
+  	color: white ;
 }
 
 .bar-item
@@ -18,15 +19,35 @@
 	transition: all 0.5s ;
 }
 
+.bar-item>div
+{
+	display: flex;
+	font-size: 3rem ;
+	margin: 0.1em ;
+}
+
 .bar-item a 
 {	text-decoration: none ;
 	color:whitesmoke;
 }
 
+.bar-item a:focus
+{
+	outline: 0;
+}
+
 .bar-item:hover
 {
-	background-color: black ;
+	background-color: rgba(14, 77, 146, 0.8) ;
 }
+
+.item-txt
+{
+	font-size: 1.3rem ;
+	/*background-color: rgb(70, 130, 180) ;*/
+	margin-left: 0.3em ;
+}
+
 
 .topbar .right-topbar
 {
@@ -37,4 +58,17 @@
 .right-topbar
 {
 	margin-right: 3vw ;
+}
+
+.logo
+{
+	font-size: 2rem ;
+	padding: 0.2em ;
+	margin: 0.4em ;
+	border: 1px solid white;
+}
+
+.logo p
+{
+	margin: 0 ;
 }

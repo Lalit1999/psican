@@ -4,7 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
 const BarItem  = (props) => {
 	return (
 		<div className='bar-item'> 
-			 <p> Item </p>
+			 <div>
+			 	<FontAwesomeIcon icon={props.icon} />
+			 	<div className="item-txt">
+			 		<div> {props.msg} </div>
+			 		<div> <a href={props.link}>{props.text}</a> </div>
+			 	</div>
+			 </div>
 		</div>
 	);
 }
