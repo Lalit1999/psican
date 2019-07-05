@@ -6,10 +6,10 @@ class KFMP extends React.Component
 	{
 		return(
 			<div>
-				This is Banner.
+				This is KFMP.
 			</div>
 		) ;
 	}
 }
 
-export default Banner ;
+export default KFMP ;

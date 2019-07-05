@@ -6,10 +6,10 @@ class Personal extends React.Component
 	{
 		return(
 			<div>
-				This is Banner.
+				This is Personal.
 			</div>
 		) ;
 	}
 }
 
-export default Banner ;
+export default Personal ;
