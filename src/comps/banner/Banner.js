@@ -1,12 +1,18 @@
 import React from 'react' ;
 
+import './Banner.css' ;
+
 class Banner extends React.Component
-{
+{	
 	render()
-	{
+	{	let classcolor = 'ban_main ' + this.props.clr ;
 		return(
-			<div>
-				This is Banner.
+			<div className={'banner ' + this.props.img}>
+				<div className = 'setting'>
+					<div className = 'ban_text'>
+						{this.props.name}
+					</div>
+				</div>
 			</div>
 		) ;
 	}

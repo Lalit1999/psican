@@ -1,0 +1,54 @@
+.banner
+{
+	border : 2px solid black ;
+}
+
+.red
+{
+	color: red ;
+}
+
+
+.blue
+{
+	color : blue ;
+}
+
+.green
+{
+	color : green ;
+} 
+
+.ban_text
+{
+	font-size: 2rem ;
+	width: 100% ;
+	height: 100% ;
+	text-align: center ;
+}
+
+.ban_main
+{
+	margin: 1em ;
+}
+
+.setting
+{
+	/*width: 100% ;
+	height: 100% ;*/
+}
+
+.a
+{
+	background-image: url('../images/i1.jpg') ;
+}
+
+.b
+{
+	background-image: url('../images/i2.jpg') ;
+}
+
+.c
+{
+	background-image: url('../images/i3.jpg') ;
+}
