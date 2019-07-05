@@ -1,0 +1,40 @@
+.topbar
+{
+	background-color: rgb(35, 35, 35) ;
+	display: flex ;
+	position: fixed; 
+  	width: 100% ;
+  	top: 0 ;
+  	z-index: 14 ;
+  	overflow: hidden;
+}
+
+.bar-item
+{
+	display: inline-block;
+	font-size: 0.9rem;
+	margin: 0 0.9vw ;
+	padding: 0.7em 0.7vw ;
+	transition: all 0.5s ;
+}
+
+.bar-item a 
+{	text-decoration: none ;
+	color:whitesmoke;
+}
+
+.bar-item:hover
+{
+	background-color: black ;
+}
+
+.topbar .right-topbar
+{
+	margin-left: auto;
+	display: inline-block; 
+}
+
+.right-topbar
+{
+	margin-right: 3vw ;
+}
