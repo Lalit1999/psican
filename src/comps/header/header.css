@@ -2,11 +2,11 @@
 
 #bar
 {
-	background-color: rgb(64, 64, 64);
-	border-bottom: 2px solid black ;
+	background-color: rgb(29, 41, 81);
+	border-bottom: 2px solid darkblue ;
 	position: fixed; 
   	width: 100% ;
-  	top: 40px ;
+  	top: 84px ;
   	z-index: 14 ;
   	overflow: visible;
 }
@@ -22,25 +22,12 @@
 	z-index: 19 ;
 }
 
-#logo img
-{
-	height: 84px ;
-	width: 147px ;
-	margin-left: 1em ;
-}
-
-#logo
-{
-	padding: 0.4em 0 0 ;
-	margin:0 ;
-
-}
 .header-item
 {
 	color: whitesmoke;
 	text-decoration: none ;
 	font-size: 1.55rem ;
-	padding: 1em 1.8vw;
+	padding: 0 1.8vw;
 	transition: all 0.5s ;
 	margin: 0.1em ;
 	font-family: 'Mukta', sans-serif;
@@ -59,10 +46,10 @@
 	margin-top: 1.6em ;
 }
 
-.right-header .header-item:hover
+.header-item:hover
 {
-	background-color: rgb(35, 35, 35) ;
-	transform: scale(1.2);
+	background-color: white ;
+	color: rgb(29, 41, 81);
 }
 
 @media (max-width: 600px)

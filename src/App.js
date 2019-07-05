@@ -10,7 +10,6 @@ import NotFound from './comps/home/NotFound.js' ;
 import Header from './comps/header/Header.js' ;
 import TopBar from './comps/header/TopBar.js' ;
 import MentaMorph from './comps/program/Mentamorph.js' ;
-import Program from './comps/program/Program.js' ;
 import AEQS from './comps/program/AQES.js' ;
 import KFMP from './comps/program/KFMP.js' ;
 import Personal from './comps/program/Personal.js' ;
