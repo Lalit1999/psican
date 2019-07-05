@@ -1,15 +1,15 @@
 import React from 'react' ;
 
-class Banner extends React.Component
+class Test extends React.Component
 {
 	render()
 	{
 		return(
 			<div>
-				This is Banner.
+				This is Test.
 			</div>
 		) ;
 	}
 }
 
-export default Banner ;
+export default Test ;
