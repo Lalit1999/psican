@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Mukta&display=swap');
+
+#bar
+{
+	background-color: rgb(64, 64, 64);
+	border-bottom: 2px solid black ;
+	position: fixed; 
+  	width: 100% ;
+  	top: 40px ;
+  	z-index: 14 ;
+  	overflow: visible;
+}
+.pop
+{
+	/*position: fixed;*/
+	z-index: 19;
+	background-color: white ;
+}
+
+.popup-content
+{
+	z-index: 19 ;
+}
+
+#logo img
+{
+	height: 84px ;
+	width: 147px ;
+	margin-left: 1em ;
+}
+
+#logo
+{
+	padding: 0.4em 0 0 ;
+	margin:0 ;
+
+}
+.header-item
+{
+	color: whitesmoke;
+	text-decoration: none ;
+	font-size: 1.55rem ;
+	padding: 1em 1.8vw;
+	transition: all 0.5s ;
+	margin: 0.1em ;
+	font-family: 'Mukta', sans-serif;
+}
+
+.right-header
+{
+	margin-left: auto;
+	margin-right: 1vw ;
+	display: flex;
+	margin-top: 0.4em ;
+}
+
+.mini-menu
+{
+	margin-top: 1.6em ;
+}
+
+.right-header .header-item:hover
+{
+	background-color: rgb(35, 35, 35) ;
+	transform: scale(1.2);
+}
+
+@media (max-width: 600px)
+{
+	.right-header>div
+	{
+		padding-right: 6.1vw;
+	    padding-top: 3.6vh;
+	    padding-left: 3.7vw;
+	}
+}
