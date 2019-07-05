@@ -1,6 +1,6 @@
 import React from 'react' ;
 
-class Banner extends React.Component
+class Personal extends React.Component
 {
 	render()
 	{

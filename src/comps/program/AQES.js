@@ -1,15 +1,15 @@
 import React from 'react' ;
 
-class Banner extends React.Component
+class AQES extends React.Component
 {
 	render()
 	{
 		return(
 			<div>
-				This is Banner.
+				This is AQES.
 			</div>
 		) ;
 	}
 }
 
-export default Banner ;
+export default AQES ;
