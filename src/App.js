@@ -8,6 +8,7 @@ import AboutVision from './comps/about/Aboutvision.js' ;
 import Contact from './comps/contact/Contact.js' ;
 import NotFound from './comps/home/NotFound.js' ;
 import Header from './comps/header/Header.js' ;
+import Program from './comps/program/Program.js' ;
 import TopBar from './comps/header/TopBar.js' ;
 import MentaMorph from './comps/program/Mentamorph.js' ;
 import AEQS from './comps/program/AQES.js' ;
@@ -46,6 +47,7 @@ class App extends React.Component
 		              <Route path='/mentamorph' component={MentaMorph}/>
 		              <Route path='/login' component={Login} />
 		              <Route path='/register' component={Register} />
+		              <Route path='/program' exact component={Program}/>
 		              <Route path='/program/KFMP' component={KFMP}/>
 		              <Route path='/program/AEQS' component={AEQS}/>
 		              <Route path='/test' component={Test}/>

@@ -1,15 +1,16 @@
 import React from 'react' ;
+import Title from '../title/Title.js' ;
 
-class AQES extends React.Component
+class AEQS extends React.Component
 {
 	render()
 	{
 		return(
 			<div>
-				This is AQES.
+				<Title name = 'E - Query System' items={["Home -"," Programs -", "AEQS"]}/>
 			</div>
 		) ;
 	}
 }
 
-export default AQES ;
+export default AEQS ;

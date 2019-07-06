@@ -1,15 +1,16 @@
 import React from 'react' ;
+import Title from '../title/Title.js' ;
 
-class Aboutvision extends React.Component
+class Aboutpsican extends React.Component
 {
 	render()
 	{
 		return(
 			<div>
-				This is Aboutvision.
+				<Title name = 'Our Vision' items={["Home -"," Programs -", "Vision"]}/>
 			</div>
 		) ;
 	}
 }
 
-export default Aboutvision ;
+export default Aboutpsican ;

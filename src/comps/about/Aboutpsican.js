@@ -1,4 +1,5 @@
 import React from 'react' ;
+import Title from '../title/Title.js' ;
 
 class Aboutpsican extends React.Component
 {
@@ -6,7 +7,7 @@ class Aboutpsican extends React.Component
 	{
 		return(
 			<div>
-				This is Aboutpsican.
+				<Title name = 'P S I C A N' items={["Home -"," Programs -", "PSICAN"]}/>
 			</div>
 		) ;
 	}

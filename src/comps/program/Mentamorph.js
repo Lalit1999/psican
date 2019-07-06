@@ -1,4 +1,5 @@
 import React from 'react' ;
+import Title from '../title/Title.js' ;
 
 class Mentamorph extends React.Component
 {
@@ -6,7 +7,7 @@ class Mentamorph extends React.Component
 	{
 		return(
 			<div>
-				This is Mentamorph.
+				<Title name = 'Menta-Morph' items={["Home -", "MentaMorph"]}/>
 			</div>
 		) ;
 	}

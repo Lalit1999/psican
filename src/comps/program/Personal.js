@@ -1,4 +1,5 @@
 import React from 'react' ;
+import Title from '../title/Title.js' ;
 
 class Personal extends React.Component
 {
@@ -6,7 +7,7 @@ class Personal extends React.Component
 	{
 		return(
 			<div>
-				This is Personal.
+				<Title name = 'Personal Consultation' items={["Home -"," Programs -", "Personal"]}/>
 			</div>
 		) ;
 	}

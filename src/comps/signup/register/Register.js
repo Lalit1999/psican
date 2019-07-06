@@ -1,4 +1,5 @@
 import React from 'react' ;
+import Title from '../../title/Title.js' ;
 
 class Register extends React.Component
 {
@@ -6,7 +7,7 @@ class Register extends React.Component
 	{
 		return(
 			<div>
-				This is Register.
+				<Title name = 'Register' items={["Home -", "Register"]}/>
 			</div>
 		) ;
 	}
