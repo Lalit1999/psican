@@ -17,6 +17,7 @@ import Personal from './comps/program/Personal.js' ;
 import Test from './comps/program/Test.js' ;
 import Login from './comps/signup/login/Login.js' ;
 import Register from './comps/signup/register/Register.js' ;
+import Footer from './comps/footer/Footer.js' ;
 import './App.css' ;
 
 class App extends React.Component
@@ -56,6 +57,7 @@ class App extends React.Component
 		            </Switch>
 		          </div>
 		        </BrowserRouter>
+		        <Footer />
 		      </div>
 		) ;
 	}

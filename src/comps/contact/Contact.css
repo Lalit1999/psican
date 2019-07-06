@@ -1,0 +1,42 @@
+.size
+{
+	font-size: 1.6rem ;
+
+}
+
+.align
+{
+	text-align: center;
+}
+
+.in
+{
+	display: block;
+	width: 90% ;
+	height:	100% ;
+	font-size: 1.5rem ;
+	margin-bottom: 1em ;
+}
+
+.but
+{
+	display: block ;
+	margin : 1em ;
+	padding: 0.8em 3.3em ;
+	border-radius: 2em ;
+	border : none ;
+	box-shadow: none ;
+	font-size: 1.3rem ;
+	color: blue ;
+}
+
+.but:hover
+{
+	color : white ;
+	background-color: rgb(64, 64, 64);
+}
+.but:focus 
+{
+	border : none;
+	outline : 0 ;
+}

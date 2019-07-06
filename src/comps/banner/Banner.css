@@ -2,22 +2,26 @@
 {
 	border : 2px solid black ;
 	height : 40vw ;
+	text-align: right ;
+	background-size: cover ;
+	background-repeat: no-repeat ;
+	color : white ;
 }
 
 .red
 {
-	color: #b4b4b4 ;
+	background-color: #b4b4b4 ;
 }
 
 
 .blue
 {
-	color : #6a5acd ;
+	background-color : #6a5acd ;
 }
 
 .green
 {
-	color : #787878 ;
+	background-color : #787878 ;
 } 
 
 .ban_text
@@ -46,15 +50,18 @@
 
 .a
 {
-	background-image: url('../images/i4.jpg') ;
+	background-image: url('../images/i1.jpg') ;
+	
 }
 
 .b
 {
-	background-image: url('../images/i5.png') ;
+	background-image: url('../images/i2.jpg') ;
+	
 }
 
 .c
 {
-	background-image: url('../images/i6.png') ;
+	background-image: url('../images/i3.jpg') ;
+	
 }
