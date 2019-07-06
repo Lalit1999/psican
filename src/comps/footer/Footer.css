@@ -1,4 +1,25 @@
-.center
+
+.map
+{	
+	margin-top: 2em ;
+	text-align: left;
+	margin-left: 6.5em ;
+}
+
+
+
+.mapouter
 {
+	position:relative;
+	/*text-align:right;*/
+	height:400px;
+	width:1100px;
+}
+.gmap_canvas
+ {
 	text-align: center;
+	overflow:hidden;
+	background:none!important;
+	height:400px;
+	width:1100px;
 }
