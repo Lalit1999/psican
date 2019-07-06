@@ -24,10 +24,32 @@ class Header extends React.Component
 	}
 
 	checkMobile = () => {
-		if(window.screen.availWidth > 600)
+		if(window.innerWidth > 923)
 		{	return (
 				<div className="mini-menu">
-					
+					<div>
+						<Link className="header-item" to='/'> Home </Link>
+						<Popup trigger={<span className="header-item"> About </span>}
+						  position="bottom center" on="hover" >
+						  <div className="pop-p">
+							<Link className="header-item pop-item" to='/about/leader'> Our Leader </Link>
+							<Link className="header-item pop-item" to='/about/psican'> PSICAN </Link>
+							<Link className="header-item pop-item" to='/about/vision'> Vision </Link>
+					      </div>
+						</Popup>					
+						<Popup trigger={<span className="header-item"> Programs </span>}
+					      position="bottom center" on="hover" >
+					      <div className="pop-p">
+							<Link className="header-item pop-item" to='/program/AEQS'> AEQS </Link>
+							<Link className="header-item pop-item" to='/program/KFMP'> KFMP </Link>
+							<Link className="header-item pop-item" to='/program/personal'>
+							 Personal Consultation </Link>
+					      </div>
+					    </Popup>
+						<Link className="header-item" to='/test'> Tests </Link>
+						<Link className="header-item" to='/mentamorph'> Menta-Morph </Link>
+						<Link className="header-item" to='/contact'> Contact </Link>
+					</div>
 				</div>
 				) ;
 		}
@@ -50,32 +72,10 @@ class Header extends React.Component
 	{
 		return (
 			<div className="topbar" id="bar"> 
-				<div>
-					<Link className="header-item" to='/'> Home </Link>
-					<Popup trigger={<span className="header-item"> About </span>}
-					  position="bottom center" on="hover" >
-					  <div className="pop-p">
-						<Link className="header-item" to='/about/leader'> Our Leader </Link>
-						<Link className="header-item" to='/about/psican'> PSICAN </Link>
-						<Link className="header-item" to='/about/vision'> Vision </Link>
-				      </div>
-					</Popup>					
-					<Popup trigger={<span className="header-item"> Programs </span>}
-				      position="bottom center" on="hover" >
-				      <div className="pop-p">
-						<Link className="header-item" to='/program/AEQS'> AEQS </Link>
-						<Link className="header-item" to='/program/KFMP'> KFMP </Link>
-						<Link className="header-item" to='/program/personal'> Personal Consultation
-						</Link>
-				      </div>
-				    </Popup>
-					<Link className="header-item" to='/test'> Tests </Link>
-					<Link className="header-item" to='/mentamorph'> Menta-Morph </Link>
-					<Link className="header-item" to='/contact'> Contact </Link>
-				</div>
+				{this.checkMobile()}
 				<div className = "right-header">
-					<button> Login </button>
-					<button> Register </button>
+					<button className="header-btn"> Login </button>
+					<button className="header-btn"> Register </button>
 				</div>
 			</div>
 			) ;

@@ -19,7 +19,15 @@ import Register from './comps/signup/register/Register.js' ;
 import './App.css' ;
 
 class App extends React.Component
-{
+{	resize = () => this.forceUpdate()
+
+	componentDidMount() {
+	  window.addEventListener('resize', this.resize)
+	}
+
+	componentWillUnmount() {
+	  window.removeEventListener('resize', this.resize)
+	}
 	
 	render()
 	{
