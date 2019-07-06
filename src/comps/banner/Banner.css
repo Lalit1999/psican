@@ -1,22 +1,23 @@
 .banner
 {
 	border : 2px solid black ;
+	height : 40vw ;
 }
 
 .red
 {
-	color: red ;
+	color: #b4b4b4 ;
 }
 
 
 .blue
 {
-	color : blue ;
+	color : #6a5acd ;
 }
 
 .green
 {
-	color : green ;
+	color : #787878 ;
 } 
 
 .ban_text
@@ -32,6 +33,11 @@
 	margin: 1em ;
 }
 
+.banner:hover
+{
+	font-size: 150% ;
+}
+
 .setting
 {
 	/*width: 100% ;
@@ -40,15 +46,15 @@
 
 .a
 {
-	background-image: url('../images/i1.jpg') ;
+	background-image: url('../images/i4.jpg') ;
 }
 
 .b
 {
-	background-image: url('../images/i2.jpg') ;
+	background-image: url('../images/i5.png') ;
 }
 
 .c
 {
-	background-image: url('../images/i3.jpg') ;
+	background-image: url('../images/i6.png') ;
 }
