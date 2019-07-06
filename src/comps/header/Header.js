@@ -1,5 +1,6 @@
 import React from 'react' ;
 import {Link} from'react-router-dom' ;
+import {withRouter} from 'react-router' ;
 import CheeseburgerMenu from 'cheeseburger-menu' ;
 import HamburgerMenu from 'react-hamburger-menu' ;
 import Popup from "reactjs-popup";
@@ -21,6 +22,11 @@ class Header extends React.Component
 
 	closeMenu = () => {
 	    this.setState({ menuOpen: false })
+	}
+
+	onButtonClick = (path) => {
+		this.props.history.push('/') ;
+		this.props.history.push('/' + path) ;
 	}
 
 	checkMobile = () => {
@@ -74,12 +80,14 @@ class Header extends React.Component
 			<div className="topbar" id="bar"> 
 				{this.checkMobile()}
 				<div className = "right-header">
-					<button className="header-btn"> Login </button>
-					<button className="header-btn"> Register </button>
+					<button className="header-btn" onClick={()=>this.onButtonClick('login')}>
+					 Login </button>
+					<button className="header-btn"  onClick={()=>this.onButtonClick('register')}>
+					 Register </button>
 				</div>
 			</div>
 			) ;
 	}
 }
 
-export default Header ;
+export default withRouter(Header) ;
