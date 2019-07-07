@@ -6,7 +6,7 @@ import AboutPerson from './comps/about/Aboutperson.js' ;
 import AboutPsican from './comps/about/Aboutpsican.js' ;
 import AboutVision from './comps/about/Aboutvision.js' ;
 import Contact from './comps/contact/Contact.js' ;
-import NotFound from './comps/home/Notfound.js' ;
+import NotFound from './comps/home/NotFound.js' ;
 import Header from './comps/header/Header.js' ;
 import Program from './comps/program/Program.js' ;
 import TopBar from './comps/header/TopBar.js' ;

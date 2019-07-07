@@ -6,7 +6,7 @@
 	background-size: cover ;
 	background-repeat: no-repeat ;
 	color : white ;
-	width: 100% ;
+	width: 99% ;
 	height: 100% ;
 }
 
@@ -50,7 +50,7 @@
 	margin: 1em ;
 }
 
-.display:hover
+/*.display:hover
 {
 	font-size: 150% ;
-}
+}*/
