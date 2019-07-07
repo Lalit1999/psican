@@ -3,10 +3,19 @@
 {	
 	margin-top: 2em ;
 	text-align: left;
-	margin-left: 6.5em ;
+	margin-left: 1em ;
+	margin-right: 6.5em ;
+	width: 50% ;
+
 }
 
+.ic
+{
+	display: flex;
+	/*justify-content: space-between;*/
+	margin-top : 3em ;
 
+}
 
 .mapouter
 {

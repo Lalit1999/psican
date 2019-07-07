@@ -6,16 +6,40 @@
 
 .align
 {
-	text-align: center;
+	text-align: center ;
+	margin-left:  3em ;
+	margin-right: 4em ;
+}
+
+.disp
+{
+	display: flex;
+	margin: 2em ;
+}
+
+.sepr
+{
+	margin-right: 3em ;
+}
+
+.sepl
+{
+	margin-left: 3em ;
 }
 
 .in
 {
 	display: block;
-	width: 90% ;
+	width: 100% ;
 	height:	100% ;
 	font-size: 1.5rem ;
 	margin-bottom: 1em ;
+	text-align: center;
+}
+
+.vwh
+{
+	height: 10vw ;
 }
 
 .but
