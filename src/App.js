@@ -55,9 +55,9 @@ class App extends React.Component
 		              <Route path='/program/personal' component={Personal}/>
 		              <Route exact component={NotFound} />
 		            </Switch>
+			        <Footer />
 		          </div>
 		        </BrowserRouter>
-		        <Footer />
 		      </div>
 		) ;
 	}
