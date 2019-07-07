@@ -2,6 +2,7 @@ import React from 'react' ;
 
 import Banner from '../banner/Banner.js' ;
 import Slider from '../slider/Slider.js' ;
+import Parallax from '../Parallax/Parallax.js' ;
 
 import i1 from '../images/i1.jpg' ;
 import i2 from '../images/i2.jpg' ;
@@ -59,6 +60,7 @@ class Home extends React.Component
 				<Banner name= "kfmp" clr="blue" img="b" />
 				<Banner name= "mentamorph" clr="green" img="c" />
 				 Add 2-3 more banners, colors and images
+				<Parallax text="Our Testimonials" />
 			</div>
 		) ;
 	}
