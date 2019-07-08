@@ -10,14 +10,14 @@
 	height: 100% ;
 }
 
-.red
+.r
 {
 	background-color: rgba(180,180,180,0.3) ;
 	
 }
 
 
-.blue
+.b
 {
 	background-color : rgba(106,90,205,0.3) ;
 }
@@ -27,7 +27,7 @@
 	margin-left: 2em ;
 }
 
-.green
+.g
 {
 	
 	background-color : rgba(120,120,120,0.3) ;
