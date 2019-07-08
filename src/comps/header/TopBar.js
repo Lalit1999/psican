@@ -16,7 +16,7 @@ class TopBar extends React.Component
 				<div className="right-topbar">
 					<BarItem link="tel:09555235231" text=" +91-9555-235-231" icon={faPhoneAlt}
 						msg="Call Us At"/>
-					<BarItem link="mailto:psican@gmail.com" text=" b.tiles@gmail.com" 
+					<BarItem link="mailto:psican@gmail.com" text=" psican@gmail.com" 
 					icon={faEnvelope} msg="E-Mail Us" />
 				</div>
 			</div>
