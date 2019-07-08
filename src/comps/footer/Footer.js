@@ -45,9 +45,9 @@ class Footer extends React.Component
 						<div className = 'conte'>
 							<h3><ins>Contact Information</ins></h3>
 							<div>
-								<p><FontAwesomeIcon icon = {faMap} />&nbsp;{this.state.data.address}</p>
+								<p><FontAwesomeIcon icon = {faMap} />&nbsp;XYZ street, Main Road,ABC , Delhi - 45</p>
 								<p><FontAwesomeIcon icon = {faPhoneAlt} />&nbsp;{this.state.data.phone}</p>
-								<p><FontAwesomeIcon icon = {faEnvelope} />&nbsp;{this.state.data.email}</p>
+								<p><FontAwesomeIcon icon = {faEnvelope} />&nbsp;psican@gmail.com</p>
 							</div>
 						</div>
 					</div>
@@ -59,3 +59,6 @@ class Footer extends React.Component
 }
 
 export default Footer ;
+								// <p><FontAwesomeIcon icon = {faMap} />&nbsp;{this.state.data.address}</p>
+								// <p><FontAwesomeIcon icon = {faPhoneAlt} />&nbsp;{this.state.data.phone}</p>
+								// <p><FontAwesomeIcon icon = {faEnvelope} />&nbsp;{this.state.data.email}</p>

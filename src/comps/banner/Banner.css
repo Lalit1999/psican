@@ -6,26 +6,26 @@
 	background-size: cover ;
 	background-repeat: no-repeat ;
 	color : white ;
-	width: 100% ;
+	width: 99% ;
 	height: 100% ;
 }
 
 .red
 {
-	background-color: rgba(180,180,180,0.3) ;
+	background-color: rgba(180,180,180,0.6) ;
 	
 }
 
 
 .blue
 {
-	background-color : rgba(106,90,205,0.3) ;
+	background-color : rgba(106,90,205,0.6) ;
 }
 
 .green
 {
 	
-	background-color : rgba(120,120,120,0.3) ;
+	background-color : rgba(120,120,120,0.6) ;
 } 
 
 .ban_text
