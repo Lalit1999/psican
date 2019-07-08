@@ -46,7 +46,7 @@ class Footer extends React.Component
 							<h3><ins>Contact Information</ins></h3>
 							<div>
 								<p><FontAwesomeIcon icon = {faMap} />&nbsp;XYZ street, Main Road,ABC , Delhi - 45</p>
-								<p><FontAwesomeIcon icon = {faPhoneAlt} />&nbsp;{this.state.data.phone}</p>
+								<p><FontAwesomeIcon icon = {faPhoneAlt} />&nbsp;+91-9555-235-231</p>
 								<p><FontAwesomeIcon icon = {faEnvelope} />&nbsp;psican@gmail.com</p>
 							</div>
 						</div>
