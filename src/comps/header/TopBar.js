@@ -11,12 +11,12 @@ class TopBar extends React.Component
 		return (
 			<div className="topbar"> 
 				<div className="logo">
-					<p> PSICAN </p>
+					<p> PSYMENT </p>
 				</div>
 				<div className="right-topbar">
 					<BarItem link="tel:09555235231" text=" +91-9555-235-231" icon={faPhoneAlt}
 						msg="Call Us At"/>
-					<BarItem link="mailto:psican@gmail.com" text=" psican@gmail.com" 
+					<BarItem link="mailto:psyment@gmail.com" text=" psyment@gmail.com" 
 					icon={faEnvelope} msg="E-Mail Us" />
 				</div>
 			</div>

@@ -23,16 +23,16 @@ class Home extends React.Component
             {	style : {
 	            	backgroundImage: 'url(' + i3+ ')',
             	},
-	            title: 'AEQS',
-	            link : '/program/AEQS' ,
+	            title: 'AQueSS',
+	            link : '/program/AQueSS' ,
 	            message: 'An Online E - Query System for various people',
          	},
             {	style : {
 	            	backgroundImage: 'url(' + i1+ ')',
             	},
-	            title: 'KFMP',
+	            title: 'Saarathi',
 	            message: 'Kasturi Foundation Motivational Program' ,
-	            link : '/program/KFMP'
+	            link : '/program/Saarathi'
 	        } ,
 	        {	style : {
 	            	backgroundImage: 'url(' + i2+ ')',
@@ -56,8 +56,8 @@ class Home extends React.Component
 		return(
 			<div>
 				<Slider data={this.data} />
-				<Banner name= "aeqs" clr="red" img="a" />
-				<Banner name= "kfmp" clr="blue" img="b" />
+				<Banner name= "aquess" clr="red" img="a" />
+				<Banner name= "Saarathi" clr="blue" img="b" />
 				<Banner name= "mentamorph" clr="green" img="c" />
 				 Add 2-3 more banners, colors and images
 				<Parallax text="Our Testimonials" />

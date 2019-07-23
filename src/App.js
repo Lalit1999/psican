@@ -49,8 +49,8 @@ class App extends React.Component
 		              <Route path='/login' component={Login} />
 		              <Route path='/register' component={Register} />
 		              <Route path='/program' exact component={Program}/>
-		              <Route path='/program/KFMP' component={KFMP}/>
-		              <Route path='/program/AEQS' component={AEQS}/>
+		              <Route path='/program/Saarathai' component={KFMP}/>
+		              <Route path='/program/AQueSS' component={AEQS}/>
 		              <Route path='/test' component={Test}/>
 		              <Route path='/program/personal' component={Personal}/>
 		              <Route exact component={NotFound} />
