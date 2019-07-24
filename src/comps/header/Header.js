@@ -43,17 +43,34 @@ class Header extends React.Component
 							<Link className="header-item pop-item" to='/about/vision'> Vision </Link>
 					      </div>
 						</Popup>					
-						<Popup trigger={<span className="header-item"> Programs </span>}
+						<Popup trigger={<span className="header-item">Social Programs </span>}
 					      position="bottom center" on="hover" >
 					      <div className="pop-p">
-							<Link className="header-item pop-item" to='/program/AEQS'> AEQS </Link>
-							<Link className="header-item pop-item" to='/program/KFMP'> KFMP </Link>
+					      	<Popup trigger={<span className="header-item pop-item"> Students </span>}
+					      		position="right top" on="hover">
+								<Link className="header-item pop-item" to='/program/AQueSS'> AQueSS </Link>
+							</Popup>
+							<Popup trigger={<span className="header-item pop-item"> School/College </span>}
+					      		position="right top" on="hover">
+								<Link className="header-item pop-item" to='/program/saarathi'> Saarathi </Link>
+							</Popup>
+							<Popup trigger={<span className="header-item pop-item"> Parents </span>}
+					      		position="right top" on="hover">
+								<Link className="header-item pop-item" to='/parenting'>
+								 Parenting Strategies</Link>
+							</Popup>	
+					      </div>
+					    </Popup>
+					    <Popup trigger={<span className="header-item"> Commercial Programs </span>}
+					      position="bottom center" on="hover" >
+					      <div className="pop-p">
+							<Link className="header-item pop-item" to='/test'> Psychometric Tests </Link>
+							<Link className="header-item pop-item" to='/mentamorph'> Menta-Morph </Link>
 							<Link className="header-item pop-item" to='/program/personal'>
 							 Personal Consultation </Link>
 					      </div>
 					    </Popup>
-						<Link className="header-item" to='/test'> Tests </Link>
-						<Link className="header-item" to='/mentamorph'> Menta-Morph </Link>
+						
 						<Link className="header-item" to='/contact'> Contact </Link>
 					</div>
 				</div>

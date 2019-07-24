@@ -21,17 +21,33 @@ class Menu extends React.Component
 							<Link className="menu-item pop-item" to='/about/vision'> Vision </Link>
 					      </div>
 						</Popup>					
-						<Popup trigger={<div className="menu-item"> Programs </div>}
+						<Popup trigger={<div className="menu-item">Social Programs </div>}
 					      position="right top" on="hover" >
 					      <div className="pop-p" onClick={this.props.closeCallback}>
-							<Link className="menu-item pop-item" to='/program/AEQS'> AEQS </Link>
-							<Link className="menu-item pop-item" to='/program/KFMP'> KFMP </Link>
+							<Popup trigger={<span className="header-item pop-item"> Students </span>}
+					      		position="right top" on="hover">
+								<Link className="header-item pop-item" to='/program/AQueSS'> AQueSS </Link>
+							</Popup>
+							<Popup trigger={<span className="header-item pop-item"> School/College </span>}
+					      		position="right top" on="hover">
+								<Link className="header-item pop-item" to='/program/saarathi'> Saarathi </Link>
+							</Popup>
+							<Popup trigger={<span className="header-item pop-item"> Parents </span>}
+					      		position="right top" on="hover">
+								<Link className="header-item pop-item" to='/parenting'>
+								 Parenting Strategies</Link>
+							</Popup>
+					      </div>
+					    </Popup>
+					    <Popup trigger={<div className="menu-item">Commercial Programs </div>}
+					      position="right top" on="hover" >
+					      <div className="pop-p" onClick={this.props.closeCallback}>
+							<Link className="menu-item pop-item" to='/test'>Psychometric Tests </Link> 
+							<Link className="menu-item pop-item" to='/mentamorph'> Menta-Morph </Link>
 							<Link className="menu-item pop-item" to='/program/personal'>
 							 Personal Consultation </Link>
 					      </div>
 					    </Popup>
-						<Link className="menu-item" to='/test'> Tests </Link> 
-						<Link className="menu-item" to='/mentamorph'> Menta-Morph </Link>
 						<Link className="menu-item" to='/contact'> Contact </Link>
 					</div>
 				</div>
