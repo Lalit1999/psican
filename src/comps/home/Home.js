@@ -67,23 +67,29 @@ class Home extends React.Component
 		return(
 			<div>
 				<Slider data={this.data} />
-				<Banner clr="red" img="a" >
-					<BannerContent title = 'AQueSS' lidata={sec_arr}/>
+				<Banner clr="red_left" img="a" >
+					<BannerContent title = 'AQueSS' lidata={sec_arr} 
+								   left="left" link="/program/AQueSS"/>
 				</Banner>
-				<Banner clr="blue" img="b" >
-					<BannerContent title = 'Sarathi' lidata={sec_arr}/>
+				<Banner clr="blue_right" img="b" >
+					<BannerContent title = 'Sarathi' lidata={sec_arr} 
+								   left="right" link="/program/Sarathi"/>
 				</Banner>
-				<Banner clr="green" img="c" >
-					<BannerContent title = 'MentaMorph' lidata={sec_arr}/>
+				<Banner clr="green_left" img="c" >
+					<BannerContent title = 'MentaMorph' lidata={sec_arr} 
+								   left="left" link="/mentamorph"/>
 				</Banner>
-				<Banner clr="red" img="a" >
-					<BannerContent title = 'Psychometric Testing' lidata={sec_arr}/>
+				<Banner clr="red_right" img="a" >
+					<BannerContent title = 'Psychometric Testing' lidata={sec_arr} 
+								   left="right" link="/test"/>
 				</Banner>
-				<Banner clr="blue" img="b" >
-					<BannerContent title = 'Parenting Strategies' lidata={sec_arr}/>
+				<Banner clr="blue_left" img="b" >
+					<BannerContent title = 'Parenting Strategies' lidata={sec_arr} 
+								   left="left" link="/parenting"/>
 				</Banner>
-				<Banner clr="green" img="c" >
-					<BannerContent title = 'Personal Consult' lidata={sec_arr}/>
+				<Banner clr="green_right" img="c" >
+					<BannerContent title = 'Personal Consult' lidata={sec_arr} 
+								   left="right" link="/program/personal"/>
 				</Banner>
 				<Parallax text="Our Testimonials" />
 			</div>

@@ -5,25 +5,20 @@
 	text-align: left;
 	margin-left: 2.5em ;
 	margin-bottom: 1.4em ;
-	/*margin-right: 6.5em ;*/
-	/*margin-right: 1em ;*/
-
 }
 
 .ic
 {
 	display: flex;
 	justify-content: space-between;
-	margin-top : 1.5em ;
+	margin-top : .5em ;
 	margin-bottom: 2em ;
 	background-color:  rgb(29,41,81) ;
-
 }
 
 .mapouter
 {
 	position:relative;
-	/*text-align:right;*/
 	height:400px;
 	width:600px;
 }
@@ -38,7 +33,6 @@
 
 .conte
 {
-	/*text-align: right;*/
 	margin-right: 4em ;
 	margin-top: 3em ;
 	display: inline-block;

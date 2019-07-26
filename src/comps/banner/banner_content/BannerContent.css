@@ -1,24 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Signika:700&display=swap');
+
 .explore
  {
     text-decoration: none;
     background-color: transparent;
-    border: 1px solid darkgrey;
+    border: 1px solid white;
     color: white;
     padding: 0.5em;
     font-size: 1.5rem;
     border-radius: 999rem;
-    margin: 5vh 35vw;
+    margin: 3vh 35%;
     transition: all 0.4s;
+    display: inline-block;
+}
+
+.explore:focus
+{
+    outline: none; 
 }
 
 .ban_text
 {
 	font-size: 2rem ;
-	width: 100% ;
+    margin-left: 2em ;
+	width: 50% ;
 	text-align: center ;
 }
 
-/*.ban_text ul  {
-  list-style: square outside url("../../images/arrow.png");
+.left
+{
+    margin-right: auto ;
 }
-*/
+
+.right
+{
+    margin-left: auto;
+}
+
+.ban_text h3
+{
+    font-family: 'Signika', sans-serif;
+    letter-spacing: 0.05em ;
+}
+
+.ul
+{
+    text-align: left ;
+}
+
+.ban_text ul  {
+  list-style-type: none ;
+}
+

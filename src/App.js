@@ -11,8 +11,8 @@ import Header from './comps/header/Header.js' ;
 import Program from './comps/program/Program.js' ;
 import TopBar from './comps/header/TopBar.js' ;
 import MentaMorph from './comps/program/Mentamorph.js' ;
-import AEQS from './comps/program/AQES.js' ;
-import KFMP from './comps/program/KFMP.js' ;
+import AQueSS from './comps/program/AQES.js' ;
+import Sarathi from './comps/program/KFMP.js' ;
 import Personal from './comps/program/Personal.js' ;
 import Test from './comps/program/Test.js' ;
 import Login from './comps/signup/login/Login.js' ;
@@ -43,14 +43,14 @@ class App extends React.Component
 		              <Route path='/' exact component={Home} />
 		              <Route path='/about/leader' exact component={AboutPerson}/>
 		              <Route path='/about/vision' exact component={AboutVision}/>
-		              <Route path='/about/psican' exact component={AboutPsican}/>
+		              <Route path='/about/psyment' exact component={AboutPsican}/>
 		              <Route path='/contact' exact component={Contact}/>
 		              <Route path='/mentamorph' component={MentaMorph}/>
 		              <Route path='/login' component={Login} />
 		              <Route path='/register' component={Register} />
 		              <Route path='/program' exact component={Program}/>
-		              <Route path='/program/Sarathi' component={KFMP}/>
-		              <Route path='/program/AQueSS' component={AEQS}/>
+		              <Route path='/program/Sarathi' component={Sarathi}/>
+		              <Route path='/program/AQueSS' component={AQueSS}/>
 		              <Route path='/test' component={Test}/>
 		              <Route path='/program/personal' component={Personal}/>
 		              <Route exact component={NotFound} />

@@ -19,7 +19,7 @@ class Aboutperson extends React.Component
 					<Title name = 'Our Leader' items={["Home -"," About -", "Leader"]}/>
 				</div>
 				<div>
-					<Display name= "Our Leader" clr="r" img = {Image1} content = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					<Display name= "Our Leader" img = {Image1} content = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse

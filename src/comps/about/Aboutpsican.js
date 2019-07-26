@@ -12,10 +12,10 @@ class Aboutpsican extends React.Component
 		return(
 			<div>
 				<div>
-					<Title name = 'P S I C A N' items={["Home -"," Programs -", "PSICAN"]}/>
+					<Title name = 'P S Y M E N T' items={["Home -"," Programs -", "PSYMENT"]}/>
 				</div>
 				<div>
-					<Display name= "Psican" clr="ba" img={Image2} content = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					<Display name= "Psican" img={Image2} left="yes" content = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse

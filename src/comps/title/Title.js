@@ -15,10 +15,10 @@ class Title extends React.Component
 			case "Tests" : return 'test' ;
 			case "Programs" : case " Programs -" : return 'program' ;
 			case "Personal" : return 'program/personal' ;
-			case "KFMP" : return 'program/KFMP' ;
-			case "AEQS" : return 'program/AEQS' ;
+			case "Sarathi" : return 'program/Sarathi' ;
+			case "AQueSS" : return 'program/AQueSS' ;
 			case "Leader" : return 'about/leader' ;
-			case "PSICAN" : return 'about/psican' ;
+			case "PSYMENT" : return 'about/psyment' ;
 			case "Vision" : return 'about/vision' ; 
 			default : return '' ;
 		}

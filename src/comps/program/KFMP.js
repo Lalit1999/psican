@@ -1,17 +1,17 @@
 import React from 'react' ;
 import Title from '../title/Title.js' ;
 
-class KFMP extends React.Component
+class Sarathi extends React.Component
 {
 	render()
 	{
 		return(
 			<div>
-				<Title name = 'Kasturi Foundation Motivational Program'
-				 items={["Home -"," Programs -", "KFMP"]}/>
+				<Title name = 'Sarathi Program'
+				 items={["Home -"," Programs -", "Sarathi"]}/>
 			</div>
 		) ;
 	}
 }
 
-export default KFMP ;
+export default Sarathi ;
