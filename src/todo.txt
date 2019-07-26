@@ -1,0 +1,6 @@
+1. Banner content css
+2. Images
+3. Content.js css
+4. About person
+
+5.Specific page for Saarthi and Aques

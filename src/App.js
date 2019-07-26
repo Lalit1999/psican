@@ -49,7 +49,7 @@ class App extends React.Component
 		              <Route path='/login' component={Login} />
 		              <Route path='/register' component={Register} />
 		              <Route path='/program' exact component={Program}/>
-		              <Route path='/program/Saarathi' component={KFMP}/>
+		              <Route path='/program/Sarathi' component={KFMP}/>
 		              <Route path='/program/AQueSS' component={AEQS}/>
 		              <Route path='/test' component={Test}/>
 		              <Route path='/program/personal' component={Personal}/>

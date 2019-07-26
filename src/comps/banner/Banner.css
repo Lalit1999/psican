@@ -28,16 +28,9 @@
 	background-color : rgba(120,120,120,0.6) ;
 } 
 
-.ban_text
-{
-	font-size: 2rem ;
-	width: 100% ;
-	text-align: center ;
-}
-
 .ban_main
 {
-	margin: 1em ;
+	padding: 1em ;
 }
 
 /*.banner:hover

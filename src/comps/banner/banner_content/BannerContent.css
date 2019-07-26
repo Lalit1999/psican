@@ -1,0 +1,24 @@
+.explore
+ {
+    text-decoration: none;
+    background-color: transparent;
+    border: 1px solid darkgrey;
+    color: white;
+    padding: 0.5em;
+    font-size: 1.5rem;
+    border-radius: 999rem;
+    margin: 5vh 35vw;
+    transition: all 0.4s;
+}
+
+.ban_text
+{
+	font-size: 2rem ;
+	width: 100% ;
+	text-align: center ;
+}
+
+/*.ban_text ul  {
+  list-style: square outside url("../../images/arrow.png");
+}
+*/

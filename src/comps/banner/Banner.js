@@ -9,9 +9,7 @@ class Banner extends React.Component
 		return(
 			<div className={'banner ' + this.props.img}>
 				<div className = {classcolor}>
-					<div className = 'ban_text'>
-						{this.props.name}
-					</div>
+					{this.props.children}
 				</div>
 			</div>
 		) ;

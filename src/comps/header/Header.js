@@ -39,7 +39,7 @@ class Header extends React.Component
 						  position="bottom center" on="hover" >
 						  <div className="pop-p">
 							<Link className="header-item pop-item" to='/about/leader'> Our Leader </Link>
-							<Link className="header-item pop-item" to='/about/psican'> PSICAN </Link>
+							<Link className="header-item pop-item" to='/about/psyment'> PSYMENT </Link>
 							<Link className="header-item pop-item" to='/about/vision'> Vision </Link>
 					      </div>
 						</Popup>					
@@ -52,7 +52,7 @@ class Header extends React.Component
 							</Popup>
 							<Popup trigger={<span className="header-item pop-item"> School/College </span>}
 					      		position="right top" on="hover">
-								<Link className="header-item pop-item" to='/program/saarathi'> Saarathi </Link>
+								<Link className="header-item pop-item" to='/program/sarathi'> Sarathi </Link>
 							</Popup>
 							<Popup trigger={<span className="header-item pop-item"> Parents </span>}
 					      		position="right top" on="hover">
