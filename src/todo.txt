@@ -1,4 +1,5 @@
 2. Images 
 4. About person
 
-5.Specific page for Saarthi and Aques
+5.Specific page for Saarthi and Aques ---> Make Li funcion and give data as array 
+filhal neend aa gayi yaar

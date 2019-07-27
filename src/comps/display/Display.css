@@ -22,7 +22,6 @@
 	margin-top: 2em;
 }
 
-
 .dis_text
 {
 	font-size: 2rem ;
@@ -34,4 +33,29 @@
 .content
 {
 	display: flex;
+}
+
+.left-title
+{
+  font-size: 3rem ;
+  border-bottom: 1px solid darkblue ;
+  color: rgb(29, 41, 81) ;
+  font-family: 'Signika' ;
+  letter-spacing: 0.02em ;
+  display: inline-block; 
+  padding: 0 1em ;
+  transition: all 0.4s ;
+  margin-top: 0 ;
+}
+
+.title-con
+{
+  margin: 0 1em 1em ;
+  text-align: left ;
+}
+
+.left-title:hover
+{
+	background-color: rgb(29, 41, 81);
+	color : rgb(70, 130, 180);
 }
