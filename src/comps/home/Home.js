@@ -10,7 +10,14 @@ import i1 from '../images/i1.jpg' ;
 import i2 from '../images/i2.jpg' ;
 import i3 from '../images/i3.jpg' ;
 
-const sec_arr = [ 'Ye hai Pehlis String', 'Ye hai meri dusri String', 'Aur ye hogi Teesri string' ] ;
+const cont1 = [ 'Free Online Query System for Students',
+				'Provides customised support to students',
+				'Post your query & get a prompt response' ] ;
+const cont2 = [ 'Workshop Organising Program for educational institutions',
+'Supported by The Kasturi Foundation',
+'Choose a module from list of topics and schedule a workshop now' ] ;
+
+const sec_arr = [ 'Ye hai the Pehli String', 'Ye hai meri dusri String', 'Aur ye hogi Teesri string' ] ;
 
 class Home extends React.Component
 {	constructor()
@@ -67,12 +74,12 @@ class Home extends React.Component
 		return(
 			<div>
 				<Slider data={this.data} />
-				<Banner clr="red_left" img="a" >
-					<BannerContent title = 'AQueSS' lidata={sec_arr} 
+				<Banner clr="red_left" img="d" >
+					<BannerContent title = 'AQueSS' lidata={cont1} 
 								   left="left" link="/program/AQueSS"/>
 				</Banner>
-				<Banner clr="blue_right" img="b" >
-					<BannerContent title = 'Sarathi' lidata={sec_arr} 
+				<Banner clr="blue_right" img="e" >
+					<BannerContent title = 'Sarathi' lidata={cont2} 
 								   left="right" link="/program/Sarathi"/>
 				</Banner>
 				<Banner clr="green_left" img="c" >

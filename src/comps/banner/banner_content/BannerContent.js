@@ -4,7 +4,7 @@
  class BannerContent extends React.Component
  {
  	createLi = () => {
- 		return this.props.lidata.map( (li,i) => <li key={i}> {li} </li> ) ;
+ 		return this.props.lidata.map( (li,i) => <li className="banner-li" key={i}> {li} </li> ) ;
  	}
  	render()
  	{

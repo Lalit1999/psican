@@ -1,6 +1,5 @@
 .banner
 {
-	border-bottom : 2px solid black ;
 	height : 40vw ;
 	text-align: right ;
 	background-size: cover ;
@@ -12,38 +11,38 @@
 
 .red_left
 {
-	background-image: linear-gradient(to right, rgba(180, 80, 80, 0.8) 0%, rgba(180, 80, 80, 0.8) 50%
+	background-image: linear-gradient(to right, rgba(180, 80, 80, 0.9) 0%, rgba(180, 80, 80, 0.9) 50%
 										, rgba(180, 80, 80, 0.1) 100%) ;
 }
 
 .red_right
 {
-	background-image: linear-gradient(to left, rgba(180, 80, 80, 0.8) 0%, rgba(180, 80, 80, 0.8) 50%
+	background-image: linear-gradient(to left, rgba(180, 80, 80, 0.9) 0%, rgba(180, 80, 80, 0.9) 50%
 										, rgba(180, 80, 80, 0.1) 100%) ;
 }
 
 .blue_right
 {
-	background-image: linear-gradient(to left, rgba(106, 90, 205, 0.8) 0%, rgba(106, 90, 205, 0.8) 50%
+	background-image: linear-gradient(to left, rgba(106, 90, 205, 0.9) 0%, rgba(106, 90, 205, 0.9) 50%
 										, rgba(106, 90, 205, 0.1) 100%) ;
 }
 
 .blue_left
 {
-	background-image: linear-gradient(to right, rgba(106, 90, 205, 0.8) 0%, rgba(106, 90, 205, 0.8) 50%
+	background-image: linear-gradient(to right, rgba(106, 90, 205, 0.9) 0%, rgba(106, 90, 205, 0.9) 50%
 										, rgba(106, 90, 205, 0.1) 100%) ;
 }
 
 .green_left
 {
-	background-image: linear-gradient(to right, rgba(60, 120, 60, 0.8) 0%, rgba(60, 120, 60, 0.8) 50%
+	background-image: linear-gradient(to right, rgba(60, 120, 60, 0.9) 0%, rgba(60, 120, 60, 0.9) 50%
 										, rgba(60, 120, 60, 0.1) 100%) ;
 
 } 
 
 .green_right
 {
-	background-image: linear-gradient(to left, rgba(60, 120, 60, 0.8) 0%, rgba(60, 120, 60, 0.8) 50%
+	background-image: linear-gradient(to left, rgba(60, 120, 60, 0.9) 0%, rgba(60, 120, 60, 0.9) 50%
 										, rgba(60, 120, 60, 0.1) 100%) ;
 
 } 
@@ -61,18 +60,27 @@
 
 .a
 {
-	background-image: url('../images/i1.jpg') ;
-	
+	background-image: url('../images/i1.jpg') ;	
 }
 
 .b
 {
 	background-image: url('../images/i2.jpg') ;
-	
 }
 
 .c
 {
 	background-image: url('../images/i3.jpg') ;
-	
+}
+
+.d
+{
+	background-image: url('../images/Confused-students.jpg');
+	background-position: 0% 90% ;
+}
+
+.e
+{
+	background-position: 0% 80%;
+	background-image: url('../images/school-workshop.jpg');
 }
