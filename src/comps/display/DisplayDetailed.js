@@ -1,7 +1,9 @@
 import React from 'react' ;
 
 class DisplayDetailed extends React.Component
-{
+{	createLi = () => {
+ 		return this.props.lidata.map( (li,i) => <li className="banner-li" key={i}> {li} </li> ) ;
+ 	}
 	render()
 	{
 		return (
@@ -11,10 +13,7 @@ class DisplayDetailed extends React.Component
 				</div>
 				<div className="intro">
 					<ul>
-						<li> One Two hree </li>
-						<li> One Two hree </li>
-						<li> One Two hree </li>
-						<li> One Two hree </li>
+						{this.createLi()}
 					</ul>
 				</div>
 			</div>

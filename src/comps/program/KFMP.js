@@ -4,6 +4,10 @@ import Title from '../title/Title.js' ;
 import './program.css' ;
 import DisplayDetailed from '../display/DisplayDetailed.js' ;
 
+const arr = ['To provide workshops to schools and colleges for:' , 'Student Motivation', 'Student Career',
+'Health related guidance for students', 'Behaviour related guidance for students',
+'Parental Education', 'Teachers Training'] ;
+
 class Sarathi extends React.Component
 {
 	render()
@@ -14,7 +18,7 @@ class Sarathi extends React.Component
 				 items={["Home -"," Programs -", "Sarathi"]}/>
 				<h4 className="intro"> Sarathi is a program, supported by the Kasturi Foundation. It
 				  provides workshop	organising facilities to schools and colleges. </h4> 
-				<DisplayDetailed title="Aim" />
+				<DisplayDetailed title="Aim" lidata={arr}/>
 			</div>
 		) ;
 	}
