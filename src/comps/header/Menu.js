@@ -26,7 +26,7 @@ class Menu extends React.Component
 					      <div className="pop-p" onClick={this.props.closeCallback}>
 							<Popup trigger={<span className="header-item pop-item"> Students </span>}
 					      		position="right top" on="hover">
-								<Link className="header-item pop-item" to='/program/AQueSS'> AQueSS </Link>
+								<Link className="header-item pop-item" to='/program/AQUESS'> AQUESS </Link>
 							</Popup>
 							<Popup trigger={<span className="header-item pop-item"> School/College </span>}
 					      		position="right top" on="hover">
@@ -39,15 +39,6 @@ class Menu extends React.Component
 							</Popup>
 					      </div>
 					    </Popup>
-					    <Popup trigger={<div className="menu-item">Commercial Programs </div>}
-					      position="right top" on="hover" >
-					      <div className="pop-p" onClick={this.props.closeCallback}>
-							<Link className="menu-item pop-item" to='/test'>Psychometric Tests </Link> 
-							<Link className="menu-item pop-item" to='/mentamorph'> Menta-Morph </Link>
-							<Link className="menu-item pop-item" to='/program/personal'>
-							 Personal Consultation </Link>
-					      </div>
-					    </Popup>
 						<Link className="menu-item" to='/contact'> Contact </Link>
 					</div>
 				</div>
@@ -57,3 +48,14 @@ class Menu extends React.Component
 }
 
 export default Menu ;
+
+					// Before Link menu-item contact
+					  //   <Popup trigger={<div className="menu-item">Commercial Programs </div>}
+					  //     position="right top" on="hover" >
+					  //     <div className="pop-p" onClick={this.props.closeCallback}>
+							// <Link className="menu-item pop-item" to='/test'>Psychometric Tests </Link> 
+							// <Link className="menu-item pop-item" to='/mentamorph'> Menta-Morph </Link>
+							// <Link className="menu-item pop-item" to='/program/personal'>
+							//  Personal Consultation </Link>
+					  //     </div>
+					  //   </Popup>

@@ -5,7 +5,7 @@ import './parallax.css' ;
 const Parallax = (props) => {
 	return (
 		<div className="parallax">
-			{props.text}
+			{props.children}
 		</div>
 		) ;
 }

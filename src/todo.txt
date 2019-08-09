@@ -1,5 +1,7 @@
-2. Images 
-4. About person
+1. Make Testimonial Slider
 
-5.Specific page for Saarthi and Aques ---> Make Li funcion and give data as array 
-filhal neend aa gayi yaar
+2. Find Images
+
+3. Try new designs for Banner
+4. Check out https://www.blackdoginstitute.org.au
+	https://www.beyondblue.org.au/get-support/national-help-lines-and-websites

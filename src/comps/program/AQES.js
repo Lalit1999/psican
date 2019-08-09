@@ -15,7 +15,8 @@ class AQueSS extends React.Component
 		return(
 			<div>
 				<Title name = 'AQueSS Program' items={["Home -"," Programs -", "AQueSS"]}/>
-				<h4 className="intro"> AQueSS is an Online Query System for Students which is completely
+				<h4 className="intro"> <span className="brand">AQueSS</span> is an 
+				<span className="ngo">&nbsp;Online Query System for Students </span> which is 
 				 free of cost.  </h4>
 				<DisplayDetailed title="Aim" lidata={arr} />
 			</div>

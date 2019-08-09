@@ -1,15 +1,12 @@
 .parallax
 {
-	background-image: url("../images/i1.jpg");
-  	min-height: 20vh; 
+	background-image: url("../images/i5.jpg");
+	min-height: 20vh; 
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
-  	background-size: cover;
-  	color: white;
-  	text-align: center;
-  	font-weight: bold ;
-  	font-size: 3rem ;
-  	margin-top: 1em ;
-  	padding-top: 4% ;
+	background-size: cover;
+  text-align: center;
+	margin-top: .5em ;
+	padding-top: 4% ;
 }
