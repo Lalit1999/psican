@@ -1,0 +1,74 @@
+[debug] [2019-08-11T04:59:36.644Z] ----------------------------------------------------------------------
+[debug] [2019-08-11T04:59:36.648Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\win 7\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2019-08-11T04:59:36.648Z] CLI Version:   7.2.2
+[debug] [2019-08-11T04:59:36.648Z] Platform:      win32
+[debug] [2019-08-11T04:59:36.648Z] Node Version:  v11.5.0
+[debug] [2019-08-11T04:59:36.774Z] Time:          Sun Aug 11 2019 10:29:36 GMT+0530 (GMT+05:30)
+[debug] [2019-08-11T04:59:36.775Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-08-11T04:59:36.843Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-11T04:59:36.843Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\win 7\Documents\psican
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2019-08-11T05:00:07.351Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-08-11T05:00:07.351Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-08-11T05:00:07.648Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-11T05:00:07.668Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects?page_size=100  
+ 
+[debug] [2019-08-11T05:00:08.643Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-11T05:01:27.116Z] ----------------------------------------------------------------------
+[debug] [2019-08-11T05:01:27.119Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\win 7\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2019-08-11T05:01:27.119Z] CLI Version:   7.2.2
+[debug] [2019-08-11T05:01:27.120Z] Platform:      win32
+[debug] [2019-08-11T05:01:27.120Z] Node Version:  v11.5.0
+[debug] [2019-08-11T05:01:27.120Z] Time:          Sun Aug 11 2019 10:31:27 GMT+0530 (GMT+05:30)
+[debug] [2019-08-11T05:01:27.120Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-08-11T05:01:27.128Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-11T05:01:27.128Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\win 7\Documents\psican
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2019-08-11T05:01:30.599Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects?page_size=100  
+ 
+[debug] [2019-08-11T05:01:31.246Z] <<< HTTP RESPONSE 200
+[info] i  Using project psyment-0 (psyment)
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
