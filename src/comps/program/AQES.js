@@ -8,14 +8,14 @@ const arr = ['To provide customised support o students for various academic, beh
 ', emotional and attitude related issues',
 ' To provide soluions and guidance o studentsd for various health, psychological, gender and interpersonal issues'] ;
 
-class AQueSS extends React.Component
+class AQUESS extends React.Component
 {
 	render()
 	{
 		return(
 			<div>
-				<Title name = 'AQueSS Program' items={["Home -"," Programs -", "AQueSS"]}/>
-				<h4 className="intro"> <span className="brand">AQueSS</span> is an 
+				<Title name = 'AQUESS Program' items={["Home -"," Programs -", "AQUESS"]}/>
+				<h4 className="intro"> <span className="brand">AQUESS</span> is an 
 				<span className="ngo">&nbsp;Online Query System for Students </span> which is 
 				 free of cost.  </h4>
 				<DisplayDetailed title="Aim" lidata={arr} />
@@ -24,4 +24,4 @@ class AQueSS extends React.Component
 	}
 }
 
-export default AQueSS ;
+export default AQUESS ;

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
 .slide
 {
 	width: 100vw !important ;
@@ -85,4 +87,9 @@
 	color: whitesmoke;
 	font-family: 'Roboto' ;
 	margin-top: 0.5em ;
+}
+
+.slide-message
+{
+	font-family: 'Rubik' ;
 }

@@ -7,6 +7,15 @@ import './slider.css' ;
 
 class Slider extends Component 
 {	
+	createButton = (str) => {
+		if(str !== '/')
+			return (
+				<div className="row">
+					<a href={str} className="slide-link"> Go </a>
+				</div>
+				) ;
+	}
+
 	dataList = () => {
 		return this.props.data.map((item, i) => {
 			return (
@@ -17,9 +26,7 @@ class Slider extends Component
 								<h2 className="slide-heading"> {item.title} </h2>
 								<p className="slide-message"> {item.message}</p>
 							</div>
-							<div className="row">
-								<a href={item.link} className="slide-link"> Go </a>
-							</div>
+							{this.createButton(item.link)}
 						</div>
 					</div>
 				</div> ) ;

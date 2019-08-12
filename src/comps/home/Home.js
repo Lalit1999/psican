@@ -4,20 +4,34 @@ import Banner from '../banner/Banner.js' ;
 import Slider from '../slider/Slider.js' ;
 import Parallax from '../Parallax/Parallax.js' ;
 import './home.css' ;
-import BannerContent from '../banner/banner_content/BannerContent.js' ;
+import TestimonialSlider from '../slider/TestimonialSlider.js' ;
 
 import i1 from '../images/i1.jpg' ;
 import i2 from '../images/i2.jpg' ;
 import i3 from '../images/i3.jpg' ;
 
-const cont1 = [ 'Zero Cost Query System for Students',
-				'Teenage comes with a lot of confusion and many questions',
-				'We Promise a customised support and a prompt response' ] ;
-const cont2 = [ 'Workshop Organising Program for educational institutions',
-'Supported by The Kasturi Foundation',
-'Choose a module from list of topics and schedule a workshop now' ] ;
-
-const sec_arr = [ 'Ye hai the Pehli String', 'Ye hai meri dusri String', 'Aur ye hogi Teesri string' ] ;
+const testim_arr = [
+{ 	name: 'First Person' ,
+  	img: 'i3' ,
+	role: 'Student' ,
+	msg: 'I am so excited about my life after these lessons'
+},
+{ 	name: 'Second Person' ,
+  	img: 'i1' ,
+	role: 'School Principal' ,
+	msg: 'The Workshop was really nice and gave a really good message'
+},
+{ 	name: 'Third Person' ,
+  	img: 'i4' ,
+	role: 'Student' ,
+	msg: 'I just took guidance and my whole life changed'
+},
+{ 	name: 'Fourth Person' ,
+  	img: 'i2' ,
+	role: 'Parent' ,
+	msg: 'I am very satisfied becuase i am really satisfied.'
+}
+] ;
 
 class Home extends React.Component
 {	constructor()
@@ -27,8 +41,15 @@ class Home extends React.Component
             {	style : {
 	            	backgroundImage: 'url(' + i3+ ')',
             	},
-	            title: 'AQueSS',
-	            link : '/program/AQueSS' ,
+	            title: 'PSYMENT',
+	            link : '/' ,
+	            message: 'Welcome To the World of Self Discovery',
+         	},
+         	{	style : {
+	            	backgroundImage: 'url(' + i3+ ')',
+            	},
+	            title: 'AQUESS',
+	            link : '/program/AQUESS' ,
 	            message: 'An Online Free Query System for Students',
          	},
             {	style : {
@@ -53,20 +74,12 @@ class Home extends React.Component
 		return(
 			<div>
 				<Slider data={this.data} />
-				<Banner clr="red_left" img="d" >
-					<BannerContent title = 'AQueSS' lidata={cont1} 
-								   left="left" link="/program/AQueSS"/>
-				</Banner>
-				<Banner clr="blue_right" img="e" >
-					<BannerContent title = 'Sarathi' lidata={cont2} 
-								   left="right" link="/program/Sarathi"/>
-				</Banner>
-				<Banner clr="green_left" img="c" >
-					<BannerContent title = 'Personal Consult' lidata={sec_arr} 
-								   left="left" link="/program/personal"/>
-				</Banner>
+				<Banner clr="red_left" img="d" content="aquess" />
+				<Banner clr="blue_right" img="e" content="sarathi" />
+				<Banner clr="green_left" img="c" content="person" />
 				<Parallax>
 					<div className="testim"> Our Testimonials </div>
+					<TestimonialSlider data={testim_arr}/>
 				</Parallax>
 			</div>
 		) ;

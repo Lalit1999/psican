@@ -1,7 +1,7 @@
 import React from 'react' ;
 
 import BannerContent from './banner_content/BannerContent.js' ;
-import './Banner.css' ;
+import './BannerTwo.css' ;
 
 const cont1 = [ 
 'Zero Cost Query System for Students',
@@ -18,7 +18,7 @@ const sec_arr = [
 'Ye hai meri dusri String',
 'Aur ye hogi Teesri string' ] ;
 
-class Banner extends React.Component
+class BannerTwo extends React.Component
 {	createBannerContent = () => {
 		switch(this.props.content)
 		{
@@ -37,15 +37,16 @@ class Banner extends React.Component
 	}
 
 	render()
-	{	let classcolor = 'ban_main ' + this.props.clr ;
+	{	let classcolor = 'ban_main ' + /*this.props.clr*/ 'blue' ;
 		return(
-			<div className={'banner ' + this.props.img}>
+			<div className={'BannerTwo ' + this.props.img}>
 				<div className = {classcolor}>
-					{this.createBannerContent()}
+					{this.props.children}
 				</div>
+				{this.createBannerContent()}
 			</div>
 		) ;
 	}
 }
 
-export default Banner ;
+export default BannerTwo ;
