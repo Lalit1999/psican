@@ -1,6 +1,7 @@
 import React from 'react' ;
 
 import Banner from '../banner/Banner.js' ;
+// import BannerTwo from '../banner/BannerTwo.js' ;
 import Slider from '../slider/Slider.js' ;
 import Parallax from '../Parallax/Parallax.js' ;
 import './home.css' ;
@@ -88,6 +89,10 @@ class Home extends React.Component
 
 export default Home ;
 
+				// <BannerTwo content="aquess" />
+				// <BannerTwo content="sarathi" right="yes"/>
+				// <BannerTwo content="person"/>
+				
 				// Before Banner clr-green_right(changed to green_left now)
 				// <Banner clr="green_left" img="c" >
 				// 	<BannerContent title = 'MentaMorph' lidata={sec_arr} 

@@ -1,0 +1,32 @@
+.BannerTwo
+{
+	display: flex ;
+}
+
+.ban2-image
+{
+	border-bottom: 2px solid black;
+	width: 100%;
+	background-image: url('../images/trial/student/cs1.jpg');
+	background-position: center;
+	background-size: cover;
+}
+
+.ban2_main
+{
+	padding: 1em ;
+	min-width: 60%;
+	border-bottom: 2px solid black;
+	color: white;
+}
+
+.blue
+{
+	background-color: rgb(29, 41, 81) ;
+}
+
+.undefined
+{
+	margin: 0 ;
+	width: 100% ;
+}

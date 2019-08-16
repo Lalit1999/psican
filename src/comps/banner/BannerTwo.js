@@ -3,6 +3,8 @@ import React from 'react' ;
 import BannerContent from './banner_content/BannerContent.js' ;
 import './BannerTwo.css' ;
 
+// import cs from '../images/trial/student/cs1.jpg' ;
+
 const cont1 = [ 
 'Zero Cost Query System for Students',
 'Teenage comes with a lot of confusion and many questions',
@@ -23,27 +25,27 @@ class BannerTwo extends React.Component
 		switch(this.props.content)
 		{
 			case 'aquess' : return (
-			 	<BannerContent title = 'AQueSS' lidata={cont1} left="left" link="/program/AQueSS"/>
+			 	<BannerContent title = 'AQueSS' lidata={cont1} link="/program/AQueSS"/>
 			 	) ;
 			case 'sarathi' : return (
-				<BannerContent title = 'Sarathi' lidata={cont2} left="right" link="/program/Sarathi"/>
+				<BannerContent title = 'Sarathi' lidata={cont2} link="/program/Sarathi"/>
 			 	) ;
 			case 'person' : return (
-				<BannerContent title = 'Personal Consult' lidata={sec_arr} left="left"
-				 link="/program/personal"/>
+				<BannerContent title = 'Personal Consult' lidata={sec_arr} link="/program/personal"/>
 			 	) ;
 			default : return null ;
 		}
 	}
 
 	render()
-	{	let classcolor = 'ban_main ' + /*this.props.clr*/ 'blue' ;
+	{	let classcolor = 'ban2_main blue' /*+ this.props.clr*/ ;
 		return(
-			<div className={'BannerTwo ' + this.props.img}>
+			<div className={'BannerTwo ' /*+ this.props.img*/ }>
 				<div className = {classcolor}>
-					{this.props.children}
+					{this.createBannerContent()}				
 				</div>
-				{this.createBannerContent()}
+				<div className="ban2-image">
+				</div>
 			</div>
 		) ;
 	}
