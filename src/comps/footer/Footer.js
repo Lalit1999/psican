@@ -35,7 +35,7 @@ class Footer extends React.Component
 					<div className="mapouter">
 						<div className="gmap_canvas">
 							<iframe title = "map" width="600" height="400" id="gmap_canvas" 
-							src="https://maps.google.com/maps?q=phase-4%20ashok%20vihar%20&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+							src="https://maps.google.com/maps?q=orn%20remandies%20private%20limited%20deep%20enclave%20ashok%20vihar%20&t=&z=13&ie=UTF8&iwloc=&output=embed" 
 							frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
 						</div>
 					</div>
