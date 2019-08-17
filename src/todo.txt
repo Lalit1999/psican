@@ -1,1 +1,2 @@
 1. Banner Two me left-right ka logic and color ka logic lagana hai ab
+2. Create content for choice component

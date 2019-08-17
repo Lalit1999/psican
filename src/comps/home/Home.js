@@ -1,7 +1,7 @@
 import React from 'react' ;
 
 import Banner from '../banner/Banner.js' ;
-// import BannerTwo from '../banner/BannerTwo.js' ;
+import BannerTwo from '../banner/BannerTwo.js' ;
 import Slider from '../slider/Slider.js' ;
 import Parallax from '../Parallax/Parallax.js' ;
 import './home.css' ;

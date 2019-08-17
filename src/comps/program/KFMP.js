@@ -3,6 +3,8 @@ import React from 'react' ;
 import Title from '../title/Title.js' ;
 import './program.css' ;
 import DisplayDetailed from '../display/DisplayDetailed.js' ;
+import ContentChoice from '../choice/ContentChoice.js' ;
+import Heading from '../Heading/Heading.js' ;
 
 const arr = ['To provide workshops to schools and colleges for:' , 'Student Motivation', 'Student Career',
 'Health related guidance for students', 'Behaviour related guidance for students',
@@ -20,6 +22,10 @@ class Sarathi extends React.Component
 				 by <span className="ngo"> The Kasturi Foundation</span>. It provides workshop
 				 organising facilities to schools and colleges. </h4> 
 				<DisplayDetailed title="Aim" lidata={arr}/>
+				<Heading text="Choose Your Topic" />
+				<ContentChoice choices={['Parents', 'Students', 'Teachers']} 
+					Parents={<div> This is Parents </div>} Students={<div> This is Students </div>}
+					Teachers={<div> This is Teachers </div>}/>
 			</div>
 		) ;
 	}

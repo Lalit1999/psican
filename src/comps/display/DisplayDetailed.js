@@ -1,4 +1,5 @@
 import React from 'react' ;
+import Heading from '../Heading/Heading.js' ;
 
 class DisplayDetailed extends React.Component
 {	createLi = () => {
@@ -8,9 +9,7 @@ class DisplayDetailed extends React.Component
 	{
 		return (
 			<div className="display-detail">
-			 	<div className="title-con">
-					<h2 className="left-title"> {this.props.title}</h2>
-				</div>
+				<Heading text={this.props.title}/>
 				<div className="intro">
 					<ul>
 						{this.createLi()}
