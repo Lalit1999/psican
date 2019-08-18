@@ -2,13 +2,47 @@ import React from 'react' ;
 
 import Title from '../title/Title.js' ;
 import './program.css' ;
+import './detailcontent.css' ;
 import DisplayDetailed from '../display/DisplayDetailed.js' ;
 import ContentChoice from '../choice/ContentChoice.js' ;
 import Heading from '../Heading/Heading.js' ;
 
-const arr = ['To provide workshops to schools and colleges for:' , 'Student Motivation', 'Student Career',
-'Health related guidance for students', 'Behaviour related guidance for students',
-'Parental Education', 'Teachers Training'] ;
+const arr = ['To provide workshops to schools and colleges for:' , 'Student Motivation',
+'Student Career', 'Health related guidance for students',
+'Behaviour related guidance for students', 'Parental Education', 'Teachers Training'] ;
+
+class DetailContent extends React.Component
+{	constructor()
+	{
+		super() ;
+		this.state = {
+			selected: '' 
+		}	
+	}
+
+	onSelectChange = (event) => {
+		this.setState({selected: event.target.value});
+	}
+
+	onButtonClick = () => {
+		console.log(this.state.selected) ;
+	}
+
+	render()
+	{
+		return (
+			<div className="choice-con">
+				<select className="select" onChange={this.onSelectChange} value={this.state.selected}>
+				    <option selected hidden value> -- Choose a Topic -- </option>
+				    <option value="option-1">Option-1</option>
+				    <option value="option-2">Option-2</option>
+				    <option value="option-3">Option-3</option>
+				</select>
+				<button onClick={this.onButtonClick} className="sched-btn"> Schedule ! </button> 
+			</div>
+		) ;
+	}
+} ;
 
 class Sarathi extends React.Component
 {
@@ -24,8 +58,8 @@ class Sarathi extends React.Component
 				<DisplayDetailed title="Aim" lidata={arr}/>
 				<Heading text="Choose Your Topic" />
 				<ContentChoice choices={['Parents', 'Students', 'Teachers']} 
-					Parents={<div> This is Parents </div>} Students={<div> This is Students </div>}
-					Teachers={<div> This is Teachers </div>}/>
+				 Parents={<DetailContent/>}
+				 Students={<DetailContent/>} Teachers={<DetailContent/>}/>
 			</div>
 		) ;
 	}

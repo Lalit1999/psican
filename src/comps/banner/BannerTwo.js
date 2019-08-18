@@ -3,8 +3,6 @@ import React from 'react' ;
 import BannerContent from './banner_content/BannerContent.js' ;
 import './BannerTwo.css' ;
 
-// import cs from '../images/trial/student/cs1.jpg' ;
-
 const cont1 = [ 
 'Zero Cost Query System for Students',
 'Teenage comes with a lot of confusion and many questions',
