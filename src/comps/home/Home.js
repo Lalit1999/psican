@@ -1,6 +1,6 @@
 import React from 'react' ;
 
-import Banner from '../banner/Banner.js' ;
+// import Banner from '../banner/Banner.js' ;
 import BannerTwo from '../banner/BannerTwo.js' ;
 import Slider from '../slider/Slider.js' ;
 import Parallax from '../Parallax/Parallax.js' ;
@@ -75,9 +75,9 @@ class Home extends React.Component
 		return(
 			<div>
 				<Slider data={this.data} />
-				<Banner clr="red_left" img="d" content="aquess" />
-				<Banner clr="blue_right" img="e" content="sarathi" />
-				<Banner clr="green_left" img="c" content="person" />
+				<BannerTwo content="aquess" />
+				<BannerTwo content="sarathi" />
+				<BannerTwo content="person"/>
 				<Parallax>
 					<div className="testim"> Our Testimonials </div>
 					<TestimonialSlider data={testim_arr}/>
@@ -89,9 +89,6 @@ class Home extends React.Component
 
 export default Home ;
 
-				// <BannerTwo content="aquess" />
-				// <BannerTwo content="sarathi" right="yes"/>
-				// <BannerTwo content="person"/>
 				
 				// Before Banner clr-green_right(changed to green_left now)
 				// <Banner clr="green_left" img="c" >
@@ -129,3 +126,9 @@ export default Home ;
 	         //    link : '/parenting' ,
 	         //    message: 'Ways of guiding your adolescents',
          	// },
+
+
+         		// Jo last me banner hataya tha vo 
+				// <Banner clr="red_left" img="d" content="aquess" />
+				// <Banner clr="blue_right" img="e" content="sarathi" />
+				// <Banner clr="green_left" img="c" content="person" />
