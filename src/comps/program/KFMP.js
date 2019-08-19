@@ -11,6 +11,13 @@ const arr = ['To provide workshops to schools and colleges for:' , 'Student Moti
 'Student Career', 'Health related guidance for students',
 'Behaviour related guidance for students', 'Parental Education', 'Teachers Training'] ;
 
+const sArr = ['Student Motivation', 'Guidance For Adolescents', 'Behavioural Guidance for Students',
+			'Health & Body Guidance for Adolescents'] ;
+
+const tArr= ['Teachers Training', 'Teaching Strategies'] ;
+
+const pArr = ['Parental Education', 'Parenting Strategies For Adolescents'] ;
+
 class DetailContent extends React.Component
 {	constructor()
 	{
@@ -28,15 +35,17 @@ class DetailContent extends React.Component
 		console.log(this.state.selected) ;
 	}
 
+	createOptions = () => {
+		return this.props.data.map( option=> <option key={option} value={option}> {option} </option>) ;
+	}
+
 	render()
 	{
 		return (
 			<div className="choice-con">
 				<select className="select" onChange={this.onSelectChange} value={this.state.selected}>
 				    <option selected hidden value> -- Choose a Topic -- </option>
-				    <option value="option-1">Option-1</option>
-				    <option value="option-2">Option-2</option>
-				    <option value="option-3">Option-3</option>
+				    {this.createOptions()}
 				</select>
 				<button onClick={this.onButtonClick} className="sched-btn"> Schedule ! </button> 
 			</div>
@@ -57,9 +66,10 @@ class Sarathi extends React.Component
 				 organising facilities to schools and colleges. </h4> 
 				<DisplayDetailed title="Aim" lidata={arr}/>
 				<Heading text="Choose Your Topic" />
-				<ContentChoice choices={['Parents', 'Students', 'Teachers']} 
-				 Parents={<DetailContent/>}
-				 Students={<DetailContent/>} Teachers={<DetailContent/>}/>
+				<ContentChoice choices={['Students', 'Parents', 'Teachers']} 
+				 Parents={<DetailContent data={pArr}/>}
+				 Students={<DetailContent data={sArr}/>}
+				 Teachers={<DetailContent data={tArr}/>}/>
 			</div>
 		) ;
 	}
