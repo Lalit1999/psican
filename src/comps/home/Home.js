@@ -1,6 +1,5 @@
 import React from 'react' ;
 
-// import Banner from '../banner/Banner.js' ;
 import BannerTwo from '../banner/BannerTwo.js' ;
 import Slider from '../slider/Slider.js' ;
 import Parallax from '../Parallax/Parallax.js' ;
@@ -126,9 +125,3 @@ export default Home ;
 	         //    link : '/parenting' ,
 	         //    message: 'Ways of guiding your adolescents',
          	// },
-
-
-         		// Jo last me banner hataya tha vo 
-				// <Banner clr="red_left" img="d" content="aquess" />
-				// <Banner clr="blue_right" img="e" content="sarathi" />
-				// <Banner clr="green_left" img="c" content="person" />

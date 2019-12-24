@@ -35,30 +35,12 @@ class BannerTwo extends React.Component
 		}
 	}
 
-	// checkLeftProp = () => {
-	// 	if(this.props.left === 'yes')
-	// 		return (<div>
-	// 				<div className="ban2-image">
-	// 				</div>
-	// 				<div className = {classcolor}>
-	// 					{this.createBannerContent()}				
-	// 				</div>
-	// 			</div>
-	// 		) ;
-	// 	else
-	// 		return (
-	// 			<div>
-
-	// 			</div>
-	// 			) ;
-	// }
-
 	render()
 	{	let classcolor = 'ban2_main ' + this.props.color ;
 		if(this.props.left === 'yes')
 		{
 			return(
-				<div className={'BannerTwo ' /*+ this.props.img*/ }>
+				<div className={'BannerTwo '}>
 					<div className="ban2-image">
 					</div>
 					<div className = {classcolor}>
@@ -69,7 +51,7 @@ class BannerTwo extends React.Component
 		}
 		else
 		{	return(
-				<div className={'BannerTwo ' /*+ this.props.img*/ }>
+				<div className={'BannerTwo '}>
 					<div className = {classcolor}>
 						{this.createBannerContent()}				
 					</div>
