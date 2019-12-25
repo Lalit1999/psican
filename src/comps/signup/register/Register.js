@@ -3,6 +3,8 @@ import React from 'react' ;
 import Title from '../../title/Title.js' ;
 import LoginForm from '../forms/LoginForm.js' ;
 import Text from '../text/Text.js' ;
+import Number from '../number/Number.js' ;
+import Dropdown from '../dropdown/Dropdown.js' ;
 import '../signup.css' ;
 
 const initPerson = {
@@ -13,8 +15,8 @@ const initPerson = {
 	mobile: '',
 	age : 0,
 	gender :'',
-	height: '',
-	weight: '',
+	height: 0,
+	weight: 0,
 	mother: '',
 	father: '',
 	status: '',
@@ -70,8 +72,16 @@ class Register extends React.Component
 			) ;
 	}
 
+	onPrevClick = () => {
+		switch(this.state.mode)
+		{
+			case 'pr-reg-2' : this.setState({mode : 'pr-reg-1'});
+								break ;
+			default : console.log("Problem Encountered") ;
+		}
+	}
+
 	onNextClick = () => {
-		// console.table(this.state.data) ;
 		if(this.state.error !== '')
 			this.setState({error: 'You must fix all errors before proceeding'});
 		else
@@ -91,7 +101,25 @@ class Register extends React.Component
 								  else
 									this.setState({mode:'pr-reg-2'});
 								  break ;
-				case 'pr-reg-2' : break ;
+				case 'pr-reg-2' : if(this.state.data.father === '')
+									this.setState({error: 'Father Name can not be blank'});
+								  else if(this.state.data.mother === '')
+									this.setState({error: 'Mother Name can not be blank'});
+								  else if(this.state.data.gender === '')
+									this.setState({error: 'Gender can not be blank'});
+								  else if(this.state.data.status === '')
+									this.setState({error: 'Status can not be blank'});
+								  else if(this.state.data.age === 0)
+									this.setState({error: 'Age can not be 0'});
+								  else if(this.state.data.height === 0)
+									this.setState({error: 'Height can not be 0'});
+								  else if(this.state.data.weight === 0)
+									this.setState({error: 'Weight can not be 0'});
+								  else
+									this.setState({mode:'pr-reg-3'});
+								  console.table(this.state.data) ;
+								  break ;
+				default : console.log("You probably encountered a problem") ;
 			}
 		}
 	}
@@ -153,17 +181,79 @@ class Register extends React.Component
 			this.setState({error: ''}) ;
 		this.setState({data: {...this.state.data, mobile : event.target.value} }) ;
 	}
+	
+	onFatherChange = (event) => {
+		if(event.target.value === '')
+			this.setState({error: 'Father Name can not be blank'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, father : event.target.value} }) ;
+	}
+	
+	onMotherChange = (event) => {
+		if(event.target.value === '')
+			this.setState({error: 'Mother Name can not be blank'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, mother : event.target.value} }) ;
+	}
+	
+	onAgeChange = (event) => {
+		if(event.target.value === 0)
+			this.setState({error: 'Age can not be 0'}) ;
+		else if(event.target.value < 10 || event.target.value > 65)
+			this.setState({error: 'Age must be between 10 & 65'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, age : parseInt(event.target.value)} }) ;
+	}
+	
+	onHeightChange = (event) => {
+		if(event.target.value === 0)
+			this.setState({error: 'Height can not be 0'}) ;
+		else if(event.target.value < 100 || event.target.value > 300)
+			this.setState({error: 'Height must be between 100 & 300'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, height : parseInt(event.target.value)} }) ;
+	}
+
+	onWeightChange = (event) => {
+		if(event.target.value === 0)
+			this.setState({error: 'Weight can not be 0'}) ;
+		else if(event.target.value < 10 || event.target.value > 250)
+			this.setState({error: 'Weight must be between 100 & 250'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, weight : parseInt(event.target.value)} }) ;
+	}
+	
+	onGenderChange = (event) => {
+		if(event.target.value === '')
+			this.setState({error: 'Gender can not be blank'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, gender : event.target.value} }) ;
+	}
+	
+	onStatusChange = (event) => {
+		if(event.target.value === '')
+			this.setState({error: 'Status can not be blank'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, status : event.target.value} }) ;
+	}
 
 	personForm1 = () => {
 		const {name, email, password, repass, mobile} = this.state.data ;
 		return (
 			<div>	
-				<LoginForm title=" Login Details " error={this.state.error}
+				<LoginForm title=" Basic Details " error={this.state.error}
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
 					<Text label="Name" value={name} onChange={this.onNameChange}/>
 					<Text label="E-Mail" value={email} onChange={this.onEmailChange}/>
 					<Text label="Password" value={password} type="pw" onChange={this.onPasswordChange}/>
-					<Text label="Retype&ensp; Password" value={repass} type="pw" onChange={this.onRepassChange}/>
+					<Text label="Retype Password" value={repass} type="pw" onChange={this.onRepassChange}/>
 					<Text label="Mobile No." value={mobile} onChange={this.onMobileChange}/>
 				</LoginForm>
 			</div>
@@ -171,8 +261,20 @@ class Register extends React.Component
 	}
 
 	personForm2 = () => {
+		const {age, gender, status, mother, father, height, weight} = this.state.data ;
 		return (
-			<div>	Person Form 2
+			<div>
+				<LoginForm title=" Personal Details " error={this.state.error}
+					b1="&lt;&nbsp; Prev" onb1Click={this.onPrevClick}
+					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
+					<Number label="Age"	value={age} min={10} max={65} onChange={this.onAgeChange}/>
+					<Dropdown label="Gender" value={gender} options={['','M','F']} onChange={this.onGenderChange}/>
+					<Text label="Mother's Name" value={mother} onChange={this.onMotherChange}/>
+					<Text label="Father's Name" value={father} onChange={this.onFatherChange}/>
+					<Number label="Height (cm)"	value={height} min={100} max={300} onChange={this.onHeightChange}/>
+					<Number label="Weight (kg)"	value={weight} min={10} max={250} onChange={this.onWeightChange}/>
+					<Dropdown label="Marital Status" value={status} options={['','Single','Married']} onChange={this.onStatusChange}/>
+				</LoginForm>	
 			</div>
 			) ;
 	}
