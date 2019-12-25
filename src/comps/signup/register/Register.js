@@ -71,8 +71,29 @@ class Register extends React.Component
 	}
 
 	onNextClick = () => {
-		console.table(this.state.data) ;
-		// this.setState({mode:'pr-reg-2'});
+		// console.table(this.state.data) ;
+		if(this.state.error !== '')
+			this.setState({error: 'You must fix all errors before proceeding'});
+		else
+		{
+			switch(this.state.mode)
+			{
+				case 'pr-reg-1' : if(this.state.data.name === '')
+									this.setState({error: 'Name can not be blank'});
+								  else if(this.state.data.password === '')
+									this.setState({error: 'Password can not be blank'});
+								  else if(this.state.data.repass === '')
+									this.setState({error: 'Re-Password can not be blank'});
+								  else if(this.state.data.email === '')
+									this.setState({error: 'Email can not be blank'});
+								  else if(this.state.data.mobile === '')
+									this.setState({error: 'Mobile can not be blank'});
+								  else
+									this.setState({mode:'pr-reg-2'});
+								  break ;
+				case 'pr-reg-2' : break ;
+			}
+		}
 	}
 
 	onNameChange = (event) => {
@@ -84,9 +105,12 @@ class Register extends React.Component
 	}
 
 	onEmailChange = (event) => {
-		//Check Valid E-Mail Format
+		//eslint-disable-next-line
+		var emre = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/gi;
 		if(event.target.value === '')
 			this.setState({error: 'E-Mail can not be blank'}) ;
+		else if(emre.test(event.target.value) === false)
+			this.setState({error: 'This might not be a valid E-Mail address'});
 		else 
 			this.setState({error: ''}) ;
 		this.setState({data: {...this.state.data, email : event.target.value} }) ;
@@ -97,6 +121,8 @@ class Register extends React.Component
 			this.setState({error: 'Password can not be blank'}) ;
 		else if(event.target.value.length < 6)
 			this.setState({error: 'Password must be at least 6 digits long'}) ;
+		else if(event.target.value !== this.state.data.repass)
+			this.setState({error: 'Re-Password must match password'}) ;
 		else 
 			this.setState({error: ''}) ;
 		this.setState({data: {...this.state.data, password : event.target.value} }) ;
@@ -115,11 +141,14 @@ class Register extends React.Component
 	}
 
 	onMobileChange = (event) => {
-		//Check if mobile contains only digits
+		// eslint-disable-next-line
+		var numre = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g ;
 		if(event.target.value === '')
 			this.setState({error: 'Mobile No. can not be blank'}) ;
 		else if(event.target.value.length < 10)
 			this.setState({error: 'Mobile No. must be at least 10 digits long'}) ;
+		else if(numre.test(event.target.value) === false)
+			this.setState({error: 'Mobile No. must only contain digits or -'});
 		else 
 			this.setState({error: ''}) ;
 		this.setState({data: {...this.state.data, mobile : event.target.value} }) ;
