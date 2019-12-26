@@ -44,3 +44,48 @@
 {
 	outline: 0 ;
 }
+
+.reg-res
+{
+	border: 2px solid black;
+	border-radius: 1rem ;
+	display: inline-block;
+	margin: 1em ;
+	padding: 1em ;
+}
+
+.reg-res h2
+{
+	font-size: 3rem;
+	margin-top: 0 ;
+	color: darkgreen;
+}
+
+.reg-res h3
+{
+	font-size: 3rem;
+	margin-top: 0 ;
+	color: darkred;
+}
+
+.res-btn
+{
+	color: black ;
+	font-size: 1.3rem ;
+	padding: 0.5em 0.7em ;
+	background-color: transparent;
+	border: 2px solid black;
+	border-radius: .5rem;
+	transition: all .3s ;
+	text-decoration: none;
+	font-family: 'Arial' ;
+	display: inline-block;
+	margin-bottom: .1em ;
+}
+
+.res-btn:hover
+{
+	background-color: black ;
+	color: #ccddff ;
+	box-shadow: inset 0 0 0 1px #ccddff;
+}

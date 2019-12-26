@@ -5,6 +5,11 @@
   margin: .2em 0;
 }
 
+.textarea-div
+{
+  display: flex ;
+}
+
 .lbel
 {
   margin-right: 1em ;

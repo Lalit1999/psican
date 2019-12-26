@@ -1,11 +1,16 @@
 import React from 'react' ;
+import {Link} from 'react-router-dom' ;
 
 import Title from '../../title/Title.js' ;
 import LoginForm from '../forms/LoginForm.js' ;
 import Text from '../text/Text.js' ;
+import TextArea from '../text/TextArea.js' ;
 import Number from '../number/Number.js' ;
 import Dropdown from '../dropdown/Dropdown.js' ;
 import '../signup.css' ;
+
+// import Red from '../../images/red.png' ;
+// import Green from '../../images/green.png' ;
 
 const initPerson = {
 	name: '' ,
@@ -72,10 +77,40 @@ class Register extends React.Component
 			) ;
 	}
 
+	sendRegisterRequest = () => {
+		// console.table(this.state.data) ;
+		let type = (this.state.mode === 'pr-reg-3')?'person':'school' ;
+		fetch('https://psy-api.herokuapp.com/' + type,{
+			method : 'post' ,
+			headers : { 'Content-Type' : 'application/json'} ,
+			body :JSON.stringify(this.state.data) ,
+		})
+		.then(res => {
+			if(res.ok)
+				return res.json() ;
+			else
+				throw Error(res.statusText) ;
+		})
+		.then(data => {	
+			// console.log(data) ;
+			this.setState({mode: 'reg-success'});
+		}) 
+		.catch( err  => {
+			console.log(err) ;
+			this.setState({mode: 'reg-fail'});
+		}) ;
+	}
+
 	onPrevClick = () => {
 		switch(this.state.mode)
 		{
 			case 'pr-reg-2' : this.setState({mode : 'pr-reg-1'});
+								break ;
+			case 'pr-reg-3' : this.setState({mode: 'pr-reg-2'});
+								break ;
+			case 'sc-reg-2' : this.setState({mode : 'sc-reg-1'});
+								break ;
+			case 'sc-reg-3' : this.setState({mode: 'sc-reg-2'});
 								break ;
 			default : console.log("Problem Encountered") ;
 		}
@@ -101,6 +136,7 @@ class Register extends React.Component
 								  else
 									this.setState({mode:'pr-reg-2'});
 								  break ;
+				
 				case 'pr-reg-2' : if(this.state.data.father === '')
 									this.setState({error: 'Father Name can not be blank'});
 								  else if(this.state.data.mother === '')
@@ -117,8 +153,16 @@ class Register extends React.Component
 									this.setState({error: 'Weight can not be 0'});
 								  else
 									this.setState({mode:'pr-reg-3'});
-								  console.table(this.state.data) ;
 								  break ;
+				
+				case 'pr-reg-3' : if(this.state.data.address === '')
+									this.setState({error: 'Address can not be blank'});
+								  else if(this.state.data.address2 === '')
+									this.setState({error: 'Address can not be blank'});
+								  else
+								  	this.sendRegisterRequest() ;
+								  break ;
+				
 				default : console.log("You probably encountered a problem") ;
 			}
 		}
@@ -244,6 +288,36 @@ class Register extends React.Component
 		this.setState({data: {...this.state.data, status : event.target.value} }) ;
 	}
 
+	onHobbyChange = (event) => this.setState({data: {...this.state.data, hobbies : event.target.value} }) 
+
+	onFamilyChange = (event) => this.setState({data: {...this.state.data, family : event.target.value} })
+	
+	onWorkChange = (event) => this.setState({data: {...this.state.data, working : event.target.value} }) 
+
+	onSiblingChange = (event) => {
+		if(event.target.value > 15)
+			this.setState({error: 'Siblings must be between 0 & 15'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, sibling : parseInt(event.target.value)} }) ;
+	}
+
+	onAddressChange = (event) => {
+		if(event.target.value === '')
+			this.setState({error: 'Address can not be blank'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, address : event.target.value} }) ;
+	}
+
+	onAddress2Change = (event) => {
+		if(event.target.value === '')
+			this.setState({error: 'Address can not be blank'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, address2 : event.target.value} }) ;
+	}
+
 	personForm1 = () => {
 		const {name, email, password, repass, mobile} = this.state.data ;
 		return (
@@ -280,8 +354,21 @@ class Register extends React.Component
 	}
 
 	personForm3 = () => {
+		const {address, address2, working, sibling, family, hobbies} = this.state.data ;
 		return (
-			<div>	Person Form 3
+			<div>	
+				<LoginForm title=" Other Details " error={this.state.error}
+					b1="&lt;&nbsp; Prev" onb1Click={this.onPrevClick}
+					b2="Register" onb2Click={this.onNextClick} >
+					<TextArea label="Current Address" value={address} r={3} c={20} onChange={this.onAddressChange} />
+					<TextArea label="Permanent&ensp; Address" value={address2} r={3} c={20} onChange={this.onAddress2Change} />
+					<Dropdown label="Working Status" value={working} onChange={this.onWorkChange}
+							  options={['','Student','Full-Time','Part-Time','Self-Employed','Unemployed']} />
+					<Number label="No. Of Siblings"	value={sibling} min={0} max={15} onChange={this.onSiblingChange}/>
+					<Dropdown label="Family Type" value={family} onChange={this.onFamilyChange}
+							  options={['','Joint','Nuclear']} />
+					<Text label="Hobbies" value={hobbies} onChange={this.onHobbyChange}/>
+				</LoginForm>	
 			</div>
 			) ;
 	}
@@ -301,6 +388,22 @@ class Register extends React.Component
 			case 'pr-reg-2' : return this.personForm2() ;
 			case 'pr-reg-3' : return this.personForm3() ;
 			case 'sc-reg-1' : return this.schoolForm1() ;
+			case 'reg-success' : return (
+									<div className="reg-res">
+										<h2>
+											 Successful Registration
+										</h2>
+										<Link className="res-btn" to="/login"> To Login </Link>
+									</div>
+										) ;
+			case 'reg-fail' : return (
+									<div className="reg-res">
+										<h3>
+											Registration Failed
+										</h3>
+										<Link className="res-btn" to="/"> Home </Link>
+									</div>
+										) ;
 			default : return 'You probably encountered a problem' ;
 		}
 	}

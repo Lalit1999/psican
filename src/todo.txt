@@ -1,1 +1,2 @@
 1. Add heading for Registration
+2. Add images for succesful or unsuccessful registration
