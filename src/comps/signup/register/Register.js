@@ -217,8 +217,10 @@ class Register extends React.Component
 	onNameChange = (event) => {
 		if(event.target.value === '')
 			this.setState({error: 'Name can not be blank'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Name can not be blank') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, name : event.target.value} }) ;
 	}
 
@@ -229,8 +231,10 @@ class Register extends React.Component
 			this.setState({error: 'E-Mail can not be blank'}) ;
 		else if(emre.test(event.target.value) === false)
 			this.setState({error: 'This might not be a valid E-Mail address'});
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'E-Mail can not be blank' || this.state.error === 'This might not be a valid E-Mail address') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, email : event.target.value} }) ;
 	}
 
@@ -241,8 +245,10 @@ class Register extends React.Component
 			this.setState({error: 'Password must be at least 6 digits long'}) ;
 		else if(event.target.value !== this.state.data.repass)
 			this.setState({error: 'Re-Password must match password'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Password can not be blank' || this.state.error === 'Password must be at least 6 digits long' || this.state.error === 'Re-Password must match password')
+					this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, password : event.target.value} }) ;
 	}
 
@@ -250,11 +256,13 @@ class Register extends React.Component
 		if(event.target.value === '')
 			this.setState({error: 'Re-Password can not be blank'}) ;
 		else if(event.target.value.length < 6)
-			this.setState({error: 'Password must be at least 6 digits long'}) ;
+			this.setState({error: 'Re-Password must be at least 6 digits long'}) ;
 		else if(event.target.value !== this.state.data.password)
-			this.setState({error: 'Re-Password must match password'}) ;
-		else 
-			this.setState({error: ''}) ;
+			this.setState({error: 'Password must match re-password'}) ;
+		else
+		{	if(this.state.error === 'Re-Password can not be blank' || this.state.error === 'Re-Password must be at least 6 digits long' || this.state.error === 'Password must match re-password')
+					this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, repass : event.target.value} }) ;
 	}
 
@@ -267,24 +275,30 @@ class Register extends React.Component
 			this.setState({error: 'Mobile No. must only contain digits or -'});
 		else if(event.target.value.length < 10)
 			this.setState({error: 'Mobile No. must be at least 10 digits long'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Mobile No. can not be blank' || this.state.error === 'Mobile No. must only contain digits or -' || this.state.error === 'Mobile No. must be at least 10 digits long')
+					this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, mobile : event.target.value} }) ;
 	}
 	
 	onFatherChange = (event) => {
 		if(event.target.value === '')
 			this.setState({error: 'Father Name can not be blank'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Father Name can not be blank') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, father : event.target.value} }) ;
 	}
 	
 	onMotherChange = (event) => {
 		if(event.target.value === '')
 			this.setState({error: 'Mother Name can not be blank'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Mother Name can not be blank') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, mother : event.target.value} }) ;
 	}
 	
@@ -293,8 +307,10 @@ class Register extends React.Component
 			this.setState({error: 'Age can not be 0'}) ;
 		else if(event.target.value < 10 || event.target.value > 65)
 			this.setState({error: 'Age must be between 10 & 65'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Age can not be 0' || this.state.error === 'Age must be between 10 & 65') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, age : parseInt(event.target.value)} }) ;
 	}
 	
@@ -303,8 +319,10 @@ class Register extends React.Component
 			this.setState({error: 'Height can not be 0'}) ;
 		else if(event.target.value < 100 || event.target.value > 300)
 			this.setState({error: 'Height must be between 100 & 300'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Height can not be 0' || this.state.error === 'Height must be between 100 & 300') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, height : parseInt(event.target.value)} }) ;
 	}
 
@@ -313,24 +331,30 @@ class Register extends React.Component
 			this.setState({error: 'Weight can not be 0'}) ;
 		else if(event.target.value < 10 || event.target.value > 250)
 			this.setState({error: 'Weight must be between 100 & 250'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Weight must be between 100 & 250' || this.state.error === 'Weight can not be 0') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, weight : parseInt(event.target.value)} }) ;
 	}
 	
 	onGenderChange = (event) => {
 		if(event.target.value === '')
 			this.setState({error: 'Gender can not be blank'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Gender can not be blank') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, gender : event.target.value} }) ;
 	}
 	
 	onStatusChange = (event) => {
 		if(event.target.value === '')
 			this.setState({error: 'Status can not be blank'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Status can not be blank') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, status : event.target.value} }) ;
 	}
 
@@ -343,40 +367,50 @@ class Register extends React.Component
 	onSiblingChange = (event) => {
 		if(event.target.value > 15)
 			this.setState({error: 'Siblings must be between 0 & 15'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Siblings must be between 0 & 15') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, sibling : parseInt(event.target.value)} }) ;
 	}
 
 	onAddressChange = (event) => {
 		if(event.target.value === '')
 			this.setState({error: 'Address can not be blank'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Address can not be blank') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, address : event.target.value} }) ;
 	}
 
 	onAddress2Change = (event) => {
 		if(event.target.value === '')
 			this.setState({error: 'Address can not be blank'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Address can not be blank') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, address2 : event.target.value} }) ;
 	}
 
 	onShortChange = (event) => {
 		if(event.target.value === '')
 			this.setState({error: 'Short Name can not be blank'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Short Name can not be blank') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, short : event.target.value} }) ;
 	}
 
 	onPersonChange = (event) => {
 		if(event.target.value === '')
 			this.setState({error: 'Registrant Name can not be blank'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Registrant Name can not be blank') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, person : event.target.value} }) ;
 	}
 
@@ -389,16 +423,20 @@ class Register extends React.Component
 			this.setState({error: 'Registrant Phone No. must only contain digits or -'});
 		else if(event.target.value.length < 10)
 			this.setState({error: 'Registrant Phone No. must be at least 10 digits long'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Registrant Phone No. can not be blank' || this.state.error === 'Registrant Phone No. must be at least 10 digits long' || this.state.error === 'Registrant Phone No. must only contain digits or -')
+					this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, p_phone : event.target.value} }) ;
 	}
 
 	onPrincipalChange = (event) => {
 		if(event.target.value === '')
 			this.setState({error: 'Principal Name can not be blank'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Principal Name can not be blank') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, principal : event.target.value} }) ;
 	}
 
@@ -411,40 +449,50 @@ class Register extends React.Component
 			this.setState({error: 'Principal Phone No. must only contain digits or -'});
 		else if(event.target.value.length < 10)
 			this.setState({error: 'Principal Phone No. must be at least 10 digits long'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Principal Phone No. can not be blank' || this.state.error === 'Principal Phone No. must only contain digits or -' || this.state.error === 'Principal Phone No. must be at least 10 digits long')
+					this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, pr_phone : event.target.value} }) ;
 	}
 
 	onMediumChange = (event) => {
 		if(event.target.value === '')
 			this.setState({error: 'Medium can not be blank'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Medium can not be blank') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, medium : event.target.value} }) ;
 	}
 
 	onTypeChange = (event) => {
 		if(event.target.value === '')
 			this.setState({error: 'School Type can not be blank'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'School Type can not be blank') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, type : event.target.value} }) ;
 	}
 
 	onCFChange = (event) => {
 		if(event.target.value === '')
 			this.setState({error: 'School From can not be blank'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'School From can not be blank') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, class_f : event.target.value} }) ;
 	}
 
 	onCTChange = (event) => {
 		if(event.target.value === '')
 			this.setState({error: 'School To can not be blank'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'School To can not be blank') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, class_t : event.target.value} }) ;
 	}
 
@@ -453,8 +501,10 @@ class Register extends React.Component
 			this.setState({error: 'Students can not be 0'}) ;
 		else if(event.target.value < 50 || event.target.value > 50000)
 			this.setState({error: 'Students must be between 50 & 50000'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Students can not be 0' || this.state.error === 'Students must be between 50 & 50000') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, students : parseInt(event.target.value)} }) ;
 	}
 
@@ -463,8 +513,10 @@ class Register extends React.Component
 			this.setState({error: 'Teachers can not be 0'}) ;
 		else if(event.target.value < 5 || event.target.value > 1000)
 			this.setState({error: 'Teachers must be between 5 & 1000'}) ;
-		else 
-			this.setState({error: ''}) ;
+		else
+		{	if(this.state.error === 'Teachers can not be 0' || this.state.error === 'Teachers must be between 5 & 1000') 
+				this.setState({error: ''}) ;
+		}
 		this.setState({data: {...this.state.data, teachers : parseInt(event.target.value)} }) ;
 	}
 
