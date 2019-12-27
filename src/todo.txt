@@ -1,2 +1,15 @@
 1. Add heading for Registration
 2. Add images for succesful or unsuccessful registration
+
+3. CSS theek karni hai for mobile
+
+FIX ERROR CORRECTING ITSELF
+
+ADD CHECKING FOR UNIQUE EMAIL AND SHORTNAME, etc
+
+ADD FEATURES
+1. PROFILE PAGE
+2. UPDATE PROFILE
+3. DELETE PROFILE
+4. EMAIL/OTP CONFIRMATION
+4. FORGOT PASSWORD/EMAIL ETC.

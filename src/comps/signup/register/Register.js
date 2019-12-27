@@ -38,7 +38,7 @@ const initSchool = {
 	short: '',
 	password: '',
 	repass: '',
-	phone: '',
+	mobile: '',
 	email: '',
 	person: '',
 	p_phone: '',
@@ -49,8 +49,8 @@ const initSchool = {
 	teachers: 0,
 	medium: '',
 	address: '',
-	class_f: 0,
-	class_t: 0,
+	class_f: '',
+	class_t: '',
 }
 
 class Register extends React.Component
@@ -162,7 +162,53 @@ class Register extends React.Component
 								  else
 								  	this.sendRegisterRequest() ;
 								  break ;
-				
+
+				case 'sc-reg-1' : if(this.state.data.name === '')
+									this.setState({error: 'Name can not be blank'});
+								  else if(this.state.data.short === '')
+									this.setState({error: 'Short Name can not be blank'});
+								  else if(this.state.data.password === '')
+									this.setState({error: 'Password can not be blank'});
+								  else if(this.state.data.repass === '')
+									this.setState({error: 'Re-Password can not be blank'});
+								  else if(this.state.data.email === '')
+									this.setState({error: 'Email can not be blank'});
+								  else if(this.state.data.mobile === '')
+									this.setState({error: 'Contact No. can not be blank'});
+								  else
+									this.setState({mode:'sc-reg-2'});
+								  break ;
+
+				case 'sc-reg-2' : if(this.state.data.person === '')
+									this.setState({error: 'Registrant Name can not be blank'});
+								  else if(this.state.data.p_phone === '')
+									this.setState({error: 'Registrant Contact No. can not be blank'});
+								  else if(this.state.data.principal === '')
+									this.setState({error: 'Principal Name can not be blank'});
+								  else if(this.state.data.pr_phone === '')
+									this.setState({error: 'Principal Contact No. can not be blank'});
+								  else
+									this.setState({mode:'sc-reg-3'});
+								  break ;
+
+				case 'sc-reg-3' : if(this.state.data.address === '')
+									this.setState({error: 'Address can not be blank'});
+								  else if(this.state.data.type === '')
+									this.setState({error: 'Type can not be blank'});
+								  else if(this.state.data.medium === '')
+									this.setState({error: 'Medium can not be blank'});
+								  else if(this.state.data.class_f === '')
+									this.setState({error: 'Class From can not be blank'});
+								  else if(this.state.data.class_t === '')
+									this.setState({error: 'Class To can not be blank'});
+								  else if(this.state.data.teachers === 0)
+									this.setState({error: 'Teachers can not be 0'});
+								  else if(this.state.data.students === 0)
+									this.setState({error: 'Students can not be 0'});
+								  else
+								  	this.sendRegisterRequest() ;
+								  break ;
+
 				default : console.log("You probably encountered a problem") ;
 			}
 		}
@@ -217,10 +263,10 @@ class Register extends React.Component
 		var numre = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g ;
 		if(event.target.value === '')
 			this.setState({error: 'Mobile No. can not be blank'}) ;
-		else if(event.target.value.length < 10)
-			this.setState({error: 'Mobile No. must be at least 10 digits long'}) ;
 		else if(numre.test(event.target.value) === false)
 			this.setState({error: 'Mobile No. must only contain digits or -'});
+		else if(event.target.value.length < 10)
+			this.setState({error: 'Mobile No. must be at least 10 digits long'}) ;
 		else 
 			this.setState({error: ''}) ;
 		this.setState({data: {...this.state.data, mobile : event.target.value} }) ;
@@ -318,6 +364,110 @@ class Register extends React.Component
 		this.setState({data: {...this.state.data, address2 : event.target.value} }) ;
 	}
 
+	onShortChange = (event) => {
+		if(event.target.value === '')
+			this.setState({error: 'Short Name can not be blank'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, short : event.target.value} }) ;
+	}
+
+	onPersonChange = (event) => {
+		if(event.target.value === '')
+			this.setState({error: 'Registrant Name can not be blank'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, person : event.target.value} }) ;
+	}
+
+	onPPhoneChange = (event) => {
+		// eslint-disable-next-line
+		var numre = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g ;
+		if(event.target.value === '')
+			this.setState({error: 'Registrant Phone No. can not be blank'}) ;
+		else if(numre.test(event.target.value) === false)
+			this.setState({error: 'Registrant Phone No. must only contain digits or -'});
+		else if(event.target.value.length < 10)
+			this.setState({error: 'Registrant Phone No. must be at least 10 digits long'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, p_phone : event.target.value} }) ;
+	}
+
+	onPrincipalChange = (event) => {
+		if(event.target.value === '')
+			this.setState({error: 'Principal Name can not be blank'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, principal : event.target.value} }) ;
+	}
+
+	onPrPhoneChange = (event) => {
+		// eslint-disable-next-line
+		var numre = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g ;
+		if(event.target.value === '')
+			this.setState({error: 'Principal Phone No. can not be blank'}) ;
+		else if(numre.test(event.target.value) === false)
+			this.setState({error: 'Principal Phone No. must only contain digits or -'});
+		else if(event.target.value.length < 10)
+			this.setState({error: 'Principal Phone No. must be at least 10 digits long'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, pr_phone : event.target.value} }) ;
+	}
+
+	onMediumChange = (event) => {
+		if(event.target.value === '')
+			this.setState({error: 'Medium can not be blank'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, medium : event.target.value} }) ;
+	}
+
+	onTypeChange = (event) => {
+		if(event.target.value === '')
+			this.setState({error: 'School Type can not be blank'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, type : event.target.value} }) ;
+	}
+
+	onCFChange = (event) => {
+		if(event.target.value === '')
+			this.setState({error: 'School From can not be blank'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, class_f : event.target.value} }) ;
+	}
+
+	onCTChange = (event) => {
+		if(event.target.value === '')
+			this.setState({error: 'School To can not be blank'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, class_t : event.target.value} }) ;
+	}
+
+	onStudentChange = (event) => {
+		if(event.target.value === 0)
+			this.setState({error: 'Students can not be 0'}) ;
+		else if(event.target.value < 50 || event.target.value > 50000)
+			this.setState({error: 'Students must be between 50 & 50000'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, students : parseInt(event.target.value)} }) ;
+	}
+
+	onTeacherChange = (event) => {
+		if(event.target.value === 0)
+			this.setState({error: 'Teachers can not be 0'}) ;
+		else if(event.target.value < 5 || event.target.value > 1000)
+			this.setState({error: 'Teachers must be between 5 & 1000'}) ;
+		else 
+			this.setState({error: ''}) ;
+		this.setState({data: {...this.state.data, teachers : parseInt(event.target.value)} }) ;
+	}
+
 	personForm1 = () => {
 		const {name, email, password, repass, mobile} = this.state.data ;
 		return (
@@ -374,8 +524,57 @@ class Register extends React.Component
 	}
 
 	schoolForm1 = () => {
+		const {name, email, password, repass, mobile, short} = this.state.data ;
 		return (
-			<div>	school Form 1
+			<div>	
+				<LoginForm title=" Basic Details " error={this.state.error}
+					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
+					<Text label="Name" value={name} onChange={this.onNameChange}/>
+					<Text label="Short Name" value={short} onChange={this.onShortChange}/>
+					<Text label="E-Mail" value={email} onChange={this.onEmailChange}/>
+					<Text label="Password" value={password} type="pw" onChange={this.onPasswordChange}/>
+					<Text label="Retype Password" value={repass} type="pw" onChange={this.onRepassChange}/>
+					<Text label="Contact No." value={mobile} onChange={this.onMobileChange}/>
+				</LoginForm>
+			</div>
+			) ;
+	}
+
+	schoolForm2 = () => {
+		const {person, p_phone, pr_phone, principal} = this.state.data ;
+		return (
+			<div>	
+				<LoginForm title=" Correspondant Details " error={this.state.error}
+					b1="&lt;&nbsp; Prev" onb1Click={this.onPrevClick}
+					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
+					<Text label="Registrant Name" value={person} onChange={this.onPersonChange}/>
+					<Text label="Registrant Contact" value={p_phone} onChange={this.onPPhoneChange}/>
+					<Text label="Name of Principal" value={principal} onChange={this.onPrincipalChange}/>
+					<Text label="Principal Contact" value={pr_phone} onChange={this.onPrPhoneChange}/>
+				</LoginForm>
+			</div>
+			) ;
+	}
+
+	schoolForm3 = () => {
+		const {type, class_t, class_f, students, teachers, medium, address} = this.state.data ;
+		return (
+			<div>	
+				<LoginForm title=" School Details " error={this.state.error}
+					b1="&lt;&nbsp; Prev" onb1Click={this.onPrevClick}
+					b2="Register" onb2Click={this.onNextClick} >
+					<TextArea label="Address" value={address} r={3} c={20} onChange={this.onAddressChange} />
+					<Dropdown label="Medium" value={medium} onChange={this.onMediumChange}
+						 options={['','Hindi','English','Urdu','Other']}/>
+					<Dropdown label="School Type" value={type} onChange={this.onTypeChange}
+						 options={['','Private','Govt.','Govt-Aided','Unaided']}/>
+					<Dropdown label="Classes From" value={class_f} onChange={this.onCFChange}
+						 options={['','Nursery','Pre-Primary','1','2','3','4','5','6','7','8','9','11']}/>
+					<Dropdown label="Classes From" value={class_t} onChange={this.onCTChange}
+						 options={['','Nursery','Pre-Primary','1','2','3','4','5','6','7','8','10','12']}/>
+					<Number label="No. of Students"	value={students} min={50} max={50000} onChange={this.onStudentChange}/>
+					<Number label="No. of Teachers"	value={teachers} min={5} max={1000} onChange={this.onTeacherChange}/>
+				</LoginForm>
 			</div>
 			) ;
 	}
@@ -388,6 +587,8 @@ class Register extends React.Component
 			case 'pr-reg-2' : return this.personForm2() ;
 			case 'pr-reg-3' : return this.personForm3() ;
 			case 'sc-reg-1' : return this.schoolForm1() ;
+			case 'sc-reg-2' : return this.schoolForm2() ;
+			case 'sc-reg-3' : return this.schoolForm3() ;
 			case 'reg-success' : return (
 									<div className="reg-res">
 										<h2>
