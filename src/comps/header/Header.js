@@ -82,17 +82,35 @@ class Header extends React.Component
 		}
 	}
 
-	render()
-	{
-		return (
-			<div className="topbar" id="bar"> 
-				{this.checkMobile()}
+	checkLoggedIn = () => {
+		if(this.props.logged === "no")
+		{
+			return (
 				<div className = "right-header">
 					<button className="header-btn" onClick={()=>this.onButtonClick('login')}>
 					 Login </button>
 					<button className="header-btn"  onClick={()=>this.onButtonClick('register')}>
 					 Register </button>
 				</div>
+				) ;
+		}
+		else
+		{
+			return (
+				<div className = "right-header">
+					<button className="header-btn" onClick={()=>this.onButtonClick('profile')}>
+					 {this.props.user.name} </button>
+				</div>
+				) ;
+		}
+	}
+
+	render()
+	{
+		return (
+			<div className="topbar" id="bar"> 
+				{this.checkMobile()}
+				{this.checkLoggedIn()}
 			</div>
 			) ;
 	}

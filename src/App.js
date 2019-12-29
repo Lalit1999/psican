@@ -21,7 +21,12 @@ import Footer from './comps/footer/Footer.js' ;
 import './App.css' ;
 
 class App extends React.Component
-{	resize = () => this.forceUpdate()
+{	state = {
+		user: {} ,
+		logged: 'no'
+	}
+
+	resize = () => this.forceUpdate()
 
 	componentDidMount() {
 	  window.addEventListener('resize', this.resize)
@@ -30,15 +35,19 @@ class App extends React.Component
 	componentWillUnmount() {
 	  window.removeEventListener('resize', this.resize)
 	}
+
+	loadUser = (user) => {
+		this.setState({user: user, logged: 'yes'});
+	}
 	
 	render()
-	{
+	{	console.log(this.state) ;
 		return(
 			<div className="App">
 		        <BrowserRouter>
 		          <div>
 		          	<TopBar />
-		            <Header />
+		            <Header user={this.state.user} logged={this.state.logged}/>
 		            <Switch>
 		              <Route path='/' exact component={Home} />
 		              <Route path='/about/leader' exact component={AboutPerson}/>
@@ -46,7 +55,7 @@ class App extends React.Component
 		              <Route path='/about/psyment' exact component={AboutPsican}/>
 		              <Route path='/contact' exact component={Contact}/>
 		              <Route path='/mentamorph' component={MentaMorph}/>
-		              <Route path='/login' component={Login} />
+		              <Route path='/login' render={props=><Login {...props} loadUser={this.loadUser}/>}/>
 		              <Route path='/register' component={Register} />
 		              <Route path='/program' exact component={Program}/>
 		              <Route path='/program/Sarathi' component={Sarathi}/>

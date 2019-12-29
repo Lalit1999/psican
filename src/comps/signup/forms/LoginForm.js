@@ -36,7 +36,7 @@ class LoginForm extends Component
 
 	createButtons = () => {
 		return (
-			<div className="buttons">
+			<div className={"buttons " + this.props.close}>
 				{this.checkB1()}
 				{this.checkB2()}
 			</div>

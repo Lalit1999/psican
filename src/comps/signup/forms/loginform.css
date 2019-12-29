@@ -46,6 +46,11 @@
 	margin-left: 1.1em;
 }
 
+.close
+{
+	justify-content: space-around;
+}
+
 .inv
 {
 	visibility: hidden ;
