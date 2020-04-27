@@ -18,6 +18,13 @@ const tArr= ['Teachers Training', 'Teaching Strategies'] ;
 
 const pArr = ['Parental Education', 'Parenting Strategies For Adolescents'] ;
 
+const features = [
+'htmlCOMPLEMENTARY WORKSHOPS<a href="#one"><sup>[1]</sup></a> for partner Schools and Educational Institutions. <a href="#two"><sup>[2]</sup></a>',
+'html<ul>Coverage of core areas like: <li>Student Motivation & Skillset</li><li>Parental Awareness & Orientation</li><li>Teacher Training & Co-Working</li></ul>',
+'All programs shall be funded by KASTURI FOUNDATION',
+'Only travel support needs to be provided by partner organisations',
+] ;
+
 class DetailContent extends React.Component
 {	constructor()
 	{
@@ -65,11 +72,18 @@ class Sarathi extends React.Component
 				 by <span className="ngo"> The Kasturi Foundation</span>. It provides workshop
 				 organising facilities to schools and colleges. </h4> 
 				<DisplayDetailed title="Aim" lidata={arr}/>
+				<DisplayDetailed title="Features" lidata={features} />
 				<Heading text="Choose Your Topic" />
 				<ContentChoice choices={['Students', 'Parents', 'Teachers']} 
 				 Parents={<DetailContent data={pArr}/>}
 				 Students={<DetailContent data={sArr}/>}
 				 Teachers={<DetailContent data={tArr}/>}/>
+				<p className="intro bold" id="one"> Note #1 : Maximum 4 workshops may be scheduled in a 
+					financial year </p>  
+				<p className="intro bold" id="two"> Note #2 : To partner with us please "Register" with
+					us </p>
+				<p className="intro bold" id="three"> Note #3: For further discussion/assistance, you may
+					contact us using feeback section </p>
 			</div>
 		) ;
 	}

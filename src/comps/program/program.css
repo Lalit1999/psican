@@ -1,8 +1,9 @@
 .intro
 {
-	text-align: center;
+	text-align: left;
 	font-weight: normal; 
 	font-size: 1.3rem ;
+	margin: 1em 5em ;
 }
 
 .brand
@@ -17,4 +18,12 @@
 	font-weight: bold ;
 	font-size: 1.4rem ;
 	color: #10913b ;
+}
+
+.cen
+{	text-align: center; 	}
+
+.bold
+{	font-weight: bold ;
+	margin: 1.4em 5em ;
 }

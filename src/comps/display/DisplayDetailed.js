@@ -3,14 +3,21 @@ import Heading from '../Heading/Heading.js' ;
 
 class DisplayDetailed extends React.Component
 {	createLi = () => {
- 		return this.props.lidata.map( (li,i) => <li className="banner-li" key={i}> {li} </li> ) ;
+ 		return this.props.lidata.map( (li,i) => {
+ 			if(li.startsWith('html'))
+ 				{	li = li.replace('html','') ;
+ 				return <li className="list-li" key={i} dangerouslySetInnerHTML={{ __html: li}}/>
+ 			}
+			else 		
+ 				return <li className="list-li" key={i}> {li} </li> ; 
+ 		}) ;
  	}
 	render()
 	{
 		return (
 			<div className="display-detail">
 				<Heading text={this.props.title}/>
-				<div className="intro">
+				<div className="list">
 					<ul>
 						{this.createLi()}
 					</ul>

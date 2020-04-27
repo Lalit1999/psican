@@ -13,7 +13,7 @@ class Title extends React.Component
 			case "Login" : return 'login' ;
 			case "Register" : return 'register' ;
 			case "Tests" : return 'test' ;
-			case "Programs" : case " Programs -" : return 'program' ;
+			case "Programs" : case " Programs -" : return '' ;
 			case "Personal" : return 'program/personal' ;
 			case "Sarathi" : return 'program/Sarathi' ;
 			case "AQueSS" : return 'program/AQueSS' ;
