@@ -32,14 +32,10 @@ class Menu extends React.Component
 					      		position="right top" on="hover">
 								<Link className="header-item pop-item" to='/program/sarathi'> Sarathi </Link>
 							</Popup>
-							<Popup trigger={<span className="header-item pop-item"> Parents </span>}
-					      		position="right top" on="hover">
-								<Link className="header-item pop-item" to='/parenting'>
-								 Parenting Strategies</Link>
-							</Popup>
 					      </div>
 					    </Popup>
-						<Link className="menu-item" to='/contact'> Contact </Link>
+						<Link className="menu-item" to='/consult'> Consult Us </Link>
+						<Link className="menu-item" to='/contact'> Feedback </Link>
 					</div>
 				</div>
 			</div>

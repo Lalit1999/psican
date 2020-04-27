@@ -1,13 +1,9 @@
 import React from 'react' ;
+
 import Title from '../title/Title.js' ;
 import Display from '../display/Display.js' ;
 
-
-// import Image2 from '../images/i1.jpg' ;
-// import Image3 from '../images/i2.jpg' ;
-// import Image4 from '../images/i3.jpg' ;
 import Image1 from '../images/i4.jpg' ;
-
 
 class Aboutperson extends React.Component
 {

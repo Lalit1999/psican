@@ -75,8 +75,8 @@ class Home extends React.Component
 			<div>
 				<Slider data={this.data} />
 				<BannerTwo content="aquess" color="blue"/>
-				<BannerTwo content="sarathi" left="yes" color="green"/>
-				<BannerTwo content="person" color="red"/>
+				<BannerTwo content="sarathi" left="yes" color="blue"/>
+				<BannerTwo content="person" color="blue"/>
 				<Parallax>
 					<div className="testim"> Our Testimonials </div>
 					<TestimonialSlider data={testim_arr}/>

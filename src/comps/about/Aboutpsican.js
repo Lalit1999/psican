@@ -1,7 +1,7 @@
 import React from 'react' ;
+
 import Title from '../title/Title.js' ;
 import Display from '../display/Display.js' ;
-
 
 import Image2 from '../images/i1.jpg' ;
 

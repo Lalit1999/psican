@@ -11,3 +11,20 @@ ADD FEATURES
 3. DELETE PROFILE
 4. EMAIL/OTP CONFIRMATION
 4. FORGOT PASSWORD/EMAIL ETC.
+
+=============TODO (FINAL PHASE) 27-04-2020===================
+
+1. Jo sabse pehle slider aata hai usko pura change karna hai
+
+2. About PSYMENT ka matter likhna hai
+3. About PSYMENT me new logo lagana hai
+4. About Leader ka matter likhna hai
+5. Leader ki photo lagani hai
+
+6. Personal Consultation ka page banana hai
+
+7. Sarathi and Aequess me check karke jo cheez new ho vo add karni hai.
+8. Workshop ke topics add karne hai
+
+9. Jo contact wala page hai usko theek karna hai
+10. Testimonials daalne hai (in future) 
