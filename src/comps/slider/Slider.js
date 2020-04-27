@@ -16,16 +16,35 @@ class Slider extends Component
 				) ;
 	}
 
+	checkOpeningSlide = (item) => {
+		if(item.message4)
+			return (
+				<div className="row front">
+					<p className="slide-message"> {item.message}</p>
+					<p className="slide-message"> {item.message2}</p>
+					<p className="slide-message"> {item.message3}</p>
+					<p className="slide-message"> {item.message4}</p>
+					<h2 className="slide-heading"> {item.title} </h2>
+				</div>
+				) ;
+		else
+			return (
+				<div className="row">
+					<p className="slide-subtitle"> {item.subtitle} </p>
+					<h2 className="slide-heading"> {item.title} </h2>
+					<p className="slide-message"> {item.message}</p>
+					<p className="slide-message"> {item.message2}</p>
+				</div>
+			) ;
+	}
+
 	dataList = () => {
 		return this.props.data.map((item, i) => {
 			return (
 				<div className="swiper-slide" key={i}>
 					<div className="slide" style={item.style}>
 						<div className="cont">
-							<div className="row">
-								<h2 className="slide-heading"> {item.title} </h2>
-								<p className="slide-message"> {item.message}</p>
-							</div>
+							{this.checkOpeningSlide(item)}
 							{this.createButton(item.link)}
 						</div>
 					</div>

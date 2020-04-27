@@ -24,6 +24,8 @@
     justify-content: center;
     margin-left: 10vw ;
     margin-right: 10vw ;
+	font-family: 'Rubik' ;
+	color: whitesmoke;
 }
 
 .arrow
@@ -59,8 +61,19 @@
 
 .cont .slide-message
 {
-	font-size: 2.5rem ;
-	color: whitesmoke;
+	font-size: 2.2rem ;
+	margin-bottom: .4em ;
+}
+
+.front .slide-message
+{
+	font-size: 2.15rem ;
+	margin-bottom: .35em ;
+}
+
+.slide-subtitle
+{
+	font-size: 1.8rem ;
 }
 
 .cont a 
@@ -83,13 +96,9 @@
 
 .slide-heading
 {
-	font-size : 5rem;
+	font-size : 4.6rem;
 	color: whitesmoke;
 	font-family: 'Roboto' ;
-	margin-top: 0.5em ;
-}
-
-.slide-message
-{
-	font-family: 'Rubik' ;
+	margin-top: 0.2em ;
+	margin-bottom: 0.5em ;
 }

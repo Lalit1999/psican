@@ -6,6 +6,7 @@
  	createLi = () => {
  		return this.props.lidata.map( (li,i) => <li className="banner-li" key={i}> {li} </li> ) ;
  	}
+ 	
  	render()
  	{
  		return(

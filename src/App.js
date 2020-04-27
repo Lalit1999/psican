@@ -9,7 +9,7 @@ import Contact from './comps/contact/Contact.js' ;
 import NotFound from './comps/home/NotFound.js' ;
 import Header from './comps/header/Header.js' ;
 import TopBar from './comps/header/TopBar.js' ;
-import AQueSS from './comps/program/AQES.js' ;
+import AEQUESS from './comps/program/AQES.js' ;
 import Sarathi from './comps/program/KFMP.js' ;
 import Consult from './comps/program/Personal.js' ;
 import Login from './comps/signup/login/Login.js' ;
@@ -54,7 +54,7 @@ class App extends React.Component
 		              <Route path='/login' render={props=><Login {...props} loadUser={this.loadUser}/>}/>
 		              <Route path='/register' component={Register} />
 		              <Route path='/program/Sarathi' component={Sarathi}/>
-		              <Route path='/program/AQueSS' component={AQueSS}/>
+		              <Route path='/program/AEQUESS' component={AEQUESS}/>
 		              <Route path='/consult' component={Consult}/>
 		              <Route exact component={NotFound} />
 		            </Switch>

@@ -11,26 +11,31 @@ import i2 from '../images/i2.jpg' ;
 import i3 from '../images/i3.jpg' ;
 
 const testim_arr = [
-{ 	name: 'First Person' ,
+{ 	name: 'Shri. S L Jain' ,
   	img: 'i3' ,
-	role: 'Student' ,
-	msg: 'I am so excited about my life after these lessons'
+	role: 'Director, Mahavir Senior Model School' ,
+	msg: 'this is the wonderful message given by out testimonial. We like it. But we are only testing how it will be diaplyed, so this paragraph is needlessly long. I hope it is long enough'
 },
-{ 	name: 'Second Person' ,
+{ 	name: 'Dr. Kiran Modi' ,
   	img: 'i1' ,
-	role: 'School Principal' ,
+	role: 'Founder & Trustee, The Udayan Care' ,
 	msg: 'The Workshop was really nice and gave a really good message'
 },
-{ 	name: 'Third Person' ,
+{ 	name: 'Tanya Gomber' ,
   	img: 'i4' ,
 	role: 'Student' ,
 	msg: 'I just took guidance and my whole life changed'
 },
-{ 	name: 'Fourth Person' ,
+{ 	name: 'Shivangi Goel' ,
   	img: 'i2' ,
-	role: 'Parent' ,
+	role: 'Student' ,
 	msg: 'I am very satisfied becuase i am really satisfied.'
-}
+},
+{ 	name: 'Dr. Vinay Gupta' ,
+  	img: 'i4' ,
+	role: 'HOD Orthopedic, Saroj Hospital' ,
+	msg: 'I just took guidance and my whole life changed'
+},
 ] ;
 
 class Home extends React.Component
@@ -41,30 +46,39 @@ class Home extends React.Component
             {	style : {
 	            	backgroundImage: 'url(' + i3+ ')',
             	},
-	            title: 'PSYMENT',
+	            message: 'Welcome to the world of',
 	            link : '/' ,
-	            message: 'Welcome To the World of Self Discovery',
-         	},
-         	{	style : {
-	            	backgroundImage: 'url(' + i3+ ')',
-            	},
-	            title: 'AQUESS',
-	            link : '/program/AQUESS' ,
-	            message: 'An Online Free Query System for Students',
+	            message2: 'Realisation ( तत्वमसि ) - Mentoring',
+	            message3: '&' ,
+	            message4: 'Actualisation ( अहम् ब्रह्मास्मि ) - Psychology',
+	            title: 'PSYMENT'
          	},
             {	style : {
 	            	backgroundImage: 'url(' + i1+ ')',
             	},
+	            subtitle: 'PSYMENT : Program 1',
 	            title: 'Sarathi',
-	            message: 'Workshop organising solution for Schools and Colleges' ,
+	            message: 'School Academic Attitude Training & Health Initiative' ,
+	            message2: 'A Mentoring Prgoram for Educational Instituitions' ,
 	            link : '/program/Sarathi'
 	        } ,
+         	{	style : {
+	            	backgroundImage: 'url(' + i3+ ')',
+            	},
+	            title: 'AEQUESS',
+	            subtitle: 'PSYMENT : Program 2',
+	            link : '/program/AEQUESS' ,
+	            message: 'Abhinav E-Query System for Students',
+	            message2 : 'An E-Counselling System for Classes 11-12 & UG level students',
+         	},
 	        {	style : {
 	            	backgroundImage: 'url(' + i2+ ')',
             	},
+	            subtitle: 'PSYMENT : Program 3',
 	            title: 'Personal Consultation',
-	            link : '/program/personal' ,
-	            message: 'Get personal consultation from our experts',
+	            link : '/consult' ,
+	            message: 'Get PSYCHOLOGICAL MENTORING and COUNSELLING personally',
+	            message2: 'Schedule your appointment NOW'
          	},
         ];
 	}
@@ -87,41 +101,3 @@ class Home extends React.Component
 }
 
 export default Home ;
-
-				
-				// Before Banner clr-green_right(changed to green_left now)
-				// <Banner clr="green_left" img="c" >
-				// 	<BannerContent title = 'MentaMorph' lidata={sec_arr} 
-				// 				   left="left" link="/mentamorph"/>
-				// </Banner>
-				// <Banner clr="red_right" img="a" >
-				// 	<BannerContent title = 'Psychometric Testing' lidata={sec_arr} 
-				// 				   left="right" link="/test"/>
-				// </Banner>
-				// <Banner clr="blue_left" img="b" >
-				// 	<BannerContent title = 'Parenting Strategies' lidata={sec_arr} 
-				// 				   left="left" link="/parenting"/>
-				// </Banner>
-
-				// Before personal consultation object in array 
-          //   {	style : {
-	         //    	backgroundImage: 'url(' + i2 + ')', 
-          //   	},
-	         //    title: 'Menta Morph',
-	         //    link : '/mentamorph' ,
-	         //    message: 'Customise and Modify your personality traits',
-         	// },
-         	// {	style : {
-	         //    	backgroundImage: 'url(' + i1+ ')',
-          //   	},
-	         //    title: 'Psychometric Tests',
-	         //    link : '/test' ,
-	         //    message: 'Online Tests to evaluate your personality',
-         	// },
-         	// {	style : {
-	         //    	backgroundImage: 'url(' + i3+ ')',
-          //   	},
-	         //    title: 'Parenting Strategies',
-	         //    link : '/parenting' ,
-	         //    message: 'Ways of guiding your adolescents',
-         	// },

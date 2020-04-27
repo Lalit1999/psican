@@ -13,23 +13,23 @@ const cont2 = [
 'Supported by The Kasturi Foundation',
 'Choose a module from list of topics and schedule a workshop now' ] ;
 
-const sec_arr = [ 
-'Ye hai the Pehli String',
-'Ye hai meri dusri String',
-'Aur ye hogi Teesri string' ] ;
+const cont3 = [ 
+'Some events disturb the flow of our life',
+'Our personal Mentoring to guide you through such situations',
+'Schedule your Appointment Now' ] ;
 
 class BannerTwo extends React.Component
 {	createBannerContent = () => {
 		switch(this.props.content)
 		{
 			case 'aquess' : return (
-			 	<BannerContent title = 'AQueSS' lidata={cont1} link="/program/AQueSS"/>
+			 	<BannerContent title = 'AEQUESS System' lidata={cont1} link="/program/AEQUESS"/>
 			 	) ;
 			case 'sarathi' : return (
-				<BannerContent title = 'Sarathi' lidata={cont2} link="/program/Sarathi"/>
+				<BannerContent title = 'Sarathi Program' lidata={cont2} link="/program/Sarathi"/>
 			 	) ;
 			case 'person' : return (
-				<BannerContent title = 'Personal Consult' lidata={sec_arr} link="/program/personal"/>
+				<BannerContent title = 'Personal Consultation' lidata={cont3} link="/consult"/>
 			 	) ;
 			default : return null ;
 		}
