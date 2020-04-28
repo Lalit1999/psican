@@ -15,12 +15,16 @@ class Aboutpsican extends React.Component
 					<Title name = 'P S Y M E N T' items={["Home -"," Programs -", "PSYMENT"]}/>
 				</div>
 				<div>
-					<Display name= "Psican" img={Image2} left="yes" content = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
+					<Display name= "Psican" img={Image2} left="yes" content = "Psyment is a Social Business
+							Organisation.
+							Psyment aspires to provide counselling and mentoring solutions to those need it.
+							Psyment Aim to work with a purpose to promote, encourage and make social change
+							  by working in the areas of Education, Human Skilling and Transformation.
+							Psyment shall work with its clients providing solutions by using the techniques
+							  of Customised profile assessment , counselling, Equerry answer and content based
+							  workshops.
+							Psyment shall work on the cove values of Empathy, Enlighenment and Empowerment to
+							  increase Self Efficancy amongst its clients and audiences." 
 							/>
 				</div>
 			</div>

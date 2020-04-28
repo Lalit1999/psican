@@ -15,7 +15,9 @@
 {
 	display: flex;
 	margin: 2em ;
+	justify-content: space-between;
 }
+
 
 .sepr
 {
