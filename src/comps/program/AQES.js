@@ -36,7 +36,7 @@ class AQUESS extends React.Component
 					who approach us like a true friend. We shall help them in their hour of
 					need. </p>
 				<p className="intro bold"> P.S. : Certain Queries may require more time in 
-					getting answered. If we take longer than 5 days, to answer to answer your
+					getting answered. If we take longer than 5 days, to answer your query 
 					we shall keep you informed. </p>	
 				<DisplayDetailed title="Aim" lidata={arr} />
 				<DisplayDetailed title="Features" lidata={features} />
