@@ -34,8 +34,8 @@ class Menu extends React.Component
 							</Popup>
 					      </div>
 					    </Popup>
-						<Link className="menu-item" to='/consult'> Consult Us </Link>
-						<Link className="menu-item" to='/contact'> Feedback </Link>
+						<Link className="menu-item" to='/consult'> Consult </Link>
+						<Link className="menu-item" to='/contact'> Contact Us </Link>
 					</div>
 				</div>
 			</div>

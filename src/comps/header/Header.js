@@ -56,8 +56,8 @@ class Header extends React.Component
 							</Popup>
 					      </div>
 					    </Popup>
-						<Link className="header-item" to='/consult'> Consult Us </Link>
-						<Link className="header-item" to='/contact'> Feedback </Link>
+						<Link className="header-item" to='/consult'> Consult </Link>
+						<Link className="header-item" to='/contact'> Contact Us </Link>
 					</div>
 				</div>
 				) ;

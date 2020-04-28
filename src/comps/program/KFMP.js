@@ -83,7 +83,7 @@ class Sarathi extends React.Component
 				<p className="intro bold" id="two"> Note #2 : To partner with us please "Register" with
 					us </p>
 				<p className="intro bold" id="three"> Note #3: For further discussion/assistance, you may
-					contact us using feedback section </p>
+					"Contact Us" </p>
 			</div>
 		) ;
 	}
