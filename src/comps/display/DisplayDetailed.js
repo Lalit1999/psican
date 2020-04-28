@@ -16,7 +16,7 @@ class DisplayDetailed extends React.Component
 	{
 		return (
 			<div className="display-detail">
-				<Heading text={this.props.title}/>
+				<Heading text={this.props.title} small={this.props.small}/>
 				<div className="list">
 					<ul>
 						{this.createLi()}

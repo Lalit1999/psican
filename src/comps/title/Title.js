@@ -9,12 +9,10 @@ class Title extends React.Component
 		{
 			case "Home -" : case " About -" : return '' ;
 			case "Contact Us" : return 'contact';
-			case "MentaMorph" : return 'mentamorph' ;
 			case "Login" : return 'login' ;
 			case "Register" : return 'register' ;
-			case "Tests" : return 'test' ;
 			case "Programs" : case " Programs -" : return '' ;
-			case "Personal" : return 'program/personal' ;
+			case "Consult" : return 'consult' ;
 			case "Sarathi" : return 'program/Sarathi' ;
 			case "AQueSS" : return 'program/AQueSS' ;
 			case "Leader" : return 'about/leader' ;

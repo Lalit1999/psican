@@ -1,19 +1,28 @@
 .left-title
 {
   font-size: 3rem ;
-  border-bottom: 1px solid darkblue ;
-  color: rgb(29, 41, 81) ;
-  font-family: 'Signika' ;
-  letter-spacing: 0.02em ;
-  display: inline-block; 
   padding: 0 1em ;
   transition: all 0.4s ;
   margin-top: 0 ;
   margin-bottom: 0.4em ;
 }
 
+.small-title
+{
+  font-size: 2rem;
+  margin-top: 0 ;
+  margin-bottom: .4em ;
+  transition: all 0.4s ;
+  padding: 0 2em ;
+}
+
 .title-con
 {
+  border-bottom: 1px solid darkblue ;
+  color: rgb(29, 41, 81) ;
+  font-family: 'Signika' ;
+  letter-spacing: 0.02em ;
+  display: inline-block; 
   margin: 0 1em 1em ;
   text-align: left ;
 }
