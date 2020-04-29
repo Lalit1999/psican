@@ -1,5 +1,28 @@
 .flex
 {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row ;
+	background-color: transparent ; 
+	justify-content: space-between;
+
+}
+
+.photo
+{
+	/*width: 19vw ;*/
+	height: 100% ;
+	margin : 3em 5em ;
+	padding: 1em ; 
+	border : 3px solid black ;
+	border-radius: 2rem ;
+}
+
+.font
+{
+	font-size: 2rem ; 
+}
+
+.bold
+{
+	font-weight: bold;
 }

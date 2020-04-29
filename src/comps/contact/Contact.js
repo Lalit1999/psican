@@ -13,14 +13,14 @@ class Contact extends React.Component
 				</div>
 				<div className = 'align'>
 					<h3 className = 'size'>Leave Your Message</h3>
-						<div>
-							<div className = 'disp'>
-								<div>
-									<input className = 'in sepl' type = "text" placeholder = "Your Name" required/>
-								</div>
-								<div>
-									<input className = 'in sepr' type = "text" placeholder = "Your Email" required/>
-								</div>
+						<div className = 'disp'>
+							<div>
+							<div>
+								<input className = 'in sepl' type = "text" placeholder = "Your Name" required/>
+							</div>
+							<div>
+								<input className = 'in sepr' type = "text" placeholder = "Your Email" required/>
+							</div>
 							</div>	
 							<div>
 								<input className = 'in vwh' type = "text" placeholder = "Your Message" required/>

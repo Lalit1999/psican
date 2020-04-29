@@ -1,7 +1,6 @@
 .size
 {
 	font-size: 1.6rem ;
-
 }
 
 .align
@@ -14,6 +13,7 @@
 .disp
 {
 	display: flex;
+	flex-direction: column;
 	margin: 2em ;
 	justify-content: space-between;
 }
@@ -26,7 +26,8 @@
 
 .sepl
 {
-	margin-left: 3em ;
+	/*margin-left: 3em ;*/
+	/*margin-right: 5em ;*/
 }
 
 .in
