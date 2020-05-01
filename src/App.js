@@ -52,7 +52,7 @@ class App extends React.Component
 		              <Route path='/about/psyment' exact component={AboutPsican}/>
 		              <Route path='/contact' exact component={Contact}/>
 		              <Route path='/login' render={props=><Login {...props} loadUser={this.loadUser}/>}/>
-		              <Route path='/register' component={Register} />
+		              <Route path='/register' render={props=><Register {...props} loadUser={this.loadUser}/>} />
 		              <Route path='/program/Sarathi' component={Sarathi}/>
 		              <Route path='/program/AEQUESS' component={AEQUESS}/>
 		              <Route path='/consult' component={Consult}/>

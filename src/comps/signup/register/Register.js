@@ -92,7 +92,8 @@ class Register extends React.Component
 				throw Error(res.statusText) ;
 		})
 		.then(data => {	
-			// console.log(data) ;
+			console.log(data) ;
+			// this.props.loadUser(data) ;
 			this.setState({mode: 'reg-success'});
 		}) 
 		.catch( err  => {
