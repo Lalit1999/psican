@@ -2,7 +2,7 @@ import React from 'react' ;
 
 import Title from '../title/Title.js' ;
 import Display from '../display/Display.js' ;
-import './Aboutpsican.css' ;
+import './AboutPerson.css' ;
 
 import Image from '../images/Psyment logo.jpg' ;
 
@@ -15,13 +15,13 @@ class Aboutpsican extends React.Component
 				<div>
 					<Title name = 'P S Y M E N T' items={["Home -"," Programs -", "PSYMENT"]}/>
 				</div>
-				<div className = 'allign'>
-					<div className = 'bord'>
+				<div className = 'flex'>
+					<div className = 'photo'>
 						<img src = {Image} alt = 'Logo' />
 					</div>
 					<div className = 'text'>
 						<p>
-							Psyment is a <span className = 'bolda'>S</span>ocial <span className = 'bolda'>B</span>usiness <span className = 'bolda'>O</span>rganisation.
+							Psyment is a <span className = 'bold'>S</span>ocial <span className = 'bold'>B</span>usiness <span className = 'bold'>O</span>rganisation.
 						</p>
 						<p>
 							Psyment aspires to provide counselling and mentoring solutions to those need it.

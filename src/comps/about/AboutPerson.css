@@ -2,16 +2,36 @@
 {
 	display: flex;
 	flex-direction: row ;
-	background-color: transparent ; 
+	/*background-color: transparent ; */
+	background-color: rgba(29, 41, 81,0.7); ; 
 	justify-content: space-between;
 
+}
+
+
+.bold
+{
+	font-weight: bold;
+	margin: 0 ;
+}
+
+.text
+{
+	margin-top: 2em ;
+	margin-right: 1em ;
+	font-size: 1.2rem ;
 }
 
 .photo
 {
 	/*width: 19vw ;*/
+	/*width: 40vw;*/
+	margin-top: 3em ;
+	margin-left: 2em ;
+	margin-right: 2em ;
+	max-width: 50% ;
 	height: 100% ;
-	margin : 3em 5em ;
+	/*margin : 3em 5em ;*/
 	padding: 1em ; 
 	border : 3px solid black ;
 	border-radius: 2rem ;
@@ -20,9 +40,18 @@
 .font
 {
 	font-size: 2rem ; 
+	width: 100% ;
+	text-align: center ;
+	/*background-color: rgba(0,0,0,0.5) ;*/
 }
 
-.bold
+.display
 {
-	font-weight: bold;
+	height : 40vw ;
+	text-align: right ;
+	background-size: cover ;
+	background-repeat: no-repeat ;
+	color : white ;
+	width: 100% ;
+	height: 100% ;
 }
