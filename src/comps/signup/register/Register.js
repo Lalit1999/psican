@@ -625,7 +625,7 @@ class Register extends React.Component
 						 options={['','Private','Govt.','Govt-Aided','Unaided']}/>
 					<Dropdown label="Classes From" value={class_f} onChange={this.onCFChange}
 						 options={['','Nursery','Pre-Primary','1','2','3','4','5','6','7','8','9','11']}/>
-					<Dropdown label="Classes From" value={class_t} onChange={this.onCTChange}
+					<Dropdown label="Classes Till" value={class_t} onChange={this.onCTChange}
 						 options={['','Nursery','Pre-Primary','1','2','3','4','5','6','7','8','10','12']}/>
 					<Number label="No. of Students"	value={students} min={50} max={50000} onChange={this.onStudentChange}/>
 					<Number label="No. of Teachers"	value={teachers} min={5} max={1000} onChange={this.onTeacherChange}/>
