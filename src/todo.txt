@@ -28,3 +28,10 @@ ADD FEATURES
 
 9. Jo contact wala page hai usko theek karna hai
 10. Testimonials daalne hai (in future) 
+
+=============================================================
+	04-05-2020
+1. NOTIFCATION ADD KARNI HAI
+2. USERPRODILE ADD KARNI HAI
+3. REDIRECT ADD KARNA HAI
+4. HEADER ME LOGOUT BUTTON ADD KARNA HAI

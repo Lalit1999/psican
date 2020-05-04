@@ -1,9 +1,7 @@
 import React from 'react' ;
 
 import Title from '../title/Title.js' ;
-import Display from '../display/Display.js' ;
 import './AboutPerson.css' ;
-import Image1 from '../images/i4.jpg' ;
 import Leader_image from '../images/leader.jpg' ;
 
 class Aboutperson extends React.Component

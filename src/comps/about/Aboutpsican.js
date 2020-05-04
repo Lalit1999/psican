@@ -1,7 +1,6 @@
 import React from 'react' ;
 
 import Title from '../title/Title.js' ;
-import Display from '../display/Display.js' ;
 import './AboutPerson.css' ;
 
 import Image from '../images/Psyment logo.jpg' ;

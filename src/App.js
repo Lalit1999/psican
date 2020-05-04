@@ -20,7 +20,7 @@ import './App.css' ;
 class App extends React.Component
 {	state = {
 		user: {} ,
-		logged: 'no'
+		userToken: '' ,
 	}
 
 	resize = () => this.forceUpdate()
@@ -34,7 +34,7 @@ class App extends React.Component
 	}
 
 	loadUser = (user) => {
-		this.setState({user: user, logged: 'yes'});
+		this.setState({user: user.user, userToken: user.token});
 	}
 	
 	render()
@@ -44,15 +44,15 @@ class App extends React.Component
 		        <BrowserRouter>
 		          <div>
 		          	<TopBar />
-		            <Header user={this.state.user} logged={this.state.logged}/>
+		            <Header user={this.state.user} token={this.state.userToken}/>
 		            <Switch>
 		              <Route path='/' exact component={Home} />
 		              <Route path='/about/leader' exact component={AboutPerson}/>
 		              <Route path='/about/vision' exact component={AboutVision}/>
 		              <Route path='/about/psyment' exact component={AboutPsican}/>
 		              <Route path='/contact' exact component={Contact}/>
-		              <Route path='/login' render={props=><Login {...props} loadUser={this.loadUser}/>}/>
-		              <Route path='/register' render={props=><Register {...props} loadUser={this.loadUser}/>} />
+		              <Route path='/login' render={props=><Login {...props} user={this.state.user} loadUser={this.loadUser}/>}/>
+		              <Route path='/register' render={props=><Register {...props} user={this.state.user} loadUser={this.loadUser}/>} />
 		              <Route path='/program/Sarathi' component={Sarathi}/>
 		              <Route path='/program/AEQUESS' component={AEQUESS}/>
 		              <Route path='/consult' component={Consult}/>

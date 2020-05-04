@@ -79,7 +79,8 @@ class Register extends React.Component
 
 	sendRegisterRequest = () => {
 		// console.table(this.state.data) ;
-		let type = (this.state.mode === 'pr-reg-3')?'person':'school' ;
+		let type = (this.state.mode === 'pr-reg-3')?'users':'school' ;
+		let obj = (type==='users')?initPerson:initSchool ;
 		fetch('https://psy-api.herokuapp.com/' + type,{
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json'} ,
@@ -92,9 +93,10 @@ class Register extends React.Component
 				throw Error(res.statusText) ;
 		})
 		.then(data => {	
-			console.log(data) ;
-			// this.props.loadUser(data) ;
-			this.setState({mode: 'reg-success'});
+			// console.log(data) ;
+			this.setState({mode: 'reg-success', data: obj});
+			this.props.loadUser(data) ;
+			this.props.history.push('/');
 		}) 
 		.catch( err  => {
 			console.log(err) ;
