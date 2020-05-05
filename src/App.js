@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom' ;
 import Home from './comps/home/Home.js' ;
 import AboutPerson from './comps/about/Aboutperson.js' ;
 import AboutPsican from './comps/about/Aboutpsican.js' ;
-import AboutVision from './comps/about/Aboutvision.js' ;
 import Contact from './comps/contact/Contact.js' ;
 import NotFound from './comps/home/NotFound.js' ;
 import Header from './comps/header/Header.js' ;
@@ -51,7 +50,6 @@ class App extends React.Component
 		            <Switch>
 		              <Route path='/' exact component={Home} />
 		              <Route path='/about/leader' exact component={AboutPerson}/>
-		              <Route path='/about/vision' exact component={AboutVision}/>
 		              <Route path='/about/psyment' exact component={AboutPsican}/>
 		              <Route path='/contact' exact component={Contact}/>
 		              <Route path='/login' render={props=><Login {...props} user={this.state.user} loadUser={this.loadUser}/>}/>

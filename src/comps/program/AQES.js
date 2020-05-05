@@ -8,7 +8,7 @@ import './program.css' ;
 
 const arr = ['To provide customised support to students for various academic, behavioural, lifestyle' +
 ', emotional and attitude related issues',
-' To provide soluions and guidance o studentsd for various health, psychological, gender and interpersonal issues'] ;
+' To provide soluions and guidance of students for various health, psychological, gender and interpersonal issues'] ;
 
 const features = [
 'Students studying in classes 11, 12 and UG, from any part of India can register with us and ask their query.',

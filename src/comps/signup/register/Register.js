@@ -649,8 +649,8 @@ class Register extends React.Component
 	}
 
 	render()
-	{	if(this.props.user)
-			return <Redirect to='/home' />
+	{	if(this.props.user.name)
+			return <Redirect to='/' />
 		else
 		{	return(
 				<div>

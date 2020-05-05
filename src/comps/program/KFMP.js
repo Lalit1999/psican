@@ -78,7 +78,7 @@ class Sarathi extends React.Component
 				 Parents={<DetailContent data={pArr}/>}
 				 Students={<DetailContent data={sArr}/>}
 				 Teachers={<DetailContent data={tArr}/>}/>
-				<p className="intro bold" id="one"> Note #1 : Maximum 4 workshops may be scheduled in a 
+				<p className="intro bold" id="one"> Note #1 : Maximum 2 workshops may be scheduled in a 
 					financial year </p>  
 				<p className="intro bold" id="two"> Note #2 : To partner with us please "Register" with
 					us </p>
