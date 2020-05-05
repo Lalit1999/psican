@@ -1,6 +1,8 @@
 import React from 'react' ;
-import {Link} from 'react-router-dom' ;
+import valid from 'validator' ;
+import {Redirect, Link} from 'react-router-dom';
 
+import { addNotif, remNotif } from '../../notif.js' ;
 import Title from '../../title/Title.js' ;
 import LoginForm from '../forms/LoginForm.js' ;
 import Text from '../text/Text.js' ;
@@ -8,9 +10,6 @@ import TextArea from '../text/TextArea.js' ;
 import Number from '../number/Number.js' ;
 import Dropdown from '../dropdown/Dropdown.js' ;
 import '../signup.css' ;
-
-// import Red from '../../images/red.png' ;
-// import Green from '../../images/green.png' ;
 
 const initPerson = {
 	name: '' ,
@@ -35,7 +34,6 @@ const initPerson = {
 
 const initSchool = {
 	name: '',
-	short: '',
 	password: '',
 	repass: '',
 	mobile: '',
@@ -78,9 +76,11 @@ class Register extends React.Component
 	}
 
 	sendRegisterRequest = () => {
-		// console.table(this.state.data) ;
 		let type = (this.state.mode === 'pr-reg-3')?'users':'school' ;
 		let obj = (type==='users')?initPerson:initSchool ;
+
+		const id = addNotif('Please Wait...') ;
+
 		fetch('https://psy-api.herokuapp.com/' + type,{
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json'} ,
@@ -93,13 +93,18 @@ class Register extends React.Component
 				throw Error(res.statusText) ;
 		})
 		.then(data => {	
-			// console.log(data) ;
+			remNotif(id) ;
+
 			this.setState({mode: 'reg-success', data: obj});
+			addNotif('Successfully Logged In', 'success') ;
+
 			this.props.loadUser(data) ;
 			this.props.history.push('/');
 		}) 
 		.catch( err  => {
 			console.log(err) ;
+			remNotif(id) ;	
+			addNotif(err.message, 'error') ;
 			this.setState({mode: 'reg-fail'});
 		}) ;
 	}
@@ -168,8 +173,6 @@ class Register extends React.Component
 
 				case 'sc-reg-1' : if(this.state.data.name === '')
 									this.setState({error: 'Name can not be blank'});
-								  else if(this.state.data.short === '')
-									this.setState({error: 'Short Name can not be blank'});
 								  else if(this.state.data.password === '')
 									this.setState({error: 'Password can not be blank'});
 								  else if(this.state.data.repass === '')
@@ -228,11 +231,9 @@ class Register extends React.Component
 	}
 
 	onEmailChange = (event) => {
-		//eslint-disable-next-line
-		var emre = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/gi;
 		if(event.target.value === '')
 			this.setState({error: 'E-Mail can not be blank'}) ;
-		else if(emre.test(event.target.value) === false)
+		else if(!valid.isEmail(event.target.value))
 			this.setState({error: 'This might not be a valid E-Mail address'});
 		else
 		{	if(this.state.error === 'E-Mail can not be blank' || this.state.error === 'This might not be a valid E-Mail address') 
@@ -270,11 +271,9 @@ class Register extends React.Component
 	}
 
 	onMobileChange = (event) => {
-		// eslint-disable-next-line
-		var numre = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g ;
 		if(event.target.value === '')
 			this.setState({error: 'Mobile No. can not be blank'}) ;
-		else if(numre.test(event.target.value) === false)
+		else if(!valid.isNumeric(event.target.value))
 			this.setState({error: 'Mobile No. must only contain digits or -'});
 		else if(event.target.value.length < 10)
 			this.setState({error: 'Mobile No. must be at least 10 digits long'}) ;
@@ -397,16 +396,6 @@ class Register extends React.Component
 		this.setState({data: {...this.state.data, address2 : event.target.value} }) ;
 	}
 
-	onShortChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Short Name can not be blank'}) ;
-		else
-		{	if(this.state.error === 'Short Name can not be blank') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, short : event.target.value} }) ;
-	}
-
 	onPersonChange = (event) => {
 		if(event.target.value === '')
 			this.setState({error: 'Registrant Name can not be blank'}) ;
@@ -418,11 +407,9 @@ class Register extends React.Component
 	}
 
 	onPPhoneChange = (event) => {
-		// eslint-disable-next-line
-		var numre = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g ;
 		if(event.target.value === '')
 			this.setState({error: 'Registrant Phone No. can not be blank'}) ;
-		else if(numre.test(event.target.value) === false)
+		else if(!valid.isNumeric(event.target.value))
 			this.setState({error: 'Registrant Phone No. must only contain digits or -'});
 		else if(event.target.value.length < 10)
 			this.setState({error: 'Registrant Phone No. must be at least 10 digits long'}) ;
@@ -444,11 +431,9 @@ class Register extends React.Component
 	}
 
 	onPrPhoneChange = (event) => {
-		// eslint-disable-next-line
-		var numre = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g ;
 		if(event.target.value === '')
 			this.setState({error: 'Principal Phone No. can not be blank'}) ;
-		else if(numre.test(event.target.value) === false)
+		else if(!valid.isNumeric(event.target.value))
 			this.setState({error: 'Principal Phone No. must only contain digits or -'});
 		else if(event.target.value.length < 10)
 			this.setState({error: 'Principal Phone No. must be at least 10 digits long'}) ;
@@ -579,13 +564,12 @@ class Register extends React.Component
 	}
 
 	schoolForm1 = () => {
-		const {name, email, password, repass, mobile, short} = this.state.data ;
+		const {name, email, password, repass, mobile} = this.state.data ;
 		return (
 			<div>	
 				<LoginForm title=" Basic Details " error={this.state.error}
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
 					<Text label="Name" value={name} onChange={this.onNameChange}/>
-					<Text label="Short Name" value={short} onChange={this.onShortChange}/>
 					<Text label="E-Mail" value={email} onChange={this.onEmailChange}/>
 					<Text label="Password" value={password} type="pw" onChange={this.onPasswordChange}/>
 					<Text label="Retype Password" value={repass} type="pw" onChange={this.onRepassChange}/>
@@ -665,15 +649,18 @@ class Register extends React.Component
 	}
 
 	render()
-	{
-		return(
-			<div>
-				<Title name = 'Register' items={["Home -", "Register"]}/>
-				<div className="blue-bg">
-					{this.checkMode()}
+	{	if(this.props.user)
+			return <Redirect to='/home' />
+		else
+		{	return(
+				<div>
+					<Title name = 'Register' items={["Home -", "Register"]}/>
+					<div className="blue-bg">
+						{this.checkMode()}
+					</div>
 				</div>
-			</div>
-		) ;
+			) ;
+		}
 	}
 }
 

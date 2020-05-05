@@ -78,7 +78,7 @@ class Header extends React.Component
 	}
 
 	checkLoggedIn = () => {
-		if(this.props.logged === "no")
+		if(this.props.token === '')
 		{
 			return (
 				<div className = "right-header">

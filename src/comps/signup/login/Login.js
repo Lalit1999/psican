@@ -1,5 +1,7 @@
 import React from 'react' ;
+import { Redirect } from 'react-router-dom';
 
+import { addNotif, remNotif } from '../../notif.js' ;
 import Title from '../../title/Title.js' ;
 import LoginForm from '../forms/LoginForm.js' ;
 import Text from '../text/Text.js' ;
@@ -24,8 +26,9 @@ class Login extends React.Component
 			password: this.state.data.password,
 			email: this.state.data.email,
 		}
+		const id = addNotif('Please Wait...') ;
 
-		fetch('http://localhost:8000/login',{
+		fetch('https://psy-api.herokuapp.com/login',{
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json'} ,
 			body :JSON.stringify(obj) ,
@@ -37,14 +40,19 @@ class Login extends React.Component
 				throw Error(res.statusText) ;
 		})
 		.then(data =>{	
-				this.setState({data: initObj});
-				
-				this.props.loadUser(data) ;
+			remNotif(id) ;
+			
+			this.setState({data: initObj});
+			addNotif('Successfully Logged In', 'success') ;
+			
+			this.props.loadUser(data) ;
 
-				this.props.history.push('/');
-			})  
+			this.props.history.push('/');
+		})  
 		.catch( err  => {
 			console.log(err) ;
+			remNotif(id) ;	
+			addNotif(err.message, 'error') ;	
 			this.setState({error: 'Incorrect Username OR Password'});
 		}) ;
 	}
@@ -124,15 +132,18 @@ class Login extends React.Component
 	}
 
 	render()
-	{
-		return(
-			<div>
-				<Title name = 'Login' items={["Home -", "Login"]}/>
-				<div className="blue-bg">
-					{this.checkMode()}
+	{	if(this.props.user)
+			return <Redirect to='/home' />
+		else
+		{	return(
+				<div>
+					<Title name = 'Login' items={["Home -", "Login"]}/>
+					<div className="blue-bg">
+						{this.checkMode()}
+					</div>
 				</div>
-			</div>
-		) ;
+			) ;
+		}
 	}
 }
 

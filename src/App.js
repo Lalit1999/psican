@@ -34,11 +34,14 @@ class App extends React.Component
 	}
 
 	loadUser = (user) => {
-		this.setState({user: user.user, userToken: user.token});
+		if(user.user)
+			this.setState({user: user.user, userToken: user.token});
+		else if(user.school)
+			this.setState({user: user.school, userToken: user.token});
 	}
 	
 	render()
-	{	console.log(this.state) ;
+	{	//console.log(this.state) ;
 		return(
 			<div className="App">
 		        <BrowserRouter>
