@@ -27,3 +27,14 @@
 {	font-weight: bold ;
 	margin: 1.4em 5em ;
 }
+
+.date-cont input[type="text"]
+{
+	font-family: 'Lato', sans-serif;
+  font-size: 1.5rem ; 
+  background-color: transparent;
+  border : 1px solid black;
+  outline: 2px solid #ccddff;
+  box-shadow: 4px 4px 8px 0 rgba( 0, 0, 0, .2 );
+  margin-top: 0.5em ;
+}

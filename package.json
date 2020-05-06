@@ -9,6 +9,7 @@
     "@fortawesome/react-fontawesome": "^0.1.9",
     "cheeseburger-menu": "0.0.13",
     "react": "^16.13.1",
+    "react-datepicker": "^2.14.1",
     "react-dom": "^16.13.1",
     "react-hamburger-menu": "^1.2.1",
     "react-id-swiper": "^2.4.0",
