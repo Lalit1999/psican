@@ -15,8 +15,8 @@ class Aboutpsican extends React.Component
 					<Title name = 'P S Y M E N T' items={["Home -"," Programs -", "PSYMENT"]}/>
 				</div>
 				<div className = 'flex'>
-					<div className = 'photo'>
-						<img src = {Image} alt = 'Logo' />
+					<div className = 'photo mb br'>
+						<img className = 'br' src = {Image} alt = 'Logo' />
 					</div>
 					<div className = 'text'>
 						<p>
