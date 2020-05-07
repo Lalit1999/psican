@@ -7,19 +7,11 @@ import LoginForm from '../signup/forms/LoginForm.js' ;
 import TextArea from '../signup/text/TextArea.js' ;
 import Dropdown from '../signup/dropdown/Dropdown.js' ;
 import DisplayDetailed from '../display/DisplayDetailed.js' ;
-import ContentChoice from '../choice/ContentChoice.js' ;
 import Heading from '../Heading/Heading.js' ;
 import './program.css' ;
 import './detailcontent.css' ;
 
 const arr = ['html<ul>To provide workshops to schools and colleges for:<li>Student Motivation</li><li>Student Career</li><li>Health related guidance for students</li><li>Behaviour related guidance for students</li><li>Parental Education</li><li>Teachers Training</li>'] ;
-
-const sArr = ['Student Motivation', 'Guidance For Adolescents', 'Behavioural Guidance for Students',
-			'Health & Body Guidance for Adolescents'] ;
-
-const tArr= ['Teachers Training', 'Teaching Strategies'] ;
-
-const pArr = ['Parental Education', 'Parenting Strategies For Adolescents'] ;
 
 const features = [
 'htmlCOMPLEMENTARY WORKSHOPS<a href="#one"><sup>[1]</sup></a> for partner Schools and Educational Institutions. <a href="#two"><sup>[2]</sup></a>',
@@ -27,40 +19,6 @@ const features = [
 'All programs shall be funded by KASTURI FOUNDATION',
 'Only travel support needs to be provided by partner organisations',
 ] ;
-
-
-class DetailContent extends React.Component
-{	state = {
-		selected: '' 
-	} ;
-
-	onSelectChange = (event) => {
-		this.setState({selected: event.target.value});
-	}
-
-	onButtonClick = () => {
-		console.log(this.state.selected) ;
-	}
-
-	createOptions = () => {
-		return this.props.data.map( option=> <option key={option} value={option}> {option} </option>) ;
-	}
-
-	render()
-	{
-		return (
-			<div className="choice-con">
-				<select className="select" onChange={this.onSelectChange} value={this.state.selected}>
-				    <option selected hidden value> -- Choose a Topic -- </option>
-				    {this.createOptions()}
-				</select>
-				<button onClick={this.onButtonClick} className="sched-btn"> Schedule ! </button> 
-			</div>
-		) ;
-	}
-} ;
-
-
 
 class Sarathi extends React.Component
 {	
