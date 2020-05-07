@@ -1,15 +1,18 @@
 import React from 'react' ;
+import DatePicker from 'react-datepicker' ;
+import "react-datepicker/dist/react-datepicker.css";
 
 import Title from '../title/Title.js' ;
-import './program.css' ;
-import './detailcontent.css' ;
+import LoginForm from '../signup/forms/LoginForm.js' ;
+import TextArea from '../signup/text/TextArea.js' ;
+import Dropdown from '../signup/dropdown/Dropdown.js' ;
 import DisplayDetailed from '../display/DisplayDetailed.js' ;
 import ContentChoice from '../choice/ContentChoice.js' ;
 import Heading from '../Heading/Heading.js' ;
+import './program.css' ;
+import './detailcontent.css' ;
 
-const arr = ['To provide workshops to schools and colleges for:' , 'Student Motivation',
-'Student Career', 'Health related guidance for students',
-'Behaviour related guidance for students', 'Parental Education', 'Teachers Training'] ;
+const arr = ['html<ul>To provide workshops to schools and colleges for:<li>Student Motivation</li><li>Student Career</li><li>Health related guidance for students</li><li>Behaviour related guidance for students</li><li>Parental Education</li><li>Teachers Training</li>'] ;
 
 const sArr = ['Student Motivation', 'Guidance For Adolescents', 'Behavioural Guidance for Students',
 			'Health & Body Guidance for Adolescents'] ;
@@ -25,14 +28,11 @@ const features = [
 'Only travel support needs to be provided by partner organisations',
 ] ;
 
+
 class DetailContent extends React.Component
-{	constructor()
-	{
-		super() ;
-		this.state = {
-			selected: '' 
-		}	
-	}
+{	state = {
+		selected: '' 
+	} ;
 
 	onSelectChange = (event) => {
 		this.setState({selected: event.target.value});
@@ -60,10 +60,77 @@ class DetailContent extends React.Component
 	}
 } ;
 
+
+
 class Sarathi extends React.Component
-{
+{	
+	state = {
+		error: '',
+		date: new Date(),
+		topic: '',
+		type: '',
+	} ;
+
+	componentDidMount = () => {
+		this.setState({date: this.returnTomorrow()});
+	}
+
+	onScheduleClick = () => {
+	  	if(this.state.error !== '')
+			this.setState({error: 'You cannot proceed without fixing all the errors'});
+		else if(this.state.type === '')
+			this.setState({error: 'Type can not be blank'});
+	  	else if(this.state.topic === '')
+			this.setState({error: 'Topic can not be blank'});
+		else if(this.state.date.getDay() === 0)
+			this.setState({error: 'Invalid Date or Time range'});
+		else
+			console.log(this.state) ;
+	}
+
+	returnTomorrow = () => {
+		const tom = new Date() ;
+		tom.setDate(tom.getDate() + 15) ;
+		
+		if(tom.getDay() === 0)
+			tom.setDate(tom.getDate() + 1) ;
+		
+		tom.setMinutes(0) ;
+		tom.setHours(9) ;
+		return tom ;
+	}
+
+	onTopicChange = (event) => {
+		if(event.target.value === '')
+			this.setState({error: 'Topic can not be blank'}) ;
+		else
+		{	if(this.state.error === 'Topic can not be blank') 
+				this.setState({error: ''}) ;
+		}
+		this.setState({topic : event.target.value} ) ;
+	}
+
+	filterDates = (date) => {
+    	const day = date.getDay();
+    	return day !== 0 ;
+	}
+
+	onTypeChange = (event) => {
+		if(event.target.value === '')
+			this.setState({error: 'Type can not be blank'}) ;
+		else
+		{	if(this.state.error === 'Type can not be blank') 
+				this.setState({error: ''}) ;
+		}
+		this.setState({type : event.target.value} ) ;
+	}
+
+	onDateChange = (date) => {
+		this.setState({ date: date, error: ''})
+	}
+
 	render()
-	{
+	{	const {type, date, topic} = this.state ;
 		return(
 			<div>
 				<Title name = 'Sarathi Program'
@@ -73,11 +140,20 @@ class Sarathi extends React.Component
 				 organising facilities to schools and colleges. </h4> 
 				<DisplayDetailed title="Aim" lidata={arr}/>
 				<DisplayDetailed title="Features" lidata={features} />
-				<Heading text="Choose Your Topic" />
-				<ContentChoice choices={['Students', 'Parents', 'Teachers']} 
-				 Parents={<DetailContent data={pArr}/>}
-				 Students={<DetailContent data={sArr}/>}
-				 Teachers={<DetailContent data={tArr}/>}/>
+				<Heading text="Schedule Your Workshop" />
+				<div className="blue-bg">
+					<LoginForm title=" Schedule " error={this.state.error} >
+						<Dropdown label="Type" value={type} options={['','Students','Teachers', 'Parents']} onChange={this.onTypeChange}/>
+						<TextArea label="Preferred&nbsp;&nbsp; Topic" value={topic} r={4} c={20} onChange={this.onTopicChange} />
+						<div className="date-cont">
+							<label className="lbel">Select Date&nbsp; : </label>
+							<DatePicker selected={date} onChange={this.onDateChange}
+						      filterDate={this.filterDates} minDate={this.returnTomorrow()}
+						      dateFormat="MMMM d, yyyy h:mm aa" />
+					    </div>
+					</LoginForm>	<br/>
+					<button onClick={this.onScheduleClick} className="sched-btn"> Check Availablity ! </button> 
+				</div>
 				<p className="intro bold" id="one"> Note #1 : Maximum 2 workshops may be scheduled in a 
 					financial year </p>  
 				<p className="intro bold" id="two"> Note #2 : To partner with us please "Register" with

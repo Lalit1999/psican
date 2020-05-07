@@ -38,8 +38,19 @@ class Personal extends React.Component
 	returnTomorrow = () => {
 		const tom = new Date() ;
 		tom.setDate(tom.getDate() + 2) ;
-		tom.setHours(18) ;
-		tom.setMinutes(0) ;
+		if(tom.getDay() === 0)
+		{	tom.setDate(tom.getDate() + 1) ;
+			tom.setHours(18) ;
+			tom.setMinutes(0) ;
+		}
+		else if(tom.getDay() === 6)
+		{	tom.setMinutes(0) ;
+			tom.setHours(9) ;
+		}
+		else
+		{	tom.setHours(18) ;
+			tom.setMinutes(0) ;
+		}
 		return tom ;
 	}
 
