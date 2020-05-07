@@ -33,13 +33,13 @@ class Aboutperson extends React.Component
 							<li>2006-Till Date : Managing Director ORN Remedies Private Ltd.(Ayurvedic & life style Products)</li>
 						</ul>
 						<ul>
-							<div className = 'bold'>Social Profie</div>
+							<div className = 'bold'>Social Profile</div>
 							<li>2003-Till Date : Core Committee member Udayan shallini Fellowship Program of NGO "UDAYAN CARE".</li>
 							<li>2002-Till Date : Associated with MSMS Delhi in various advisory Roles and presently the VICE CHAIRMAN of PTA.</li>
 						</ul>
 					</div>
-					<div className = 'photo'>
-						<img src = {Leader_image} alt = "Leader"/>
+					<div className = 'photo br'>
+						<img className ='br' src = {Leader_image} alt = "Leader"/>
 					</div>
 				</div>
 			</div>

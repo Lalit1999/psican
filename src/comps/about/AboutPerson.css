@@ -5,6 +5,8 @@
 	/*background-color: transparent ; */
 	background-color: rgba(29, 41, 81,0.7); ; 
 	justify-content: space-between;
+	color: white ;
+	font-size: 1.7rem ;
 
 }
 
@@ -19,29 +21,43 @@
 {
 	margin-top: 2em ;
 	margin-right: 1em ;
-	font-size: 1.2rem ;
 }
-
+/*yaha se*/
 .photo
 {
 	/*width: 19vw ;*/
 	/*width: 40vw;*/
-	margin-top: 3em ;
-	margin-left: 2em ;
-	margin-right: 2em ;
+	margin-top: 13em ;
+	/*margin-left: 1em ;*/
+	margin-right: 6em ;
 	max-width: 50% ;
 	height: 100% ;
 	/*margin : 3em 5em ;*/
-	padding: 1em ; 
-	border : 3px solid black ;
-	border-radius: 2rem ;
+	/*padding: 1em ; */
+	border : 5px solid white ;
 }
 
+.br
+{
+	border-radius: 2rem ;
+	display: block;
+	vertical-align: bottom;
+}
+
+.mb
+{	margin-top: 8em ;
+	margin-bottom: 7em ;
+	margin-right: 2em ; 
+	margin-left: 2em ;
+}
+
+/*yaha tak*/
 .font
 {
-	font-size: 2rem ; 
+	font-size: 3rem ; 
 	width: 100% ;
 	text-align: center ;
+
 	/*background-color: rgba(0,0,0,0.5) ;*/
 }
 
