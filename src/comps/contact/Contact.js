@@ -1,6 +1,7 @@
 import React from 'react' ;
 import valid from 'validator' ;
 
+import { addNotif } from '../notif.js' ;
 import LoginForm from '../signup/forms/LoginForm.js' ;
 import Text from '../signup/text/Text.js' ;
 import TextArea from '../signup/text/TextArea.js' ;
@@ -28,7 +29,37 @@ class Contact extends React.Component
 	  	else if(this.state.message === '')
 			this.setState({error: 'Message can not be blank'});
 		else
-			console.log(this.state) ;
+		{	//console.log(this.state) ;
+			
+			const obj = {
+				name : this.state.name ,
+				mobile: this.state.mobile ,
+				message : this.state.message ,
+				email : this.state.email 
+			} ;
+
+			addNotif('Please Wait...') ;
+
+			fetch('https://psy-api.herokuapp.com/contact',{
+				method : 'post' ,
+				headers : { 'Content-Type' : 'application/json'} ,
+				body : JSON.stringify(obj) ,
+			})
+			.then(res => {
+				if(res.ok)
+					return res.json() ;
+				else
+					throw Error(res.statusText) ;
+			})
+			.then(data => {	
+				this.setState({name: '', mobile: '', message: '', email: ''});
+				addNotif('Successfully Received Message/Feedback', 'success') ;
+			}) 
+			.catch( err  => {
+				console.log(err) ; 
+				addNotif(err.message, 'error') ;
+			}) ;
+		}
 	}
 
 	onNameChange = (event) => {

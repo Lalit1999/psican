@@ -6,7 +6,6 @@ import Heading from '../Heading/Heading.js' ;
 import LoginForm from '../signup/forms/LoginForm.js' ;
 import TextArea from '../signup/text/TextArea.js' ;
 import Dropdown from '../signup/dropdown/Dropdown.js' ;
-import ContentChoice from '../choice/ContentChoice.js' ;
 import './program.css' ;
 
 const arr = ['To provide customised support to students for various academic, behavioural, lifestyle' +
