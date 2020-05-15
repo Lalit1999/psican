@@ -38,6 +38,7 @@ const addNotif = (message, type) => {
   {
     case 'error' : obj = errorObj ; break ;
     case 'success' : obj = successObj ; break ;
+    case 'notif' : obj = notifObj ; break ;
     default : obj = notifObj ;
   }
 

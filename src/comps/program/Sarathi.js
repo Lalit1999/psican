@@ -1,7 +1,9 @@
 import React from 'react' ;
 import DatePicker from 'react-datepicker' ;
 import "react-datepicker/dist/react-datepicker.css";
+import {Link} from 'react-router-dom' ;
 
+import { addNotif } from '../notif.js' ;
 import Title from '../title/Title.js' ;
 import LoginForm from '../signup/forms/LoginForm.js' ;
 import TextArea from '../signup/text/TextArea.js' ;
@@ -43,7 +45,37 @@ class Sarathi extends React.Component
 		else if(this.state.date.getDay() === 0)
 			this.setState({error: 'Invalid Date or Time range'});
 		else
-			console.log(this.state) ;
+		{	//console.log(this.state) ;
+			
+			const obj = {
+				date: this.state.date ,
+				topic : this.state.topic ,
+				type : this.state.type 
+			} ;
+
+			addNotif('Please Wait...', 'notif') ;
+
+			fetch('https://psy-api.herokuapp.com/book',{
+				method : 'post' ,
+				headers : { 'Content-Type' : 'application/json' ,
+							'Authorization' : 'Bearer ' + this.props.token} ,
+				body : JSON.stringify(obj) ,
+			})
+			.then(res => {
+				if(res.ok)
+					return res.json() ;
+				else
+					throw Error(res.statusText) ;
+			})
+			.then(data => {	
+				this.setState({ date: this.returnTomorrow(), topic: '', type: ''});
+				addNotif('Successfully Received Booking', 'success') ;
+			}) 
+			.catch( err  => {
+				console.log(err) ; 
+				addNotif(err.message, 'error') ;
+			}) ;
+		}
 	}
 
 	returnTomorrow = () => {
@@ -87,18 +119,17 @@ class Sarathi extends React.Component
 		this.setState({ date: date, error: ''})
 	}
 
-	render()
-	{	const {type, date, topic} = this.state ;
-		return(
-			<div>
-				<Title name = 'Sarathi Program'
-				 items={["Home -"," Programs -", "Sarathi"]}/>
-				<h4 className="intro"> <span className='brand'>Sarathi</span> is a program, supported
-				 by <span className="ngo"> The Kasturi Foundation</span>. It provides workshop
-				 organising facilities to schools and colleges. </h4> 
-				<DisplayDetailed title="Aim" lidata={arr}/>
-				<DisplayDetailed title="Features" lidata={features} />
-				<Heading text="Schedule Your Workshop" />
+	checkLogin = () => {
+		const {type, date, topic} = this.state ;
+
+		if (this.props.user.gender)
+			return (
+				<div className="blue-bg">
+					<p> This Feature is available only to schools </p>
+				</div>
+			) ; 
+		else if(this.props.user.medium)
+			return (
 				<div className="blue-bg">
 					<LoginForm title=" Schedule " error={this.state.error} >
 						<Dropdown label="Type" value={type} options={['','Students','Teachers', 'Parents']} onChange={this.onTypeChange}/>
@@ -112,6 +143,33 @@ class Sarathi extends React.Component
 					</LoginForm>	<br/>
 					<button onClick={this.onScheduleClick} className="sched-btn"> Check Availablity ! </button> 
 				</div>
+			) ;
+		else
+			return (
+				<div className="blue-bg">
+					<p> You need to 
+						<Link to="/login" className="btn2"> &emsp;Login&emsp; </Link>
+						 or 
+						<Link to="/register" className="btn2"> &emsp;Register&emsp; </Link> 
+						as a Student to send a query. 
+					</p>
+				</div>
+			) ; 
+	}
+
+	render()
+	{	
+		return(
+			<div>
+				<Title name = 'Sarathi Program'
+				 items={["Home -"," Programs -", "Sarathi"]}/>
+				<h4 className="intro"> <span className='brand'>Sarathi</span> is a program, supported
+				 by <span className="ngo"> The Kasturi Foundation</span>. It provides workshop
+				 organising facilities to schools and colleges. </h4> 
+				<DisplayDetailed title="Aim" lidata={arr}/>
+				<DisplayDetailed title="Features" lidata={features} />
+				<Heading text="Schedule Your Workshop" />
+				{ this.checkLogin() }
 				<p className="intro bold" id="one"> Note #1 : Maximum 2 workshops may be scheduled in a 
 					financial year </p>  
 				<p className="intro bold" id="two"> Note #2 : To partner with us please "Register" with

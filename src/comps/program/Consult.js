@@ -1,7 +1,9 @@
 import React from 'react' ;
 import DatePicker from 'react-datepicker' ;
 import "react-datepicker/dist/react-datepicker.css";
+import {Link} from 'react-router-dom' ;
 
+import { addNotif } from '../notif.js' ;
 import Title from '../title/Title.js' ;
 import DisplayDetailed from '../display/DisplayDetailed.js' ;
 import Heading from '../Heading/Heading.js' ;
@@ -82,7 +84,37 @@ class Personal extends React.Component
 		else if(this.state.date.getHours() < 18 || this.state.date.getHours() > 20)
 			this.setState({error: 'Invalid Date or Time range'});
 		else
-			console.log(this.state) ;
+		{	//console.log(this.state) ;
+			
+			const obj = {
+				title: this.state.title ,
+				reason : this.state.reason ,
+				date : this.state.date 
+			} ;
+
+			addNotif('Please Wait...', 'notif') ;
+
+			fetch('https://psy-api.herokuapp.com/consult',{
+				method : 'post' ,
+				headers : { 'Content-Type' : 'application/json' ,
+							'Authorization' : 'Bearer ' + this.props.token} ,
+				body : JSON.stringify(obj) ,
+			})
+			.then(res => {
+				if(res.ok)
+					return res.json() ;
+				else
+					throw Error(res.statusText) ;
+			})
+			.then(data => {	
+				this.setState({ title: '', reason: '', date: this.returnTomorrow()});
+				addNotif('Successfully Received Consultation Appointment', 'success') ;
+			}) 
+			.catch( err  => {
+				console.log(err) ; 
+				addNotif(err.message, 'error') ;
+			}) ;
+		}
 	}
 
 	filterDates = (date) => {
@@ -117,8 +149,48 @@ class Personal extends React.Component
 			this.setState({ date: date, minTime: 17, maxTime:19, error: ''})
 	}
 
+	checkLogin = () => {
+		const {reason, title, date, minTime, maxTime} = this.state ;
+
+		if (this.props.user.medium)
+			return (
+				<div className="blue-bg">
+					<p> This Feature is available only to individuals </p>
+				</div>
+			) ; 
+		else if(this.props.user.gender)
+			return (
+				<div className="blue-bg">
+					<LoginForm title=" Schedule " error={this.state.error} >
+						<Text label="Title" value={title} onChange={this.onTitleChange} />
+						<TextArea label="Consultation&nbsp;&nbsp; Reason" value={reason} r={4} c={20} onChange={this.onReasonChange} />
+						<div className="date-cont">
+							<label className="lbel">Select Date&nbsp; : </label>
+							<DatePicker selected={date} onChange={this.onDateChange}
+						      showTimeSelect timeFormat="HH:mm" timeIntervals={30} 
+						      filterDate={this.filterDates} minDate={this.returnTomorrow()}
+						      minTime={this.returnTime(minTime)} maxTime={this.returnTime(maxTime)}
+						      timeCaption="Time" dateFormat="MMMM d, yyyy h:mm aa" />
+					    </div>
+					</LoginForm>	<br/>
+					<button onClick={this.onScheduleClick} className="sched-btn"> Check Availablity ! </button> 
+				</div>
+			) ;
+		else
+			return (
+				<div className="blue-bg">
+					<p> You need to 
+						<Link to="/login" className="btn2"> &emsp;Login&emsp; </Link>
+						 or 
+						<Link to="/register" className="btn2"> &emsp;Register&emsp; </Link> 
+						as a Student to send a query. 
+					</p>
+				</div>
+			) ; 
+	}
+
 	render()
-	{	const {reason, title, date, minTime, maxTime} = this.state ;
+	{	
 		return(
 			<div>
 				<Title name = 'Personal Consultation' items={["Home -"," Programs -", "Consult"]}/>
@@ -144,21 +216,7 @@ class Personal extends React.Component
 				<DisplayDetailed title="Post Trauma Counselling" small="yes" lidata={ptData} />
 				<DisplayDetailed title="Metamorphosis Counselling" small="yes" lidata={mData} />
 				<Heading text="Schedule Your Appointment" />
-				<div className="blue-bg">
-					<LoginForm title=" Schedule " error={this.state.error} >
-						<Text label="Title" value={title} onChange={this.onTitleChange} />
-						<TextArea label="Consultation&nbsp;&nbsp; Reason" value={reason} r={4} c={20} onChange={this.onReasonChange} />
-						<div className="date-cont">
-							<label className="lbel">Select Date&nbsp; : </label>
-							<DatePicker selected={date} onChange={this.onDateChange}
-						      showTimeSelect timeFormat="HH:mm" timeIntervals={30} 
-						      filterDate={this.filterDates} minDate={this.returnTomorrow()}
-						      minTime={this.returnTime(minTime)} maxTime={this.returnTime(maxTime)}
-						      timeCaption="Time" dateFormat="MMMM d, yyyy h:mm aa" />
-					    </div>
-					</LoginForm>	<br/>
-					<button onClick={this.onScheduleClick} className="sched-btn"> Check Availablity ! </button> 
-				</div>
+				{ this.checkLogin() }
 			</div>
 		) ;
 	}

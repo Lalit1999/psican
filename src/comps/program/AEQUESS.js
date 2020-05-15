@@ -1,5 +1,7 @@
 import React from 'react' ;
+import {Link} from 'react-router-dom' ;
 
+import { addNotif } from '../notif.js' ;
 import Title from '../title/Title.js' ;
 import DisplayDetailed from '../display/DisplayDetailed.js' ;
 import Heading from '../Heading/Heading.js' ;
@@ -39,7 +41,37 @@ class AQUESS extends React.Component
 		else if(this.state.message === '')
 			this.setState({error: 'Message can not be blank'});
 		else
-			console.log(this.state) ;
+		{	//console.log(this.state) ;
+			
+			const obj = {
+				title: this.state.title ,
+				message : this.state.message ,
+				type : this.state.type 
+			} ;
+
+			addNotif('Please Wait...', 'notif') ;
+
+			fetch('https://psy-api.herokuapp.com/ask',{
+				method : 'post' ,
+				headers : { 'Content-Type' : 'application/json' ,
+							'Authorization' : 'Bearer ' + this.props.token} ,
+				body : JSON.stringify(obj) ,
+			})
+			.then(res => {
+				if(res.ok)
+					return res.json() ;
+				else
+					throw Error(res.statusText) ;
+			})
+			.then(data => {	
+				this.setState({ title: '', message: '', type: ''});
+				addNotif('Successfully Received Query', 'success') ;
+			}) 
+			.catch( err  => {
+				console.log(err) ; 
+				addNotif(err.message, 'error') ;
+			}) ;
+		}
 	}
 
 	onTypeChange = (event) => {
@@ -72,9 +104,41 @@ class AQUESS extends React.Component
 		this.setState({message : event.target.value}) ;
 	}
 
+	checkLogin = () => {
+		const {type, title, message} = this.state ;
+
+		if (this.props.user.medium)
+			return (
+				<div className="blue-bg">
+					<p> This Feature is available only to students </p>
+				</div>
+			) ; 
+		else if(this.props.user.gender)
+			return (
+				<div className="blue-bg">
+					<LoginForm title=" Query " error={this.state.error} >
+						<Dropdown label="Type" value={type} options={types} onChange={this.onTypeChange}/>
+						<TextArea label="Title" value={title} r={1} c={20} onChange={this.onTitleChange} />
+						<TextArea label="Query" value={message} r={5} c={20} onChange={this.onMessageChange} />
+					</LoginForm>	<br/>
+					<button onClick={this.onScheduleClick} className="sched-btn"> Send Query </button> 
+				</div>
+			) ;
+		else
+			return (
+				<div className="blue-bg">
+					<p> You need to 
+						<Link to="/login" className="btn2"> &emsp;Login&emsp; </Link>
+						 or 
+						<Link to="/register" className="btn2"> &emsp;Register&emsp; </Link> 
+						as a Student to send a query. 
+					</p>
+				</div>
+			) ; 
+	}
+
 	render()
-	{	const {type, title, message} = this.state ;
-		return(
+	{	return(
 			<div>
 				<Title name = 'AQUESS Program' items={["Home -"," Programs -", "AQUESS"]}/>
 				<h4 className="intro cen"> <span className="brand">AQUESS</span> is an 
@@ -94,14 +158,7 @@ class AQUESS extends React.Component
 				<DisplayDetailed title="Aim" lidata={arr} />
 				<DisplayDetailed title="Features" lidata={features} />
 				<Heading text="Send Your Query" />
-				<div className="blue-bg">
-					<LoginForm title=" Query " error={this.state.error} >
-						<Dropdown label="Type" value={type} options={types} onChange={this.onTypeChange}/>
-						<TextArea label="Title" value={title} r={1} c={20} onChange={this.onTitleChange} />
-						<TextArea label="Query" value={message} r={5} c={20} onChange={this.onMessageChange} />
-					</LoginForm>	<br/>
-					<button onClick={this.onScheduleClick} className="sched-btn"> Send Query </button> 
-				</div>
+				{ this.checkLogin() }
 			</div>
 		) ;
 	}

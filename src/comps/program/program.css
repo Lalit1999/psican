@@ -38,3 +38,15 @@
   box-shadow: 4px 4px 8px 0 rgba( 0, 0, 0, .2 );
   margin-top: 0.5em ;
 }
+
+.blue-bg
+{
+	font-size: 1.6rem ;
+	padding: 1em 5em ;
+	line-height: 2em ;
+}
+
+.blue-bg .btn2
+{
+	margin: auto 1em ;
+}

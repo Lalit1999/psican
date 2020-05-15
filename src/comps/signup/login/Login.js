@@ -1,7 +1,7 @@
 import React from 'react' ;
 import { Redirect } from 'react-router-dom';
 
-import { addNotif, remNotif } from '../../notif.js' ;
+import { addNotif} from '../../notif.js' ;
 import Title from '../../title/Title.js' ;
 import LoginForm from '../forms/LoginForm.js' ;
 import Text from '../text/Text.js' ;
@@ -26,7 +26,8 @@ class Login extends React.Component
 			password: this.state.data.password,
 			email: this.state.data.email,
 		}
-		const id = addNotif('Please Wait...') ;
+		
+		addNotif('Please Wait...') ;
 
 		fetch('https://psy-api.herokuapp.com/login',{
 			method : 'post' ,
@@ -40,8 +41,8 @@ class Login extends React.Component
 				throw Error(res.statusText) ;
 		})
 		.then(data =>{	
-			remNotif(id) ;
-			
+			// remNotif(id) ;
+
 			this.setState({data: initObj});
 			addNotif('Successfully Logged In', 'success') ;
 			
@@ -51,7 +52,7 @@ class Login extends React.Component
 		})  
 		.catch( err  => {
 			console.log(err) ;
-			remNotif(id) ;	
+			// remNotif(id) ;	
 			addNotif(err.message, 'error') ;	
 			this.setState({error: 'Incorrect Username OR Password'});
 		}) ;
@@ -112,7 +113,7 @@ class Login extends React.Component
 		const { email, password} = this.state.data ;
 		return (
 			<div>	
-				<LoginForm heading=" Person Login " error={this.state.error}
+				<LoginForm heading=" Login " error={this.state.error}
 					b1="Register" b1type="link" to="/register" close="close"
 					b2="Login" onb2Click={this.onLoginClick} >
 					<Text label="E-Mail" value={email} onChange={this.onEmailChange}/>

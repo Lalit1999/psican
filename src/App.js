@@ -35,10 +35,7 @@ class App extends React.Component
 	}
 
 	loadUser = (user) => {
-		if(user.user)
 			this.setState({user: user.user, userToken: user.token});
-		else if(user.school)
-			this.setState({user: user.school, userToken: user.token});
 	}
 	
 	render()
@@ -57,9 +54,9 @@ class App extends React.Component
 		              <Route path='/contact' exact component={Contact}/>
 		              <Route path='/login' render={props=><Login {...props} user={this.state.user} loadUser={this.loadUser}/>}/>
 		              <Route path='/register' render={props=><Register {...props} user={this.state.user} loadUser={this.loadUser}/>} />
-		              <Route path='/program/Sarathi' component={Sarathi}/>
-		              <Route path='/program/AEQUESS' component={AEQUESS}/>
-		              <Route path='/consult' component={Consult}/>
+		              <Route path='/program/Sarathi' render={props=><Sarathi user={this.state.user} token={this.state.userToken}/>}/>
+		              <Route path='/program/AEQUESS' render={props=><AEQUESS user={this.state.user} token={this.state.userToken}/>}/>
+		              <Route path='/consult' render={props=><Consult user={this.state.user} token={this.state.userToken}/>}/>
 		              <Route exact component={NotFound} />
 		            </Switch>
 			        <Footer />
