@@ -100,7 +100,7 @@ class Personal extends React.Component
 		let id = addNotif('Please Wait...', 'notif') ;
 
 		if(this.state.avail === 'yes')
-		{	fetch('http://localhost:8000/consult',{
+		{	fetch('https://psy-api.herokuapp.com/consult',{
 				method : 'post' ,
 				headers : { 'Content-Type' : 'application/json' ,
 							'Authorization' : 'Bearer ' + this.props.token} ,
@@ -124,7 +124,7 @@ class Personal extends React.Component
 			}) ;
 		}
 		else
-		{	fetch('http://localhost:8000/consult/check',{
+		{	fetch('https://psy-api.herokuapp.com/consult/check',{
 				method : 'post' ,
 				headers : { 'Content-Type' : 'application/json' ,
 							'Authorization' : 'Bearer ' + this.props.token} ,
