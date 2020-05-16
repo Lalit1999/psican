@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker' ;
 import "react-datepicker/dist/react-datepicker.css";
 import {Link} from 'react-router-dom' ;
 
-import { addNotif } from '../notif.js' ;
+import { addNotif, remNotif } from '../notif.js' ;
 import Title from '../title/Title.js' ;
 import DisplayDetailed from '../display/DisplayDetailed.js' ;
 import Heading from '../Heading/Heading.js' ;
@@ -31,6 +31,7 @@ class Personal extends React.Component
 {	state = {
 		error: '',
 		reason : '',
+		avail: '' ,
 		title: '',
 		minTime: 17,
 		maxTime: 19,
@@ -74,10 +75,10 @@ class Personal extends React.Component
 		else if(this.state.reason === '')
 			this.setState({error: 'Reason can not be blank'});
 		else if(this.state.date.getDay() === 6)
-		{	if(this.state.date.getHours() < 9 || this.state.date.getHours() > 13)
+		{	if(this.state.date.getHours() < 9 || this.state.date.getHours() > 14)
 				this.setState({error: 'Invalid Date or Time range'});
 			else 
-				console.log(this.state) ;
+				this.callBackend() ;
 		}
 		else if(this.state.date.getDay() === 0)
 			this.setState({error: 'Invalid Date or Time range'});
@@ -85,16 +86,21 @@ class Personal extends React.Component
 			this.setState({error: 'Invalid Date or Time range'});
 		else
 		{	//console.log(this.state) ;
-			
-			const obj = {
-				title: this.state.title ,
-				reason : this.state.reason ,
-				date : this.state.date 
-			} ;
+			this.callBackend() ;			
+		}
+	}
 
-			addNotif('Please Wait...', 'notif') ;
+	callBackend = () => {
+		const obj = {
+			title: this.state.title ,
+			reason : this.state.reason ,
+			date : this.state.date 
+		} ;
 
-			fetch('https://psy-api.herokuapp.com/consult',{
+		let id = addNotif('Please Wait...', 'notif') ;
+
+		if(this.state.avail === 'yes')
+		{	fetch('http://localhost:8000/consult',{
 				method : 'post' ,
 				headers : { 'Content-Type' : 'application/json' ,
 							'Authorization' : 'Bearer ' + this.props.token} ,
@@ -107,11 +113,42 @@ class Personal extends React.Component
 					throw Error(res.statusText) ;
 			})
 			.then(data => {	
-				this.setState({ title: '', reason: '', date: this.returnTomorrow()});
+				this.setState({ date: this.returnTomorrow(), topic: '', type: '', avail: ''});
+				remNotif(id) ;
 				addNotif('Successfully Received Consultation Appointment', 'success') ;
 			}) 
 			.catch( err  => {
 				console.log(err) ; 
+				remNotif(id) ;
+				addNotif(err.message, 'error') ;
+			}) ;
+		}
+		else
+		{	fetch('http://localhost:8000/consult/check',{
+				method : 'post' ,
+				headers : { 'Content-Type' : 'application/json' ,
+							'Authorization' : 'Bearer ' + this.props.token} ,
+				body : JSON.stringify(obj) ,
+			})
+			.then(res => {
+				if(res.ok)
+					return res.json() ;
+				else
+					throw Error(res.statusText) ;
+			})
+			.then(data => {
+				if(data === 'Available')
+				{
+					this.setState({ avail: 'yes'});
+					remNotif(id) ;
+					addNotif('Appointment Available', 'success') ;
+				}	
+				else
+					throw new Error('Appointment Unavailable') ;
+			}) 
+			.catch( err  => {
+				this.setState({ error: 'Unavailable, for negotiation Call +91-9555235231'});
+				remNotif(id) ;
 				addNotif(err.message, 'error') ;
 			}) ;
 		}
@@ -173,12 +210,14 @@ class Personal extends React.Component
 						      timeCaption="Time" dateFormat="MMMM d, yyyy h:mm aa" />
 					    </div>
 					</LoginForm>	<br/>
-					<button onClick={this.onScheduleClick} className="sched-btn"> Check Availablity ! </button> 
+					<button onClick={this.onScheduleClick} className="sched-btn">
+					 { this.state.avail==='yes'?'Confirm Appointment!':'Check Availablity !' } 
+					</button> 
 				</div>
 			) ;
 		else
 			return (
-				<div className="blue-bg">
+				<div className="blue-bg blue-form">
 					<p> You need to 
 						<Link to="/login" className="btn2"> &emsp;Login&emsp; </Link>
 						 or 

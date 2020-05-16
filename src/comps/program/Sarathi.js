@@ -25,6 +25,7 @@ const features = [
 class Sarathi extends React.Component
 {	
 	state = {
+		avail: '' ,
 		error: '',
 		date: new Date(),
 		topic: '',
@@ -55,26 +56,55 @@ class Sarathi extends React.Component
 
 			addNotif('Please Wait...', 'notif') ;
 
-			fetch('https://psy-api.herokuapp.com/book',{
-				method : 'post' ,
-				headers : { 'Content-Type' : 'application/json' ,
-							'Authorization' : 'Bearer ' + this.props.token} ,
-				body : JSON.stringify(obj) ,
-			})
-			.then(res => {
-				if(res.ok)
-					return res.json() ;
-				else
-					throw Error(res.statusText) ;
-			})
-			.then(data => {	
-				this.setState({ date: this.returnTomorrow(), topic: '', type: ''});
-				addNotif('Successfully Received Booking', 'success') ;
-			}) 
-			.catch( err  => {
-				console.log(err) ; 
-				addNotif(err.message, 'error') ;
-			}) ;
+			if(this.state.avail === 'yes')
+			{	fetch('https://psy-api.herokuapp.com/book',{
+					method : 'post' ,
+					headers : { 'Content-Type' : 'application/json' ,
+								'Authorization' : 'Bearer ' + this.props.token} ,
+					body : JSON.stringify(obj) ,
+				})
+				.then(res => {
+					if(res.ok)
+						return res.json() ;
+					else
+						throw Error(res.statusText) ;
+				})
+				.then(data => {	
+					this.setState({ date: this.returnTomorrow(), topic: '', type: '', avail: ''});
+					addNotif('Successfully Received Booking', 'success') ;
+				}) 
+				.catch( err  => {
+					console.log(err) ; 
+					addNotif(err.message, 'error') ;
+				}) ;
+			}
+			else
+			{	fetch('https://psy-api.herokuapp.com/book/check',{
+					method : 'post' ,
+					headers : { 'Content-Type' : 'application/json' ,
+								'Authorization' : 'Bearer ' + this.props.token} ,
+					body : JSON.stringify(obj) ,
+				})
+				.then(res => {
+					if(res.ok)
+						return res.json() ;
+					else
+						throw Error(res.statusText) ;
+				})
+				.then(data => {
+					if(data === 'Available')
+					{
+						this.setState({ avail: 'yes'});
+						addNotif('Booking Available', 'success') ;
+					}	
+					else
+						throw new Error('Booking Unavailable') ;
+				}) 
+				.catch( err  => {
+					this.setState({ error: 'Booking Unavailable, for negotiation Call +91-9555235231'});
+					addNotif(err.message, 'error') ;
+				}) ;
+			}
 		}
 	}
 
@@ -141,12 +171,14 @@ class Sarathi extends React.Component
 						      dateFormat="MMMM d, yyyy h:mm aa" />
 					    </div>
 					</LoginForm>	<br/>
-					<button onClick={this.onScheduleClick} className="sched-btn"> Check Availablity ! </button> 
+					<button onClick={this.onScheduleClick} className="sched-btn">
+					 { this.state.avail==='yes'?'Confirm Booking!':'Check Availablity !' } 
+					</button> 
 				</div>
 			) ;
 		else
 			return (
-				<div className="blue-bg">
+				<div className="blue-bg blue-form">
 					<p> You need to 
 						<Link to="/login" className="btn2"> &emsp;Login&emsp; </Link>
 						 or 

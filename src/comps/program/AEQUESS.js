@@ -126,7 +126,7 @@ class AQUESS extends React.Component
 			) ;
 		else
 			return (
-				<div className="blue-bg">
+				<div className="blue-bg blue-form">
 					<p> You need to 
 						<Link to="/login" className="btn2"> &emsp;Login&emsp; </Link>
 						 or 
