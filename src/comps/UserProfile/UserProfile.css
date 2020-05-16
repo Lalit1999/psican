@@ -1,0 +1,138 @@
+.propfileBox
+{
+  border: 1px solid black;
+  margin: 6em 2em 2em ;
+  padding: 1.5em ;
+  background-color: rgba(255, 255, 255, .3);
+  box-shadow: 4px 4px 8px 0 rgba( 0, 0, 0, .2 );
+  border-radius: .5rem;
+  z-index: -1 ;
+  top: 0;
+  bottom: 0 ;
+  left: 0 ;
+  right: 0 ; 
+
+}
+
+.bold
+{
+  font-weight: bold;
+}
+
+.heading
+{
+  text-align: center;
+  font-weight: bold;
+  font-size: 3em ;
+}
+
+.ptest
+{
+	justify-content: space-evenly ;
+	font-size: 1.5rem ;
+	text-decoration: none ;
+	font-family: 'Roboto', sans-serif;
+  display : flex ;
+}
+
+.flex
+{
+  display: flex ;
+  justify-content: space-between;
+}
+
+.left
+{
+  display: flex ;
+  flex-direction: column ;
+  margin-left: 1em ;
+  /*margin-right: 2em ;*/
+}
+
+.left_corner_two
+{
+  display: flex ;
+  flex-direction: column ;
+}
+
+.fdr
+{ 
+  display: flex;
+  flex-direction: row ; 
+  justify-content: space-between ;
+
+}
+
+.left_corner_one
+{
+  justify-content: left ;
+  /*background-image : url('../LoginMenu/profile.png') ; */
+  background-size: cover ;
+  height: 7em;
+  border-radius: 50% ;
+  position: relative ;  
+  width: 7em ;
+}
+
+.ui
+{
+  height: 30%;
+  width: 30% ;
+  /*justify-content: center;*/
+  text-align: center;
+  position: absolute ;
+  margin-left: 3em ;
+  bottom: 0 ;
+  right: 0 ;
+  border: 1px solid white;
+}
+
+.right
+{
+  display: flex;
+  width: 70% ;
+  margin-left: 5em;
+  flex-direction: column ;
+  justify-content: space-between; 
+}
+
+.propfilebox div 
+{
+     border : 1px solid black ;
+}
+
+.right_corner_two
+{
+  display: flex;
+  flex-direction: row ;
+  justify-content: flex-end;
+}
+
+.button
+{
+  margin: 1em 0.4em 0.5em 0.4em ;
+  padding: 0.5em 2em ;
+  text-align: center;
+  text-decoration: none;
+  background-color: transparent;
+  font-size: 1.5rem ;
+  font-weight: bold ;
+  transition: all 0.4s ;
+  letter-spacing: 0.05em ;
+  color: white ;
+  border : 2px solid black;
+  transition: all 0.5s ;
+}
+
+.button:hover
+{
+  /*transform: scale(1.1);*/
+  background-color: black ; 
+  border: 2px solid white ;
+}
+
+.del
+{
+  background-color: red ;
+  border : 2px solid white;
+}

@@ -16,6 +16,7 @@ import Consult from './comps/program/Consult.js' ;
 import Login from './comps/signup/login/Login.js' ;
 import Register from './comps/signup/register/Register.js' ;
 import Footer from './comps/footer/Footer.js' ;
+import Profile from './comps/UserProfile/UserProfile.js' ;
 import './App.css' ;
 
 class App extends React.Component
@@ -57,6 +58,7 @@ class App extends React.Component
 		              <Route path='/program/Sarathi' render={props=><Sarathi user={this.state.user} token={this.state.userToken}/>}/>
 		              <Route path='/program/AEQUESS' render={props=><AEQUESS user={this.state.user} token={this.state.userToken}/>}/>
 		              <Route path='/consult' render={props=><Consult user={this.state.user} token={this.state.userToken}/>}/>
+		              <Route path='/profile' render={props=><Profile user={this.state.user} token={this.state.userToken}/>}/>
 		              <Route exact component={NotFound} />
 		            </Switch>
 			        <Footer />
