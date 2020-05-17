@@ -6,27 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
 
 class Footer extends React.Component
 {	
-	constructor(props)
-	{
-		super(props) ;
-		this.state = {
-			data : {}
-		}
-	}
-	componentDidMount = () => {
-		fetch('https://b-tiles-api.herokuapp.com/data?name=Contact')
-		.then( res => {
-			    if ( res.ok )
-	              return res.json() ;
-	            else 
-	              throw Error(res.statusText)
-	          } )
-	    .then( resp => {
-	            // console.log(resp) ;
-	            this.setState({data: resp});
-	                	} )
-	    .catch( err => console.log(err) ) ;
-	}
 	render()
 	{
 		return(
@@ -47,7 +26,7 @@ class Footer extends React.Component
 							<p><FontAwesomeIcon icon = {faMap} />&nbsp;Unit No. 4 , First Floor , CSC ,
 											Pocket B & C , Phase - 4 , Ashok Vihar , Delhi - 110052.</p>
 							<p><FontAwesomeIcon icon = {faPhoneAlt} />&nbsp;+91-9555-235-231</p>
-							<p><FontAwesomeIcon icon = {faEnvelope} />&nbsp;psyment@gmail.com</p>
+							<p><FontAwesomeIcon icon = {faEnvelope} />&nbsp;info.psyment@gmail.com</p>
 						</div>
 					</div>
 				</div>
@@ -57,8 +36,3 @@ class Footer extends React.Component
 }
 
 export default Footer ;
-								// <p><FontAwesomeIcon icon = {faMap} />&nbsp;{this.state.data.address}</p>
-								// <p><FontAwesomeIcon icon = {faPhoneAlt} />&nbsp;{this.state.data.phone}</p>
-								// <p><FontAwesomeIcon icon = {faEnvelope} />&nbsp;{this.state.data.email}</p>
-// Unit No.%204%20First%20Floor%20CSC%20Pocket%20B%20&%20C%20Phase%20-%204%20Ashok%20Vihar%20Delhi%20-%20110052
-
