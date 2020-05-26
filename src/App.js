@@ -38,7 +38,22 @@ class App extends React.Component
 	loadUser = (user) => {
 			this.setState({user: user.user, userToken: user.token});
 	}
-	
+	 
+	//Check if user is logged in
+    checkUser = (str = 'token') => {
+  	  if( this.state.user.user )
+    	if(str === 'token')
+        	return this.state.user.token ;
+      	else if(str === 'user')
+        	return this.state.user.user ;
+      	else if(str === 'history')
+        	return this.state.user.user.history ;
+      	else
+        	return this.state.user.user.name ;
+    	else 
+      		return false ; 
+  	} 
+   
 	render()
 	{	console.log(this.state) ;
 		return(

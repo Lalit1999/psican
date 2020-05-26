@@ -3,8 +3,9 @@
   border: 1px solid black;
   margin: 6em 2em 2em ;
   padding: 1.5em ;
-  background-color: rgba(70, 130, 180, .3);
-  box-shadow: 4px 4px 8px 0 rgba( 0, 0, 0, .2 );
+  /*background-color: rgba(70, 130, 180, .3);*/
+  background-color: white ;
+  /*box-shadow: 4px 4px 8px 0 rgba( 0, 0, 0, .2 );*/
   border-radius: .5rem;
   z-index: -1 ;
   top: 0;
@@ -66,7 +67,7 @@
 .left_corner_one
 {
   justify-content: left ;
-  /*background-image : url('../LoginMenu/profile.png') ; */
+  background-image : url('../images/profile.png') ; 
   background-size: cover ;
   height: 7em;
   border-radius: 50% ;

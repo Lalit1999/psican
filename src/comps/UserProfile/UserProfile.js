@@ -3,7 +3,7 @@ import {Link} from'react-router-dom' ;
 import {Redirect} from'react-router-dom' ;
 
 import './UserProfile.css' ;
-// import pencil from "../LoginMenu/pencilicon.png" ;
+import pencil from "../images/pencilicon.png" ;
 
 
 class UserProfile extends React.Component
@@ -13,6 +13,10 @@ class UserProfile extends React.Component
 	} ;
 
 
+	formatDate = (dt) => {
+		const dat = new Date(dt).toLocaleString("en-US", {timeZone: "Asia/Kolkata"}); ;
+		return dat ;
+	}
 
 	render()
 	{	
@@ -25,10 +29,12 @@ class UserProfile extends React.Component
 					<div className="ptest">
 						<div className="left">
 							<div className = "left_corner_one">
+								<img src = {pencil} alt="pencil" className= "ui" />
 							</div>
 							<div className = "left_corner_two">
 								<div className = "fdr" >
 									<p className = "bold" >Created at : </p>
+		 							<p>{this.formatDate(this.props.user.createdAt)}</p>
 								</div>
 	 							<Link className = "button" to="/history"> History </Link> 
 	 							<button className = "button"  >Logout</button>
@@ -40,6 +46,42 @@ class UserProfile extends React.Component
 								<div className = "flex">
 									<p className = "bold" >Name</p>
 									<p>{this.props.user.name}</p>							
+								</div>
+								<div className = "flex">
+									<p className = "bold" >Age</p>
+									<p>{this.props.user.age}</p>							
+								</div>
+								<div className = "flex">
+									<p className = "bold" >Gender</p>
+									<p>{this.props.user.gender}</p>							
+								</div>
+								<div className = "flex">
+									<p className = "bold" >Height</p>
+									<p>{this.props.user.height}</p>							
+								</div>
+								<div className = "flex">
+									<p className = "bold" >Weight</p>
+									<p>{this.props.user.weight}</p>							
+								</div>
+								<div className = "flex">
+									<p className = "bold" >Address</p>
+									<p>{this.props.user.address2}</p>							
+								</div>
+								<div className = "flex">
+									<p className = "bold" >Father's Name</p>
+									<p>{this.props.user.father}</p>							
+								</div>
+								<div className = "flex">
+									<p className = "bold" >Mother's Name</p>
+									<p>{this.props.user.mother}</p>							
+								</div>
+								<div className = "flex">
+									<p className = "bold" >Working</p>
+									<p>{this.props.user.working}</p>							
+								</div>
+								<div className = "flex">
+									<p className = "bold" >Hobbies</p>
+									<p>{this.props.user.hobbies}</p>							
 								</div>
 								<div className = "flex">
 									<p className = "bold" >E-mail</p>
@@ -71,11 +113,6 @@ class UserProfile extends React.Component
 export default UserProfile ;
 
 
-								// <img src = {pencil} alt="pencil" className= "ui" />
-	// formatDate = (dt) => {
-	// 	const dat = new Date(dt).toLocaleString("en-US", {timeZone: "Asia/Kolkata"}); ;
-	// 	return dat ;
-	// }
 	
 	// onLogoutClick = () => {
 	// 	fetch('https://ov-api.herokuapp.com/logoutAll',{
