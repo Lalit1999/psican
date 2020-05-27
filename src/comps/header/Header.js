@@ -92,8 +92,7 @@ class Header extends React.Component
 		{
 			return (
 				<div className = "right-header">
-					<button className="header-btn" onClick={()=>this.onButtonClick('profile')}>
-					 {this.props.user.name} </button>
+					<Link className="header-btn" to="/profile"> {this.props.user.name} </Link>
 				</div>
 				) ;
 		}
