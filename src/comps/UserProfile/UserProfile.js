@@ -2,7 +2,7 @@ import React from 'react' ;
 import {Link} from'react-router-dom' ;
 import {Redirect} from'react-router-dom' ;
 
-import './UserProfile.css' ;
+// import './UserProfile.css' ;
 import pencil from "../images/pencilicon.png" ;
 
 

@@ -20,7 +20,7 @@ class Aboutpsican extends React.Component
 					</div>
 					<div className = 'text'>
 						<p>
-							Psyment is a <span className = 'bold'>S</span>ocial <span className = 'bold'>B</span>usiness <span className = 'bold'>O</span>rganisation.
+							Psyment is a <span className = 'bld'>S</span>ocial <span className = 'bld'>B</span>usiness <span className = 'bld'>O</span>rganisation.
 						</p>
 						<p>
 							Psyment aspires to provide counselling and mentoring solutions to those need it.
