@@ -1,4 +1,4 @@
-.propfileBox
+.propfileBoxe
 {
   border: 1px solid black;
   margin: 6em 2em 2em ;
@@ -15,19 +15,19 @@
 
 }
 
-.bold
+.bolde
 {
   font-weight: bold;
 }
 
-.heading
+.headinge
 {
   text-align: center;
   font-weight: bold;
   font-size: 3em ;
 }
 
-.ptest
+.pteste
 {
 	justify-content: space-evenly ;
 	font-size: 1.5rem ;
@@ -43,7 +43,7 @@
   color : black ;
 }
 
-.left
+.lefte
 {
   display: flex ;
   flex-direction: column ;
@@ -51,13 +51,13 @@
   /*margin-right: 2em ;*/
 }
 
-.left_corner_two
+.left_corner_twoe
 {
   display: flex ;
   flex-direction: column ;
 }
 
-.fdr
+.fdre
 { 
   display: flex;
   flex-direction: row ; 
@@ -65,7 +65,7 @@
 
 }
 
-.left_corner_one
+.left_corner_onee
 {
   justify-content: left ;
   background-image : url('../images/profile.png') ; 
@@ -76,7 +76,7 @@
   width: 7em ;
 }
 
-.ui
+.uie
 {
   height: 30%;
   width: 30% ;
@@ -89,7 +89,7 @@
   border: 1px solid white;
 }
 
-.right
+.righte
 {
   display: flex;
   width: 70% ;
@@ -98,19 +98,19 @@
   justify-content: space-between; 
 }
 
-.propfilebox div 
+.propfileboxe div 
 {
      border : 1px solid black ;
 }
 
-.right_corner_two
+.right_corner_twoe
 {
   display: flex;
   flex-direction: row ;
   justify-content: flex-end;
 }
 
-.button
+.buttone
 {
   margin: 1em 0.4em 0.5em 0.4em ;
   padding: 0.5em 2em ;
@@ -119,22 +119,29 @@
   background-color: transparent;
   font-size: 1.5rem ;
   font-weight: bold ;
-  transition: all 0.4s ;
+  /*transition: all 0.4s ;*/
   letter-spacing: 0.05em ;
-  color: white ;
+  color: black ;
   border : 2px solid black;
   transition: all 0.5s ;
 }
 
-.button:hover
+.buttone:hover
 {
-  /*transform: scale(1.1);*/
-  background-color: black ; 
-  border: 2px solid white ;
+  transform: scale(1.1);
+  background-color: rgb(70, 130, 180) ; 
+  border: 2px solid black ;
+  color: white ;
 }
 
-.del
+.dele
 {
   background-color: red ;
-  border : 2px solid white;
+  border : 2px solid black;
+}
+
+.dele:hover
+{
+  background-color: red ;
+  border : 2px solid black;
 }

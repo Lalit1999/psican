@@ -2,7 +2,7 @@ import React from 'react' ;
 import {Link} from'react-router-dom' ;
 import {Redirect} from'react-router-dom' ;
 
-// import './UserProfile.css' ;
+import './UserProfile.css' ;
 import pencil from "../images/pencilicon.png" ;
 
 
@@ -24,78 +24,75 @@ class UserProfile extends React.Component
 		if(this.props.user)
 		{
 			return (
-				<div className="propfileBox">
-					<div className="heading">Profile</div>
-					<div className="ptest">
-						<div className="left">
-							<div className = "left_corner_one">
-								<img src = {pencil} alt="pencil" className= "ui" />
+				<div className="propfileBoxe">
+					<div className="headinge">Profile</div>
+					<div className="pteste">
+						<div className="lefte">
+							<div className = "left_corner_onee">
+								<img src = {pencil} alt="pencil" className= "uie" />
 							</div>
-							<div className = "left_corner_two">
-								<div className = "fdr" >
-									<p className = "bold" >Created at : </p>
+							<div className = "left_corner_twoe">
+								<div className = "fdre" >
+									<p className = "bolde" >Created at : </p>
 		 							<p>{this.formatDate(this.props.user.createdAt)}</p>
 								</div>
-	 							<Link className = "button" to="/history"> History </Link> 
-	 							<button className = "button"  >Logout</button>
-	 							<button className = "button del" >Delete profile</button>
+								<button className = "buttone " >Edit profile</button>								
+								<button className = "buttone " >Change password</button>
+	 							<Link className = "buttone" to="/history"> History </Link> 
+	 							<button className = "buttone"  >Logout</button>
+	 							<button className = "buttone dele" >Delete profile</button>
 							</div>
 						</div>
-						<div className="right">
-							<div className = "right_corner_one">
+						<div className="righte">
+							<div className = "right_corner_onee">
 								<div className = "flexe">
-									<p className = "bold" >Name</p>
+									<p className = "bolde" >Name</p>
 									<p>{this.props.user.name}</p>							
 								</div>
 								<div className = "flexe">
-									<p className = "bold" >Age</p>
+									<p className = "bolde" >Age</p>
 									<p>{this.props.user.age}</p>							
 								</div>
 								<div className = "flexe">
-									<p className = "bold" >Gender</p>
+									<p className = "bolde" >Gender</p>
 									<p>{this.props.user.gender}</p>							
 								</div>
 								<div className = "flexe">
-									<p className = "bold" >Height</p>
+									<p className = "bolde" >Height(cm)</p>
 									<p>{this.props.user.height}</p>							
 								</div>
 								<div className = "flexe">
-									<p className = "bold" >Weight</p>
+									<p className = "bolde" >Weight(kg)</p>
 									<p>{this.props.user.weight}</p>							
 								</div>
 								<div className = "flexe">
-									<p className = "bold" >Address</p>
+									<p className = "bolde" >Address</p>
 									<p>{this.props.user.address2}</p>							
 								</div>
 								<div className = "flexe">
-									<p className = "bold" >Father's Name</p>
+									<p className = "bolde" >Father's Name</p>
 									<p>{this.props.user.father}</p>							
 								</div>
 								<div className = "flexe">
-									<p className = "bold" >Mother's Name</p>
+									<p className = "bolde" >Mother's Name</p>
 									<p>{this.props.user.mother}</p>							
 								</div>
 								<div className = "flexe">
-									<p className = "bold" >Working</p>
+									<p className = "bolde" >Working</p>
 									<p>{this.props.user.working}</p>							
 								</div>
 								<div className = "flexe">
-									<p className = "bold" >Hobbies</p>
+									<p className = "bolde" >Hobbies</p>
 									<p>{this.props.user.hobbies}</p>							
 								</div>
 								<div className = "flexe">
-									<p className = "bold" >E-mail</p>
+									<p className = "bolde" >E-mail</p>
 									<p>{this.props.user.email}</p>
 								</div>
 								<div className = "flexe">
-									<p className = "bold" >Mobile No.</p>
+									<p className = "bolde" >Mobile No.</p>
 									<p>{this.props.user.mobile}</p>
 								</div>
-							</div>
-							<div className = "right_corner_two">
-								<button className = "button " >Change password</button>
-								<button className = "button " >Edit profile</button>
-								
 							</div>
 						</div>
 					</div>
