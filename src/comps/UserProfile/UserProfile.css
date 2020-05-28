@@ -36,10 +36,11 @@
   display : flex ;
 }
 
-.flex
+.flexe
 {
   display: flex ;
   justify-content: space-between;
+  color : black ;
 }
 
 .left

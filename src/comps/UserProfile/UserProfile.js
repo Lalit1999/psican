@@ -43,51 +43,51 @@ class UserProfile extends React.Component
 						</div>
 						<div className="right">
 							<div className = "right_corner_one">
-								<div className = "flex">
+								<div className = "flexe">
 									<p className = "bold" >Name</p>
 									<p>{this.props.user.name}</p>							
 								</div>
-								<div className = "flex">
+								<div className = "flexe">
 									<p className = "bold" >Age</p>
 									<p>{this.props.user.age}</p>							
 								</div>
-								<div className = "flex">
+								<div className = "flexe">
 									<p className = "bold" >Gender</p>
 									<p>{this.props.user.gender}</p>							
 								</div>
-								<div className = "flex">
+								<div className = "flexe">
 									<p className = "bold" >Height</p>
 									<p>{this.props.user.height}</p>							
 								</div>
-								<div className = "flex">
+								<div className = "flexe">
 									<p className = "bold" >Weight</p>
 									<p>{this.props.user.weight}</p>							
 								</div>
-								<div className = "flex">
+								<div className = "flexe">
 									<p className = "bold" >Address</p>
 									<p>{this.props.user.address2}</p>							
 								</div>
-								<div className = "flex">
+								<div className = "flexe">
 									<p className = "bold" >Father's Name</p>
 									<p>{this.props.user.father}</p>							
 								</div>
-								<div className = "flex">
+								<div className = "flexe">
 									<p className = "bold" >Mother's Name</p>
 									<p>{this.props.user.mother}</p>							
 								</div>
-								<div className = "flex">
+								<div className = "flexe">
 									<p className = "bold" >Working</p>
 									<p>{this.props.user.working}</p>							
 								</div>
-								<div className = "flex">
+								<div className = "flexe">
 									<p className = "bold" >Hobbies</p>
 									<p>{this.props.user.hobbies}</p>							
 								</div>
-								<div className = "flex">
+								<div className = "flexe">
 									<p className = "bold" >E-mail</p>
 									<p>{this.props.user.email}</p>
 								</div>
-								<div className = "flex">
+								<div className = "flexe">
 									<p className = "bold" >Mobile No.</p>
 									<p>{this.props.user.mobile}</p>
 								</div>
