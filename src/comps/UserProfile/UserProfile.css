@@ -1,10 +1,10 @@
 .propfileBoxe
 {
   border: 1px solid black;
-  margin: 6em 2em 2em ;
+  /*margin: 10em 2em 2em 2em;*/
   padding: 1.5em ;
-  /*background-color: rgba(70, 130, 180, .3);*/
-  background-color: white ;
+  background-color: rgb(83, 154, 212) ;
+  /*background-color: white ;*/
   /*box-shadow: 4px 4px 8px 0 rgba( 0, 0, 0, .2 );*/
   border-radius: .5rem;
   z-index: -1 ;
@@ -20,12 +20,12 @@
   font-weight: bold;
 }
 
-.headinge
+/*.headinge
 {
   text-align: center;
   font-weight: bold;
   font-size: 3em ;
-}
+}*/
 
 .pteste
 {
@@ -40,7 +40,16 @@
 {
   display: flex ;
   justify-content: space-between;
+  /*max-width: 90% ;*/
   color : black ;
+}
+
+
+.max_width
+{
+  margin-right: 18em ;
+  /*margin-left: 2em ;*/
+  /*max-width: 80% ;*/
 }
 
 .lefte
@@ -93,9 +102,12 @@
 {
   display: flex;
   width: 70% ;
-  margin-left: 5em;
+  margin-left: 3em ;
+  margin-right: 3em ;
   flex-direction: column ;
   justify-content: space-between; 
+  border-left: 5px solid steelblue;
+  padding-left: 2em ;
 }
 
 .propfileboxe div 
@@ -123,13 +135,14 @@
   letter-spacing: 0.05em ;
   color: black ;
   border : 2px solid black;
+  border-radius: 99rem ;
   transition: all 0.5s ;
 }
 
 .buttone:hover
 {
   transform: scale(1.1);
-  background-color: rgb(70, 130, 180) ; 
+  background-color: rgb(29, 41, 81) ; 
   border: 2px solid black ;
   color: white ;
 }
