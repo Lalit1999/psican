@@ -4,7 +4,7 @@ import {Redirect} from'react-router-dom' ;
 import Title from '../title/Title.js' ;
 
 import './UserProfile.css' ;
-import pencil from "../images/pencilicon.png" ;
+// import pencil from '../images/pencilicon.png' ;
 
 
 class UserProfile extends React.Component
@@ -20,10 +20,11 @@ class UserProfile extends React.Component
 	}
 
 	onLogoutClick = () => {
-		fetch('https://psy-api.herokuapp.com/logoutAll',{
+		const type = (this.props.user.status?'logoutAll':'slogoutAll') ;
+		fetch('https://psy-api.herokuapp.com/' + type ,{
 				method : 'post' ,
 				headers : { 'Content-Type' : 'application/json', 
-							'Authorization' : 'Bearer ' + this.props.usertoken} ,
+							'Authorization' : 'Bearer ' + this.props.token} ,
 			})
 			.then(res => {
 				if(res.ok)
@@ -33,16 +34,17 @@ class UserProfile extends React.Component
 			})
 			.then(data =>{	
 				console.log(data) ;
-				this.props.setUser({}) ;
+				this.props.loadUser({}) ;
 			}) 
 			.catch( err  => console.log(err) ) ;
 	}
 
 	onDeleteClick = () => {
-		fetch('https://psy-api.herokuapp.com/users/me',{
+		const type = (this.props.user.status?'users':'school') ;
+		fetch('https://psy-api.herokuapp.com/'+ type +'/me',{
 				method : 'delete' ,
 				headers : { 'Content-Type' : 'application/json', 
-							'Authorization' : 'Bearer ' + this.props.usertoken} ,
+							'Authorization' : 'Bearer ' + this.props.token} ,
 			})
 			.then(res => {
 				if(res.ok)
@@ -52,8 +54,7 @@ class UserProfile extends React.Component
 			})
 			.then(data =>{	
 				console.log(data) ;
-				this.props.setUser({}) ;
-				this.props.history.push('/') ;
+				this.props.loadUser({}) ;
 			}) 
 			.catch( err  => console.log(err) ) ;
 	}
@@ -61,8 +62,7 @@ class UserProfile extends React.Component
 
 	render()
 	{	
-		// console.log(this.props.user) ;
-		if(this.props.user)
+		if(this.props.user.name)
 		{
 			return (
 				<div>

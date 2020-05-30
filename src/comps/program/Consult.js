@@ -33,7 +33,7 @@ class Personal extends React.Component
 		reason : '',
 		avail: '' ,
 		title: '',
-		minTime: 17,
+		minTime: 17.5,
 		maxTime: 19,
 		date: new Date()
 	}
