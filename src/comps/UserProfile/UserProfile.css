@@ -106,7 +106,7 @@
   margin-right: 3em ;
   flex-direction: column ;
   justify-content: space-between; 
-  border-left: 5px solid steelblue;
+  /*border-left: 5px solid steelblue;*/
   padding-left: 2em ;
 }
 

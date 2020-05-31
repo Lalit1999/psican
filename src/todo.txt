@@ -28,9 +28,9 @@ images bhi hatani hai
 |																						|
 |	profile work (30-05-2020) => LALIT ka kam hai -->									|
 |																						|			
-|	1.remove history buttons															|
+|	1.remove history buttons(done)														|
 |	2.added condition of school and user for displaying the data						|
-|	3.remove centre line																|
+|	3.remove centre line(done)															|
 |	4.divide the data in 2 parts so that reading of data is confortable to the user 	|	
 |	5.make the form for edit the profile 												|
 |	6.change buttons css accordingly													|
