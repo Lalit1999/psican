@@ -1,7 +1,8 @@
 import React from 'react' ;
-import {Link} from'react-router-dom' ;
+// import {Link} from'react-router-dom' ;
 import {Redirect} from'react-router-dom' ;
 import Title from '../title/Title.js' ;
+import Data from '../data/Data.js' ;
 
 import './UserProfile.css' ;
 // import pencil from '../images/pencilicon.png' ;
@@ -61,7 +62,7 @@ class UserProfile extends React.Component
 	
 
 	render()
-	{	console.log(this.props.user) ;
+	{	//console.log(this.props.user) ;
 		if(this.props.user.name)
 		{
 			if(this.props.user.status)
@@ -81,54 +82,18 @@ class UserProfile extends React.Component
 								</div>
 								<div className="righte">
 									<div className = "right_corner_onee">
-										<div className = "flexe">
-											<p className = "bolde" >Name</p>
-											<p>{this.props.user.name}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Age</p>
-											<p>{this.props.user.age}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Gender</p>
-											<p>{this.props.user.gender}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Height(cm)</p>
-											<p>{this.props.user.height}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Weight(kg)</p>
-											<p>{this.props.user.weight}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde max_width" >Address</p>
-											<p>{this.props.user.address2}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Father's Name</p>
-											<p>{this.props.user.father}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Mother's Name</p>
-											<p>{this.props.user.mother}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Working</p>
-											<p>{this.props.user.working}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Hobbies</p>
-											<p>{this.props.user.hobbies}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >E-mail</p>
-											<p>{this.props.user.email}</p>
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Mobile No.</p>
-											<p>{this.props.user.mobile}</p>
-										</div>
+										<Data kiy = "Name" value = {this.props.user.name}/>
+										<Data kiy = "Age" value = {this.props.user.age}/>
+										<Data kiy = "Gender" value = {this.props.user.gender}/>
+										<Data kiy = "Height(cm)" value = {this.props.user.height}/>
+										<Data kiy = "Weight(kg)" value = {this.props.user.weight}/>
+										<Data kiy = "Address" value = {this.props.user.address2}/>
+										<Data kiy = "Father's Name" value = {this.props.user.father}/>
+										<Data kiy = "Mother's Name" value = {this.props.user.mother}/>
+										<Data kiy = "Working" value = {this.props.user.working}/>
+										<Data kiy = "Hobbies" value = {this.props.user.hobbies}/>
+										<Data kiy = "E-Mail" value = {this.props.user.email}/>
+										<Data kiy = "Mobile No." value = {this.props.user.mobile}/>										
 										<div className = "fdre" >
 											<p className = "bolde" >Created at : </p>
 				 							<p>{this.formatDate(this.props.user.createdAt)}</p>
@@ -157,54 +122,18 @@ class UserProfile extends React.Component
 								</div>
 								<div className="righte">
 									<div className = "right_corner_onee">
-										<div className = "flexe">
-											<p className = "bolde" >Name</p>
-											<p>{this.props.user.name}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Medium</p>
-											<p>{this.props.user.medium}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >E-mail</p>
-											<p>{this.props.user.email}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Classes from</p>
-											<p>{this.props.user.class_f}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Classes till</p>
-											<p>{this.props.user.class_t}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde max_width" >Address</p>
-											<p>{this.props.user.address}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Registrant Name</p>
-											<p>{this.props.user.person}</p>
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Registrant Mobile No.</p>
-											<p>{this.props.user.p_phone}</p>
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Principal's Name</p>
-											<p>{this.props.user.principal}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Principal's phone no.</p>
-											<p>{this.props.user.pr_phone}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Total students</p>
-											<p>{this.props.user.students}</p>							
-										</div>
-										<div className = "flexe">
-											<p className = "bolde" >Total teachers</p>
-											<p>{this.props.user.teachers}</p>							
-										</div>
+										<Data kiy = "Name" value = {this.props.user.name}/>
+										<Data kiy = "Medium" value = {this.props.user.medium}/>
+										<Data kiy = "Address" value = {this.props.user.address}/>
+										<Data kiy = "E-Mail" value = {this.props.user.email}/>
+										<Data kiy = "Classes From" value = {this.props.user.class_f}/>
+										<Data kiy = "Classes Till" value = {this.props.user.class_t}/>
+										<Data kiy = "Principal Name" value = {this.props.user.principal}/>
+										<Data kiy = "Principal's Phone No." value = {this.props.user.pr_phone}/>
+										<Data kiy = "Registrant Name" value = {this.props.user.person}/>
+										<Data kiy = "Registrant Phone No." value = {this.props.user.p_phone}/>
+										<Data kiy = "Total No. of Students" value = {this.props.user.students}/>
+										<Data kiy = "Total No. of teachers" value = {this.props.user.teachers}/>
 										<div className = "fdre" >
 											<p className = "bolde" >Created at : </p>
 				 							<p>{this.formatDate(this.props.user.createdAt)}</p>

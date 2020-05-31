@@ -15,10 +15,6 @@
 
 }
 
-.bolde
-{
-  font-weight: bold;
-}
 
 /*.headinge
 {
@@ -34,6 +30,11 @@
 	text-decoration: none ;
 	font-family: 'Roboto', sans-serif;
   display : flex ;
+}
+
+.bolde
+{
+  font-weight: bold;
 }
 
 .flexe

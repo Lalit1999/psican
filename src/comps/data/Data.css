@@ -1,0 +1,12 @@
+.bolde
+{
+  font-weight: bold;
+}
+
+.flexe
+{
+  display: flex ;
+  justify-content: space-between;
+  /*max-width: 90% ;*/
+  color : black ;
+}
