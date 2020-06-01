@@ -1,0 +1,16 @@
+.editpropfileBoxe
+{
+  border: 1px solid black;
+  /*margin: 10em 2em 2em 2em;*/
+  padding: 1.5em ;
+  background-color: rgb(83, 154, 212) ;
+  /*background-color: white ;*/
+  /*box-shadow: 4px 4px 8px 0 rgba( 0, 0, 0, .2 );*/
+  border-radius: .5rem;
+  z-index: -1 ;
+  top: 0;
+  bottom: 0 ;
+  left: 0 ;
+  right: 0 ; 
+
+}

@@ -1,8 +1,9 @@
 import React from 'react' ;
-// import {Link} from'react-router-dom' ;
+import {Link} from'react-router-dom' ;
 import {Redirect} from'react-router-dom' ;
 import Title from '../title/Title.js' ;
 import Data from '../data/Data.js' ;
+import EditProfile from './editProfile/EditProfile.js' ;
 
 import './UserProfile.css' ;
 // import pencil from '../images/pencilicon.png' ;
@@ -74,7 +75,7 @@ class UserProfile extends React.Component
 							<div className="pteste">
 								<div className="lefte">
 									<div className = "left_corner_twoe">
-										<button className = "buttone " >Edit profile</button>								
+										<Link className = "buttone " to = "/editprofile" >Edit profile</Link>
 										<button className = "buttone " >Change password</button>
 			 							<button className = "buttone" onClick={this.onLogoutClick} >Logout</button>
 			 							<button className = "buttone dele" onClick={this.onDeleteClick} >Delete profile</button>
@@ -93,7 +94,19 @@ class UserProfile extends React.Component
 										<Data kiy = "Working" value = {this.props.user.working}/>
 										<Data kiy = "Hobbies" value = {this.props.user.hobbies}/>
 										<Data kiy = "E-Mail" value = {this.props.user.email}/>
-										<Data kiy = "Mobile No." value = {this.props.user.mobile}/>										
+										<Data kiy = "Mobile No." value = {this.props.user.mobile}/>
+										<EditProfile kiy = "Name" value = {this.props.user.name}/>
+										<EditProfile kiy = "Age" value = {this.props.user.age}/>
+										<EditProfile kiy = "Gender" value = {this.props.user.gender}/>
+										<EditProfile kiy = "Height(cm)" value = {this.props.user.height}/>
+										<EditProfile kiy = "Weight(kg)" value = {this.props.user.weight}/>
+										<EditProfile kiy = "Address" value = {this.props.user.address2}/>
+										<EditProfile kiy = "Father's Name" value = {this.props.user.father}/>
+										<EditProfile kiy = "Mother's Name" value = {this.props.user.mother}/>
+										<EditProfile kiy = "Working" value = {this.props.user.working}/>
+										<EditProfile kiy = "Hobbies" value = {this.props.user.hobbies}/>
+										<EditProfile kiy = "E-Mail" value = {this.props.user.email}/>
+										<EditProfile kiy = "Mobile No." value = {this.props.user.mobile}/>										
 										<div className = "fdre" >
 											<p className = "bolde" >Created at : </p>
 				 							<p>{this.formatDate(this.props.user.createdAt)}</p>
@@ -160,3 +173,4 @@ export default UserProfile ;
 								// <div className = "left_corner_onee">
 								// 	<img src = {pencil} alt="pencil" className= "uie" />
 								// </div>
+								//line no.78 <button className = "buttone " >Edit profile</button>								
