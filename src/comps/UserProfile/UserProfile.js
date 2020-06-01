@@ -1,9 +1,10 @@
 import React from 'react' ;
-import {Link} from'react-router-dom' ;
+// import {Link} from'react-router-dom' ;
 import {Redirect} from'react-router-dom' ;
 import Title from '../title/Title.js' ;
 import Data from '../data/Data.js' ;
-import EditProfile from './editProfile/EditProfile.js' ;
+// import Text from '../signup/text/Text.js' ;
+// import EditProfile from './editProfile/EditProfile.js' ;
 
 import './UserProfile.css' ;
 // import pencil from '../images/pencilicon.png' ;
@@ -12,7 +13,7 @@ import './UserProfile.css' ;
 class UserProfile extends React.Component
 {	
 	state = {
-	  	userprofile : {} 
+	  	mode : 'normal'
 	} ;
 
 
@@ -39,6 +40,10 @@ class UserProfile extends React.Component
 				this.props.loadUser({}) ;
 			}) 
 			.catch( err  => console.log(err) ) ;
+	}
+
+	onEditClick = () => {
+		this.setState({mode:'edit'}) ;
 	}
 
 	onDeleteClick = () => {
@@ -75,7 +80,7 @@ class UserProfile extends React.Component
 							<div className="pteste">
 								<div className="lefte">
 									<div className = "left_corner_twoe">
-										<Link className = "buttone " to = "/editprofile" >Edit profile</Link>
+										<button className = "buttone " onClick = {this.onEditClick} >Edit profile</button>								
 										<button className = "buttone " >Change password</button>
 			 							<button className = "buttone" onClick={this.onLogoutClick} >Logout</button>
 			 							<button className = "buttone dele" onClick={this.onDeleteClick} >Delete profile</button>
@@ -83,30 +88,18 @@ class UserProfile extends React.Component
 								</div>
 								<div className="righte">
 									<div className = "right_corner_onee">
-										<Data kiy = "Name" value = {this.props.user.name}/>
-										<Data kiy = "Age" value = {this.props.user.age}/>
-										<Data kiy = "Gender" value = {this.props.user.gender}/>
-										<Data kiy = "Height(cm)" value = {this.props.user.height}/>
-										<Data kiy = "Weight(kg)" value = {this.props.user.weight}/>
-										<Data kiy = "Address" value = {this.props.user.address2}/>
-										<Data kiy = "Father's Name" value = {this.props.user.father}/>
-										<Data kiy = "Mother's Name" value = {this.props.user.mother}/>
-										<Data kiy = "Working" value = {this.props.user.working}/>
-										<Data kiy = "Hobbies" value = {this.props.user.hobbies}/>
-										<Data kiy = "E-Mail" value = {this.props.user.email}/>
-										<Data kiy = "Mobile No." value = {this.props.user.mobile}/>
-										<EditProfile kiy = "Name" value = {this.props.user.name}/>
-										<EditProfile kiy = "Age" value = {this.props.user.age}/>
-										<EditProfile kiy = "Gender" value = {this.props.user.gender}/>
-										<EditProfile kiy = "Height(cm)" value = {this.props.user.height}/>
-										<EditProfile kiy = "Weight(kg)" value = {this.props.user.weight}/>
-										<EditProfile kiy = "Address" value = {this.props.user.address2}/>
-										<EditProfile kiy = "Father's Name" value = {this.props.user.father}/>
-										<EditProfile kiy = "Mother's Name" value = {this.props.user.mother}/>
-										<EditProfile kiy = "Working" value = {this.props.user.working}/>
-										<EditProfile kiy = "Hobbies" value = {this.props.user.hobbies}/>
-										<EditProfile kiy = "E-Mail" value = {this.props.user.email}/>
-										<EditProfile kiy = "Mobile No." value = {this.props.user.mobile}/>										
+										<Data kiy = "Name" mode = {this.state.mode} value = {this.props.user.name}/>
+										<Data kiy = "Age" mode = {this.state.mode} value = {this.props.user.age}/>
+										<Data kiy = "Gender" mode = {this.state.mode} value = {this.props.user.gender}/>
+										<Data kiy = "Height(cm)" mode = {this.state.mode} value = {this.props.user.height}/>
+										<Data kiy = "Weight(kg)" mode = {this.state.mode} value = {this.props.user.weight}/>
+										<Data kiy = "Address" mode = {this.state.mode} value = {this.props.user.address2}/>
+										<Data kiy = "Father's Name" mode = {this.state.mode} value = {this.props.user.father}/>
+										<Data kiy = "Mother's Name" mode = {this.state.mode} value = {this.props.user.mother}/>
+										<Data kiy = "Working" mode = {this.state.mode} value = {this.props.user.working}/>
+										<Data kiy = "Hobbies" mode = {this.state.mode} value = {this.props.user.hobbies}/>
+										<Data kiy = "E-Mail" mode = {this.state.mode} value = {this.props.user.email}/>
+										<Data kiy = "Mobile No." mode = {this.state.mode} value = {this.props.user.mobile}/>
 										<div className = "fdre" >
 											<p className = "bolde" >Created at : </p>
 				 							<p>{this.formatDate(this.props.user.createdAt)}</p>
@@ -173,4 +166,16 @@ export default UserProfile ;
 								// <div className = "left_corner_onee">
 								// 	<img src = {pencil} alt="pencil" className= "uie" />
 								// </div>
-								//line no.78 <button className = "buttone " >Edit profile</button>								
+										// <EditProfile kiy = "Name" value = {this.props.user.name}/>
+										// <EditProfile kiy = "Age" value = {this.props.user.age}/>
+										// <EditProfile kiy = "Gender" value = {this.props.user.gender}/>
+										// <EditProfile kiy = "Height(cm)" value = {this.props.user.height}/>
+										// <EditProfile kiy = "Weight(kg)" value = {this.props.user.weight}/>
+										// <EditProfile kiy = "Address" value = {this.props.user.address2}/>
+										// <EditProfile kiy = "Father's Name" value = {this.props.user.father}/>
+										// <EditProfile kiy = "Mother's Name" value = {this.props.user.mother}/>
+										// <EditProfile kiy = "Working" value = {this.props.user.working}/>
+										// <EditProfile kiy = "Hobbies" value = {this.props.user.hobbies}/>
+										// <EditProfile kiy = "E-Mail" value = {this.props.user.email}/>
+										// <EditProfile kiy = "Mobile No." value = {this.props.user.mobile}/>										
+										//line no.80<Link className = "buttone " to = "/editprofile" >Edit profile</Link>
