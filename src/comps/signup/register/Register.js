@@ -127,7 +127,8 @@ class Register extends React.Component
 	onNextClick = () => {
 		const {name, password, repass, email, mobile, father, mother} = this.state.data ;
 		const {gender, status, age, height, weight, address2, address} = this.state.data ;
-		const {person, p_phone, principal, pr_phone} = this.state.data ;
+		const {person, p_phone, principal, pr_phone, type, medium} = this.state.data ;
+		const {students, teachers, class_f, class_t} = this.state.data ;
 		if(this.state.error !== '')
 			this.setState({error: 'You must fix all errors before proceeding'});
 		else
