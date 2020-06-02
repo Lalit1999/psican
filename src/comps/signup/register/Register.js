@@ -125,92 +125,51 @@ class Register extends React.Component
 	}
 
 	onNextClick = () => {
+		const {name, password, repass, email, mobile, father, mother} = this.state.data ;
+		const {gender, status, age, height, weight, address2, address} = this.state.data ;
+		const {person, p_phone, principal, pr_phone} = this.state.data ;
 		if(this.state.error !== '')
 			this.setState({error: 'You must fix all errors before proceeding'});
 		else
 		{
 			switch(this.state.mode)
 			{
-				case 'pr-reg-1' : if(this.state.data.name === '')
-									this.setState({error: 'Name can not be blank'});
-								  else if(this.state.data.password === '')
-									this.setState({error: 'Password can not be blank'});
-								  else if(this.state.data.repass === '')
-									this.setState({error: 'Re-Password can not be blank'});
-								  else if(this.state.data.email === '')
-									this.setState({error: 'Email can not be blank'});
-								  else if(this.state.data.mobile === '')
-									this.setState({error: 'Mobile can not be blank'});
+				case 'pr-reg-1' : if(this.isBlank(name,'Name') || this.invalidEmail(email) || this.invalidPass(password, repass) || this.invalidMobile(mobile))
+									return true ;
 								  else
 									this.setState({mode:'pr-reg-2'});
 								  break ;
 				
-				case 'pr-reg-2' : if(this.state.data.father === '')
-									this.setState({error: 'Father Name can not be blank'});
-								  else if(this.state.data.mother === '')
-									this.setState({error: 'Mother Name can not be blank'});
-								  else if(this.state.data.gender === '')
-									this.setState({error: 'Gender can not be blank'});
-								  else if(this.state.data.status === '')
-									this.setState({error: 'Status can not be blank'});
-								  else if(this.state.data.age === 0)
-									this.setState({error: 'Age can not be 0'});
-								  else if(this.state.data.height === 0)
-									this.setState({error: 'Height can not be 0'});
-								  else if(this.state.data.weight === 0)
-									this.setState({error: 'Weight can not be 0'});
+				case 'pr-reg-2' : if(this.isBlank(father,'Father \'s Name') || this.isBlank(mother,'Mother\'s Name') || this.isBlank(gender,'Gender') || this.isBlank(status,'Status'))
+									return true ;
+								  else if(this.isMaxMin(age,'Age',10,65) || this.isMaxMin(height,'Height',100,300) || this.isMaxMin(weight,'Weight',10,250))
+									return true ;
 								  else
 									this.setState({mode:'pr-reg-3'});
 								  break ;
 				
-				case 'pr-reg-3' : if(this.state.data.address === '')
-									this.setState({error: 'Address can not be blank'});
-								  else if(this.state.data.address2 === '')
-									this.setState({error: 'Address can not be blank'});
+				case 'pr-reg-3' : if(this.isBlank(address,'Current Address') || this.isBlank(address2,'Permanent Address') )
+									return true ;
 								  else
 								  	this.sendRegisterRequest() ;
 								  break ;
 
-				case 'sc-reg-1' : if(this.state.data.name === '')
-									this.setState({error: 'Name can not be blank'});
-								  else if(this.state.data.password === '')
-									this.setState({error: 'Password can not be blank'});
-								  else if(this.state.data.repass === '')
-									this.setState({error: 'Re-Password can not be blank'});
-								  else if(this.state.data.email === '')
-									this.setState({error: 'Email can not be blank'});
-								  else if(this.state.data.mobile === '')
-									this.setState({error: 'Contact No. can not be blank'});
+				case 'sc-reg-1' : if(this.isBlank(name,'School Name') || this.invalidEmail(email) || this.invalidPass(password, repass) || this.invalidMobile(mobile))
+									return true ;
 								  else
 									this.setState({mode:'sc-reg-2'});
 								  break ;
 
-				case 'sc-reg-2' : if(this.state.data.person === '')
-									this.setState({error: 'Registrant Name can not be blank'});
-								  else if(this.state.data.p_phone === '')
-									this.setState({error: 'Registrant Contact No. can not be blank'});
-								  else if(this.state.data.principal === '')
-									this.setState({error: 'Principal Name can not be blank'});
-								  else if(this.state.data.pr_phone === '')
-									this.setState({error: 'Principal Contact No. can not be blank'});
+				case 'sc-reg-2' : if(this.isBlank(person,'Registrant Name') || this.isBlank(principal,'Principal Name') || this.invalidMobile(p_phone) || this.invalidMobile(pr_phone))
+									return true ;
 								  else
 									this.setState({mode:'sc-reg-3'});
 								  break ;
 
-				case 'sc-reg-3' : if(this.state.data.address === '')
-									this.setState({error: 'Address can not be blank'});
-								  else if(this.state.data.type === '')
-									this.setState({error: 'Type can not be blank'});
-								  else if(this.state.data.medium === '')
-									this.setState({error: 'Medium can not be blank'});
-								  else if(this.state.data.class_f === '')
-									this.setState({error: 'Class From can not be blank'});
-								  else if(this.state.data.class_t === '')
-									this.setState({error: 'Class To can not be blank'});
-								  else if(this.state.data.teachers === 0)
-									this.setState({error: 'Teachers can not be 0'});
-								  else if(this.state.data.students === 0)
-									this.setState({error: 'Students can not be 0'});
+				case 'sc-reg-3' : if(this.isBlank(address,'Address') || this.isBlank(type,'Type') || this.isBlank(medium,'Medium') || this.isBlank(class_f,'Class From') || this.isBlank(class_t,'Class To'))
+									return true ;
+								  else if(this.isMaxMin(teachers,'Teachers',5,1000) || this.isMaxMin(students,'Students',50,50000))
+									return true ;
 								  else
 								  	this.sendRegisterRequest() ;
 								  break ;
@@ -220,292 +179,83 @@ class Register extends React.Component
 		}
 	}
 
-	onNameChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Name can not be blank'}) ;
-		else
-		{	if(this.state.error === 'Name can not be blank') 
-				this.setState({error: ''}) ;
+	isBlank = (str, field) => {
+		if(str === '')
+		{	this.setState({error: field + ' can not be blank'}) ;
+			return true ;
 		}
-		this.setState({data: {...this.state.data, name : event.target.value} }) ;
+		else
+			return false ;
 	}
 
-	onEmailChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'E-Mail can not be blank'}) ;
-		else if(!valid.isEmail(event.target.value))
-			this.setState({error: 'This might not be a valid E-Mail address'});
-		else
-		{	if(this.state.error === 'E-Mail can not be blank' || this.state.error === 'This might not be a valid E-Mail address') 
-				this.setState({error: ''}) ;
+	invalidEmail = (str) => {
+		if(str === '')
+		{	this.setState({error: 'E-Mail can not be blank'}) ;
+			return true ;
 		}
-		this.setState({data: {...this.state.data, email : event.target.value} }) ;
+		else if(!valid.isEmail(str))
+		{	this.setState({error: 'This might not be a valid E-Mail address'});
+			return true ;
+		}
+		else
+			return false ;
 	}
 
-	onPasswordChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Password can not be blank'}) ;
-		else if(event.target.value.length < 6)
-			this.setState({error: 'Password must be at least 6 digits long'}) ;
-		else if(event.target.value !== this.state.data.repass)
-			this.setState({error: 'Re-Password must match password'}) ;
-		else
-		{	if(this.state.error === 'Password can not be blank' || this.state.error === 'Password must be at least 6 digits long' || this.state.error === 'Re-Password must match password')
-					this.setState({error: ''}) ;
+	invalidPass = (str, str2) => {
+		if(str === '' || str2 === '')
+		{	this.setState({error: 'Password can not be blank'}) ;
+			return true ;
 		}
-		this.setState({data: {...this.state.data, password : event.target.value} }) ;
+		else if (str.length < 6 || str2.length < 6 )
+		{	this.setState({error: 'Password must be at least 6 digits long'}) ;
+			return true ;
+		}
+		else if ( str !== str2 )
+		{	this.setState({error: 'Re-Password must match password'}) ;
+			return true ;
+		}
+		else
+			return false ;
 	}
 
-	onRepassChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Re-Password can not be blank'}) ;
-		else if(event.target.value.length < 6)
-			this.setState({error: 'Re-Password must be at least 6 digits long'}) ;
-		else if(event.target.value !== this.state.data.password)
-			this.setState({error: 'Password must match re-password'}) ;
-		else
-		{	if(this.state.error === 'Re-Password can not be blank' || this.state.error === 'Re-Password must be at least 6 digits long' || this.state.error === 'Password must match re-password')
-					this.setState({error: ''}) ;
+	invalidMobile = (str) => {
+		if(str === '')
+		{	this.setState({error: 'Mobile No. can not be blank'}) ;
+			return true ;
 		}
-		this.setState({data: {...this.state.data, repass : event.target.value} }) ;
-	}
-
-	onMobileChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Mobile No. can not be blank'}) ;
-		else if(!valid.isNumeric(event.target.value))
-			this.setState({error: 'Mobile No. must only contain digits or -'});
-		else if(event.target.value.length < 10)
-			this.setState({error: 'Mobile No. must be at least 10 digits long'}) ;
-		else
-		{	if(this.state.error === 'Mobile No. can not be blank' || this.state.error === 'Mobile No. must only contain digits or -' || this.state.error === 'Mobile No. must be at least 10 digits long')
-					this.setState({error: ''}) ;
+		else if(!valid.isNumeric(str))
+		{	this.setState({error: 'Mobile No. must only contain digits or -'});
+			return true ;
 		}
-		this.setState({data: {...this.state.data, mobile : event.target.value} }) ;
+		else if(str.length < 10)
+		{	this.setState({error: 'Mobile No. must be at least 10 digits long'}) ;
+			return true ;
+		}
+		else
+			return false ;
 	}
 	
-	onFatherChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Father Name can not be blank'}) ;
-		else
-		{	if(this.state.error === 'Father Name can not be blank') 
-				this.setState({error: ''}) ;
+	isMaxMin = (str, field, max, min) => {
+		if(str === 0)
+		{	this.setState({error: field + ' can not be 0'}) ;
+			return true ;
 		}
-		this.setState({data: {...this.state.data, father : event.target.value} }) ;
+		else if(str < min || str > max)
+		{	this.setState({error: field + ' must be between '+ min +' & '+ max}) ;
+			return true ;
+		}
+		else
+			return false ;
 	}
 	
-	onMotherChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Mother Name can not be blank'}) ;
-		else
-		{	if(this.state.error === 'Mother Name can not be blank') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, mother : event.target.value} }) ;
-	}
-	
-	onAgeChange = (event) => {
-		if(event.target.value === 0)
-			this.setState({error: 'Age can not be 0'}) ;
-		else if(event.target.value < 10 || event.target.value > 65)
-			this.setState({error: 'Age must be between 10 & 65'}) ;
-		else
-		{	if(this.state.error === 'Age can not be 0' || this.state.error === 'Age must be between 10 & 65') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, age : parseInt(event.target.value)} }) ;
-	}
-	
-	onHeightChange = (event) => {
-		if(event.target.value === 0)
-			this.setState({error: 'Height can not be 0'}) ;
-		else if(event.target.value < 100 || event.target.value > 300)
-			this.setState({error: 'Height must be between 100 & 300'}) ;
-		else
-		{	if(this.state.error === 'Height can not be 0' || this.state.error === 'Height must be between 100 & 300') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, height : parseInt(event.target.value)} }) ;
+	onInputChange = (event) => {
+		this.setState({data: {...this.state.data, 
+								[event.target.name] : event.target.value}, error: '' }) ;
 	}
 
-	onWeightChange = (event) => {
-		if(event.target.value === 0)
-			this.setState({error: 'Weight can not be 0'}) ;
-		else if(event.target.value < 10 || event.target.value > 250)
-			this.setState({error: 'Weight must be between 100 & 250'}) ;
-		else
-		{	if(this.state.error === 'Weight must be between 100 & 250' || this.state.error === 'Weight can not be 0') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, weight : parseInt(event.target.value)} }) ;
-	}
-	
-	onGenderChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Gender can not be blank'}) ;
-		else
-		{	if(this.state.error === 'Gender can not be blank') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, gender : event.target.value} }) ;
-	}
-	
-	onStatusChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Status can not be blank'}) ;
-		else
-		{	if(this.state.error === 'Status can not be blank') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, status : event.target.value} }) ;
-	}
-
-	onHobbyChange = (event) => this.setState({data: {...this.state.data, hobbies : event.target.value} }) 
-
-	onFamilyChange = (event) => this.setState({data: {...this.state.data, family : event.target.value} })
-	
-	onWorkChange = (event) => this.setState({data: {...this.state.data, working : event.target.value} }) 
-
-	onSiblingChange = (event) => {
-		if(event.target.value > 15)
-			this.setState({error: 'Siblings must be between 0 & 15'}) ;
-		else
-		{	if(this.state.error === 'Siblings must be between 0 & 15') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, sibling : parseInt(event.target.value)} }) ;
-	}
-
-	onAddressChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Address can not be blank'}) ;
-		else
-		{	if(this.state.error === 'Address can not be blank') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, address : event.target.value} }) ;
-	}
-
-	onAddress2Change = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Address can not be blank'}) ;
-		else
-		{	if(this.state.error === 'Address can not be blank') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, address2 : event.target.value} }) ;
-	}
-
-	onPersonChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Registrant Name can not be blank'}) ;
-		else
-		{	if(this.state.error === 'Registrant Name can not be blank') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, person : event.target.value} }) ;
-	}
-
-	onPPhoneChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Registrant Phone No. can not be blank'}) ;
-		else if(!valid.isNumeric(event.target.value))
-			this.setState({error: 'Registrant Phone No. must only contain digits or -'});
-		else if(event.target.value.length < 10)
-			this.setState({error: 'Registrant Phone No. must be at least 10 digits long'}) ;
-		else
-		{	if(this.state.error === 'Registrant Phone No. can not be blank' || this.state.error === 'Registrant Phone No. must be at least 10 digits long' || this.state.error === 'Registrant Phone No. must only contain digits or -')
-					this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, p_phone : event.target.value} }) ;
-	}
-
-	onPrincipalChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Principal Name can not be blank'}) ;
-		else
-		{	if(this.state.error === 'Principal Name can not be blank') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, principal : event.target.value} }) ;
-	}
-
-	onPrPhoneChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Principal Phone No. can not be blank'}) ;
-		else if(!valid.isNumeric(event.target.value))
-			this.setState({error: 'Principal Phone No. must only contain digits or -'});
-		else if(event.target.value.length < 10)
-			this.setState({error: 'Principal Phone No. must be at least 10 digits long'}) ;
-		else
-		{	if(this.state.error === 'Principal Phone No. can not be blank' || this.state.error === 'Principal Phone No. must only contain digits or -' || this.state.error === 'Principal Phone No. must be at least 10 digits long')
-					this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, pr_phone : event.target.value} }) ;
-	}
-
-	onMediumChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Medium can not be blank'}) ;
-		else
-		{	if(this.state.error === 'Medium can not be blank') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, medium : event.target.value} }) ;
-	}
-
-	onTypeChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'School Type can not be blank'}) ;
-		else
-		{	if(this.state.error === 'School Type can not be blank') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, type : event.target.value} }) ;
-	}
-
-	onCFChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'School From can not be blank'}) ;
-		else
-		{	if(this.state.error === 'School From can not be blank') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, class_f : event.target.value} }) ;
-	}
-
-	onCTChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'School To can not be blank'}) ;
-		else
-		{	if(this.state.error === 'School To can not be blank') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, class_t : event.target.value} }) ;
-	}
-
-	onStudentChange = (event) => {
-		if(event.target.value === 0)
-			this.setState({error: 'Students can not be 0'}) ;
-		else if(event.target.value < 50 || event.target.value > 50000)
-			this.setState({error: 'Students must be between 50 & 50000'}) ;
-		else
-		{	if(this.state.error === 'Students can not be 0' || this.state.error === 'Students must be between 50 & 50000') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, students : parseInt(event.target.value)} }) ;
-	}
-
-	onTeacherChange = (event) => {
-		if(event.target.value === 0)
-			this.setState({error: 'Teachers can not be 0'}) ;
-		else if(event.target.value < 5 || event.target.value > 1000)
-			this.setState({error: 'Teachers must be between 5 & 1000'}) ;
-		else
-		{	if(this.state.error === 'Teachers can not be 0' || this.state.error === 'Teachers must be between 5 & 1000') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({data: {...this.state.data, teachers : parseInt(event.target.value)} }) ;
+	onNumberChange = (event) => {
+		this.setState({data: {...this.state.data, 
+								[event.target.name] : parseInt(event.target.value)}, error: '' }) ;
 	}
 
 	personForm1 = () => {
@@ -514,11 +264,11 @@ class Register extends React.Component
 			<div>	
 				<LoginForm title=" Basic Details " error={this.state.error}
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
-					<Text label="Name" value={name} onChange={this.onNameChange}/>
-					<Text label="E-Mail" value={email} onChange={this.onEmailChange}/>
-					<Text label="Password" value={password} type="pw" onChange={this.onPasswordChange}/>
-					<Text label="Retype Password" value={repass} type="pw" onChange={this.onRepassChange}/>
-					<Text label="Mobile No." value={mobile} onChange={this.onMobileChange}/>
+					<Text label="Name" name="name" value={name} onChange={this.onInputChange}/>
+					<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
+					<Text label="Password" name="password" value={password} type="pw" onChange={this.onInputChange}/>
+					<Text label="Retype Password" name="repass" value={repass} type="pw" onChange={this.onInputChange}/>
+					<Text label="Mobile No." name="mobile" value={mobile} onChange={this.onInputChange}/>
 				</LoginForm>
 			</div>
 			) ;
@@ -531,13 +281,13 @@ class Register extends React.Component
 				<LoginForm title=" Personal Details " error={this.state.error}
 					b1="&lt;&nbsp; Prev" onb1Click={this.onPrevClick}
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
-					<Number label="Age"	value={age} min={10} max={65} onChange={this.onAgeChange}/>
-					<Dropdown label="Gender" value={gender} options={['','M','F']} onChange={this.onGenderChange}/>
-					<Text label="Mother's Name" value={mother} onChange={this.onMotherChange}/>
-					<Text label="Father's Name" value={father} onChange={this.onFatherChange}/>
-					<Number label="Height (cm)"	value={height} min={100} max={300} onChange={this.onHeightChange}/>
-					<Number label="Weight (kg)"	value={weight} min={10} max={250} onChange={this.onWeightChange}/>
-					<Dropdown label="Marital Status" value={status} options={['','Single','Married']} onChange={this.onStatusChange}/>
+					<Number label="Age"	name="age" value={age} min={10} max={65} onChange={this.onNumberChange}/>
+					<Dropdown label="Gender" name="gender" value={gender} options={['','M','F']} onChange={this.onInputChange}/>
+					<Text label="Mother's Name" name="mother" value={mother} onChange={this.onInputChange}/>
+					<Text label="Father's Name" name="father" value={father} onChange={this.onInputChange}/>
+					<Number label="Height (cm)"	name="height" value={height} min={100} max={300} onChange={this.onNumberChange}/>
+					<Number label="Weight (kg)"	name="weight" value={weight} min={10} max={250} onChange={this.onNumberChange}/>
+					<Dropdown label="Marital Status" name="status" value={status} options={['','Single','Married']} onChange={this.onInputChange}/>
 				</LoginForm>	
 			</div>
 			) ;
@@ -550,14 +300,14 @@ class Register extends React.Component
 				<LoginForm title=" Other Details " error={this.state.error}
 					b1="&lt;&nbsp; Prev" onb1Click={this.onPrevClick}
 					b2="Register" onb2Click={this.onNextClick} >
-					<TextArea label="Current Address" value={address} r={3} c={20} onChange={this.onAddressChange} />
-					<TextArea label="Permanent&ensp; Address" value={address2} r={3} c={20} onChange={this.onAddress2Change} />
-					<Dropdown label="Working Status" value={working} onChange={this.onWorkChange}
+					<TextArea label="Current Address" name="address" value={address} r={3} c={20} onChange={this.onInputChange} />
+					<TextArea label="Permanent&ensp; Address" name="address" value={address2} r={3} c={20} onChange={this.onInputChange} />
+					<Dropdown label="Working Status" name="working" value={working} onChange={this.onInputChange}
 							  options={['','Student','Full-Time','Part-Time','Self-Employed','Unemployed']} />
-					<Number label="No. Of Siblings"	value={sibling} min={0} max={15} onChange={this.onSiblingChange}/>
-					<Dropdown label="Family Type" value={family} onChange={this.onFamilyChange}
+					<Number label="No. Of Siblings"	name="sibling" value={sibling} min={0} max={15} onChange={this.onNumberChange}/>
+					<Dropdown label="Family Type" name="family" value={family} onChange={this.onInputChange}
 							  options={['','Joint','Nuclear']} />
-					<Text label="Hobbies" value={hobbies} onChange={this.onHobbyChange}/>
+					<Text label="Hobbies" name="hobbies" value={hobbies} onChange={this.onInputChange}/>
 				</LoginForm>	
 			</div>
 			) ;
@@ -569,11 +319,11 @@ class Register extends React.Component
 			<div>	
 				<LoginForm title=" Basic Details " error={this.state.error}
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
-					<Text label="Name" value={name} onChange={this.onNameChange}/>
-					<Text label="E-Mail" value={email} onChange={this.onEmailChange}/>
-					<Text label="Password" value={password} type="pw" onChange={this.onPasswordChange}/>
-					<Text label="Retype Password" value={repass} type="pw" onChange={this.onRepassChange}/>
-					<Text label="Contact No." value={mobile} onChange={this.onMobileChange}/>
+					<Text label="Name" name="name" value={name} onChange={this.onInputChange}/>
+					<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
+					<Text label="Password" name="password" value={password} type="pw" onChange={this.onInputChange}/>
+					<Text label="Retype Password" name="repass" value={repass} type="pw" onChange={this.onInputChange}/>
+					<Text label="Contact No." name="mobile" value={mobile} onChange={this.onInputChange}/>
 				</LoginForm>
 			</div>
 			) ;
@@ -586,10 +336,10 @@ class Register extends React.Component
 				<LoginForm title=" Correspondant Details " error={this.state.error}
 					b1="&lt;&nbsp; Prev" onb1Click={this.onPrevClick}
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
-					<Text label="Registrant Name" value={person} onChange={this.onPersonChange}/>
-					<Text label="Registrant Contact" value={p_phone} onChange={this.onPPhoneChange}/>
-					<Text label="Name of Principal" value={principal} onChange={this.onPrincipalChange}/>
-					<Text label="Principal Contact" value={pr_phone} onChange={this.onPrPhoneChange}/>
+					<Text label="Registrant Name" name="person" value={person} onChange={this.onInputChange}/>
+					<Text label="Registrant Contact" name="p_phone" value={p_phone} onChange={this.onInputChange}/>
+					<Text label="Name of Principal" name="principal" value={principal} onChange={this.onInputChange}/>
+					<Text label="Principal Contact" name="pr_phone" value={pr_phone} onChange={this.onInputChange}/>
 				</LoginForm>
 			</div>
 			) ;
@@ -602,17 +352,17 @@ class Register extends React.Component
 				<LoginForm title=" School Details " error={this.state.error}
 					b1="&lt;&nbsp; Prev" onb1Click={this.onPrevClick}
 					b2="Register" onb2Click={this.onNextClick} >
-					<TextArea label="Address" value={address} r={3} c={20} onChange={this.onAddressChange} />
-					<Dropdown label="Medium" value={medium} onChange={this.onMediumChange}
+					<TextArea label="Address" name="address" value={address} r={3} c={20} onChange={this.onInputChange} />
+					<Dropdown label="Medium" name="medium" value={medium} onChange={this.onInputChange}
 						 options={['','Hindi','English','Urdu','Other']}/>
-					<Dropdown label="School Type" value={type} onChange={this.onTypeChange}
+					<Dropdown label="School Type" name="type" value={type} onChange={this.onInputChange}
 						 options={['','Private','Govt.','Govt-Aided','Unaided']}/>
-					<Dropdown label="Classes From" value={class_f} onChange={this.onCFChange}
+					<Dropdown label="Classes From" name="class_f" value={class_f} onChange={this.onInputChange}
 						 options={['','Nursery','Pre-Primary','1','2','3','4','5','6','7','8','9','11']}/>
-					<Dropdown label="Classes Till" value={class_t} onChange={this.onCTChange}
+					<Dropdown label="Classes Till" name="class_t" value={class_t} onChange={this.onInputChange}
 						 options={['','Nursery','Pre-Primary','1','2','3','4','5','6','7','8','10','12']}/>
-					<Number label="No. of Students"	value={students} min={50} max={50000} onChange={this.onStudentChange}/>
-					<Number label="No. of Teachers"	value={teachers} min={5} max={1000} onChange={this.onTeacherChange}/>
+					<Number label="No. of Students" name="students" value={students} min={50} max={50000} onChange={this.onNumberChange}/>
+					<Number label="No. of Teachers" name="teachers" value={teachers} min={5} max={1000} onChange={this.onNumberChange}/>
 				</LoginForm>
 			</div>
 			) ;
