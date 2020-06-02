@@ -1,4 +1,5 @@
 import React from 'react' ;
+import valid from 'validator' ;
 import { Redirect } from 'react-router-dom';
 
 import { addNotif, remNotif} from '../../notif.js' ;
@@ -26,7 +27,7 @@ class Login extends React.Component
 			password: this.state.data.password,
 			email: this.state.data.email,
 		}
-		
+
 		const id = addNotif('Please Wait...') ;
 
 		fetch('https://psy-api.herokuapp.com/login',{
@@ -59,37 +60,43 @@ class Login extends React.Component
 	}
 
 	onLoginClick = () => {
+		const {email, password} = this.state.data ;
 		if(this.state.error !== '')
 			this.setState({error: 'You must fix all errors before proceeding'});
 		else
 		{
-			if(this.state.data.password === '')
-				this.setState({error: 'Password can not be blank'});
-		    else if(this.state.data.email === '')
-				this.setState({error: 'Email can not be blank'});
+			if( this.invalidEmail(email) || this.invalidPass(password) )
+				return true ;
 			else
 			  	this.sendLoginRequest() ;
 		}
 	}
 
-	onEmailChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'E-Mail can not be blank'}) ;
-		else
-		{	if(this.state.error === 'E-Mail can not be blank' ) 
-				this.setState({error: ''}) ;
+	invalidEmail = (str) => {
+		if(str === '')
+		{	this.setState({error: 'E-Mail can not be blank'}) ;
+			return true ;
 		}
-		this.setState({data: {...this.state.data, email : event.target.value} }) ;
+		else if(!valid.isEmail(str))
+		{	this.setState({error: 'This might not be a valid E-Mail address'});
+			return true ;
+		}
+		else
+			return false ;
 	}
 
-	onPWChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Password can not be blank'}) ;
-		else
-		{	if(this.state.error === 'Password can not be blank' )
-					this.setState({error: ''}) ;
+	invalidPass = (str) => {
+		if(str === '')
+		{	this.setState({error: 'Password can not be blank'}) ;
+			return true ;
 		}
-		this.setState({data: {...this.state.data, password : event.target.value} }) ;
+		else
+			return false ;
+	}
+
+	onInputChange = (event) => {
+		this.setState({data: {...this.state.data, 
+								[event.target.name] : event.target.value}, error: '' }) ;
 	}
 
 	createSelect = () => {
@@ -116,8 +123,9 @@ class Login extends React.Component
 				<LoginForm heading=" Login " error={this.state.error}
 					b1="Register" b1type="link" to="/register" close="close"
 					b2="Login" onb2Click={this.onLoginClick} >
-					<Text label="E-Mail" value={email} onChange={this.onEmailChange}/>
-					<Text label="Password" value={password} type="pw" onChange={this.onPWChange}/>
+					<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
+					<Text label="Password" name="password" value={password} type="pw" 
+							onChange={this.onInputChange}/>
 				</LoginForm>
 			</div>
 			) ;
