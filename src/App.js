@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom' ;
 import ReactNotification from 'react-notifications-component' ;
 import 'react-notifications-component/dist/theme.css' ;
+import { ScrollContext } from 'react-router-scroll-4';
 
 import Home from './comps/home/Home.js' ;
 import AboutPerson from './comps/about/Aboutperson.js' ;
@@ -51,6 +52,7 @@ class App extends React.Component
 			<div className="App">
 				<ReactNotification />
 		        <BrowserRouter>
+		        <ScrollContext>
 		          <div>
 		          	<TopBar />
 		            <Header user={this.state.user} token={this.state.userToken}/>
@@ -70,6 +72,7 @@ class App extends React.Component
 		            </Switch>
 			        <Footer />
 		          </div>
+		        </ScrollContext>
 		        </BrowserRouter>
 		      </div>
 		) ;

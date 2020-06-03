@@ -8,10 +8,11 @@ class Dropdown extends Component {
 	}
 
 	render() {
+		const str = this.props.name?this.props.name:this.props.label ;
 		return (
 			<div className="dd-div">
 				<label className="lbel">{this.props.label}&nbsp; : </label>
-				<select className="inpu" name={this.props.label} value={this.props.value}
+				<select className="inpu" name={str} value={this.props.value}
 					onChange={this.props.onChange}>
 					{this.createOptions()}
 				</select>

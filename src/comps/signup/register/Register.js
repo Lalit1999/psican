@@ -236,7 +236,7 @@ class Register extends React.Component
 			return false ;
 	}
 	
-	isMaxMin = (str, field, max, min) => {
+	isMaxMin = (str, field, min, max) => {
 		if(str === 0)
 		{	this.setState({error: field + ' can not be 0'}) ;
 			return true ;
@@ -302,7 +302,7 @@ class Register extends React.Component
 					b1="&lt;&nbsp; Prev" onb1Click={this.onPrevClick}
 					b2="Register" onb2Click={this.onNextClick} >
 					<TextArea label="Current Address" name="address" value={address} r={3} c={20} onChange={this.onInputChange} />
-					<TextArea label="Permanent&ensp; Address" name="address" value={address2} r={3} c={20} onChange={this.onInputChange} />
+					<TextArea label="Permanent&ensp; Address" name="address2" value={address2} r={3} c={20} onChange={this.onInputChange} />
 					<Dropdown label="Working Status" name="working" value={working} onChange={this.onInputChange}
 							  options={['','Student','Full-Time','Part-Time','Self-Employed','Unemployed']} />
 					<Number label="No. Of Siblings"	name="sibling" value={sibling} min={0} max={15} onChange={this.onNumberChange}/>
