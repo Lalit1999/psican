@@ -1,8 +1,8 @@
 import React from 'react' ;
-import valid from 'validator' ;
 import { Redirect } from 'react-router-dom';
 
 import { addNotif, remNotif} from '../../notif.js' ;
+import { invalidEmail, isBlank } from '../../valid.js' ;
 import Title from '../../title/Title.js' ;
 import LoginForm from '../forms/LoginForm.js' ;
 import Text from '../text/Text.js' ;
@@ -65,33 +65,13 @@ class Login extends React.Component
 			this.setState({error: 'You must fix all errors before proceeding'});
 		else
 		{
-			if( this.invalidEmail(email) || this.invalidPass(password) )
-				return true ;
+			if( invalidEmail(email) )
+				this.setState( {error: invalidEmail(email)} )
+			else if ( isBlank(password, 'Password') )
+				this.setState( {error: isBlank(password, 'Password')} )
 			else
 			  	this.sendLoginRequest() ;
 		}
-	}
-
-	invalidEmail = (str) => {
-		if(str === '')
-		{	this.setState({error: 'E-Mail can not be blank'}) ;
-			return true ;
-		}
-		else if(!valid.isEmail(str))
-		{	this.setState({error: 'This might not be a valid E-Mail address'});
-			return true ;
-		}
-		else
-			return false ;
-	}
-
-	invalidPass = (str) => {
-		if(str === '')
-		{	this.setState({error: 'Password can not be blank'}) ;
-			return true ;
-		}
-		else
-			return false ;
 	}
 
 	onInputChange = (event) => {

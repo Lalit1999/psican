@@ -1,8 +1,8 @@
 import React from 'react' ;
-import valid from 'validator' ;
 import {Redirect, Link} from 'react-router-dom';
 
 import { addNotif, remNotif } from '../../notif.js' ;
+import { invalidEmail, invalidMobile, invalidPass, isBlank, isMaxMin } from '../../valid.js' ;
 import Title from '../../title/Title.js' ;
 import LoginForm from '../forms/LoginForm.js' ;
 import Text from '../text/Text.js' ;
@@ -135,42 +135,82 @@ class Register extends React.Component
 		{
 			switch(this.state.mode)
 			{
-				case 'pr-reg-1' : if(this.isBlank(name,'Name') || this.invalidEmail(email) || this.invalidPass(password, repass) || this.invalidMobile(mobile))
-									return true ;
+				case 'pr-reg-1' : if( invalidEmail(email) )
+									this.setState( {error: invalidEmail(email)} )
+								  else if(isBlank(name,'Name') )
+									this.setState( {error: isBlank(name,'Name')} )
+								  else if (invalidPass(password, repass) )
+									this.setState( {error: invalidPass(password, repass)} )
+								  else if (invalidMobile(mobile) )
+									this.setState( {error: invalidMobile(mobile)} )
 								  else
 									this.setState({mode:'pr-reg-2'});
 								  break ;
 				
-				case 'pr-reg-2' : if(this.isBlank(father,'Father \'s Name') || this.isBlank(mother,'Mother\'s Name') || this.isBlank(gender,'Gender') || this.isBlank(status,'Status'))
-									return true ;
-								  else if(this.isMaxMin(age,'Age',10,65) || this.isMaxMin(height,'Height',100,300) || this.isMaxMin(weight,'Weight',10,250))
-									return true ;
+				case 'pr-reg-2' : if(isBlank(father,'Father \'s Name') )
+									this.setState( {error: isBlank(father,'Father \'s Name')} )
+								  else if(isBlank(mother,'Mother\'s Name') )
+									this.setState( {error: isBlank(mother,'Mother\'s Name')} )
+								  else if(isBlank(gender,'Gender') )
+									this.setState( {error: isBlank(gender,'Gender')} )
+								  else if(isBlank(status,'Status'))
+									this.setState( {error: isBlank(status,'Status')} )
+								  else if(isMaxMin(age,'Age',10,65) )
+									this.setState( {error: isMaxMin(age,'Age',10,65)} )
+								  else if(isMaxMin(height,'Height',100,300) )
+									this.setState( {error: isMaxMin(height,'Height',100,300)} )
+								  else if(isMaxMin(weight,'Weight',10,250))
+									this.setState( {error: isMaxMin(weight,'Weight',10,250)} )
 								  else
 									this.setState({mode:'pr-reg-3'});
 								  break ;
 				
-				case 'pr-reg-3' : if(this.isBlank(address,'Current Address') || this.isBlank(address2,'Permanent Address') )
-									return true ;
+				case 'pr-reg-3' : if(isBlank(address,'Current Address') )
+									this.setState( {error: isBlank(address,'Current Address')} )
+								  else if(isBlank(address2,'Permanent Address') )
+									this.setState( {error: isBlank(address2,'Permanent Address')} )
 								  else
 								  	this.sendRegisterRequest() ;
 								  break ;
 
-				case 'sc-reg-1' : if(this.isBlank(name,'School Name') || this.invalidEmail(email) || this.invalidPass(password, repass) || this.invalidMobile(mobile))
-									return true ;
+				case 'sc-reg-1' : if(isBlank(name,'School Name') )
+									this.setState( {error: isBlank(name,'School Name')} )
+								  else if(invalidEmail(email) )
+									this.setState( {error: invalidEmail(email)} )
+								  else if(invalidPass(password, repass) )
+									this.setState( {error: invalidPass(password, repass)} )
+								  else if(invalidMobile(mobile))
+									this.setState( {error: invalidMobile(mobile)} )
 								  else
 									this.setState({mode:'sc-reg-2'});
 								  break ;
 
-				case 'sc-reg-2' : if(this.isBlank(person,'Registrant Name') || this.isBlank(principal,'Principal Name') || this.invalidMobile(p_phone) || this.invalidMobile(pr_phone))
-									return true ;
+				case 'sc-reg-2' : if(isBlank(person,'Registrant Name') )
+									this.setState( {error: isBlank(person,'Registrant Name')} )
+								  else if(isBlank(principal,'Principal Name') )
+									this.setState( {error: isBlank(principal,'Principal Name')} )
+								  else if(invalidMobile(p_phone) )
+									this.setState( {error: invalidMobile(p_phone)} )
+								  else if(invalidMobile(pr_phone))
+									this.setState( {error: invalidMobile(pr_phone)} )
 								  else
 									this.setState({mode:'sc-reg-3'});
 								  break ;
 
-				case 'sc-reg-3' : if(this.isBlank(address,'Address') || this.isBlank(type,'Type') || this.isBlank(medium,'Medium') || this.isBlank(class_f,'Class From') || this.isBlank(class_t,'Class To'))
-									return true ;
-								  else if(this.isMaxMin(teachers,'Teachers',5,1000) || this.isMaxMin(students,'Students',50,50000))
-									return true ;
+				case 'sc-reg-3' : if(isBlank(address,'Address') )
+									this.setState( {error: isBlank(address,'Address')} )
+							      else if(isBlank(type,'Type') )
+									this.setState( {error: isBlank(type,'Type')} )
+							      else if(isBlank(medium,'Medium') )
+									this.setState( {error: isBlank(medium,'Medium') } )
+							      else if(isBlank(class_f,'Class From') )
+									this.setState( {error: isBlank(class_f,'Class From')} )
+							      else if(isBlank(class_t,'Class To'))
+									this.setState( {error: isBlank(class_t,'Class To')} )
+								  else if(isMaxMin(teachers,'Teachers',5,1000) )
+									this.setState( {error: isMaxMin(teachers,'Teachers',5,1000)} )
+								  else if(isMaxMin(students,'Students',50,50000))
+									this.setState( {error: isMaxMin(students,'Students',50,50000)} )
 								  else
 								  	this.sendRegisterRequest() ;
 								  break ;
@@ -180,75 +220,6 @@ class Register extends React.Component
 		}
 	}
 
-	isBlank = (str, field) => {
-		if(str === '')
-		{	this.setState({error: field + ' can not be blank'}) ;
-			return true ;
-		}
-		else
-			return false ;
-	}
-
-	invalidEmail = (str) => {
-		if(str === '')
-		{	this.setState({error: 'E-Mail can not be blank'}) ;
-			return true ;
-		}
-		else if(!valid.isEmail(str))
-		{	this.setState({error: 'This might not be a valid E-Mail address'});
-			return true ;
-		}
-		else
-			return false ;
-	}
-
-	invalidPass = (str, str2) => {
-		if(str === '' || str2 === '')
-		{	this.setState({error: 'Password can not be blank'}) ;
-			return true ;
-		}
-		else if (str.length < 6 || str2.length < 6 )
-		{	this.setState({error: 'Password must be at least 6 digits long'}) ;
-			return true ;
-		}
-		else if ( str !== str2 )
-		{	this.setState({error: 'Re-Password must match password'}) ;
-			return true ;
-		}
-		else
-			return false ;
-	}
-
-	invalidMobile = (str) => {
-		if(str === '')
-		{	this.setState({error: 'Mobile No. can not be blank'}) ;
-			return true ;
-		}
-		else if(!valid.isNumeric(str))
-		{	this.setState({error: 'Mobile No. must only contain digits or -'});
-			return true ;
-		}
-		else if(str.length < 10)
-		{	this.setState({error: 'Mobile No. must be at least 10 digits long'}) ;
-			return true ;
-		}
-		else
-			return false ;
-	}
-	
-	isMaxMin = (str, field, min, max) => {
-		if(str === 0)
-		{	this.setState({error: field + ' can not be 0'}) ;
-			return true ;
-		}
-		else if(str < min || str > max)
-		{	this.setState({error: field + ' must be between '+ min +' & '+ max}) ;
-			return true ;
-		}
-		else
-			return false ;
-	}
-	
 	onInputChange = (event) => {
 		this.setState({data: {...this.state.data, 
 								[event.target.name] : event.target.value}, error: '' }) ;
