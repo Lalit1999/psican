@@ -1,19 +1,18 @@
 import React from 'react' ;
-// import {Link} from'react-router-dom' ;
 import {Redirect} from'react-router-dom' ;
+
 import Title from '../title/Title.js' ;
 import Data from '../data/Data.js' ;
-// import Text from '../signup/text/Text.js' ;
-// import EditProfile from './editProfile/EditProfile.js' ;
+import EditProfile from './editProfile/EditProfile.js' ;
 
 import './UserProfile.css' ;
-// import pencil from '../images/pencilicon.png' ;
 
 
 class UserProfile extends React.Component
 {	
 	state = {
-	  	mode : 'normal'
+	  	mode : 'normal' ,
+	  	check : ''
 	} ;
 
 
@@ -44,6 +43,14 @@ class UserProfile extends React.Component
 
 	onEditClick = () => {
 		this.setState({mode:'edit'}) ;
+		if(this.props.user.status)
+		{
+			return(<EditProfile num = '0' />) ;
+		}
+		else
+		{
+			return(<EditProfile num = '1' />) ;
+		}
 	}
 
 	onDeleteClick = () => {
