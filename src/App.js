@@ -67,7 +67,7 @@ class App extends React.Component
 		              <Route path='/program/AEQUESS' render={props=><AEQUESS user={this.state.user} token={this.state.userToken}/>}/>
 		              <Route path='/consult' render={props=><Consult user={this.state.user} token={this.state.userToken}/>}/>
 		              <Route path='/profile' render={props=><Profile user={this.state.user} token={this.state.userToken} loadUser={this.loadUser}/>}/>
-		              <Route path='/editprofile' render={props=><EditProfile user={this.state.user} token={this.state.userToken}/>}/>
+		              <Route path='/editprofile' render={props=><EditProfile user={this.state.user} token={this.state.userToken} loadUser={this.loadUser}/>}/>
 		              <Route exact component={NotFound} />
 		            </Switch>
 			        <Footer />

@@ -3,8 +3,9 @@ import React from 'react' ;
 import {Redirect} from'react-router-dom' ;
 import Title from '../title/Title.js' ;
 import Data from '../data/Data.js' ;
+import {Link} from 'react-router-dom';
 // import Text from '../signup/text/Text.js' ;
-// import EditProfile from './editProfile/EditProfile.js' ;
+import EditProfile from './editProfile/EditProfile.js' ;
 
 import './UserProfile.css' ;
 // import pencil from '../images/pencilicon.png' ;
@@ -13,7 +14,8 @@ import './UserProfile.css' ;
 class UserProfile extends React.Component
 {	
 	state = {
-	  	mode : 'normal'
+	  	mode : 'normal' ,
+	  	check : ''
 	} ;
 
 
@@ -44,6 +46,14 @@ class UserProfile extends React.Component
 
 	onEditClick = () => {
 		this.setState({mode:'edit'}) ;
+		if(this.props.user.status)
+		{
+			return(<EditProfile num = '0' />) ;
+		}
+		else
+		{
+			return(<EditProfile num = '1' />) ;
+		}
 	}
 
 	onDeleteClick = () => {
@@ -72,7 +82,8 @@ class UserProfile extends React.Component
 		if(this.props.user.name)
 		{
 			if(this.props.user.status)
-			{
+			{	
+				// this.setState({check: 'user'});
 				return (
 					<div>
 						<Title name = 'Profile' items={["Home -", "profile"]}/>
@@ -80,7 +91,7 @@ class UserProfile extends React.Component
 							<div className="pteste">
 								<div className="lefte">
 									<div className = "left_corner_twoe">
-										<button className = "buttone " onClick = {this.onEditClick} >Edit profile</button>								
+										<Link className = "buttone " to = "/editprofile" >Edit profile</Link>
 										<button className = "buttone " >Change password</button>
 			 							<button className = "buttone" onClick={this.onLogoutClick} >Logout</button>
 			 							<button className = "buttone dele" onClick={this.onDeleteClick} >Delete profile</button>
@@ -113,6 +124,7 @@ class UserProfile extends React.Component
 			}
 			else
 			{
+				// this.setState({check: 'school'});
 				return (
 					<div>
 						<Title name = 'Profile' items={["Home -", "profile"]}/>
@@ -120,7 +132,7 @@ class UserProfile extends React.Component
 							<div className="pteste">
 								<div className="lefte">
 									<div className = "left_corner_twoe">
-										<button className = "buttone " >Edit profile</button>								
+										<Link className = "buttone " to = "/editprofile" >Edit profile</Link>
 										<button className = "buttone " >Change password</button>
 			 							<button className = "buttone" onClick={this.onLogoutClick} >Logout</button>
 			 							<button className = "buttone dele" onClick={this.onDeleteClick} >Delete profile</button>
@@ -178,4 +190,5 @@ export default UserProfile ;
 										// <EditProfile kiy = "Hobbies" value = {this.props.user.hobbies}/>
 										// <EditProfile kiy = "E-Mail" value = {this.props.user.email}/>
 										// <EditProfile kiy = "Mobile No." value = {this.props.user.mobile}/>										
-										//line no.80<Link className = "buttone " to = "/editprofile" >Edit profile</Link>
+										//line no. 124<button className = "buttone " onClick = {this.onEditClick} >Edit profile</button>								
+										//line no. 84<button className = "buttone " onClick = {this.onEditClick} >Edit profile</button>								
