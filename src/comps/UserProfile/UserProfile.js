@@ -66,92 +66,79 @@ class UserProfile extends React.Component
 			.catch( err  => console.log(err) ) ;
 	}
 	
+	returnkey = (str) => {
+		let ret = '' ;
+		switch(str)
+		{	
+			case "name" : ret = "Name" ; break ;
+			case "age"  : ret = "Age" ; break ;
+			case "gender" : ret = "Gender" ; break ;
+			case "height" : ret = "Height(cm)" ; break ;
+			case "weight" : ret = "Weight(kg)" ; break ;
+			case "address" : ret = "Address" ; break ;
+			case "address2" : ret = "Permanent Address" ; break ;
+			case "father" : ret = "Father's Name" ; break ;
+			case "mother" : ret = "Mother's Name" ; break ;
+			case "working" : ret = "Working" ; break ;
+			case "hobbies" : ret = "Hobbies" ; break ;
+			case "email" : ret = "E-Mail" ; break ;
+			case "mobile" : ret = "Mobile No." ; break ;
+			case "medium" : ret = "Medium" ; break ;
+			case "class_f" : ret = "Classes From" ; break ;
+			case "class_t" : ret = "Classes Till" ; break ; 
+			case "principal" : ret = "Principal Name" ; break ;
+			case "pr_phone" : ret = "Principal's Phone No." ; break ;
+			case "person" : ret = "Registrant Name" ; break ; 
+			case "p_phone" : ret = "Registrant Phone No." ; break ;
+			case "students" : ret = "Total No. of Students" ; break ;
+			case "teachers" : ret = "Total No. of teachers" ; break ;
+			default : return false ;
+		}
+		return ret ;
+	}
+
+	generateData = () => {
+		console.log( Object.keys(this.props.user) ) ;
+		return Object.keys(this.props.user).map( (one,i) => {
+			const name = this.returnkey(one) ;
+			if(name)
+				return <Data key={i} kiy={name} 
+						mode={this.state.mode} value={this.props.user[one]} />
+			else 
+				return null ;
+		}) ;
+	}
 
 	render()
 	{	//console.log(this.props.user) ;
 		if(this.props.user.name)
 		{
-			if(this.props.user.status)
-			{
-				return (
-					<div>
-						<Title name = 'Profile' items={["Home -", "profile"]}/>
-						<div className="propfileBoxe">
-							<div className="pteste">
-								<div className="lefte">
-									<div className = "left_corner_twoe">
-										<button className = "buttone " onClick = {this.onEditClick} >Edit profile</button>								
-										<button className = "buttone " >Change password</button>
-			 							<button className = "buttone" onClick={this.onLogoutClick} >Logout</button>
-			 							<button className = "buttone dele" onClick={this.onDeleteClick} >Delete profile</button>
-									</div>
+			return (
+				<div>
+					<Title name = 'Profile' items={["Home -", "profile"]}/>
+					<div className="propfileBoxe">
+						<div className="pteste">
+							<div className="lefte">
+								<div className = "left_corner_twoe">
+									<button className = "buttone " onClick = {this.onEditClick} >Edit profile</button>								
+									<button className = "buttone " >Change password</button>
+		 							<button className = "buttone" onClick={this.onLogoutClick} >Logout</button>
+		 							<button className = "buttone dele" onClick={this.onDeleteClick} >Delete profile</button>
 								</div>
-								<div className="righte">
-									<div className = "right_corner_onee">
-										<Data kiy = "Name" mode = {this.state.mode} value = {this.props.user.name}/>
-										<Data kiy = "Age" mode = {this.state.mode} value = {this.props.user.age}/>
-										<Data kiy = "Gender" mode = {this.state.mode} value = {this.props.user.gender}/>
-										<Data kiy = "Height(cm)" mode = {this.state.mode} value = {this.props.user.height}/>
-										<Data kiy = "Weight(kg)" mode = {this.state.mode} value = {this.props.user.weight}/>
-										<Data kiy = "Address" mode = {this.state.mode} value = {this.props.user.address2}/>
-										<Data kiy = "Father's Name" mode = {this.state.mode} value = {this.props.user.father}/>
-										<Data kiy = "Mother's Name" mode = {this.state.mode} value = {this.props.user.mother}/>
-										<Data kiy = "Working" mode = {this.state.mode} value = {this.props.user.working}/>
-										<Data kiy = "Hobbies" mode = {this.state.mode} value = {this.props.user.hobbies}/>
-										<Data kiy = "E-Mail" mode = {this.state.mode} value = {this.props.user.email}/>
-										<Data kiy = "Mobile No." mode = {this.state.mode} value = {this.props.user.mobile}/>
-										<div className = "fdre" >
-											<p className = "bolde" >Created at : </p>
-				 							<p>{this.formatDate(this.props.user.createdAt)}</p>
-										</div>
+							</div>
+							<div className="righte">
+								<div className = "right_corner_onee">
+									{this.generateData()}
+									<div className = "fdre" >
+										<p className = "bolde" >Created at : </p>
+			 							<p>{this.formatDate(this.props.user.createdAt)}</p>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				) ;
-			}
-			else
-			{
-				return (
-					<div>
-						<Title name = 'Profile' items={["Home -", "profile"]}/>
-						<div className="propfileBoxe">
-							<div className="pteste">
-								<div className="lefte">
-									<div className = "left_corner_twoe">
-										<button className = "buttone " >Edit profile</button>								
-										<button className = "buttone " >Change password</button>
-			 							<button className = "buttone" onClick={this.onLogoutClick} >Logout</button>
-			 							<button className = "buttone dele" onClick={this.onDeleteClick} >Delete profile</button>
-									</div>
-								</div>
-								<div className="righte">
-									<div className = "right_corner_onee">
-										<Data kiy = "Name" value = {this.props.user.name}/>
-										<Data kiy = "Medium" value = {this.props.user.medium}/>
-										<Data kiy = "Address" value = {this.props.user.address}/>
-										<Data kiy = "E-Mail" value = {this.props.user.email}/>
-										<Data kiy = "Classes From" value = {this.props.user.class_f}/>
-										<Data kiy = "Classes Till" value = {this.props.user.class_t}/>
-										<Data kiy = "Principal Name" value = {this.props.user.principal}/>
-										<Data kiy = "Principal's Phone No." value = {this.props.user.pr_phone}/>
-										<Data kiy = "Registrant Name" value = {this.props.user.person}/>
-										<Data kiy = "Registrant Phone No." value = {this.props.user.p_phone}/>
-										<Data kiy = "Total No. of Students" value = {this.props.user.students}/>
-										<Data kiy = "Total No. of teachers" value = {this.props.user.teachers}/>
-										<div className = "fdre" >
-											<p className = "bolde" >Created at : </p>
-				 							<p>{this.formatDate(this.props.user.createdAt)}</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				) ;
-			}
-			
+				</div>
+			) ;
 		}
 		else
 		{	
@@ -162,20 +149,3 @@ class UserProfile extends React.Component
 }
 
 export default UserProfile ;
-
-								// <div className = "left_corner_onee">
-								// 	<img src = {pencil} alt="pencil" className= "uie" />
-								// </div>
-										// <EditProfile kiy = "Name" value = {this.props.user.name}/>
-										// <EditProfile kiy = "Age" value = {this.props.user.age}/>
-										// <EditProfile kiy = "Gender" value = {this.props.user.gender}/>
-										// <EditProfile kiy = "Height(cm)" value = {this.props.user.height}/>
-										// <EditProfile kiy = "Weight(kg)" value = {this.props.user.weight}/>
-										// <EditProfile kiy = "Address" value = {this.props.user.address2}/>
-										// <EditProfile kiy = "Father's Name" value = {this.props.user.father}/>
-										// <EditProfile kiy = "Mother's Name" value = {this.props.user.mother}/>
-										// <EditProfile kiy = "Working" value = {this.props.user.working}/>
-										// <EditProfile kiy = "Hobbies" value = {this.props.user.hobbies}/>
-										// <EditProfile kiy = "E-Mail" value = {this.props.user.email}/>
-										// <EditProfile kiy = "Mobile No." value = {this.props.user.mobile}/>										
-										//line no.80<Link className = "buttone " to = "/editprofile" >Edit profile</Link>

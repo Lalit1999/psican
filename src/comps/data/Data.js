@@ -7,7 +7,7 @@ class Data extends React.Component
 {
 	render()
 	{	
-		console.log(this.props.mode) ;
+		// console.log(this.props.mode) ;
 		return(
 			<div className = "flexe">
 				<p className = "bolde" >{this.props.kiy}</p>
