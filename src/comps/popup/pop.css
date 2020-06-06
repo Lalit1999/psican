@@ -1,0 +1,41 @@
+.pop
+{
+	display: inline-block;
+	background-color: inherit; 
+}
+
+.popup
+{
+	padding: 1.2em 1em 2em ;
+	font-size: 1.3rem ;
+	display: inline-block;
+}
+
+.popup h2
+{
+	margin-top : 0 ;
+	text-align: center; 
+}
+
+.popup-content
+{
+	border: 1px solid black;
+	border-radius: 0.9rem ;
+	width: auto !important;
+	margin: auto !important;
+}
+
+.close
+{
+	text-decoration: none;
+	font-size: 3rem ;
+	color: darkred ;
+	z-index: 3;
+	padding: 0 .3em ;
+	display: inline-block ;
+}
+
+.close:hover
+{
+	background-color: salmon ;
+}

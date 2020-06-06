@@ -101,7 +101,7 @@ class Login extends React.Component
 		return (
 			<div>	
 				<LoginForm heading=" Login " error={this.state.error}
-					b1="Register" b1type="link" to="/register" close="close"
+					b1="Register" b1type="link" to="/register" near="near"
 					b2="Login" onb2Click={this.onLoginClick} >
 					<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
 					<Text label="Password" name="password" value={password} type="pw" 

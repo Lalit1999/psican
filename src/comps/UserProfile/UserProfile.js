@@ -4,6 +4,10 @@ import {Redirect} from'react-router-dom' ;
 import Title from '../title/Title.js' ;
 import Data from '../data/Data.js' ;
 import Register from '../signup/register/Register.js' ;
+import LoginForm from '../signup/forms/LoginForm.js' ;
+import Text from '../signup/text/Text.js' ;
+import { invalidPass, isBlank } from '../valid.js' ;
+import Pop from '../popup/Pop.js' ;
 
 import './UserProfile.css' ;
 
@@ -12,7 +16,10 @@ class UserProfile extends React.Component
 {	
 	state = {
 	  	mode : 'normal' ,
-	  	check : ''
+	  	oldpass: '' ,
+	  	newpass: '' ,
+	  	repass: '' ,
+	  	error: ''
 	} ;
 
 
@@ -65,6 +72,20 @@ class UserProfile extends React.Component
 			.catch( err  => console.log(err) ) ;
 	}
 	
+	onChangeClick = () => {
+		if(this.state.error !== '')
+			this.setState({error: 'You must fix all errors before proceeding'});
+		else
+		{
+			if( isBlank(this.state.oldpass, 'Old Password') )
+				this.setState( {error: isBlank(this.state.oldpass, 'Old Password')} )
+			else if ( invalidPass(this.state.newpass, this.state.repass) )
+				this.setState( {error: invalidPass(this.state.newpass, this.state.repass)} )
+			else
+			  	console.log(this.state) ;
+		}
+	}
+
 	returnkey = (str) => {
 		let ret = '' ;
 		switch(str)
@@ -124,8 +145,13 @@ class UserProfile extends React.Component
 			) ;
 	}
 
+	onInputChange = (event) => {
+		this.setState({	[event.target.name] : event.target.value, error: ''} ) ;
+	}
+
 	render()
 	{	//console.log(this.props.user) ;
+		const {oldpass, repass, newpass} = this.state ;
 		if(this.props.user.name)
 		{
 			return (
@@ -137,8 +163,15 @@ class UserProfile extends React.Component
 								<div className = "left_corner_twoe">
 									<button className = "buttone " onClick = {this.onEditClick}>
 										{(this.state.mode==='edit'?'Go Back':'Edit profile')}
-									</button>								
-									<button className = "buttone " >Change password</button>
+									</button>
+									<Pop btn="Change Password" classes="buttone ">
+										<LoginForm title=" Basic Details " error={this.state.error} near="near"
+											b2="Change" onb2Click={this.onChangeClick} >
+											<Text label="Old Password" name="oldpass" type="pw" value={oldpass} onChange={this.onInputChange}/>
+											<Text label="New Password" name="newpass" type="pw" value={newpass} onChange={this.onInputChange}/>
+											<Text label="Retype Password" name="repass" type="pw" value={repass} onChange={this.onInputChange}/>
+										</LoginForm>
+									</Pop>								
 		 							<button className = "buttone" onClick={this.onLogoutClick} >Logout</button>
 		 							<button className = "buttone dele" onClick={this.onDeleteClick} >Delete profile</button>
 								</div>
