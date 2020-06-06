@@ -27,7 +27,7 @@ const initPerson = {
 	address: '',
 	address2: '',
 	working: '',
-	sibling: 0,
+	siblings: 0,
 	hobbies: '',
 	family: '',
 } ;
@@ -58,6 +58,14 @@ class Register extends React.Component
 		error: '' 
 	}
 
+	componentDidMount = () => {
+		if(this.props.mode === 'edit')
+			if(this.props.init.status)
+				this.setState({mode: 'pr-reg-1', data: this.props.init});
+			else
+				this.setState({mode: 'sc-reg-1', data: this.props.init});
+	}
+
 	createSelect = () => {
 		return (
 			<div className="select-con">
@@ -79,34 +87,38 @@ class Register extends React.Component
 		let type = (this.state.mode === 'pr-reg-3')?'users':'school' ;
 		let obj = (type==='users')?initPerson:initSchool ;
 
-		const id = addNotif('Please Wait...') ;
+		if(this.props.mode === 'edit')
+			console.log(this.state.data) ;
+		else
+		{	const id = addNotif('Please Wait...') ;
 
-		fetch('https://psy-api.herokuapp.com/' + type,{
-			method : 'post' ,
-			headers : { 'Content-Type' : 'application/json'} ,
-			body :JSON.stringify(this.state.data) ,
-		})
-		.then(res => {
-			if(res.ok)
-				return res.json() ;
-			else
-				throw Error(res.statusText) ;
-		})
-		.then(data => {	
-			remNotif(id) ;
+			fetch('https://psy-api.herokuapp.com/' + type,{
+				method : 'post' ,
+				headers : { 'Content-Type' : 'application/json'} ,
+				body :JSON.stringify(this.state.data) ,
+			})
+			.then(res => {
+				if(res.ok)
+					return res.json() ;
+				else
+					throw Error(res.statusText) ;
+			})
+			.then(data => {	
+				remNotif(id) ;
 
-			this.setState({mode: 'reg-success', data: obj});
-			addNotif('Successfully Logged In', 'success') ;
+				this.setState({mode: 'reg-success', data: obj});
+				addNotif('Successfully Logged In', 'success') ;
 
-			this.props.loadUser(data) ;
-			this.props.history.push('/');
-		}) 
-		.catch( err  => {
-			console.log(err) ;
-			remNotif(id) ;	
-			addNotif(err.message, 'error') ;
-			this.setState({mode: 'reg-fail'});
-		}) ;
+				this.props.loadUser(data) ;
+				this.props.history.push('/');
+			}) 
+			.catch( err  => {
+				console.log(err) ;
+				remNotif(id) ;	
+				addNotif(err.message, 'error') ;
+				this.setState({mode: 'reg-fail'});
+			}) ;
+		}
 	}
 
 	onPrevClick = () => {
@@ -139,7 +151,7 @@ class Register extends React.Component
 									this.setState( {error: invalidEmail(email)} )
 								  else if(isBlank(name,'Name') )
 									this.setState( {error: isBlank(name,'Name')} )
-								  else if (invalidPass(password, repass) )
+								  else if (this.props.mode !== 'edit' && invalidPass(password, repass) )
 									this.setState( {error: invalidPass(password, repass)} )
 								  else if (invalidMobile(mobile) )
 									this.setState( {error: invalidMobile(mobile)} )
@@ -177,7 +189,7 @@ class Register extends React.Component
 									this.setState( {error: isBlank(name,'School Name')} )
 								  else if(invalidEmail(email) )
 									this.setState( {error: invalidEmail(email)} )
-								  else if(invalidPass(password, repass) )
+								  else if(this.props.mode !== 'edit' && invalidPass(password, repass) )
 									this.setState( {error: invalidPass(password, repass)} )
 								  else if(invalidMobile(mobile))
 									this.setState( {error: invalidMobile(mobile)} )
@@ -220,6 +232,20 @@ class Register extends React.Component
 		}
 	}
 
+	checkEditMode = () => {
+		if(this.props.mode === 'edit')
+			return null ;
+		else
+			return (
+				<React.Fragment>
+					<Text label="Password" name="password" value={this.state.data.password}
+						 type="pw" onChange={this.onInputChange}/>
+					<Text label="Retype Password" name="repass" value={this.state.data.repass} 
+						type="pw" onChange={this.onInputChange}/>
+				</React.Fragment>
+			) ;
+	}
+
 	onInputChange = (event) => {
 		this.setState({data: {...this.state.data, 
 								[event.target.name] : event.target.value}, error: '' }) ;
@@ -231,15 +257,14 @@ class Register extends React.Component
 	}
 
 	personForm1 = () => {
-		const {name, email, password, repass, mobile} = this.state.data ;
+		const {name, email, mobile} = this.state.data ;
 		return (
 			<div>	
 				<LoginForm title=" Basic Details " error={this.state.error}
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
 					<Text label="Name" name="name" value={name} onChange={this.onInputChange}/>
 					<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
-					<Text label="Password" name="password" value={password} type="pw" onChange={this.onInputChange}/>
-					<Text label="Retype Password" name="repass" value={repass} type="pw" onChange={this.onInputChange}/>
+					{ this.checkEditMode() } 
 					<Text label="Mobile No." name="mobile" value={mobile} onChange={this.onInputChange}/>
 				</LoginForm>
 			</div>
@@ -266,17 +291,18 @@ class Register extends React.Component
 	}
 
 	personForm3 = () => {
-		const {address, address2, working, sibling, family, hobbies} = this.state.data ;
+		const {address, address2, working, siblings, family, hobbies} = this.state.data ;
+		const str = (this.props.mode === 'edit'?'Update':'Register') ;
 		return (
 			<div>	
 				<LoginForm title=" Other Details " error={this.state.error}
 					b1="&lt;&nbsp; Prev" onb1Click={this.onPrevClick}
-					b2="Register" onb2Click={this.onNextClick} >
+					b2={str} onb2Click={this.onNextClick} >
 					<TextArea label="Current Address" name="address" value={address} r={3} c={20} onChange={this.onInputChange} />
 					<TextArea label="Permanent&ensp; Address" name="address2" value={address2} r={3} c={20} onChange={this.onInputChange} />
 					<Dropdown label="Working Status" name="working" value={working} onChange={this.onInputChange}
 							  options={['','Student','Full-Time','Part-Time','Self-Employed','Unemployed']} />
-					<Number label="No. Of Siblings"	name="sibling" value={sibling} min={0} max={15} onChange={this.onNumberChange}/>
+					<Number label="No. Of Siblings"	name="siblings" value={siblings} min={0} max={15} onChange={this.onNumberChange}/>
 					<Dropdown label="Family Type" name="family" value={family} onChange={this.onInputChange}
 							  options={['','Joint','Nuclear']} />
 					<Text label="Hobbies" name="hobbies" value={hobbies} onChange={this.onInputChange}/>
@@ -286,15 +312,14 @@ class Register extends React.Component
 	}
 
 	schoolForm1 = () => {
-		const {name, email, password, repass, mobile} = this.state.data ;
+		const {name, email, mobile} = this.state.data ;
 		return (
 			<div>	
 				<LoginForm title=" Basic Details " error={this.state.error}
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
 					<Text label="Name" name="name" value={name} onChange={this.onInputChange}/>
 					<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
-					<Text label="Password" name="password" value={password} type="pw" onChange={this.onInputChange}/>
-					<Text label="Retype Password" name="repass" value={repass} type="pw" onChange={this.onInputChange}/>
+					{ this.checkEditMode() } 
 					<Text label="Contact No." name="mobile" value={mobile} onChange={this.onInputChange}/>
 				</LoginForm>
 			</div>
@@ -319,11 +344,12 @@ class Register extends React.Component
 
 	schoolForm3 = () => {
 		const {type, class_t, class_f, students, teachers, medium, address} = this.state.data ;
+		const str = (this.props.mode === 'edit'?'Update':'Register') ;
 		return (
 			<div>	
 				<LoginForm title=" School Details " error={this.state.error}
 					b1="&lt;&nbsp; Prev" onb1Click={this.onPrevClick}
-					b2="Register" onb2Click={this.onNextClick} >
+					b2={str} onb2Click={this.onNextClick} >
 					<TextArea label="Address" name="address" value={address} r={3} c={20} onChange={this.onInputChange} />
 					<Dropdown label="Medium" name="medium" value={medium} onChange={this.onInputChange}
 						 options={['','Hindi','English','Urdu','Other']}/>
@@ -371,17 +397,26 @@ class Register extends React.Component
 	}
 
 	render()
-	{	if(this.props.user.name)
-			return <Redirect to='/' />
-		else
-		{	return(
+	{   if (this.props.mode === 'edit')
+		{	return (
 				<div>
-					<Title name = 'Register' items={["Home -", "Register"]}/>
-					<div className="blue-bg">
-						{this.checkMode()}
-					</div>
+					{this.checkMode()}
 				</div>
 			) ;
+		}
+		else
+		{	if(this.props.user.name)
+				return <Redirect to='/' />
+			else
+			{	return(
+					<div>
+						<Title name = 'Register' items={["Home -", "Register"]}/>
+						<div className="blue-bg">
+							{this.checkMode()}
+						</div>
+					</div>
+				) ;
+			}
 		}
 	}
 }
