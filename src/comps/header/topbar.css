@@ -67,12 +67,14 @@
 .logo
 {
 	font-size: 2rem ;
-	padding: 0.2em ;
 	margin: 0.4em ;
-	border: 1px solid white;
 }
 
 .logo p
 {
 	margin: 0 ;
+}
+
+.logo img
+{	width: 9vw;
 }

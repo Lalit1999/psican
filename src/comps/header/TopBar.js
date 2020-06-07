@@ -3,6 +3,7 @@ import { faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons' ;
 
 import './topbar.css' ;
 import BarItem from './BarItem.js' ;
+import Image from '../images/Psyment logo.jpg' ;
 
 class TopBar extends React.Component
 {
@@ -11,7 +12,7 @@ class TopBar extends React.Component
 		return (
 			<div className="topbar"> 
 				<div className="logo">
-					<p> PSYMENT </p>
+					<p> <img src={Image} alt="logo" /> </p>
 				</div>
 				<div className="right-topbar">
 					<BarItem link="tel:09555235231" text=" +91-9555-235-231" icon={faPhoneAlt}

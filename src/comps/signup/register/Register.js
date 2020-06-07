@@ -2,7 +2,7 @@ import React from 'react' ;
 import {Redirect, Link} from 'react-router-dom';
 
 import { addNotif, remNotif } from '../../notif.js' ;
-import { invalidEmail, invalidMobile, invalidPass, isBlank, isMaxMin } from '../../valid.js' ;
+import { invalidEmail, invalidMobile, invalidPass, isBlank, isMaxMin, invalidName } from '../../valid.js' ;
 import Title from '../../title/Title.js' ;
 import LoginForm from '../forms/LoginForm.js' ;
 import Text from '../text/Text.js' ;
@@ -149,8 +149,8 @@ class Register extends React.Component
 			{
 				case 'pr-reg-1' : if( invalidEmail(email) )
 									this.setState( {error: invalidEmail(email)} )
-								  else if(isBlank(name,'Name') )
-									this.setState( {error: isBlank(name,'Name')} )
+								  else if(invalidName(name) )
+									this.setState( {error: invalidName(name)} )
 								  else if (this.props.mode !== 'edit' && invalidPass(password, repass) )
 									this.setState( {error: invalidPass(password, repass)} )
 								  else if (invalidMobile(mobile) )
@@ -159,10 +159,10 @@ class Register extends React.Component
 									this.setState({mode:'pr-reg-2'});
 								  break ;
 				
-				case 'pr-reg-2' : if(isBlank(father,'Father \'s Name') )
-									this.setState( {error: isBlank(father,'Father \'s Name')} )
-								  else if(isBlank(mother,'Mother\'s Name') )
-									this.setState( {error: isBlank(mother,'Mother\'s Name')} )
+				case 'pr-reg-2' : if(invalidName(father) )
+									this.setState( {error: invalidName(father)} )
+								  else if(invalidName(mother) )
+									this.setState( {error: invalidName(mother)} )
 								  else if(isBlank(gender,'Gender') )
 									this.setState( {error: isBlank(gender,'Gender')} )
 								  else if(isBlank(status,'Status'))
@@ -197,10 +197,10 @@ class Register extends React.Component
 									this.setState({mode:'sc-reg-2'});
 								  break ;
 
-				case 'sc-reg-2' : if(isBlank(person,'Registrant Name') )
-									this.setState( {error: isBlank(person,'Registrant Name')} )
-								  else if(isBlank(principal,'Principal Name') )
-									this.setState( {error: isBlank(principal,'Principal Name')} )
+				case 'sc-reg-2' : if(invalidName(person) )
+									this.setState( {error: invalidName(person)} )
+								  else if(invalidName(principal) )
+									this.setState( {error: invalidName(principal)} )
 								  else if(invalidMobile(p_phone) )
 									this.setState( {error: invalidMobile(p_phone)} )
 								  else if(invalidMobile(pr_phone))
@@ -262,7 +262,7 @@ class Register extends React.Component
 			<div>	
 				<LoginForm title=" Basic Details " error={this.state.error}
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
-					<Text label="Name" name="name" value={name} onChange={this.onInputChange}/>
+					<Text label="Name" name="name" value={name.toUpperCase()} onChange={this.onInputChange}/>
 					<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
 					{ this.checkEditMode() } 
 					<Text label="Mobile No." name="mobile" value={mobile} onChange={this.onInputChange}/>
@@ -280,11 +280,11 @@ class Register extends React.Component
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
 					<Number label="Age"	name="age" value={age} min={10} max={65} onChange={this.onNumberChange}/>
 					<Dropdown label="Gender" name="gender" value={gender} options={['','M','F']} onChange={this.onInputChange}/>
-					<Text label="Mother's Name" name="mother" value={mother} onChange={this.onInputChange}/>
-					<Text label="Father's Name" name="father" value={father} onChange={this.onInputChange}/>
-					<Number label="Height (cm)"	name="height" value={height} min={100} max={300} onChange={this.onNumberChange}/>
+					<Text label="Mother's Name" name="mother" value={mother.toUpperCase()} onChange={this.onInputChange}/>
+					<Text label="Father's Name" name="father" value={father.toUpperCase()} onChange={this.onInputChange}/>
+					<Number label="Height (inch)"	name="height" value={height} min={100} max={300} onChange={this.onNumberChange}/>
 					<Number label="Weight (kg)"	name="weight" value={weight} min={10} max={250} onChange={this.onNumberChange}/>
-					<Dropdown label="Marital Status" name="status" value={status} options={['','Single','Married']} onChange={this.onInputChange}/>
+					<Dropdown label="Marital Status" name="status" value={status} options={['','Single','Married','Divorced','Separated','Widowed']} onChange={this.onInputChange}/>
 				</LoginForm>	
 			</div>
 			) ;
@@ -317,7 +317,7 @@ class Register extends React.Component
 			<div>	
 				<LoginForm title=" Basic Details " error={this.state.error}
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
-					<Text label="Name" name="name" value={name} onChange={this.onInputChange}/>
+					<Text label="Name" name="name" value={name.toUpperCase()} onChange={this.onInputChange}/>
 					<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
 					{ this.checkEditMode() } 
 					<Text label="Contact No." name="mobile" value={mobile} onChange={this.onInputChange}/>
@@ -333,9 +333,9 @@ class Register extends React.Component
 				<LoginForm title=" Correspondant Details " error={this.state.error}
 					b1="&lt;&nbsp; Prev" onb1Click={this.onPrevClick}
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
-					<Text label="Registrant Name" name="person" value={person} onChange={this.onInputChange}/>
+					<Text label="Registrant Name" name="person" value={person.toUpperCase()} onChange={this.onInputChange}/>
 					<Text label="Registrant Contact" name="p_phone" value={p_phone} onChange={this.onInputChange}/>
-					<Text label="Name of Principal" name="principal" value={principal} onChange={this.onInputChange}/>
+					<Text label="Name of Principal" name="principal" value={principal.toUpperCase()} onChange={this.onInputChange}/>
 					<Text label="Principal Contact" name="pr_phone" value={pr_phone} onChange={this.onInputChange}/>
 				</LoginForm>
 			</div>

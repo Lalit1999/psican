@@ -18,6 +18,15 @@ const invalidEmail = (str) => {
 		return false ;
 }
 
+const invalidName = (str) => {
+	if(str === '')
+		return 'Name(s) cannot be Blank' ;
+	else if ( !valid.isAlpha(str.replace(' ', 'xyz')))
+		return 'Name(s) cannot contain digits(0-9) or Symbols' ;
+	else 
+		return false ;
+}
+
 const invalidPass = (str, str2) => {
 	if(str === '' || str2 === '')
 		return 'Password can not be blank' ;
@@ -49,4 +58,4 @@ const isMaxMin = (str, field, min, max) => {
 		return false ;
 }
 
-export { isBlank, isMaxMin, invalidPass, invalidMobile, invalidEmail} ;
+export { isBlank, isMaxMin, invalidPass, invalidMobile, invalidEmail, invalidName} ;

@@ -219,9 +219,9 @@ class Personal extends React.Component
 			return (
 				<div className="blue-bg blue-form">
 					<p> You need to 
-						<Link to="/login" className="btn2"> &emsp;Login&emsp; </Link>
+						<Link to="/login" className="btn3"> &emsp;Login&emsp; </Link>
 						 or 
-						<Link to="/register" className="btn2"> &emsp;Register&emsp; </Link> 
+						<Link to="/register" className="btn3"> &emsp;Register&emsp; </Link> 
 						as a Student to send a query. 
 					</p>
 				</div>

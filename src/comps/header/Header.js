@@ -29,6 +29,26 @@ class Header extends React.Component
 		this.props.history.push('/' + path) ;
 	}
 
+	onLogoutClick = () => {
+		const type = (this.props.user.status?'logoutAll':'slogoutAll') ;
+		fetch('https://psy-api.herokuapp.com/' + type ,{
+				method : 'post' ,
+				headers : { 'Content-Type' : 'application/json', 
+							'Authorization' : 'Bearer ' + this.props.token} ,
+			})
+			.then(res => {
+				if(res.ok)
+					return res.json() ;
+				else
+					throw Error(res.statusText) ;
+			})
+			.then(data =>{	
+				console.log(data) ;
+				this.props.loadUser({}) ;
+			}) 
+			.catch( err  => console.log(err) ) ;
+	}
+
 	checkMobile = () => {
 		if(window.innerWidth > 923)
 		{	return (
@@ -93,6 +113,7 @@ class Header extends React.Component
 			return (
 				<div className = "right-header">
 					<Link className="header-btn" to="/profile"> {this.props.user.name} </Link>
+					<button className="header-btn"  onClick={this.onLogoutClick}> Logout </button>
 				</div>
 				) ;
 		}

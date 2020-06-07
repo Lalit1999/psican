@@ -54,7 +54,7 @@ class App extends React.Component
 		        <ScrollContext>
 		          <div>
 		          	<TopBar />
-		            <Header user={this.state.user} token={this.state.userToken}/>
+		            <Header user={this.state.user} token={this.state.userToken} loadUser={this.loadUser}/>
 		            <Switch>
 		              <Route path='/' exact component={Home} />
 		              <Route path='/about/leader' exact component={AboutPerson}/>
