@@ -88,7 +88,32 @@ class Register extends React.Component
 		let obj = (type==='users')?initPerson:initSchool ;
 
 		if(this.props.mode === 'edit')
-			console.log(this.state.data) ;
+		{	addNotif('Please Wait...') ;
+
+			fetch('https://psy-api.herokuapp.com/' + type + '/me',{
+				method : 'PATCH' ,
+				headers : { 'Content-Type' : 'application/json', 
+							'Authorization' : 'Bearer ' + this.props.token} ,
+				body :JSON.stringify(this.state.data) ,
+			})
+			.then(res => {
+				if(res.ok)
+					return res.json() ;
+				else
+					throw Error(res.statusText) ;
+			})
+			.then(data => {	
+				addNotif('Successfully Updated Profile', 'success') ;
+
+				this.props.loadUser(data) ;
+				this.props.edit() ;
+				// this.props.history.push('/');
+			}) 
+			.catch( err  => {
+				console.log(err) ;
+				addNotif(err.message, 'error') ;
+			}) ;
+		}
 		else
 		{	addNotif('Please Wait...') ;
 
@@ -166,8 +191,8 @@ class Register extends React.Component
 									this.setState( {error: isBlank(status,'Status')} )
 								  else if(isMaxMin(age,'Age',10,65) )
 									this.setState( {error: isMaxMin(age,'Age',10,65)} )
-								  else if(isMaxMin(height,'Height',100,300) )
-									this.setState( {error: isMaxMin(height,'Height',100,300)} )
+								  else if(isMaxMin(height,'Height',24,300) )
+									this.setState( {error: isMaxMin(height,'Height',24,300)} )
 								  else if(isMaxMin(weight,'Weight',10,250))
 									this.setState( {error: isMaxMin(weight,'Weight',10,250)} )
 								  else
@@ -279,7 +304,7 @@ class Register extends React.Component
 					<Dropdown label="Gender" name="gender" value={gender} options={['','M','F']} onChange={this.onInputChange}/>
 					<Text label="Mother's Name" name="mother" value={mother.toUpperCase()} onChange={this.onInputChange}/>
 					<Text label="Father's Name" name="father" value={father.toUpperCase()} onChange={this.onInputChange}/>
-					<Number label="Height (inch)"	name="height" value={height} min={100} max={300} onChange={this.onNumberChange}/>
+					<Number label="Height (inch)"	name="height" value={height} min={24} max={300} onChange={this.onNumberChange}/>
 					<Number label="Weight (kg)"	name="weight" value={weight} min={10} max={250} onChange={this.onNumberChange}/>
 					<Dropdown label="Marital Status" name="status" value={status} options={['','Single','Married','Divorced','Separated','Widowed']} onChange={this.onInputChange}/>
 				</LoginForm>	

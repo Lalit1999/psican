@@ -34,18 +34,18 @@ class UserProfile extends React.Component
 				method : 'post' ,
 				headers : { 'Content-Type' : 'application/json', 
 							'Authorization' : 'Bearer ' + this.props.token} ,
-			})
-			.then(res => {
-				if(res.ok)
-					return res.json() ;
-				else
-					throw Error(res.statusText) ;
-			})
-			.then(data =>{	
-				console.log(data) ;
-				this.props.loadUser({}) ;
-			}) 
-			.catch( err  => console.log(err) ) ;
+		})
+		.then(res => {
+			if(res.ok)
+				return res.json() ;
+			else
+				throw Error(res.statusText) ;
+		})
+		.then(data =>{	
+			console.log(data) ;
+			this.props.loadUser({}) ;
+		}) 
+		.catch( err  => console.log(err) ) ;
 	}
 
 	onEditClick = () => {
@@ -73,6 +73,7 @@ class UserProfile extends React.Component
 	}
 	
 	onChangeClick = () => {
+		const type = (this.props.user.status?'users':'school') ;
 		if(this.state.error !== '')
 			this.setState({error: 'You must fix all errors before proceeding'});
 		else
@@ -82,7 +83,20 @@ class UserProfile extends React.Component
 			else if ( invalidPass(this.state.newpass, this.state.repass) )
 				this.setState( {error: invalidPass(this.state.newpass, this.state.repass)} )
 			else
-			  	console.log(this.state) ;
+			{	fetch('https://psy-api.herokuapp.com/' + type + '/me/change',{
+						method : 'post' ,
+						headers : { 'Content-Type' : 'application/json', 
+									'Authorization' : 'Bearer ' + this.props.token} ,
+						body: JSON.stringify({oldpass: this.state.oldpass, newpass: this.state.newpass})
+				})
+				.then(res => {
+					if(res.ok)
+						this.setState({error: '', oldpass: '', newpass: '', repass:''}) ;
+					else
+						throw Error(res.statusText) ;
+				})
+				.catch( err  => this.setState({error: 'Incorrect Old Password'})) ;
+			}
 		}
 	}
 
@@ -132,7 +146,7 @@ class UserProfile extends React.Component
 
 	checkMode = () => {
 		if(this.state.mode === 'edit')
-			return <Register init={this.props.user} mode="edit"/>
+			return <Register init={this.props.user} mode="edit" token={this.props.token} loadUser={this.props.loadUser} edit={this.onEditClick}/>
 		else
 			return (
 				<div className = "right_corner_onee">

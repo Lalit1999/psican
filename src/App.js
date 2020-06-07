@@ -41,6 +41,8 @@ class App extends React.Component
 			this.setState({user: user.user, userToken: user.token});
 		else if(user.school)
 			this.setState({user: user.school, userToken: user.token});
+		else if(user.name)
+			this.setState({user: user}) ;
 		else
 			this.setState({user : {}, userToken: ''}) ;
 	}
