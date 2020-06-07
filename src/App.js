@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom' ;
-import ReactNotification from 'react-notifications-component' ;
-import 'react-notifications-component/dist/theme.css' ;
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { ScrollContext } from 'react-router-scroll-4';
 
 import Home from './comps/home/Home.js' ;
@@ -49,7 +49,8 @@ class App extends React.Component
 	{	//console.log(this.state) ;
 		return(
 			<div className="App">
-				<ReactNotification />
+				<ToastContainer position="bottom-right" autoClose={5000} hideProgressBar={false}
+						newestOnTop={false} closeOnClick rtl={false} pauseOnHover />
 		        <BrowserRouter>
 		        <ScrollContext>
 		          <div>

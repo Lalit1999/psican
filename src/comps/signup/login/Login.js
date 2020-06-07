@@ -1,7 +1,7 @@
 import React from 'react' ;
 import { Redirect } from 'react-router-dom';
 
-import { addNotif, remNotif} from '../../notif.js' ;
+import { addNotif } from '../../notif.js' ;
 import { invalidEmail, isBlank } from '../../valid.js' ;
 import Title from '../../title/Title.js' ;
 import LoginForm from '../forms/LoginForm.js' ;
@@ -28,7 +28,7 @@ class Login extends React.Component
 			email: this.state.data.email,
 		}
 
-		const id = addNotif('Please Wait...') ;
+		addNotif('Please Wait...') ;
 
 		fetch('https://psy-api.herokuapp.com/login',{
 			method : 'post' ,
@@ -42,18 +42,14 @@ class Login extends React.Component
 				throw Error(res.statusText) ;
 		})
 		.then(data =>{	
-			remNotif(id) ;
-
 			this.setState({data: initObj});
 			addNotif('Successfully Logged In', 'success') ;
 			
 			this.props.loadUser(data) ;
-
 			this.props.history.push('/');
 		})  
 		.catch( err  => {
 			console.log(err) ;
-			remNotif(id) ;	
 			addNotif(err.message, 'error') ;	
 			this.setState({error: 'Incorrect Username OR Password'});
 		}) ;

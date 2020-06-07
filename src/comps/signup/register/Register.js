@@ -1,7 +1,7 @@
 import React from 'react' ;
 import {Redirect, Link} from 'react-router-dom';
 
-import { addNotif, remNotif } from '../../notif.js' ;
+import { addNotif } from '../../notif.js' ;
 import { invalidEmail, invalidMobile, invalidPass, isBlank, isMaxMin, invalidName } from '../../valid.js' ;
 import Title from '../../title/Title.js' ;
 import LoginForm from '../forms/LoginForm.js' ;
@@ -90,7 +90,7 @@ class Register extends React.Component
 		if(this.props.mode === 'edit')
 			console.log(this.state.data) ;
 		else
-		{	const id = addNotif('Please Wait...') ;
+		{	addNotif('Please Wait...') ;
 
 			fetch('https://psy-api.herokuapp.com/' + type,{
 				method : 'post' ,
@@ -104,8 +104,6 @@ class Register extends React.Component
 					throw Error(res.statusText) ;
 			})
 			.then(data => {	
-				remNotif(id) ;
-
 				this.setState({mode: 'reg-success', data: obj});
 				addNotif('Successfully Logged In', 'success') ;
 
@@ -114,7 +112,6 @@ class Register extends React.Component
 			}) 
 			.catch( err  => {
 				console.log(err) ;
-				remNotif(id) ;	
 				addNotif(err.message, 'error') ;
 				this.setState({mode: 'reg-fail'});
 			}) ;

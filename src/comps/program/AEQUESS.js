@@ -49,7 +49,7 @@ class AQUESS extends React.Component
 				type : this.state.type 
 			} ;
 
-			addNotif('Please Wait...', 'notif') ;
+			addNotif('Please Wait...') ;
 
 			fetch('https://psy-api.herokuapp.com/ask',{
 				method : 'post' ,

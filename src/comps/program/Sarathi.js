@@ -54,7 +54,7 @@ class Sarathi extends React.Component
 				type : this.state.type 
 			} ;
 
-			addNotif('Please Wait...', 'notif') ;
+			addNotif('Please Wait...') ;
 
 			if(this.state.avail === 'yes')
 			{	fetch('https://psy-api.herokuapp.com/book',{

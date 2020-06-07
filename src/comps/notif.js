@@ -1,53 +1,22 @@
-// THIS FILE REQUIRES 'react-notifications-component' PACKAGE TO WORK
+// THIS FILE REQUIRES 'react-toastify' PACKAGE TO WORK
 
-import { store } from 'react-notifications-component' ;
-
-const successObj = {
-  title: "Success!",
-  type: "success",
-  container: "bottom-right",
-  dismiss: {
-    duration: 3000,
-    onScreen: true
-  }
-} ;
-
-const errorObj = {
-  title: "Error!",
-  type: "danger",
-  container: "bottom-right",
-  dismiss: {
-    duration: 3000,
-    onScreen: true
-  }
-} ;
-
-const notifObj = {
-  title: "Loading...",
-  type: "info",
-  container: "bottom-right",
-  dismiss: {
-    duration: 5000,
-    onScreen: true
-  }
-} ;
+import { toast } from 'react-toastify' ;
 
 const addNotif = (message, type) => {
-  let obj = {} ;
   switch(type)
   {
-    case 'error' : obj = errorObj ; break ;
-    case 'success' : obj = successObj ; break ;
-    case 'notif' : obj = notifObj ; break ;
-    default : obj = notifObj ;
+    case 'error' : toast.error(message, {autoClose: false}) ; break ;
+    case 'success' : toast.success(message, {autoClose: false}) ; break ;
+    case 'notif' : toast(message) ; break ;
+    default : toast.info(message, {autoClose: 7000}) ;
   }
 
-  obj.message = message ;
-  return store.addNotification(obj) ;
 }
 
-const remNotif = (id) => {
-  store.removeNotification(id) ;  
-}
+// const remNotif = (id) => {
+//   store.removeNotification(id) ;  
+// }
 
-export {remNotif, addNotif} ;
+// export {remNotif, addNotif} ;
+
+export {addNotif} ;

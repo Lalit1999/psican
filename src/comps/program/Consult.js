@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker' ;
 import "react-datepicker/dist/react-datepicker.css";
 import {Link} from 'react-router-dom' ;
 
-import { addNotif, remNotif } from '../notif.js' ;
+import { addNotif } from '../notif.js' ;
 import Title from '../title/Title.js' ;
 import DisplayDetailed from '../display/DisplayDetailed.js' ;
 import Heading from '../Heading/Heading.js' ;
@@ -97,7 +97,7 @@ class Personal extends React.Component
 			date : this.state.date 
 		} ;
 
-		let id = addNotif('Please Wait...', 'notif') ;
+		addNotif('Please Wait...', 'notif') ;
 
 		if(this.state.avail === 'yes')
 		{	fetch('https://psy-api.herokuapp.com/consult',{
@@ -114,12 +114,10 @@ class Personal extends React.Component
 			})
 			.then(data => {	
 				this.setState({ date: this.returnTomorrow(), topic: '', type: '', avail: ''});
-				remNotif(id) ;
 				addNotif('Successfully Received Consultation Appointment', 'success') ;
 			}) 
 			.catch( err  => {
 				console.log(err) ; 
-				remNotif(id) ;
 				addNotif(err.message, 'error') ;
 			}) ;
 		}
@@ -140,7 +138,6 @@ class Personal extends React.Component
 				if(data === 'Available')
 				{
 					this.setState({ avail: 'yes'});
-					remNotif(id) ;
 					addNotif('Appointment Available', 'success') ;
 				}	
 				else
@@ -148,7 +145,6 @@ class Personal extends React.Component
 			}) 
 			.catch( err  => {
 				this.setState({ error: 'Unavailable, for negotiation Call +91-9555235231'});
-				remNotif(id) ;
 				addNotif(err.message, 'error') ;
 			}) ;
 		}
