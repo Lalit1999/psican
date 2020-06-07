@@ -2,25 +2,21 @@
 {
 	display: flex;
 	flex-direction: row ;
-	/*background-color: transparent ; */
-	background-color: rgba(29, 41, 81,0.7); ; 
+	background-color: rgba(29, 41, 81,0.9); ; 
 	justify-content: space-between;
 	color: white ;
-	font-size: 1.7rem ;
-
+	font-size: 1.3rem ;
 }
-
 
 .bld
 {
 	font-weight: bold;
-	margin: 0 ;
+	margin: 0.5em auto 0.1em ;
 }
 
-.text
+.txt
 {
-	margin-top: 2em ;
-	margin-right: 1em ;
+	margin-left: 3em ;
 }
 /*yaha se*/
 .photo
@@ -54,11 +50,10 @@
 /*yaha tak*/
 .font
 {
-	font-size: 3rem ; 
+	font-size: 2rem ; 
 	width: 100% ;
 	text-align: center ;
-
-	/*background-color: rgba(0,0,0,0.5) ;*/
+	margin-top: 1em ;
 }
 
 .display

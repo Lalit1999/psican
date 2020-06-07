@@ -1,23 +1,23 @@
-.pop
+.pop.self
 {
 	display: inline-block;
 	background-color: inherit; 
 }
 
-.popup
+.self .popup
 {
 	padding: 1.2em 1em 2em ;
 	font-size: 1.3rem ;
 	display: inline-block;
 }
 
-.popup h2
+.self .popup h2
 {
 	margin-top : 0 ;
 	text-align: center; 
 }
 
-.popup-content
+.self .popup-content
 {
 	border: 1px solid black;
 	border-radius: 0.9rem ;
@@ -25,7 +25,7 @@
 	margin: auto !important;
 }
 
-.close
+.self .close
 {
 	text-decoration: none;
 	font-size: 3rem ;
@@ -35,7 +35,7 @@
 	display: inline-block ;
 }
 
-.close:hover
+.self .close:hover
 {
 	background-color: salmon ;
 }

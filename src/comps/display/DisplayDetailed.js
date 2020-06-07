@@ -1,6 +1,8 @@
 import React from 'react' ;
 import Heading from '../Heading/Heading.js' ;
 
+import './Display.css' ;
+
 class DisplayDetailed extends React.Component
 {	createLi = () => {
  		return this.props.lidata.map( (li,i) => {

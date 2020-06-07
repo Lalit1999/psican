@@ -14,7 +14,7 @@ class Title extends React.Component
 			case "Programs" : case " Programs -" : return '' ;
 			case "Consult" : return 'consult' ;
 			case "Sarathi" : return 'program/Sarathi' ;
-			case "AQueSS" : return 'program/AQueSS' ;
+			case "AEQUESS" : return 'program/AEQUESS' ;
 			case "Leader" : return 'about/leader' ;
 			case "PSYMENT" : return 'about/psyment' ;
 			case "Vision" : return 'about/vision' ; 

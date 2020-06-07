@@ -15,7 +15,7 @@ const arr = ['To provide customised support to students for various academic, be
 ' To provide soluions and guidance of students for various health, psychological, gender and interpersonal issues'] ;
 
 const features = [
-'Students studying in classes 11, 12 and UG, from any part of India can register with us and ask their query.',
+'Students studying in classes 11, 12 and Under-Graduate, from any part of India can register with us and ask their query.',
 'Upto 2 E-Mail Queries per month per student shall be answered.',
 'All E-Queries shall be answered free of cost',
 'If you require detailed or personalised assistance, it is advised to go for personal consultation.',
@@ -140,8 +140,8 @@ class AQUESS extends React.Component
 	render()
 	{	return(
 			<div>
-				<Title name = 'AQUESS Program' items={["Home -"," Programs -", "AQUESS"]}/>
-				<h4 className="intro cen"> <span className="brand">AQUESS</span> is an 
+				<Title name = 'AEQUESS Program' items={["Home -"," Programs -", "AEQUESS"]}/>
+				<h4 className="intro cen"> <span className="brand">AEQUESS</span> is an 
 				<span className="ngo">&nbsp;Online Query System for Students </span> which is 
 				 free of cost.  </h4>
 				<p className="intro"> Classes 11-12 & Under-Graduate level education lays the 

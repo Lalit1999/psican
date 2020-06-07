@@ -48,7 +48,7 @@ class Home extends React.Component
             	},
 	            message: 'Welcome to the world of',
 	            link : '/' ,
-	            message2: 'Realisation ( तत्वमसि ) - Mentoring',
+	            message2: 'Realisation ( तत् त्वमसि ) - Mentoring',
 	            message3: '&' ,
 	            message4: 'Actualisation ( अहम् ब्रह्मास्मि ) - Psychology',
 	            title: 'PSYMENT'

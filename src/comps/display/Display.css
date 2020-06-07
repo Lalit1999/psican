@@ -39,12 +39,16 @@
 {
 	font-weight: normal; 
 	font-size: 1.3rem ;
-	margin: 0 3em 1em ;
+	margin: 0 1.5em 1em ;
+}
+
+.list ul
+{	margin-top: .2em ;
 }
 
 .list li
 {
-	margin-bottom: 1em  ;
+	margin-bottom: .3em  ;
 }
 
 .list-li
@@ -52,8 +56,8 @@
     margin: 0.3em 0 ;
 }
 
-.list-li li
+/*.list-li li
 {
     font-size: smaller;
     margin-top: .5em ;
-}
+}*/
