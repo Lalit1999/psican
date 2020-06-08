@@ -1,12 +1,19 @@
 import React from 'react' ;
 import {Link} from'react-router-dom' ;
 import {withRouter} from 'react-router' ;
+import { addNotif } from '.././notif.js' ;
 import CheeseburgerMenu from 'cheeseburger-menu' ;
 import HamburgerMenu from 'react-hamburger-menu' ;
 import Popup from "reactjs-popup";
 
 import Menu from './Menu.js' ;
 import './header.css' ;
+
+
+const initObj = {
+	email: '' ,
+	password: '',
+} ;
 
 class Header extends React.Component
 {	constructor(props) {
@@ -43,7 +50,9 @@ class Header extends React.Component
 					throw Error(res.statusText) ;
 			})
 			.then(data =>{	
-				console.log(data) ;
+				this.setState({data: initObj});
+				addNotif('Successfully Logged Out', 'success') ;	
+				// console.log(data) ;
 				this.props.loadUser({}) ;
 			}) 
 			.catch( err  => console.log(err) ) ;

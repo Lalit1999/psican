@@ -1,6 +1,6 @@
 import React from 'react' ;
 import {Redirect} from'react-router-dom' ;
-
+import { addNotif } from '.././notif.js' ;
 import Title from '../title/Title.js' ;
 import Data from '../data/Data.js' ;
 import Register from '../signup/register/Register.js' ;
@@ -11,6 +11,10 @@ import Pop from '../popup/Pop.js' ;
 
 import './UserProfile.css' ;
 
+const initObj = {
+	email: '' ,
+	password: '',
+} ;
 
 class UserProfile extends React.Component
 {	
@@ -19,7 +23,8 @@ class UserProfile extends React.Component
 	  	oldpass: '' ,
 	  	newpass: '' ,
 	  	repass: '' ,
-	  	error: ''
+	  	error: '' ,
+	  	data: ''
 	} ;
 
 
@@ -42,7 +47,9 @@ class UserProfile extends React.Component
 				throw Error(res.statusText) ;
 		})
 		.then(data =>{	
-			console.log(data) ;
+			this.setState({data: initObj});
+			addNotif('Successfully Logged Out', 'success') ;	
+			// console.log(data) ;
 			this.props.loadUser({}) ;
 		}) 
 		.catch( err  => console.log(err) ) ;
@@ -66,7 +73,9 @@ class UserProfile extends React.Component
 					throw Error(res.statusText) ;
 			})
 			.then(data =>{	
-				console.log(data) ;
+				this.setState({data: initObj});
+				addNotif('Successfully Deleted', 'success') ;
+				// console.log(data) ;
 				this.props.loadUser({}) ;
 			}) 
 			.catch( err  => console.log(err) ) ;
@@ -94,6 +103,12 @@ class UserProfile extends React.Component
 						this.setState({error: '', oldpass: '', newpass: '', repass:''}) ;
 					else
 						throw Error(res.statusText) ;
+				})
+				.then(data =>{	
+				this.setState({data: initObj});
+				addNotif('Successfully changed the password', 'success') ;
+				// console.log(data) ;
+				this.props.loadUser({}) ;
 				})
 				.catch( err  => this.setState({error: 'Incorrect Old Password'})) ;
 			}
