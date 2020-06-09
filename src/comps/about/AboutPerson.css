@@ -1,6 +1,5 @@
 .flex
-{
-	display: flex;
+{	display: flex;
 	flex-direction: row ;
 	background-color: rgba(29, 41, 81,0.9); ; 
 	justify-content: space-between;
@@ -8,46 +7,57 @@
 	font-size: 1.3rem ;
 }
 
-.bld
-{
-	font-weight: bold;
+.about-bold
+{	font-weight: bold;
 	margin: 0.5em auto 0.1em ;
 }
 
-.txt
-{
-	margin-left: 3em ;
-}
-/*yaha se*/
-.photo
-{
-	/*width: 19vw ;*/
-	/*width: 40vw;*/
-	margin-top: 13em ;
-	/*margin-left: 1em ;*/
-	margin-right: 6em ;
-	max-width: 50% ;
-	height: 100% ;
-	/*margin : 3em 5em ;*/
-	/*padding: 1em ; */
-	border : 5px solid white ;
+.about-left
+{	padding: 0 4em 0 2em ;
 }
 
-.br
-{
+.about-right
+{	padding: 0 4em ;
+}
+
+.txt
+{	margin-left: 3em ;
+	margin-bottom: 3em ;
+}
+
+.photo
+{	margin-top: 6em ;
+	margin-right: 4em ;
+	width: 38% ;
+	height: 60vh ;
+	border : 5px solid white ;
 	border-radius: 2rem ;
-	display: block;
+	overflow: hidden; 
+}
+
+.br, .br2
+{	display: block;
 	vertical-align: bottom;
 }
 
-.mb
-{	margin-top: 8em ;
-	margin-bottom: 7em ;
-	margin-right: 2em ; 
-	margin-left: 2em ;
+.br
+{	height: 60vh ;
 }
 
-/*yaha tak*/
+.br2
+{	height: 35vh ;
+}
+
+.mb
+{	margin-top: 4.2em ;
+	margin-left: 4em ;
+	width: 77% ;
+	height: 35vh ;
+	border : 5px solid white ;
+	border-radius: 2rem ;
+	overflow: hidden;
+}
+
 .font
 {
 	font-size: 2rem ; 

@@ -32,9 +32,9 @@ class Title extends React.Component
 			);
 		}) ;
 	}
+
 	render()
-	{
-		return(
+	{	return(
 			<div className = 'bgimage '>
 				<div className="colo">		
 					<h1 className="title">{this.props.name}</h1>

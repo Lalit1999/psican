@@ -85,9 +85,7 @@ class Personal extends React.Component
 		else if(this.state.date.getHours() < 18 || this.state.date.getHours() > 20)
 			this.setState({error: 'Invalid Date or Time range'});
 		else
-		{	//console.log(this.state) ;
 			this.callBackend() ;			
-		}
 	}
 
 	callBackend = () => {
@@ -118,7 +116,7 @@ class Personal extends React.Component
 			}) 
 			.catch( err  => {
 				console.log(err) ; 
-				addNotif(err.message, 'error') ;
+				addNotif('Error Creating Appointment' , 'error') ;
 			}) ;
 		}
 		else
@@ -136,8 +134,7 @@ class Personal extends React.Component
 			})
 			.then(data => {
 				if(data === 'Available')
-				{
-					this.setState({ avail: 'yes'});
+				{	this.setState({ avail: 'yes'});
 					addNotif('Appointment Available', 'success') ;
 				}	
 				else

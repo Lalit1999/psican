@@ -50,7 +50,7 @@ class Login extends React.Component
 		})  
 		.catch( err  => {
 			console.log(err) ;
-			addNotif(err.message, 'error') ;	
+			addNotif('Error Logging in', 'error') ;	
 			this.setState({error: 'Incorrect Username OR Password'});
 		}) ;
 	}
@@ -109,8 +109,7 @@ class Login extends React.Component
 
 	checkMode = () => {
 		switch(this.state.mode)
-		{
-			case 'select' : return this.createSelect() ;
+		{	case 'select' : return this.createSelect() ;
 			case 'person': case 'school' : return this.createLogin() ;
 			default : return 'You probably encountered a problem' ;
 		}

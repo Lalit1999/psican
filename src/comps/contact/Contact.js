@@ -1,7 +1,7 @@
 import React from 'react' ;
-import valid from 'validator' ;
 
 import { addNotif } from '../notif.js' ;
+import { invalidEmail, invalidMobile, isBlank, invalidName } from '../valid.js' ;
 import LoginForm from '../signup/forms/LoginForm.js' ;
 import Text from '../signup/text/Text.js' ;
 import TextArea from '../signup/text/TextArea.js' ;
@@ -18,25 +18,19 @@ class Contact extends React.Component
 	}
 
 	onSendClick = () => {
-		if(this.state.error !== '')
+		const {name, mobile, email, message, error} = this.state ;
+		if(error !== '')
 			this.setState({error: 'You cannot proceed without fixing all the errors'});
-		else if(this.state.name === '')
-			this.setState({error: 'Name can not be blank'});
-	  	else if(this.state.email === '')
-			this.setState({error: 'E-Mail can not be blank'});
-		else if(this.state.mobile === '')
-			this.setState({error: 'Mobile No. can not be blank'});
-	  	else if(this.state.message === '')
-			this.setState({error: 'Message can not be blank'});
+		else if(invalidName(name))
+			this.setState({error: invalidName(name)});
+	  	else if(invalidEmail(email))
+			this.setState({error: invalidEmail(email)});
+		else if(invalidMobile(mobile))
+			this.setState({error: invalidMobile(mobile)});
+	  	else if(isBlank(message, 'Message'))
+			this.setState({error: isBlank(message, 'Message')});
 		else
-		{	//console.log(this.state) ;
-			
-			const obj = {
-				name : this.state.name ,
-				mobile: this.state.mobile ,
-				message : this.state.message ,
-				email : this.state.email 
-			} ;
+		{	const obj = { name, mobile, message, email } ;
 
 			addNotif('Please Wait...') ;
 
@@ -57,55 +51,13 @@ class Contact extends React.Component
 			}) 
 			.catch( err  => {
 				console.log(err) ; 
-				addNotif(err.message, 'error') ;
+				addNotif('There was a problem with sending message', 'error') ;
 			}) ;
 		}
 	}
 
-	onNameChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Name can not be blank'}) ;
-		else
-		{	if(this.state.error === 'Name can not be blank') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({name : event.target.value}) ;
-	}
-
-	onEmailChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'E-Mail can not be blank'}) ;
-		else if(!valid.isEmail(event.target.value))
-			this.setState({error: 'This might not be a valid E-Mail'});
-		else
-		{	if(this.state.error === 'E-Mail can not be blank' || this.state.error === 'This might not be a valid E-Mail') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({email : event.target.value}) ;
-	}
-
-	onMobileChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Mobile No. can not be blank'}) ;
-		else if(!valid.isNumeric(event.target.value))
-			this.setState({error: 'Mobile No. must only contain digits or -'});
-		else if(event.target.value.length < 10)
-			this.setState({error: 'Mobile No. must be at least 10 digits long'}) ;
-		else
-		{	if(this.state.error === 'Mobile No. can not be blank' || this.state.error === 'Mobile No. must only contain digits or -' || this.state.error === 'Mobile No. must be at least 10 digits long')
-					this.setState({error: ''}) ;
-		}
-		this.setState({mobile : event.target.value }) ;
-	}
-
-	onMessageChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Message can not be blank'}) ;
-		else
-		{	if(this.state.error === 'Message can not be blank') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({message : event.target.value}) ;
+	onInputChange = (event) => {
+		this.setState({	[event.target.name] : event.target.value, error: ''} ) ;
 	}
 
 	render()
@@ -118,10 +70,10 @@ class Contact extends React.Component
 				<div className = 'align'>
 					<LoginForm title=" Send Your Message / Feedback " error={this.state.error}
 						b2="Send &gt;&nbsp;" onb2Click={this.onSendClick} close>
-						<Text label="Name" value={name} onChange={this.onNameChange}/>
-						<Text label="E-Mail" value={email} onChange={this.onEmailChange}/>
-						<Text label="Mobile No." value={mobile} onChange={this.onMobileChange}/>
-						<TextArea label="Message" value={message} r={3} c={20} onChange={this.onMessageChange} />
+						<Text label="Name" name="name" value={name} onChange={this.onInputChange}/>
+						<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
+						<Text label="Mobile No." name="mobile" value={mobile} onChange={this.onInputChange}/>
+						<TextArea label="Message" name="message" value={message} r={3} c={20} onChange={this.onInputChange} />
 					</LoginForm>
 				</div>
 			</div>

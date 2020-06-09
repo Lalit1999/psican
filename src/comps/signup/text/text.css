@@ -1,18 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 .text-div
-{
-  margin: .2em 0;
-}
+{  margin: .2em 0;    }
 
 .textarea-div
-{
-  display: flex ;
-}
+{  display: flex ;    }
 
 .lbel
-{
-  margin-right: 1em ;
+{  margin-right: 1em ;
   width: 9em;
   text-align: right;
   display: inline-block;
@@ -22,8 +17,7 @@
 }
 
 .inpu
-{
-  font-family: 'Lato', sans-serif;
+{  font-family: 'Lato', sans-serif;
   font-size: 1.5rem ; 
   background-color: white;
   border : 1px solid black;
@@ -33,14 +27,12 @@
 }
 
 .inpu:focus
-{
-  outline : 3px solid black ;
+{  outline : 3px solid black ;
   border: 1px solid black ;
 }
 
 .inpu:hover
-{
-  background-color: black ;
+{  background-color: black ;
   color: #ccddff ;
   box-shadow: inset 0 0 0 1px #ccddff;
 }

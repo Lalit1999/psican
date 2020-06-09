@@ -1,20 +1,15 @@
 import React from 'react' ;
 import {Redirect} from'react-router-dom' ;
+
 import { addNotif } from '.././notif.js' ;
+import { invalidPass, isBlank } from '../valid.js' ;
 import Title from '../title/Title.js' ;
 import Data from '../data/Data.js' ;
 import Register from '../signup/register/Register.js' ;
 import LoginForm from '../signup/forms/LoginForm.js' ;
 import Text from '../signup/text/Text.js' ;
-import { invalidPass, isBlank } from '../valid.js' ;
 import Pop from '../popup/Pop.js' ;
-
 import './UserProfile.css' ;
-
-const initObj = {
-	email: '' ,
-	password: '',
-} ;
 
 class UserProfile extends React.Component
 {	
@@ -23,8 +18,7 @@ class UserProfile extends React.Component
 	  	oldpass: '' ,
 	  	newpass: '' ,
 	  	repass: '' ,
-	  	error: '' ,
-	  	data: ''
+	  	error: '' 
 	} ;
 
 
@@ -47,12 +41,13 @@ class UserProfile extends React.Component
 				throw Error(res.statusText) ;
 		})
 		.then(data =>{	
-			this.setState({data: initObj});
 			addNotif('Successfully Logged Out', 'success') ;	
-			// console.log(data) ;
 			this.props.loadUser({}) ;
 		}) 
-		.catch( err  => console.log(err) ) ;
+		.catch( err  => {
+			addNotif('Error Logging Out', 'error') ;	
+			console.log(err) ; 
+		}) ;
 	}
 
 	onEditClick = () => {
@@ -65,20 +60,21 @@ class UserProfile extends React.Component
 				method : 'delete' ,
 				headers : { 'Content-Type' : 'application/json', 
 							'Authorization' : 'Bearer ' + this.props.token} ,
-			})
-			.then(res => {
-				if(res.ok)
-					return res.json() ;
-				else
-					throw Error(res.statusText) ;
-			})
-			.then(data =>{	
-				this.setState({data: initObj});
-				addNotif('Successfully Deleted', 'success') ;
-				// console.log(data) ;
-				this.props.loadUser({}) ;
-			}) 
-			.catch( err  => console.log(err) ) ;
+		})
+		.then(res => {
+			if(res.ok)
+				return res.json() ;
+			else
+				throw Error(res.statusText) ;
+		})
+		.then(data =>{	
+			addNotif('Successfully Deleted', 'success') ;
+			this.props.loadUser({}) ;
+		}) 
+		.catch( err  => {
+			addNotif('Error Deleting Profile', 'error') ;	
+			console.log(err) ; 
+		}) ;
 	}
 	
 	onChangeClick = () => {
@@ -105,10 +101,8 @@ class UserProfile extends React.Component
 						throw Error(res.statusText) ;
 				})
 				.then(data =>{	
-				this.setState({data: initObj});
-				addNotif('Successfully changed the password', 'success') ;
-				// console.log(data) ;
-				this.props.loadUser({}) ;
+					addNotif('Successfully changed the password', 'success') ;
+					this.props.loadUser({}) ;
 				})
 				.catch( err  => this.setState({error: 'Incorrect Old Password'})) ;
 			}
@@ -148,7 +142,6 @@ class UserProfile extends React.Component
 	}
 
 	generateData = () => {
-		// console.log( Object.keys(this.props.user) ) ;
 		return Object.keys(this.props.user).map( (one,i) => {
 			const name = this.returnkey(one) ;
 			if(name)
@@ -166,10 +159,8 @@ class UserProfile extends React.Component
 			return (
 				<div className = "right_corner_onee">
 					{this.generateData()}
-					<div className = "fdre" >
-						<p className = "bolde" >Created at : </p>
-							<p>{this.formatDate(this.props.user.createdAt)}</p>
-					</div>
+					<Data kiy="Created at :" mode={this.state.mode} 
+						 value={this.formatDate(this.props.user.createdAt)} />
 				</div>
 			) ;
 	}
@@ -179,8 +170,7 @@ class UserProfile extends React.Component
 	}
 
 	render()
-	{	//console.log(this.props.user) ;
-		const {oldpass, repass, newpass} = this.state ;
+	{	const {oldpass, repass, newpass} = this.state ;
 		if(this.props.user.name)
 		{
 			return (
@@ -189,21 +179,19 @@ class UserProfile extends React.Component
 					<div className="propfileBoxe">
 						<div className="pteste">
 							<div className="lefte">
-								<div className = "left_corner_twoe">
-									<button className = "buttone " onClick = {this.onEditClick}>
-										{(this.state.mode==='edit'?'Go Back':'Edit profile')}
-									</button>
-									<Pop btn="Change Password" classes="buttone ">
-										<LoginForm title=" Basic Details " error={this.state.error} near="near"
-											b2="Change" onb2Click={this.onChangeClick} >
-											<Text label="Old Password" name="oldpass" type="pw" value={oldpass} onChange={this.onInputChange}/>
-											<Text label="New Password" name="newpass" type="pw" value={newpass} onChange={this.onInputChange}/>
-											<Text label="Retype Password" name="repass" type="pw" value={repass} onChange={this.onInputChange}/>
-										</LoginForm>
-									</Pop>								
-		 							<button className = "buttone" onClick={this.onLogoutClick} >Logout</button>
-		 							<button className = "buttone dele" onClick={this.onDeleteClick} >Delete profile</button>
-								</div>
+								<button className = "buttone " onClick = {this.onEditClick}>
+									{(this.state.mode==='edit'?'Go Back':'Edit profile')}
+								</button>
+								<Pop btn="Change Password" classes="buttone ">
+									<LoginForm title=" Basic Details " error={this.state.error} near="near"
+										b2="Change" onb2Click={this.onChangeClick} >
+										<Text label="Old Password" name="oldpass" type="pw" value={oldpass} onChange={this.onInputChange}/>
+										<Text label="New Password" name="newpass" type="pw" value={newpass} onChange={this.onInputChange}/>
+										<Text label="Retype Password" name="repass" type="pw" value={repass} onChange={this.onInputChange}/>
+									</LoginForm>
+								</Pop>								
+	 							<button className = "buttone" onClick={this.onLogoutClick} >Logout</button>
+	 							<button className = "buttone dele" onClick={this.onDeleteClick} >Delete profile</button>
 							</div>
 							<div className="righte">
 								{this.checkMode()}
@@ -214,10 +202,7 @@ class UserProfile extends React.Component
 			) ;
 		}
 		else
-		{	
 			return <Redirect to = '/login' />
-		}	
-		
 	}
 }
 

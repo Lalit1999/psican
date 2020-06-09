@@ -1,33 +1,28 @@
 .pop.self
-{
-	display: inline-block;
+{	display: inline-block;
 	background-color: inherit; 
 }
 
 .self .popup
-{
-	padding: 1.2em 1em 2em ;
+{	padding: 1.2em 1em 2em ;
 	font-size: 1.3rem ;
 	display: inline-block;
 }
 
 .self .popup h2
-{
-	margin-top : 0 ;
+{	margin-top : 0 ;
 	text-align: center; 
 }
 
 .self .popup-content
-{
-	border: 1px solid black;
+{	border: 1px solid black;
 	border-radius: 0.9rem ;
 	width: auto !important;
 	margin: auto !important;
 }
 
 .self .close
-{
-	text-decoration: none;
+{	text-decoration: none;
 	font-size: 3rem ;
 	color: darkred ;
 	z-index: 3;
@@ -36,6 +31,4 @@
 }
 
 .self .close:hover
-{
-	background-color: salmon ;
-}
+{	background-color: salmon ;		}

@@ -1,5 +1,5 @@
 import React from 'react' ;
-import {Redirect, Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 import { addNotif } from '../../notif.js' ;
 import { invalidEmail, invalidMobile, invalidPass, isBlank, isMaxMin, invalidName } from '../../valid.js' ;
@@ -12,43 +12,16 @@ import Dropdown from '../dropdown/Dropdown.js' ;
 import '../signup.css' ;
 
 const initPerson = {
-	name: '' ,
-	email: '' ,
-	password: '',
-	repass: '',
-	mobile: '',
-	age : 0,
-	gender :'',
-	height: 0,
-	weight: 0,
-	mother: '',
-	father: '',
-	status: '',
-	address: '',
-	address2: '',
-	working: '',
-	siblings: 0,
-	hobbies: '',
-	family: '',
+	name: '' ,		email: '' ,		password: '',		repass: '',		mobile: '',
+	age : 0,		gender :'',		height: 0,			weight: 0,		mother: '',
+	father: '',		status: '',		address: '',		address2: '',	working: '',
+	siblings: 0,	hobbies: '',	family: ''
 } ;
 
 const initSchool = {
-	name: '',
-	password: '',
-	repass: '',
-	mobile: '',
-	email: '',
-	person: '',
-	p_phone: '',
-	principal: '',
-	pr_phone: '',
-	type: '',
-	students: 0,
-	teachers: 0,
-	medium: '',
-	address: '',
-	class_f: '',
-	class_t: '',
+	name: '',		password: '',	repass: '',			mobile: '',		email: '',
+	person: '',		p_phone: '',	principal: '',		pr_phone: '',	type: '',
+	students: 0,	teachers: 0,	medium: '',		address: '',	class_f: '',	class_t: ''
 }
 
 class Register extends React.Component
@@ -107,11 +80,10 @@ class Register extends React.Component
 
 				this.props.loadUser(data) ;
 				this.props.edit() ;
-				// this.props.history.push('/');
 			}) 
 			.catch( err  => {
 				console.log(err) ;
-				addNotif(err.message, 'error') ;
+				addNotif('Error updating profile' , 'error') ;
 			}) ;
 		}
 		else
@@ -129,16 +101,16 @@ class Register extends React.Component
 					throw Error(res.statusText) ;
 			})
 			.then(data => {	
-				this.setState({mode: 'reg-success', data: obj});
-				addNotif('Successfully Logged In', 'success') ;
+				this.setState({data: obj});
+				addNotif('Successfully Registered', 'success') ;
 
 				this.props.loadUser(data) ;
 				this.props.history.push('/');
 			}) 
 			.catch( err  => {
 				console.log(err) ;
-				addNotif(err.message, 'error') ;
-				this.setState({mode: 'reg-fail'});
+				addNotif('Error while registration' , 'error') ;
+				this.props.history.push('/');
 			}) ;
 		}
 	}
@@ -284,7 +256,7 @@ class Register extends React.Component
 			<div>	
 				<LoginForm title=" Basic Details " error={this.state.error}
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
-					<Text label="Name" name="name" value={name.toUpperCase()} onChange={this.onInputChange}/>
+					<Text label="Name" name="name" value={name} onChange={this.onInputChange}/>
 					<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
 					{ this.checkEditMode() } 
 					<Text label="Mobile No." name="mobile" value={mobile} onChange={this.onInputChange}/>
@@ -302,8 +274,8 @@ class Register extends React.Component
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
 					<Number label="Age"	name="age" value={age} min={10} max={65} onChange={this.onNumberChange}/>
 					<Dropdown label="Gender" name="gender" value={gender} options={['','M','F']} onChange={this.onInputChange}/>
-					<Text label="Mother's Name" name="mother" value={mother.toUpperCase()} onChange={this.onInputChange}/>
-					<Text label="Father's Name" name="father" value={father.toUpperCase()} onChange={this.onInputChange}/>
+					<Text label="Mother's Name" name="mother" value={mother} onChange={this.onInputChange}/>
+					<Text label="Father's Name" name="father" value={father} onChange={this.onInputChange}/>
 					<Number label="Height (inch)"	name="height" value={height} min={24} max={300} onChange={this.onNumberChange}/>
 					<Number label="Weight (kg)"	name="weight" value={weight} min={10} max={250} onChange={this.onNumberChange}/>
 					<Dropdown label="Marital Status" name="status" value={status} options={['','Single','Married','Divorced','Separated','Widowed']} onChange={this.onInputChange}/>
@@ -339,7 +311,7 @@ class Register extends React.Component
 			<div>	
 				<LoginForm title=" Basic Details " error={this.state.error}
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
-					<Text label="Name" name="name" value={name.toUpperCase()} onChange={this.onInputChange}/>
+					<Text label="Name" name="name" value={name} onChange={this.onInputChange}/>
 					<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
 					{ this.checkEditMode() } 
 					<Text label="Contact No." name="mobile" value={mobile} onChange={this.onInputChange}/>
@@ -355,9 +327,9 @@ class Register extends React.Component
 				<LoginForm title=" Correspondant Details " error={this.state.error}
 					b1="&lt;&nbsp; Prev" onb1Click={this.onPrevClick}
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
-					<Text label="Registrant Name" name="person" value={person.toUpperCase()} onChange={this.onInputChange}/>
+					<Text label="Registrant Name" name="person" value={person} onChange={this.onInputChange}/>
 					<Text label="Registrant Contact" name="p_phone" value={p_phone} onChange={this.onInputChange}/>
-					<Text label="Name of Principal" name="principal" value={principal.toUpperCase()} onChange={this.onInputChange}/>
+					<Text label="Name of Principal" name="principal" value={principal} onChange={this.onInputChange}/>
 					<Text label="Principal Contact" name="pr_phone" value={pr_phone} onChange={this.onInputChange}/>
 				</LoginForm>
 			</div>
@@ -398,34 +370,13 @@ class Register extends React.Component
 			case 'sc-reg-1' : return this.schoolForm1() ;
 			case 'sc-reg-2' : return this.schoolForm2() ;
 			case 'sc-reg-3' : return this.schoolForm3() ;
-			case 'reg-success' : return (
-									<div className="reg-res">
-										<h2>
-											 Successful Registration
-										</h2>
-										<Link className="res-btn" to="/login"> To Login </Link>
-									</div>
-										) ;
-			case 'reg-fail' : return (
-									<div className="reg-res">
-										<h3>
-											Registration Failed
-										</h3>
-										<Link className="res-btn" to="/"> Home </Link>
-									</div>
-										) ;
 			default : return 'You probably encountered a problem' ;
 		}
 	}
 
 	render()
 	{   if (this.props.mode === 'edit')
-		{	return (
-				<div>
-					{this.checkMode()}
-				</div>
-			) ;
-		}
+			return (	<div>{this.checkMode()}</div>	) ;
 		else
 		{	if(this.props.user.name)
 				return <Redirect to='/' />

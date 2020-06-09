@@ -1,6 +1,8 @@
+/* DO NOT REMOVE COMMENTS OF THIS FILE, KYONKI THEY MIGHT BE USEFUL IN A FUTURE PROJECT
+    THEY ARE NOT INCLUDED IN CURRENT PROJECT SPECIFICALLY BASED ON CLIENT DEMAND */
+
 .left-title
-{
-  font-size: 1.5rem ;
+{ font-size: 1.5rem ;
   padding: 0 1em ;
   transition: all 0.4s ;
   margin-top: 0 ;
@@ -8,8 +10,7 @@
 }
 
 .small-title
-{
-  font-size: 1.4rem;
+{ font-size: 1.4rem;
   margin-top: 0 ;
   /*margin-bottom: .4em ;*/
   transition: all 0.4s ;
@@ -17,8 +18,7 @@
 }
 
 .title-con
-{
-  /*border-bottom: 1px solid darkblue ;*/
+{ /*border-bottom: 1px solid darkblue ;*/
   color: rgb(29, 41, 81) ;
   font-family: 'Signika' ;
   letter-spacing: 0.02em ;
@@ -28,9 +28,7 @@
 }
 
 .title-con h2
-{
-  margin-bottom: 0 ;
-}
+{  margin-bottom: 0 ;   }
 
 /*
 .left-title:hover

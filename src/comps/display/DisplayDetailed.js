@@ -7,8 +7,8 @@ class DisplayDetailed extends React.Component
 {	createLi = () => {
  		return this.props.lidata.map( (li,i) => {
  			if(li.startsWith('html'))
- 				{	li = li.replace('html','') ;
- 				return <li className="list-li" key={i} dangerouslySetInnerHTML={{ __html: li}}/>
+			{	li = li.replace('html','') ;
+				return <li className="list-li" key={i} dangerouslySetInnerHTML={{ __html: li}}/> ;
  			}
 			else 		
  				return <li className="list-li" key={i}> {li} </li> ; 

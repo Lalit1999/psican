@@ -1,63 +1,14 @@
-.display
-{
-	height : 40vw ;
-	text-align: right ;
-	background-size: cover ;
-	background-repeat: no-repeat ;
-	color : white ;
-	width: 100% ;
-	height: 100% ;
-}
-
-.imge
-{
-	margin-left: 2em ;
-	margin-right: 2em ;
-	max-width: 50% ;
-}
-
-.imge img
-{
-	width: 40vw;
-	margin-top: 2em;
-}
-
-.dis_text
-{
-	font-size: 2rem ;
-	width: 100% ;
-	text-align: center ;
-	background-color: rgba(0,0,0,0.5) ;
-}
-
-.content
-{
-	display: flex;
-}
-
 .list
-{
-	font-weight: normal; 
+{	font-weight: normal; 
 	font-size: 1.3rem ;
 	margin: 0 1.5em 1em ;
 }
 
 .list ul
-{	margin-top: .2em ;
-}
+{	margin-top: .2em ;		}
 
 .list li
-{
-	margin-bottom: .3em  ;
-}
+{	margin-bottom: .3em  ;		}
 
 .list-li
-{
-    margin: 0.3em 0 ;
-}
-
-/*.list-li li
-{
-    font-size: smaller;
-    margin-top: .5em ;
-}*/
+{    margin: 0.3em 0 ;		}

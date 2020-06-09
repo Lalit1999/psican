@@ -43,14 +43,3 @@ class Menu extends React.Component
 }
 
 export default Menu ;
-
-					// Before Link menu-item contact
-					  //   <Popup trigger={<div className="menu-item">Commercial Programs </div>}
-					  //     position="right top" on="hover" >
-					  //     <div className="pop-p" onClick={this.props.closeCallback}>
-							// <Link className="menu-item pop-item" to='/test'>Psychometric Tests </Link> 
-							// <Link className="menu-item pop-item" to='/mentamorph'> Menta-Morph </Link>
-							// <Link className="menu-item pop-item" to='/program/personal'>
-							//  Personal Consultation </Link>
-					  //     </div>
-					  //   </Popup>

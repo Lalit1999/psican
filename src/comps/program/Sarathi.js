@@ -11,7 +11,6 @@ import Dropdown from '../signup/dropdown/Dropdown.js' ;
 import DisplayDetailed from '../display/DisplayDetailed.js' ;
 import Heading from '../Heading/Heading.js' ;
 import './program.css' ;
-import './detailcontent.css' ;
 
 const arr = ['html<ul>To provide workshops to schools and colleges for:<li>Student Motivation</li><li>Student Career</li><li>Health related guidance for students</li><li>Behaviour related guidance for students</li><li>Parental Education</li><li>Teachers Training</li>'] ;
 

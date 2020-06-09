@@ -5,7 +5,7 @@
 	position: fixed; 
   	width: 100% ;
   	top: 0 ;
-  	z-index: 14 ;
+  	z-index: 99 ;
   	overflow: hidden;
   	color: white ;
 }
@@ -44,7 +44,6 @@
 .item-txt
 {
 	font-size: 1.3rem ;
-	/*background-color: rgb(70, 130, 180) ;*/
 	margin-left: 0.3em ;
 }
 

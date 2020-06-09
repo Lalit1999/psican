@@ -1,12 +1,13 @@
-.bolde
-{
-  font-weight: bold;
+.data-bold
+{  font-weight: bold;
 }
 
-.flexe
-{
-  display: flex ;
-  justify-content: space-between;
-  /*max-width: 90% ;*/
-  color : black ;
+.data-flex
+{  display: flex ;
+   justify-content: space-between;
+   color : black ;
+}
+
+.data-right
+{	margin-left: 5em ;
 }

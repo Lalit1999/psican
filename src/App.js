@@ -48,7 +48,7 @@ class App extends React.Component
 	}
 	 
 	render()
-	{	//console.log(this.state) ;
+	{	const {user, userToken} = this.state ;
 		return(
 			<div className="App">
 				<ToastContainer position="bottom-right" autoClose={5000} hideProgressBar={false}
@@ -57,18 +57,24 @@ class App extends React.Component
 		        <ScrollContext>
 		          <div>
 		          	<TopBar />
-		            <Header user={this.state.user} token={this.state.userToken} loadUser={this.loadUser}/>
+		            <Header user={user} token={userToken} loadUser={this.loadUser}/>
 		            <Switch>
 		              <Route path='/' exact component={Home} />
 		              <Route path='/about/leader' exact component={AboutPerson}/>
 		              <Route path='/about/psyment' exact component={AboutPsican}/>
 		              <Route path='/contact' exact component={Contact}/>
-		              <Route path='/login' render={props=><Login {...props} user={this.state.user} loadUser={this.loadUser}/>}/>
-		              <Route path='/register' render={props=><Register {...props} user={this.state.user} loadUser={this.loadUser}/>} />
-		              <Route path='/program/Sarathi' render={props=><Sarathi user={this.state.user} token={this.state.userToken}/>}/>
-		              <Route path='/program/AEQUESS' render={props=><AEQUESS user={this.state.user} token={this.state.userToken}/>}/>
-		              <Route path='/consult' render={props=><Consult user={this.state.user} token={this.state.userToken}/>}/>
-		              <Route path='/profile' render={props=><Profile user={this.state.user} token={this.state.userToken} loadUser={this.loadUser}/>}/>
+		              <Route path='/login' render={props=><Login {...props} user={user} 
+		              		 loadUser={this.loadUser}/>}/>
+		              <Route path='/register' render={props=><Register {...props} user={user} 
+		              		 loadUser={this.loadUser}/>} />
+		              <Route path='/program/Sarathi' render={props=><Sarathi user={user} 
+		              		 token={userToken}/>}/>
+		              <Route path='/program/AEQUESS' render={props=><AEQUESS user={user} 
+		              		 token={userToken}/>}/>
+		              <Route path='/consult' render={props=><Consult user={user} 
+		              		 token={userToken}/>}/>
+		              <Route path='/profile' render={props=><Profile user={user} 
+		              		 token={userToken} loadUser={this.loadUser}/>}/>
 		              <Route exact component={NotFound} />
 		            </Switch>
 			        <Footer />

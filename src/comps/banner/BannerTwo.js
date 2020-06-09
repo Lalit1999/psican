@@ -6,7 +6,7 @@ import './BannerTwo.css' ;
 const cont1 = [ 
 'Zero Cost Query System for Students',
 'Teenage comes with a lot of confusion and many questions',
-'We Promise a customised support and a prompt response' ] ;
+'We promise a customised support and a prompt response' ] ;
 
 const cont2 = [ 
 'Workshop Organising Program for educational institutions',
@@ -15,7 +15,7 @@ const cont2 = [
 
 const cont3 = [ 
 'Some events disturb the flow of our life',
-'Our personal Mentoring to guide you through such situations',
+'Our personal mentoring can guide you through such situations',
 'Schedule your Appointment Now' ] ;
 
 class BannerTwo extends React.Component
