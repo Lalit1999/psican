@@ -95,7 +95,7 @@ class Personal extends React.Component
 			date : this.state.date 
 		} ;
 
-		addNotif('Please Wait...', 'notif') ;
+		addNotif('Please Wait...') ;
 
 		if(this.state.avail === 'yes')
 		{	fetch('https://psy-api.herokuapp.com/consult',{
@@ -232,7 +232,7 @@ class Personal extends React.Component
 				<p className="intro"> This may lead to cognitive dissonance and inept self-appraisal.
 					Such events often disturb the flow of our capability.</p>
 				<p className="intro"> <span className="ngo"> PERSONAL PSYCHOLOGICAL COUNSELLING</span>
-				 	and <span className="ngo"> MENTORING </span> is of prime help in such situations.
+				 	&nbsp;and <span className="ngo"> MENTORING </span> is of prime help in such situations.
 				</p>
 				<p className="intro"> You may consult us for all such needs. </p> 
 				<DisplayDetailed title="Features" lidata={features} />
