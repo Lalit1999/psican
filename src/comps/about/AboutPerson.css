@@ -4,12 +4,12 @@
 	background-color: rgba(29, 41, 81,0.9); ; 
 	justify-content: space-between;
 	color: white ;
-	font-size: 1.3rem ;
+	font-size: 1.5rem ;
 }
 
-.about-bold
-{	font-weight: bold;
-	margin: 0.5em auto 0.1em ;
+.after-div
+{	font-size: 1.5rem ;
+	padding-right: 5em ;
 }
 
 .about-left
@@ -20,16 +20,21 @@
 {	padding: 0 4em ;
 }
 
+.about-list
+{	list-style-type: none ;
+}
+
+.about-bold
+{	font-weight: bold;
+	margin: 1em auto 0.1em ;
+}
 .txt
 {	margin-left: 3em ;
-	margin-bottom: 3em ;
+	margin-bottom: 1em ;
 }
 
 .photo
-{	margin-top: 6em ;
-	margin-right: 4em ;
-	width: 38% ;
-	height: 60vh ;
+{	margin: 1.5em 6em 1.5em ;
 	border : 5px solid white ;
 	border-radius: 2rem ;
 	overflow: hidden; 
@@ -38,10 +43,6 @@
 .br, .br2
 {	display: block;
 	vertical-align: bottom;
-}
-
-.br
-{	height: 60vh ;
 }
 
 .br2
