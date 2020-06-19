@@ -55,7 +55,7 @@ class TestimonialSlider extends Component {
             effect: 'fade',
             autoplay: {
             	disableOnInteraction: false ,
-                delay: 3000
+                delay: 10000
             },
             pagination: {
                 el: '.testim-bullet',
@@ -79,13 +79,3 @@ class TestimonialSlider extends Component {
 }
 
 export default TestimonialSlider ;
-
-					// <div className="slide" style={item.style}>
-					// 	<div className="cont">
-					// 		<div className="row">
-					// 			<h2 className="slide-heading"> {item.title} </h2>
-					// 			<p className="slide-message"> {item.message}</p>
-					// 		</div>
-					// 		{this.createButton(item.link)}
-					// 	</div>
-					// </div>

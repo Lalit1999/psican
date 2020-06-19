@@ -7,8 +7,9 @@
 
 .testim-slide
 {
-	border-radius: 1rem ;
+	border-radius: 2rem ;
 	background-color: black ;
+	height: 70vh ;
 }
 
 .testim-up
@@ -43,6 +44,7 @@
 {
 	font-size: 1.3rem ;
 	font-style: oblique; 
+	padding: 0 6em ;
 }
 
 .testim-bullet
