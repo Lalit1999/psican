@@ -6,6 +6,9 @@ import Parallax from '../Parallax/Parallax.js' ;
 import './home.css' ;
 import TestimonialSlider from '../slider/TestimonialSlider.js' ;
 
+import Atul from '../images/atul.jpg' ;
+import KP from '../images/KP.jpg' ;
+import Shivangi from '../images/shivangi.jpg' ;
 import i1 from '../images/i1.jpg' ;
 import i2 from '../images/i2.jpg' ;
 import i3 from '../images/i3.jpg' ;
@@ -45,7 +48,7 @@ const testim_arr = [
 		 ' proud of my student Ashish Aggarwal.'
 },
 { 	name: 'Shri K. P. Raizada' ,
-  	img: 'i4' ,
+  	img: 'KP' ,
 	role: 'Ex. Deputy Director of Education' ,
 	msg: 'I konw Ashish Aggrwal as a sensitive , Honest, creative young man. He stands for value based human'+
 		 ' personality & Education. He always strives to improve good things into better. In my experience '+
@@ -53,7 +56,7 @@ const testim_arr = [
 
 },
 { 	name: 'Shivangi Gupta' ,
-  	img: 'i4' ,
+  	img: 'Shivangi' ,
 	role: 'Student & A Psyment beneficiary' ,
 	msg: 'I, Shivangi Gupta working as a mathematics teacher in a private school, I had always been clear '+
 		 'about my goals but what path to take always landed me in confusion. As I know Mr. Ashish Aggarwal '+
@@ -63,7 +66,7 @@ const testim_arr = [
 		 'me to map my capabilities.I am sure they will do the same for everyone else.'
 },
 { 	name: 'Atul Jain' ,
-  	img: 'i2' ,
+  	img: 'Atul' ,
 	role: 'Advocate, Delhi High Court' ,
 	msg: 'Mr. Ashish Aggarwal is a wonderful Counsellor and Mentor. Since I am a practicing lawyer, I get '+
 		 'a lot of cases where the parties involved in litigation are suffering from mental trauma/distress.'+

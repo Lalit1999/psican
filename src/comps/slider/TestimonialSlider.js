@@ -5,6 +5,9 @@ import i1 from '../images/i1.jpg' ;
 import i2 from '../images/i2.jpg' ;
 import i3 from '../images/i3.jpg' ;
 import i4 from '../images/i5.jpg' ;
+import Atul from '../images/atul.jpg' ;
+import KP from '../images/KP.jpg' ;
+import Shivangi from '../images/shivangi.jpg' ;
 
 import './testimonial.css' ;
 
@@ -15,6 +18,9 @@ class TestimonialSlider extends Component {
 			case 'i2' : return i2 ;
 			case 'i3' : return i3 ;
 			case 'i4' : return i4 ;
+			case 'Atul' : return Atul ;
+			case 'KP' : return KP ;
+			case 'Shivangi' : return Shivangi ;
 			default : return i1 ;
 		}
 	}
