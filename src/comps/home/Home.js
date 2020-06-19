@@ -11,30 +11,77 @@ import i2 from '../images/i2.jpg' ;
 import i3 from '../images/i3.jpg' ;
 
 const testim_arr = [
-{ 	name: 'Shri. S L Jain' ,
-  	img: 'i3' ,
-	role: 'Director, Mahavir Senior Model School' ,
-	msg: 'this is the wonderful message given by out testimonial. We like it. But we are only testing how it will be diaplyed, so this paragraph is needlessly long. I hope it is long enough'
-},
 { 	name: 'Dr. Kiran Modi' ,
   	img: 'i1' ,
 	role: 'Founder & Trustee, The Udayan Care' ,
-	msg: 'The Workshop was really nice and gave a really good message'
+	msg: 'Ashish always had a great insight into human behaviour and motivation. Since the laast 15 years ' +	
+		 'that I know him, I have seen him as an astute business man, a self made person, a great motivator,'+
+		 ' coach and a trainer and as such he has trained hundreds of our girls, who hail from government '+
+		 'schools to aspire for higher education, and higher calling. Armed with qualifications in psychology'+
+		 ' he has further honed his skills in understanding human psyche and motivational coaching to lead '+
+		 'them onto greater resilience and a higher purpose. I wish him all the best in this not so new role,'+
+		 'as he always functioned aas such, to a new height!!'
 },
-{ 	name: 'Tanya Gomber' ,
+{ 	name: 'Dr. Gayatri Ahuja' ,
   	img: 'i4' ,
-	role: 'Student' ,
-	msg: 'I just took guidance and my whole life changed'
+	role: 'Faculty - Department of Education, AYJNISHD(D)' ,
+	msg: 'Mr Ashish Aggarwal is one of the most sensitive, non-judgemental and honest individual. His feedback '+
+		 'and insight are very intuitive. He speaks from the heart and can truly be a supporter as well as a '+
+		 'mentor. He has vast experience in handling concerns related to personal and professional life. I'+
+		 'feel he has a right balance of scaffolding and has nice empathetic stance. It is really admirable'+
+		 'when you see your friend grow in his projects through conception to completion.'
 },
-{ 	name: 'Shivangi Goel' ,
+{ 	name: 'Shri. S L Jain' ,
+  	img: 'i3' ,
+	role: 'Director, Mahavir Senior Model School' ,
+	msg: 'Psyment is wonderful program and is the need of the hour for students, parents and teachers and for'+
+		 'education as a whole. The program has been conceived and will be executed by Mahavirian Ashish '+
+		 'Aggarwal who is now a very dear friend. Ashish Aggarwal has evolved into a very creative and highly'+
+		 'sensitive person who is conscious of the pitfalls of present education system and also worried '+
+		 'about corrective course of action to be taken. In this direction after a lot of study and research '+
+		 'he has come out with a detailed plan which will address the issues of students, parents and teachers '+
+		 'in a very sensitive and collaborative manner. I am proud of Ashish Aggarwal and feel assured that his'+
+		 ' venture will meet its objectives for which it has been launched. My best wishes and blessings and feel'+
+		 ' proud of my student Ashish Aggarwal.'
+},
+{ 	name: 'Shri K. P. Raizada' ,
+  	img: 'i4' ,
+	role: 'Ex. Deputy Director of Education' ,
+	msg: 'I konw Ashish Aggrwal as a sensitive , Honest, creative young man. He stands for value based human'+
+		 ' personality & Education. He always strives to improve good things into better. In my experience '+
+		 'he is trustworthy and dependable.'
+
+},
+{ 	name: 'Shivangi Gupta' ,
+  	img: 'i4' ,
+	role: 'Student & A Psyment beneficiary' ,
+	msg: 'I, Shivangi Gupta working as a mathematics teacher in a private school, I had always been clear '+
+		 'about my goals but what path to take always landed me in confusion. As I know Mr. Ashish Aggarwal '+
+		 'since my childhood, I shared my concern with him and found the right direction. Signing up for '+
+		 'PSYMENT was one of the best decisions I made for myself. SYMENT has given me the focus to make '+
+		 'decisions to fulfill my short term and long term goals. Guided by the best mentor, who helped '+
+		 'me to map my capabilities.I am sure they will do the same for everyone else.'
+},
+{ 	name: 'Atul Jain' ,
   	img: 'i2' ,
-	role: 'Student' ,
-	msg: 'I am very satisfied becuase i am really satisfied.'
+	role: 'Advocate, Delhi High Court' ,
+	msg: 'Mr. Ashish Aggarwal is a wonderful Counsellor and Mentor. Since I am a practicing lawyer, I get '+
+		 'a lot of cases where the parties involved in litigation are suffering from mental trauma/distress.'+
+		 ' For past sometime, I have been referring my clients who are mentally troubled because of their '+
+		 'pending litigations to Mr. Ashsish and I have received wonderful feedbacks about his expertise. '+
+		 'The main aspect of his prowess that is common in all such feedbacks is that Mr. Ashish deals with '+
+		 'his patients with a pure humanitarian approach and is most of the times successful in resolving their '+
+		 'concerns with his innovative techniques. '+
+		 'I wish him and PSYMENT a wonderful future ahead'
 },
-{ 	name: 'Dr. Vinay Gupta' ,
+{ 	name: 'Shri Sunnet Malik' ,
   	img: 'i4' ,
-	role: 'HOD Orthopedic, Saroj Hospital' ,
-	msg: 'I just took guidance and my whole life changed'
+	role: 'Pharma Marketing Expert' ,
+	msg: 'I have known Ashish Aggarwal as a sincere learner and a person with bold initiatives. '+
+		 'Compassion, Empathy and working towards helping others comes Naturally to Him. '+
+		 'He is one of my dear students and cherished friends. '+
+		 'I have always known him as a go to person in any hour of need.'+
+		 'I wish him success in his New Endeavous.'
 },
 ] ;
 
