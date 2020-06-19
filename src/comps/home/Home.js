@@ -9,7 +9,6 @@ import TestimonialSlider from '../slider/TestimonialSlider.js' ;
 import i1 from '../images/i1.jpg' ;
 import i2 from '../images/i2.jpg' ;
 import i3 from '../images/i3.jpg' ;
-import Image from '../images/Psyment logo.jpg' ;
 
 const testim_arr = [
 { 	name: 'Shri. S L Jain' ,
@@ -54,7 +53,7 @@ const data = [	{	style : {
         subtitle: 'PSYMENT : Program 1',
         title: 'Sarathi',
         message: 'School Academic Attitude Training & Health Initiative' ,
-        message2: 'A Mentoring Prgoram for Educational Instituitions' ,
+        message2: 'A Mentoring Program for Educational Instituitions' ,
         link : '/program/Sarathi'
     },{	style : {
         	backgroundImage: 'url(' + i3+ ')',
@@ -77,40 +76,19 @@ const data = [	{	style : {
 
 class Home extends React.Component
 {
-// {	state = {
-// 		open: '' ,
-// 	} ;
-
-// 	componentDidMount = () => {
-// 		this.setState({open: 'no'});
-// 	}
-
 	render()
-	{	if(this.props.open === 'yes')
-		{	return(
-				<div>
-					<Slider data={data} />
-					<BannerTwo content="aquess" color="blue"/>
-					<BannerTwo content="sarathi" left="yes" color="blue"/>
-					<BannerTwo content="person" color="blue"/>
-					<Parallax>
-						<div className="testim"> Our Testimonials </div>
-						<TestimonialSlider data={testim_arr}/>
-					</Parallax>
-				</div>
-			) ;
-		}
-		else
-		{	return ( 
-				<div className="app-close">
-					<h1> Welcome To </h1>
-					<img src={Image} alt="logo" />
-					<button onClick={this.props.openClick} className="sched-btn"> 
-						Go to Site
-					</button>
-				</div>
-			) ;
-		}
+	{	return(
+			<div>
+				<Slider data={data} />
+				<BannerTwo content="aquess" color="blue"/>
+				<BannerTwo content="sarathi" left="yes" color="blue"/>
+				<BannerTwo content="person" color="blue"/>
+				<Parallax>
+					<div className="testim"> Our Testimonials </div>
+					<TestimonialSlider data={testim_arr}/>
+				</Parallax>
+			</div>
+		) ;
 	}
 }
 

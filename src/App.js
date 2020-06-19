@@ -24,17 +24,12 @@ class App extends React.Component
 {	state = {
 		user: {} ,
 		userToken: '' ,
-		open : '' 
 	}
 
 	resize = () => this.forceUpdate()
 
 	componentDidMount() {
 	  window.addEventListener('resize', this.resize)
-	}
-
-	onOpenClick = () => {
-		this.setState({open:'yes'});
 	}
 
 	componentWillUnmount() {
@@ -64,8 +59,7 @@ class App extends React.Component
 		          	<TopBar />
 		            <Header user={user} token={userToken} loadUser={this.loadUser}/>
 		            <Switch>
-		              <Route path='/' exact render={props=><Home {...props} 
-		              		 openClick={this.onOpenClick} open={this.state.open} />}/>
+		              <Route path='/' exact render={props=><Home {...props} />}/>
 		              <Route path='/about/leader' exact component={AboutPerson}/>
 		              <Route path='/about/psyment' exact component={AboutPsican}/>
 		              <Route path='/contact' exact component={Contact}/>

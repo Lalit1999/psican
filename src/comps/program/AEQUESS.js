@@ -154,7 +154,9 @@ class AQUESS extends React.Component
 					need. </p>
 				<p className="intro bold"> P.S. : Certain Queries may require more time in 
 					getting answered. If we take longer than 5 days, to answer your query 
-					we shall keep you informed. </p>	
+					we shall keep you informed. </p>
+				<p className="intro bold"> Note : All Student Queries and details shall be kept 
+					confidential. They will never be shared with any third-person. </p>	
 				<DisplayDetailed title="Aim" lidata={arr} />
 				<DisplayDetailed title="Features" lidata={features} />
 				<Heading text="Send Your Query" />

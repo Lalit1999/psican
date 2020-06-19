@@ -235,6 +235,8 @@ class Personal extends React.Component
 				 	&nbsp;and <span className="ngo"> MENTORING </span> is of prime help in such situations.
 				</p>
 				<p className="intro"> You may consult us for all such needs. </p> 
+				<p className="intro bold"> Note : All Personal Queries and details shall be kept 
+					confidential. They will never be shared with any third-person. </p>
 				<DisplayDetailed title="Features" lidata={features} />
 				<Heading text="Counselling Given By" />
 				<p className="intro"><span className="brand"> Mr. Ashish Aggarwal</span><br/>
