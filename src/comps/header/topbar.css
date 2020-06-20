@@ -1,13 +1,14 @@
 .topbar
 {
-	background-color: rgb(70, 130, 180) ;
+	/*background-color: rgb(70, 130, 180) ;*/
+	background-color: white ;
 	display: flex ;
 	position: fixed; 
   	width: 100% ;
   	top: 0 ;
   	z-index: 99 ;
   	overflow: hidden;
-  	color: white ;
+  	color: rgb(29, 41, 81);
 }
 
 .bar-item
@@ -28,7 +29,7 @@
 
 .bar-item a 
 {	text-decoration: none ;
-	color:whitesmoke;
+	color: rgb(29, 41, 81) ;
 }
 
 .bar-item a:focus
@@ -38,7 +39,8 @@
 
 .bar-item:hover
 {
-	background-color: rgba(14, 77, 146, 0.8) ;
+	/*background-color: rgba(14, 77, 146, 0.8) ;*/
+	background-color: rgb(83, 154, 212, 0.3) ;
 }
 
 .item-txt

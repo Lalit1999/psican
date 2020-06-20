@@ -1,27 +1,29 @@
 import React, { Component } from 'react';
 import Swiper from 'react-id-swiper';
 
-import i1 from '../images/i1.jpg' ;
-import i2 from '../images/i2.jpg' ;
-import i3 from '../images/i3.jpg' ;
-import i4 from '../images/i5.jpg' ;
+// import i1 from '../images/i1.jpg' ;
+// import i2 from '../images/i2.jpg' ;
+// import i3 from '../images/i3.jpg' ;
+// import i4 from '../images/i5.jpg' ;
 import Atul from '../images/atul.jpg' ;
 import KP from '../images/KP.jpg' ;
 import Shivangi from '../images/shivangi.jpg' ;
+import Kiran from '../images/kiran.jpg' ;
+import Sljain from '../images/sljain.jpg' ;
+import Profile from '../images/profile.png' ;
 
 import './testimonial.css' ;
 
 class TestimonialSlider extends Component {
 	checkImage = (str) => {
 		switch(str)
-		{	case 'i1' : return i1 ;
-			case 'i2' : return i2 ;
-			case 'i3' : return i3 ;
-			case 'i4' : return i4 ;
+		{	case 'Kiran' : return Kiran ;
+			case 'Sljain' : return Sljain ;
+			case 'Profile' : return Profile ;
 			case 'Atul' : return Atul ;
 			case 'KP' : return KP ;
 			case 'Shivangi' : return Shivangi ;
-			default : return i1 ;
+			default : return Profile ;
 		}
 	}
 
