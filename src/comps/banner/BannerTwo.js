@@ -22,7 +22,7 @@ class BannerTwo extends React.Component
 {	createBannerContent = () => {
 		switch(this.props.content)
 		{
-			case 'aquess' : return (
+			case 'aequess' : return (
 			 	<BannerContent title = 'AEQUESS System' lidata={cont1} link="/program/AEQUESS"/>
 			 	) ;
 			case 'sarathi' : return (
@@ -41,11 +41,21 @@ class BannerTwo extends React.Component
 		{
 			return(
 				<div className={'BannerTwo '}>
-					<div className="ban2-image">
-					</div>
+					<div className="ban2-sar"></div>
 					<div className = {classcolor}>
 						{this.createBannerContent()}				
 					</div>
+				</div>
+				) ;
+		}
+		else if(this.props.content === 'person')
+		{
+			return(
+				<div className={'BannerTwo '}>
+					<div className = {classcolor}>
+						{this.createBannerContent()}				
+					</div>
+					<div className="ban2-person"></div>
 				</div>
 				) ;
 		}
@@ -55,8 +65,7 @@ class BannerTwo extends React.Component
 					<div className = {classcolor}>
 						{this.createBannerContent()}				
 					</div>
-					<div className="ban2-image">
-					</div>
+					<div className="ban2-stu"></div>
 				</div>
 			) ;
 		}

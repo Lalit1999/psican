@@ -5,7 +5,7 @@
 	width: 100vw !important ;
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-position: top;
+	background-position: center;
 	min-height: 40vw ;
 }
 
@@ -26,6 +26,16 @@
     margin-right: 10vw ;
 	font-family: 'Rubik' ;
 	color: whitesmoke;
+}
+
+.logo-slide
+{	background-color: white ;
+	widows: 100% ;
+}
+
+.row img
+{	margin: auto ;
+	width: 89%;
 }
 
 .arrow

@@ -3,6 +3,8 @@ import Swiper from 'react-id-swiper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons' ;
 
+import Image from '../images/Psyment.jpg' ;
+
 import './slider.css' ;
 
 class Slider extends Component 
@@ -27,13 +29,19 @@ class Slider extends Component
 					<h2 className="slide-heading"> {item.title} </h2>
 				</div>
 				) ;
-		else
+		else if(item.title)
 			return (
 				<div className="row">
 					<p className="slide-subtitle"> {item.subtitle} </p>
 					<h2 className="slide-heading"> {item.title} </h2>
 					<p className="slide-message"> {item.message}</p>
 					<p className="slide-message"> {item.message2}</p>
+				</div>
+			) ;
+		else
+			return (
+				<div className="row logo-slide">
+					<img src={Image} alt="psyment logo" />
 				</div>
 			) ;
 	}
@@ -73,7 +81,7 @@ class Slider extends Component
                 </div>
               ),
 		    autoplay: {
-		        delay: 3000,
+		        delay: 7000,
                 disableOnInteraction: false
 		    }
 		}

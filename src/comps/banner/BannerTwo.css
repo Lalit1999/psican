@@ -3,11 +3,27 @@
 	display: flex ;
 }
 
-.ban2-image
+.ban2-stu
 {
 	border-bottom: 2px solid black;
 	width: 100%;
-	background-image: url('../images/trial/student/cs1.jpg');
+	background-image: url('../images/cs1.jpg');
+	background-position: center;
+	background-size: cover;
+}
+
+.ban2-person
+{	border-bottom: 2px solid black;
+	width: 100%;
+	background-image: url('../images/pc3.jpg') ;
+	background-position: center;
+	background-size: cover;
+}
+
+.ban2-sar
+{	border-bottom: 2px solid black;
+	width: 100%;
+	background-image: url('../images/sarathi.jpg') ;
 	background-position: center;
 	background-size: cover;
 }

@@ -141,8 +141,8 @@ class AQUESS extends React.Component
 	{	return(
 			<div>
 				<Title name = 'AEQUESS Program' items={["Home -"," Programs -", "AEQUESS"]}/>
-				<h4 className="intro cen"> <span className="brand">AEQUESS</span> is an 
-				<span className="ngo">&nbsp;Online Query System for Students </span> which is 
+				<h4 className="intro cen"> <span className="brand">AEQUESS</span> is  
+				<span className="ngo">&nbsp;Abhinav E-Query System for Students </span> which is 
 				 free of cost.  </h4>
 				<p className="intro"> Classes 11-12 & Under-Graduate level education lays the 
 					foundation of an individual's "Take OFF" from the runway of life. </p>

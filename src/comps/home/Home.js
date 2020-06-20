@@ -6,24 +6,25 @@ import Parallax from '../Parallax/Parallax.js' ;
 import './home.css' ;
 import TestimonialSlider from '../slider/TestimonialSlider.js' ;
 
-import i1 from '../images/i1.jpg' ;
-import i2 from '../images/i2.jpg' ;
-import i3 from '../images/i3.jpg' ;
+import i5 from '../images/i5.jpg' ;
+import stress from '../images/stress.jpg' ;
+import sar2 from '../images/sar2.jpeg' ;
+import pc2 from '../images/pc2.png' ;
 
 const testim_arr = [
 { 	name: 'Dr. Kiran Modi' ,
   	img: 'Kiran' ,
-	role: 'Founder & Trustee, The Udayan Care' ,
+	role: 'Founder & Trustee, Udayan Care - NGO' ,
 	msg: 'Ashish always had a great insight into human behaviour and motivation. Since the last 15 years that I know him, I have seen him as an astute business man, a self made person, a great motivator, coach and a trainer and as such he has trained hundreds of our girls, who hail from government schools to aspire for higher education, and higher calling. Armed with qualifications in psychology, he has further honed his skills in understanding human psyche and motivational coaching to lead them onto greater resilience and a higher purpose. I wish him all the best in this not so new role, as he always functioned as such, to a new height.'
 },
 { 	name: 'Dr. Gayatri Ahuja' ,
   	img: 'Profile' ,
-	role: 'Faculty - Department of Education, AYJNISHD(D)' ,
+	role: 'Faculty- Dept. of Education, AYJNISHD(D), Mumbai' ,
 	msg: 'Mr Ashish Aggarwal is one of the most sensitive, non-judgemental and honest individual. His feedback and insight are very intuitive. He speaks from the heart and can truly be a supporter as well as a mentor. He has vast experience in handling concerns related to personal and professional life. I feel he has a right balance of scaffolding and has nice empathetic stance. It is really admirable when you see your friend grow in his projects through conception to completion.'
 },
 { 	name: 'Shri. S L Jain' ,
   	img: 'Sljain' ,
-	role: 'Director, Mahavir Senior Model School' ,
+	role: 'Director, Mahavir Senior Model School, Delhi' ,
 	msg: 'Psyment is wonderful program and is the need of the hour for students, parents and teachers and for education as a whole. The program has been concieved and will be executed by Mahavirian Ashish Aggarwal who is now a very dear friend. Ashish Aggarwal has evolved into a very creative and highly sensitive person who is conscious of the pitfalls of present education system and also worried about corrective course of action to be taken. In this direction, after a lot of study and research he has come out with a detailed plan which will address the issues of students, parents and teachers in a very sensitive and collaborative manner. I am proud of Ashish Aggarwal and feel assured that his venture will meet its objectives for which it has been launched. My best wishes and blessings and feel proud of my student Ashish Aggarwal.'
 },
 { 	name: 'Shri K. P. Raizada' ,
@@ -48,8 +49,8 @@ const testim_arr = [
 },
 ] ;
 
-const data = [	{	style : {
-        	backgroundImage: 'url(' + i3+ ')',
+const data = [ { link :'/' },	{	style : {
+        	backgroundImage: 'url(' + i5+ ')',
     	},
         message: 'Welcome to the world of',
         link : '/' ,
@@ -58,7 +59,7 @@ const data = [	{	style : {
         message4: 'Actualisation ( अहम् ब्रह्मास्मि ) - Psychology',
         title: 'PSYMENT'
  	},{	style : {
-        	backgroundImage: 'url(' + i1+ ')',
+        	backgroundImage: 'url(' + sar2+ ')',
     	},
         subtitle: 'PSYMENT : Program 1',
         title: 'Sarathi',
@@ -66,7 +67,7 @@ const data = [	{	style : {
         message2: 'A Mentoring Program for Educational Instituitions' ,
         link : '/program/Sarathi'
     },{	style : {
-        	backgroundImage: 'url(' + i3+ ')',
+        	backgroundImage: 'url(' + stress+ ')',
     	},
         title: 'AEQUESS',
         subtitle: 'PSYMENT : Program 2',
@@ -74,7 +75,7 @@ const data = [	{	style : {
         message: 'Abhinav E-Query System for Students',
         message2 : 'An E-Counselling System for Classes 11-12 & UG level students',
  	},{	style : {
-        	backgroundImage: 'url(' + i2+ ')',
+        	backgroundImage: 'url(' + pc2+ ')',
     	},
         subtitle: 'PSYMENT : Program 3',
         title: 'Personal Consultation',
@@ -90,7 +91,7 @@ class Home extends React.Component
 	{	return(
 			<div>
 				<Slider data={data} />
-				<BannerTwo content="aquess" color="blue"/>
+				<BannerTwo content="aequess" color="blue"/>
 				<BannerTwo content="sarathi" left="yes" color="blue"/>
 				<BannerTwo content="person" color="blue"/>
 				<Parallax>
