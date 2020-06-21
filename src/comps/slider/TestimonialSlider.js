@@ -7,6 +7,7 @@ import Shivangi from '../images/shivangi.jpg' ;
 import Kiran from '../images/kiran.jpg' ;
 import Sljain from '../images/sljain.jpg' ;
 import Profile from '../images/profile.png' ;
+import Profile2 from '../images/profile2.png' ;
 
 import './testimonial.css' ;
 
@@ -16,6 +17,7 @@ class TestimonialSlider extends Component {
 		{	case 'Kiran' : return Kiran ;
 			case 'Sljain' : return Sljain ;
 			case 'Profile' : return Profile ;
+			case 'Profile2' : return Profile2 ;
 			case 'Atul' : return Atul ;
 			case 'KP' : return KP ;
 			case 'Shivangi' : return Shivangi ;
@@ -24,13 +26,16 @@ class TestimonialSlider extends Component {
 	}
 
 	dataList = () => {
+		console.log(this.props.data) ;
 		return this.props.data.map( (item, i) => {
+			console.log(item, 'item') ;
+			console.log(i, 'i') ;
 			return (
 				<div className="testim-slide" key={i}>
 					<div className="testim-up">
 						<div>
 							<img className="testim-img" src={this.checkImage(item.img)} 
-								alt={item.msg} />
+								alt={item.name} />
 						</div>
 						<div>
 							<p className='testim-name'> {item.name} </p>
