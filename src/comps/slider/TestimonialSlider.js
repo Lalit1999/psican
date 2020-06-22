@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Swiper from 'react-id-swiper';
 
-import Atul from '../images/atul.jpg' ;
-import KP from '../images/KP.jpg' ;
-import Shivangi from '../images/shivangi.jpg' ;
-import Kiran from '../images/kiran.jpg' ;
-import Sljain from '../images/sljain.jpg' ;
-import Profile from '../images/profile.png' ;
-import Profile2 from '../images/profile2.png' ;
+import Atul from '../images/atul.webp' ;
+import KP from '../images/KP.webp' ;
+import Shivangi from '../images/shivangi.webp' ;
+import Kiran from '../images/kiran.webp' ;
+import Sljain from '../images/sljain.webp' ;
+import Profile from '../images/profile.webp' ;
+import Profile2 from '../images/profile2.webp' ;
 
 import './testimonial.css' ;
 

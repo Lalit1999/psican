@@ -3,7 +3,7 @@ import { faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons' ;
 
 import './topbar.css' ;
 import BarItem from './BarItem.js' ;
-import Image from '../images/Psyment.jpg' ;
+import Image from '../images/Psyment.webp' ;
 
 class TopBar extends React.Component
 {

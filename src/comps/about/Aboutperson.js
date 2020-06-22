@@ -3,7 +3,7 @@ import React from 'react' ;
 import Title from '../title/Title.js' ;
 import './AboutPerson.css' ;
 
-import Leader_image from '../images/leader.jpg' ;
+import Leader_image from '../images/leader.webp' ;
 
 class Aboutperson extends React.Component
 {

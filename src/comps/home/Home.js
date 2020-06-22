@@ -6,10 +6,10 @@ import Parallax from '../Parallax/Parallax.js' ;
 import './home.css' ;
 import TestimonialSlider from '../slider/TestimonialSlider.js' ;
 
-import i5 from '../images/i5.jpg' ;
-import stress from '../images/stress.jpg' ;
-import sar2 from '../images/sar2.jpeg' ;
-import pc2 from '../images/pc2.png' ;
+import i5 from '../images/i5.webp' ;
+import stress from '../images/stress.webp' ;
+import sar2 from '../images/sar2.webp' ;
+import pc2 from '../images/pc2.webp' ;
 
 const testim_arr = [
 { 	name: 'Dr. Kiran Modi' ,

@@ -3,7 +3,7 @@ import Swiper from 'react-id-swiper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons' ;
 
-import Image from '../images/Psyment.jpg' ;
+import Image from '../images/Psyment.webp' ;
 
 import './slider.css' ;
 

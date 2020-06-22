@@ -3,7 +3,7 @@ import React from 'react' ;
 import Title from '../title/Title.js' ;
 import './AboutPerson.css' ;
 
-import Image from '../images/Psyment.jpg' ;
+import Image from '../images/Psyment.webp' ;
 
 class Aboutpsican extends React.Component
 {
