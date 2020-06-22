@@ -26,10 +26,10 @@ class TestimonialSlider extends Component {
 	}
 
 	dataList = () => {
-		console.log(this.props.data) ;
+		// console.log(this.props.data) ;
 		return this.props.data.map( (item, i) => {
-			console.log(item, 'item') ;
-			console.log(i, 'i') ;
+			// console.log(item, 'item') ;
+			// console.log(i, 'i') ;
 			return (
 				<div className="testim-slide" key={i}>
 					<div className="testim-up">
