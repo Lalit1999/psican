@@ -26,10 +26,7 @@ class TestimonialSlider extends Component {
 	}
 
 	dataList = () => {
-		// console.log(this.props.data) ;
 		return this.props.data.map( (item, i) => {
-			// console.log(item, 'item') ;
-			// console.log(i, 'i') ;
 			return (
 				<div className="testim-slide" key={i}>
 					<div className="testim-up">
@@ -37,7 +34,7 @@ class TestimonialSlider extends Component {
 							<img className="testim-img" src={this.checkImage(item.img)} 
 								alt={item.name} />
 						</div>
-						<div>
+						<div className="testim-up-right">
 							<p className='testim-name'> {item.name} </p>
 							<p className='testim-role'> {item.role} </p>
 						</div>

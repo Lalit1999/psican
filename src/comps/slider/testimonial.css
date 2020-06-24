@@ -70,3 +70,50 @@
 {
 	background-color: #007aff ;
 }
+
+@media(max-width: 600px)
+{	.testim-slider-parent
+	{	margin: 1em 4vw ;
+	}
+
+	.testim-img
+	{
+		width: 25vw ;
+		height: 25vw ;
+		margin-top: 4vw ;
+		margin-left: 6vw ;
+		margin-right: 5vw ;
+	}
+
+	.testim-name
+	{	font-size: 1.2rem ;
+	}
+
+	.testim-role
+	{	font-size: 0.95rem ;
+	}
+
+	.testim-up-right
+	{	margin-right: 3vw ;
+	}
+
+	.testim-msg
+	{
+		font-size: 1.05rem ;
+		padding: 0 1em ;
+	}
+
+	.testim-bullet
+	{
+		bottom: 2vh !important;
+		display: flex ;
+		flex-direction: row ;
+		justify-content: center;
+		margin-left: 0 ;
+	}
+
+	.swiper-pagination-bullet
+	{
+		margin: .4em !important;
+	}
+}

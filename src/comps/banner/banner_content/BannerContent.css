@@ -9,14 +9,9 @@
     padding: 0.5em;
     font-size: 1.5rem;
     border-radius: 999rem;
-    margin: 3vh 35%;
+    margin: 3vh auto;
     transition: all 0.4s;
     display: inline-block;
-}
-
-.explore:focus
-{
-    outline: none; 
 }
 
 .banner-li
@@ -57,3 +52,33 @@
   list-style-type: none ;
 }
 
+@media(max-width: 600px)
+{
+    .explore
+    {
+        padding: 0.5em;
+        font-size: .8rem;
+        margin: 1vh auto;
+    }
+
+    .banner-li
+    {
+        margin: 0.2em 0 ;
+    }
+
+    .ban_text
+    {
+        font-size: 1rem ;
+        margin-left: .5em ;
+        width: 50% ;
+    }
+
+    .ban_text h3
+    {   letter-spacing: 0.05em ;
+    }
+
+    .ul ul
+    {   margin-block-end: 0;
+        padding-inline-start: 10px ;   
+    }
+}

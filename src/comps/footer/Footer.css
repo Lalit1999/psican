@@ -32,3 +32,30 @@
 	font-size: 1.6rem ;
 	color: white ;
 }
+
+@media(max-width: 600px)
+{	.map
+	{	margin: 0 0 0 1.4em;
+		padding-top: 1.7em ;
+	}
+
+	.ic
+	{	display: block;
+		margin : .2em  0;
+	}
+
+	.mapouter
+	{	width: 350px;
+	}
+
+	.gmap_canvas
+	{	width: 350px;
+	}
+
+	.conte
+	{	margin-top: .5em ;
+		padding: 0 1em 1em ;
+		margin-right: 5.8vw ;
+		font-size: 1.3rem ;
+	}
+}

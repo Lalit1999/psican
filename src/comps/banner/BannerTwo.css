@@ -50,8 +50,15 @@
 {
 	background-color: rgb(180, 80, 80) ;
 }
+
 .undefined
 {
 	margin: 0 ;
 	width: 100% ;
+}
+
+@media(max-width: 600px)
+{	.ban2_main
+	{	padding: .5em ;
+	}
 }

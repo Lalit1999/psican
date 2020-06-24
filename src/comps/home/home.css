@@ -4,27 +4,8 @@
 	font-size: 3rem ;
 }
 
-.app-close
-{	background-color: white ;
-	position: fixed ;
-	top: 0;
-	bottom: 0 ;
-	z-index: 99;
-	left: 0;
-	right: 0;
-	text-align: center;
-}
-
-.app-close h1
-{	margin: 1em 0 ;
-}
-
-.app-close img
-{	display: block;
-	margin: 2em auto ;
-	width: 50vw ;
-}
-
-.app-close button:hover
-{	transform: scale(1.1);
+@media(max-width: 600px)
+{	.testim
+	{	font-size: 2rem ;		
+	}	
 }

@@ -72,6 +72,15 @@
 	display: flex;
 }
 
+.menu-div
+{	margin: 1vh auto;
+	justify-content: center;	
+}
+
+a.header-btn
+{	padding-top: .2em ; 
+}
+
 .header-btn
 {
 	border:none;
@@ -85,6 +94,16 @@
 	color: rgb(212, 170, 32);
 	border-right: 1px solid rgb(212, 170, 32);
 	border-left: 1px solid rgb(212, 170, 32);
+}
+
+.menu-btn
+{	display: block ;
+	font-size: 1.55rem ;
+	margin: 2vw auto ;
+	border-right: none ;
+	border-left: none ;
+	padding-top: 1.4vw ;
+	padding-bottom: 1.4vw ;
 }
 
 .header-btn:hover
@@ -102,5 +121,9 @@
 		padding-right: 6.1vw;
 	    padding-top: 3.6vh;
 	    padding-left: 3.7vw;
+	}
+
+	a.header-btn
+	{	padding-top: .3em ; 
 	}
 }

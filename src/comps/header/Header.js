@@ -10,12 +10,9 @@ import Menu from './Menu.js' ;
 import './header.css' ;
 
 class Header extends React.Component
-{	constructor(props) {
-	    super(props)
-	    this.state = {
-	      menuOpen: false,
-	    }
-	}
+{	state = {
+      menuOpen: false,
+	} ;
 
 	openMenu = () => {
 	    this.setState({ menuOpen: true })
@@ -54,7 +51,7 @@ class Header extends React.Component
 	}
 
 	checkMobile = () => {
-		if(window.innerWidth > 923)
+		if(window.screen.availWidth > 923)
 		{	return (
 				<div className="mini-menu">
 					<div>
@@ -90,7 +87,7 @@ class Header extends React.Component
 			return (
 				<div>
 					<CheeseburgerMenu isOpen={this.state.menuOpen} closeCallback={this.closeMenu}>
-							<Menu closeCallback={this.closeMenu}/>
+							<Menu closeCallback={this.closeMenu} checkLoggedIn={this.checkLoggedIn}/>
 					</CheeseburgerMenu>
 					<HamburgerMenu isOpen={this.state.menuOpen} menuClicked={this.openMenu} 
 								   width={32} height={24} strokeWidth={8} color='white' 
@@ -100,14 +97,14 @@ class Header extends React.Component
 		}
 	}
 
-	checkLoggedIn = () => {
+	checkLoggedIn = (str = '', str2 = '') => {
 		if(this.props.token === '')
 		{
 			return (
-				<div className = "right-header">
-					<button className="header-btn" onClick={()=>this.onButtonClick('login')}>
+				<div className = {"right-header "+str2}>
+					<button className={"header-btn "+str} onClick={()=>this.onButtonClick('login')}>
 					 Login </button>
-					<button className="header-btn"  onClick={()=>this.onButtonClick('register')}>
+					<button className={"header-btn "+str}  onClick={()=>this.onButtonClick('register')}>
 					 Register </button>
 				</div>
 				) ;
@@ -115,9 +112,9 @@ class Header extends React.Component
 		else
 		{
 			return (
-				<div className = "right-header">
-					<Link className="header-btn" to="/profile"> {this.props.user.name} </Link>
-					<button className="header-btn"  onClick={this.onLogoutClick}> Logout </button>
+				<div className = {"right-header "+str2}>
+					<Link className={"header-btn "+str} to="/profile"> {this.props.user.name} </Link>
+					<button className={"header-btn "+str}  onClick={this.onLogoutClick}> Logout </button>
 				</div>
 				) ;
 		}

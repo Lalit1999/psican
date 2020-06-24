@@ -25,7 +25,7 @@ const testim_arr = [
 { 	name: 'Shri. S L Jain' ,
   	img: 'Sljain' ,
 	role: 'Director, Mahavir Senior Model School, Delhi' ,
-	msg: 'Psyment is wonderful program and is the need of the hour for students, parents and teachers and for education as a whole. The program has been concieved and will be executed by Mahavirian Ashish Aggarwal who is now a very dear friend. Ashish Aggarwal has evolved into a very creative and highly sensitive person who is conscious of the pitfalls of present education system and also worried about corrective course of action to be taken. In this direction, after a lot of study and research he has come out with a detailed plan which will address the issues of students, parents and teachers in a very sensitive and collaborative manner. I am proud of Ashish Aggarwal and feel assured that his venture will meet its objectives for which it has been launched. My best wishes and blessings and feel proud of my student Ashish Aggarwal.'
+	msg: 'PSYMENT is wonderful program and need of the hour for education system as a whole. The program has been concieved by Mahavirian Ashish Aggarwal who is now a very dear friend. He is a very creative and highly sensitive person, who is conscious of the pitfalls of present education system and is working towards corrective course of action. After a lot of study and research he has come out with PSYMENT which will address the issues of students, parents and teachers in a very sensitive and collaborative manner. I am proud of Ashish Aggarwal and feel assured that his venture will meet its objectives. My best wishes and blessings and feel proud of my student Ashish Aggarwal.'
 },
 { 	name: 'Shri K. P. Raizada' ,
   	img: 'KP' ,

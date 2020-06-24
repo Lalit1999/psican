@@ -16,7 +16,7 @@ class Menu extends React.Component
 						<Popup trigger={<div className="menu-item"> About </div>}
 						  position="right top" on="hover" >
 						  <div className="pop-p" onClick={this.props.closeCallback}>
-							<Link className="menu-item pop-item" to='/about/leader'> Our Leader </Link>
+							<Link className="menu-item pop-item" to='/about/leader' > Our Leader </Link>
 							<Link className="menu-item pop-item" to='/about/psyment'> PSYMENT </Link>
 					      </div>
 						</Popup>					
@@ -35,6 +35,7 @@ class Menu extends React.Component
 					    </Popup>
 						<Link className="menu-item" to='/consult'> Consult </Link>
 						<Link className="menu-item" to='/contact'> Contact Us </Link>
+						{this.props.checkLoggedIn('menu-btn', 'menu-div')}
 					</div>
 				</div>
 			</div>
