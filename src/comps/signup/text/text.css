@@ -36,3 +36,18 @@
   color: #ccddff ;
   box-shadow: inset 0 0 0 1px #ccddff;
 }
+
+@media(max-width: 600px)
+{
+  .lbel
+  {  width: 9em;
+     text-align: left;
+     font-size: 1.3rem ; 
+  }
+  .text-div
+  {  margin: .2em 1vw;    }
+
+  .textarea-div
+  {  display: flex ;    }
+
+}

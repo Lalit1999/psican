@@ -4,7 +4,7 @@
   background-color: rgb(83, 154, 212) ;
   border-radius: .5rem;
 }
-
+ 
 .pteste
 {	justify-content: space-evenly ;
 	font-size: 1.5rem ;
@@ -64,4 +64,42 @@
 .dele:hover
 { background-color: red ;
   border : 2px solid black;
+}
+
+@media(max-width: 600px)
+{
+  .propfileBoxe
+  { padding: 1.5em ;
+    border-radius: .5rem;
+  }
+   
+  .pteste
+  { 
+    font-size: 1.5rem ;
+    display : flex ;
+    flex-direction: row ;
+  }
+
+  .lefte
+  { display: flex ;
+    flex-direction: column ;
+    margin-left: 1em ;
+  }
+
+  .righte
+  { display: flex;
+    width: 70% ;
+    margin-left: 3em ;
+    margin-right: 3em ;
+    flex-direction: column ;
+    padding-left: 2em ;
+  }
+
+  .buttone
+  { margin: 1em 0.4em 0.5em 0.4em ;
+    padding: 0.5em 2em ;
+    font-size: 1.5rem ;
+    letter-spacing: 0.05em ;
+  }
+
 }

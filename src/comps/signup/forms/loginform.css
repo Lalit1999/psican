@@ -87,3 +87,29 @@
 	color: #ccddff ;
 	box-shadow: inset 0 0 0 1px #ccddff;
 }
+
+@media(max-width: 600px)
+{
+	.login-form
+	{	display: inline-block;
+		margin: 0.4vw ;
+	}
+
+	.heading
+	{	font-size: 2.25rem;
+	  	margin: 0;
+	}
+
+	.box
+	{	padding: 0.3vw 0.4vw 0.3vw 0.13vw ;
+		border: 4px solid black;
+		margin-left: 1vw ;
+		margin-right: 4vw ; 
+	}
+
+	.box-title
+	{	font-size: 1.5rem ;
+		text-align: left;
+	}
+
+}
