@@ -123,6 +123,10 @@ a.header-btn
 	    padding-left: 3.7vw;
 	}
 
+	#bar
+	{	top: 9.95vh ;		
+	}
+
 	a.header-btn
 	{	padding-top: .3em ; 
 	}

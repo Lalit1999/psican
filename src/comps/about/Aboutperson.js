@@ -7,10 +7,6 @@ import Leader_image from '../images/leader.webp' ;
 
 class Aboutperson extends React.Component
 {	
-	componentDidMount = () => {
-
-	}
-	
 	render()
 	{
 		return(

@@ -68,13 +68,49 @@
 	margin-top: 1em ;
 }
 
-.display
-{
-	height : 40vw ;
-	text-align: right ;
-	background-size: cover ;
-	background-repeat: no-repeat ;
-	color : white ;
-	width: 100% ;
-	height: 100% ;
+@media(max-width: 600px)
+{	.flex
+	{	flex-direction: column-reverse;
+		justify-content: space-around;
+		font-size: 1.2rem ;
+		margin: 0 ;
+	}
+
+	.after-div
+	{	font-size: 1.2rem ;
+		padding-right: 1em ;
+	}
+
+	.about-left, .about-right
+	{	padding: 0 1em ;
+	}
+
+	.about-bold
+	{	margin: .4em auto 0.1em ;
+	}
+
+	.txt
+	{	margin-left: .5em ;
+		margin-bottom: 1em ;
+	}
+
+	.photo
+	{	margin: 1.2em 3.6em .5em ;
+	}
+
+	.br2
+	{	height: 25vh ;
+	}
+
+	.mb
+	{	margin: 0 0 1em 1em ;
+		width: 88% ;
+		height: 25vh ;
+	}
+
+	.font
+	{
+		font-size: 1.6rem ; 
+		margin-top: .4em ;
+	}
 }

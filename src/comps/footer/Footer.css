@@ -45,11 +45,13 @@
 	}
 
 	.mapouter
-	{	width: 350px;
+	{	width: 89vw;
+		overflow:hidden;
 	}
 
 	.gmap_canvas
-	{	width: 350px;
+	{	width: 89vw;
+		overflow:hidden;
 	}
 
 	.conte

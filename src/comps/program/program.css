@@ -28,7 +28,7 @@
 .date-cont input[type="text"]
 {	font-family: 'Lato', sans-serif;
   font-size: 1.5rem ; 
-  background-color: transparent;
+  background-color: white;
   border : 1px solid black;
   outline: 2px solid #ccddff;
   box-shadow: 4px 4px 8px 0 rgba( 0, 0, 0, .2 );
@@ -74,4 +74,48 @@
 {	background-color: black ;
 	color: #ccddff ;
 	box-shadow: inset 0 0 0 1px #ccddff;
+}
+
+@media(max-width: 600px)
+{	.intro
+	{	font-size: 1.05rem ;
+		margin: 1em 1em ;
+	}
+
+	.brand, .ngo
+	{	font-size: 1.1rem ;
+	}
+
+	.cen
+	{	text-align: center; 	}
+
+	.bold
+	{	margin: 1.4em 1em ;
+	}
+
+	.date-cont input[type="text"]
+	{	font-size: 1.2rem ; 
+		margin-top: 0.5em ;
+	}
+
+	.blue-bg
+	{	font-size: 1.28rem ;
+		padding: .5em ;
+		line-height: 2em ;
+	}
+
+	.blue-form .btn2, .blue-form .btn3
+	{	margin: .2em .5em 0;
+	}
+
+	.sched-btn
+	{	font-size: 1.4rem ;
+		padding: 0.5em 1em ;
+		margin-bottom: 1em ; 
+	}
+
+	.btn3
+	{	font-size: 1.05rem ;
+		padding: 0em 0.5em ;
+	}
 }
