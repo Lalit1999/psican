@@ -67,39 +67,33 @@
 }
 
 @media(max-width: 600px)
-{
+{  
   .propfileBoxe
-  { padding: 1.5em ;
-    border-radius: .5rem;
+  { padding: .5em ;
   }
    
   .pteste
-  { 
-    font-size: 1.5rem ;
-    display : flex ;
-    flex-direction: row ;
+  { font-size: 1.2rem ;
+    flex-direction: column;
   }
 
   .lefte
   { display: flex ;
-    flex-direction: column ;
-    margin-left: 1em ;
+    flex-direction: row ;
+    flex-wrap: wrap;
+    margin-left: 0 ;
   }
 
   .righte
-  { display: flex;
-    width: 70% ;
-    margin-left: 3em ;
-    margin-right: 3em ;
-    flex-direction: column ;
-    padding-left: 2em ;
+  { width: 90% ;
+    margin-left: 0 ;
+    /*margin-right: 3em ;*/
+    padding-left: 0.5em ;
   }
 
   .buttone
-  { margin: 1em 0.4em 0.5em 0.4em ;
-    padding: 0.5em 2em ;
-    font-size: 1.5rem ;
-    letter-spacing: 0.05em ;
+  { margin: .5em .2em 0.3em 0.2em ;
+    padding: 0.5em 1em ;
+    font-size: 1.2rem ;
   }
-
 }

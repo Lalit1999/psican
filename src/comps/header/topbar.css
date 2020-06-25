@@ -15,7 +15,7 @@
 	display: inline-block;
 	margin: 0 0.9vw ;
 	font-size: 1rem ;
-	padding: 0 0.7vw 0.7em;
+	padding: 0.7em 0.7vw;
 	transition: all 0.5s ;
 }
 
@@ -29,10 +29,6 @@
 .bar-item a 
 {	text-decoration: none ;
 	color: rgb(29, 41, 81) ;
-}
-
-.bar-item svg
-{	font-size: 2.5rem ;	
 }
 
 .bar-item:hover
@@ -92,5 +88,14 @@
 
 	.topbar .right-topbar
 	{	margin-left: auto ;
+	}
+
+	.bar-item
+	{
+		padding: 0 0.7vw 0.7em;
+	}
+
+	.bar-item svg
+	{	font-size: 2rem ;	
 	}
 }

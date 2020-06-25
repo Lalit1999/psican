@@ -179,9 +179,6 @@ class UserProfile extends React.Component
 					<div className="propfileBoxe">
 						<div className="pteste">
 							<div className="lefte">
-								<button className = "buttone " onClick = {this.onEditClick}>
-									{(this.state.mode==='edit'?'Go Back':'Edit profile')}
-								</button>
 								<Pop btn="Change Password" classes="buttone ">
 									<LoginForm title=" Basic Details " error={this.state.error} near="near"
 										b2="Change" onb2Click={this.onChangeClick} >
@@ -191,6 +188,9 @@ class UserProfile extends React.Component
 									</LoginForm>
 								</Pop>								
 	 							<button className = "buttone" onClick={this.onLogoutClick} >Logout</button>
+								<button className = "buttone " onClick = {this.onEditClick}>
+									{(this.state.mode==='edit'?'Go Back':'Edit profile')}
+								</button>
 	 							<button className = "buttone dele" onClick={this.onDeleteClick} >Delete profile</button>
 							</div>
 							<div className="righte">

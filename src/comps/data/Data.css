@@ -11,3 +11,20 @@
 .data-right
 {	margin-left: 5em ;
 }
+
+@media(max-width: 600px)
+{	.data-flex p
+	{	margin-top: .5em ;
+		margin-bottom: .5em ;
+		max-width: 100% ;
+	}
+
+	.data-right
+	{	margin-left: 10vw ;
+		width: 65%;		
+	}
+
+	.data-bold
+	{	width: 35%;
+	}
+}
