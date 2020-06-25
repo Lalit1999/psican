@@ -37,3 +37,28 @@
 	height: 100% ;
 	padding-bottom: .65em ;
 }
+
+@media(max-width: 600px)
+{	.layout
+	{	font-size : 1.45rem ;
+	}
+
+	.title
+	{	font-size: 2rem ;
+		margin: 0 0 0.3em  ; 
+		padding-top: 0.3em ;
+	}
+
+	.subtitle
+	{	margin-bottom: .5em ;	}
+
+	.bgimage
+	{	margin-bottom: .6em ;
+	}
+
+	.colo
+	{	background-color: rgba(0, 0, 0, 0.5) ;
+		padding-bottom: .65em ;
+	}
+
+}

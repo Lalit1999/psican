@@ -384,7 +384,7 @@ class Register extends React.Component
 			{	return(
 					<div>
 						<Title name = 'Register' items={["Home -", "Register"]}/>
-						<div className="blue-bg">
+						<div className="su-blue-bg">
 							{this.checkMode()}
 						</div>
 					</div>

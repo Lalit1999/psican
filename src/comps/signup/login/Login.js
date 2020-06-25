@@ -122,7 +122,7 @@ class Login extends React.Component
 		{	return(
 				<div>
 					<Title name = 'Login' items={["Home -", "Login"]}/>
-					<div className="blue-bg">
+					<div className="su-blue-bg">
 						{this.checkMode()}
 					</div>
 				</div>

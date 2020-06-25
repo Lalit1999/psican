@@ -40,14 +40,17 @@
 @media(max-width: 600px)
 {
   .lbel
-  {  width: 9em;
-     text-align: left;
-     font-size: 1.3rem ; 
+  {  width: 33.6vw;
+     /*text-align: left;*/
+     font-size: 1.1rem ; 
   }
-  .text-div
-  {  margin: .2em 1vw;    }
 
-  .textarea-div
-  {  display: flex ;    }
+  .inpu
+  {  font-size: 1.1rem ; 
+     width: 41vw ;
+  }
+
+  .text-div
+  {  width: 80vw;  }
 
 }

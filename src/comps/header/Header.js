@@ -63,7 +63,7 @@ class Header extends React.Component
 							<Link className="header-item pop-item" to='/about/psyment'> PSYMENT </Link>
 					      </div>
 						</Popup>					
-						<Popup trigger={<span className="header-item">Social Programs </span>}
+						<Popup trigger={<span className="header-item"> Programs </span>}
 					      position="bottom center" on="hover" >
 					      <div className="pop-p">
 					      	<Popup trigger={<span className="header-item pop-item"> Students </span>}

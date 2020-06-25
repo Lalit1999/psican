@@ -20,7 +20,7 @@ class Menu extends React.Component
 							<Link className="menu-item pop-item" to='/about/psyment'> PSYMENT </Link>
 					      </div>
 						</Popup>					
-						<Popup trigger={<div className="menu-item">Social Programs </div>}
+						<Popup trigger={<div className="menu-item"> Programs </div>}
 					      position="right top" on="hover" >
 					      <div className="pop-p" onClick={this.props.closeCallback}>
 							<Popup trigger={<span className="header-item pop-item"> Students </span>}

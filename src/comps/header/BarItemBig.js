@@ -8,7 +8,7 @@ class BarItemBig extends Component
 			return (
 				<div className='bar-item'> 
 					 <div> 
-					 	<FontAwesomeIcon icon={this.props.icon} />
+					 	<FontAwesomeIcon icon={this.props.icon}/>
 					 	<div className="item-txt">
 					 		<div> {this.props.msg} </div>
 					 		<div> <a href={this.props.link}>{this.props.text}</a> </div>
