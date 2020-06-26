@@ -99,13 +99,18 @@
 	}
 
 	.br2
-	{	height: 25vh ;
+	{	/*height: 25vh ;*/
 	}
 
 	.mb
 	{	margin: 0 0 1em 1em ;
 		width: 88% ;
-		height: 25vh ;
+		/*height: 25vh ;*/
+	}
+
+	.mb img
+	{
+		width: 100% ;
 	}
 
 	.font
