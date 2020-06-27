@@ -195,8 +195,7 @@ class Sarathi extends React.Component
 				<Title name = 'Sarathi Program'
 				 items={["Home -"," Programs -", "Sarathi"]}/>
 				<h4 className="intro"> <span className='brand'>Sarathi</span> is a program, supported
-				 by <span className="ngo"> The Kasturi Foundation</span>. It provides workshop
-				 organising facilities to schools and colleges. </h4> 
+				 by <span className="ngo"> The Kasturi Foundation</span> to organise workshops for schools and colleges. </h4> 
 				<DisplayDetailed title="Aim" lidata={arr}/>
 				<DisplayDetailed title="Features" lidata={features} />
 				<Heading text="Schedule Your Workshop" />

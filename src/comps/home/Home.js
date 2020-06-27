@@ -34,7 +34,7 @@ const testim_arr = [
 },
 { 	name: 'Shivangi Gupta' ,
   	img: 'Shivangi' ,
-	role: 'Student & A Psyment beneficiary' ,
+	role: 'Student & Psyment beneficiary' ,
 	msg: 'I, Shivangi Gupta, working as a mathematics teacher in a private school, I had always been clear about my goals but what path to take always landed me in confusion. As I know Mr. Ashish Aggarwal since my childhood, I shared my concern with him and found the right direction. Signing up for PSYMENT was one of the best decisions I made for myself. PSYMENT has given me the focus to make decisions to fulfill my short term and long term goals. Guided by the best mentor, who helped me to map my capabilities. I am sure they will do the same for everyone else.'
 },
 { 	name: 'Atul Jain' ,
