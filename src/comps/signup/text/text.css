@@ -40,14 +40,14 @@
 @media(max-width: 600px)
 {
   .lbel
-  {  width: 33.6vw;
+  {  width: 42%;
      /*text-align: left;*/
      font-size: 1.1rem ; 
   }
 
   .inpu
   {  font-size: 1.1rem ; 
-     width: 41vw ;
+     width: 51% ;
   }
 
   .text-div
