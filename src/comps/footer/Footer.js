@@ -35,7 +35,7 @@ class Footer extends React.Component
 		}
 		else
 		{	return(
-				<div className = 'ic' id="footer">
+				<div className = 'ic' id="footer" ref={this.props.footer}>
 					<div className = 'map'>
 						<div className="mapouter">
 							<div className="gmap_canvas">

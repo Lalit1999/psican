@@ -23,7 +23,7 @@
   font-family: 'Signika' ;
   letter-spacing: 0.02em ;
   display: inline-block; 
-  margin: 0 1em 0 ;
+  margin: 0 1em;
   text-align: left ;
 }
 
@@ -36,3 +36,20 @@
 	background-color: rgb(29, 41, 81);
 	color : rgb(70, 130, 180);
 }*/
+
+@media(max-width: 600px)
+{ .left-title
+  { font-size: 1.3rem ;
+    padding: 0 .5em ;
+  }
+
+  .small-title
+  { font-size: 1.1rem;
+    padding: 0 1.5em ;
+  }
+
+  .title-con
+  { margin: 0 .5em 0 ;
+  }
+
+}

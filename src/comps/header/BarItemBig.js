@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
 
 class BarItemBig extends Component 
-{
+{	
 	render = () => {
 		if(window.screen.availWidth > 600)
 			return (
@@ -20,7 +20,7 @@ class BarItemBig extends Component
 			return (
 				<div className='bar-item'> 
 					<div>
-						<a href={this.props.link}> <FontAwesomeIcon icon={this.props.icon} /> </a>
+						<a href={this.props.link} onClick={this.props.scroll}> <FontAwesomeIcon icon={this.props.icon} /> </a>
 					</div>
 				</div>
 			);

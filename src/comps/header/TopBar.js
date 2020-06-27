@@ -22,7 +22,7 @@ class TopBar extends React.Component
 				<React.Fragment>
 					<BarItemBig icon={faPhoneAlt} link="tel:09555235231"/>
 					<BarItemBig icon={faEnvelope} link="mailto:info.psyment@gmail.com"/>
-					<BarItemBig icon={faAngleDown} link="#footer"/>
+					<BarItemBig icon={faAngleDown} link="#footer" scroll={this.props.scroll}/>
 				</React.Fragment>
 			) ;
 	}
