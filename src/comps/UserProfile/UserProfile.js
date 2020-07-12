@@ -116,7 +116,7 @@ class UserProfile extends React.Component
 			case "name" : ret = "Name" ; break ;
 			case "age"  : ret = "Age" ; break ;
 			case "gender" : ret = "Gender" ; break ;
-			case "height" : ret = "Height(cm)" ; break ;
+			case "height" : ret = "Height(inch)" ; break ;
 			case "weight" : ret = "Weight(kg)" ; break ;
 			case "address" : ret = "Address" ; break ;
 			case "address2" : ret = "Permanent Address" ; break ;

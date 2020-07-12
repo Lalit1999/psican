@@ -30,7 +30,7 @@ const testim_arr = [
 { 	name: 'Shri K. P. Raizada' ,
   	img: 'KP' ,
 	role: 'Ex. Deputy Director of Education' ,
-	msg: 'I know Ashish Aggrwal as a sensitive , honest, creative young man. He stands for value based human personality & Education. He always strives to improve good things into better. In my experience he is trustworthy and dependable.'
+	msg: 'I know Ashish Aggarwal as a sensitive , honest, creative young man. He stands for value based human personality & Education. He always strives to improve good things into better. In my experience he is trustworthy and dependable.'
 },
 { 	name: 'Shivangi Gupta' ,
   	img: 'Shivangi' ,
