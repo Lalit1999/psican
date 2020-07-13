@@ -1,7 +1,6 @@
-import React from 'react' ;
+import React, {lazy, Suspense} from 'react' ;
 
 import BannerTwo from '../banner/BannerTwo.js' ;
-import Slider from '../slider/Slider.js' ;
 import Parallax from '../Parallax/Parallax.js' ;
 import './home.css' ;
 import TestimonialSlider from '../slider/TestimonialSlider.js' ;
@@ -10,6 +9,9 @@ import i5 from '../images/i5.webp' ;
 import stress from '../images/stress.webp' ;
 import sar2 from '../images/sar2.webp' ;
 import pc2 from '../images/pc2.webp' ;
+import Image from '../images/Psyment.webp' ;
+
+const Slider = lazy(() => import('../slider/Slider.js') ) ;
 
 const testim_arr = [
 { 	name: 'Dr. Kiran Modi' ,
@@ -90,7 +92,9 @@ class Home extends React.Component
 	render()
 	{	return(
 			<div>
-				<Slider data={data} />
+                <Suspense fallback={<div className="row logo-slide"><img src={Image} alt="psyment logo"/></div>} > 
+                    <Slider data={data} />
+                </Suspense>
 				<BannerTwo content="aequess" color="blue"/>
 				<BannerTwo content="sarathi" left="yes" color="blue"/>
 				<BannerTwo content="person" color="blue"/>

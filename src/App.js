@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom' ;
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,9 +16,10 @@ import Sarathi from './comps/program/Sarathi.js' ;
 import Consult from './comps/program/Consult.js' ;
 import Login from './comps/signup/login/Login.js' ;
 import Register from './comps/signup/register/Register.js' ;
-import Footer from './comps/footer/Footer.js' ;
 import Profile from './comps/UserProfile/UserProfile.js' ;
 import './App.css' ;
+// import Footer from './comps/footer/Footer.js' ;
+const Footer = lazy(() => import('./comps/footer/Footer.js'));
 
 class App extends React.Component
 {	state = {
@@ -89,7 +90,7 @@ class App extends React.Component
 		              		 token={userToken} loadUser={this.loadUser}/>}/>
 		              <Route exact component={NotFound} />
 		            </Switch>
-			        <Footer footer={this.footer}/>
+		            <Suspense fallback={<div> Loading... </div>}>	<Footer footer={this.footer}/> </Suspense> 
 		          </div>
 		        </ScrollContext>
 		        </BrowserRouter>
