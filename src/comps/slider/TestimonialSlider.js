@@ -7,7 +7,6 @@ import Shivangi from '../images/shivangi.webp' ;
 import Kiran from '../images/kiran.webp' ;
 import Sljain from '../images/sljain.webp' ;
 import Profile from '../images/profile.webp' ;
-import Profile2 from '../images/profile2.webp' ;
 
 import './testimonial.css' ;
 
@@ -17,7 +16,6 @@ class TestimonialSlider extends Component {
 		{	case 'Kiran' : return Kiran ;
 			case 'Sljain' : return Sljain ;
 			case 'Profile' : return Profile ;
-			case 'Profile2' : return Profile2 ;
 			case 'Atul' : return Atul ;
 			case 'KP' : return KP ;
 			case 'Shivangi' : return Shivangi ;
