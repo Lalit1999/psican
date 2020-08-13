@@ -1,36 +1,8 @@
-1. Add heading for Registration
-2. Add images for succesful or unsuccessful registration
+===============13-08-2020=================
 
-3. CSS theek karni hai for mobile
-
-ADD CHECKING FOR UNIQUE EMAIL AND SHORTNAME, etc
-
-ADD FEATURES
-1. PROFILE PAGE
-2. UPDATE PROFILE
-3. DELETE PROFILE
-4. EMAIL/OTP CONFIRMATION
-4. FORGOT PASSWORD/EMAIL ETC.
-
-=============TODO (FINAL PHASE) 27-04-2020===================
-
-8. Workshop ke topics add karne hai
-
-9. Jo contact wala page hai usko theek karna hai
-10. Testimonials daalne hai (in future) 
-
-=============================================================
-	04-05-2020
-2. USERPRODILE ADD KARNI HAI
-images bhi hatani hai
-
-=========================================================================================
-|																						|
-|	profile work (30-05-2020) => LALIT ka kam hai -->									|
-|																						|			
-|	4.divide the data in 2 parts so that reading of data is confortable to the user 	|	
-|	5.make the form for edit the profile 												|
-|	6.change buttons css accordingly													|
-|	7.Display name as profile picture(optional)											|
-|																						|
-=========================================================================================
+1. Myarth ka popup
+3. Reboot ka Banner and slide banana hai
+4. Reboot ke liye page banana hai
+5. New ka popup lagana hai (uchlata hua button)
+6. blink superscript wala banana hai
+8. Menu ko completely vertical banana hai

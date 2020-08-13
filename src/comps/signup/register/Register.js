@@ -311,7 +311,7 @@ class Register extends React.Component
 			<div>	
 				<LoginForm title=" Basic Details " error={this.state.error}
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
-					<Text label="Name" name="name" value={name} onChange={this.onInputChange}/>
+					<Text label="School Name" name="name" value={name} onChange={this.onInputChange}/>
 					<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
 					{ this.checkEditMode() } 
 					<Text label="Contact No." name="mobile" value={mobile} onChange={this.onInputChange}/>

@@ -18,7 +18,7 @@ import Login from './comps/signup/login/Login.js' ;
 import Register from './comps/signup/register/Register.js' ;
 import Profile from './comps/UserProfile/UserProfile.js' ;
 import './App.css' ;
-// import Footer from './comps/footer/Footer.js' ;
+import DownBar from './comps/downbar/DownBar.js' ;
 const Footer = lazy(() => import('./comps/footer/Footer.js'));
 
 class App extends React.Component
@@ -91,6 +91,7 @@ class App extends React.Component
 		              <Route exact component={NotFound} />
 		            </Switch>
 		            <Suspense fallback={<div> Loading... </div>}>	<Footer footer={this.footer}/> </Suspense> 
+		            <DownBar />
 		          </div>
 		        </ScrollContext>
 		        </BrowserRouter>

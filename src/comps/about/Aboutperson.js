@@ -8,7 +8,16 @@ import Leader_image from '../images/leader.webp' ;
 class Aboutperson extends React.Component
 {	
 	render()
-	{
+	{	let width = 0 ;
+		let height = 0 ;
+		if(window.screen.availWidth > 600)
+		{	width = 1120 ;
+			height = 630 ;
+		}
+		else
+		{	width = 280 ;
+			height = 157.5 ;
+		}
 		return(
 			<div>
 				<div>
@@ -42,6 +51,9 @@ class Aboutperson extends React.Component
 						<li className = 'txt'>In the initial part of his career, he served in top 
 							Pharmaceutical companies like Sun Pharma, Natco Pharma & USV Ltd. </li> 
 					</ul>
+				</div>
+				<div className="frame-con">
+					<iframe width={width} height={height} title="Youtube" src="https://www.youtube.com/embed/x5q0iTT3UQE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 		) ;

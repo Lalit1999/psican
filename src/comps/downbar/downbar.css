@@ -1,0 +1,28 @@
+.downbar
+{	font-weight: bold ;
+	text-align: center;
+	color: rgb(29, 41, 81);
+}
+
+.downbar p
+{	margin: .2em .2em .4em ;
+}
+
+.myarth
+{	width: 10vw ;
+}
+
+@media(max-width: 600px)
+{	.downbar
+	{	font-weight: bold ;
+	}
+
+	.downbar p
+	{	margin: .2em .2em .4em ;
+		font-size: 0.7rem;
+	}
+
+	.myarth
+	{	width: 20vw ;
+	}
+}
