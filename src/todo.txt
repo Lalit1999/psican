@@ -2,6 +2,8 @@
 
 3. Reboot ka Banner and slide banana hai
 4. Reboot ke liye page banana hai
+
 5. New ka popup lagana hai (uchlata hua button)
 6. blink superscript wala banana hai
+
 8. Menu ko completely vertical banana hai

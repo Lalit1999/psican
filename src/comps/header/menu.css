@@ -4,6 +4,10 @@
 	border-bottom: 1px solid rgb(29, 41, 81);
 }
 
+.burger .no-border
+{	border-bottom: none ;
+}
+
 .burger, .cheeseburger-menu-inner
 {
 	background-color: rgb(70, 130, 180) ;
@@ -18,11 +22,17 @@
 .menu-item
 {
 	color: whitesmoke;
-	font-size: 1.55rem ;
+	font-size: 1.6rem ;
 	text-decoration: none ;
 	transition: all 0.5s ;
 	margin: 0.1em ;
 	font-family: 'Mukta', sans-serif;
+}
+
+.sub-item
+{	font-size: 1.3rem ;
+	border-bottom: none;
+	background-color: rgb(43, 98, 143) ;
 }
 
 .innerburger

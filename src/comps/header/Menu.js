@@ -1,11 +1,12 @@
 import React from 'react' ;
 import {Link} from'react-router-dom' ;
-import Popup from "reactjs-popup";
+import { faSortDown } from '@fortawesome/free-solid-svg-icons' ;
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
 
 import './menu.css' ;
 
 class Menu extends React.Component
-{
+{	
 	render()
 	{	
 		return(
@@ -13,26 +14,16 @@ class Menu extends React.Component
 				<div className="burger">
 					<div className="innerburger" onClick={this.props.closeCallback}>
 						<Link className="menu-item" to='/'> Home </Link>
-						<Popup trigger={<div className="menu-item"> About </div>}
-						  position="right top" on="hover" >
-						  <div className="pop-p" onClick={this.props.closeCallback}>
-							<Link className="menu-item pop-item" to='/about/leader' > Our Leader </Link>
-							<Link className="menu-item pop-item" to='/about/psyment'> PSYMENT </Link>
-					      </div>
-						</Popup>					
-						<Popup trigger={<div className="menu-item"> Programs </div>}
-					      position="right top" on="hover" >
-					      <div className="pop-p" onClick={this.props.closeCallback}>
-							<Popup trigger={<span className="header-item pop-item"> Students </span>}
-					      		position="right top" on="hover">
-								<Link className="header-item pop-item" to='/program/AEQUESS'> AEQUESS </Link>
-							</Popup>
-							<Popup trigger={<span className="header-item pop-item"> School/College </span>}
-					      		position="right top" on="hover">
-								<Link className="header-item pop-item" to='/program/sarathi'> Sarathi </Link>
-							</Popup>
-					      </div>
-					    </Popup>
+						<div className="menu-item no-border"> About &ensp;
+							<FontAwesomeIcon icon={faSortDown}/>
+						</div>
+						<Link className="menu-item sub-item no-border" to='/about/leader'> Our Leader </Link>
+						<Link className="menu-item sub-item" to='/about/psyment'> PSYMENT </Link>
+					 	<div className="menu-item no-border"> Programs &ensp;
+							<FontAwesomeIcon icon={faSortDown}/>
+						</div>
+						<Link className="menu-item sub-item no-border" to='/program/AEQUESS'> AEQUESS </Link>
+						<Link className="menu-item sub-item" to='/program/sarathi'> Sarathi </Link>
 						<Link className="menu-item" to='/consult'> Consult </Link>
 						<Link className="menu-item" to='/contact'> Contact Us </Link>
 						{this.props.checkLoggedIn('menu-btn', 'menu-div')}

@@ -10,6 +10,7 @@
 
 .myarth
 {	width: 10vw ;
+	cursor: pointer;
 }
 
 @media(max-width: 600px)
