@@ -5,12 +5,9 @@ import './pop.css' ;
 
 class Pop extends React.Component
 {	
-	constructor(props)
-	{	super(props) ;
-		this.state = {
-			open : false ,
-		 } ;
-	}
+	state = {
+		open : false ,
+	} ;
 
 	openPopUp = () => {
 		if(this.state.open === true)

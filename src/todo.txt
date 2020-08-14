@@ -1,6 +1,5 @@
 ===============13-08-2020=================
 
-1. Myarth ka popup
 3. Reboot ka Banner and slide banana hai
 4. Reboot ke liye page banana hai
 5. New ka popup lagana hai (uchlata hua button)

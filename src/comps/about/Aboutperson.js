@@ -15,8 +15,8 @@ class Aboutperson extends React.Component
 			height = 630 ;
 		}
 		else
-		{	width = 280 ;
-			height = 157.5 ;
+		{	width = 308 ;
+			height = 173.25 ;
 		}
 		return(
 			<div>

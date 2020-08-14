@@ -4,7 +4,7 @@
 }
 
 .self .popup
-{	padding: 1.2em 1em 2em ;
+{	padding: 0.9em 1em 2em ;
 	font-size: 1.3rem ;
 	display: inline-block;
 }
@@ -14,11 +14,23 @@
 	text-align: center; 
 }
 
+.popicon-div, .popicon-div p
+{	display: inline-block;
+	width: 60vw ;	
+	text-align: center;
+	font-weight: normal ;
+}
+
+.popicon-div p
+{	margin: .5em 0;	
+}
+
 .self .popup-content
 {	border: 1px solid black;
 	border-radius: 0.9rem ;
+	z-index: 99 !important;
 	width: auto !important;
-	margin: auto !important;
+	margin: 20vh auto auto !important;
 }
 
 .self .close
@@ -28,7 +40,27 @@
 	z-index: 3;
 	padding: 0 .3em ;
 	display: inline-block ;
+	margin-left: 90% ;
 }
 
 .self .close:hover
 {	background-color: salmon ;		}
+
+@media(max-width: 600px)
+{	.self .close
+	{	margin-left:80% ;
+	}
+
+	.popicon-div p
+	{	margin: .3em 0;
+	}
+
+	.popicon-div, .popicon-div p
+	{	width: 80vw ;	
+	}
+
+	.self .popup
+	{	padding: 0.2em 1em 1em ;
+		font-size: 1.2rem ;
+	}
+}

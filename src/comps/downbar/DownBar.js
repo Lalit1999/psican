@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import PopIcon from '../popup/PopIcon.js' ;
 import './downbar.css' ;
 
 class DownBar extends Component {
@@ -7,7 +8,9 @@ class DownBar extends Component {
 		return (
 			<div className="downbar"> 
 				<p> Copyright &copy; 2020 &ensp;|&ensp; Website Created by &emsp;
-					<img className="myarth" src={'https://raw.githubusercontent.com/manan999/manan999.github.io/master/logo-black.png'} alt="myarth" />
+					<PopIcon>
+						<img className="myarth" src={'https://raw.githubusercontent.com/manan999/manan999.github.io/master/logo-black.png'} alt="myarth" />
+					</PopIcon>
 				</p>
 			</div>
 		);

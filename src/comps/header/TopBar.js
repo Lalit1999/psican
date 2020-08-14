@@ -1,9 +1,10 @@
 import React from 'react' ;
-import { faPhoneAlt, faEnvelope, faAngleDown } from '@fortawesome/free-solid-svg-icons' ;
+import { faPhoneAlt, faEnvelope, faAtlas } from '@fortawesome/free-solid-svg-icons' ;
 
 import './topbar.css' ;
 import BarItem from './BarItem.js' ;
 import BarItemBig from './BarItemBig.js' ;
+import PopIcon from '../popup/PopIcon.js' ;
 import Image from '../images/Psyment.webp' ;
 
 class TopBar extends React.Component
@@ -15,6 +16,9 @@ class TopBar extends React.Component
 						msg="Call Us At"/>
 					<BarItem link="mailto:info.psyment@gmail.com" text=" info.psyment@gmail.com" 
 					icon={faEnvelope} msg="E-Mail Us" />
+					<PopIcon>
+						<BarItem icon={faAtlas} link="#" msg="" text=""/>
+					</PopIcon>
 				</React.Fragment>
 			) ;
 		else
@@ -22,7 +26,9 @@ class TopBar extends React.Component
 				<React.Fragment>
 					<BarItemBig icon={faPhoneAlt} link="tel:09555235231"/>
 					<BarItemBig icon={faEnvelope} link="mailto:info.psyment@gmail.com"/>
-					<BarItemBig icon={faAngleDown} link="#footer" scroll={this.props.scroll}/>
+					<PopIcon>
+						<BarItemBig icon={faAtlas} link="#" />
+					</PopIcon>
 				</React.Fragment>
 			) ;
 	}
