@@ -11,15 +11,15 @@ import Contact from './comps/contact/Contact.js' ;
 import NotFound from './comps/home/NotFound.js' ;
 import Header from './comps/header/Header.js' ;
 import TopBar from './comps/header/TopBar.js' ;
-import AEQUESS from './comps/program/AEQUESS.js' ;
-import Sarathi from './comps/program/Sarathi.js' ;
-import Consult from './comps/program/Consult.js' ;
-import Login from './comps/signup/login/Login.js' ;
-import Register from './comps/signup/register/Register.js' ;
-import Profile from './comps/UserProfile/UserProfile.js' ;
-import './App.css' ;
 import DownBar from './comps/downbar/DownBar.js' ;
+import './App.css' ;
+const AEQUESS = lazy(() => import('./comps/program/AEQUESS.js')) ;
+const Sarathi = lazy(() => import('./comps/program/Sarathi.js')) ;
 const Footer = lazy(() => import('./comps/footer/Footer.js'));
+const Consult = lazy(() => import('./comps/program/Consult.js')) ;
+const Login = lazy(() => import('./comps/signup/login/Login.js')) ;
+const Register = lazy(() => import('./comps/signup/register/Register.js')) ;
+const Profile = lazy(() => import('./comps/UserProfile/UserProfile.js')) ;
 
 class App extends React.Component
 {	state = {
@@ -76,18 +76,12 @@ class App extends React.Component
 		              <Route path='/about/leader' exact component={AboutPerson}/>
 		              <Route path='/about/psyment' exact component={AboutPsican}/>
 		              <Route path='/contact' exact component={Contact}/>
-		              <Route path='/login' render={props=><Login {...props} user={user} 
-		              		 loadUser={this.loadUser}/>}/>
-		              <Route path='/register' render={props=><Register {...props} user={user} 
-		              		 loadUser={this.loadUser}/>} />
-		              <Route path='/program/Sarathi' render={props=><Sarathi user={user} 
-		              		 token={userToken}/>}/>
-		              <Route path='/program/AEQUESS' render={props=><AEQUESS user={user} 
-		              		 token={userToken}/>}/>
-		              <Route path='/consult' render={props=><Consult user={user} 
-		              		 token={userToken}/>}/>
-		              <Route path='/profile' render={props=><Profile user={user} 
-		              		 token={userToken} loadUser={this.loadUser}/>}/>
+		              <Route path='/login' render={props=><Suspense fallback={<div> Loading... </div>}><Login {...props} user={user} loadUser={this.loadUser}/></Suspense>}/>
+		              <Route path='/register' render={props=><Suspense fallback={<div> Loading... </div>}><Register {...props} user={user} loadUser={this.loadUser}/></Suspense>} />
+		              <Route path='/program/Sarathi' render={props=><Suspense fallback={<div> Loading... </div>}><Sarathi user={user} token={userToken}/></Suspense>}/>
+		              <Route path='/program/AEQUESS' render={props=><Suspense fallback={<div> Loading... </div>}><AEQUESS user={user} token={userToken}/></Suspense>}/>
+		              <Route path='/consult' render={props=><Suspense fallback={<div> Loading... </div>}><Consult user={user} token={userToken}/></Suspense>}/>
+		              <Route path='/profile' render={props=><Suspense fallback={<div> Loading... </div>}><Profile user={user} token={userToken} loadUser={this.loadUser}/></Suspense>}/>
 		              <Route exact component={NotFound} />
 		            </Switch>
 		            <Suspense fallback={<div> Loading... </div>}>	<Footer footer={this.footer}/> </Suspense> 
