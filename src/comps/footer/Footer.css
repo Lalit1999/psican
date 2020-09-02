@@ -1,6 +1,7 @@
 .map
 {	margin: 2em 0 1.4em 2.5em ;
 	text-align: left;
+	/*min-width: 600px ;*/
 }
 
 .ic
@@ -32,6 +33,11 @@
 	font-size: 1.6rem ;
 	color: white ;
 }
+
+/*.pin svg
+{	font-size: 3rem ;
+	color: darkred;
+}*/
 
 @media(max-width: 600px)
 {	.map
