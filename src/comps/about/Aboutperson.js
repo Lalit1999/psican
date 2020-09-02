@@ -54,7 +54,7 @@ class Aboutperson extends React.Component
 				</div>
 				<div className="frame-con">
 					<iframe width={width} height={height} title="Youtube" src="https://www.youtube.com/embed/x5q0iTT3UQE" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-					<iframe width={width} height={height} title="Youtube" src="https://www.youtube.com/embed/V31EeCfb1f" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+					<iframe width={width} height={height} title="Youtube" src="https://www.youtube.com/embed/V31EeCfb1f8" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 				</div>
 			</div>
 		) ;
