@@ -18,6 +18,8 @@ class Title extends React.Component
 			case "Leader" : return 'about/leader' ;
 			case "PSYMENT" : return 'about/psyment' ;
 			case "Vision" : return 'about/vision' ; 
+			case "Test " : case "Test -": return 'test' ;
+			case "SAAT" : return "/test/self-anxiety-assessment" ;
 			default : return '' ;
 		}
 
