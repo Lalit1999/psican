@@ -51,15 +51,21 @@
 }
 
 .sched-btn
-{	border: none;
+{	border: 2px solid rgb(29, 41, 81);
 	box-shadow: none ;
-	background-color: rgb(29, 41, 81); ;
+	background-color: rgb(29, 41, 81);
 	color: white ;
+	cursor: pointer;
 	font-size: 1.4rem ;
-	font-family: 'Rubik' ;
 	border-radius: 0.4rem ;
 	padding: 0.5em 1em ;
 	margin-bottom: 1em ; 
+	transition: all 0.3s ;
+}
+
+.sched-btn:hover	{
+	border: 2px solid white;
+	background-color: rgb(9, 21, 41) ;
 }
 
 .btn3
