@@ -9,12 +9,48 @@ const ques = ["I am alert about my surroundings and my neighbourhood",
  "I can become easily irritated by others", "I am rejected by people around me",
  "I am restless about things and activites that are happening around me",
  "I am not easily satisfied by others' explanation of things or events",
- "I am misunderstood by people around me",
- "I am unable to decide easily about things and events"] ;
+ "I am misunderstood by people around me", "I feel nervous while doing things",
+ "I am unable to decide easily about things and events",
+ "I resort to crying while talking and explaining things to others",
+ "I want to be in the company of others so that  I feel secure",
+ "I am unable to concentrate on the task that I am doing",
+ "I feel surrounded by unwanted negative thoughts in everything I do",
+ "I keep thinking about things long after they are over and done with",
+ "I am fearful about day to day events and harms they may cause", 
+ "I think my performance in my tasks and responsibilities is below my actual level",
+ "I avoid things and events that I am not comfortable about",
+ "I am not able to let go of things and events of the past",
+ "Events and things stay in my mind and heart forever",
+ "I often feel its not me but someone else inside me who is doing things",
+ "I am conscious about losing control of things and events around me",
+ "I feel tired and drained out", "I experience sudden profuse sweating",
+ "I can feel my heart thumping in my chest", "I experienced disturbed sleep or no sleep at all",
+ "I can feel visible trembling in my hands and legs", "I feel faint while doing things", 
+ "I run out of breath and need to sit calmly to become normal again", 
+ "I expreienced discomfort in my tummy/gas/constipation or loosemotions",
+ "I feel cold & numb in my toes & fingers", "I feel like my chest is tight & I may choke",
+ "Certain People, things or behaviours make me freak out and tensed",
+ "I get tensed few times in a day", "My tensions stay with me for some time then they go away", 
+ "Some events and situations make me concerned and apprehensive",
+ "I think I am a tense and uneasy person", "My tense state affects my daily routine",
+ "I think I am worthless and Non-contributing", 
+ "Life is a constant struggle and there is nothing much you can do about it",
+ "I feel there is no point in showing your capabilities, its better to shut yourself down",
+ "I give up on things beyond a point and call it quits",
+ "I do fingers tapping on flat surface and shake me legs while sitting",
+ "I eat the skin around my nails or bite my lips",
+ "I bite my nails to keep them short", 
+ "I experience situations where I am not able to speak. Even if I try to, my words just don't come out",
+ "I end up eating extra and then I regret doing that", "I resort to pricking, cutting or injuring self",
+ "I experience relief in some situations only after having a smoke/whiskey/beverage",
+ "I absent myself from events and social engagements", "I pull my hair around my forehead, face or hands",
+ "I am not able to go along well with friends and realtives long term"] ;
 
-const ans = [0, 0, 0, 0, 0, 0, 0] ;
-
-const tempArr = [false, false, false, false, false];
+const ans = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,] ;
 
 class Question extends React.Component
 {	state = {
@@ -22,6 +58,14 @@ class Question extends React.Component
 		warning : '',
 		num: 0 ,
 	} ;
+
+	componentDidMount = () => {
+		if(ans[0] !== 0)
+		{	let arr = [false, false, false, false, false] ;
+			arr[ans[0]- 1] = true ;
+			this.setState({checked: arr})
+		}
+	}
 
 	checkWarning = () => {
 		if (this.state.warning.length > 0)
@@ -35,19 +79,51 @@ class Question extends React.Component
 	}
 
 	onRadioClick = (no, opt) => {
-		tempArr[0] = tempArr[1] = tempArr[2] = tempArr[3] = tempArr[4] = false ;
+		const tempArr = [false, false, false, false, false] ;
 		tempArr[opt] = true ;
 		this.setState({ checked : tempArr, warning: '' });
 	}
 
 	onNextClick = () => {
 		const {checked, num} = this.state ;
-		console.log(ques[num+1], checked) ;
+		// console.log(ques[num+1], checked) ;
+		// console.log(ans) ;
 		if( checked[0] || checked[1] || checked[2] || checked[3] || checked[4] )
-			//store bhi karana hai
-			this.setState({num: num+1, checked: [false, false, false, false, false]}) ;
+		{	let arr = [false, false, false, false, false] ;
+			if(checked[0] || checked[1])
+			{	if(checked[0])
+					ans[num] = 1 ;
+				else
+					ans[num] = 2 ; 
+			}
+			else
+			{	if(checked[3] || checked[4])
+					if(checked[3])
+						ans[num] = 4 ;
+					else
+						ans[num] = 5 ;
+				else
+					ans[num] = 3 ;
+			}	
+			if(ques[num+1])
+			{	if(ques[num+1] !== 0)
+					arr[ans[num+1]- 1] = true ;
+				this.setState({num: num+1, checked: arr}) ;
+			}				
+			else
+				this.props.changeMode('confirm') ;
+		}
 		else
 			this.setState({warning: 'You must select at least 1 option'}) ;
+	}
+
+	onPrevClick = () => {
+		const {num} = this.state ;
+		// console.log(ques[num-1], ans[num-1]) ;
+		// console.log(ans) ;
+		let arr = [false, false, false, false, false] ;
+		arr[ans[num-1]- 1] = true ;
+		this.setState({num: num-1, checked: arr}) ;
 	}
 
 	render()
@@ -59,8 +135,11 @@ class Question extends React.Component
 					{this.generateRadioBtn(num)}
 				</div>
 				<div className="next-btn-con">
+					{	(num===0)?null:<button className="sched-btn next-btn" onClick={this.onPrevClick}>
+					 					&lt;&nbsp;Previous </button>
+					} 
 					<button className="sched-btn next-btn" onClick={this.onNextClick}>
-					 Next&nbsp;&gt; </button> 
+					 Save&nbsp;&amp;&nbsp;Next&nbsp;&gt; </button>
 				</div>
 				{ this.checkWarning() }
 			</div> 
@@ -82,19 +161,23 @@ class SAAT extends React.Component
 		this.setState({checked: str, warning: ''});
 	}
 
+	changeMode = (newMode) => {
+		this.setState({mode: newMode});
+	}
+
 	checkLoggedIn = () => {
-		// if(this.props.token === "")
-		// 	return (
-		// 		<div className="blue-bg blue-form">
-		// 			<p> You need to 
-		// 				<Link to="/login" className="btn3"> Login </Link>
-		// 				 or 
-		// 				<Link to="/register" className="btn3"> Register </Link> 
-		// 				to take this test (you will be redirected to home page) 
-		// 			</p>
-		// 		</div>
-		// 	) ; 
-		// else
+		if(this.props.token === "")
+			return (
+				<div className="blue-bg blue-form">
+					<p> You need to 
+						<Link to="/login" className="btn3"> Login </Link>
+						 or 
+						<Link to="/register" className="btn3"> Register </Link> 
+						to take this test (you will be redirected to home page) 
+					</p>
+				</div>
+			) ; 
+		else
 			return (
 				<div  className="test-box">
 					<h3> Self Anxiety Assessment Test (SAAT) </h3> 
@@ -117,9 +200,24 @@ class SAAT extends React.Component
 			return null ;
 	}
 
+	calculateScore = (type) => {
+		console.log(ans) ;
+		switch(type)
+		{	case 's' : return ans.slice(0, 30).reduce((x,y)=>x+y)/3;
+					   break ;
+			case 'a' : return ans.slice(30, 40).reduce((x,y)=>x+y) ;
+					   break ;
+			case 'e' : return ans.slice(40).reduce((x,y)=>x+y) ;
+					   break ;
+			case 't' : return ans.slice(0, 30).reduce((x,y)=>x+y)/3 + ans.slice(30).reduce((x,y)=>x+y) ;
+						break ;
+			default : return undefined ;
+		}
+	}
+
 	checkMode = () => {
-		if (this.state.mode === 'start')
-			return (
+		switch(this.state.mode)
+		{	case 'start' : return (
 				<div className="start-div">
 					<h2 className="start-title"> INSTRUCTIONS </h2>
 					<ul>
@@ -139,9 +237,38 @@ class SAAT extends React.Component
 					</div>
 				</div> 
 			);
-		else if(this.state.mode==='test')
-			return <Question /> ;
-		//result dikhana hai
+			break ;
+		case 'test' : return <Question changeMode={this.changeMode} /> ;
+					  break ;
+		case 'finish' : let S = this.calculateScore('s') ;
+						let A = this.calculateScore('a') ;
+						let E = this.calculateScore('e') ;
+						let T = this.calculateScore('t') ;
+						//Give Judgment and store in backend
+						return (
+						<div className="question result"> 
+							<p> Your S Score is : {S} </p> 
+							<p> Your A Score is : {A} </p> 
+							<p> Your E Score is : {E} </p> 
+							<p> Your Total Score & Anxiety Level is : {T} </p> 
+							<p> We request you to remember your S, A and E score (they are stored in your profile) as they may be useful in further consultations with mental health professionals. </p>
+							<p> For further consultations/support, Call <br/>
+								Mr. Ashish Aggarwal +91-95552-35231 </p>
+						</div>
+						) ;
+						break ;
+		case 'confirm' : return (
+				<div className="question">
+					<p> Your test will be submitted and result will be calculated, are you sure you want to proceed?. You can also go back to the test and review your answers. </p>
+					<div className="next-btn-con proceed-con">
+						<button className="sched-btn" onClick={()=>this.setState({mode:'test'})}> Review Answers </button>
+						<button className="sched-btn" onClick={()=>this.setState({mode:'finish'})}> Submit&nbsp;&amp;&nbsp;Proceed </button>
+					</div>
+				</div>   
+			) ;
+			break ;
+		default: return <div> We have entered an unexpected mode </div> ;
+		}
 	}
 
 	render()

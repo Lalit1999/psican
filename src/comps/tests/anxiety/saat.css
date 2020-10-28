@@ -59,6 +59,7 @@
 	font-size: 1.3rem ;
 	font-weight: bold ;
 	padding-left: 3em ;
+	padding-right: 3em ;
 }
 
 .radio-con {
@@ -81,4 +82,12 @@
 	margin-bottom: 0 ;
 	padding: 0.3em 0.9em ;
 	margin-right: 10vw ;
+}
+
+.proceed-con {
+	text-align: center;
+}
+
+.proceed-con button	{
+	margin-right: 2em ;	
 }
