@@ -1,6 +1,7 @@
 import React from 'react' ;
 import {Link} from 'react-router-dom' ;
 
+import { addNotif } from '../../notif.js' ;
 import './saat.css' ;
 
 const radio = ['Never' ,'Rarely', 'Sometimes', 'Mostly', 'Always'] ;
@@ -241,7 +242,34 @@ class SAAT extends React.Component
 						let A = this.calculateScore('a') ;
 						let E = this.calculateScore('e') ;
 						let T = this.calculateScore('t') ;
-						//store in backend
+						let obj2 = {
+							test: 'saat',
+							result: {
+								s: S, a: A, e:E, t:T,
+								answers: ans 
+							} 
+						} ;
+						console.log(obj2) ;
+						fetch('https://psy-api.herokuapp.com/test',{
+							method : 'post' ,
+							headers : { 'Content-Type' : 'application/json' ,
+										'Authorization' : 'Bearer ' + this.props.token} ,
+							body : JSON.stringify(obj2) ,
+						})
+						.then(res => {
+							if(res.ok)
+								return res.json() ;
+							else
+								throw Error(res.statusText) ;
+						})
+						.then(data => {	
+							this.setState({ mode: 'start', warning: '', quesNo: 0, checked: false});
+							addNotif('Successfully Received Query', 'success') ;
+						}) 
+						.catch( err  => {
+							console.log(err) ; 
+							addNotif(err.message, 'error') ;
+						}) ;
 						return (
 						<div className="question result"> 
 							<p> Your S Score is : {S} </p> 

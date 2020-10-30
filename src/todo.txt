@@ -6,5 +6,7 @@
 // 4. weightage adjust karni hai 
 5. evaluation deni hai
 8. E-Mail to customer
+9. userprofile me result display karana hai
+10. ek bande ne multiple times liya to kya hoga
 
-9. VPS ka dekhna hai - plan , cost, duration
+11. VPS ka dekhna hai - plan , cost, duration
