@@ -1,7 +1,10 @@
-===============13-08-2020=================
+==============30-10-2020==============
 
-3. Reboot ka Banner and slide banana hai
-4. Reboot ke liye page banana hai
+1. Storage dekhni hai
+2. Hindi me convert karna hai
+3. Choose language ka option
+// 4. weightage adjust karni hai 
+5. evaluation deni hai
+8. E-Mail to customer
 
-5. New ka popup lagana hai (uchlata hua button)
-6. blink superscript wala banana hai
+9. VPS ka dekhna hai - plan , cost, duration

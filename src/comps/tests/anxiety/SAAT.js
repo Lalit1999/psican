@@ -86,8 +86,6 @@ class Question extends React.Component
 
 	onNextClick = () => {
 		const {checked, num} = this.state ;
-		// console.log(ques[num+1], checked) ;
-		// console.log(ans) ;
 		if( checked[0] || checked[1] || checked[2] || checked[3] || checked[4] )
 		{	let arr = [false, false, false, false, false] ;
 			if(checked[0] || checked[1])
@@ -119,8 +117,6 @@ class Question extends React.Component
 
 	onPrevClick = () => {
 		const {num} = this.state ;
-		// console.log(ques[num-1], ans[num-1]) ;
-		// console.log(ans) ;
 		let arr = [false, false, false, false, false] ;
 		arr[ans[num-1]- 1] = true ;
 		this.setState({num: num-1, checked: arr}) ;
@@ -142,6 +138,7 @@ class Question extends React.Component
 					 Save&nbsp;&amp;&nbsp;Next&nbsp;&gt; </button>
 				</div>
 				{ this.checkWarning() }
+				<h4> *Note: Your answers will not be recorded if you do not click "Save & Next" </h4>
 			</div> 
 		) ;
 	}
@@ -166,18 +163,18 @@ class SAAT extends React.Component
 	}
 
 	checkLoggedIn = () => {
-		if(this.props.token === "")
-			return (
-				<div className="blue-bg blue-form">
-					<p> You need to 
-						<Link to="/login" className="btn3"> Login </Link>
-						 or 
-						<Link to="/register" className="btn3"> Register </Link> 
-						to take this test (you will be redirected to home page) 
-					</p>
-				</div>
-			) ; 
-		else
+		// if(this.props.token === "")
+		// 	return (
+		// 		<div className="blue-bg blue-form">
+		// 			<p> You need to 
+		// 				<Link to="/login" className="btn3"> Login </Link>
+		// 				 or 
+		// 				<Link to="/register" className="btn3"> Register </Link> 
+		// 				to take this test (you will be redirected to home page) 
+		// 			</p>
+		// 		</div>
+		// 	) ; 
+		// else
 			return (
 				<div  className="test-box">
 					<h3> Self Anxiety Assessment Test (SAAT) </h3> 
@@ -203,13 +200,13 @@ class SAAT extends React.Component
 	calculateScore = (type) => {
 		console.log(ans) ;
 		switch(type)
-		{	case 's' : return ans.slice(0, 30).reduce((x,y)=>x+y)/3;
+		{	case 's' : return Math.floor((ans.slice(0, 30).reduce((x,y)=>x+y) - 30)/3);
 					   break ;
-			case 'a' : return ans.slice(30, 40).reduce((x,y)=>x+y) ;
+			case 'a' : return ans.slice(30, 40).reduce((x,y)=>x+y) - 10 ;
 					   break ;
-			case 'e' : return ans.slice(40).reduce((x,y)=>x+y) ;
+			case 'e' : return ans.slice(40).reduce((x,y)=>x+y) - 10 ;
 					   break ;
-			case 't' : return ans.slice(0, 30).reduce((x,y)=>x+y)/3 + ans.slice(30).reduce((x,y)=>x+y) ;
+			case 't' : return Math.floor((ans.slice(0, 30).reduce((x,y)=>x+y) - 30)/3 + ans.slice(30).reduce((x,y)=>x+y) - 20) ;
 						break ;
 			default : return undefined ;
 		}
@@ -244,13 +241,14 @@ class SAAT extends React.Component
 						let A = this.calculateScore('a') ;
 						let E = this.calculateScore('e') ;
 						let T = this.calculateScore('t') ;
-						//Give Judgment and store in backend
+						//store in backend
 						return (
 						<div className="question result"> 
 							<p> Your S Score is : {S} </p> 
 							<p> Your A Score is : {A} </p> 
 							<p> Your E Score is : {E} </p> 
 							<p> Your Total Score & Anxiety Level is : {T} </p> 
+							<p> {this.getEvaluation(T)} </p>
 							<p> We request you to remember your S, A and E score (they are stored in your profile) as they may be useful in further consultations with mental health professionals. </p>
 							<p> For further consultations/support, Call <br/>
 								Mr. Ashish Aggarwal +91-95552-35231 </p>
@@ -269,6 +267,49 @@ class SAAT extends React.Component
 			break ;
 		default: return <div> We have entered an unexpected mode </div> ;
 		}
+	}
+
+	getEvaluation = (t) => {
+		if(t <= 60)
+		{	if( t <= 30)
+			{	return (
+					<React.Fragment>
+						You have <span className="eval low"> Optimum Functional Anxiety </span>, which means you have anxiety within normal range and at an optimum level. Your anxiety is causing no problems to your day-to-day activites. <br/><br/>
+
+						No intervention in your lifestyle is required. You do not need any counselling.
+					</React.Fragment>
+				) ;
+			}
+			else
+			{	return (
+					<React.Fragment>
+						You have <span className="eval mild"> Mild Anxiety </span>, which means you have anxiety slightly above the normal range. Your anxiety sometimes causes problems in your day-to-day activites. <br/><br/>
+
+						A few Lifestyle changes are needed for you to have lower anxiety levels. You have a little to moderate Counselling need (4-6 sessions in an year). 
+					</React.Fragment>
+				) ;
+			}
+		}
+		else
+		{	if(t <= 90)
+			{	return (
+					<React.Fragment>
+						You have <span className="eval moderate"> Moderate Anxiety </span>, which means you have high anxiety levels which are above the normal range. Your anxiety may be affecting your health and causing problems in your day-to-day life. <br/><br/>
+
+						You require training of Relaxation Techniques to bring down your anxiety levels. You require regular counselling(twice per month) for a short time. 
+					</React.Fragment>
+				) ;
+			}
+			else
+			{	return (
+					<React.Fragment>
+						You have <span className="eval high"> Severe Anxiety </span>, which means your anxiety levels are very high as compared to the normal range. Your anxiety may lead to other serious health problems if not taken action against.<br/><br/>
+
+						You should immediately start regular counselling(once in a fortnight) and continue it for a longer time.
+					</React.Fragment>
+				) ;
+			}
+		} 
 	}
 
 	render()
