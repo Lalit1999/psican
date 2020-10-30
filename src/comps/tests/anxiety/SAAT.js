@@ -34,18 +34,18 @@ const ques = ["I am alert about my surroundings and my neighbourhood",
  "I get tensed few times in a day", "My tensions stay with me for some time then they go away", 
  "Some events and situations make me concerned and apprehensive",
  "I think I am a tense and uneasy person", "My tense state affects my daily routine",
- "I think I am worthless and Non-contributing", 
+ "I think I am worthless and non-contributing", 
  "Life is a constant struggle and there is nothing much you can do about it",
  "I feel there is no point in showing your capabilities, its better to shut yourself down",
  "I give up on things beyond a point and call it quits",
- "I do fingers tapping on flat surface and shake me legs while sitting",
+ "I do fingers tapping on flat surface and shake my legs while sitting",
  "I eat the skin around my nails or bite my lips",
  "I bite my nails to keep them short", 
  "I experience situations where I am not able to speak. Even if I try to, my words just don't come out",
  "I end up eating extra and then I regret doing that", "I resort to pricking, cutting or injuring self",
  "I experience relief in some situations only after having a smoke/whiskey/beverage",
  "I absent myself from events and social engagements", "I pull my hair around my forehead, face or hands",
- "I am not able to go along well with friends and realtives long term"] ;
+ "I am not able to go along well with friends and relatives long term"] ;
 
 const ans = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
@@ -164,18 +164,18 @@ class SAAT extends React.Component
 	}
 
 	checkLoggedIn = () => {
-		// if(this.props.token === "")
-		// 	return (
-		// 		<div className="blue-bg blue-form">
-		// 			<p> You need to 
-		// 				<Link to="/login" className="btn3"> Login </Link>
-		// 				 or 
-		// 				<Link to="/register" className="btn3"> Register </Link> 
-		// 				to take this test (you will be redirected to home page) 
-		// 			</p>
-		// 		</div>
-		// 	) ; 
-		// else
+		if(this.props.token === "")
+			return (
+				<div className="blue-bg blue-form">
+					<p> You need to 
+						<Link to="/login" className="btn3"> Login </Link>
+						 or 
+						<Link to="/register" className="btn3"> Register </Link> 
+						to take this test (you will be redirected to home page) 
+					</p>
+				</div>
+			) ; 
+		else
 			return (
 				<div  className="test-box">
 					<h3> Self Anxiety Assessment Test (SAAT) </h3> 
@@ -199,7 +199,7 @@ class SAAT extends React.Component
 	}
 
 	calculateScore = (type) => {
-		console.log(ans) ;
+		// console.log(ans) ;
 		switch(type)
 		{	case 's' : return Math.floor((ans.slice(0, 30).reduce((x,y)=>x+y) - 30)/3);
 					   break ;
@@ -249,7 +249,7 @@ class SAAT extends React.Component
 								answers: ans 
 							} 
 						} ;
-						console.log(obj2) ;
+						// console.log(obj2) ;
 						fetch('https://psy-api.herokuapp.com/test',{
 							method : 'post' ,
 							headers : { 'Content-Type' : 'application/json' ,
@@ -263,7 +263,6 @@ class SAAT extends React.Component
 								throw Error(res.statusText) ;
 						})
 						.then(data => {	
-							this.setState({ mode: 'start', warning: '', quesNo: 0, checked: false});
 							addNotif('Successfully Received Query', 'success') ;
 						}) 
 						.catch( err  => {

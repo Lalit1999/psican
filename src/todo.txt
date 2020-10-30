@@ -1,12 +1,14 @@
 ==============30-10-2020==============
 
-1. Storage dekhni hai
-2. Hindi me convert karna hai
-3. Choose language ka option
-// 4. weightage adjust karni hai 
-5. evaluation deni hai
-8. E-Mail to customer
-9. userprofile me result display karana hai
-10. ek bande ne multiple times liya to kya hoga
+// Storage dekhni hai
+// weightage adjust karni hai 
+// evaluation deni hai
 
-11. VPS ka dekhna hai - plan , cost, duration
+1. Hindi me convert karna hai
+2. Choose language ka option
+3. E-Mail to customer
+4. userprofile me result display karana hai
+
+4.5: panel
+
+5. VPS ka dekhna hai - plan , cost, duration
