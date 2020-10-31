@@ -8,7 +8,8 @@
 2. Choose language ka option
 3. E-Mail to customer
 4. userprofile me result display karana hai
+5: Mobile CSS
 
-4.5: panel
+5.5: panel
 
-5. VPS ka dekhna hai - plan , cost, duration
+6. VPS ka dekhna hai - plan , cost, duration

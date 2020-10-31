@@ -165,7 +165,7 @@ class Register extends React.Component
 									this.setState( {error: isMaxMin(age,'Age',10,65)} )
 								  else if(isMaxMin(height,'Height',24,300) )
 									this.setState( {error: isMaxMin(height,'Height',24,300)} )
-								  else if(isMaxMin(weight,'Weight',10,250))
+								  else if(isMaxMin(weight,'Weight',21,250))
 									this.setState( {error: isMaxMin(weight,'Weight',10,250)} )
 								  else
 									this.setState({mode:'pr-reg-3'});
@@ -277,7 +277,7 @@ class Register extends React.Component
 					<Text label="Mother's Name" name="mother" value={mother} onChange={this.onInputChange}/>
 					<Text label="Father's Name" name="father" value={father} onChange={this.onInputChange}/>
 					<Number label="Height (inch)"	name="height" value={height} min={24} max={300} onChange={this.onNumberChange}/>
-					<Number label="Weight (kg)"	name="weight" value={weight} min={10} max={250} onChange={this.onNumberChange}/>
+					<Number label="Weight (kg)"	name="weight" value={weight} min={21} max={250} onChange={this.onNumberChange}/>
 					<Dropdown label="Marital Status" name="status" value={status} options={['','Single','Married','Divorced','Separated','Widowed']} onChange={this.onInputChange}/>
 				</LoginForm>	
 			</div>
