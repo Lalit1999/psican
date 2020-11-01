@@ -14,6 +14,7 @@ import TopBar from './comps/header/TopBar.js' ;
 import DownBar from './comps/downbar/DownBar.js' ;
 import Exam from './comps/tests/Exam.js' ;
 import AnxietyTest from './comps/tests/anxiety/AnxietyTest.js' ;
+import Admin from './comps/admin/Admin.js' ;
 import './App.css' ;
 const AEQUESS = lazy(() => import('./comps/program/AEQUESS.js')) ;
 const Sarathi = lazy(() => import('./comps/program/Sarathi.js')) ;
@@ -85,6 +86,7 @@ class App extends React.Component
 		              <Route path='/consult' render={props=><Suspense fallback={<div> Loading... </div>}><Consult user={user} token={userToken}/></Suspense>}/>
 		              <Route path='/profile' render={props=><Suspense fallback={<div> Loading... </div>}><Profile user={user} token={userToken} loadUser={this.loadUser}/></Suspense>}/>
 		              <Route path='/test' exact render={props=><Suspense fallback={<div> Loading... </div>}><Exam/></Suspense>}/>
+		              <Route path='/admin' render={props=><Suspense fallback={<div> Loading... </div>}><Admin {...props} user={user} loadUser={this.loadUser}/></Suspense>}/>
 		              <Route path='/test/self-anxiety-assessment' exact render={props=><Suspense fallback={<div> Loading... </div>}><AnxietyTest user={user} token={userToken} /></Suspense>}/>
 		              <Route exact component={NotFound} />
 		            </Switch>
