@@ -21,7 +21,7 @@ const invalidEmail = (str) => {
 const invalidName = (str) => {
 	if(str === '')
 		return 'Name(s) cannot be Blank' ;
-	else if ( !valid.isAlpha(str.replace(' ', 'xyz')))
+	else if ( !valid.isAlpha(str.replace(/\s/g, 'z')))
 		return 'Name(s) cannot contain digits(0-9) or Symbols' ;
 	else 
 		return false ;

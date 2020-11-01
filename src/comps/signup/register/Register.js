@@ -161,8 +161,8 @@ class Register extends React.Component
 									this.setState( {error: isBlank(gender,'Gender')} )
 								  else if(isBlank(status,'Status'))
 									this.setState( {error: isBlank(status,'Status')} )
-								  else if(isMaxMin(age,'Age',10,65) )
-									this.setState( {error: isMaxMin(age,'Age',10,65)} )
+								  else if(isMaxMin(age,'Age',10,100) )
+									this.setState( {error: isMaxMin(age,'Age',10,100)} )
 								  else if(isMaxMin(height,'Height',24,300) )
 									this.setState( {error: isMaxMin(height,'Height',24,300)} )
 								  else if(isMaxMin(weight,'Weight',21,250))
@@ -272,7 +272,7 @@ class Register extends React.Component
 				<LoginForm title=" Personal Details " error={this.state.error}
 					b1="&lt;&nbsp; Prev" onb1Click={this.onPrevClick}
 					b2="Next &gt;&nbsp;" onb2Click={this.onNextClick} >
-					<Number label="Age"	name="age" value={age} min={10} max={65} onChange={this.onNumberChange}/>
+					<Number label="Age"	name="age" value={age} min={10} max={100} onChange={this.onNumberChange}/>
 					<Dropdown label="Gender" name="gender" value={gender} options={['','M','F']} onChange={this.onInputChange}/>
 					<Text label="Mother's Name" name="mother" value={mother} onChange={this.onInputChange}/>
 					<Text label="Father's Name" name="father" value={father} onChange={this.onInputChange}/>

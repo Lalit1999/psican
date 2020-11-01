@@ -75,6 +75,10 @@
 	margin-top: 1em ;
 }
 
+.radio-div	{
+	cursor: pointer;
+}
+
 .next-btn-con
 {
 	padding: 1em 0;
@@ -114,4 +118,82 @@
 
 .moderate {
 	color: orangered ;
+}
+
+@media(max-width: 600px)
+{	.test-box {
+		margin: 1em ;
+	}
+
+	.start-title 	{
+		margin: .4em 0 ;
+	}
+
+	.test-box h3 	{	
+		margin: 0;
+		font-size: 1.3rem ;
+	}
+
+	.start-div ul 	{
+		margin-top: 0 ;
+		padding-inline-start: 1.5vh ; 
+		padding-right: 1vh ;
+	}
+
+	.test-box li{ 
+	    font-size: 1rem ; 
+	} 
+
+	.check-con
+	{	font-size: 0.9rem;
+		padding-left: .8em ;
+	}
+
+	.start-btn-con {
+		padding-top: 0 ;
+	}
+
+	.warn	{
+		font-size: .8rem ;
+	  	margin-left: .6em ;
+	  	margin-right: .6em ;
+	}
+
+	.question p {
+		font-size: 1.1rem ;
+		padding-left: 1em ;
+		padding-right: 1em ;
+		margin-bottom: 0 ;
+	}
+
+	.question h4	{
+		padding-left: .5em ;
+		font-size: .95rem ;
+		margin-top: .4em ;
+	}
+
+	.radio-con {
+		font-size: 1rem ;
+		padding-left: 2em ;
+	}
+
+	.radio-con input {
+		margin-top: .9em ;
+	}
+
+	.next-btn-con	{
+		margin-top: .5em ;
+		padding: 0.2em 0;
+	}
+
+	.next-btn	{ 
+		font-size: 1rem ; 
+		padding: 0.4em 1em ;
+		margin-right: 10vw ;
+	}
+
+	.proceed-con button	{
+		margin-right: 2em ;	
+	}
+
 }

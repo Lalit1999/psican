@@ -28,7 +28,7 @@ const ques = ["I am alert about my surroundings and my neighbourhood",
  "I can feel my heart thumping in my chest", "I experienced disturbed sleep or no sleep at all",
  "I can feel visible trembling in my hands and legs", "I feel faint while doing things", 
  "I run out of breath and need to sit calmly to become normal again", 
- "I expreienced discomfort in my tummy/gas/constipation or loosemotions",
+ "I expreience discomfort in my tummy/gas/constipation or loosemotions",
  "I feel cold & numb in my toes & fingers", "I feel like my chest is tight & I may choke",
  "Certain People, things or behaviours make me freak out and tensed",
  "I get tensed few times in a day", "My tensions stay with me for some time then they go away", 
@@ -36,7 +36,7 @@ const ques = ["I am alert about my surroundings and my neighbourhood",
  "I think I am a tense and uneasy person", "My tense state affects my daily routine",
  "I think I am worthless and non-contributing", 
  "Life is a constant struggle and there is nothing much you can do about it",
- "I feel there is no point in showing your capabilities, its better to shut yourself down",
+ "I feel there is no point in showing your capabilities, it is better to shut yourself down",
  "I give up on things beyond a point and call it quits",
  "I do fingers tapping on flat surface and shake my legs while sitting",
  "I eat the skin around my nails or bite my lips",
@@ -47,7 +47,7 @@ const ques = ["I am alert about my surroundings and my neighbourhood",
  "I absent myself from events and social engagements", "I pull my hair around my forehead, face or hands",
  "I am not able to go along well with friends and relatives long term"] ;
 
-const ans = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+let ans = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -76,7 +76,7 @@ class Question extends React.Component
 	}
 
 	generateRadioBtn = (x) => {
-		return radio.map( (one,i) => <div key={i}> <input type="radio" id={i} name={one} checked={this.state.checked[i]} onChange={() => this.onRadioClick(x, i)}/> {one} </div>)
+		return radio.map( (one,i) => <div className="radio-div" key={i}> <input type="radio" id={i} name={one} checked={this.state.checked[i]} onChange={() => this.onRadioClick(x, i)}/> {one} </div>)
 	}
 
 	onRadioClick = (no, opt) => {
@@ -199,17 +199,20 @@ class SAAT extends React.Component
 	}
 
 	calculateScore = (type) => {
-		// console.log(ans) ;
 		switch(type)
 		{	case 's' : return Math.floor((ans.slice(0, 30).reduce((x,y)=>x+y) - 30)/3);
+						//eslint-disable-next-line
 					   break ;
 			case 'a' : return ans.slice(30, 40).reduce((x,y)=>x+y) - 10 ;
+						//eslint-disable-next-line
 					   break ;
 			case 'e' : return ans.slice(40).reduce((x,y)=>x+y) - 10 ;
+						//eslint-disable-next-line
 					   break ;
 			case 't' : return Math.floor((ans.slice(0, 30).reduce((x,y)=>x+y) - 30)/3 + ans.slice(30).reduce((x,y)=>x+y) - 20) ;
+						//eslint-disable-next-line
 						break ;
-			default : return undefined ;
+			default : return null ;
 		}
 	}
 
@@ -235,8 +238,10 @@ class SAAT extends React.Component
 					</div>
 				</div> 
 			);
+						//eslint-disable-next-line
 			break ;
 		case 'test' : return <Question changeMode={this.changeMode} /> ;
+						//eslint-disable-next-line
 					  break ;
 		case 'finish' : let S = this.calculateScore('s') ;
 						let A = this.calculateScore('a') ;
@@ -250,7 +255,7 @@ class SAAT extends React.Component
 							} 
 						} ;
 						// console.log(obj2) ;
-						fetch('https://psy-api.herokuapp.com/test',{
+						fetch('https://psy-api.herokuapp.com/test?name=saat',{
 							method : 'post' ,
 							headers : { 'Content-Type' : 'application/json' ,
 										'Authorization' : 'Bearer ' + this.props.token} ,
@@ -262,9 +267,6 @@ class SAAT extends React.Component
 							else
 								throw Error(res.statusText) ;
 						})
-						.then(data => {	
-							addNotif('Successfully Received Query', 'success') ;
-						}) 
 						.catch( err  => {
 							console.log(err) ; 
 							addNotif(err.message, 'error') ;
@@ -281,6 +283,7 @@ class SAAT extends React.Component
 								Mr. Ashish Aggarwal +91-95552-35231 </p>
 						</div>
 						) ;
+						//eslint-disable-next-line
 						break ;
 		case 'confirm' : return (
 				<div className="question">
@@ -291,6 +294,7 @@ class SAAT extends React.Component
 					</div>
 				</div>   
 			) ;
+						//eslint-disable-next-line
 			break ;
 		default: return <div> We have entered an unexpected mode </div> ;
 		}
@@ -337,6 +341,14 @@ class SAAT extends React.Component
 				) ;
 			}
 		} 
+	}
+
+	componentWillUnmount = () =>{
+		ans = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,] ;
 	}
 
 	render()
