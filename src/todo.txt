@@ -1,14 +1,9 @@
 ==============30-10-2020==============
 
-// Storage dekhni hai
-// weightage adjust karni hai 
-// evaluation deni hai
-
 1. Hindi me convert karna hai
 2. Choose language ka option
 
 4. userprofile me result display karana hai
-5: Mobile CSS
 
 forgot password
 

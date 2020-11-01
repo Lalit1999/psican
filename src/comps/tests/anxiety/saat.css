@@ -32,26 +32,15 @@
     font-size: 1.5rem ;  
 } 
 
-.check-con
-{	font-size: 1.05rem;
-	padding-left: 3em ;
-}
-
 .start-btn-con {
 	text-align: center;
 	padding-top: 1.3em ;
 }
 
-.warn	{
-	color: darkred ;
-	font-size: 1.2rem ;
-	padding: .1em ;
-  	border : 1px solid red ;
-  	border-radius: 0.4rem ;
-  	text-align: center ;
-  	background-color: salmon ;
-  	margin-left: 1.1em ;
-  	margin-right: 1.1em ;
+.lang-con	{
+	margin-left: 2em ;
+	margin-top: .5em ; 
+	cursor: pointer ;
 }
 
 .question p {
@@ -90,6 +79,18 @@
 	margin-bottom: 0 ;
 	padding: 0.3em 0.9em ;
 	margin-right: 10vw ;
+}
+
+.warn	{
+	color: darkred ;
+	font-size: 1.2rem ;
+	padding: .1em ;
+  	border : 1px solid red ;
+  	border-radius: 0.4rem ;
+  	text-align: center ;
+  	background-color: salmon ;
+  	margin-left: 1.1em ;
+  	margin-right: 1.1em ;
 }
 
 .proceed-con {
@@ -144,19 +145,8 @@
 	    font-size: 1rem ; 
 	} 
 
-	.check-con
-	{	font-size: 0.9rem;
-		padding-left: .8em ;
-	}
-
 	.start-btn-con {
 		padding-top: 0 ;
-	}
-
-	.warn	{
-		font-size: .8rem ;
-	  	margin-left: .6em ;
-	  	margin-right: .6em ;
 	}
 
 	.question p {
@@ -172,6 +162,12 @@
 		margin-top: .4em ;
 	}
 
+	.warn	{
+		font-size: .8rem ;
+	  	margin-left: .6em ;
+	  	margin-right: .6em ;
+	}
+	
 	.radio-con {
 		font-size: 1rem ;
 		padding-left: 2em ;
