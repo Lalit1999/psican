@@ -200,7 +200,7 @@ class SAAT extends React.Component
 							} 
 						} ;
 						
-						fetch('https://psy-api.herokuapp.com/test?name=saat',{
+						fetch('https://psy-api.herokuapp.com/test',{
 							method : 'post' ,
 							headers : { 'Content-Type' : 'application/json' ,
 										'Authorization' : 'Bearer ' + this.props.token} ,

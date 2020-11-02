@@ -98,6 +98,6 @@
 	{ english : "I pull my hair around my forehead, face or hands",
 	hindi:' मैं अपने हाथ, छाती, चेहरे या सर के बालों को तोड़ता हूँ'},
 	{ english : "I am not able to go along well with friends and relatives long term",
-	hindi:' मेरे दोस्तों और रिश्तेदारों से मैं लम्बे समय तक बनाकर नहीं रख पाता हूँ'},
+	hindi:' मैं दोस्तों और रिश्तेदारों से लम्बे समय तक बनाकर नहीं रख पाता हूँ'},
 ];
 export {saatQues} ;
