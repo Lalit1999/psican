@@ -48,4 +48,133 @@ const quesData = {
 	},
 } ;
 
-export {inst, quesData} ;
+const subData = {
+	revBtn : {
+		english: 'Review Answers ' ,
+		hindi: 'उत्तर की समीक्षा करें'
+	},
+	subBtn : {
+		english: 'Confirm & Proceed' ,
+		hindi: 'पुष्टि करें & आगे बढ़ें'
+	},
+	subNote : {
+		english: 'Your test will be submitted and result will be calculated, are you sure you want to proceed? You can also go back to the test and review your answers.' ,
+		hindi: 'आपके जवाब जमा हो जायेंगे और परिणाम निकाला जायेगा, क्या आप आगे बढना चाहते है? आप वापस जाकर अपने उत्तरो की समीक्षा भी कर सकते हैं।'
+	},
+	error : {
+		english: 'We have entered an unexpected mode',
+		hindi: 'ये कहाँ आ गये हम'
+	},
+} ;
+
+const resultData = {
+	sScore :{
+		english :'Your S Score is' ,
+		hindi :'आपके S अंक हैं'
+	},
+	eScore :{
+		english :'Your E Score is' ,
+		hindi :'आपके E अंक हैं'
+	},
+	aScore :{
+		english :'Your A Score is' ,
+		hindi :'आपके A अंक हैं'
+	},
+	tScore :{
+		english :'Your Total Score is' ,
+		hindi :'आपके कुल अंक हैं'
+	},
+	p1 :{
+		english: 'We request you to remember your S, A and E score (they are stored in your profile) as they may be useful in further consultations with mental health professionals.' ,
+		hindi: 'आपसे अनुरोध है कि, आप अपने S , A , E और कुल अंको को सम्भाल कर रखे क्योंकि अगर आप किसी मनोविशेषज्ञ की सलाह  लेते हैं तो ये उनकी सहायता करेंगे।'
+	} ,
+	p2 :{
+		english: 'For further consultations/support, Call' ,
+		hindi: 'आगे के परामर्श/समर्थन के लिये, फोन करे '
+	} ,
+	p3 :{
+		english: 'Mr. Ashish Aggarwal +91-95552-35231' ,
+		hindi: 'श्री आशीष अग्रवाल +91-95552-35231 '
+	} 
+} ;
+
+const evalData = {
+	stage1 :{
+		l1 :{
+			english : 'You have' ,
+			hindi : 'आपका'
+		} ,
+		l2 :{
+			english : ' Optimum Functional Anxiety' ,
+			hindi : ' तनाव अनुकूल स्तर '
+		} ,
+		l3 :{
+			english : ',which means you have anxiety within normal range and at an optimum level.' ,
+			hindi : 'पर है। जिसका मतलब है कि आपका तनाव सामान्य सीमा में ही है।'
+		} ,
+		l4 :{
+			english : 'No intervention in your lifestyle is required. You do not need any counselling.' ,
+			hindi : ' आपकी जीवन शैली में किसी बदलाव की कोई आवश्यक्ता नहीं है, न ही आपको किसी मनोविशेषज्ञ की सलाह लेने की ज़रुरत है।'
+		}
+	},
+	stage2 :{
+		l1 :{
+			english : 'You have' ,
+			hindi : 'आपको'
+		}	,
+		l2 :{
+			english : 'Mild Anxiety' ,
+			hindi : ' हल्का तनाव '
+		} ,
+		l3 :{
+			english : ', which means you have anxiety slightly above the normal range. Your anxiety may sometimes cause problems in your day-to-day activites.' ,
+			hindi : 'है। जिसका मतलब है कि आपका तनाव सामान्य सीमा से थोडा ज़्यादा है। कभी-कभी आपका तनाव आपकी रोज़मर्र्रा की ज़िंद्गी पर बुरा प्रभाव डाल सकता है।'
+		} ,
+		l4 :{
+			english : 'A few Lifestyle changes are needed for you to have lower anxiety levels. You have a little need for Counselling (4-6 sessions in an year).' ,
+			hindi : 'आपको तनाव का स्तर घटाने के लिये अपनी जीवन शैली में थोडे बदलाव की आवश्यक्ता है, आपको मनोविशेषज्ञ से सलाह लेने की थोडी ज़रुरत है(साल में 4-6 बार)।'
+		}
+	},
+	stage3 :{
+		l1 :{
+			english : 'You have' ,
+			hindi : 'आपका'
+		}	,
+		l2 :{
+			english : 'Moderate Anxiety ' ,
+			hindi : ' तनाव मध्यम स्तर '
+		} ,
+		l3 :{
+			english : ', which means you have high anxiety levels which are above the normal range. Your anxiety may be affecting your health and causing problems in your day-to-day life.' ,
+			hindi : 'पर है। जिसका मतलब है कि आपका तनाव सामान्य सीमा से काफी ज़्यादा है। आपका तनाव आपकी ज़िंद्गी और सेहत पर बुरा प्रभाव डाल सकता है। '
+		} ,
+		l4 :{
+			english : 'You require training of Relaxation Techniques to bring down your anxiety levels. You require regular counselling(twice per month) for a short time.' ,
+			hindi : 'आपको खुद को शांत रखने के लिये प्रशिक्शण की आवश्यक्ता है। आपको थोडे समय के लिये मनोविशेषज्ञ की सलाह लेने की ज़रुरत है(महीने मे 2 बार)।'
+		}
+	},
+	stage4 :{
+		l1 :{
+			english : 'You have' ,
+			hindi : 'आपका'
+		}	,
+		l2 :{
+			english : 'Severe Anxiety' ,
+			hindi : ' तनाव गम्भीर स्तर '
+		} ,
+		l3 :{
+			english : ', which means your anxiety levels are very high as compared to the normal range. Your anxiety may lead to other serious health problems if not taken action against.' ,
+			hindi : ' पर है, जो बिल्कुल भी सामान्य नही है। अगर आप इस पर ध्यान नही देते है तो आपको सेहत से जुडी गम्भीर समस्या का सामना करना पड सकता है'
+		} ,
+		l4 :{
+			english : 'You should immediately start detailed counselling(once in a week) and continue it for a longer time.' ,
+			hindi : 'आपको लम्बे समय तक मनोविशेषज्ञ की सलाह लेने की ज़रुरत है(हफ्ते में 1 बार)।'
+		}
+	}
+} ; 
+
+export {inst, quesData, subData, resultData, evalData} ;
+
+
+  
+								 

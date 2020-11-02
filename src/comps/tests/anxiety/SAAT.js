@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom' ;
 import { addNotif } from '../../notif.js' ;
 import './saat.css' ;
 
-import {inst, quesData} from './langdata.js' ;
+import {inst, quesData, subData, resultData, evalData} from './langdata.js' ;
 import {radioData} from './radioData.js' ;
 import {saatQues} from './queData.js' ;
 
@@ -123,18 +123,18 @@ class SAAT extends React.Component
 	}
 
 	checkLoggedIn = () => {
-		// if(this.props.token === "")
-		// 	return (
-		// 		<div className="blue-bg blue-form">
-		// 			<p> You need to 
-		// 				<Link to="/login" className="btn3"> Login </Link>
-		// 				 or 
-		// 				<Link to="/register" className="btn3"> Register </Link> 
-		// 				to take this test (you will be redirected to home page) 
-		// 			</p>
-		// 		</div>
-		// 	) ; 
-		// else
+		if(this.props.token === "")
+			return (
+				<div className="blue-bg blue-form">
+					<p> You need to 
+						<Link to="/login" className="btn3"> Login </Link>
+						 or 
+						<Link to="/register" className="btn3"> Register </Link> 
+						to take this test (you will be redirected to home page) 
+					</p>
+				</div>
+			) ; 
+		else
 			return (
 				<div  className="test-box">
 					<h3> Self Anxiety Assessment Test (SAAT) </h3> 
@@ -200,68 +200,67 @@ class SAAT extends React.Component
 							} 
 						} ;
 						
-						// fetch('https://psy-api.herokuapp.com/test?name=saat',{
-						// 	method : 'post' ,
-						// 	headers : { 'Content-Type' : 'application/json' ,
-						// 				'Authorization' : 'Bearer ' + this.props.token} ,
-						// 	body : JSON.stringify(obj2) ,
-						// })
-						// .then(res => {
-						// 	if(res.ok)
-						// 		return res.json() ;
-						// 	else
-						// 		throw Error(res.statusText) ;
-						// })
-						// .catch( err  => {
-						// 	console.log(err) ; 
-						// 	addNotif(err.message, 'error') ;
-						// }) ;
+						fetch('https://psy-api.herokuapp.com/test?name=saat',{
+							method : 'post' ,
+							headers : { 'Content-Type' : 'application/json' ,
+										'Authorization' : 'Bearer ' + this.props.token} ,
+							body : JSON.stringify(obj2) ,
+						})
+						.then(res => {
+							if(res.ok)
+								return res.json() ;
+							else
+								throw Error(res.statusText) ;
+						})
+						.catch( err  => {
+							console.log(err) ; 
+							addNotif(err.message, 'error') ;
+						}) ;
 						return (
 						<div className="question result"> 
-							<p> Your S Score is : {S} </p> 
-							<p> Your A Score is : {A} </p> 
-							<p> Your E Score is : {E} </p> 
-							<p> Your Total Score & Anxiety Level is : {T} </p> 
+							<p> {resultData.sScore[lang]} : {S} </p> 
+							<p> {resultData.aScore[lang]} : {A} </p> 
+							<p> {resultData.eScore[lang]} : {E} </p> 
+							<p> {resultData.tScore[lang]} : {T} </p> 
 							<p> {this.getEvaluation(T)} </p>
-							<p> We request you to remember your S, A and E score (they are stored in your profile) as they may be useful in further consultations with mental health professionals. </p>
-							<p> For further consultations/support, Call <br/>
-								Mr. Ashish Aggarwal +91-95552-35231 </p>
+							<p> {resultData.p1[lang]} </p>
+							<p> {resultData.p2[lang]} <br/>
+								{resultData.p3[lang]} </p>
 						</div>
 						) ;
 						//eslint-disable-next-line
 						break ;
 		case 'confirm' : return (
 				<div className="question">
-					<p> Your test will be submitted and result will be calculated, are you sure you want to proceed?. You can also go back to the test and review your answers. </p>
+					<p>{subData.subNote[lang]}</p>
 					<div className="next-btn-con proceed-con">
-						<button className="sched-btn" onClick={()=>this.setState({mode:'test'})}> Review Answers </button>
-						<button className="sched-btn" onClick={()=>this.setState({mode:'finish'})}> Submit&nbsp;&amp;&nbsp;Proceed </button>
+						<button className="sched-btn" onClick={()=>this.setState({mode:'test'})}>{subData.revBtn[lang]} </button>
+						<button className="sched-btn" onClick={()=>this.setState({mode:'finish'})}>{subData.subBtn[lang]}</button>
 					</div>
 				</div>   
 			) ;
 						//eslint-disable-next-line
 			break ;
-		default: return <div> We have entered an unexpected mode </div> ;
+		default: return <div>{subData.error[lang]} </div> ;
 		}
 	}
 
 	getEvaluation = (t) => {
+		const {lang} = this.state ;
 		if(t <= 60)
 		{	if( t <= 30)
 			{	return (
 					<React.Fragment>
-						You have <span className="eval low"> Optimum Functional Anxiety </span>, which means you have anxiety within normal range and at an optimum level. <br/><br/>
-
-						No intervention in your lifestyle is required. You do not need any counselling.
+						{evalData.stage1.l1[lang]} <span className="eval low">{evalData.stage1.l2[lang]}</span>{evalData.stage1.l3[lang]} <br/><br/>
+						{evalData.stage1.l4[lang]}
 					</React.Fragment>
 				) ;
 			}
 			else
 			{	return (
 					<React.Fragment>
-						You have <span className="eval mild"> Mild Anxiety </span>, which means you have anxiety slightly above the normal range. Your anxiety may sometimes cause problems in your day-to-day activites. <br/><br/>
-
-						A few Lifestyle changes are needed for you to have lower anxiety levels. You have a little need for Counselling (4-6 sessions in an year). 
+						{evalData.stage2.l1[lang]} <span className="eval mild"> {evalData.stage2.l2[lang]}</span>{evalData.stage2.l3[lang]} <br/><br/>
+						{evalData.stage2.l4[lang]} 
 					</React.Fragment>
 				) ;
 			}
@@ -270,18 +269,16 @@ class SAAT extends React.Component
 		{	if(t <= 90)
 			{	return (
 					<React.Fragment>
-						You have <span className="eval moderate"> Moderate Anxiety </span>, which means you have high anxiety levels which are above the normal range. Your anxiety may be affecting your health and causing problems in your day-to-day life. <br/><br/>
-
-						You require training of Relaxation Techniques to bring down your anxiety levels. You require regular counselling(twice per month) for a short time. 
+						{evalData.stage3.l1[lang]} <span className="eval moderate"> {evalData.stage3.l2[lang]} </span>{evalData.stage3.l3[lang]}<br/><br/>
+						{evalData.stage3.l4[lang]} 
 					</React.Fragment>
 				) ;
 			}
 			else
 			{	return (
 					<React.Fragment>
-						You have <span className="eval high"> Severe Anxiety </span>, which means your anxiety levels are very high as compared to the normal range. Your anxiety may lead to other serious health problems if not taken action against.<br/><br/>
-
-						You should immediately start detailed counselling(once in a week) and continue it for a longer time.
+						{evalData.stage4.l1[lang]} <span className="eval high">{evalData.stage4.l2[lang]} </span>{evalData.stage4.l3[lang]}<br/><br/>
+						{evalData.stage4.l4[lang]}
 					</React.Fragment>
 				) ;
 			}
