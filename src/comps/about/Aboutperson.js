@@ -40,8 +40,8 @@ class Aboutperson extends React.Component
 				</div>
 				<div className="after-div">
 					<ul> 
-						<li className = 'txt'>Director&emsp;:&emsp;Psyment</li>
-						<li className = 'txt'>Managing Director&emsp;:&emsp;ORN Remedies Pvt. Ltd. (A 
+						<li className = 'txt'>Director&nbsp;:&nbsp;Psyment</li>
+						<li className = 'txt'>Managing Director&nbsp;:&nbsp;ORN Remedies Pvt. Ltd. (A 
 							Pharmaceutical Company based in Delhi) </li>
 						<li className = 'txt'>Hails an illustrous multi-year association with esteemed
 							organisations like Mahavir Senior Model School (Delhi), NGO - Udayan Care

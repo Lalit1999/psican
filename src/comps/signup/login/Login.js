@@ -78,7 +78,7 @@ class Login extends React.Component
 	createSelect = () => {
 		return (
 			<div className="select-con">
-				<h3 className="reg-as"> Login For : </h3>
+				<h3 className="reg-as"> Login As : </h3>
 				<button className="select-btn" onClick={() => this.setState({
 					mode: 'person',	data: initObj})}
 				>

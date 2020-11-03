@@ -79,6 +79,7 @@ class Header extends React.Component
 						<Link className="header-item" to='/consult'> Consult </Link>
 						<Link className="header-item" to='/test'> Tests </Link>
 						<Link className="header-item" to='/contact'> Contact Us </Link>
+						{this.props.user.name==='admin'?<Link className="header-item" to='/admin'> Admin </Link>:null}
 					</div>
 				</div>
 				) ;

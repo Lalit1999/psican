@@ -86,7 +86,7 @@ class App extends React.Component
 		              <Route path='/consult' render={props=><Suspense fallback={<div> Loading... </div>}><Consult user={user} token={userToken}/></Suspense>}/>
 		              <Route path='/profile' render={props=><Suspense fallback={<div> Loading... </div>}><Profile user={user} token={userToken} loadUser={this.loadUser}/></Suspense>}/>
 		              <Route path='/test' exact render={props=><Suspense fallback={<div> Loading... </div>}><Exam/></Suspense>}/>
-		              <Route path='/admin' render={props=><Suspense fallback={<div> Loading... </div>}><Admin {...props} user={user} token={userToken} loadUser={this.loadUser}/></Suspense>}/>
+		              <Route path='/admin' render={props=><Suspense fallback={<div> Loading... </div>}><Admin {...props} user={user} token={userToken} /></Suspense>}/>
 		              <Route path='/test/self-anxiety-assessment' exact render={props=><Suspense fallback={<div> Loading... </div>}><AnxietyTest user={user} token={userToken} /></Suspense>}/>
 		              <Route exact component={NotFound} />
 		            </Switch>

@@ -18,6 +18,11 @@ const cont3 = [
 'Our personal mentoring can guide you through such situations',
 'Schedule your Appointment Now' ] ;
 
+const cont4 = [ 
+'SAAT(Self-Assessment Anxiety Test)',
+'Take this free test to get your anxiety score',
+'Get evaluation of your anxiety level' ] ;
+
 class BannerTwo extends React.Component
 {	createBannerContent = () => {
 		switch(this.props.content)
@@ -31,6 +36,9 @@ class BannerTwo extends React.Component
 			case 'person' : return (
 				<BannerContent title = 'Personal Consultation' lidata={cont3} link="/consult"/>
 			 	) ;
+			case 'saat' : return (
+				<BannerContent title = 'Anxiety Test' lidata={cont4} link="/test/self-anxiety-assessment"/>
+				) ;
 			default : return null ;
 		}
 	}
@@ -38,15 +46,28 @@ class BannerTwo extends React.Component
 	render()
 	{	let classcolor = 'ban2_main ' + this.props.color ;
 		if(this.props.left === 'yes')
-		{
-			return(
-				<div className={'BannerTwo '}>
-					<div className="ban2-sar"></div>
-					<div className = {classcolor}>
-						{this.createBannerContent()}				
+		{	if(this.props.content === 'sarathi')
+			{
+				return(
+					<div className={'BannerTwo '}>
+						<div className="ban2-sar"></div>
+						<div className = {classcolor}>
+							{this.createBannerContent()}				
+						</div>
 					</div>
-				</div>
-				) ;
+					) ;
+			}
+			else
+			{	return(
+					<div className={'BannerTwo '}>
+						<div className="ban2-saat"></div>
+						<div className = {classcolor}>
+							{this.createBannerContent()}				
+						</div>
+					</div>
+					) ;
+
+			}
 		}
 		else if(this.props.content === 'person')
 		{

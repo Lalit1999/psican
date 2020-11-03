@@ -28,6 +28,16 @@
 	background-size: cover;
 }
 
+.ban2-saat
+{
+	border-bottom: 2px solid black;
+	width: 100%;
+	background-image: url('../home/404.png');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
 .ban2_main
 {
 	padding: 1em ;

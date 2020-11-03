@@ -12,7 +12,7 @@ import DisplayDetailed from '../display/DisplayDetailed.js' ;
 import Heading from '../Heading/Heading.js' ;
 import './program.css' ;
 
-const arr = ['html<ul>To provide workshops to schools and colleges for:<li>Student Motivation</li><li>Student Career</li><li>Health related guidance for students</li><li>Behaviour related guidance for students</li><li>Parental Education</li><li>Teachers Training</li>'] ;
+const arr = ['htmlTo provide workshops to schools and colleges for:<ul><li>Student Motivation</li><li>Student Career</li><li>Health related guidance for students</li><li>Behaviour related guidance for students</li><li>Parental Education</li><li>Teachers Training</li>'] ;
 
 const features = [
 'htmlCOMPLEMENTARY WORKSHOPS<a href="#one"><sup>[1]</sup></a> for partner Schools and Educational Institutions. <a href="#two"><sup>[2]</sup></a>',
