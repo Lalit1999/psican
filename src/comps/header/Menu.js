@@ -27,6 +27,7 @@ class Menu extends React.Component
 						<Link className="menu-item" to='/consult'> Consult </Link>
 						<Link className="menu-item" to='/test'> Tests </Link>
 						<Link className="menu-item" to='/contact'> Contact Us </Link>
+						{this.props.user.name==='admin'?<Link className="menu-item" to='/admin'> Admin </Link>:null}
 						{this.props.checkLoggedIn('menu-btn', 'menu-div')}
 					</div>
 				</div>

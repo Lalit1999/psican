@@ -1,4 +1,6 @@
  import React from 'react' ;
+ import { Link } from'react-router-dom' ;
+ 
  import './BannerContent.css' ;
 
  class BannerContent extends React.Component
@@ -17,7 +19,7 @@
 						{this.createLi()}
 					</ul>
 				</div>
-				<a href={this.props.link} className = 'explore'>Explore</a>
+				<Link to={this.props.link} className = 'explore'>Explore</Link>
  			</div>
  		) ;
  	}
