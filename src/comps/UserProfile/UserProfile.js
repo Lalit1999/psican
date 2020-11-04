@@ -145,8 +145,7 @@ class UserProfile extends React.Component
 		return Object.keys(this.props.user).map( (one,i) => {
 			const name = this.returnkey(one) ;
 			if(name)
-				return <Data key={i} kiy={name} 
-						mode={this.state.mode} value={this.props.user[one]} />
+				return <Data key={i} kiy={name} mode={this.state.mode} value={this.props.user[one]} />
 			else 
 				return null ;
 		}) ;

@@ -1,11 +1,29 @@
-.admin *
+/*.admin *
 {
 	border : 1px solid black ;
-}
+}*/
 
-.admin-bar
-{
+.admin-bar	{
 	display: flex ;
 	justify-content: space-between ;
+}
 
+.record	{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between; 
+}
+
+.record p 	{
+	margin: .5em 0 ;
+	min-width: 10vw ;
+	padding: 0 2vw ;
+}
+
+.record-btn
+{	border-radius: .2rem ;
+	color: white;
+	background-color: rgb(20, 70, 120) ;
+	padding: 1em ;
+	cursor: pointer ;	
 }
