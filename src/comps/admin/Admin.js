@@ -101,6 +101,7 @@ class Admin extends React.Component
 			switch(this.state.mode)
 			{	case 'results' : return this.state.results.map((one, i)=><ResultRecord key={i} data={one} /> ) ;
 				case 'users' : return this.state.users.map((one, i)=><UserRecord key={i} data={one} /> ) ;
+				default: return 'unexpected input' ;
 			}
 	}
 

@@ -89,7 +89,7 @@ class Header extends React.Component
 			return (
 				<div>
 					<CheeseburgerMenu isOpen={this.state.menuOpen} closeCallback={this.closeMenu}>
-							<Menu closeCallback={this.closeMenu} checkLoggedIn={this.checkLoggedIn}/>
+							<Menu closeCallback={this.closeMenu} checkLoggedIn={this.checkLoggedIn} user={this.props.user}/>
 					</CheeseburgerMenu>
 					<HamburgerMenu isOpen={this.state.menuOpen} menuClicked={this.openMenu} 
 								   width={32} height={24} strokeWidth={8} color='white' 
