@@ -5,7 +5,16 @@
 
 .admin-bar	{
 	display: flex ;
+	/*flex-wrap: wrap;*/
 	justify-content: space-between ;
+	/*border : 1px solid black ;*/
+}
+
+.task
+{
+	margin : 1em 2em ;
+	padding: 1em ;
+
 }
 
 .record	{

@@ -202,9 +202,11 @@ class Admin extends React.Component
 			return(
 				<div className = 'admin'>
 					<div className = 'admin-bar'>
-						<Dropdown label="Mode" name="mode" value={this.state.mode} options={['users','schools','results']} onChange={this.onInputChange}/>
-						<p>Total no. of users &nbsp;:&nbsp;{this.state[this.state.mode].length}</p>
-						<input type='text' placeholder='search' />
+						<Dropdown  className = 'task' label="Mode" name="mode" value={this.state.mode} options={['users','schools','results']} onChange={this.onInputChange}/>
+						<p className = 'task' >Total no. of users &nbsp;:&nbsp;{this.state[this.state.mode].length}</p>
+						<Dropdown className = 'task' label="Search By" name="searchby" value={this.state.mode} options={['name','phone','email']} onChange={this.onInputChange}/>
+						<input className = 'task' type='text' placeholder='search' />
+						<Dropdown className = 'task' label="Sort By" name="sortby" value={this.state.mode} options={['date','alphabet','marks']} onChange={this.onInputChange}/>
 					</div>
 					<div>
 						{this.createRecords()}
