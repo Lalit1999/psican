@@ -6,27 +6,54 @@
 .admin-bar	{
 	display: flex ;
 	/*flex-wrap: wrap;*/
-	justify-content: space-between ;
-	/*border : 1px solid black ;*/
+	justify-content: space-evenly ;
+	border-bottom : 3px solid black ;
+	background-color: rgba(83, 154, 212, 0.6) ;
 }
 
-.task
-{
-	margin : 1em 2em ;
-	padding: 1em ;
+.admin-bar input	{
+	margin: .6em 0 ;
+	border: 1px solid black;
+	border-radius: 1rem ;
+	font-weight: bold ;
+	background-color: transparent ;
+	text-align: center;
+}
 
+.admin-bar input:hover, .admin-bar input:focus	{
+	background-color: white ;
+	border: 1px solid rgba(83, 154, 212, 0.6);
+}
+
+.admin-bar .lbel 	{
+	width: auto ;
+}
+
+.task	{	
+	margin : 0 2em ;
+	padding: 1em ;
 }
 
 .record	{
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between; 
+	justify-content: space-between;
+	border-top: 1px solid black ; 
+	background-color: rgba(83, 154, 212, 0.2) ;
 }
 
 .record p 	{
-	margin: .5em 0 ;
-	min-width: 10vw ;
+	margin: .5em ;
+	width: 12vw ;
 	padding: 0 2vw ;
+}
+
+.record p.slim {	
+	width: 3vw ;	
+}
+
+.record p.fat {	
+	width: 15vw ;	
 }
 
 .record-btn
@@ -34,5 +61,15 @@
 	color: white;
 	background-color: rgb(20, 70, 120) ;
 	padding: 1em ;
-	cursor: pointer ;	
+	cursor: pointer ;
+	width: auto !important ;	
+}
+
+.yes	{
+	border-top: none ;
+	justify-content: center;
+}
+
+.records-table {
+	border-bottom: 1px solid black ;
 }

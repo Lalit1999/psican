@@ -12,8 +12,51 @@ const formatDate = (dt) => {
 
 class ResultRecord extends React.Component
 {	state = {
-
+		owner: 'close',
+		ownData : {} ,
 	}
+
+	onOwnerClick = () => {
+		const { owner } = this.props.data ;
+		if(this.state.owner === 'open')
+			this.setState({owner: 'close'});
+		else
+		{	if(this.state.ownData.name)
+				this.setState({owner: 'open'})
+			else
+			{	const str = 'Bearer ' + this.props.token ;
+				// console.log(str) ;
+				fetch('https://psy-api.herokuapp.com/user/'+owner, {
+					method : 'get' ,
+					headers : { 'Content-Type' : 'application/json' ,
+								'Authorization' : str} ,
+				})
+				.then(res => {
+					if(res.ok)
+						return res.json() ;
+					else
+						throw Error(res.statusText) ;
+				})
+				.then(data => {
+					console.log(data) ;	
+					this.setState({ownData: data, owner: 'open'});
+				}) 
+				.catch( err  => {
+					console.log(err) ; 
+					addNotif(err.message, 'error') ;
+				}) ;
+			}
+		}
+	}
+
+	checkOwner = () => {
+		if(this.state.owner === 'open')
+			return (
+				<React.Fragment> <UserRecord data={this.state.ownData} lite="yes"/> </React.Fragment>
+			) ;
+		else
+			return null ;
+	} 
 
 	checkLite = (num) => {	
 		if(this.props.lite)
@@ -21,8 +64,8 @@ class ResultRecord extends React.Component
 		else
 			return (
 			<React.Fragment>
-				<p>{num + 1}</p>
-				<p className="record-btn"> Show Owner </p>
+				<p className="slim">{num + 1}</p>
+				<p className="record-btn" onClick={this.onOwnerClick}>{this.state.owner ==='close'?'Show':'Hide'} Owner </p>
 			</React.Fragment>
 			) ;		
 	}
@@ -30,12 +73,15 @@ class ResultRecord extends React.Component
 	render()
 	{	const {ki, data} = this.props ;
 		return (
-			<div className="record result"> 
-				{this.checkLite(ki)}
-				<p>{data.test}</p>
-				<p>{data.result.t}</p>
-				<p>{formatDate(data.createdAt)}</p>
-			</div>
+			<React.Fragment>
+				<div className={"record result " + this.props.lite}> 
+					{this.checkLite(ki)}
+					<p className="slim">{data.test}</p>
+					<p>{data.result.t}</p>
+					<p className="fat">{formatDate(data.createdAt)}</p>
+				</div>
+				<div> {this.checkOwner()} </div>
+			</React.Fragment>
 		) ;
 	}		
 }
@@ -56,7 +102,7 @@ class UserRecord extends React.Component
 	} 
 
 	onResultClick = () => {
-		console.log(this.props) ;
+		// console.log(this.props) ;
 		const { _id } = this.props.data ;
 		if(this.state.result === 'open')
 			this.setState({result: 'close'});
@@ -65,7 +111,7 @@ class UserRecord extends React.Component
 				this.setState({result: 'open'})
 			else
 			{	const str = 'Bearer ' + this.props.token ;
-				console.log(str) ;
+				// console.log(str) ;
 				fetch('https://psy-api.herokuapp.com/result/'+_id, {
 					method : 'get' ,
 					headers : { 'Content-Type' : 'application/json' ,
@@ -96,17 +142,28 @@ class UserRecord extends React.Component
 			return null ;
 	} 
 
+	checkLite = () => {
+		if(this.props.lite === 'yes')
+			return null ;
+		else
+			return (
+			<React.Fragment>
+				<p className="record-btn slim" onClick={() => this.setState({more: (this.state.more==='close'?'open':'close')})}> {this.state.more==='close'?'More':'Less'} </p>
+				<p className="record-btn" onClick={this.onResultClick}> {this.state.result==='close'?'Show':'Hide'} Results </p>
+			</React.Fragment>
+			) ;
+	}
+
 	render() {
 		const {ki, data} = this.props ;
 		return (
 			<React.Fragment>
-				<div key={ki} className="record user"> 
-					<p>{ki+ 1}</p>
+				<div key={ki} className={"record user " + this.props.lite}> 
+					{this.props.lite==='yes'?null:<p className="slim">{ki+ 1}</p>}
 					<p>{data.name}</p>
-					<p>{data.email}</p>
+					<p className="fat">{data.email}</p>
 					<p>{data.mobile}</p>
-					<p className="record-btn" onClick={() => this.setState({more: (this.state.more==='close'?'open':'close')})}> {this.state.more==='close'?'More':'Less'} </p>
-					<p className="record-btn" onClick={this.onResultClick}> {this.state.result==='close'?'Show':'Hide'} Results </p>
+					{this.checkLite()}
 				</div>
 				<div> {this.checkMore()} </div>
 				<div> {this.checkResult()} </div>
@@ -203,12 +260,12 @@ class Admin extends React.Component
 				<div className = 'admin'>
 					<div className = 'admin-bar'>
 						<Dropdown  className = 'task' label="Mode" name="mode" value={this.state.mode} options={['users','schools','results']} onChange={this.onInputChange}/>
-						<p className = 'task' >Total no. of users &nbsp;:&nbsp;{this.state[this.state.mode].length}</p>
+						<p className = 'task' >Total Rows&nbsp;:&nbsp;{this.state[this.state.mode].length}</p>
 						<Dropdown className = 'task' label="Search By" name="searchby" value={this.state.mode} options={['name','phone','email']} onChange={this.onInputChange}/>
 						<input className = 'task' type='text' placeholder='search' />
 						<Dropdown className = 'task' label="Sort By" name="sortby" value={this.state.mode} options={['date','alphabet','marks']} onChange={this.onInputChange}/>
 					</div>
-					<div>
+					<div className="records-table">
 						{this.createRecords()}
 					</div>
 				</div>
