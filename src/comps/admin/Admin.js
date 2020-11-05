@@ -5,15 +5,15 @@ import Dropdown from '../signup/dropdown/Dropdown.js' ;
 import { addNotif } from '../notif.js' ;
 import './admin.css' ;
 
-const formatDate = (dt) => {
-	const dat = new Date(dt).toLocaleString("en-US", {timeZone: "Asia/Kolkata"}); ;
-	return dat ;
-}
-
 class ResultRecord extends React.Component
 {	state = {
 		owner: 'close',
 		ownData : {} ,
+	}
+
+	formatDate = (dt) => {
+		const dat = new Date(dt).toLocaleString("en-US", {timeZone: "Asia/Kolkata"}); ;
+		return dat ;
 	}
 
 	onOwnerClick = () => {
@@ -78,7 +78,7 @@ class ResultRecord extends React.Component
 					{this.checkLite(ki)}
 					<p className="slim">{data.test}</p>
 					<p>{data.result.t}</p>
-					<p className="fat">{formatDate(data.createdAt)}</p>
+					<p className="fat">{this.formatDate(data.createdAt)}</p>
 				</div>
 				<div> {this.checkOwner()} </div>
 			</React.Fragment>
