@@ -71,6 +71,13 @@ class ResultRecord extends React.Component
 			</React.Fragment>
 			) ;		
 	}
+
+	checkDate = (data) => {
+		if(this.props.date === 'no')
+			return null ;
+		else
+			return <p className="fat">{this.formatDate(data.createdAt)}</p> ;
+	}
 	
 	render()
 	{	const {ki, data} = this.props ;
@@ -80,7 +87,7 @@ class ResultRecord extends React.Component
 					{this.checkLite(ki)}
 					<p className="slim">{data.test}</p>
 					<p>{data.result.t}</p>
-					<p className="fat">{this.formatDate(data.createdAt)}</p>
+					{this.checkDate(data)}
 				</div>
 				<div> {this.checkOwner()} </div>
 			</React.Fragment>

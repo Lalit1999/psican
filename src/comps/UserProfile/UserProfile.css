@@ -33,6 +33,32 @@
 { border : 1px solid black ;
 }
 
+.test-result-con  {
+  border-radius: 1rem ;
+  border: 2px solid black ;
+  background-color: white ;
+  text-align: center;
+}
+
+.test-result-con h3 {
+  background-color: rgb(29, 41, 81) ;
+  color: white ;
+  border-top-left-radius: 0.8rem ; 
+  border-top-right-radius: 0.8rem ; 
+  margin-top: 0 ;
+  padding: .5em ;
+}
+
+.results-con .record  {
+  background-color: white ;
+  border-radius: 1rem ;
+  justify-content: space-evenly;
+}
+
+.results-con .record p {
+  width: 5vw ;
+}
+
 .buttone
 { margin: 1em 0.4em 0.5em 0.4em ;
   padding: 0.5em 2em ;
@@ -74,7 +100,7 @@
    
   .pteste
   { font-size: 1.2rem ;
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   .lefte
@@ -89,6 +115,10 @@
     margin-left: 0 ;
     /*margin-right: 3em ;*/
     padding-left: 0.5em ;
+  }
+
+  .test-result-con  {
+    width: 100%;
   }
 
   .buttone

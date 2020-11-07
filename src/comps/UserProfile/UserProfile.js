@@ -9,6 +9,7 @@ import Register from '../signup/register/Register.js' ;
 import LoginForm from '../signup/forms/LoginForm.js' ;
 import Text from '../signup/text/Text.js' ;
 import Pop from '../popup/Pop.js' ;
+import ResultRecord from '../admin/ResultRecord.js' ;
 import './UserProfile.css' ;
 
 class UserProfile extends React.Component
@@ -18,7 +19,8 @@ class UserProfile extends React.Component
 	  	oldpass: '' ,
 	  	newpass: '' ,
 	  	repass: '' ,
-	  	error: '' 
+	  	error: '' ,
+	  	resData: {}
 	} ;
 
 
@@ -109,6 +111,35 @@ class UserProfile extends React.Component
 		}
 	}
 
+	onResultGetClick = () => {
+		fetch('https://psy-api.herokuapp.com/result/me', {
+			method : 'get' ,
+			headers : { 'Content-Type' : 'application/json' ,
+						'Authorization' : 'Bearer '+ this.props.token} ,
+		})
+		.then(res => {
+			if(res.ok)
+				return res.json() ;
+			else
+				throw Error(res.statusText) ;
+		})
+		.then(data => {
+			// console.log(data) ;	
+			this.setState({resData: data});
+		}) 
+		.catch( err  => {
+			console.log(err) ; 
+			addNotif(err.message, 'error') ;
+		}) ;
+	}
+
+	checkResult = () => {
+		if(this.state.resData[0])
+			return this.state.resData.map((one, i) => <ResultRecord key={i} data={one} lite="yes" date="no"/>) ;
+		else 
+			return <button className="sched-btn" onClick={this.onResultGetClick}> Get Results </button> ;
+	}
+
 	returnkey = (str) => {
 		let ret = '' ;
 		switch(str)
@@ -178,6 +209,12 @@ class UserProfile extends React.Component
 					<div className="propfileBoxe">
 						<div className="pteste">
 							<div className="lefte">
+								<div className="test-result-con">
+									<h3> Test Results </h3>
+									<div className="results-con">
+										{this.checkResult()}
+									</div> 
+								</div>
 								<Pop btn="Change Password" classes="buttone ">
 									<LoginForm title=" Basic Details " error={this.state.error} near="near"
 										b2="Change" onb2Click={this.onChangeClick} >

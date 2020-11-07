@@ -1,9 +1,4 @@
-==============30-10-2020==============
+===============07-11-2020===============
 
-4. userprofile me result display karana hai
-
-forgot password
-
-5.5: panel
-
-6. VPS ka dekhna hai - plan , cost, duration
+2. Forgot Password
+5. Print ka dekhna hai

@@ -1,11 +1,5 @@
-/*.admin *
-{
-	border : 1px solid black ;
-}*/
-
 .admin-bar	{
 	display: flex ;
-	/*flex-wrap: wrap;*/
 	justify-content: space-evenly ;
 	border-bottom : 3px solid black ;
 	background-color: rgba(83, 154, 212, 0.6) ;
@@ -72,4 +66,44 @@
 
 .records-table {
 	border-bottom: 1px solid black ;
+}
+
+@media(max-width: 600px)
+{	.admin-bar	{
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+
+	.admin-bar input	{
+		width: 20%;
+		margin: .6em 1.4em ;
+	}
+
+	.admin-bar .dd-div 	{
+		flex-grow: 2;
+	}
+
+	.record	{
+		display: flex;
+		/*flex-wrap: wrap;*/
+		justify-content: space-between;
+	}
+
+	.record p 	{
+		margin: .5em ;
+		width: 20vw ;
+		padding: 0 2vw ;
+	}
+
+	.record p.slim {	
+		width: 5vw ;	
+	}
+
+	.record p.fat {	
+		width: 30vw ;	
+	}
+
+	.record-btn	{
+		padding: 1em ;
+	}
 }
