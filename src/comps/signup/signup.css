@@ -21,6 +21,23 @@
 	margin: 0.2em;
 }
 
+.fp, .nfp	{
+	text-align: right ;
+	margin: 1.5em ;
+	cursor: pointer;
+	transition: all .3s;
+}
+
+.nfp	{
+	margin-right: 3em ;
+	cursor: text ;
+}
+
+.fp:hover	{
+	font-weight: bold ;
+	text-decoration: underline;
+}
+
 .select-btn
 {	border: 2px solid white;
 	box-shadow: none ;

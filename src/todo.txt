@@ -1,4 +1,4 @@
 ===============07-11-2020===============
 
-2. Forgot Password
-5. Print ka dekhna hai
+1. Forgot Password
+2. Print ka dekhna hai

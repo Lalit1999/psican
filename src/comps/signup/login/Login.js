@@ -55,6 +55,36 @@ class Login extends React.Component
 		}) ;
 	}
 
+	onSendReqClick = () => {
+		const obj = {
+			email: this.state.data.email,
+		}
+
+		addNotif('Please Wait...') ;
+
+		fetch('https://psy-api.herokuapp.com/forgot',{
+			method : 'post' ,
+			headers : { 'Content-Type' : 'application/json'} ,
+			body : JSON.stringify(obj) ,
+		})
+		.then(res => {
+			if(res.ok)
+				return res.json() ;
+			else
+				throw Error(res.statusText) ;
+		})
+		.then(data =>{	
+			addNotif('Request sent for password reset', 'success') ;
+			
+			this.props.history.push('/');
+		})  
+		.catch( err  => {
+			console.log(err) ;
+			addNotif('E-Mail invalid', 'error') ;	
+			this.setState({error: 'E-Mail doesn\'t exist in database'});
+		}) ;
+	}
+
 	onLoginClick = () => {
 		const {email, password} = this.state.data ;
 		if(this.state.error !== '')
@@ -102,7 +132,22 @@ class Login extends React.Component
 					<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
 					<Text label="Password" name="password" value={password} type="pw" 
 							onChange={this.onInputChange}/>
+					<p className="fp" onClick={()=>this.setState({mode:'fp'})}> Forgot Password ? </p>
 				</LoginForm>
+			</div>
+			) ;
+	}
+
+	resetPassword = () => {
+		const { email} = this.state.data ;
+		return (
+			<div>	
+				<LoginForm heading=" Reset Password " error={this.state.error}
+					b1="Register" b1type="link" to="/register" near="near"
+					b2="Send Request" onb2Click={this.onSendReqClick} >
+					<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
+				</LoginForm>
+				<p className="nfp"> <strong>*Note: </strong>If you enter an E-Mail that exists in our database then you will recieve a mail containing your new password. You can re-change your password once you log back in. </p>
 			</div>
 			) ;
 	}
@@ -111,6 +156,7 @@ class Login extends React.Component
 		switch(this.state.mode)
 		{	case 'select' : return this.createSelect() ;
 			case 'person': case 'school' : return this.createLogin() ;
+			case 'fp' : return this.resetPassword() ;
 			default : return 'You probably encountered a problem' ;
 		}
 	}
