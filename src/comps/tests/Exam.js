@@ -14,7 +14,8 @@ class Exam extends React.Component
 				<p className="intro"> Human behavior and thinking constantly impact each other. 
 					Our fundamental attributions for objects, events and relations around us make us
 					emotionally susceptible. Here are some self-assessment tests to measure your emotional tendencies. </p>
-				<TestBox title="Self Anxiety Assessment Test (SAAT)" link="/test/self-anxiety-assessment"/>
+				<TestBox title="Self Anxiety Assessment Test (SAAT)" link="/test/self-anxiety-assessment" desc="Anxiety test designed for evaluating anxiety levels of an individual."/>
+				<TestBox title="Trait Test for Parents (TTP)" link="/test/trait-test" desc="Test designed for parents of children less than 12 year old"/>
 			</div>
 		) ;
 	}

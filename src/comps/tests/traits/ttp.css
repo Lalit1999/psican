@@ -1,0 +1,28 @@
+.radio-con > div	{
+	margin-top: 1em ;
+	display: flex ;
+	justify-content: space-evenly ;
+}
+
+.ttp-radio-con input	{
+	margin-top: 0 ;
+}
+
+.ttp-btn	{	
+	margin-top: 1em ;
+}
+
+@media(max-width: 600px)
+{   .radio-con > div
+	{	display: block ;
+		margin: 1em ;
+	}
+
+	.radio-con	{
+		display: flex; 
+	}
+
+	.ttp-btn	{	
+		margin-top: 0 ;
+	}
+}

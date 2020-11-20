@@ -89,6 +89,7 @@ class Question extends React.Component
 	render()
 	{	const {num} = this.state ;
 		const {lang} = this.props ;
+		console.log(this.state, this.props) ;
 		return (
 			<div className="question"> 
 				<p> {parseInt(num) + 1}. &nbsp; {saatQues[num][lang]} </p>

@@ -14,6 +14,7 @@ import TopBar from './comps/header/TopBar.js' ;
 import DownBar from './comps/downbar/DownBar.js' ;
 import Exam from './comps/tests/Exam.js' ;
 import AnxietyTest from './comps/tests/anxiety/AnxietyTest.js' ;
+import TraitTest from './comps/tests/traits/TraitTest.js' ;
 import Admin from './comps/admin/Admin.js' ;
 import './App.css' ;
 const AEQUESS = lazy(() => import('./comps/program/AEQUESS.js')) ;
@@ -88,6 +89,7 @@ class App extends React.Component
 		              <Route path='/test' exact render={props=><Suspense fallback={<div> Loading... </div>}><Exam/></Suspense>}/>
 		              <Route path='/admin' render={props=><Suspense fallback={<div> Loading... </div>}><Admin {...props} user={user} token={userToken} /></Suspense>}/>
 		              <Route path='/test/self-anxiety-assessment' exact render={props=><Suspense fallback={<div> Loading... </div>}><AnxietyTest user={user} token={userToken} /></Suspense>}/>
+		              <Route path='/test/trait-test' exact render={props=><Suspense fallback={<div> Loading... </div>}><TraitTest user={user} token={userToken} /></Suspense>}/>
 		              <Route exact component={NotFound} />
 		            </Switch>
 		            <Suspense fallback={<div> Loading... </div>}>	<Footer footer={this.footer}/> </Suspense> 
