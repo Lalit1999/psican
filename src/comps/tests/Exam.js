@@ -15,7 +15,7 @@ class Exam extends React.Component
 					Our fundamental attributions for objects, events and relations around us make us
 					emotionally susceptible. Here are some self-assessment tests to measure your emotional tendencies. </p>
 				<TestBox title="Self Anxiety Assessment Test (SAAT)" link="/test/self-anxiety-assessment" desc="Anxiety test designed for evaluating anxiety levels of an individual."/>
-				<TestBox title="Trait Test for Parents (TTP)" link="/test/trait-test" desc="Test designed for parents of children less than 12 year old"/>
+				<TestBox title="Learning Environment Trait Assessment (LETA)" link="/test/trait-test" desc="Test designed to measure the level of 30 personality traits in parents of children (2 - 12 years old)"/>
 			</div>
 		) ;
 	}

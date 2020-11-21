@@ -20,7 +20,7 @@ class Title extends React.Component
 			case "Vision" : return 'about/vision' ; 
 			case "Test " : case "Test -": return 'test' ;
 			case "SAAT" : return "test/self-anxiety-assessment" ;
-			case "TTP" : return "test/trait-test" ;
+			case "LETA" : return "test/trait-test" ;
 			default : return '' ;
 		}
 

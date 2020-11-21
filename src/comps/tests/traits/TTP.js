@@ -1,3 +1,4 @@
+//LETA - Learning Environment Trait Assessment.
 import React from 'react' ;
 import {Link} from 'react-router-dom' ;
 
@@ -153,7 +154,7 @@ class TTP extends React.Component
 		// else
 			return (
 				<div  className="test-box">
-					<h3> Trait Test for Parents (TTP) </h3> 
+					<h3> Learning Environment Trait Assessment (LETA) </h3> 
 					<div className="lang-con"> Change Language: 
 						<input type="radio" id={0} name={'lang'} checked={this.state.checked[0]} onChange={() => this.setState({checked: [true, false], lang:'english'})}/> English 
 						<input type="radio" id={1} name={'lang'} checked={this.state.checked[1]} onChange={() => this.setState({checked: [false, true], lang:'hindi'})}/> हिन्दी 
