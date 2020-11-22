@@ -4,31 +4,41 @@ import {Link} from 'react-router-dom' ;
 
 import { addNotif } from '../../notif.js' ;
 import { inst, subData, quesData } from './langData.js' ;
-import { radioData } from './radioData.js';
+// import { radioData } from './radioData.js';
 import { ttpQues } from './queData.js' ;
+import RadioSet from '../radioset/RadioSet.js' ;
 import './ttp.css' ;
 
 
-let ans = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+let ansf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,] ;
+let ansm = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,] ;
 
 class Question2 extends React.Component
 {	
 	state = {
-		check1 : [false, false, false, false, false, false],
-		check2 : [false, false, false, false, false, false],
 		warning : '',
+		ans: {f: -1, m: -1},		 
 		num: 0 ,
 	} ;
 
 	// componentDidMount = () => {
-	// 	if(ans1[0] !== 0)
+	// 	if(ans[0] !== 0)
 	// 	{	let arr = [false, false, false, false, false, false] ;
 	// 		arr[ans[0]- 1] = true ;
 	// 		this.setState({checked: arr})
 	// 	}
-	// }
+	// } 
+
+	changeAnswer = (num, str) => {
+		const {f, m} = this.state.ans ;
+		let obj = {f, m} ;
+		obj[str] = num ;
+		this.setState({ans: obj, warning: ''}) ; 
+	}
 
 	checkWarning = () => {
 		if (this.state.warning.length > 0)
@@ -37,70 +47,33 @@ class Question2 extends React.Component
 			return null ;
 	}
 
-	generateRadioBtn1 = (x, str) => {
+	onNextClick = () => {
+		const {ans, num} = this.state ;
 		const {lang} = this.props ;
-		return radioData.map( (one,i) => <div className="radio-div" key={i}> <input type="radio" id={i} name={one[lang]} checked={this.state.check1[i]} onChange={() => this.onRadioClick1(x, i)}/> {one[lang]} </div>)
+		console.log(ans, num) ;
+		if( ans.f !== -1 && ans.m !== -1) 
+		{	ansf[num]= (5-ans.f)*2 ;
+			ansm[num]= (5-ans.m)*2 ;
+			if(ttpQues[num+1])
+			{	//if(ttpQues[num+1][lang] !== 0)
+					//arr[ans[num+1]- 1] = true ;
+				this.setState({num: num+1}) ;
+			}				
+			else
+				this.props.changeMode('confirm') ;
+		}
+		else
+			this.setState({warning: quesData.error[lang]}) ;
 	}
 
-	generateRadioBtn2 = (x, str) => {
-		const {lang} = this.props ;
-		return radioData.map( (one,i) => <div className="radio-div" key={i}> <input type="radio" id={i} name={one[lang]} checked={this.state.check2[i]} onChange={() => this.onRadioClick2(x, i)}/> {one[lang]} </div>)
+
+
+	onPrevClick = () => {
+		const {num} = this.state ;
+		// let arr = [false, false, false, false, false, false] ;
+		// arr[ans[num-1]- 1] = true ;
+		this.setState({num: num-1}) ;
 	}
-
-	onRadioClick1 = (no, opt) => {
-		const tempArr = [false, false, false, false, false, false] ;
-		tempArr[opt] = true ;
-		this.setState({ check1 : tempArr, warning: '' });
-	}
-
-	onRadioClick2 = (no, opt) => {
-		const tempArr = [false, false, false, false, false, false] ;
-		tempArr[opt] = true ;
-		this.setState({ check2 : tempArr, warning: '' });
-	}
-
-	// onNextClick = () => {
-	// 	const {check1, check2, num} = this.state ;
-	// 	const {lang} = this.props ;
-	// 	console.log(check1, check2, num) ;
-	// 	if( check1[0] || check1[1] || check1[2] || check1[3] || check1[4] || check1 [5])
-	// 	{	let arr = [false, false, false, false, false] ;
-	// 		if(check1[0] || check1[1])
-	// 		{	if(check1[0])
-	// 				ans[num] = 6 ;
-	// 			else
-	// 				ans[num] = 5 ; 
-	// 		}
-	// 		else
-	// 		{	if(check1[3] || check1[2])
-	// 				if(check1[3])
-	// 					ans[num] = 3 ;
-	// 				else
-	// 					ans[num] = 4 ;
-	// 			else 
-	// 				if(check1[4])
-	// 					ans[num] = 2 ;
-	// 				else
-	// 					ans[num] = 1 ;
-	// 		}	
-	// 		if(saatQues[num+1])
-	// 		{	if(saatQues[num+1][lang] !== 0)
-	// 				arr[ans[num+1]- 1] = true ;
-	// 			this.setState({num: num+1, check1: arr}) ;
-	// 		}				
-	// 		else
-	// 			this.props.changeMode('confirm') ;
-	// 	}
-	// 	else
-	// 		this.setState({warning: quesData.error[lang]}) ;
-	// }
-
-	// onPrevClick = () => {
-	// 	const {num} = this.state ;
-	// 	let arr = [false, false, false, false, false] ;
-	// 	arr[ans[num-1]- 1] = true ;
-	// 	this.setState({num: num-1, checked: arr}) ;
-	// }
 
 	render()
 	{	const {num} = this.state ;
@@ -109,8 +82,12 @@ class Question2 extends React.Component
 			<div className="question"> 
 				<p> {parseInt(num) + 1}. &nbsp; {ttpQues[num][lang]} </p>
 				<div className="radio-con ttp-radio-con">
-					<div> <strong>{quesData.father[lang]}:</strong> {this.generateRadioBtn1(num)} </div>
-					<div> <strong>{quesData.mother[lang]}:</strong> {this.generateRadioBtn2(num)} </div>
+					<div> <strong>{quesData.father[lang]}:</strong> 
+						<RadioSet lang={lang} name={'f'} changeAnswer={this.changeAnswer} num={num}/> 
+					</div>
+					<div> <strong>{quesData.mother[lang]}:</strong>
+					 	<RadioSet lang={lang} name={'m'} changeAnswer={this.changeAnswer} num={num}/> 
+					 </div>
 				</div>
 				<div className="next-btn-con">
 					{	(num===0)?null:<button className="sched-btn next-btn" onClick={this.onPrevClick}>
@@ -304,7 +281,10 @@ class TTP extends React.Component
 	// }
 
 	componentWillUnmount = () =>{
-		ans = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		ansf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,] ;
+		ansm = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,] ;
 	}
