@@ -12,8 +12,20 @@
 	margin-top: 1em ;
 }
 
+.question .res-res, .question .res-ques  {
+	font-weight: normal !important ;
+}
+
 .result-row	{
-	display: flex;
+	display: flex; 
+}
+
+.res-sno , .res-res {
+	flex-grow: 1 ;
+}
+
+.res-ques {
+	flex-grow: 3 ;
 }
 
 @media(max-width: 600px)
