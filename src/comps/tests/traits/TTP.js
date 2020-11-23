@@ -3,19 +3,19 @@ import React from 'react' ;
 import {Link} from 'react-router-dom' ;
 
 import { addNotif } from '../../notif.js' ;
-import { inst, subData, quesData } from './langData.js' ;
+import { inst, subData, quesData, resultData } from './langData.js' ;
 // import { radioData } from './radioData.js';
 import { ttpQues } from './queData.js' ;
 import RadioSet from '../radioset/RadioSet.js' ;
 import './ttp.css' ;
 
 
-let ansf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,] ;
-let ansm = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,] ;
+let ansf = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+			 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
+			 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,] ;
+let ansm = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+			 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
+			 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,] ;
 
 class Question2 extends React.Component
 {	
@@ -23,21 +23,33 @@ class Question2 extends React.Component
 		warning : '',
 		ans: {f: -1, m: -1},		 
 		num: 0 ,
+		checkf: [false, false, false, false, false, false],
+		checkm: [false, false, false, false, false, false]
 	} ;
 
-	// componentDidMount = () => {
-	// 	if(ans[0] !== 0)
-	// 	{	let arr = [false, false, false, false, false, false] ;
-	// 		arr[ans[0]- 1] = true ;
-	// 		this.setState({checked: arr})
-	// 	}
-	// } 
+	componentDidMount = () => {
+		if(ansf[0] !== -1)
+		{	let arrf = [false, false, false, false, false, false] ;
+			let arrm = [false, false, false, false, false, false] ;
+			arrf[5-ansf[0]/2] = true ;
+			arrm[5-ansm[0]/2] = true ;
+			let obj = {f: 5-ansf[0]/2, m: 5-ansm[0]/2}
+			this.setState({checkf: arrf, checkm: arrm, ans: obj})
+		}
+	} 
 
 	changeAnswer = (num, str) => {
 		const {f, m} = this.state.ans ;
 		let obj = {f, m} ;
 		obj[str] = num ;
 		this.setState({ans: obj, warning: ''}) ; 
+	}
+
+	changeArray = (arr, str) => {
+		if(str === 'f')
+			this.setState({checkf: arr}) ; 
+		else if(str === 'm')
+			this.setState({checkm: arr}) ; 
 	}
 
 	checkWarning = () => {
@@ -50,14 +62,21 @@ class Question2 extends React.Component
 	onNextClick = () => {
 		const {ans, num} = this.state ;
 		const {lang} = this.props ;
-		console.log(ans, num) ;
+		// console.log(ans, num) ;
 		if( ans.f !== -1 && ans.m !== -1) 
-		{	ansf[num]= (5-ans.f)*2 ;
+		{	let arrf = [false, false, false, false, false, false] ;
+			let arrm = [false, false, false, false, false, false] ;
+			ansf[num]= (5-ans.f)*2 ;
 			ansm[num]= (5-ans.m)*2 ;
 			if(ttpQues[num+1])
-			{	//if(ttpQues[num+1][lang] !== 0)
-					//arr[ans[num+1]- 1] = true ;
-				this.setState({num: num+1}) ;
+			{	//console.log(ansf, ansm) ;
+				if(ansf[num+1] !== -1)
+				{	arrf[5-ansf[num+1]/2] = true ;
+					arrm[5-ansm[num+1]/2] = true ;
+					this.setState({num: num+1, checkf: arrf, checkm: arrm }) ;
+				}
+				else
+					this.setState({num: num+1, checkf: arrf, checkm: arrm, ans: {f: -1, m: -1} }) ;
 			}				
 			else
 				this.props.changeMode('confirm') ;
@@ -70,9 +89,17 @@ class Question2 extends React.Component
 
 	onPrevClick = () => {
 		const {num} = this.state ;
-		// let arr = [false, false, false, false, false, false] ;
-		// arr[ans[num-1]- 1] = true ;
-		this.setState({num: num-1}) ;
+		
+		// Converting 10, 8, 6 etc into 0, 1, 2
+		// console.log(5-ansf[num-1]/2, 5-ansm[num-1]/2) ;
+		
+		let arrf = [false, false, false, false, false, false] ;
+		let arrm = [false, false, false, false, false, false] ;
+		arrf[5-ansf[num-1]/2] = true ;
+		arrm[5-ansm[num-1]/2] = true ;
+
+		// console.log(arrf, arrm) ;
+		this.setState({num: num-1, checkf: arrf, checkm: arrm}) ; 
 	}
 
 	render()
@@ -83,10 +110,10 @@ class Question2 extends React.Component
 				<p> {parseInt(num) + 1}. &nbsp; {ttpQues[num][lang]} </p>
 				<div className="radio-con ttp-radio-con">
 					<div> <strong>{quesData.father[lang]}:</strong> 
-						<RadioSet lang={lang} name={'f'} changeAnswer={this.changeAnswer} num={num}/> 
+						<RadioSet lang={lang} name={'f'} changeAnswer={this.changeAnswer} change={this.changeArray} num={num} check={this.state.checkf}/> 
 					</div>
 					<div> <strong>{quesData.mother[lang]}:</strong>
-					 	<RadioSet lang={lang} name={'m'} changeAnswer={this.changeAnswer} num={num}/> 
+					 	<RadioSet lang={lang} name={'m'} changeAnswer={this.changeAnswer} change={this.changeArray} num={num} check={this.state.checkm}/> 
 					 </div>
 				</div>
 				<div className="next-btn-con">
@@ -141,23 +168,9 @@ class TTP extends React.Component
 			) ;
 	}
 
-	// calculateScore = (type) => {
-	// 	switch(type)
-	// 	{	case 's' : return Math.floor((ans.slice(0, 30).reduce((x,y)=>x+y) - 30)/3);
-	// 					//eslint-disable-next-line
-	// 				   break ;
-	// 		case 'a' : return ans.slice(30, 40).reduce((x,y)=>x+y) - 10 ;
-	// 					//eslint-disable-next-line
-	// 				   break ;
-	// 		case 'e' : return ans.slice(40).reduce((x,y)=>x+y) - 10 ;
-	// 					//eslint-disable-next-line
-	// 				   break ;
-	// 		case 't' : return Math.floor((ans.slice(0, 30).reduce((x,y)=>x+y) - 30)/3 + ans.slice(30).reduce((x,y)=>x+y) - 20) ;
-	// 					//eslint-disable-next-line
-	// 					break ;
-	// 		default : return null ;
-	// 	}
-	// }
+	calculateScore = (type) => {
+		return ansf.map( (x ,i) => (x+ansm[i])/4 );
+	}
 
 	checkMode = () => {
 		const {lang} = this.state ;
@@ -183,48 +196,40 @@ class TTP extends React.Component
 		case 'test' : return <Question2 changeMode={this.changeMode} lang={this.state.lang}/> ;
 						//eslint-disable-next-line
 					  break ;
-		// case 'finish' : let S = this.calculateScore('s') ;
-		// 				let A = this.calculateScore('a') ;
-		// 				let E = this.calculateScore('e') ;
-		// 				let T = this.calculateScore('t') ;
-		// 				let obj2 = {
-		// 					test: 'saat',
-		// 					result: {
-		// 						s: S, a: A, e:E, t:T,
-		// 						answers: ans 
-		// 					} 
-		// 				} ;
+		case 'finish' : let total = this.calculateScore() ;
+						let obj2 = {
+							test: 'leta',
+							result: {	ans: total, ansf, ansm 	} 
+						} ;
 						
-		// 				fetch('https://psy-api.herokuapp.com/test',{
-		// 					method : 'post' ,
-		// 					headers : { 'Content-Type' : 'application/json' ,
-		// 								'Authorization' : 'Bearer ' + this.props.token} ,
-		// 					body : JSON.stringify(obj2) ,
-		// 				})
-		// 				.then(res => {
-		// 					if(res.ok)
-		// 						return res.json() ;
-		// 					else
-		// 						throw Error(res.statusText) ;
-		// 				})
-		// 				.catch( err  => {
-		// 					console.log(err) ; 
-		// 					addNotif(err.message, 'error') ;
-		// 				}) ;
-		// 				return (
-		// 				<div className="question result"> 
-		// 					<p> {resultData.sScore[lang]} : {S} </p> 
-		// 					<p> {resultData.aScore[lang]} : {A} </p> 
-		// 					<p> {resultData.eScore[lang]} : {E} </p> 
-		// 					<p> {resultData.tScore[lang]} : {T} </p> 
-		// 					<p> {this.getEvaluation(T)} </p>
-		// 					<p> {resultData.p1[lang]} </p>
-		// 					<p> {resultData.p2[lang]} <br/>
-		// 						{resultData.p3[lang]} </p>
-		// 				</div>
-		// 				) ;
-		// 				//eslint-disable-next-line
-		// 				break ;
+						console.log(obj2) ;
+
+						// fetch('https://psy-api.herokuapp.com/test',{
+						// 	method : 'post' ,
+						// 	headers : { 'Content-Type' : 'application/json' ,
+						// 				'Authorization' : 'Bearer ' + this.props.token} ,
+						// 	body : JSON.stringify(obj2) ,
+						// })
+						// .then(res => {
+						// 	if(res.ok)
+						// 		return res.json() ;
+						// 	else
+						// 		throw Error(res.statusText) ;
+						// })
+						// .catch( err  => {
+						// 	console.log(err) ; 
+						// 	addNotif(err.message, 'error') ;
+						// }) ;
+						return (
+						<div className="question result"> 
+							<p> {resultData.p1[lang]} </p>
+							<div> {this.getEvaluation()} </div>
+							<p> {resultData.p2[lang]} <br/>
+								{resultData.p3[lang]} </p>
+						</div>
+						) ;
+						//eslint-disable-next-line
+						break ;
 		case 'confirm' : return (
 				<div className="question">
 					<p>{subData.subNote[lang]}</p>
@@ -240,53 +245,23 @@ class TTP extends React.Component
 		}
 	}
 
-	// getEvaluation = (t) => {
+	// getEvaluation = () => {
 	// 	const {lang} = this.state ;
-	// 	if(t <= 60)
-	// 	{	if( t <= 30)
-	// 		{	return (
-	// 				<React.Fragment>
-	// 					{evalData.stage1.l1[lang]} <span className="eval low">{evalData.stage1.l2[lang]}</span>{evalData.stage1.l3[lang]} <br/><br/>
-	// 					{evalData.stage1.l4[lang]}
-	// 				</React.Fragment>
-	// 			) ;
-	// 		}
-	// 		else
-	// 		{	return (
-	// 				<React.Fragment>
-	// 					{evalData.stage2.l1[lang]} <span className="eval mild"> {evalData.stage2.l2[lang]}</span>{evalData.stage2.l3[lang]} <br/><br/>
-	// 					{evalData.stage2.l4[lang]} 
-	// 				</React.Fragment>
-	// 			) ;
-	// 		}
-	// 	}
-	// 	else
-	// 	{	if(t <= 90)
-	// 		{	return (
-	// 				<React.Fragment>
-	// 					{evalData.stage3.l1[lang]} <span className="eval moderate"> {evalData.stage3.l2[lang]} </span>{evalData.stage3.l3[lang]}<br/><br/>
-	// 					{evalData.stage3.l4[lang]} 
-	// 				</React.Fragment>
-	// 			) ;
-	// 		}
-	// 		else
-	// 		{	return (
-	// 				<React.Fragment>
-	// 					{evalData.stage4.l1[lang]} <span className="eval high">{evalData.stage4.l2[lang]} </span>{evalData.stage4.l3[lang]}<br/><br/>
-	// 					{evalData.stage4.l4[lang]}
-	// 				</React.Fragment>
-	// 			) ;
-	// 		}
-	// 	} 
+	// 	return (
+	// 		<React.Fragment>
+	// 			{evalData.stage1.l1[lang]} <span className="eval low">{evalData.stage1.l2[lang]}</span>{evalData.stage1.l3[lang]} <br/><br/>
+	// 			{evalData.stage1.l4[lang]}
+	// 		</React.Fragment>
+	// 	) ;
 	// }
 
 	componentWillUnmount = () =>{
-		ansf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,] ;
-		ansm = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,] ;
+		ansf = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+			 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
+			 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,] ;
+		ansm = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+			 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
+			 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,] ;
 	}
 
 	render()
