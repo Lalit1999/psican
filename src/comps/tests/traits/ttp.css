@@ -12,6 +12,10 @@
 	margin-top: 1em ;
 }
 
+.result-row	{
+	display: flex;
+}
+
 @media(max-width: 600px)
 {   .radio-con > div
 	{	display: block ;

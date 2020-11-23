@@ -223,7 +223,7 @@ class TTP extends React.Component
 						return (
 						<div className="question result"> 
 							<p> {resultData.p1[lang]} </p>
-							<div> {this.getEvaluation()} </div>
+							<div> {this.getEvaluation(total)} </div>
 							<p> {resultData.p2[lang]} <br/>
 								{resultData.p3[lang]} </p>
 						</div>
@@ -245,15 +245,10 @@ class TTP extends React.Component
 		}
 	}
 
-	// getEvaluation = () => {
-	// 	const {lang} = this.state ;
-	// 	return (
-	// 		<React.Fragment>
-	// 			{evalData.stage1.l1[lang]} <span className="eval low">{evalData.stage1.l2[lang]}</span>{evalData.stage1.l3[lang]} <br/><br/>
-	// 			{evalData.stage1.l4[lang]}
-	// 		</React.Fragment>
-	// 	) ;
-	// }
+	getEvaluation = (total) => {
+		const {lang} = this.state ;
+		return total.map( (one, i) => <div key={i} className="result-row"><p className="res-sno">{i+1}.</p><p className="res-ques">{ttpQues[i][lang]}</p><p className="res-res">{one}</p></div>) ;
+	}
 
 	componentWillUnmount = () =>{
 		ansf = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
