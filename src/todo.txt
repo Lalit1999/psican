@@ -1,8 +1,8 @@
 ===============22-11-2020===============
 
-1. Question2 me prev ko theek karna hai
-2. Component Did Mount ko theek karna hai
-	we can take option array as a prop...nahi to idea soch lo
+1. //Question2 me prev ko theek karna hai
+2. //Component Did Mount ko theek karna hai
+	//we can take option array as a prop...nahi to idea soch lo
 
 3. TTP ka componnet pura karna hai
-4. Result kaise ayega vo design karna hai
+4. //Result kaise ayega vo design karna hai
