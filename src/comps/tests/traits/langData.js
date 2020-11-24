@@ -58,6 +58,10 @@ const quesData = {
 		english: 'Father',
 		hindi: 'पिता'
 	},
+	pre: {
+		english: 'Assess yourselves on this trait: ',
+		hindi: 'अपने-आप को इस गुण के अनुसार आंकें:'
+	}
 } ;
 
 const subData = {
@@ -81,8 +85,8 @@ const subData = {
 
 const resultData = {
 	p1 :{
-		english :'Your Final Score is' ,
-		hindi :'आपके अंक हैं'
+		english :'Based on the assessment here are your final scores and the probability that they will be expressed in your children' ,
+		hindi :'आंकलन के आधार पर आपके अंक और आपके गुण आपके बच्चों में अभिव्यक्त होने कि सम्भावनाएँ निम्नलिखित हैं'
 	},
 	p2 :{
 		english: 'For further consultations/support, Call' ,

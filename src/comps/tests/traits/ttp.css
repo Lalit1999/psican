@@ -28,6 +28,10 @@
 	flex-grow: 3 ;
 }
 
+.ques-color	{
+	color: brown;
+}
+
 @media(max-width: 600px)
 {   .radio-con > div
 	{	display: block ;

@@ -97,9 +97,10 @@ class Question2 extends React.Component
 		let arrm = [false, false, false, false, false, false] ;
 		arrf[5-ansf[num-1]/2] = true ;
 		arrm[5-ansm[num-1]/2] = true ;
+		let obj = {f: 5-ansf[num-1]/2, m: 5-ansm[num-1]/2}
 
 		// console.log(arrf, arrm) ;
-		this.setState({num: num-1, checkf: arrf, checkm: arrm}) ; 
+		this.setState({num: num-1, checkf: arrf, checkm: arrm, ans: obj }) ; 
 	}
 
 	render()
@@ -107,7 +108,9 @@ class Question2 extends React.Component
 		const {lang} = this.props ;
 		return (
 			<div className="question"> 
-				<p> {parseInt(num) + 1}. &nbsp; {ttpQues[num][lang]} </p>
+				<p> {parseInt(num) + 1}. &nbsp; {quesData.pre[lang]} &nbsp;&nbsp;
+					<span className="ques-color">{ttpQues[num][lang]} 
+				</span></p>
 				<div className="radio-con ttp-radio-con">
 					<div> <strong>{quesData.father[lang]}:</strong> 
 						<RadioSet lang={lang} name={'f'} changeAnswer={this.changeAnswer} change={this.changeArray} num={num} check={this.state.checkf}/> 
