@@ -95,7 +95,27 @@ const resultData = {
 	p3 :{
 		english: 'Mr. Ashish Aggarwal +91-95552-35231' ,
 		hindi: 'श्री आशीष अग्रवाल +91-95552-35231 '
-	} 
+	} ,
+	vh: {
+		english: 'Very High Chance',
+		hindi: 'काफी अधिक संभावना'
+	} ,
+	hi: {
+		english: 'High Chance',
+		hindi: 'अधिक संभावना'
+	} ,
+	mod: {
+		english: 'Moderate Chance',
+		hindi: 'हल्की संभावना'
+	} ,
+	lo: {
+		english: 'Low Chance',
+		hindi: 'कम संभावना'
+	} ,
+	vl: {
+		english: 'Very Low Chance',
+		hindi: 'काफी कम संभावना'
+	} , 
 } ;
 
 export {inst, quesData, subData, resultData} ;

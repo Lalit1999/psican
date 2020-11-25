@@ -95,6 +95,7 @@ class Home extends React.Component
                 <Suspense fallback={<div className="row logo-slide"><img src={Image} alt="psyment logo"/></div>} > 
                     <Slider data={data} />
                 </Suspense>
+                <BannerTwo content="leta" color="blue"/>
                 <BannerTwo content="saat" left="yes" color="blue"/>
 				<BannerTwo content="aequess" color="blue"/>
 				<BannerTwo content="sarathi" left="yes" color="blue"/>

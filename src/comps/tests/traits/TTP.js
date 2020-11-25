@@ -136,7 +136,7 @@ class Question2 extends React.Component
 class TTP extends React.Component
 {
 	state = {
-		mode : 'start' ,
+		mode : 'finish' ,
 		quesNo: '0',
 		lang: 'english' ,
 		checked: [true, false]
@@ -147,18 +147,18 @@ class TTP extends React.Component
 	}
 
 	checkLoggedIn = () => {
-		// if(this.props.token === "")
-		// 	return (
-		// 		<div className="blue-bg blue-form">
-		// 			<p> You need to 
-		// 				<Link to="/login" className="btn3"> Login </Link>
-		// 				 or 
-		// 				<Link to="/register" className="btn3"> Register </Link> 
-		// 				to take this test (you will be redirected to home page) 
-		// 			</p>
-		// 		</div>
-		// 	) ; 
-		// else
+		if(this.props.token === "")
+			return (
+				<div className="blue-bg blue-form">
+					<p> You need to 
+						<Link to="/login" className="btn3"> Login </Link>
+						 or 
+						<Link to="/register" className="btn3"> Register </Link> 
+						to take this test (you will be redirected to home page) 
+					</p>
+				</div>
+			) ; 
+		else
 			return (
 				<div  className="test-box">
 					<h3> Learning Environment Trait Assessment (LETA) </h3> 
@@ -250,7 +250,26 @@ class TTP extends React.Component
 
 	getEvaluation = (total) => {
 		const {lang} = this.state ;
-		return total.map( (one, i) => <div key={i} className="result-row"><p className="res-sno">{i+1}.</p><p className="res-ques">{ttpQues[i][lang]}</p><p className="res-res">{one}</p></div>) ;
+		return total.map( (one, i) => <div key={i} className="result-row"><p className="res-sno">{i+1}.</p><p className="res-ques">{ttpQues[i][lang]}</p><p className="res-res">{one}</p><p className="res-lvl">{this.returnLevel(one)}</p></div>) ;
+	}
+
+	returnLevel = (score) => {
+		const {lang} = this.state ;
+		if (score > 3)
+		{	if(score > 4)
+				return resultData.vh[lang] ;
+			else
+				return resultData.hi[lang] ;
+		}
+		else
+		{	if(score > 2)
+				return resultData.md[lang] ;
+			else
+				if(score > 1)
+					return resultData.lo[lang] ;
+				else
+					return resultData.vl[lang] ;					
+		}
 	}
 
 	componentWillUnmount = () =>{

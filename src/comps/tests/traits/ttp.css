@@ -24,6 +24,10 @@
 	flex-grow: 1 ;
 }
 
+.res-lvl	{
+	flex-grow: 2 ;
+}
+
 .res-ques {
 	flex-grow: 3 ;
 }
