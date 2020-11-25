@@ -136,7 +136,7 @@ class Question2 extends React.Component
 class TTP extends React.Component
 {
 	state = {
-		mode : 'finish' ,
+		mode : 'start' ,
 		quesNo: '0',
 		lang: 'english' ,
 		checked: [true, false]
@@ -207,22 +207,22 @@ class TTP extends React.Component
 						
 						console.log(obj2) ;
 
-						// fetch('https://psy-api.herokuapp.com/test',{
-						// 	method : 'post' ,
-						// 	headers : { 'Content-Type' : 'application/json' ,
-						// 				'Authorization' : 'Bearer ' + this.props.token} ,
-						// 	body : JSON.stringify(obj2) ,
-						// })
-						// .then(res => {
-						// 	if(res.ok)
-						// 		return res.json() ;
-						// 	else
-						// 		throw Error(res.statusText) ;
-						// })
-						// .catch( err  => {
-						// 	console.log(err) ; 
-						// 	addNotif(err.message, 'error') ;
-						// }) ;
+						fetch('https://psy-api.herokuapp.com/test',{
+							method : 'post' ,
+							headers : { 'Content-Type' : 'application/json' ,
+										'Authorization' : 'Bearer ' + this.props.token} ,
+							body : JSON.stringify(obj2) ,
+						})
+						.then(res => {
+							if(res.ok)
+								return res.json() ;
+							else
+								throw Error(res.statusText) ;
+						})
+						.catch( err  => {
+							console.log(err) ; 
+							addNotif(err.message, 'error') ;
+						}) ;
 						return (
 						<div className="question result"> 
 							<p> {resultData.p1[lang]} </p>
