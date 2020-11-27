@@ -37,7 +37,7 @@
 }
 
 .record p 	{
-	margin: .5em ;
+	margin: 1em .5em ;
 	width: 12vw ;
 	padding: 0 2vw ;
 }
@@ -66,6 +66,11 @@
 
 .records-table {
 	border-bottom: 1px solid black ;
+	font-size: 0.9rem ;
+}
+
+.records-table .record:nth-child(6n+1) { 
+	background-color: white ;
 }
 
 @media(max-width: 600px)

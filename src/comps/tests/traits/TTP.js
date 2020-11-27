@@ -62,14 +62,14 @@ class Question2 extends React.Component
 	onNextClick = () => {
 		const {ans, num} = this.state ;
 		const {lang} = this.props ;
-		// console.log(ans, num) ;
+		console.log(ans, num) ;
 		if( ans.f !== -1 && ans.m !== -1) 
 		{	let arrf = [false, false, false, false, false, false] ;
 			let arrm = [false, false, false, false, false, false] ;
 			ansf[num]= (5-ans.f)*2 ;
 			ansm[num]= (5-ans.m)*2 ;
 			if(ttpQues[num+1])
-			{	//console.log(ansf, ansm) ;
+			{	console.log(ansf, ansm) ;
 				if(ansf[num+1] !== -1)
 				{	arrf[5-ansf[num+1]/2] = true ;
 					arrm[5-ansm[num+1]/2] = true ;
@@ -266,7 +266,7 @@ class TTP extends React.Component
 		}
 		else
 		{	if(score > 2)
-				return resultData.md[lang] ;
+				return resultData.mod[lang] ;
 			else
 				if(score > 1)
 					return resultData.lo[lang] ;
