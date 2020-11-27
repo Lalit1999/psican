@@ -200,9 +200,12 @@ class TTP extends React.Component
 						//eslint-disable-next-line
 					  break ;
 		case 'finish' : let total = this.calculateScore() ;
+
 						let obj2 = {
 							test: 'leta',
-							result: {	ans: total, ansf, ansm 	} 
+							result: {	ans: total, ansf, ansm,
+										t: ansf.reduce((x,y)=>x+y) + ansm.reduce((x,y)=>x+y)
+						 	} 
 						} ;
 						
 						console.log(obj2) ;
