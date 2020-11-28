@@ -39,6 +39,7 @@ const invalidPass = (str, str2) => {
 }
 
 const invalidMobile = (str) => {
+	str = str.trim() ;
 	if(str === '')
 		return 'Mobile No. can not be blank' ;
 	else if(!valid.isNumeric(str))
