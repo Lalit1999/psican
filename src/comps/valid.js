@@ -3,6 +3,7 @@
 import valid from 'validator' ;
 
 const isBlank = (str, field) => {
+	str = str.trim() ;
 	if(str === '')
 		return (field + ' can not be blank') ;
 	else
@@ -10,6 +11,7 @@ const isBlank = (str, field) => {
 }
 
 const invalidEmail = (str) => {
+	str = str.trim() ;
 	if(str === '')
 		return 'E-Mail can not be blank' ;
 	else if(!valid.isEmail(str))
@@ -19,6 +21,7 @@ const invalidEmail = (str) => {
 }
 
 const invalidName = (str) => {
+	str = str.trim() ;
 	if(str === '')
 		return 'Name(s) cannot be Blank' ;
 	else if ( !valid.isAlpha(str.replace(/\s/g, 'z')))
@@ -28,6 +31,7 @@ const invalidName = (str) => {
 }
 
 const invalidPass = (str, str2) => {
+	str = str.trim() ;
 	if(str === '' || str2 === '')
 		return 'Password can not be blank' ;
 	else if (str.length < 6 || str2.length < 6 )
