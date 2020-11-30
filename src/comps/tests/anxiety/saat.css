@@ -43,14 +43,14 @@
 	cursor: pointer ;
 }
 
-.question p {
+.question p , .question2 p {
 	font-size: 1.3rem ;
 	font-weight: bold ;
 	padding-left: 3em ;
 	padding-right: 3em ;
 }
 
-.question h4	{
+.question h4 , .question2 h4 {
 	padding-left: 5em ;
 	color: darkred ; 
 }
@@ -149,14 +149,14 @@
 		padding-top: 0 ;
 	}
 
-	.question p {
+	.question p , .question2 p {
 		font-size: 1.1rem ;
 		padding-left: 1em ;
 		padding-right: 1em ;
 		margin-bottom: 0 ;
 	}
 
-	.question h4	{
+	.question h4 , .question2 h4 {
 		padding-left: .5em ;
 		font-size: .95rem ;
 		margin-top: .4em ;

@@ -1,4 +1,4 @@
-.radio-con > div	{
+.question2 .radio-con > div	{
 	margin-top: 1em ;
 	display: flex ;
 	justify-content: space-evenly ;
@@ -12,7 +12,7 @@
 	margin-top: 1em ;
 }
 
-.question .res-res, .question .res-ques  {
+.question2 .res-res, .question2 .res-ques  {
 	font-weight: normal !important ;
 }
 
@@ -37,7 +37,7 @@
 }
 
 @media(max-width: 600px)
-{   .radio-con > div
+{   .question2 .radio-con > div
 	{	display: block ;
 		margin: 1em ;
 	}
