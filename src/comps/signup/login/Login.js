@@ -15,15 +15,14 @@ const initObj = {
 
 class Login extends React.Component
 {	state = {
-		mode : 'select' ,
-		data : {} ,
+		mode : 'person' ,
+		data : initObj ,
 		error: '' 
 	}
 
 	sendLoginRequest = () => {
 		
 		const obj = {
-			type: this.state.mode,
 			password: this.state.data.password,
 			email: this.state.data.email,
 		}
@@ -105,23 +104,6 @@ class Login extends React.Component
 								[event.target.name] : event.target.value}, error: '' }) ;
 	}
 
-	createSelect = () => {
-		return (
-			<div className="select-con">
-				<h3 className="reg-as"> Login As : </h3>
-				<button className="select-btn" onClick={() => this.setState({
-					mode: 'person',	data: initObj})}
-				>
-					 Individual </button>
-				<h4 className="or"> OR </h4>
-				<button className="select-btn" onClick={() => this.setState({
-					mode: 'school',	data: initObj})}
-				>
-					 School </button>
-			</div>
-			) ;
-	}
-
 	createLogin = () => {
 		const { email, password} = this.state.data ;
 		return (
@@ -154,8 +136,7 @@ class Login extends React.Component
 
 	checkMode = () => {
 		switch(this.state.mode)
-		{	case 'select' : return this.createSelect() ;
-			case 'person': case 'school' : return this.createLogin() ;
+		{	case 'person': return this.createLogin() ;
 			case 'fp' : return this.resetPassword() ;
 			default : return 'You probably encountered a problem' ;
 		}

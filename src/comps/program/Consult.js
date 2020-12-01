@@ -182,13 +182,7 @@ class Personal extends React.Component
 	checkLogin = () => {
 		const {reason, title, date, minTime, maxTime} = this.state ;
 
-		if (this.props.user.medium)
-			return (
-				<div className="blue-bg">
-					<p> This Feature is available only to individuals </p>
-				</div>
-			) ; 
-		else if(this.props.user.gender)
+		if(this.props.user.gender)
 			return (
 				<div className="blue-bg">
 					<LoginForm title=" Schedule " error={this.state.error} >
@@ -215,7 +209,7 @@ class Personal extends React.Component
 						<Link to="/login" className="btn3"> Login </Link>
 						 or 
 						<Link to="/register" className="btn3"> Register </Link> 
-						as a Student to send a query. 
+						 to send a query. 
 					</p>
 				</div>
 			) ; 

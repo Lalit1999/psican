@@ -23,15 +23,13 @@ class UserProfile extends React.Component
 	  	resData: {}
 	} ;
 
-
 	formatDate = (dt) => {
 		const dat = new Date(dt).toLocaleString("en-US", {timeZone: "Asia/Kolkata"}); ;
 		return dat ;
 	}
 
 	onLogoutClick = () => {
-		const type = (this.props.user.status?'logoutAll':'slogoutAll') ;
-		fetch('https://psy-api.herokuapp.com/' + type ,{
+		fetch('https://psy-api.herokuapp.com/logoutAll' ,{
 				method : 'post' ,
 				headers : { 'Content-Type' : 'application/json', 
 							'Authorization' : 'Bearer ' + this.props.token} ,
@@ -57,8 +55,7 @@ class UserProfile extends React.Component
 	}
 
 	onDeleteClick = () => {
-		const type = (this.props.user.status?'users':'school') ;
-		fetch('https://psy-api.herokuapp.com/'+ type +'/me',{
+		fetch('https://psy-api.herokuapp.com/users/me',{
 				method : 'delete' ,
 				headers : { 'Content-Type' : 'application/json', 
 							'Authorization' : 'Bearer ' + this.props.token} ,
@@ -80,7 +77,6 @@ class UserProfile extends React.Component
 	}
 	
 	onChangeClick = () => {
-		const type = (this.props.user.status?'users':'school') ;
 		if(this.state.error !== '')
 			this.setState({error: 'You must fix all errors before proceeding'});
 		else
@@ -90,7 +86,7 @@ class UserProfile extends React.Component
 			else if ( invalidPass(this.state.newpass, this.state.repass) )
 				this.setState( {error: invalidPass(this.state.newpass, this.state.repass)} )
 			else
-			{	fetch('https://psy-api.herokuapp.com/' + type + '/me/change',{
+			{	fetch('https://psy-api.herokuapp.com/users/me/change',{
 						method : 'post' ,
 						headers : { 'Content-Type' : 'application/json', 
 									'Authorization' : 'Bearer ' + this.props.token} ,
@@ -123,10 +119,7 @@ class UserProfile extends React.Component
 			else
 				throw Error(res.statusText) ;
 		})
-		.then(data => {
-			// console.log(data) ;	
-			this.setState({resData: data});
-		}) 
+		.then(data => this.setState( {resData: data} ) ) 
 		.catch( err  => {
 			console.log(err) ; 
 			addNotif(err.message, 'error') ;
@@ -158,15 +151,6 @@ class UserProfile extends React.Component
 			case "siblings" : ret = "Siblings" ; break ;
 			case "email" : ret = "E-Mail" ; break ;
 			case "mobile" : ret = "Mobile No." ; break ;
-			case "medium" : ret = "Medium" ; break ;
-			case "class_f" : ret = "Classes From" ; break ;
-			case "class_t" : ret = "Classes Till" ; break ; 
-			case "principal" : ret = "Principal Name" ; break ;
-			case "pr_phone" : ret = "Principal's Phone No." ; break ;
-			case "person" : ret = "Registrant Name" ; break ; 
-			case "p_phone" : ret = "Registrant Phone No." ; break ;
-			case "students" : ret = "Total No. of Students" ; break ;
-			case "teachers" : ret = "Total No. of teachers" ; break ;
 			default : return false ;
 		}
 		return ret ;

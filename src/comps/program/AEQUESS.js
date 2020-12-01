@@ -107,13 +107,7 @@ class AQUESS extends React.Component
 	checkLogin = () => {
 		const {type, title, message} = this.state ;
 
-		if (this.props.user.medium)
-			return (
-				<div className="blue-bg">
-					<p> This Feature is available only to students </p>
-				</div>
-			) ; 
-		else if(this.props.user.gender)
+		if(this.props.user.gender)
 			return (
 				<div className="blue-bg">
 					<LoginForm title=" Query " error={this.state.error} >

@@ -4,7 +4,6 @@ import {Redirect} from'react-router-dom' ;
 import Dropdown from '../signup/dropdown/Dropdown.js' ;
 import ResultRecord from './ResultRecord.js' ;
 import UserRecord from './UserRecord.js' ;
-import SchoolRecord from './SchoolRecord.js' ;
 import { addNotif } from '../notif.js' ;
 import './admin.css' ;
 
@@ -12,7 +11,6 @@ class Admin extends React.Component
 {
 	state = {
 		users : [] ,
-		schools : [] ,
 		results : [] ,
 		mode: 'users' ,
 		searchText :''
@@ -57,24 +55,6 @@ class Admin extends React.Component
 			addNotif(err.message, 'error') ;
 		}) ;
 
-		fetch('https://psy-api.herokuapp.com/school',{
-			method : 'get' ,
-			headers : { 'Content-Type' : 'application/json' ,
-						'Authorization' : 'Bearer ' + this.props.token} ,
-		})
-		.then(res => {
-			if(res.ok)
-				return res.json() ;
-			else
-				throw Error(res.statusText) ;
-		})
-		.then(data => {	
-				this.setState({schools: data});
-		}) 
-		.catch( err  => {
-			console.log(err) ; 
-			addNotif(err.message, 'error') ;
-		}) ;
 	}
 
 	filterRecords = (user) => {
@@ -86,7 +66,6 @@ class Admin extends React.Component
 			switch(this.state.mode)
 			{	case 'results' : return this.state.results.map((one, i)=><ResultRecord token={this.props.token} key={i} ki={i} data={one} /> ) ;
 				case 'users' : return this.state.users.filter(this.filterRecords).map((one, i)=><UserRecord token={this.props.token} key={i} ki={i} data={one} /> ) ;
-				case 'schools' : return this.state.schools.filter(this.filterRecords).map((one, i)=><SchoolRecord token={this.props.token} key={i} ki={i} data={one} /> ) ;
 				default: return 'unexpected input' ;
 			}
 	}
@@ -105,7 +84,7 @@ class Admin extends React.Component
 			return(
 				<div className = 'admin'>
 					<div className = 'admin-bar'>
-						<Dropdown label="Mode" name="mode" value={this.state.mode} options={['users','schools','results']} onChange={this.onInputChange}/>
+						<Dropdown label="Mode" name="mode" value={this.state.mode} options={['users','results']} onChange={this.onInputChange}/>
 						<p className = 'task' >Total Rows&nbsp;:&nbsp;{this.state[this.state.mode].length}</p>
 						<Dropdown label="Search By" name="searchby" value={this.state.mode} options={['name','phone','email']} onChange={this.onInputChange}/>
 						<input className = 'task' onChange = {this.onSC} value={this.state.searchText} type='text' placeholder='search' />

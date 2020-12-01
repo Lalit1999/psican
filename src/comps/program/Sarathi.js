@@ -1,13 +1,7 @@
 import React from 'react' ;
-import DatePicker from 'react-datepicker' ;
-import "react-datepicker/dist/react-datepicker.css";
-import {Link} from 'react-router-dom' ;
 
 import { addNotif } from '../notif.js' ;
 import Title from '../title/Title.js' ;
-import LoginForm from '../signup/forms/LoginForm.js' ;
-import TextArea from '../signup/text/TextArea.js' ;
-import Dropdown from '../signup/dropdown/Dropdown.js' ;
 import DisplayDetailed from '../display/DisplayDetailed.js' ;
 import Heading from '../Heading/Heading.js' ;
 import './program.css' ;
@@ -148,46 +142,6 @@ class Sarathi extends React.Component
 		this.setState({ date: date, error: ''})
 	}
 
-	checkLogin = () => {
-		const {type, date, topic} = this.state ;
-
-		if (this.props.user.gender)
-			return (
-				<div className="blue-bg">
-					<p> This Feature is available only to schools </p>
-				</div>
-			) ; 
-		else if(this.props.user.medium)
-			return (
-				<div className="blue-bg">
-					<LoginForm title=" Schedule " error={this.state.error} >
-						<Dropdown label="Type" value={type} options={['','Students','Teachers', 'Parents']} onChange={this.onTypeChange}/>
-						<TextArea label="Preferred&nbsp;&nbsp; Topic" value={topic} r={4} c={20} onChange={this.onTopicChange} />
-						<div className="date-cont">
-							<label className="lbel">Select Date&nbsp; : </label>
-							<DatePicker selected={date} onChange={this.onDateChange}
-						      filterDate={this.filterDates} minDate={this.returnTomorrow()}
-						      dateFormat="MMMM d, yyyy h:mm aa" />
-					    </div>
-					</LoginForm>	<br/>
-					<button onClick={this.onScheduleClick} className="sched-btn">
-					 { this.state.avail==='yes'?'Confirm Booking!':'Check Availablity !' } 
-					</button> 
-				</div>
-			) ;
-		else
-			return (
-				<div className="blue-bg blue-form">
-					<p> You need to 
-						<Link to="/login" className="btn3">Login </Link>
-						 or 
-						<Link to="/register" className="btn3"> Register </Link> 
-						as a Student to send a query. 
-					</p>
-				</div>
-			) ; 
-	}
-
 	render()
 	{	
 		return(
@@ -199,7 +153,9 @@ class Sarathi extends React.Component
 				<DisplayDetailed title="Aim" lidata={arr}/>
 				<DisplayDetailed title="Features" lidata={features} />
 				<Heading text="Schedule Your Workshop" />
-				{ this.checkLogin() }
+				<div className="blue-bg">
+					<p> To schedule a workshop, Contact : <br/><strong> Mr. Ashish Aggarwal ( +91 9555235231, info.psyment@gmail.com )</strong></p>
+				</div>
 				<p className="intro bold" id="one"> Note #1 : Maximum 2 workshops may be scheduled in a 
 					financial year </p>  
 				<p className="intro bold" id="two"> Note #2 : To partner with us please "Register" with
