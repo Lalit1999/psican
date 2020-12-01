@@ -11,7 +11,7 @@ const cont1 = [
 const cont2 = [ 
 'Workshop Organising Program for educational institutions',
 'Supported by The Kasturi Foundation',
-'Choose a module from list of topics and schedule a workshop now' ] ;
+'Contact Us and schedule your workshop now' ] ;
 
 const cont3 = [ 
 'Some events disturb the flow of our life',

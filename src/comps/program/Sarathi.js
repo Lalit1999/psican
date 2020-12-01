@@ -1,6 +1,5 @@
 import React from 'react' ;
 
-import { addNotif } from '../notif.js' ;
 import Title from '../title/Title.js' ;
 import DisplayDetailed from '../display/DisplayDetailed.js' ;
 import Heading from '../Heading/Heading.js' ;
@@ -9,162 +8,27 @@ import './program.css' ;
 const arr = ['htmlTo provide workshops to schools and colleges for:<ul><li>Student Motivation</li><li>Student Career</li><li>Health related guidance for students</li><li>Behaviour related guidance for students</li><li>Parental Education</li><li>Teachers Training</li>'] ;
 
 const features = [
-'htmlCOMPLEMENTARY WORKSHOPS<a href="#one"><sup>[1]</sup></a> for partner Schools and Educational Institutions. <a href="#two"><sup>[2]</sup></a>',
+'htmlCOMPLEMENTARY WORKSHOPS for partner Schools and Educational Institutions.',
 'html<ul>Coverage of core areas like: <li>Student Motivation & Skillset</li><li>Parental Awareness & Orientation</li><li>Teacher Training & Co-Working</li></ul>',
 'All programs shall be funded by KASTURI FOUNDATION',
 'Only travel support needs to be provided by partner organisations',
 ] ;
 
-class Sarathi extends React.Component
-{	
-	state = {
-		avail: '' ,
-		error: '',
-		date: new Date(),
-		topic: '',
-		type: '',
-	} ;
-
-	componentDidMount = () => {
-		this.setState({date: this.returnTomorrow()});
-	}
-
-	onScheduleClick = () => {
-	  	if(this.state.error !== '')
-			this.setState({error: 'You cannot proceed without fixing all the errors'});
-		else if(this.state.type === '')
-			this.setState({error: 'Type can not be blank'});
-	  	else if(this.state.topic === '')
-			this.setState({error: 'Topic can not be blank'});
-		else if(this.state.date.getDay() === 0)
-			this.setState({error: 'Invalid Date or Time range'});
-		else
-		{	//console.log(this.state) ;
-			
-			const obj = {
-				date: this.state.date ,
-				topic : this.state.topic ,
-				type : this.state.type 
-			} ;
-
-			addNotif('Please Wait...') ;
-
-			if(this.state.avail === 'yes')
-			{	fetch('https://psy-api.herokuapp.com/book',{
-					method : 'post' ,
-					headers : { 'Content-Type' : 'application/json' ,
-								'Authorization' : 'Bearer ' + this.props.token} ,
-					body : JSON.stringify(obj) ,
-				})
-				.then(res => {
-					if(res.ok)
-						return res.json() ;
-					else
-						throw Error(res.statusText) ;
-				})
-				.then(data => {	
-					this.setState({ date: this.returnTomorrow(), topic: '', type: '', avail: ''});
-					addNotif('Successfully Received Booking', 'success') ;
-				}) 
-				.catch( err  => {
-					console.log(err) ; 
-					addNotif(err.message, 'error') ;
-				}) ;
-			}
-			else
-			{	fetch('https://psy-api.herokuapp.com/book/check',{
-					method : 'post' ,
-					headers : { 'Content-Type' : 'application/json' ,
-								'Authorization' : 'Bearer ' + this.props.token} ,
-					body : JSON.stringify(obj) ,
-				})
-				.then(res => {
-					if(res.ok)
-						return res.json() ;
-					else
-						throw Error(res.statusText) ;
-				})
-				.then(data => {
-					if(data === 'Available')
-					{
-						this.setState({ avail: 'yes'});
-						addNotif('Booking Available', 'success') ;
-					}	
-					else
-						throw new Error('Booking Unavailable') ;
-				}) 
-				.catch( err  => {
-					this.setState({ error: 'Booking Unavailable, for negotiation Call +91-9555235231'});
-					addNotif(err.message, 'error') ;
-				}) ;
-			}
-		}
-	}
-
-	returnTomorrow = () => {
-		const tom = new Date() ;
-		tom.setDate(tom.getDate() + 15) ;
-		
-		if(tom.getDay() === 0)
-			tom.setDate(tom.getDate() + 1) ;
-		
-		tom.setMinutes(0) ;
-		tom.setHours(9) ;
-		return tom ;
-	}
-
-	onTopicChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Topic can not be blank'}) ;
-		else
-		{	if(this.state.error === 'Topic can not be blank') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({topic : event.target.value} ) ;
-	}
-
-	filterDates = (date) => {
-    	const day = date.getDay();
-    	return day !== 0 ;
-	}
-
-	onTypeChange = (event) => {
-		if(event.target.value === '')
-			this.setState({error: 'Type can not be blank'}) ;
-		else
-		{	if(this.state.error === 'Type can not be blank') 
-				this.setState({error: ''}) ;
-		}
-		this.setState({type : event.target.value} ) ;
-	}
-
-	onDateChange = (date) => {
-		this.setState({ date: date, error: ''})
-	}
-
-	render()
-	{	
-		return(
-			<div>
-				<Title name = 'Sarathi Program'
-				 items={["Home -"," Programs -", "Sarathi"]}/>
-				<h4 className="intro"> <span className='brand'>Sarathi</span> is a program, supported
-				 by <span className="ngo"> The Kasturi Foundation</span> to organise workshops for schools and colleges. </h4> 
-				<DisplayDetailed title="Aim" lidata={arr}/>
-				<DisplayDetailed title="Features" lidata={features} />
-				<Heading text="Schedule Your Workshop" />
-				<div className="blue-bg">
-					<p> To schedule a workshop, Contact : <br/><strong> Mr. Ashish Aggarwal ( +91 9555235231, info.psyment@gmail.com )</strong></p>
-				</div>
-				<p className="intro bold" id="one"> Note #1 : Maximum 2 workshops may be scheduled in a 
-					financial year </p>  
-				<p className="intro bold" id="two"> Note #2 : To partner with us please "Register" with
-					us </p>
-				<p className="intro bold" id="three"> Note #3: For further discussion/assistance, you may
-					"Contact Us" </p>
+const Sarathi = () => {			
+	return(
+		<div>
+			<Title name = 'Sarathi Program'
+			 items={["Home -"," Programs -", "Sarathi"]}/>
+			<h4 className="intro"> <span className='brand'>Sarathi</span> is a program, supported
+			 by <span className="ngo"> The Kasturi Foundation</span> to organise workshops for schools and colleges. </h4> 
+			<DisplayDetailed title="Aim" lidata={arr}/>
+			<DisplayDetailed title="Features" lidata={features} />
+			<Heading text="Schedule Your Workshop" />
+			<div className="blue-bg">
+				<p> To schedule a workshop, Contact : <br/><strong> Mr. Ashish Aggarwal ( +91 9555235231, info.psyment@gmail.com )</strong></p>
 			</div>
-		) ;
-	}
+		</div>
+	) ;	
 }
 
 export default Sarathi ;
