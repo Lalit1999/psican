@@ -28,8 +28,8 @@ class Header extends React.Component
 	}
 
 	onLogoutClick = () => {
-		const type = (this.props.user.status?'logoutAll':'slogoutAll') ;
-		fetch('https://psy-api.herokuapp.com/' + type ,{
+		
+		fetch('https://psy-api.herokuapp.com/logoutAll' ,{
 				method : 'post' ,
 				headers : { 'Content-Type' : 'application/json', 
 							'Authorization' : 'Bearer ' + this.props.token} ,
