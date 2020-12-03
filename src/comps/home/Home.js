@@ -2,6 +2,7 @@ import React, {lazy, Suspense} from 'react' ;
 
 import BannerTwo from '../banner/BannerTwo.js' ;
 import Parallax from '../Parallax/Parallax.js' ;
+import PopButton from '../popbutton/PopButton.js' ;
 import './home.css' ;
 import TestimonialSlider from '../slider/TestimonialSlider.js' ;
 
@@ -104,6 +105,7 @@ class Home extends React.Component
 					<div className="testim"> Our Testimonials </div>
 					<TestimonialSlider data={testim_arr}/>
 				</Parallax>
+                <PopButton />
 			</div>
 		) ;
 	}

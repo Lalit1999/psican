@@ -42,10 +42,10 @@ class BannerTwo extends React.Component
 				<BannerContent title = 'Personal Consultation' lidata={cont3} link="/consult"/>
 			 	) ;
 			case 'saat' : return (
-				<BannerContent title = 'Anxiety Test' lidata={cont4} link="/test/self-anxiety-assessment"/>
+				<BannerContent title = 'Anxiety Test' lidata={cont4} test = 'test' link="/test/self-anxiety-assessment"/>
 				) ;
 			case 'leta' : return (
-				<BannerContent title = 'Traits Test for Parents' lidata={cont5} link="/test/trait-test"/>
+				<BannerContent title = 'Traits Test for Parents' lidata={cont5} test = 'test' link="/test/trait-test"/>
 				) ;
 			default : return null ;
 		}

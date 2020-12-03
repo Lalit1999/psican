@@ -68,7 +68,7 @@ class App extends React.Component
 	{	const {user, userToken} = this.state ;
 		return(
 			<div className="App">
-				<ToastContainer position="bottom-right" autoClose={5000} hideProgressBar={false}
+				<ToastContainer position="bottom-left" autoClose={5000} hideProgressBar={false}
 						newestOnTop={false} closeOnClick rtl={false} pauseOnHover />
 		        <BrowserRouter>
 		        <ScrollContext>
