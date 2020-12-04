@@ -54,47 +54,23 @@ class BannerTwo extends React.Component
 	render()
 	{	let classcolor = 'ban2_main ' + this.props.color ;
 		if(this.props.left === 'yes')
-		{	if(this.props.content === 'sarathi')
-			{
-				return(
-					<div className={'BannerTwo '}>
-						<div className="ban2-sar"></div>
-						<div className = {classcolor}>
-							{this.createBannerContent()}				
-						</div>
+		{	return(
+				<div className={'BannerTwo '}>
+					<div className= {"ban2-" + this.props.content}></div>
+					<div className = {classcolor}>
+						{this.createBannerContent()}				
 					</div>
-					) ;
-			}
-			else
-			{	return(
-					<div className={'BannerTwo '}>
-						<div className="ban2-saat"></div>
-						<div className = {classcolor}>
-							{this.createBannerContent()}				
-						</div>
-					</div>
-					) ;
-
-			}
+				</div>
+			) ;
 		}
-		else if(this.props.content === 'person')
-		{
+		else
+		{	
 			return(
 				<div className={'BannerTwo '}>
 					<div className = {classcolor}>
 						{this.createBannerContent()}				
 					</div>
-					<div className="ban2-person"></div>
-				</div>
-				) ;
-		}
-		else
-		{	return(
-				<div className={'BannerTwo '}>
-					<div className = {classcolor}>
-						{this.createBannerContent()}				
-					</div>
-					<div className="ban2-stu"></div>
+					<div className={"ban2-" + this.props.content}></div>
 				</div>
 			) ;
 		}
