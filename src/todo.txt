@@ -1,8 +1,19 @@
-===============22-11-2020===============
+ 24-1-2021
 
-1. //Question2 me prev ko theek karna hai
-2. //Component Did Mount ko theek karna hai
-	//we can take option array as a prop...nahi to idea soch lo
+ 1. User logged in rahe 
+ 2. Font-size ghatana hai ~10% 
+ 3. ek baar pura revisit kar lo
 
-3. TTP ka componnet pura karna hai
-4. //Result kaise ayega vo design karna hai
+ ------------------
+
+ (omnivision)
+ 1. Particle.js hatani hai
+ 2. bekar ki animation hatani hai
+ 3. descr dena hai thoda sa
+ 4. ek baar pura revisit kar lo
+
+ Clarifai ki website firse study kar lo
+
+ 5. Khud kuch detect karna ho to vo bhi model generate karna easy ho gaya idhar
+
+ https://docs.clarifai.com/how-to/portal/visual-text-recognition-walkthrough
