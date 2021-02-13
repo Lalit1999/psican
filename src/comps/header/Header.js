@@ -42,6 +42,7 @@ class Header extends React.Component
 			})
 			.then(data =>{	
 				addNotif('Successfully Logged Out', 'success') ;	
+				localStorage.clear() ;
 				this.props.loadUser({}) ;
 			}) 
 			.catch( err  => {

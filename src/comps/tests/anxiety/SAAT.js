@@ -137,7 +137,7 @@ class SAAT extends React.Component
 			) ; 
 		else
 			return (
-				<div  className="test-box">
+				<div className="test-box">
 					<h3> Self Anxiety Assessment Test (SAAT) </h3> 
 					<div className="lang-con"> Change Language: 
 						<input type="radio" id={0} name={'lang'} checked={this.state.checked[0]} onChange={() => this.setState({checked: [true, false], lang:'english'})}/> English 

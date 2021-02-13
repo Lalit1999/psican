@@ -13,7 +13,7 @@ import Header from './comps/header/Header.js' ;
 import TopBar from './comps/header/TopBar.js' ;
 import DownBar from './comps/downbar/DownBar.js' ;
 import Exam from './comps/tests/Exam.js' ;
-import AnxietyTest from './comps/tests/anxiety/AnxietyTest.js' ;
+import AnxietyTestPage from './comps/tests/anxiety/AnxietyTestPage.js' ;
 import TraitTest from './comps/tests/traits/TraitTest.js' ;
 import Admin from './comps/admin/Admin.js' ;
 import './App.css' ;
@@ -27,8 +27,8 @@ const Profile = lazy(() => import('./comps/UserProfile/UserProfile.js')) ;
 
 class App extends React.Component
 {	state = {
-		user: {} ,
-		userToken: '' ,
+		user: localStorage.getItem('user')?JSON.parse(localStorage.getItem('user')):{} ,
+		userToken: localStorage.getItem('userToken')?localStorage.getItem('userToken'):'' ,
 	}
 
 	footer = React.createRef() ;
@@ -55,11 +55,16 @@ class App extends React.Component
 
 	loadUser = (user) => {
 		if(user.user)
+		{
 			this.setState({user: user.user, userToken: user.token});
-		else if(user.school)
-			this.setState({user: user.school, userToken: user.token});
+			localStorage.setItem('user', JSON.stringify(user.user) );
+			localStorage.setItem('userToken', user.token);
+		}
 		else if(user.name)
+		{
 			this.setState({user: user}) ;
+			localStorage.setItem('user', JSON.stringify(user.user) );
+		}
 		else
 			this.setState({user : {}, userToken: ''}) ;
 	}
@@ -88,7 +93,7 @@ class App extends React.Component
 		              <Route path='/profile' render={props=><Suspense fallback={<div> Loading... </div>}><Profile user={user} token={userToken} loadUser={this.loadUser}/></Suspense>}/>
 		              <Route path='/test' exact render={props=><Suspense fallback={<div> Loading... </div>}><Exam/></Suspense>}/>
 		              <Route path='/admin' render={props=><Suspense fallback={<div> Loading... </div>}><Admin {...props} user={user} token={userToken} /></Suspense>}/>
-		              <Route path='/test/self-anxiety-assessment' exact render={props=><Suspense fallback={<div> Loading... </div>}><AnxietyTest user={user} token={userToken} /></Suspense>}/>
+		              <Route path='/test/self-anxiety-assessment' exact render={props=><Suspense fallback={<div> Loading... </div>}><AnxietyTestPage user={user} token={userToken} /></Suspense>}/>
 		              <Route path='/test/trait-test' exact render={props=><Suspense fallback={<div> Loading... </div>}><TraitTest user={user} token={userToken} /></Suspense>}/>
 		              <Route exact component={NotFound} />
 		            </Switch>

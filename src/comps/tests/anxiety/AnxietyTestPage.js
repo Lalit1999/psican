@@ -3,8 +3,9 @@ import React from 'react' ;
 import Title from '../../title/Title.js' ;
 import SAAT from './SAAT.js' ;
 import '../../program/program.css' ;
+import Payment from '../payment/Payment.js' ;
 
-class AnxietyTest extends React.Component
+class AnxietyTestPage extends React.Component
 {
 	render() 
 	{
@@ -15,6 +16,7 @@ class AnxietyTest extends React.Component
 				<p className="intro">The following questionnaire is aimed at helping an individual express and understand his\her anxiety with the help of a mental health professional.</p>
 				<p className="intro bold"> DISCLAIMER : The present assessment is a non-standard attempt to provide a basic understanding and interpretation of an individual's state of anxiety.<br/>The observations and findings of this test may be corelated to observed and presented symptoms by a mental health professional.</p>
 				<SAAT user={this.props.user} token={this.props.token}/>
+				<Payment cost={500}/>
 
 			</div>
 		) ;
@@ -22,4 +24,4 @@ class AnxietyTest extends React.Component
 
 }
 
-export default AnxietyTest ;
+export default AnxietyTestPage ;
