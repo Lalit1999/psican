@@ -4,17 +4,50 @@
 	justify-content: space-evenly;
 }
 
-.payment-left, .payment-right
-{
+.payment-left, .payment-right	{
 	text-align: center; 
 }
 
-.payment-left
-{
+.payment-left	{
 	font-size: 1.5rem ;
 }
 
-.payment-right button
-{
+.payment-left p {
+	font-weight: 500 ;
+}
+
+.payment-center {
+	display: flex;
+	flex-direction: column ;
+	justify-content: center;
+	height: 100% ;
+	margin: 1em 0 ;
+}
+
+.OR {
+	font-weight: bold ;
+}
+
+.OR-up {
+	display: flex ;
+}
+
+.OR-left {
+	border-right: 1px solid black ;
+	height: 50px ;
+	width: 10px ;
+}
+
+.OR-right {
+	border-left: 1px solid black;
+	height: 50px ;
+	width: 10px ;	
+}
+
+.payment-right {
+	padding-top: .7em ;
+}
+
+.payment-right button	{
 	margin-top: 1em ;
 }

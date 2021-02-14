@@ -23,10 +23,19 @@ class Payment extends React.Component
 						<p>Cost of the Test :  {this.props.cost}</p>
 						<button className='sched-btn'>Make Payment</button>
 					</div>
-					<div className="payment-center">OR</div>
+					<div className="payment-center">
+						<div className="OR-up">
+							<div className="OR-left"></div>
+							<div className="OR-right"></div>
+						</div>
+						<div className="OR">OR</div>
+						<div className="OR-up">
+							<div className="OR-left"></div>
+							<div className="OR-right"></div>
+						</div>
+					</div>
 					<div className="payment-right">
-						<Text label="Coupon Code" name="coupon" value={this.state.coupon}
-						 onChange={this.onInputChange}/>
+						<Text label="Coupon Code" name="coupon" value={this.state.coupon} onChange={this.onInputChange}/>
 						<button className='sched-btn'>Apply Coupon</button>
 					</div>
 				</div>
