@@ -21,6 +21,9 @@ class Title extends React.Component
 			case "Test " : case "Test -": return 'test' ;
 			case "SAAT" : return "test/self-anxiety-assessment" ;
 			case "LETA" : return "test/trait-test" ;
+			case "Privacy Policy" : return "privacy-policy" ;
+			case "Refund Policy" : return "refund-policy" ;
+			case "Terms & Conditions" : return "terms-condition" ;
 			default : return '' ;
 		}
 

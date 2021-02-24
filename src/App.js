@@ -20,6 +20,9 @@ import './App.css' ;
 const AEQUESS = lazy(() => import('./comps/program/AEQUESS.js')) ;
 const Sarathi = lazy(() => import('./comps/program/Sarathi.js')) ;
 const Footer = lazy(() => import('./comps/footer/Footer.js'));
+const PrivacyPolicy = lazy(() => import('./comps/footer/privacyPolicy/PrivacyPolicy.js'));
+const TermsCondition = lazy(() => import('./comps/footer/termsCondition/TermsCondition.js'));
+const RefundPolicy = lazy(() => import('./comps/footer/refundPolicy/RefundPolicy.js'));
 const Consult = lazy(() => import('./comps/program/Consult.js')) ;
 const Login = lazy(() => import('./comps/signup/login/Login.js')) ;
 const Register = lazy(() => import('./comps/signup/register/Register.js')) ;
@@ -95,6 +98,9 @@ class App extends React.Component
 		              <Route path='/admin' render={props=><Suspense fallback={<div> Loading... </div>}><Admin {...props} user={user} token={userToken} /></Suspense>}/>
 		              <Route path='/test/self-anxiety-assessment' exact render={props=><Suspense fallback={<div> Loading... </div>}><AnxietyTestPage user={user} token={userToken} /></Suspense>}/>
 		              <Route path='/test/trait-test' exact render={props=><Suspense fallback={<div> Loading... </div>}><TraitTest user={user} token={userToken} /></Suspense>}/>
+		              <Route path='/privacy-policy' exact render={props=><Suspense fallback={<div> Loading... </div>}><PrivacyPolicy/></Suspense>}/>
+		              <Route path='/terms-condition' exact render={props=><Suspense fallback={<div> Loading... </div>}><TermsCondition/></Suspense>}/>
+		              <Route path='/refund-policy' exact render={props=><Suspense fallback={<div> Loading... </div>}><RefundPolicy/></Suspense>}/>
 		              <Route exact component={NotFound} />
 		            </Switch>
 		            <Suspense fallback={<div> Loading... </div>}>	<Footer footer={this.footer}/> </Suspense> 

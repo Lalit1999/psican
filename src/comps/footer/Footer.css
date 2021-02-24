@@ -34,10 +34,32 @@
 	color: white ;
 }
 
+.contact-info {
+	text-decoration: underline;
+	margin: .3em ;
+}
+
 /*.pin svg
 {	font-size: 3rem ;
 	color: darkred;
 }*/
+
+.footer-links {
+	display: flex ;
+}
+
+.footer-links p, .footer-links a {
+	font-size: 1rem ;
+	padding: 0 1em ;
+	color: white ;
+	margin: 0 ;
+	text-decoration: none ;
+	transition: all 0.1s ;
+}
+
+.footer-links a:hover {
+	text-decoration: underline;
+}
 
 @media(max-width: 600px)
 {	.map
@@ -65,5 +87,11 @@
 		padding: 0 1em 1em ;
 		margin-right: 5.8vw ;
 		font-size: 1.3rem ;
+	}
+
+	.footer-links p, .footer-links a {
+		font-size: .8rem ;
+		padding: 0 .6em 0 0.2em ;
+		margin: 0 ;
 	}
 }
