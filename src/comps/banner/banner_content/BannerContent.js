@@ -10,7 +10,7 @@
  	}
  	
  	createBtn = () => {
- 		if(this.props.test === 'test')
+ 		if(this.props.test)
 	 		return 'Take the Test' ;
 	 	else
 	 		return 'Explore' ;
@@ -21,12 +21,12 @@
 		return(
 			<div className = {'ban_text ' + this.props.left}>
 				<h3>{this.props.title}</h3>
-			<div className="ul">
-				<ul>
-					{this.createLi()}
-				</ul>
-			</div>
-			<Link to={this.props.link} className = 'explore'>{this.createBtn()}</Link>
+				<div className="ul">
+					<ul>
+						{this.createLi()}
+					</ul>
+				</div>
+				<Link to={this.props.link} className = 'explore'>{this.createBtn()}</Link>
 			</div>
 		) ;	 	
  	}

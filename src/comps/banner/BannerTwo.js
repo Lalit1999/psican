@@ -28,52 +28,60 @@ const cont5 = [
 'Only for Parents having children 2-12 years old',
 'Take this free test to find probability of your traits getting expressed in your child' ] ;
 
-class BannerTwo extends React.Component
-{	createBannerContent = () => {
-		switch(this.props.content)
-		{
-			case 'aequess' : return (
-			 	<BannerContent title = 'AEQUESS System' lidata={cont1} link="/program/AEQUESS"/>
-			 	) ;
-			case 'sarathi' : return (
-				<BannerContent title = 'Sarathi Program' lidata={cont2} link="/program/Sarathi"/>
-			 	) ;
-			case 'person' : return (
-				<BannerContent title = 'Personal Consultation' lidata={cont3} link="/consult"/>
-			 	) ;
-			case 'saat' : return (
-				<BannerContent title = 'Anxiety Test' lidata={cont4} test = 'test' link="/test/self-anxiety-assessment"/>
-				) ;
-			case 'leta' : return (
-				<BannerContent title = 'Traits Test for Parents' lidata={cont5} test = 'test' link="/test/trait-test"/>
-				) ;
-			default : return null ;
-		}
+// is object me sara data store ho raha hai
+const obj = {
+	aequess : {
+		title : 'AEQUESS System',
+		lidata : cont1,
+		link : "/program/AEQUESS"
+	} ,
+	sarathi : {
+		title : 'Sarathi Program' , 
+		lidata : cont2 , 
+		link : "/program/Sarathi"
+	} ,
+	person : {
+		title : 'Personal Consultation' ,
+		lidata : cont3 ,
+		link : "/consult"	
+	} ,
+	saat : {
+		title : 'Anxiety Test' ,
+		lidata : cont4 ,
+		test : 'test',
+		link : "/test/self-anxiety-assessment"
+	} ,
+	leta :{
+		title : 'Traits Test for Parents' ,
+		lidata : cont5 ,
+		test : 'test' ,
+		link : "/test/trait-test"
 	}
+}
 
-	render()
-	{	let classcolor = 'ban2_main ' + this.props.color ;
-		if(this.props.left === 'yes')
-		{	return(
-				<div className={'BannerTwo '}>
-					<div className= {"ban2-" + this.props.content}></div>
-					<div className = {classcolor}>
-						{this.createBannerContent()}				
-					</div>
+const BannerTwo = ({content, color, left}) => {	
+	let classcolor = 'ban2_main ' + color ;
+	if(left === 'yes')
+	{	return(
+			<div className='BannerTwo '>
+				<div className= {"ban2-" + content}></div>
+				<div className = {classcolor}>
+					{/*content se banner ka name pata lag raha hai uske hisab se display karwa rahe hai*/}
+					<BannerContent title={obj[content].title} lidata={obj[content].lidata} test={obj[content].test} link={obj[content].link}/>				
 				</div>
-			) ;
-		}
-		else
-		{	
-			return(
-				<div className={'BannerTwo '}>
-					<div className = {classcolor}>
-						{this.createBannerContent()}				
-					</div>
-					<div className={"ban2-" + this.props.content}></div>
+			</div>
+		) ;
+	}
+	else
+	{	
+		return(
+			<div className='BannerTwo '>
+				<div className = {classcolor}>
+					<BannerContent title={obj[content].title} lidata={obj[content].lidata} test={obj[content].test} link={obj[content].link}/>				
 				</div>
-			) ;
-		}
+				<div className={"ban2-" + content}></div>
+			</div>
+		) ;
 	}
 }
 
