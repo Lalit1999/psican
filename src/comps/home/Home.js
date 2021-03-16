@@ -88,27 +88,24 @@ const data = [ { link :'/' },	{	style : {
  	},
 ];
 
-class Home extends React.Component
-{
-	render()
-	{	return(
-			<div>
-                <Suspense fallback={<div className="row logo-slide"><img src={Image} alt="psyment logo"/></div>} > 
-                    <Slider data={data} />
-                </Suspense>
-                <BannerTwo content="leta" color="blue"/>
-                <BannerTwo content="saat" left="yes" color="blue"/>
-				<BannerTwo content="aequess" color="blue"/>
-				<BannerTwo content="sarathi" left="yes" color="blue"/>
-				<BannerTwo content="person" color="blue"/>
-				<Parallax>
-					<div className="testim"> Our Testimonials </div>
-					<TestimonialSlider data={testim_arr}/>
-				</Parallax>
-                <PopButton />
-			</div>
-		) ;
-	}
+const Home = () => {
+	return(
+		<div>
+            <Suspense fallback={<div className="row logo-slide"><img src={Image} alt="psyment logo"/></div>} > 
+                <Slider data={data} />
+            </Suspense>
+            <BannerTwo content="leta" color="blue"/>
+            <BannerTwo content="saat" left="yes" color="blue"/>
+			<BannerTwo content="aequess" color="blue"/>
+			<BannerTwo content="sarathi" left="yes" color="blue"/>
+			<BannerTwo content="person" color="blue"/>
+			<Parallax>
+				<div className="testim"> Our Testimonials </div>
+				<TestimonialSlider data={testim_arr}/>
+			</Parallax>
+            <PopButton />
+		</div>
+	) ;
 }
 
 export default Home ;

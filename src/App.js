@@ -8,7 +8,7 @@ import Home from './comps/home/Home.js' ;
 import AboutPerson from './comps/about/Aboutperson.js' ;
 import AboutPsican from './comps/about/Aboutpsican.js' ;
 import Contact from './comps/contact/Contact.js' ;
-import NotFound from './comps/home/NotFound.js' ;
+import NotFound from './comps/home/NotFound.js' ; // yahan tak ho gaya hai clear.
 import Header from './comps/header/Header.js' ;
 import TopBar from './comps/header/TopBar.js' ;
 import DownBar from './comps/downbar/DownBar.js' ;
@@ -46,6 +46,7 @@ class App extends React.Component
     	});
   	};
 
+  	// screen ke size ke according turant layout adjust karna.
 	resize = () => this.forceUpdate() ;
 
 	componentDidMount() {
@@ -63,6 +64,7 @@ class App extends React.Component
 			localStorage.setItem('user', JSON.stringify(user.user) );
 			localStorage.setItem('userToken', user.token);
 		}
+		//
 		else if(user.name)
 		{
 			this.setState({user: user}) ;
