@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './not.css' ;
 import i04 from "./404.png" ;
 

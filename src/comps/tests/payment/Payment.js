@@ -21,7 +21,7 @@ class Payment extends React.Component
 				<div className="payment">
 					<div className="payment-left">
 						<p>Cost of the Test :  {this.props.cost}</p>
-						<button className='sched-btn'>Make Payment</button>
+						<button className='sched-btn' onClick={this.props.display}>Make Payment</button>
 					</div>
 					<div className="payment-center">
 						<div className="OR-up">
