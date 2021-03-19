@@ -3,7 +3,9 @@ import {Link} from 'react-router-dom' ;
 
 import { addNotif } from '../../notif.js' ;
 import './saat.css' ;
+import Payment from '../payment/Payment.js' ;
 
+import logo from '../../images/Psyment.webp' ;
 import {inst, quesData, subData, resultData, evalData} from './langdata.js' ;
 import {radioData} from './radioData.js' ;
 import {saatQues} from './queData.js' ;
@@ -89,7 +91,6 @@ class Question extends React.Component
 	render()
 	{	const {num} = this.state ;
 		const {lang} = this.props ;
-		console.log(this.state, this.props) ;
 		return (
 			<div className="question"> 
 				<p> {parseInt(num) + 1}. &nbsp; {saatQues[num][lang]} </p>
@@ -116,11 +117,136 @@ class SAAT extends React.Component
 		mode : 'start' ,
 		quesNo: '0',
 		lang: 'english' ,
+		payment: false ,
 		checked: [true, false]
+	}
+
+	componentDidMount = () => {
+		fetch("https://psy-api.herokuapp.com/saat-payment/check", {
+			method : 'get' ,
+			headers : { 'Content-Type' : 'application/json',
+						'Authorization' : 'Bearer '+ this.props.token
+					  } ,
+		}) 
+		.then(res => {
+			if(res.ok)
+				return res.json() ;
+			else
+				throw Error(res.statusText) ;
+		})
+		.then(data =>{	
+			this.setState({payment: data.answer});
+		})  
+		.catch( err  => console.log(err, err.message) ) ;
 	}
 
 	changeMode = (newMode) => {
 		this.setState({mode: newMode});
+	}
+
+	loadScript = (src) => {
+	    return new Promise((resolve) => {
+	        const script = document.createElement("script");
+	        script.src = src;
+	        script.onload = () => {
+	            resolve(true);
+	        };
+	        script.onerror = () => {
+	            resolve(false);
+	        };
+	        document.body.appendChild(script);
+	    });
+	}
+
+	displayRazorpay = async () => {
+		const {user, token} = this.props ;
+	   
+	    const res = await this.loadScript("https://checkout.razorpay.com/v1/checkout.js");
+
+	    if (!res) {
+	        alert("Payment Gateway failed to load");
+	        return;
+	    }
+
+	    let result = await fetch("https://psy-api.herokuapp.com/saat-payment", {
+			method : 'post' ,
+			headers : { 'Content-Type' : 'application/json',
+						'Authorization' : 'Bearer '+ token
+					  } ,
+		});
+
+	    if (!result) {
+	        alert("Server Error");
+	        return;
+	    }
+	    if(result.ok)
+	    	result =  await result.json() ;
+
+	    const { amount, id: order_id, currency } = result;
+
+	    const options = {
+	        key: "rzp_live_7U3eAyAgr3NCgu", // Enter the Key ID generated from the Dashboard
+	        amount: amount.toString(),
+	        currency: currency,
+	        name: user.name,
+	        description: "SAAT Test for "+user.name,
+	        image: { logo },
+	        order_id: order_id,
+	        handler: async (response) => {
+	            const data = {
+	                orderCreationId: order_id,
+	                razorpayPaymentId: response.razorpay_payment_id,
+	                razorpayOrderId: response.razorpay_order_id,
+	                razorpaySignature: response.razorpay_signature,
+	                amount ,
+	            };
+
+	            let result2 = await fetch("https://psy-api.herokuapp.com/saat-payment/success", {
+					method : 'post' ,
+					headers : { 'Content-Type' : 'application/json',
+								'Authorization' : 'Bearer '+ token
+						} ,
+					body: JSON.stringify(data) ,
+				});
+
+				if(result2.ok)
+			    	result2 =  await result2.json() ;
+				// console.log(result2) ;
+
+				// herokuapp ki link change karni hai 
+	            this.setState({payment: true}) ;
+	        },
+	        prefill: {
+	            name: user.name,
+	            email: user.email,
+	            contact: user.mobile,
+	        },
+	        notes: {
+	            address: user.name + ' ' + user.mobile + ' ' + user.email ,
+	        },
+	        theme: {
+	            color: "#61dafb",
+	        },
+	    };
+
+	    const paymentObject = new window.Razorpay(options);
+	    paymentObject.open();
+	}
+
+	checkPayment = () => {
+		if(this.state.payment)
+			return (
+				<div className="test-box">
+					<h3> Self Anxiety Assessment Test (SAAT) </h3> 
+					<div className="lang-con"> Change Language: 
+						<input type="radio" id={0} name={'lang'} checked={this.state.checked[0]} onChange={() => this.setState({checked: [true, false], lang:'english'})}/> English 
+						<input type="radio" id={1} name={'lang'} checked={this.state.checked[1]} onChange={() => this.setState({checked: [false, true], lang:'hindi'})}/> हिन्दी 
+					</div>
+					{this.checkMode()}
+				</div>
+			) ;
+		else 
+			return <Payment cost={1000} display={this.displayRazorpay}/> ;
 	}
 
 	checkLoggedIn = () => {
@@ -136,16 +262,7 @@ class SAAT extends React.Component
 				</div>
 			) ; 
 		else
-			return (
-				<div className="test-box">
-					<h3> Self Anxiety Assessment Test (SAAT) </h3> 
-					<div className="lang-con"> Change Language: 
-						<input type="radio" id={0} name={'lang'} checked={this.state.checked[0]} onChange={() => this.setState({checked: [true, false], lang:'english'})}/> English 
-						<input type="radio" id={1} name={'lang'} checked={this.state.checked[1]} onChange={() => this.setState({checked: [false, true], lang:'hindi'})}/> हिन्दी 
-					</div>
-					{this.checkMode()}
-				</div>
-			) ;
+			return this.checkPayment() ;
 	}
 
 	calculateScore = (type) => {
