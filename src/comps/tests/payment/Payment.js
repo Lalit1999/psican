@@ -13,6 +13,11 @@ class Payment extends React.Component
 		this.setState( { [event.target.name] : event.target.value, error: '' } ) ;
 	}
 
+	checkCoupon = () => {
+		if(this.state.coupon === 'psyment_qaz_789')
+			this.props.change() ;
+	}
+
 	render()
 	{
 		return(			
@@ -36,7 +41,7 @@ class Payment extends React.Component
 					</div>
 					<div className="payment-right">
 						<Text label="Coupon Code" name="coupon" value={this.state.coupon} onChange={this.onInputChange}/>
-						<button className='sched-btn'>Apply Coupon</button>
+						<button className='sched-btn' onClick={this.checkCoupon}>Apply Coupon</button>
 					</div>
 				</div>
 			</div>

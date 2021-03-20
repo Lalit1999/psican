@@ -233,6 +233,10 @@ class SAAT extends React.Component
 	    paymentObject.open();
 	}
 
+	changePayment = () => {
+		this.setState({payment:true}) ;
+	}
+
 	checkPayment = () => {
 		if(this.state.payment)
 			return (
@@ -246,7 +250,7 @@ class SAAT extends React.Component
 				</div>
 			) ;
 		else 
-			return <Payment cost={1000} display={this.displayRazorpay}/> ;
+			return <Payment cost={1000} display={this.displayRazorpay} change={this.changePayment}/> ;
 	}
 
 	checkLoggedIn = () => {
