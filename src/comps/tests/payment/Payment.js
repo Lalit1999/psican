@@ -14,8 +14,27 @@ class Payment extends React.Component
 	}
 
 	checkCoupon = () => {
-		if(this.state.coupon === 'psyment_qaz_789')
-			this.props.change() ;
+		
+		fetch('https://psy-api.herokuapp.com/coupon?coupon='+this.state.coupon, {
+			method : 'get' ,
+			headers : { 'Content-Type' : 'application/json',
+						'Authorization' : 'Bearer '+ this.props.token
+					  } ,
+		})
+		.then(res => {
+			if(res.ok)
+				return res.json() ;
+			else
+				throw Error(res.statusText) ;
+		})
+		.then(data =>{	
+			this.props.couponChange(data) ;
+			// console.log(data) ;
+		})  
+		.catch( err  => console.log(err, err.message) ) ;
+
+		// if(this.state.coupon === 'psyment_qaz_789')
+			// this.props.change() ;
 	}
 
 	render()

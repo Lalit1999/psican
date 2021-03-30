@@ -10,6 +10,14 @@ import {inst, quesData, subData, resultData, evalData} from './langdata.js' ;
 import {radioData} from './radioData.js' ;
 import {saatQues} from './queData.js' ;
 
+const coupon_amount = {
+    noPayment: 500,
+    fullPayment: 0,
+    quarterPayment: 125,
+    halfPayment: 250,
+    threeQuarter: 375,
+}
+
 let ans = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -118,6 +126,7 @@ class SAAT extends React.Component
 		quesNo: '0',
 		lang: 'english' ,
 		payment: false ,
+		coupon: 'noPayment' ,
 		checked: [true, false]
 	}
 
@@ -173,6 +182,7 @@ class SAAT extends React.Component
 			headers : { 'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '+ token
 					  } ,
+			body : JSON.stringify({ coupon: this.state.coupon }) 
 		});
 
 	    if (!result) {
@@ -211,9 +221,7 @@ class SAAT extends React.Component
 
 				if(result2.ok)
 			    	result2 =  await result2.json() ;
-				// console.log(result2) ;
 
-				// herokuapp ki link change karni hai 
 	            this.setState({payment: true}) ;
 	        },
 	        prefill: {
@@ -237,6 +245,13 @@ class SAAT extends React.Component
 		this.setState({payment:true}) ;
 	}
 
+	changeCoupon = (str) => {
+		if(str === 'fullPayment')
+			this.setState({payment:true}) ;
+		else
+			this.setState({coupon:str}) ;
+	}
+
 	checkPayment = () => {
 		if(this.state.payment)
 			return (
@@ -250,7 +265,7 @@ class SAAT extends React.Component
 				</div>
 			) ;
 		else 
-			return <Payment cost={1000} display={this.displayRazorpay} change={this.changePayment}/> ;
+			return <Payment cost={coupon_amount[this.state.coupon]} token={this.props.token} display={this.displayRazorpay} change={this.changePayment} couponChange={this.changeCoupon}/> ;
 	}
 
 	checkLoggedIn = () => {
@@ -416,7 +431,8 @@ class SAAT extends React.Component
 	}
 
 	render()
-	{	return(
+	{	
+		return(
 			<div>
 				{this.checkLoggedIn()}
 			</div>
