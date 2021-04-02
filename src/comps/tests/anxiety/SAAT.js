@@ -25,7 +25,8 @@ let ans = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,] ;
 
 class Question extends React.Component
-{	state = {
+{	
+	state = {
 		checked : [false, false, false, false, false],
 		warning : '',
 		num: 0 ,
@@ -247,9 +248,17 @@ class SAAT extends React.Component
 
 	changeCoupon = (str) => {
 		if(str === 'fullPayment')
+		{
+			addNotif('Coupon Applied Successfully', 'success') ;
 			this.setState({payment:true}) ;
+		}
 		else
+		{	if(str === 'noPayment')
+				addNotif('Coupon expired or already used', 'error') ;
+			else
+				addNotif('Coupon Applied Successfully', 'success') ;
 			this.setState({coupon:str}) ;
+		}					
 	}
 
 	checkPayment = () => {

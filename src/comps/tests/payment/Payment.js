@@ -1,4 +1,6 @@
 import React from 'react' ;
+
+import { addNotif } from '../../notif.js' ;
 import Text from '../../signup/text/Text.js' ;
 import './payment.css' ;
 
@@ -31,10 +33,10 @@ class Payment extends React.Component
 			this.props.couponChange(data) ;
 			// console.log(data) ;
 		})  
-		.catch( err  => console.log(err, err.message) ) ;
-
-		// if(this.state.coupon === 'psyment_qaz_789')
-			// this.props.change() ;
+		.catch( err  => {
+			addNotif('Coupon Code Not Found', 'error') ;
+			console.log(err.message) 
+		}) ;
 	}
 
 	render()
