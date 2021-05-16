@@ -29,7 +29,7 @@ class PopIcon extends React.Component
 				<Popup open={this.state.open} closeOnDocumentClick onClose={this.closePopUp} closeOnEscape>
 					<div className="modal popup" >
 						{/*eslint-disable-next-line */}
-						<a className="close" onClick={this.closePopUp} href="#">
+						<a className="close" onClick={this.closePopUp} >
 			              &times;
 			            </a> <br/>
 						<div className="popicon-div"> 

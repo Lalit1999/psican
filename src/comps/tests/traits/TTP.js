@@ -108,7 +108,7 @@ class Question2 extends React.Component
 		const {lang} = this.props ;
 		return (
 			<div className="question2"> 
-				<p> {parseInt(num) + 1}. &nbsp; {quesData.pre[lang]} &nbsp;&nbsp;
+				<p> {parseInt(num,10) + 1}. &nbsp; {quesData.pre[lang]} &nbsp;&nbsp;
 					<span className="ques-color">{ttpQues[num][lang]} 
 				</span></p>
 				<div className="radio-con ttp-radio-con">

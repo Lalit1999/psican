@@ -1,5 +1,5 @@
 import React from 'react' ;
-import { faPhoneAlt, faEnvelope, faAtlas } from '@fortawesome/free-solid-svg-icons' ;
+import { faPhoneAlt, faEnvelope, faFileCode } from '@fortawesome/free-solid-svg-icons' ;
 
 import './topbar.css' ;
 import BarItem from './BarItem.js' ;
@@ -17,7 +17,7 @@ class TopBar extends React.Component
 					<BarItem link="mailto:info.psyment@gmail.com" text=" info.psyment@gmail.com" 
 					icon={faEnvelope} msg="E-Mail Us" />
 					<PopIcon>
-						<BarItem icon={faAtlas} link="#" msg="" text=""/>
+						<BarItem icon={faFileCode} link="#" msg="" text=""/>
 					</PopIcon>
 				</React.Fragment>
 			) ;
@@ -27,7 +27,7 @@ class TopBar extends React.Component
 					<BarItemBig icon={faPhoneAlt} link="tel:09555235231"/>
 					<BarItemBig icon={faEnvelope} link="mailto:info.psyment@gmail.com"/>
 					<PopIcon>
-						<BarItemBig icon={faAtlas} link="#" />
+						<BarItemBig icon={faFileCode} link="#" />
 					</PopIcon>
 				</React.Fragment>
 			) ;

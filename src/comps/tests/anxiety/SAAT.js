@@ -102,7 +102,7 @@ class Question extends React.Component
 		const {lang} = this.props ;
 		return (
 			<div className="question"> 
-				<p> {parseInt(num) + 1}. &nbsp; {saatQues[num][lang]} </p>
+				<p> {parseInt(num,10) + 1}. &nbsp; {saatQues[num][lang]} </p>
 				<div className="radio-con"> 
 					{this.generateRadioBtn(num)}
 				</div>

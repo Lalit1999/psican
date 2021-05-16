@@ -129,7 +129,7 @@ class Register extends React.Component
 
 	onNumberChange = (event) => {
 		this.setState({data: {...this.state.data, 
-								[event.target.name] : parseInt(event.target.value)}, error: '' }) ;
+								[event.target.name] : parseInt(event.target.value,10)}, error: '' }) ;
 	}
 
 	personForm1 = () => {

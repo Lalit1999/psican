@@ -14,7 +14,7 @@ import './program.css' ;
 
 const features = [
 'All Sessions within this programs are PAID BASIS ONLY',
-'htmlFee for each session of 30 minutes is &#8377; 2000 Only',
+'htmlFee for each session of 30/60 minutes is &#8377; 1000 / &#8377; 2000 Only',
 'Timings: 6pm to 8pm (Weekdays) and 9am to 1pm (Saturday) '
 ] ;
 
