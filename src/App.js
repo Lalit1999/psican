@@ -8,7 +8,7 @@ import Home from './comps/home/Home.js' ;
 import AboutPerson from './comps/about/Aboutperson.js' ;
 import AboutPsican from './comps/about/Aboutpsican.js' ;
 import Contact from './comps/contact/Contact.js' ;
-import NotFound from './comps/home/Notfound.js' ; // yahan tak ho gaya hai clear.
+import NotFound from './comps/home/NotFound.js' ; // yahan tak ho gaya hai clear.
 import Header from './comps/header/Header.js' ;
 import TopBar from './comps/header/TopBar.js' ;
 import DownBar from './comps/downbar/DownBar.js' ;

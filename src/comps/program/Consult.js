@@ -303,7 +303,7 @@ class Personal extends React.Component
 		}
 		else
 		{	if(str === 'noPayment')
-				addNotif('Coupon expired or already used', 'error') ;
+				addNotif('Coupon Invalid or already used', 'error') ;
 			else
 				addNotif('Coupon Applied Successfully', 'success') ;
 			this.setState({coupon:str}) ;
@@ -342,7 +342,6 @@ class Personal extends React.Component
 	}	
 
 	checkLogin = () => {
-		console.log(this.props.user) ;
 
 		if(this.props.user.name)
 			return this.checkPayment() ;
