@@ -186,12 +186,10 @@ class SAAT extends React.Component
 			body : JSON.stringify({ coupon: this.state.coupon }) 
 		});
 
-	    if (!result) {
-	        alert("Server Error");
-	        return;
-	    }
 	    if(result.ok)
 	    	result =  await result.json() ;
+	    else
+			throw Error(result.statusText) ;
 
 	    const { amount, id: order_id, currency } = result;
 
@@ -242,10 +240,6 @@ class SAAT extends React.Component
 	    paymentObject.open();
 	}
 
-	changePayment = () => {
-		this.setState({payment:true}) ;
-	}
-
 	changeCoupon = (str) => {
 		if(str === 'fullPayment')
 		{
@@ -261,36 +255,8 @@ class SAAT extends React.Component
 		}					
 	}
 
-	checkPayment = () => {
-		if(this.state.payment)
-			return (
-				<div className="test-box">
-					<h3> Self Anxiety Assessment Test (SAAT) </h3> 
-					<div className="lang-con"> Change Language: 
-						<input type="radio" id={0} name={'lang'} checked={this.state.checked[0]} onChange={() => this.setState({checked: [true, false], lang:'english'})}/> English 
-						<input type="radio" id={1} name={'lang'} checked={this.state.checked[1]} onChange={() => this.setState({checked: [false, true], lang:'hindi'})}/> हिन्दी 
-					</div>
-					{this.checkMode()}
-				</div>
-			) ;
-		else 
-			return <Payment cost={coupon_amount[this.state.coupon]} token={this.props.token} display={this.displayRazorpay} change={this.changePayment} couponChange={this.changeCoupon}/> ;
-	}
-
-	checkLoggedIn = () => {
-		if(this.props.token === "")
-			return (
-				<div className="blue-bg blue-form">
-					<p> You need to 
-						<Link to="/login" className="btn3"> Login </Link>
-						 or 
-						<Link to="/register" className="btn3"> Register </Link> 
-						to take this test (you will be redirected to home page) 
-					</p>
-				</div>
-			) ; 
-		else
-			return this.checkPayment() ;
+	changePayment = () => {
+		this.setState({payment:true}) ;
 	}
 
 	calculateScore = (type) => {
@@ -437,6 +403,38 @@ class SAAT extends React.Component
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,] ;
+	}
+
+	checkPayment = () => {
+		if(this.state.payment)
+			return (
+				<div className="test-box">
+					<h3> Self Anxiety Assessment Test (SAAT) </h3> 
+					<div className="lang-con"> Change Language: 
+						<input type="radio" id={0} name={'lang'} checked={this.state.checked[0]} onChange={() => this.setState({checked: [true, false], lang:'english'})}/> English 
+						<input type="radio" id={1} name={'lang'} checked={this.state.checked[1]} onChange={() => this.setState({checked: [false, true], lang:'hindi'})}/> हिन्दी 
+					</div>
+					{this.checkMode()}
+				</div>
+			) ;
+		else 
+			return <Payment cost={coupon_amount[this.state.coupon]} token={this.props.token} display={this.displayRazorpay} change={this.changePayment} couponChange={this.changeCoupon} type='saat'/> ;
+	}	
+
+	checkLoggedIn = () => {
+		if(this.props.token === "")
+			return (
+				<div className="blue-bg blue-form">
+					<p> You need to 
+						<Link to="/login" className="btn3"> Login </Link>
+						 or 
+						<Link to="/register" className="btn3"> Register </Link> 
+						to take this test (you will be redirected to home page) 
+					</p>
+				</div>
+			) ; 
+		else
+			return this.checkPayment() ;
 	}
 
 	render()

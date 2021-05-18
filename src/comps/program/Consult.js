@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker' ;
 import "react-datepicker/dist/react-datepicker.css";
 import {Link} from 'react-router-dom' ;
 
+import Payment from '../tests/payment/Payment.js' ;
 import { addNotif } from '../notif.js' ;
 import Title from '../title/Title.js' ;
 import DisplayDetailed from '../display/DisplayDetailed.js' ;
@@ -10,6 +11,8 @@ import Heading from '../Heading/Heading.js' ;
 import LoginForm from '../signup/forms/LoginForm.js' ;
 import TextArea from '../signup/text/TextArea.js' ;
 import Text from '../signup/text/Text.js' ;
+import logo from '../images/Psyment.webp' ;
+
 import './program.css' ;
 
 const features = [
@@ -27,12 +30,23 @@ const ptData = [ 'Bereavement Adjustment', 'Accident / Disease',
 
 const mData = [ 'Personality Re-Modelling', 'Relational Re-Modelling' ];
 
+const coupon_amount = {
+    noPayment: 1000,
+    fullPayment: 0,
+    quarterPayment: 250,
+    halfPayment: 500,
+    threeQuarter: 750,
+}
+
 class Personal extends React.Component
-{	state = {
+{	
+	state = {
 		error: '',
 		reason : '',
 		avail: '' ,
 		title: '',
+		payment: false ,
+		coupon: 'noPayment' ,
 		minTime: 17.5,
 		maxTime: 19,
 		date: new Date()
@@ -65,7 +79,23 @@ class Personal extends React.Component
 
 	componentDidMount = () => {
 		this.setState({date: this.returnTomorrow()});
-	}
+		fetch("https://psy-api.herokuapp.com/appoint-payment/check", {
+			method : 'get' ,
+			headers : { 'Content-Type' : 'application/json',
+						'Authorization' : 'Bearer '+ this.props.token
+					  } ,
+		}) 
+		.then(res => {
+			if(res.ok)
+				return res.json() ;
+			else
+				throw Error(res.statusText) ;
+		})
+		.then(data =>{	
+			this.setState({payment: data.answer});
+		})  
+		.catch( err  => console.log(err, err.message) ) ;
+	}	
 
 	onScheduleClick = () => {
 	  	if(this.state.error !== '')
@@ -179,10 +209,115 @@ class Personal extends React.Component
 			this.setState({ date: date, minTime: 17, maxTime:19, error: ''})
 	}
 
-	checkLogin = () => {
-		const {reason, title, date, minTime, maxTime} = this.state ;
+	loadScript = (src) => {
+	    return new Promise((resolve) => {
+	        const script = document.createElement("script");
+	        script.src = src;
+	        script.onload = () => {
+	            resolve(true);
+	        };
+	        script.onerror = () => {
+	            resolve(false);
+	        };
+	        document.body.appendChild(script);
+	    });
+	}
 
-		if(this.props.user.gender)
+	displayRazorpay = async () => {
+		const {user, token} = this.props ;
+	   
+	    const res = await this.loadScript("https://checkout.razorpay.com/v1/checkout.js");
+
+	    if (!res) {
+	        alert("Payment Gateway failed to load");
+	        return;
+	    }
+
+	    let result = await fetch("https://psy-api.herokuapp.com/appoint-payment", {
+			method : 'post' ,
+			headers : { 'Content-Type' : 'application/json',
+						'Authorization' : 'Bearer '+ token
+					  } ,
+			body : JSON.stringify({ coupon: this.state.coupon }) 
+		});
+
+	    if(result.ok)
+	    	result =  await result.json() ;
+	    else
+			throw Error(result.statusText) ;
+
+	    const { amount, id: order_id, currency } = result;
+
+	    const options = {
+	        key: "rzp_live_7U3eAyAgr3NCgu", // Enter the Key ID generated from the Dashboard
+	        amount: amount.toString(),
+	        currency: currency,
+	        name: user.name,
+	        description: "Appointment for "+user.name,
+	        image: { logo },
+	        order_id: order_id,
+	        handler: async (response) => {
+	            const data = {
+	                orderCreationId: order_id,
+	                razorpayPaymentId: response.razorpay_payment_id,
+	                razorpayOrderId: response.razorpay_order_id,
+	                razorpaySignature: response.razorpay_signature,
+	                amount ,
+	            };
+
+	            let result2 = await fetch("https://psy-api.herokuapp.com/appoint-payment/success", {
+					method : 'post' ,
+					headers : { 'Content-Type' : 'application/json',
+								'Authorization' : 'Bearer '+ token
+						} ,
+					body: JSON.stringify(data) ,
+				});
+
+				if(result2.ok)
+			    	result2 =  await result2.json() ;
+
+	            this.setState({payment: true}) ;
+	        },
+	        prefill: {
+	            name: user.name,
+	            email: user.email,
+	            contact: user.mobile,
+	        },
+	        notes: {
+	            address: user.name + ' ' + user.mobile + ' ' + user.email ,
+	        },
+	        theme: {
+	            color: "#61dafb",
+	        },
+	    };
+
+	    const paymentObject = new window.Razorpay(options);
+	    paymentObject.open();
+	}
+
+	changeCoupon = (str) => {
+		if(str === 'fullPayment')
+		{
+			addNotif('Coupon Applied Successfully', 'success') ;
+			this.setState({payment:true}) ;
+		}
+		else
+		{	if(str === 'noPayment')
+				addNotif('Coupon expired or already used', 'error') ;
+			else
+				addNotif('Coupon Applied Successfully', 'success') ;
+			this.setState({coupon:str}) ;
+		}					
+	}
+
+	changePayment = () => {
+		this.setState({payment:true}) ;
+	}
+
+	checkPayment = () => {
+		const {reason, title, date, minTime, maxTime} = this.state ; 
+
+		if(this.state.payment)
 			return (
 				<div className="blue-bg">
 					<LoginForm title=" Schedule " error={this.state.error} >
@@ -202,6 +337,15 @@ class Personal extends React.Component
 					</button> 
 				</div>
 			) ;
+		else 
+			return <Payment cost={coupon_amount[this.state.coupon]} token={this.props.token} display={this.displayRazorpay} change={this.changePayment} couponChange={this.changeCoupon} type='appoint'/> ;
+	}	
+
+	checkLogin = () => {
+		console.log(this.props.user) ;
+
+		if(this.props.user.name)
+			return this.checkPayment() ;
 		else
 			return (
 				<div className="blue-bg blue-form">
@@ -209,7 +353,7 @@ class Personal extends React.Component
 						<Link to="/login" className="btn3"> Login </Link>
 						 or 
 						<Link to="/register" className="btn3"> Register </Link> 
-						 to send a query. 
+						 to book an Appointment 
 					</p>
 				</div>
 			) ; 
