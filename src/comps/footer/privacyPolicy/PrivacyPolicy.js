@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Title from '../../title/Title.js' ;
 import DisplayDetailed from '../../display/DisplayDetailed.js' ;
@@ -38,19 +38,17 @@ const changes = [
 'htmlIf you have any questions at all about PSYMENT&apos;s privacy policy, please write to us at: <b>info.psyment@gmail.com</b>'
 ] ;
 
-class PrivacyPolicy extends Component {
-	render() {
-		return (
-			<div>
-				<Title name = 'Privacy Policy' items={["Home -","Privacy Policy"]}/>
-				<DisplayDetailed title="What Data we collect" lidata={data_collect} />
-				<DisplayDetailed title="How we Use your Data" lidata={data_usage} />
-				<DisplayDetailed title="Cookies Policy" lidata={cookies} />
-				<DisplayDetailed title="External Web Services" lidata={external_services} />
-				<DisplayDetailed title="Changes to Privacy Policy" lidata={changes} />
-			</div>
-		);
-	}
+const PrivacyPolicy = () => {
+	return (
+		<div>
+			<Title name = 'Privacy Policy' items={["Home -","Privacy Policy"]}/>
+			<DisplayDetailed title="What Data we collect" lidata={data_collect} />
+			<DisplayDetailed title="How we Use your Data" lidata={data_usage} />
+			<DisplayDetailed title="Cookies Policy" lidata={cookies} />
+			<DisplayDetailed title="External Web Services" lidata={external_services} />
+			<DisplayDetailed title="Changes to Privacy Policy" lidata={changes} />
+		</div>
+	);
 }
 
 export default PrivacyPolicy ;

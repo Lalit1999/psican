@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Title from '../../title/Title.js' ;
 import DisplayDetailed from '../../display/DisplayDetailed.js' ;
@@ -12,15 +12,13 @@ const tc = [
 'PSYMENT reserves the rights to change these terms and conditions at any time by posting changes online. Your continued use of this site after changes are posted constitutes your acceptance of the modifications.',
 ] ;
 
-class TermsCondition extends Component {
-	render() {
-		return (
-			<div>
-				<Title name = 'Terms and Conditions' items={["Home -","Terms & Conditions"]}/>
-				<DisplayDetailed title="PSYMENT Website Terms & Conditions" lidata={tc} />
-			</div>
-		);
-	}
+const TermsCondition = () => {
+	return (
+		<div>
+			<Title name = 'Terms and Conditions' items={["Home -","Terms & Conditions"]}/>
+			<DisplayDetailed title="PSYMENT Website Terms & Conditions" lidata={tc} />
+		</div>
+	);
 }
 
 export default TermsCondition ;

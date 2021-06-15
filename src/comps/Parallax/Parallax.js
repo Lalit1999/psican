@@ -2,12 +2,6 @@ import React from 'react' ;
 
 import './parallax.css' ;
 
-const Parallax = (props) => {
-	return (
-		<div className="parallax">
-			{props.children}
-		</div>
-		) ;
-}
+const Parallax = ({children}) => <div className="parallax"> {children} </div>
 
 export default Parallax ;

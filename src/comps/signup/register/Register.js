@@ -1,4 +1,4 @@
-import React from 'react' ;
+import React, {useState, useEffect} from 'react' ;
 import {Redirect} from 'react-router-dom';
 
 import { addNotif } from '../../notif.js' ;
@@ -16,28 +16,21 @@ const initPerson = {
 	age : 0,		gender :'',		
 } ;
 
-class Register extends React.Component
-{	state = {
-		data : {} ,
-		error: '' 
-	}
+const Register = (props) => {
+	const [data, setData] = useState({}) ;
+	const [error, setError] = useState('') ;
 
-	componentDidMount = () => {
-		if(this.props.mode === 'edit')
-			this.setState({data: this.props.init});
-		else
-			this.setState({data: initPerson})
-	}
+	useEffect( () => (props.mode === 'edit')?setData(props.init):setData(initPerson) , []) ;
 
-	sendRegisterRequest = () => {
-		if(this.props.mode === 'edit')
+	const sendRegisterRequest = () => {
+		if(props.mode === 'edit')
 		{	addNotif('Please Wait...') ;
 
 			fetch('https://psy-api.herokuapp.com/users/me',{
 				method : 'PATCH' ,
 				headers : { 'Content-Type' : 'application/json', 
-							'Authorization' : 'Bearer ' + this.props.token} ,
-				body :JSON.stringify(this.state.data) ,
+							'Authorization' : 'Bearer ' + props.token} ,
+				body :JSON.stringify(data) ,
 			})
 			.then(res => {
 				if(res.ok)
@@ -48,8 +41,8 @@ class Register extends React.Component
 			.then(data => {	
 				addNotif('Successfully Updated Profile', 'success') ;
 
-				this.props.loadUser(data) ;
-				this.props.edit() ;
+				props.loadUser(data) ;
+				props.edit() ;
 			}) 
 			.catch( err  => {
 				console.log(err) ;
@@ -62,7 +55,7 @@ class Register extends React.Component
 			fetch('https://psy-api.herokuapp.com/users' ,{
 				method : 'post' ,
 				headers : { 'Content-Type' : 'application/json'} ,
-				body :JSON.stringify(this.state.data) ,
+				body :JSON.stringify(data) ,
 			})
 			.then(res => {
 				if(res.ok)
@@ -71,100 +64,93 @@ class Register extends React.Component
 					throw Error(res.statusText) ;
 			})
 			.then(data => {	
-				this.setState({data: initPerson});
+				setData(initPerson) ;
 				addNotif('Successfully Registered', 'success') ;
 
-				this.props.loadUser(data) ;
-				this.props.history.push('/');
+				props.loadUser(data) ;
+				props.history.push('/');
 			}) 
 			.catch( err  => {
 				console.log(err) ;
 				addNotif('Error while registration' , 'error') ;
-				this.props.history.push('/');
+				props.history.push('/');
 			}) ;
 		}
 	}
 
-	onNextClick = () => {
-		const {name, password, repass, email, mobile, gender, age} = this.state.data ;
-		if(this.state.error !== '')
-			this.setState({error: 'You must fix all errors before proceeding'});
+	const onNextClick = () => {
+		const {name, password, repass, email, mobile, gender, age} = data ;
+		if(error !== '')
+			setError('You must fix all errors before proceeding') ;
 		else
 		{
 			if( invalidEmail(email) )
-				this.setState( {error: invalidEmail(email)} )
+				setError(invalidEmail(email)) ;
 			else if(invalidName(name) )
-				this.setState( {error: invalidName(name)} )
-			else if (this.props.mode !== 'edit' && invalidPass(password, repass) )
-				this.setState( {error: invalidPass(password, repass)} )
+				setError(invalidName(name)) ;
+			else if (props.mode !== 'edit' && invalidPass(password, repass) )
+				setError(invalidPass(password, repass)) ;
 			else if (invalidMobile(mobile) )
-				this.setState( {error: invalidMobile(mobile)} )
+				setError(invalidMobile(mobile)) ;
 			else if(isBlank(gender,'Gender') )
-				this.setState( {error: isBlank(gender,'Gender')} )
+				setError(isBlank(gender,'Gender')) ;
 			else if(isMaxMin(age,'Age',10,100) )
-				this.setState( {error: isMaxMin(age,'Age',10,100)} )
+				setError(isMaxMin(age,'Age',10,100)) ;
 			else
-			  	this.sendRegisterRequest() ;
+			  	sendRegisterRequest() ;
 		}
 	}
 
-	checkEditMode = () => {
-		if(this.props.mode === 'edit')
-			return null ;
-		else
+	const checkEditMode = () => {
+		if(props.mode !== 'edit')
 			return (
 				<React.Fragment>
-					<Text label="Password" name="password" value={this.state.data.password}
-						 type="pw" onChange={this.onInputChange}/>
-					<Text label="Retype Password" name="repass" value={this.state.data.repass} 
-						type="pw" onChange={this.onInputChange}/>
+					<Text label="Password" name="password" value={data.password} type="pw" onChange={onInputChange}/>
+					<Text label="Retype Password" name="repass" value={data.repass} type="pw" onChange={onInputChange}/>
 				</React.Fragment>
 			) ;
 	}
 
-	onInputChange = (event) => {
-		this.setState({data: {...this.state.data, 
-								[event.target.name] : event.target.value}, error: '' }) ;
+	const onInputChange = (event) => {
+		setData({...data, [event.target.name] : event.target.value}) ;
+		setError('') ;
 	}
 
-	onNumberChange = (event) => {
-		this.setState({data: {...this.state.data, 
-								[event.target.name] : parseInt(event.target.value,10)}, error: '' }) ;
+	const onNumberChange = (event) => {
+		setData({...data, [event.target.name] : parseInt(event.target.value,10)} ) ;
+		setError('') ;
 	}
 
-	personForm1 = () => {
-		const {name, email, mobile,age, gender} = this.state.data ;
+	const personForm1 = () => {
+		const {name, email, mobile,age, gender} = data ;
 		return (
 			<div>	
-				<LoginForm title="Enter Details " error={this.state.error}
-					b2="Register" onb2Click={this.onNextClick} >
-					<Text label="Name" name="name" value={name} onChange={this.onInputChange}/>
-					<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
-					{ this.checkEditMode() } 
-					<Text label="Mobile No." name="mobile" value={mobile} onChange={this.onInputChange}/>
-					<Number label="Age"	name="age" value={age} min={10} max={100} onChange={this.onNumberChange}/>
-					<Dropdown label="Gender" name="gender" value={gender} options={['','M','F']} onChange={this.onInputChange}/>
+				<LoginForm title="Enter Details " error={error} b2="Register" onb2Click={onNextClick} >
+					<Text label="Name" name="name" value={name} onChange={onInputChange}/>
+					<Text label="E-Mail" name="email" value={email} onChange={onInputChange}/>
+					{ checkEditMode() } 
+					<Text label="Mobile No." name="mobile" value={mobile} onChange={onInputChange}/>
+					<Number label="Age"	name="age" value={age} min={10} max={100} onChange={onNumberChange}/>
+					<Dropdown label="Gender" name="gender" value={gender} options={['','M','F']} onChange={onInputChange}/>
 				</LoginForm>
 			</div>
 			) ;
 	}
 	
-	render()
-	{   if (this.props.mode === 'edit')
-			return (	<div>{this.personForm1()}</div>	) ;
+    if (props.mode === 'edit')
+		return <div>{personForm1()}</div> ;
+	else
+	{	if(props.user.name)
+			return <Redirect to='/' />
 		else
-		{	if(this.props.user.name)
-				return <Redirect to='/' />
-			else
-			{	return(
-					<div>
-						<Title name = 'Register' items={["Home -", "Register"]}/>
-						<div className="su-blue-bg">
-							{this.personForm1()}
-						</div>
+		{	return(
+				<div>
+					<Title name = 'Register' items={["Home -", "Register"]}/>
+					<div className="su-blue-bg">
+						{personForm1()}
 					</div>
-				) ;
-			}
+				</div>
+			) ;
 		}
 	}
 }

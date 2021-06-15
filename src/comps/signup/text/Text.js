@@ -1,19 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './text.css' ;
 
-class Text extends Component {
-	render() {
-		const type = this.props.type?"password":"text" ;
-		const str = this.props.name?this.props.name:this.props.label ;
-		return (
-			<div className="text-div">
-				<label className="lbel">{this.props.label}&nbsp; : </label>
-	            <input  className="inpu" type={type} name={str} 
-	            		onChange={this.props.onChange} value={this.props.value} />
-			</div>
-		);
-	}
+const Text = ({type, name, label, value, onChange}) => {
+	return (
+		<div className="text-div">
+			<label className="lbel">{label}&nbsp; : </label>
+            <input  className="inpu" type={type?"password":"text"} name={name?name:label} onChange={onChange} value={value} />
+		</div>
+	);
 }
 
 export default Text ;

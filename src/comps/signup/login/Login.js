@@ -1,4 +1,4 @@
-import React from 'react' ;
+import React, {useState} from 'react' ;
 import { Redirect } from 'react-router-dom';
 
 import { addNotif } from '../../notif.js' ;
@@ -13,26 +13,21 @@ const initObj = {
 	password: '',
 } ;
 
-class Login extends React.Component
-{	state = {
-		mode : 'person' ,
-		data : initObj ,
-		error: '' 
-	}
+const Login = (props) => {
+	const [mode, setMode] = useState('person') ;
+	const [data, setData] = useState(initObj) ;
+	const [error, setError] = useState('') ;
 
-	sendLoginRequest = () => {
+	const sendLoginRequest = () => {
 		
-		const obj = {
-			password: this.state.data.password,
-			email: this.state.data.email,
-		}
+		const { password, email	} = data ;
 
 		addNotif('Please Wait...') ;
 
 		fetch('https://psy-api.herokuapp.com/login',{
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json'} ,
-			body :JSON.stringify(obj) ,
+			body :JSON.stringify({ password, email	}) ,
 		})
 		.then(res => {
 			if(res.ok)
@@ -41,30 +36,26 @@ class Login extends React.Component
 				throw Error(res.statusText) ;
 		})
 		.then(data =>{	
-			this.setState({data: initObj});
+			setData(initObj);
 			addNotif('Successfully Logged In', 'success') ;
 			
-			this.props.loadUser(data) ;
-			this.props.history.push('/');
+			props.loadUser(data) ;
+			props.history.push('/');
 		})  
 		.catch( err  => {
 			console.log(err) ;
 			addNotif('Error Logging in', 'error') ;	
-			this.setState({error: 'Incorrect Username OR Password'});
+			setError('Incorrect Username OR Password');
 		}) ;
 	}
 
-	onSendReqClick = () => {
-		const obj = {
-			email: this.state.data.email,
-		}
-
+	const onSendReqClick = () => {
 		addNotif('Please Wait...') ;
 
 		fetch('https://psy-api.herokuapp.com/forgot',{
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json'} ,
-			body : JSON.stringify(obj) ,
+			body : JSON.stringify({ email: data.email}) ,
 		})
 		.then(res => {
 			if(res.ok)
@@ -75,86 +66,81 @@ class Login extends React.Component
 		.then(data =>{	
 			addNotif('Request sent for password reset', 'success') ;
 			
-			this.props.history.push('/');
+			props.history.push('/');
 		})  
 		.catch( err  => {
 			console.log(err) ;
 			addNotif('E-Mail invalid', 'error') ;	
-			this.setState({error: 'E-Mail doesn\'t exist in database'});
+			setError('E-Mail doesn\'t exist in database');
 		}) ;
 	}
 
-	onLoginClick = () => {
-		const {email, password} = this.state.data ;
-		if(this.state.error !== '')
-			this.setState({error: 'You must fix all errors before proceeding'});
+	const onLoginClick = () => {
+		const {email, password} = data ;
+		if(error !== '')
+			setError('You must fix all errors before proceeding');
 		else
 		{
 			if( invalidEmail(email) )
-				this.setState( {error: invalidEmail(email)} )
+				setError(invalidEmail(email) ) ;
 			else if ( isBlank(password, 'Password') )
-				this.setState( {error: isBlank(password, 'Password')} )
+				setError(isBlank(password, 'Password') ) ;
 			else
-			  	this.sendLoginRequest() ;
+			  	sendLoginRequest() ;
 		}
 	}
 
-	onInputChange = (event) => {
-		this.setState({data: {...this.state.data, 
-								[event.target.name] : event.target.value}, error: '' }) ;
+	const onInputChange = (event) => {
+		setData({...data, [event.target.name] : event.target.value}) ;
+		setError('') ;
 	}
 
-	createLogin = () => {
-		const { email, password} = this.state.data ;
+	const createLogin = () => {
+		const { email, password} = data ;
 		return (
 			<div>	
-				<LoginForm heading=" Login " error={this.state.error}
+				<LoginForm heading=" Login " error={error}
 					b1="Register" b1type="link" to="/register" near="near"
-					b2="Login" onb2Click={this.onLoginClick} >
-					<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
-					<Text label="Password" name="password" value={password} type="pw" 
-							onChange={this.onInputChange}/>
-					<p className="fp" onClick={()=>this.setState({mode:'fp'})}> Forgot Password ? </p>
+					b2="Login" onb2Click={onLoginClick} >
+					<Text label="E-Mail" name="email" value={email} onChange={onInputChange}/>
+					<Text label="Password" name="password" value={password} type="pw" onChange={onInputChange}/>
+					<p className="fp" onClick={()=> setMode('fp') }> Forgot Password ? </p>
 				</LoginForm>
 			</div>
 			) ;
 	}
 
-	resetPassword = () => {
-		const { email} = this.state.data ;
+	const resetPassword = () => {
+		const { email} = data ;
 		return (
 			<div>	
-				<LoginForm heading=" Reset Password " error={this.state.error}
+				<LoginForm heading=" Reset Password " error={error}
 					b1="Register" b1type="link" to="/register" near="near"
-					b2="Send Request" onb2Click={this.onSendReqClick} >
-					<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
+					b2="Send Request" onb2Click={onSendReqClick} >
+					<Text label="E-Mail" name="email" value={email} onChange={onInputChange}/>
 				</LoginForm>
 				<p className="nfp"> <strong>*Note: </strong>If you enter an E-Mail that exists in our database then you will recieve a mail containing your new password. You can re-change your password once you log back in. </p>
 			</div>
 			) ;
 	}
 
-	checkMode = () => {
-		switch(this.state.mode)
-		{	case 'person': return this.createLogin() ;
-			case 'fp' : return this.resetPassword() ;
+	const checkMode = () => {
+		switch(mode)
+		{	case 'person': return createLogin() ;
+			case 'fp' : return resetPassword() ;
 			default : return 'You probably encountered a problem' ;
 		}
 	}
 
-	render()
-	{	if(this.props.user.name)
-			return <Redirect to='/' />
-		else
-		{	return(
-				<div>
-					<Title name = 'Login' items={["Home -", "Login"]}/>
-					<div className="su-blue-bg">
-						{this.checkMode()}
-					</div>
-				</div>
-			) ;
-		}
+	if(this.props.user.name)
+		return <Redirect to='/' />
+	else
+	{	return(
+			<div>
+				<Title name = 'Login' items={["Home -", "Login"]}/>
+				<div className="su-blue-bg"> {checkMode()} </div>
+			</div>
+		) ;
 	}
 }
 

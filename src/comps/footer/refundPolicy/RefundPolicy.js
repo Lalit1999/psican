@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Title from '../../title/Title.js' ;
 import DisplayDetailed from '../../display/DisplayDetailed.js' ;
@@ -10,15 +10,13 @@ const refund = [
 'htmlFor any kind of grievance or queries related to Payments / Refund / Cancellation, write to us at: <b>info.psyment@gmail.com</b>'
 ] ;
 
-class RefundPolicy extends Component {
-	render() {
-		return (
-			<div>
-				<Title name = 'Refund/Cancellation Policy' items={["Home -","Refund Policy"]}/>
-				<DisplayDetailed title="PSYMENT Refund/Cancellation Policy" lidata={refund} />
-			</div>
-		);
-	}
+const RefundPolicy = () => {
+	return (
+		<div>
+			<Title name = 'Refund/Cancellation Policy' items={["Home -","Refund Policy"]}/>
+			<DisplayDetailed title="PSYMENT Refund/Cancellation Policy" lidata={refund} />
+		</div>
+	);
 }
 
 export default RefundPolicy ;
