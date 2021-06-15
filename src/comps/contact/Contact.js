@@ -1,4 +1,4 @@
-import React from 'react' ;
+import React, {useState} from 'react' ;
 
 import { addNotif } from '../notif.js' ;
 import { invalidEmail, invalidMobile, isBlank, invalidName } from '../valid.js' ;
@@ -8,27 +8,25 @@ import TextArea from '../signup/text/TextArea.js' ;
 import Title from '../title/Title.js' ;
 import './Contact.css' ;
 
-class Contact extends React.Component
-{	state = {
-		error: '',
-		name: '',
-		email: '',
-		mobile: '',
-		message: ''
-	}
+const initData = {	name: '',	email: '',	mobile: '',	message: ''	} ;
 
-	onSendClick = () => {
-		const {name, mobile, email, message, error} = this.state ;
+const Contact = () => {	
+	const [error, setError] = useState('') ;
+	const [data, setData] = useState(initData) ;
+
+	const onSendClick = () => {
+		const {name, mobile, email, message} = data ;
+
 		if(error !== '')
-			this.setState({error: 'You cannot proceed without fixing all the errors'});
+			setError('You cannot proceed without fixing all the errors' ) ;
 		else if(invalidName(name))
-			this.setState({error: invalidName(name)});
+			setError(invalidName(name) ) ;
 	  	else if(invalidEmail(email))
-			this.setState({error: invalidEmail(email)});
+			setError(invalidEmail(email) ) ;
 		else if(invalidMobile(mobile))
-			this.setState({error: invalidMobile(mobile)});
+			setError(invalidMobile(mobile) ) ;
 	  	else if(isBlank(message, 'Message'))
-			this.setState({error: isBlank(message, 'Message')});
+			setError(isBlank(message, 'Message') ) ;
 		else
 		{	const obj = { name, mobile, message, email } ;
 
@@ -46,7 +44,7 @@ class Contact extends React.Component
 					throw Error(res.statusText) ;
 			})
 			.then(data => {	
-				this.setState({name: '', mobile: '', message: '', email: ''});
+				setData(initData) ;
 				addNotif('Successfully Received Message/Feedback', 'success') ;
 			}) 
 			.catch( err  => {
@@ -56,29 +54,27 @@ class Contact extends React.Component
 		}
 	}
 
-	onInputChange = (event) => {
-		this.setState({	[event.target.name] : event.target.value, error: ''} ) ;
+	const onInputChange = (event) => {
+		setData({...data, [event.target.name] : event.target.value}) ;
+		setError('') ;
 	}
 
-	render()
-	{	const {name, email, mobile, message} = this.state ;
-		return(
+	return(
+		<div>
 			<div>
-				<div>
-					<Title name = 'Contact Us' items={["Home -", "Contact Us"]}/>
-				</div>
-				<div className = 'align'>
-					<LoginForm title=" Send Your Message / Feedback " error={this.state.error}
-						b2="Send &gt;&nbsp;" onb2Click={this.onSendClick} close>
-						<Text label="Name" name="name" value={name} onChange={this.onInputChange}/>
-						<Text label="E-Mail" name="email" value={email} onChange={this.onInputChange}/>
-						<Text label="Mobile No." name="mobile" value={mobile} onChange={this.onInputChange}/>
-						<TextArea label="Message" name="message" value={message} r={3} c={20} onChange={this.onInputChange} />
-					</LoginForm>
-				</div>
+				<Title name = 'Contact Us' items={["Home -", "Contact Us"]}/>
 			</div>
-		) ;
-	}
+			<div className = 'align'>
+				<LoginForm title=" Send Your Message / Feedback " error={error}
+					b2="Send &gt;&nbsp;" onb2Click={onSendClick} close>
+					<Text label="Name" name="name" value={data.name} onChange={onInputChange}/>
+					<Text label="E-Mail" name="email" value={data.email} onChange={onInputChange}/>
+					<Text label="Mobile No." name="mobile" value={data.mobile} onChange={onInputChange}/>
+					<TextArea label="Message" name="message" value={data.message} r={3} c={20} onChange={onInputChange} />
+				</LoginForm>
+			</div>
+		</div>
+	) ;
 }
 
 export default Contact ;

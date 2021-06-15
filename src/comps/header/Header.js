@@ -1,4 +1,4 @@
-import React from 'react' ;
+import React, {useState} from 'react' ;
 import { Link } from'react-router-dom' ;
 import { withRouter } from 'react-router' ;
 import { addNotif } from '.././notif.js' ;
@@ -9,30 +9,20 @@ import Popup from "reactjs-popup";
 import Menu from './Menu.js' ;
 import './header.css' ;
 
-class Header extends React.Component
-{	state = {
-      menuOpen: false,
-	} ;
+const Header = (props) => {
+	const [menuOpen, setMenuOpen] = useState(false) ;
 
-	openMenu = () => {
-	    this.setState({ menuOpen: true })
+	const onButtonClick = (path) => {
+		props.history.push('/') ;
+		props.history.push('/' + path) ;
 	}
 
-	closeMenu = () => {
-	    this.setState({ menuOpen: false })
-	}
-
-	onButtonClick = (path) => {
-		this.props.history.push('/') ;
-		this.props.history.push('/' + path) ;
-	}
-
-	onLogoutClick = () => {
+	const onLogoutClick = () => {
 		
 		fetch('https://psy-api.herokuapp.com/logoutAll' ,{
 				method : 'post' ,
 				headers : { 'Content-Type' : 'application/json', 
-							'Authorization' : 'Bearer ' + this.props.token} ,
+							'Authorization' : 'Bearer ' + props.token} ,
 			})
 			.then(res => {
 				if(res.ok)
@@ -43,7 +33,7 @@ class Header extends React.Component
 			.then(data =>{	
 				addNotif('Successfully Logged Out', 'success') ;	
 				localStorage.clear() ;
-				this.props.loadUser({}) ;
+				props.loadUser({}) ;
 			}) 
 			.catch( err  => {
 				addNotif('There was a problem with logout', 'error') ;	
@@ -51,7 +41,7 @@ class Header extends React.Component
 			}) ;
 	}
 
-	checkMobile = () => {
+	const checkMobile = () => {
 		if(window.screen.availWidth > 923)
 		{	return (
 				<div className="mini-menu">
@@ -80,7 +70,7 @@ class Header extends React.Component
 						<Link className="header-item" to='/consult'> Consult </Link>
 						<Link className="header-item" to='/test'> Tests </Link>
 						<Link className="header-item" to='/contact'> Contact Us </Link>
-						{this.props.user.name==='admin'?<Link className="header-item" to='/admin'> Admin </Link>:null}
+						{props.user.name==='admin'?<Link className="header-item" to='/admin'> Admin </Link>:null}
 					</div>
 				</div>
 				) ;
@@ -89,10 +79,10 @@ class Header extends React.Component
 		{
 			return (
 				<div>
-					<CheeseburgerMenu isOpen={this.state.menuOpen} closeCallback={this.closeMenu}>
-							<Menu closeCallback={this.closeMenu} checkLoggedIn={this.checkLoggedIn} user={this.props.user}/>
+					<CheeseburgerMenu isOpen={menuOpen} closeCallback={() => setMenuOpen(false)}>
+							<Menu closeCallback={() => setMenuOpen(false)} checkLoggedIn={checkLoggedIn} user={props.user}/>
 					</CheeseburgerMenu>
-					<HamburgerMenu isOpen={this.state.menuOpen} menuClicked={this.openMenu} 
+					<HamburgerMenu isOpen={menuOpen} menuClicked={() => setMenuOpen(true)} 
 								   width={32} height={24} strokeWidth={8} color='white' 
 								   borderRadius={1} animationDuration={0.5} />
 				</div>
@@ -100,14 +90,14 @@ class Header extends React.Component
 		}
 	}
 
-	checkLoggedIn = (str = '', str2 = '') => {
-		if(this.props.token === '')
+	const checkLoggedIn = (str = '', str2 = '') => {
+		if(props.token === '')
 		{
 			return (
 				<div className = {"right-header "+str2}>
-					<button className={"header-btn "+str} onClick={()=>this.onButtonClick('login')}>
+					<button className={"header-btn "+str} onClick={()=>onButtonClick('login')}>
 					 Login </button>
-					<button className={"header-btn "+str}  onClick={()=>this.onButtonClick('register')}>
+					<button className={"header-btn "+str}  onClick={()=>onButtonClick('register')}>
 					 Register </button>
 				</div>
 				) ;
@@ -116,22 +106,19 @@ class Header extends React.Component
 		{
 			return (
 				<div className = {"right-header "+str2}>
-					<Link className={"header-btn "+str} to="/profile"> {this.props.user.name} </Link>
-					<button className={"header-btn "+str}  onClick={this.onLogoutClick}> Logout </button>
+					<Link className={"header-btn "+str} to="/profile"> {props.user.name} </Link>
+					<button className={"header-btn "+str}  onClick={onLogoutClick}> Logout </button>
 				</div>
 				) ;
 		}
 	}
 
-	render()
-	{
-		return (
-			<div className="topbar" id="bar"> 
-				{this.checkMobile()}
-				{this.checkLoggedIn()}
-			</div>
-			) ;
-	}
+	return (
+		<div className="topbar" id="bar"> 
+			{checkMobile()}
+			{checkLoggedIn()}
+		</div>
+	) ;
 }
 
 export default withRouter(Header) ;

@@ -1,22 +1,43 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
 
-class BarItem extends Component {
-	render() {
+const BarItem = ({msg, icon, link, text}) => {
+	return (
+		<div className='bar-item'> 
+			<div>
+			 	<div className="item-txt">
+			 		<div className="top"> {msg} </div>
+			 		<div>
+			 			<FontAwesomeIcon icon={icon} />
+			 		 	<a href={link}>{text}</a>
+			 		</div>
+				</div>
+			</div>
+		</div>
+	);
+}
+
+const BarItemBig = ({msg, icon, link, text, scroll}) => {
+	if(window.screen.availWidth > 600)
 		return (
 			<div className='bar-item'> 
-				<div>
+				 <div> 
+				 	<FontAwesomeIcon icon={icon}/>
 				 	<div className="item-txt">
-				 		<div className="top"> {this.props.msg} </div>
-				 		<div>
-				 			<FontAwesomeIcon icon={this.props.icon} />
-				 		 	<a href={this.props.link}>{this.props.text}</a>
-				 		</div>
-					</div>
+				 		<div> {msg} </div>
+				 		<div> <a href={link}>{text}</a> </div>
+				 	</div>
 				</div>
 			</div>
 		);
-	}
+	else
+		return (
+			<div className='bar-item'> 
+				<div>
+					<a href={link} onClick={scroll}> <FontAwesomeIcon icon={icon} /> </a>
+				</div>
+			</div>
+		);
 }
 
-export default BarItem ;
+export {BarItem, BarItemBig} ;

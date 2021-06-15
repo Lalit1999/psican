@@ -2,13 +2,12 @@ import React from 'react' ;
 import { faPhoneAlt, faEnvelope, faFileCode } from '@fortawesome/free-solid-svg-icons' ;
 
 import './topbar.css' ;
-import BarItem from './BarItem.js' ;
-import BarItemBig from './BarItemBig.js' ;
+import {BarItem, BarItemBig} from './BarItem.js' ;
 import PopIcon from '../popup/PopIcon.js' ;
 import Image from '../images/Psyment.webp' ;
 
-class TopBar extends React.Component
-{	checkMobile = () => {
+const TopBar = () => {
+	const checkMobile = () => {
 		if(window.screen.availWidth > 600)
 			return (
 				<React.Fragment>
@@ -33,19 +32,16 @@ class TopBar extends React.Component
 			) ;
 	}
 
-	render()
-	{
-		return (
-			<div className="topbar"> 
-				<div className="logo">
-					<p> <img src={Image} alt="logo" /> </p>
-				</div>
-				<div className="right-topbar">
-					{ this.checkMobile() }
-				</div>
+	return (
+		<div className="topbar"> 
+			<div className="logo">
+				<p> <img src={Image} alt="logo" /> </p>
 			</div>
-			) ;
-	}
+			<div className="right-topbar">
+				{ checkMobile() }
+			</div>
+		</div>
+	) ;
 }
 
 export default TopBar ;

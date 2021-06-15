@@ -40,7 +40,8 @@
 	z-index: 3;
 	padding: 0 .3em ;
 	display: inline-block ;
-	margin-left: 90% ;
+	margin: 0 0 0 90% ;
+	cursor: pointer;
 }
 
 .self .close:hover

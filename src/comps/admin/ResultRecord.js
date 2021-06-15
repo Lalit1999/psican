@@ -1,33 +1,29 @@
-import React from 'react' ;
+import React, {useState} from 'react' ;
 
 import UserRecord from './UserRecord.js' ;
 import { addNotif } from '../notif.js' ;
 
 import './admin.css' ;
 
+const ResultRecord = ({data, token, lite, date, ki}) => {	
+	const [owner, setOwner] = useState('close');
+	const [ownData, setOwnData] = useState({}) ;
 
-class ResultRecord extends React.Component
-{	
-	state = {
-		owner: 'close',
-		ownData : {} ,
-	}
-
-	formatDate = (dt) => {
-		const dat = new Date(dt).toLocaleString("en-US", {timeZone: "Asia/Kolkata"}); ;
+	const formatDate = (dt) => {
+		const dat = new Date(dt).toLocaleString("en-US", {timeZone: "Asia/Kolkata"}); 
 		return dat ;
 	}
 
-	onOwnerClick = () => {
-		const { owner } = this.props.data ;
-		if(this.state.owner === 'open')
-			this.setState({owner: 'close'});
+	const onOwnerClick = () => {
+		const { owner } = data ;
+		if(owner === 'open')
+			setOwner('close') ;
 		else
-		{	if(this.state.ownData.name)
-				this.setState({owner: 'open'})
+		{	if(ownData.name)
+				setOwner('open') ;
 			else
-			{	const str = 'Bearer ' + this.props.token ;
-				// console.log(str) ;
+			{	const str = 'Bearer ' + token ;
+				
 				fetch('https://psy-api.herokuapp.com/user/'+owner, {
 					method : 'get' ,
 					headers : { 'Content-Type' : 'application/json' ,
@@ -41,7 +37,8 @@ class ResultRecord extends React.Component
 				})
 				.then(data => {
 					console.log(data) ;	
-					this.setState({ownData: data, owner: 'open'});
+					setOwnData(data) ;
+					setOwner('open');
 				}) 
 				.catch( err  => {
 					console.log(err) ; 
@@ -51,48 +48,39 @@ class ResultRecord extends React.Component
 		}
 	}
 
-	checkOwner = () => {
-		if(this.state.owner === 'open')
+	const checkOwner = () => {
+		if(owner === 'open')
 			return (
-				<React.Fragment> <UserRecord data={this.state.ownData} lite="yes"/> </React.Fragment>
+				<React.Fragment> <UserRecord data={ownData} lite="yes"/> </React.Fragment>
 			) ;
-		else
-			return null ;
 	} 
 
-	checkLite = (num) => {	
-		if(this.props.lite)
-			return null ;
-		else
+	const checkLite = (num) => {	
+		if(!lite)
 			return (
-			<React.Fragment>
-				<p className="slim">{num + 1}</p>
-				<p className="record-btn" onClick={this.onOwnerClick}>{this.state.owner ==='close'?'Show':'Hide'} Owner </p>
-			</React.Fragment>
+				<React.Fragment>
+					<p className="slim">{num + 1}</p>
+					<p className="record-btn" onClick={onOwnerClick}>{owner ==='close'?'Show':'Hide'} Owner </p>
+				</React.Fragment>
 			) ;		
 	}
 
-	checkDate = (data) => {
-		if(this.props.date === 'no')
-			return null ;
-		else
-			return <p className="fat">{this.formatDate(data.createdAt)}</p> ;
+	const checkDate = (data) => {
+		if(date !== 'no')
+			return <p className="fat">{formatDate(data.createdAt)}</p> ;
 	}
 	
-	render()
-	{	const {ki, data} = this.props ;
-		return (
-			<React.Fragment>
-				<div className={"record result " + this.props.lite}> 
-					{this.checkLite(ki)}
-					<p className="slim">{data.test}</p>
-					<p>{data.result.t}</p>
-					{this.checkDate(data)}
-				</div>
-				<div> {this.checkOwner()} </div>
-			</React.Fragment>
-		) ;
-	}		
+	return (
+		<React.Fragment>
+			<div className={"record result " + lite}> 
+				{checkLite(ki)}
+				<p className="slim">{data.test}</p>
+				<p>{data.result.t}</p>
+				{checkDate(data)}
+			</div>
+			<div> {checkOwner()} </div>
+		</React.Fragment>
+	) ;
 } 
 
 export default ResultRecord ;

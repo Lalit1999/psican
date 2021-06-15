@@ -1,4 +1,4 @@
-import React from 'react' ;
+import React, {useState, useEffect} from 'react' ;
 import {Redirect} from'react-router-dom' ;
 
 import Dropdown from '../signup/dropdown/Dropdown.js' ;
@@ -7,20 +7,16 @@ import UserRecord from './UserRecord.js' ;
 import { addNotif } from '../notif.js' ;
 import './admin.css' ;
 
-class Admin extends React.Component
-{
-	state = {
-		users : [] ,
-		results : [] ,
-		mode: 'users' ,
-		searchText :''
-	} ;
+const Admin = ({token, user}) => {
+	const [data, setData] = useState({results: [], users: []}) ;
+	const [mode, setMode] = useState('users') ;
+	const [searchText, setSearchText] = useState('') ;
 
-	componentDidMount = () => {
+	useEffect(() => {
 		fetch('https://psy-api.herokuapp.com/users',{
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json' ,
-						'Authorization' : 'Bearer ' + this.props.token} ,
+						'Authorization' : 'Bearer ' + token} ,
 		})
 		.then(res => {
 			if(res.ok)
@@ -28,9 +24,7 @@ class Admin extends React.Component
 			else
 				throw Error(res.statusText) ;
 		})
-		.then(data => {	
-				this.setState({users: data});
-		}) 
+		.then(users => setData({...data, users}) ) 
 		.catch( err  => {
 			console.log(err) ; 
 			addNotif(err.message, 'error') ;
@@ -39,7 +33,7 @@ class Admin extends React.Component
 		fetch('https://psy-api.herokuapp.com/test',{
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json' ,
-						'Authorization' : 'Bearer ' + this.props.token} ,
+						'Authorization' : 'Bearer ' + token} ,
 		})
 		.then(res => {
 			if(res.ok)
@@ -47,59 +41,50 @@ class Admin extends React.Component
 			else
 				throw Error(res.statusText) ;
 		})
-		.then(data => {	
-				this.setState({results: data});
-		}) 
+		.then(results => setData({...data, results}) ) 
 		.catch( err  => {
 			console.log(err) ; 
 			addNotif(err.message, 'error') ;
 		}) ;
 
-	}
+	}, []) ;
 
-	filterRecords = (user) => {
-		return user.name.toLowerCase().includes(this.state.searchText.toLowerCase()) ;
-	}
+	const filterRecords = (user) => user.name.toLowerCase().includes(searchText.toLowerCase()) 
 
-	createRecords = () => {
-		if(this.state[this.state.mode].length > 0)
-			switch(this.state.mode)
-			{	case 'results' : return this.state.results.map((one, i)=><ResultRecord token={this.props.token} key={i} ki={i} data={one} /> ) ;
-				case 'users' : return this.state.users.filter(this.filterRecords).map((one, i)=><UserRecord token={this.props.token} key={i} ki={i} data={one} /> ) ;
+	const createRecords = () => {
+		if(data[mode].length > 0)
+			switch(mode)
+			{	case 'results' : return data.results.map((one, i)=><ResultRecord token={token} key={i} ki={i} data={one} /> ) ;
+				case 'users' : return data.users.filter(filterRecords).map((one, i)=><UserRecord token={token} key={i} ki={i} data={one} /> ) ;
 				default: return 'unexpected input' ;
 			}
 	}
 
-	onSC = (event) => {
-		this.setState({searchText : event.target.value}) ;
+	const onSC = (event) => setSearchText(event.target.value) 
+
+	const onInputChange = (event) => {
+		setMode(event.target.value) ;
+		setSearchText('') ;
 	}
 
-	onInputChange = (event) => {
-		this.setState( { [event.target.name] : event.target.value , searchText : '' } ) ;
-	}
-
-	render()
-	{	if(this.props.user && this.props.user.name === 'admin')
-		{	
-			return(
-				<div className = 'admin'>
-					<div className = 'admin-bar'>
-						<Dropdown label="Mode" name="mode" value={this.state.mode} options={['users','results']} onChange={this.onInputChange}/>
-						<p className = 'task' >Total Rows&nbsp;:&nbsp;{this.state[this.state.mode].length}</p>
-						<Dropdown label="Search By" name="searchby" value={this.state.mode} options={['name','phone','email']} onChange={this.onInputChange}/>
-						<input className = 'task' onChange = {this.onSC} value={this.state.searchText} type='text' placeholder='search' />
-					</div>
-					<div className="records-table">
-						{this.createRecords()}
-					</div>
+	if(user && user.name === 'admin')
+	{	
+		return(
+			<div className = 'admin'>
+				<div className = 'admin-bar'>
+					<Dropdown label="Mode" name="mode" value={mode} options={['users','results']} onChange={onInputChange}/>
+					<p className = 'task' >Total Rows&nbsp;:&nbsp;{data[mode].length}</p>
+					{/*<Dropdown label="Search By" name="searchby" value={mode} options={['name','phone','email']} onChange={onInputChange}/>*/}
+					<input className = 'task' onChange={onSC} value={searchText} type='text' placeholder='search' />
 				</div>
-			) ;		
-		}
-		else
-			return <Redirect to = '/' />		
+				<div className="records-table">
+					{createRecords()}
+				</div>
+			</div>
+		) ;		
 	}
+	else
+		return <Redirect to = '/' />		
 }
 
 export default Admin ;
-						
-						// <Dropdown className = 'task' label="Sort By" name="sortby" value={this.state.mode} options={['date','alphabet','marks']} onChange={this.onInputChange}/>

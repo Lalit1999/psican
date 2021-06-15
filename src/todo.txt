@@ -1,20 +1,3 @@
- 24-1-2021
+6-15-2021
 
- 1. ek baar pura revisit kar lo
-
- ------------------
-
- (omnivision)
- 1. Particle.js hatani hai
- 2. bekar ki animation hatani hai
- 3. descr dena hai thoda sa
- 4. ek baar pura revisit kar lo
-
- Clarifai ki website firse study kar lo
-
- 5. Khud kuch detect karna ho to vo bhi model generate karna easy ho gaya idhar
-
- https://docs.clarifai.com/how-to/portal/visual-text-recognition-walkthrough
-
- ____________________________
-
+- popicon me kuch dikkat hai khol band sahi se nahi ho raha

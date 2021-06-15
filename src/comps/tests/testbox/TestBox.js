@@ -3,15 +3,15 @@ import { Link } from'react-router-dom' ;
 
 import './tb.css' ;
 
-const TestBox = (props) => {
+const TestBox = ({title, desc, link}) => {
 	return(
 		<div className = 'testbox'>
 			<div className="testbox-left">
-				<h2> {props.title} </h2>
-				<p> {props.desc}  </p>
+				<h2> {title} </h2>
+				<p> {desc}  </p>
 			</div>
 			<div className="testbox-right">
-				<Link className="sched-btn" to={props.link}> Take the Test </Link> 
+				<Link className="sched-btn" to={link}> Take the Test </Link> 
 			</div>
 		</div>
 	) ;

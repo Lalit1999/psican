@@ -8,6 +8,7 @@ import Leader_image from '../images/leader.webp' ;
 const Aboutperson = () => {	
 	let width = 0 ;
 	let height = 0 ;
+
 	if(window.screen.availWidth > 600)
 	{	width = 896 ;
 		height = 504 ;
@@ -16,6 +17,7 @@ const Aboutperson = () => {
 	{	width = 308 ;
 		height = 173.25 ;
 	}
+	
 	return(
 		<div>
 			<div>
