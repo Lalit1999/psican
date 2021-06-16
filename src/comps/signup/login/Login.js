@@ -132,7 +132,7 @@ const Login = (props) => {
 		}
 	}
 
-	if(this.props.user.name)
+	if(props.user.name)
 		return <Redirect to='/' />
 	else
 	{	return(

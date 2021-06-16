@@ -1,4 +1,4 @@
-import React from 'react' ;
+import React, {useState} from 'react' ;
 import {Redirect} from'react-router-dom' ;
 
 import { addNotif } from '.././notif.js' ;
@@ -12,27 +12,45 @@ import Pop from '../popup/Pop.js' ;
 import ResultRecord from '../admin/ResultRecord.js' ;
 import './UserProfile.css' ;
 
-class UserProfile extends React.Component
-{	
-	state = {
-	  	mode : 'normal' ,
-	  	oldpass: '' ,
-	  	newpass: '' ,
-	  	repass: '' ,
-	  	error: '' ,
-	  	resData: {}
-	} ;
+const returnKey = {
+	name : "Name",
+	age : "Age",
+	gender : "Gender",
+	height : "Height(inch)",
+	weight : "Weight(kg)",
+	address : "Address",
+	address2 : "Permanent Address",
+	father : "Father's Name",
+	mother : "Mother's Name",
+	working : "Working",
+	hobbies : "Hobbies",
+	siblings : "Siblings",
+	email : "E-Mail",
+	mobile : "Mobile No.",
+}
 
-	formatDate = (dt) => {
+const initData = {
+	oldpass: '',
+	newpass: '',
+	repass: '',
+} ;
+
+const UserProfile = ({token, loadUser, user}) => {
+	const [mode, setMode] = useState('normal') ;
+	const [error, setError] = useState('') ;
+	const [resData, setResData] = useState({}) ;
+	const [data, setData] = useState(initData) ;	
+
+	const formatDate = (dt) => {
 		const dat = new Date(dt).toLocaleString("en-US", {timeZone: "Asia/Kolkata"}); ;
 		return dat ;
 	}
 
-	onLogoutClick = () => {
+	const onLogoutClick = () => {
 		fetch('https://psy-api.herokuapp.com/logoutAll' ,{
 				method : 'post' ,
 				headers : { 'Content-Type' : 'application/json', 
-							'Authorization' : 'Bearer ' + this.props.token} ,
+							'Authorization' : 'Bearer ' + token} ,
 		})
 		.then(res => {
 			if(res.ok)
@@ -42,7 +60,7 @@ class UserProfile extends React.Component
 		})
 		.then(data =>{	
 			addNotif('Successfully Logged Out', 'success') ;	
-			this.props.loadUser({}) ;
+			loadUser({}) ;
 		}) 
 		.catch( err  => {
 			addNotif('Error Logging Out', 'error') ;	
@@ -50,15 +68,13 @@ class UserProfile extends React.Component
 		}) ;
 	}
 
-	onEditClick = () => {
-		(this.state.mode==='normal'?this.setState({mode:'edit'}):this.setState({mode:'normal'}) ); 
-	}
+	const onEditClick = () => mode==='normal'?setMode('edit'):setMode('normal')  
 
-	onDeleteClick = () => {
+	const onDeleteClick = () => {
 		fetch('https://psy-api.herokuapp.com/users/me',{
 				method : 'delete' ,
 				headers : { 'Content-Type' : 'application/json', 
-							'Authorization' : 'Bearer ' + this.props.token} ,
+							'Authorization' : 'Bearer ' + token} ,
 		})
 		.then(res => {
 			if(res.ok)
@@ -68,7 +84,7 @@ class UserProfile extends React.Component
 		})
 		.then(data =>{	
 			addNotif('Successfully Deleted', 'success') ;
-			this.props.loadUser({}) ;
+			loadUser({}) ;
 		}) 
 		.catch( err  => {
 			addNotif('Error Deleting Profile', 'error') ;	
@@ -76,42 +92,46 @@ class UserProfile extends React.Component
 		}) ;
 	}
 	
-	onChangeClick = () => {
-		if(this.state.error !== '')
-			this.setState({error: 'You must fix all errors before proceeding'});
+	const onChangeClick = () => {
+		const {oldpass, newpass, repass} = data ;
+		if(error !== '')
+			setError('You must fix all errors before proceeding');
 		else
 		{
-			if( isBlank(this.state.oldpass, 'Old Password') )
-				this.setState( {error: isBlank(this.state.oldpass, 'Old Password')} )
-			else if ( invalidPass(this.state.newpass, this.state.repass) )
-				this.setState( {error: invalidPass(this.state.newpass, this.state.repass)} )
+			if( isBlank(oldpass, 'Old Password') )
+				setError(isBlank(oldpass, 'Old Password') ) ;
+			else if ( invalidPass(newpass, repass) )
+				setError(invalidPass(newpass, repass) ) ;
 			else
 			{	fetch('https://psy-api.herokuapp.com/users/me/change',{
 						method : 'post' ,
 						headers : { 'Content-Type' : 'application/json', 
-									'Authorization' : 'Bearer ' + this.props.token} ,
-						body: JSON.stringify({oldpass: this.state.oldpass, newpass: this.state.newpass})
+									'Authorization' : 'Bearer ' + token} ,
+						body: JSON.stringify({ oldpass, newpass})
 				})
 				.then(res => {
 					if(res.ok)
-						this.setState({error: '', oldpass: '', newpass: '', repass:''}) ;
+					{
+						setError('') ;
+						setData(initData) ;
+					}
 					else
 						throw Error(res.statusText) ;
 				})
 				.then(data =>{	
 					addNotif('Successfully changed the password', 'success') ;
-					this.props.loadUser({}) ;
+					loadUser({}) ;
 				})
-				.catch( err  => this.setState({error: 'Incorrect Old Password'})) ;
+				.catch( err  => setError('Incorrect Old Password') ) ;
 			}
 		}
 	}
 
-	onResultGetClick = () => {
+	const onResultGetClick = () => {
 		fetch('https://psy-api.herokuapp.com/result/me', {
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json' ,
-						'Authorization' : 'Bearer '+ this.props.token} ,
+						'Authorization' : 'Bearer '+ token} ,
 		})
 		.then(res => {
 			if(res.ok)
@@ -119,111 +139,85 @@ class UserProfile extends React.Component
 			else
 				throw Error(res.statusText) ;
 		})
-		.then(data => this.setState( {resData: data} ) ) 
+		.then( data => setResData(data) ) 
 		.catch( err  => {
 			console.log(err) ; 
 			addNotif(err.message, 'error') ;
 		}) ;
 	}
 
-	checkResult = () => {
-		if(this.state.resData[0])
-			return this.state.resData.map((one, i) => <ResultRecord key={i} data={one} lite="yes" date="no"/>) ;
+	const checkResult = () => {
+		if(resData[0])
+			return resData.map((one, i) => <ResultRecord key={i} data={one} lite="yes" date="no"/>) ;
 		else 
-			return <button className="sched-btn" onClick={this.onResultGetClick}> Get Results </button> ;
+			return <button className="sched-btn" onClick={onResultGetClick}> Get Results </button> ;
 	}
-
-	returnkey = (str) => {
-		let ret = '' ;
-		switch(str)
-		{	
-			case "name" : ret = "Name" ; break ;
-			case "age"  : ret = "Age" ; break ;
-			case "gender" : ret = "Gender" ; break ;
-			case "height" : ret = "Height(inch)" ; break ;
-			case "weight" : ret = "Weight(kg)" ; break ;
-			case "address" : ret = "Address" ; break ;
-			case "address2" : ret = "Permanent Address" ; break ;
-			case "father" : ret = "Father's Name" ; break ;
-			case "mother" : ret = "Mother's Name" ; break ;
-			case "working" : ret = "Working" ; break ;
-			case "hobbies" : ret = "Hobbies" ; break ;
-			case "siblings" : ret = "Siblings" ; break ;
-			case "email" : ret = "E-Mail" ; break ;
-			case "mobile" : ret = "Mobile No." ; break ;
-			default : return false ;
-		}
-		return ret ;
-	}
-
-	generateData = () => {
-		return Object.keys(this.props.user).map( (one,i) => {
-			const name = this.returnkey(one) ;
-			if(name)
-				return <Data key={i} kiy={name} mode={this.state.mode} value={this.props.user[one]} />
+	
+	const generateData = () => {
+		return Object.keys(user).map( (one,i) => {
+			if(returnKey[one])
+				return <Data key={i} kiy={returnKey[one]} mode={mode} value={user[one]} />
 			else 
 				return null ;
 		}) ;
 	}
 
-	checkMode = () => {
-		if(this.state.mode === 'edit')
-			return <Register init={this.props.user} mode="edit" token={this.props.token} loadUser={this.props.loadUser} edit={this.onEditClick}/>
+	const checkMode = () => {
+		if(mode === 'edit')
+			return <Register init={user} mode="edit" token={token} loadUser={loadUser} edit={onEditClick}/>
 		else
 			return (
 				<div className = "right_corner_onee">
-					{this.generateData()}
-					<Data kiy="Created at :" mode={this.state.mode} 
-						 value={this.formatDate(this.props.user.createdAt)} />
+					{generateData()}
+					<Data kiy="Created at :" mode={mode} 
+						 value={formatDate(user.createdAt)} />
 				</div>
 			) ;
 	}
 
-	onInputChange = (event) => {
-		this.setState({	[event.target.name] : event.target.value, error: ''} ) ;
+	const onInputChange = (event) => {
+		setData({ ...data,	[event.target.name] : event.target.value}) ;
+		setError('') ;
 	}
 
-	render()
-	{	const {oldpass, repass, newpass} = this.state ;
-		if(this.props.user.name)
-		{
-			return (
-				<div>
-					<Title name = 'Profile' items={["Home -", "profile"]}/>
-					<div className="propfileBoxe">
-						<div className="pteste">
-							<div className="lefte">
-								<div className="test-result-con">
-									<h3> Test Results </h3>
-									<div className="results-con">
-										{this.checkResult()}
-									</div> 
-								</div>
-								<Pop btn="Change Password" classes="buttone ">
-									<LoginForm title=" Basic Details " error={this.state.error} near="near"
-										b2="Change" onb2Click={this.onChangeClick} >
-										<Text label="Old Password" name="oldpass" type="pw" value={oldpass} onChange={this.onInputChange}/>
-										<Text label="New Password" name="newpass" type="pw" value={newpass} onChange={this.onInputChange}/>
-										<Text label="Retype Password" name="repass" type="pw" value={repass} onChange={this.onInputChange}/>
-									</LoginForm>
-								</Pop>								
-	 							<button className = "buttone" onClick={this.onLogoutClick} >Logout</button>
-								<button className = "buttone " onClick = {this.onEditClick}>
-									{(this.state.mode==='edit'?'Go Back':'Edit profile')}
-								</button>
-	 							<button className = "buttone dele" onClick={this.onDeleteClick} >Delete profile</button>
+	if(user.name)
+	{
+		return (
+			<div>
+				<Title name = 'Profile' items={["Home -", "profile"]}/>
+				<div className="propfileBoxe">
+					<div className="pteste">
+						<div className="lefte">
+							<div className="test-result-con">
+								<h3> Test Results </h3>
+								<div className="results-con">
+									{checkResult()}
+								</div> 
 							</div>
-							<div className="righte">
-								{this.checkMode()}
-							</div>
+							<Pop btn="Change Password" classes="buttone ">
+								<LoginForm title=" Basic Details " error={error} near="near"
+									b2="Change" onb2Click={onChangeClick} >
+									<Text label="Old Password" name="oldpass" type="pw" value={data.oldpass} onChange={onInputChange}/>
+									<Text label="New Password" name="newpass" type="pw" value={data.newpass} onChange={onInputChange}/>
+									<Text label="Retype Password" name="repass" type="pw" value={data.repass} onChange={onInputChange}/>
+								</LoginForm>
+							</Pop>								
+ 							<button className = "buttone" onClick={onLogoutClick} >Logout</button>
+							<button className = "buttone " onClick = {onEditClick}>
+								{(mode==='edit'?'Go Back':'Edit profile')}
+							</button>
+ 							<button className = "buttone dele" onClick={onDeleteClick}>Delete profile</button>
+						</div>
+						<div className="righte">
+							{checkMode()}
 						</div>
 					</div>
 				</div>
-			) ;
-		}
-		else
-			return <Redirect to = '/login' />
+			</div>
+		) ;
 	}
+	else
+		return <Redirect to = '/login' />
 }
 
 export default UserProfile ;
