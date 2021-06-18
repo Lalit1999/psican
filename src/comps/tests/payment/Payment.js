@@ -4,6 +4,12 @@ import { addNotif } from '../../notif.js' ;
 import Text from '../../signup/text/Text.js' ;
 import './payment.css' ;
 
+const h3Content = {
+	saat : 'Self Anxiety Assessment Test (SAAT)' ,
+	leta: 'Learning Environment Trait Assessment (LETA)' ,
+	appoint: 'Book your Appointment'
+} ;
+
 const Payment = ({cost, token, display, change, couponChange, type}) => {
 
 	const [coupon, setCoupon] = useState('') ;
@@ -36,16 +42,9 @@ const Payment = ({cost, token, display, change, couponChange, type}) => {
 		}) ;
 	}
 
-	const returnH3 = () => {
-		if(type === 'saat')
-			return	<h3> Self Anxiety Assessment Test (SAAT) </h3> ;
-		else if(type === 'appoint') 
-			return	<h3> Book your Appointment</h3> ;
-	}
-
 	return(			
 		<div className="test-box">
-			{returnH3()}
+			<h3>{h3Content[type]}</h3>
 			<div className="payment">
 				<div className="payment-left">
 					<p>Cost to be paid :  {cost}</p>

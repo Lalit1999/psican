@@ -20,13 +20,13 @@ const cont3 = [
 
 const cont4 = [ 
 'SAAT(Self-Assessment Anxiety Test)',
-'Take this free test to get your anxiety score',
+'Take this test to get your anxiety score',
 'Get evaluation of your anxiety level' ] ;
 
 const cont5 = [ 
 'LETA(Learning Environment Traits Assessment)',
 'Only for Parents having children 2-12 years old',
-'Take this free test to find probability of your traits getting expressed in your child' ] ;
+'Take this test to find probability of your traits getting expressed in your child' ] ;
 
 // is object me sara data store ho raha hai
 const obj = {
