@@ -148,6 +148,22 @@ const LETA = ({token, user}) => {
 	const [coupon, setCoupon] = useState('noPayment') ;
 
 	useEffect( () => {
+		
+		fetch("https://psy-api.herokuapp.com/leta-payment/check", {
+			method : 'get' ,
+			headers : { 'Content-Type' : 'application/json',
+						'Authorization' : 'Bearer '+ token
+					  } ,
+		}) 
+		.then(res => {
+			if(res.ok)
+				return res.json() ;
+			else
+				throw Error(res.statusText) ;
+		})
+		.then(data => setPayment(data.answer))  
+		.catch(err => console.log(err, err.message) ) ;
+
 		return(	() => {
 					ansf = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 						 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
