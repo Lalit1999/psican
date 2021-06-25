@@ -15,6 +15,7 @@ import DownBar from './comps/downbar/DownBar.js' ;
 import Exam from './comps/tests/Exam.js' ;
 import AnxietyTestPage from './comps/tests/anxiety/AnxietyTestPage.js' ;
 import TraitTest from './comps/tests/traits/TraitTest.js' ;
+import AccisTestPage from './comps/tests/accis/AccisTestPage.js' ;
 import Admin from './comps/admin/Admin.js' ;
 import './App.css' ;
 const AEQUESS = lazy(() => import('./comps/program/AEQUESS.js')) ;
@@ -98,8 +99,9 @@ class App extends React.Component
 		              <Route path='/profile' render={props=><Suspense fallback={<div> Loading... </div>}><Profile user={user} token={userToken} loadUser={this.loadUser}/></Suspense>}/>
 		              <Route path='/test' exact render={props=><Suspense fallback={<div> Loading... </div>}><Exam/></Suspense>}/>
 		              <Route path='/admin' render={props=><Suspense fallback={<div> Loading... </div>}><Admin {...props} user={user} token={userToken} /></Suspense>}/>
-		              <Route path='/test/self-anxiety-assessment' exact render={props=><Suspense fallback={<div> Loading... </div>}><AnxietyTestPage user={user} token={userToken} /></Suspense>}/>
-		              <Route path='/test/trait-test' exact render={props=><Suspense fallback={<div> Loading... </div>}><TraitTest user={user} token={userToken} /></Suspense>}/>
+		              <Route path='/test/saat' exact render={props=><Suspense fallback={<div> Loading... </div>}><AnxietyTestPage user={user} token={userToken} /></Suspense>}/>
+		              <Route path='/test/leta' exact render={props=><Suspense fallback={<div> Loading... </div>}><TraitTest user={user} token={userToken} /></Suspense>}/>
+		              <Route path='/test/accis' exact render={props=><Suspense fallback={<div> Loading... </div>}><AccisTestPage user={user} token={userToken}/></Suspense>}/>
 		              <Route path='/privacy-policy' exact render={props=><Suspense fallback={<div> Loading... </div>}><PrivacyPolicy/></Suspense>}/>
 		              <Route path='/terms-condition' exact render={props=><Suspense fallback={<div> Loading... </div>}><TermsCondition/></Suspense>}/>
 		              <Route path='/refund-policy' exact render={props=><Suspense fallback={<div> Loading... </div>}><RefundPolicy/></Suspense>}/>

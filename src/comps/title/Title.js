@@ -18,8 +18,9 @@ const itemMap = {
 	"PSYMENT" : 'about/psyment',
 	"Test " : 'test',
 	"Test -" : 'test',
-	"SAAT" : "test/self-anxiety-assessment",
-	"LETA" : "test/trait-test",
+	"SAAT" : "test/saat",
+	"LETA" : "test/leta",
+	"ACCIS" : "test/accis",
 	"Privacy Policy" : "privacy-policy",
 	"Refund Policy" : "refund-policy",
 	"Terms & Conditions" : "terms-condition"
