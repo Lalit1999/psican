@@ -127,7 +127,6 @@ const SAAT = ({token, user}) => {
 	const [lang, setLang] = useState('english') ;
 	const [payment, setPayment] = useState(false) ;
 	const [coupon, setCoupon] = useState('noPayment') ;
-	const [checked, setChecked] = useState([true, false]) ;
 
 	useEffect( () => {
 		fetch("https://psy-api.herokuapp.com/saat-payment/check", {
@@ -354,14 +353,8 @@ const SAAT = ({token, user}) => {
 				<div className="test-box">
 					<h3> Self Anxiety Assessment Test (SAAT) </h3> 
 					<div className="lang-con"> Change Language: 
-						<input type="radio" id={0} name={'lang'} checked={checked[0]} onChange={() => {
-							setChecked([true, false]) ;
-							setLang('english') ;
-						}}/> English 
-						<input type="radio" id={1} name={'lang'} checked={checked[1]} onChange={() => {
-							setChecked([false, true]) ;
-							setLang('hindi') ;
-						}}/> हिन्दी 
+						<input type="radio" id={0} name={'lang'} checked={lang==='english'} onChange={() => setLang('english') } /> English 
+						<input type="radio" id={1} name={'lang'} checked={lang==='hindi'} onChange={() => setLang('hindi') }/> हिन्दी 
 					</div>
 					{checkMode()}
 				</div>
