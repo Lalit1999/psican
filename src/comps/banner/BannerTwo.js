@@ -19,7 +19,7 @@ const cont3 = [
 'Schedule your Appointment Now' ] ;
 
 const cont4 = [ 
-'SAAT(Self-Assessment Anxiety Test)',
+'USTOP(Understanding Self Through Observed Perceptions)',
 'Take this test to get your anxiety score',
 'Get evaluation of your anxiety level' ] ;
 
@@ -49,13 +49,13 @@ const obj = {
 		title : 'Anxiety Test' ,
 		lidata : cont4 ,
 		test : 'test',
-		link : "/test/self-anxiety-assessment"
+		link : "/test/ustop"
 	} ,
 	leta :{
 		title : 'Traits Test for Parents' ,
 		lidata : cont5 ,
 		test : 'test' ,
-		link : "/test/trait-test"
+		link : "/test/leta"
 	}
 }
 

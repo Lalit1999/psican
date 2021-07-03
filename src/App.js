@@ -99,7 +99,7 @@ class App extends React.Component
 		              <Route path='/profile' render={props=><Suspense fallback={<div> Loading... </div>}><Profile user={user} token={userToken} loadUser={this.loadUser}/></Suspense>}/>
 		              <Route path='/test' exact render={props=><Suspense fallback={<div> Loading... </div>}><Exam/></Suspense>}/>
 		              <Route path='/admin' render={props=><Suspense fallback={<div> Loading... </div>}><Admin {...props} user={user} token={userToken} /></Suspense>}/>
-		              <Route path='/test/saat' exact render={props=><Suspense fallback={<div> Loading... </div>}><AnxietyTestPage user={user} token={userToken} /></Suspense>}/>
+		              <Route path='/test/ustop' exact render={props=><Suspense fallback={<div> Loading... </div>}><AnxietyTestPage user={user} token={userToken} /></Suspense>}/>
 		              <Route path='/test/leta' exact render={props=><Suspense fallback={<div> Loading... </div>}><TraitTest user={user} token={userToken} /></Suspense>}/>
 		              <Route path='/test/accis' exact render={props=><Suspense fallback={<div> Loading... </div>}><AccisTestPage user={user} token={userToken}/></Suspense>}/>
 		              <Route path='/privacy-policy' exact render={props=><Suspense fallback={<div> Loading... </div>}><PrivacyPolicy/></Suspense>}/>

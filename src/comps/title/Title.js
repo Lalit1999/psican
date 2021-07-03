@@ -18,7 +18,7 @@ const itemMap = {
 	"PSYMENT" : 'about/psyment',
 	"Test " : 'test',
 	"Test -" : 'test',
-	"SAAT" : "test/saat",
+	"USTOP" : "test/ustop",
 	"LETA" : "test/leta",
 	"ACCIS" : "test/accis",
 	"Privacy Policy" : "privacy-policy",

@@ -351,7 +351,7 @@ const SAAT = ({token, user}) => {
 		if(payment)
 			return (
 				<div className="test-box">
-					<h3> Self Anxiety Assessment Test (SAAT) </h3> 
+					<h3> Understanding Self Through Observed Perceptions (USTOP) </h3> 
 					<div className="lang-con"> Change Language: 
 						<input type="radio" id={0} name={'lang'} checked={lang==='english'} onChange={() => setLang('english') } /> English 
 						<input type="radio" id={1} name={'lang'} checked={lang==='hindi'} onChange={() => setLang('hindi') }/> हिन्दी 
@@ -360,7 +360,7 @@ const SAAT = ({token, user}) => {
 				</div>
 			) ;
 		else 
-			return <Payment cost={coupon_amount[coupon]} token={token} display={displayRazorpay} change={() => setPayment(true)} couponChange={changeCoupon} type='saat'/> ;
+			return <Payment cost={coupon_amount[coupon]} token={token} display={displayRazorpay} change={() => setPayment(true)} couponChange={changeCoupon} type='ustop'/> ;
 	}	
 
 	if(token === "")

@@ -5,8 +5,9 @@ import Text from '../../signup/text/Text.js' ;
 import './payment.css' ;
 
 const h3Content = {
-	saat : 'Self Anxiety Assessment Test (SAAT)' ,
+	ustop : 'Understanding Self Through Observed Perceptions (USTOP)' ,
 	leta: 'Learning Environment Trait Assessment (LETA)' ,
+	accis: 'Assessment of COVID Cognitive Impact on Self (ACCIS)',
 	appoint: 'Book your Appointment'
 } ;
 
