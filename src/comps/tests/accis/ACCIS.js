@@ -81,7 +81,7 @@ const ACCIS = ({user, token}) => {
 				</div>
 			) ;
 		// else 
-		// 	return <Payment cost={coupon_amount[coupon]} token={token} display={displayRazorpay} change={() => setPayment(true)} couponChange={changeCoupon} type='saat'/> ;
+		// 	return <Payment cost={coupon_amount[coupon]} token={token} display={displayRazorpay} change={() => setPayment(true)} couponChange={changeCoupon} type='accis'/> ;
 	}
 
 	if(token === "")
