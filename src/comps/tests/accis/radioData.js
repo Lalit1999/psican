@@ -2,7 +2,7 @@ const radioData = [
 {	english: 'Yes',
 	hindi: 'हाँ' },
 {	english: 'No',
-	hinid: 'नहीं' }
+	hindi: 'नहीं' }
 ] ;
 
 const radioData2 = [
@@ -26,4 +26,4 @@ const radioData3 = [
 	hindi: 'पूरी तरह से' },
 ] ;
 
-export {radioData} ; 
+export {radioData, radioData3, radioData2} ; 

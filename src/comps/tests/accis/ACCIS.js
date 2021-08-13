@@ -1,4 +1,4 @@
-import React, {useState} from 'react' ;
+import React, {useState, useEffect} from 'react' ;
 import {Link} from 'react-router-dom' ;
 
 import { addNotif } from '../../notif.js' ;
@@ -7,6 +7,13 @@ import AccisQuestion from './AccisQuestion.js' ;
 
 import {inst, quesData, subData } from './langdata.js' ;
 import logo from '../../images/Psyment.webp' ;
+
+let ans = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+		 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
+		 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+		 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+		 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+		 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,] ;
 
 const ACCIS = ({user, token}) => {
 	const [mode, setMode] = useState('start') ;
@@ -31,9 +38,10 @@ const ACCIS = ({user, token}) => {
 								</div>
 							</div> 
 						);
-		case 'test' : return <AccisQuestion changeMode={setMode} lang={lang}/> ;
-		case 'finish' : return null ;
-						// let obj2 = {
+
+		case 'test' : return <AccisQuestion changeMode={setMode} lang={lang} ans={ans}/> ;
+
+		case 'finish' : // let obj2 = {
 						// 	test: 'accis',
 						// } ;
 						
@@ -53,8 +61,13 @@ const ACCIS = ({user, token}) => {
 						// 	console.log(err) ; 
 						// 	addNotif(err.message, 'error') ;
 						// }) ;
+						return (
+							<div className="question result"> 
+								<p> {ans.reduce((a,b)=>a+b)} </p> 
+							</div>
+						) ;
 
-		case 'confirm' : return (
+		case 'confirm': return (
 							<div className="question">
 								<p>{subData.subNote[lang]}</p>
 								<div className="next-btn-con proceed-con">
@@ -63,6 +76,7 @@ const ACCIS = ({user, token}) => {
 								</div>
 							</div>   
 						) ;
+
 		default: return <div>{subData.error[lang]} </div> ;
 		}
 	}
