@@ -67,36 +67,24 @@ const subData = {
 	},
 } ;
 
-// const resultData = {
-// 	sScore :{
-// 		english :'Your S Score is' ,
-// 		hindi :'आपके S अंक हैं'
-// 	},
-// 	eScore :{
-// 		english :'Your E Score is' ,
-// 		hindi :'आपके E अंक हैं'
-// 	},
-// 	aScore :{
-// 		english :'Your A Score is' ,
-// 		hindi :'आपके A अंक हैं'
-// 	},
-// 	tScore :{
-// 		english :'Your Total Score is' ,
-// 		hindi :'आपके कुल अंक हैं'
-// 	},
-// 	p1 :{
-// 		english: 'We request you to remember your S, A and E score (they are stored in your profile) as they may be useful in further consultations with mental health professionals.' ,
-// 		hindi: 'आपसे अनुरोध है कि, आप अपने S , A , E और कुल अंको को सम्भाल कर रखे क्योंकि अगर आप किसी मनोविशेषज्ञ की सलाह  लेते हैं तो ये उनकी सहायता करेंगे।'
-// 	} ,
-// 	p2 :{
-// 		english: 'For further consultations/support, Call' ,
-// 		hindi: 'आगे के परामर्श/समर्थन के लिये, फोन करे '
-// 	} ,
-// 	p3 :{
-// 		english: 'Mr. Ashish Aggarwal +91-95552-35231' ,
-// 		hindi: 'श्री आशीष अग्रवाल +91-95552-35231 '
-// 	} 
-// } ;
+const resultData = {
+	score :{
+		english :'Your Final Score is' ,
+		hindi :'आपके समापक अंक हैं'
+	},
+	p1 :{
+		english: 'We request you to remember your Final score (they are stored in your profile) as they may be useful in further consultations with mental health professionals.' ,
+		hindi: 'आपसे अनुरोध है कि, आप अपने समापक अंको को सम्भाल कर रखे क्योंकि अगर आप किसी मनोविशेषज्ञ की सलाह  लेते हैं तो ये उनकी सहायता करेंगे।'
+	} ,
+	p2 :{
+		english: 'For further consultations/support, Call' ,
+		hindi: 'आगे के परामर्श/समर्थन के लिये, फोन करे '
+	} ,
+	p3 :{
+		english: 'Mr. Ashish Aggarwal +91-95552-35231' ,
+		hindi: 'श्री आशीष अग्रवाल +91-95552-35231 '
+	} 
+} ;
 
 // const evalData = {
 // 	stage1 :{
@@ -173,7 +161,7 @@ const subData = {
 // 	}
 // } ; 
 
-export {inst, quesData, subData, /*resultData, evalData*/} ;
+export {inst, quesData, subData, resultData, /*evalData*/} ;
 
 
   

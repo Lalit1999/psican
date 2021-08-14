@@ -5,7 +5,7 @@ import { addNotif } from '../../notif.js' ;
 import Payment from '../payment/Payment.js' ;
 import AccisQuestion from './AccisQuestion.js' ;
 
-import {inst, quesData, subData } from './langdata.js' ;
+import {inst, subData, resultData } from './langdata.js' ;
 import logo from '../../images/Psyment.webp' ;
 
 let ans = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -15,11 +15,141 @@ let ans = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 		 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 		 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,] ;
 
+const coupon_amount = {
+    noPayment: 200,
+    fullPayment: 0,
+    quarterPayment: 50,
+    halfPayment: 100,
+    threeQuarter: 150,
+}
+
 const ACCIS = ({user, token}) => {
 	const [mode, setMode] = useState('start') ;
 	const [lang, setLang] = useState('english') ;
 	const [payment, setPayment] = useState(false) ;
 	const [coupon, setCoupon] = useState('noPayment') ;
+
+	useEffect( () => {
+		fetch("https://psy-api.herokuapp.com/accis-payment/check", {
+			method : 'get' ,
+			headers : { 'Content-Type' : 'application/json',
+						'Authorization' : 'Bearer '+ token
+					  } ,
+		}) 
+		.then(res => {
+			if(res.ok)
+				return res.json() ;
+			else
+				throw Error(res.statusText) ;
+		})
+		.then(data => setPayment(data.answer))  
+		.catch(err => console.log(err, err.message) ) ;
+
+		return (() =>{
+			ans = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
+				 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+				 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,] ;
+		}) ;
+	}, [] ) ;
+
+	const loadScript = (src) => {
+	    return new Promise((resolve) => {
+	        const script = document.createElement("script");
+	        script.src = src;
+	        script.onload = () => {
+	            resolve(true);
+	        };
+	        script.onerror = () => {
+	            resolve(false);
+	        };
+	        document.body.appendChild(script);
+	    });
+	}
+
+	const displayRazorpay = async () => {
+	    const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
+
+	    if (!res) {
+	        alert("Payment Gateway failed to load");
+	        return;
+	    }
+
+	    let result = await fetch("https://psy-api.herokuapp.com/accis-payment", {
+			method : 'post' ,
+			headers : { 'Content-Type' : 'application/json',
+						'Authorization' : 'Bearer '+ token
+					  } ,
+			body : JSON.stringify({ coupon }) 
+		});
+
+	    if(result.ok)
+	    	result =  await result.json() ;
+	    else
+			throw Error(result.statusText) ;
+
+	    const { amount, id: order_id, currency } = result;
+
+	    const options = {
+	        key: "rzp_live_7U3eAyAgr3NCgu", // Enter the Key ID generated from the Dashboard
+	        amount: amount.toString(),
+	        currency: currency,
+	        name: user.name,
+	        description: "SAAT Test for "+user.name,
+	        image: { logo },
+	        order_id: order_id,
+	        handler: async (response) => {
+	            const data = {
+	                orderCreationId: order_id,
+	                razorpayPaymentId: response.razorpay_payment_id,
+	                razorpayOrderId: response.razorpay_order_id,
+	                razorpaySignature: response.razorpay_signature,
+	                amount ,
+	            };
+
+	            let result2 = await fetch("https://psy-api.herokuapp.com/accis-payment/success", {
+					method : 'post' ,
+					headers : { 'Content-Type' : 'application/json',
+								'Authorization' : 'Bearer '+ token
+						} ,
+					body: JSON.stringify(data) ,
+				});
+
+				if(result2.ok)
+			    	result2 =  await result2.json() ;
+
+	            setPayment(true) ;
+	        },
+	        prefill: {
+	            name: user.name,
+	            email: user.email,
+	            contact: user.mobile,
+	        },
+	        notes: {
+	            address: user.name + ' ' + user.mobile + ' ' + user.email ,
+	        },
+	        theme: {
+	            color: "#61dafb",
+	        },
+	    };
+
+	    const paymentObject = new window.Razorpay(options);
+	    paymentObject.open();
+	}
+
+	const changeCoupon = (str) => {
+		if(str === 'fullPayment')
+		{
+			addNotif('Coupon Applied Successfully', 'success') ;
+			setPayment(true) ;
+		}
+		else
+		{	if(str === 'noPayment')
+				addNotif('Coupon Invalid or already used', 'error') ;
+			else
+				addNotif('Coupon Applied Successfully', 'success') ;
+			setCoupon(str) ;
+		}					
+	}
 
 	const checkMode = () => {
 		switch(mode)
@@ -41,29 +171,37 @@ const ACCIS = ({user, token}) => {
 
 		case 'test' : return <AccisQuestion changeMode={setMode} lang={lang} ans={ans}/> ;
 
-		case 'finish' : // let obj2 = {
-						// 	test: 'accis',
-						// } ;
+		case 'finish' : let obj2 = {
+							test: 'accis',
+							result: {
+								answers: ans,
+								t: ans.reduce((a,b)=>a+b),
+							}
+						} ;
 						
-						// fetch('https://psy-api.herokuapp.com/test',{
-						// 	method : 'post' ,
-						// 	headers : { 'Content-Type' : 'application/json' ,
-						// 				'Authorization' : 'Bearer ' + token} ,
-						// 	body : JSON.stringify(obj2) ,
-						// })
-						// .then(res => {
-						// 	if(res.ok)
-						// 		return res.json() ;
-						// 	else
-						// 		throw Error(res.statusText) ;
-						// })
-						// .catch( err  => {
-						// 	console.log(err) ; 
-						// 	addNotif(err.message, 'error') ;
-						// }) ;
+						fetch('https://psy-api.herokuapp.com/test',{
+							method : 'post' ,
+							headers : { 'Content-Type' : 'application/json' ,
+										'Authorization' : 'Bearer ' + token} ,
+							body : JSON.stringify(obj2) ,
+						})
+						.then(res => {
+							if(res.ok)
+								return res.json() ;
+							else
+								throw Error(res.statusText) ;
+						})
+						.catch( err  => {
+							console.log(err) ; 
+							addNotif(err.message, 'error') ;
+						}) ;
 						return (
 							<div className="question result"> 
-								<p> {ans.reduce((a,b)=>a+b)} </p> 
+								<p> {resultData.score[lang]} : {obj2.result.t} </p> 
+								<p> {/*getEvaluation(obj2.result.t)*/} </p>
+								<p> {resultData.p1[lang]} </p>
+								<p> {resultData.p2[lang]} <br/>
+									{resultData.p3[lang]} </p>
 							</div>
 						) ;
 
@@ -82,7 +220,7 @@ const ACCIS = ({user, token}) => {
 	}
 
 	const checkPayment = () => {
-		// if(payment)
+		if(payment)
 			return (
 				<div className="test-box">
 					<h3> Assessment of COVID Cognitive Impact on Self (ACCIS) </h3> 
@@ -94,8 +232,8 @@ const ACCIS = ({user, token}) => {
 					{checkMode()}
 				</div>
 			) ;
-		// else 
-		// 	return <Payment cost={coupon_amount[coupon]} token={token} display={displayRazorpay} change={() => setPayment(true)} couponChange={changeCoupon} type='accis'/> ;
+		else 
+			return <Payment cost={coupon_amount[coupon]} token={token} display={displayRazorpay} change={() => setPayment(true)} couponChange={changeCoupon} type='accis'/> ;
 	}
 
 	if(token === "")

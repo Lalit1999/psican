@@ -13,7 +13,7 @@ const AccisQuestion = ({changeMode, lang, ans}) => {
 
 	const onPrevClick = () => {
 		let arr = [false, false, false, false] ;
-		arr[ val[ (num+1)%3 ][ ans[num+1] ] ] = true ;
+		arr[ val[ (num-1)%3 ][ ans[num-1] ] ] = true ;
 		setNum(num-1) ;
 		setChecked(arr) ;
 	}
