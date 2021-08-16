@@ -15,7 +15,9 @@ const AccisTestPage = ({user, token}) => {
 			<p className="intro bold"> AIM: The present questionnaire is aimed at helping an individual to understand the impact of COVID environment and COVID-related anxiety on his/her behaviour, expression, functioning and well-being.</p>
 			<p className="intro bold"> DISCLAIMER : The current assessment is a non-standard test.<br/> It may give only an assessment of few aspects and may only give a partial assessment.<br/> It is advised to understand and correlate the findings with clinical assessment or with presented symptoms with the help of a healthcare Professional/Psychologist.
 			</p>
-			<ACCIS token={token}/>
+			<ACCIS token={token} user={user}/>
+			<p className="intro bold support"> Having Technical issues? <a className="sched-btn" href="mailto:myarth.tech@gmail.com" target="_blank" rel="noopener noreferrer"> Contact Technical Support </a>
+			</p>
 		</div>
 	) ;
 }

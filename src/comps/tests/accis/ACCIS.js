@@ -226,8 +226,7 @@ const ACCIS = ({user, token}) => {
 					<h3> Assessment of COVID Cognitive Impact on Self (ACCIS) </h3> 
 					<div className="lang-con"> Change Language: 
 						<input type="radio" id={0} name={'lang'} checked={lang==='english'} onChange={() => setLang('english') }/> English 
-						<input type="radio" id={1} name={'lang'} checked={lang==='hindi'} onChange={() => 
-							setLang('hindi') }/> हिन्दी 
+						<input type="radio" id={1} name={'lang'} checked={lang==='hindi'} onChange={() => setLang('hindi') }/> हिन्दी 
 					</div>
 					{checkMode()}
 				</div>

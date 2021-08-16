@@ -110,6 +110,8 @@ const AQUESS = ({token, user}) => {
 			<DisplayDetailed title="Features" lidata={features} />
 			<Heading text="Send Your Query" />
 			{ checkLogin() }
+			<p className="intro bold support"> Having Technical issues? <a className="sched-btn" href="mailto:myarth.tech@gmail.com" target="_blank" rel="noopener noreferrer"> Contact Technical Support </a>
+			</p>
 		</div>
 	) ;
 }

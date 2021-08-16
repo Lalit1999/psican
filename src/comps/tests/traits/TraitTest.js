@@ -15,6 +15,8 @@ const TraitTest = ({user, token}) => {
 			<p className="intro"> This test is only meant for Parents having children less than 12 years of age.<br/> This test will give the most accurate results if both parents take the test together. Therefore, it is recommended that both parents give the test.</p>
 			<p className="intro bold"> DISCLAIMER : The present assessment is a non-standard attempt to provide a basic understanding of a child's probability to express traits based on his/her parents.<br/>The observations and findings of this test may be corelated to observed and presented findings by a mental health professional.</p>
 			<TTP user={user} token={token}/>
+			<p className="intro bold support"> Having Technical issues? <a className="sched-btn" href="mailto:myarth.tech@gmail.com" target="_blank" rel="noopener noreferrer"> Contact Technical Support </a>
+			</p>
 		</div>
 	) ;
 }

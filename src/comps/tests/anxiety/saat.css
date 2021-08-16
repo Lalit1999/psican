@@ -121,6 +121,17 @@
 	color: orangered ;
 }
 
+.support {
+	text-align: center;
+}
+
+.support .sched-btn {
+	margin-left: 1em ;
+	font-size: 1.1rem ;
+	font-weight: normal ;
+	text-decoration: none ;
+}
+
 @media(max-width: 600px)
 {	.test-box {
 		margin: 1em ;
