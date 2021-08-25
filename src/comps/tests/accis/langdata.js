@@ -70,7 +70,7 @@ const subData = {
 const resultData = {
 	score :{
 		english :'Your Final Score is' ,
-		hindi :'आपके समापक अंक हैं'
+		hindi :'आपके अंतिम अंक हैं'
 	},
 	p1 :{
 		english: 'We request you to remember your Final score (they are stored in your profile) as they may be useful in further consultations with mental health professionals.' ,
@@ -86,82 +86,82 @@ const resultData = {
 	} 
 } ;
 
-// const evalData = {
-// 	stage1 :{
-// 		l1 :{
-// 			english : 'You have' ,
-// 			hindi : 'आपका'
-// 		} ,
-// 		l2 :{
-// 			english : ' Optimum Functional Anxiety' ,
-// 			hindi : ' तनाव अनुकूल स्तर '
-// 		} ,
-// 		l3 :{
-// 			english : ',which means you have anxiety within normal range and at an optimum level.' ,
-// 			hindi : 'पर है। जिसका मतलब है कि आपका तनाव सामान्य सीमा में ही है।'
-// 		} ,
-// 		l4 :{
-// 			english : 'No intervention in your lifestyle is required. You do not need any counselling.' ,
-// 			hindi : ' आपकी जीवन शैली में किसी बदलाव की कोई आवश्यक्ता नहीं है, न ही आपको किसी मनोविशेषज्ञ की सलाह लेने की ज़रुरत है।'
-// 		}
-// 	},
-// 	stage2 :{
-// 		l1 :{
-// 			english : 'You have' ,
-// 			hindi : 'आपको'
-// 		}	,
-// 		l2 :{
-// 			english : 'Mild Anxiety' ,
-// 			hindi : ' हल्का तनाव '
-// 		} ,
-// 		l3 :{
-// 			english : ', which means you have anxiety slightly above the normal range. Your anxiety may sometimes cause problems in your day-to-day activites.' ,
-// 			hindi : 'है। जिसका मतलब है कि आपका तनाव सामान्य सीमा से थोडा ज़्यादा है। कभी-कभी आपका तनाव आपकी रोज़मर्र्रा की ज़िंद्गी पर बुरा प्रभाव डाल सकता है।'
-// 		} ,
-// 		l4 :{
-// 			english : 'A few Lifestyle changes are needed for you to have lower anxiety levels. You have a little need for Counselling (4-6 sessions in an year).' ,
-// 			hindi : 'आपको तनाव का स्तर घटाने के लिये अपनी जीवन शैली में थोडे बदलाव की आवश्यक्ता है, आपको मनोविशेषज्ञ से सलाह लेने की थोडी ज़रुरत है(साल में 4-6 बार)।'
-// 		}
-// 	},
-// 	stage3 :{
-// 		l1 :{
-// 			english : 'You have' ,
-// 			hindi : 'आपका'
-// 		}	,
-// 		l2 :{
-// 			english : 'Moderate Anxiety ' ,
-// 			hindi : ' तनाव मध्यम स्तर '
-// 		} ,
-// 		l3 :{
-// 			english : ', which means you have high anxiety levels which are above the normal range. Your anxiety may be affecting your health and causing problems in your day-to-day life.' ,
-// 			hindi : 'पर है। जिसका मतलब है कि आपका तनाव सामान्य सीमा से काफी ज़्यादा है। आपका तनाव आपकी ज़िंद्गी और सेहत पर बुरा प्रभाव डाल सकता है। '
-// 		} ,
-// 		l4 :{
-// 			english : 'You require training of Relaxation Techniques to bring down your anxiety levels. You require regular counselling(twice per month) for a short time.' ,
-// 			hindi : 'आपको खुद को शांत रखने के लिये प्रशिक्शण की आवश्यक्ता है। आपको थोडे समय के लिये मनोविशेषज्ञ की सलाह लेने की ज़रुरत है(महीने मे 2 बार)।'
-// 		}
-// 	},
-// 	stage4 :{
-// 		l1 :{
-// 			english : 'You have' ,
-// 			hindi : 'आपका'
-// 		}	,
-// 		l2 :{
-// 			english : 'Severe Anxiety' ,
-// 			hindi : ' तनाव गम्भीर स्तर '
-// 		} ,
-// 		l3 :{
-// 			english : ', which means your anxiety levels are very high as compared to the normal range. Your anxiety may lead to other serious health problems if not taken action against.' ,
-// 			hindi : ' पर है, जो बिल्कुल भी सामान्य नही है। अगर आप इस पर ध्यान नही देते है तो आपको सेहत से जुडी गम्भीर समस्या का सामना करना पड सकता है'
-// 		} ,
-// 		l4 :{
-// 			english : 'You should immediately start detailed counselling(once in a week) and continue it for a longer time.' ,
-// 			hindi : 'आपको लम्बे समय तक मनोविशेषज्ञ की सलाह लेने की ज़रुरत है(हफ्ते में 1 बार)।'
-// 		}
-// 	}
-// } ; 
+const evalData = {
+	you : {
+		english : 'You have' ,
+		hindi : 'आप पर, आपकी सोच और व्यवहार पर COVID का ',
+	},
+	sugg : {
+		english : 'Suggestions' ,
+		hindi: 'सुझाव',
+	},
+	stage1 :{
+		l1 :{
+			english : ' No Major Impact ' ,
+			hindi : ' कोई प्रमुख प्रभाव नहीं'
+		} ,
+		l2 :{
+			english : ' of COVID. You are your normal self.' ,
+			hindi : ' हुआ है. आप अपनी सामान्य स्थिति में ही है. '
+		} ,
+	},
+	stage2 :{
+		l1 :{
+			english : ' Mild Impact' ,
+			hindi : 'हल्का प्रभाव '
+		}	,
+		l2 :{
+			english : ' of COVID, on your self, thinking and behaviors.' ,
+			hindi : ' हुआ है. '
+		} ,
+		s1 :{
+			english : ' Yoga, Pranayam or Walk.' ,
+			hindi : 'योग, प्राणायाम या वॉक'
+		} ,
+		s2 :{
+			english : 'Venting with a Partner ' ,
+			hindi : 'पार्टनर के साथ अपनी भावनाओं को साझा करना'
+		}
+	},
+	stage3 :{
+		l1 :{
+			english : ' Severe Impact ' ,
+			hindi : 'गंभीर प्रभाव'
+		}	,
+		l2 :{
+			english : 'of COVID, on your self, thinking and behaviors. ' ,
+			hindi : ' हुआ है. '
+		} ,
+		s1 :{
+			english : 'Short-term psychological counselling & support.' ,
+			hindi : ' अल्पकालिक मनोवैज्ञानिक परामर्श और सहयोग'
+		} ,
+		s2 :{
+			english : 'You may also require doctor\'s consultation.' ,
+			hindi : ' आपको डॉक्टर के परामर्श की भी आवश्यकता हो सकती है '
+		}
+	},
+	stage4 :{
+		l1 :{
+			english : ' Critical Impact ' ,
+			hindi : 'विकट प्रभाव'
+		}	,
+		l2 :{
+			english : 'of COVID, on your self, thinking and behaviors. ' ,
+			hindi : ' हुआ है. '
+		} ,
+		s1 :{
+			english : 'Long-term psychological counselling & support.' ,
+			hindi : ' दीर्घकालिक मनोवैज्ञानिक परामर्श और सहयोग'
+		} ,
+		s2 :{
+			english : 'You require Doctor\'s consultation and medical management.' ,
+			hindi : ' आपको डॉक्टर के परामर्श और चिकित्सा प्रबंधन की आवश्यकता है '
+		}
+	}
+} ; 
 
-export {inst, quesData, subData, resultData, /*evalData*/} ;
+export {inst, quesData, subData, resultData, evalData} ;
 
 
   

@@ -5,7 +5,7 @@ import { addNotif } from '../../notif.js' ;
 import Payment from '../payment/Payment.js' ;
 import AccisQuestion from './AccisQuestion.js' ;
 
-import {inst, subData, resultData } from './langdata.js' ;
+import {inst, subData, resultData, evalData } from './langdata.js' ;
 import logo from '../../images/Psyment.webp' ;
 
 let ans = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -23,8 +23,24 @@ const coupon_amount = {
     threeQuarter: 150,
 }
 
+const EvalDisplay = ({stage, type, lang}) => {
+	return (
+		<React.Fragment>
+			{evalData.you[lang]} 
+			<span className={"eval "+type}>{evalData[stage].l1[lang]}</span>
+			{evalData[stage].l2[lang]}
+			{ 	(stage !== 'stage1')?
+				<ul> {evalData.sugg[lang]}:
+					<li> {evalData[stage].s1[lang]} </li>
+					<li> {evalData[stage].s2[lang]} </li>
+				</ul>:null 
+			}
+		</React.Fragment>
+	) ;
+}
+
 const ACCIS = ({user, token}) => {
-	const [mode, setMode] = useState('start') ;
+	const [mode, setMode] = useState('finish') ;
 	const [lang, setLang] = useState('english') ;
 	const [payment, setPayment] = useState(false) ;
 	const [coupon, setCoupon] = useState('noPayment') ;
@@ -198,7 +214,7 @@ const ACCIS = ({user, token}) => {
 						return (
 							<div className="question result"> 
 								<p> {resultData.score[lang]} : {obj2.result.t} </p> 
-								<p> {/*getEvaluation(obj2.result.t)*/} </p>
+								<p> {getEvaluation(obj2.result.t)} </p>
 								<p> {resultData.p1[lang]} </p>
 								<p> {resultData.p2[lang]} <br/>
 									{resultData.p3[lang]} </p>
@@ -217,6 +233,21 @@ const ACCIS = ({user, token}) => {
 
 		default: return <div>{subData.error[lang]} </div> ;
 		}
+	}
+
+	const getEvaluation = (t) => {
+		if(t <= 60)
+		{	if( t <= 30)
+				return <EvalDisplay stage="stage1" type="low" lang={lang}/> ; 
+			else
+				return <EvalDisplay stage="stage2" type="mild" lang={lang}/> ; 
+		}
+		else
+		{	if(t <= 90)
+				return <EvalDisplay stage="stage3" type="moderate" lang={lang}/> ; 
+			else
+				return <EvalDisplay stage="stage4" type="high" lang={lang}/> ; 
+		} 
 	}
 
 	const checkPayment = () => {

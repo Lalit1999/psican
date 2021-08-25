@@ -10,12 +10,21 @@ import { inst, subData, quesData, resultData } from './langData.js' ;
 import { ttpQues } from './queData.js' ;
 import './ttp.css' ;
 
+// const coupon_amount = {
+//     noPayment: 100,
+//     fullPayment: 0,
+//     quarterPayment: 25,
+//     halfPayment: 50,
+//     threeQuarter: 75,
+// }
+
 const coupon_amount = {
-    noPayment: 100,
+    noPayment: 250,
     fullPayment: 0,
-    quarterPayment: 25,
-    halfPayment: 50,
-    threeQuarter: 75,
+    quarterPayment: 65,
+    halfPayment: 125,
+    threeQuarter: 185,
+    sevenPayment: 75, //70%
 }
 
 let ansf = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
