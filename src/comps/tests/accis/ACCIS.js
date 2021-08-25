@@ -8,6 +8,8 @@ import AccisQuestion from './AccisQuestion.js' ;
 import {inst, subData, resultData, evalData } from './langdata.js' ;
 import logo from '../../images/Psyment.webp' ;
 
+import './accis.css' ;
+
 let ans = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 		 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
 		 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -215,6 +217,14 @@ const ACCIS = ({user, token}) => {
 							<div className="question result"> 
 								<p> {resultData.score[lang]} : {obj2.result.t} </p> 
 								<p> {getEvaluation(obj2.result.t)} </p>
+								<hr/>
+								<p> {resultData.accisKey[lang]} </p>
+								<p> <span className="evalNumber"> 0-30 </span> : <span className="low">{resultData.l1[lang]}</span> <br/>
+									<span className="evalNumber"> 31-60 </span> : <span className="mild">{resultData.l2[lang]}</span> <br/>
+									<span className="evalNumber"> 61-90 </span> : <span className="moderate">{resultData.l3[lang]}</span> <br/>
+									<span className="evalNumber"> 91-120 </span> : <span className="high">{resultData.l4[lang]}</span> <br/>
+								</p>
+								<hr/>
 								<p> {resultData.p1[lang]} </p>
 								<p> {resultData.p2[lang]} <br/>
 									{resultData.p3[lang]} </p>

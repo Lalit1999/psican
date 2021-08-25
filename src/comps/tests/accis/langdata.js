@@ -69,8 +69,8 @@ const subData = {
 
 const resultData = {
 	score :{
-		english :'Your Final Score is' ,
-		hindi :'आपके अंतिम अंक हैं'
+		english :'Your Score is' ,
+		hindi :'आपके अंक हैं'
 	},
 	p1 :{
 		english: 'We request you to remember your Final score (they are stored in your profile) as they may be useful in further consultations with mental health professionals.' ,
@@ -83,7 +83,27 @@ const resultData = {
 	p3 :{
 		english: 'Mr. Ashish Aggarwal +91-95552-35231' ,
 		hindi: 'श्री आशीष अग्रवाल +91-95552-35231 '
-	} 
+	} ,
+	l1 :{
+		english : ' No Major Impact ' ,
+		hindi : ' कोई प्रमुख प्रभाव नहीं'
+	} ,
+	l2 : {
+		english : ' Mild Impact' ,
+		hindi : 'हल्का प्रभाव '
+	} ,
+	l3 : {
+		english : ' Severe Impact ' ,
+		hindi : 'गंभीर प्रभाव'
+	} ,
+	l4 : {
+		english : ' Critical Impact ' ,
+		hindi : 'विकट प्रभाव'
+	} ,
+	accisKey: {
+		english: 'ACCIS Score Interpretation Key',
+		hindi: 'स्कोर व्याख्या कुंजी'
+	} ,
 } ;
 
 const evalData = {
