@@ -40,7 +40,7 @@ const EvalDisplay = ({stage, type, lang}) => {
 }
 
 const ACCIS = ({user, token}) => {
-	const [mode, setMode] = useState('finish') ;
+	const [mode, setMode] = useState('start') ;
 	const [lang, setLang] = useState('english') ;
 	const [payment, setPayment] = useState(false) ;
 	const [coupon, setCoupon] = useState('noPayment') ;
