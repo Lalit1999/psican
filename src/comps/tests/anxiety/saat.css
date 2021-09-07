@@ -203,4 +203,16 @@
 		margin-right: 2em ;	
 	}
 
+	.support {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.support .sched-btn {
+		margin: .5em 0 ;
+		width: 60vw ;
+	}
+
 }
