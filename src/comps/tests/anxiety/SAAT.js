@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react' ;
 import {Link} from 'react-router-dom' ;
 
-import { addNotif } from '../../notif.js' ;
+import { addNotif, remNotif } from '../../notif.js' ;
 import './saat.css' ;
 import Payment from '../payment/Payment.js' ;
 
@@ -149,7 +149,7 @@ const SAAT = ({token, user}) => {
 				 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 				 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,] ;
 		}) ;
-	}, [] ) ;
+	}, [token] ) ;
 
 	const loadScript = (src) => {
 	    return new Promise((resolve) => {
@@ -304,6 +304,7 @@ const SAAT = ({token, user}) => {
 						})
 						.catch( err  => {
 							console.log(err) ; 
+							remNotif() ;
 							addNotif(err.message, 'error') ;
 						}) ;
 

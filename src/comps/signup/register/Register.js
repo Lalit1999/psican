@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react' ;
 import {Redirect} from 'react-router-dom';
 
-import { addNotif } from '../../notif.js' ;
+import { addNotif, remNotif } from '../../notif.js' ;
 import {invalidEmail, invalidMobile, invalidPass, isBlank, isMaxMin, invalidName} from '../../valid.js' ;
 import Title from '../../title/Title.js' ;
 import LoginForm from '../forms/LoginForm.js' ;
@@ -20,7 +20,7 @@ const Register = (props) => {
 	const [data, setData] = useState({}) ;
 	const [error, setError] = useState('') ;
 
-	useEffect( () => (props.mode === 'edit')?setData(props.init):setData(initPerson) , []) ;
+	useEffect( () => (props.mode === 'edit')?setData(props.init):setData(initPerson) , [props.mode, props.init]) ;
 
 	const sendRegisterRequest = () => {
 		if(props.mode === 'edit')
@@ -39,6 +39,7 @@ const Register = (props) => {
 					throw Error(res.statusText) ;
 			})
 			.then(data => {	
+				remNotif() ;
 				addNotif('Successfully Updated Profile', 'success') ;
 
 				props.loadUser(data) ;
@@ -46,6 +47,7 @@ const Register = (props) => {
 			}) 
 			.catch( err  => {
 				console.log(err) ;
+				remNotif() ;
 				addNotif('Error updating profile' , 'error') ;
 			}) ;
 		}
@@ -65,12 +67,14 @@ const Register = (props) => {
 			})
 			.then(data => {	
 				setData(initPerson) ;
+				remNotif() ;
 				addNotif('Successfully Registered', 'success') ;
 
 				props.loadUser(data) ;
 			}) 
 			.catch( err  => {
 				console.log(err) ;
+				remNotif() ;
 				addNotif('Error while registration' , 'error') ;
 				props.history.push('/');
 			}) ;

@@ -1,7 +1,7 @@
 import React, {useState} from 'react' ;
 import {Link} from 'react-router-dom' ;
 
-import { addNotif } from '../notif.js' ;
+import { addNotif, remNotif } from '../notif.js' ;
 import Title from '../title/Title.js' ;
 import DisplayDetailed from '../display/DisplayDetailed.js' ;
 import Heading from '../Heading/Heading.js' ;
@@ -46,10 +46,12 @@ const AQUESS = ({token, user}) => {
 			})
 			.then(data => {
 				setData(initData) ;	
+				remNotif() ;
 				addNotif('Successfully Received Query', 'success') ;
 			}) 
 			.catch( err  => {
 				console.log(err) ; 
+				remNotif() ;
 				addNotif(err.message, 'error') ;
 			}) ;
 		}

@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import {Link} from 'react-router-dom' ;
 
 import Payment from '../tests/payment/Payment.js' ;
-import { addNotif } from '../notif.js' ;
+import { addNotif, remNotif } from '../notif.js' ;
 import Title from '../title/Title.js' ;
 import DisplayDetailed from '../display/DisplayDetailed.js' ;
 import Heading from '../Heading/Heading.js' ;
@@ -54,7 +54,7 @@ const Personal = ({token, user}) => {
 		})
 		.then(data => setPayment(data.answer) )  
 		.catch( err  => console.log(err, err.message) ) ;
-	}, [] );	
+	}, [token] );	
 
 	const returnTomorrow = () => {
 		const tom = new Date() ;
@@ -123,10 +123,12 @@ const Personal = ({token, user}) => {
 			.then(data => {	
 				setDate( returnTomorrow() ) ;
 				setAvail('') ;
+				remNotif() ;
 				addNotif('Successfully Received Consultation Appointment', 'success') ;
 			}) 
 			.catch( err  => {
 				console.log(err) ; 
+				remNotif() ;
 				addNotif('Error Creating Appointment' , 'error') ;
 			}) ;
 		}
@@ -147,6 +149,7 @@ const Personal = ({token, user}) => {
 			.then(data => {
 				if(data === 'Available')
 				{	setAvail('yes');
+					remNotif() ;
 					addNotif('Appointment Available', 'success') ;
 				}	
 				else
@@ -154,6 +157,7 @@ const Personal = ({token, user}) => {
 			}) 
 			.catch( err  => {
 				setError('Unavailable, for negotiation Call +91-9555235231');
+				remNotif() ;
 				addNotif(err.message, 'error') ;
 			}) ;
 		}

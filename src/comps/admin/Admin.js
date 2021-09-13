@@ -47,7 +47,7 @@ const Admin = ({token, user}) => {
 			addNotif(err.message, 'error') ;
 		}) ;
 
-	}, []) ;
+	}, [data, token]) ;
 
 	const filterRecords = (user) => user.name.toLowerCase().includes(searchText.toLowerCase()) 
 

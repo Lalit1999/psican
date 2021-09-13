@@ -1,7 +1,7 @@
 import React, {useState} from 'react' ;
 import {Redirect} from'react-router-dom' ;
 
-import { addNotif } from '.././notif.js' ;
+import { addNotif, remNotif } from '.././notif.js' ;
 import { invalidPass, isBlank } from '../valid.js' ;
 import Title from '../title/Title.js' ;
 import Data from '../data/Data.js' ;
@@ -59,10 +59,12 @@ const UserProfile = ({token, loadUser, user}) => {
 				throw Error(res.statusText) ;
 		})
 		.then(data =>{	
+			remNotif() ;
 			addNotif('Successfully Logged Out', 'success') ;	
 			loadUser({}) ;
 		}) 
 		.catch( err  => {
+			remNotif() ;
 			addNotif('Error Logging Out', 'error') ;	
 			console.log(err) ; 
 		}) ;
@@ -83,10 +85,12 @@ const UserProfile = ({token, loadUser, user}) => {
 				throw Error(res.statusText) ;
 		})
 		.then(data =>{	
+			remNotif() ;
 			addNotif('Successfully Deleted', 'success') ;
 			loadUser({}) ;
 		}) 
 		.catch( err  => {
+			remNotif() ;
 			addNotif('Error Deleting Profile', 'error') ;	
 			console.log(err) ; 
 		}) ;
@@ -119,6 +123,7 @@ const UserProfile = ({token, loadUser, user}) => {
 						throw Error(res.statusText) ;
 				})
 				.then(data =>{	
+					remNotif() ;
 					addNotif('Successfully changed the password', 'success') ;
 					loadUser({}) ;
 				})
@@ -142,6 +147,7 @@ const UserProfile = ({token, loadUser, user}) => {
 		.then( data => setResData(data) ) 
 		.catch( err  => {
 			console.log(err) ; 
+			remNotif() ;
 			addNotif(err.message, 'error') ;
 		}) ;
 	}

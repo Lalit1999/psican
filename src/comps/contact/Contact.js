@@ -1,6 +1,6 @@
 import React, {useState} from 'react' ;
 
-import { addNotif } from '../notif.js' ;
+import { addNotif, remNotif } from '../notif.js' ;
 import { invalidEmail, invalidMobile, isBlank, invalidName } from '../valid.js' ;
 import LoginForm from '../signup/forms/LoginForm.js' ;
 import Text from '../signup/text/Text.js' ;
@@ -45,10 +45,12 @@ const Contact = () => {
 			})
 			.then(data => {	
 				setData(initData) ;
-				addNotif('Successfully Received Message/Feedback', 'success') ;
+				remNotif() ;
+				addNotif('Successfully Sent Message/Feedback', 'success') ;
 			}) 
 			.catch( err  => {
 				console.log(err) ; 
+				remNotif() ;
 				addNotif('There was a problem with sending message', 'error') ;
 			}) ;
 		}

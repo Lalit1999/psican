@@ -6,8 +6,10 @@ import './pop.css' ;
 const PopIcon = ({children}) => {
 	const [open, setOpen] = useState(false) ;
 
+	console.log(open);
+
 	return (
-		<div onClick={() => setOpen(true)} className="pop self">
+		<div onClick={() => setOpen(!open)} className="pop self">
 			{children}
 
 			<Popup open={open} closeOnDocumentClick onClose={() => setOpen(false)} closeOnEscape>

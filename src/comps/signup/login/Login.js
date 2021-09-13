@@ -1,7 +1,7 @@
 import React, {useState} from 'react' ;
 import { Redirect } from 'react-router-dom';
 
-import { addNotif } from '../../notif.js' ;
+import { addNotif, remNotif } from '../../notif.js' ;
 import { invalidEmail, isBlank } from '../../valid.js' ;
 import Title from '../../title/Title.js' ;
 import LoginForm from '../forms/LoginForm.js' ;
@@ -37,12 +37,13 @@ const Login = (props) => {
 		})
 		.then(data =>{	
 			setData(initObj);
+			remNotif() ;
 			addNotif('Successfully Logged In', 'success') ;
-			
 			props.loadUser(data) ;
 		})  
 		.catch( err  => {
 			console.log(err) ;
+			remNotif() ;
 			addNotif('Error Logging in', 'error') ;	
 			setError('Incorrect Username OR Password');
 		}) ;
@@ -63,10 +64,12 @@ const Login = (props) => {
 				throw Error(res.statusText) ;
 		})
 		.then(data =>{	
+			remNotif() ;
 			addNotif('Request sent for password reset', 'success') ;
 		})  
 		.catch( err  => {
 			console.log(err) ;
+			remNotif() ;
 			addNotif('E-Mail invalid', 'error') ;	
 			setError('E-Mail doesn\'t exist in database');
 		}) ;
