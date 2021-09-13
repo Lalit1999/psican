@@ -110,7 +110,7 @@ const Question = ({lang, changeMode}) => {
 	) ;
 }
 
-const EvalDisplay = (stage, type, lang) => {
+const EvalDisplay = ({stage, type, lang}) => {
 	return (
 		<React.Fragment>
 			{evalData[stage].l1[lang]} 
@@ -367,9 +367,9 @@ const SAAT = ({token, user}) => {
 		return (
 			<div className="blue-bg blue-form">
 				<p> You need to 
-					<Link to="/login" className="btn3"> Login </Link>
+					<Link to="/login?rdr=ustop" className="btn3"> Login </Link>
 					 or 
-					<Link to="/register" className="btn3"> Register </Link> 
+					<Link to="/register?rdr=ustop" className="btn3"> Register </Link> 
 					to take this test (you will be redirected to home page) 
 				</p>
 			</div>

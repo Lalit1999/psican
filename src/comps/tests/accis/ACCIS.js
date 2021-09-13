@@ -280,9 +280,9 @@ const ACCIS = ({user, token}) => {
 		return (
 			<div className="blue-bg blue-form">
 				<p> You need to 
-					<Link to="/login" className="btn3"> Login </Link>
+					<Link to="/login?rdr=accis" className="btn3"> Login </Link>
 					 or 
-					<Link to="/register" className="btn3"> Register </Link> 
+					<Link to="/register?rdr=accis" className="btn3"> Register </Link> 
 					to take this test (you will be redirected to home page) 
 				</p>
 			</div>

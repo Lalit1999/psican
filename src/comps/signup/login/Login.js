@@ -40,7 +40,6 @@ const Login = (props) => {
 			addNotif('Successfully Logged In', 'success') ;
 			
 			props.loadUser(data) ;
-			props.history.push('/');
 		})  
 		.catch( err  => {
 			console.log(err) ;
@@ -65,8 +64,6 @@ const Login = (props) => {
 		})
 		.then(data =>{	
 			addNotif('Request sent for password reset', 'success') ;
-			
-			props.history.push('/');
 		})  
 		.catch( err  => {
 			console.log(err) ;
@@ -133,7 +130,26 @@ const Login = (props) => {
 	}
 
 	if(props.user.name)
-		return <Redirect to='/' />
+	{
+		if(props.location.search)	{
+			let q = props.location.search.split('?')[1].split('=') ;
+			if (q[0] === 'rdr')
+			{	switch(q[1])
+				{
+					case 'ustop' : return <Redirect to='/test/ustop' /> ;
+					case 'leta' : return <Redirect to='/test/leta' /> ;
+					case 'accis' : return <Redirect to='/test/accis' /> ;
+					case 'consult' : return <Redirect to='/consult' /> ;
+					case 'aequess' : return <Redirect to='/program/AEQUESS' /> ;
+					default : return <Redirect to='/' /> ;
+				}	
+			}
+			else	
+				return <Redirect to='/' /> ;
+		}
+		else	
+			return <Redirect to='/' /> ;
+	}
 	else
 	{	return(
 			<div>

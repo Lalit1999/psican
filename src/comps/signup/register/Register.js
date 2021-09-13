@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react' ;
 import {Redirect} from 'react-router-dom';
 
 import { addNotif } from '../../notif.js' ;
-import { invalidEmail, invalidMobile, invalidPass, isBlank, isMaxMin, invalidName } from '../../valid.js' ;
+import {invalidEmail, invalidMobile, invalidPass, isBlank, isMaxMin, invalidName} from '../../valid.js' ;
 import Title from '../../title/Title.js' ;
 import LoginForm from '../forms/LoginForm.js' ;
 import Text from '../text/Text.js' ;
@@ -68,7 +68,6 @@ const Register = (props) => {
 				addNotif('Successfully Registered', 'success') ;
 
 				props.loadUser(data) ;
-				props.history.push('/');
 			}) 
 			.catch( err  => {
 				console.log(err) ;
@@ -125,7 +124,7 @@ const Register = (props) => {
 		const {name, email, mobile,age, gender} = data ;
 		return (
 			<div>	
-				<LoginForm title="Enter Details " error={error} b2="Register" onb2Click={onNextClick} >
+				<LoginForm title="Enter Details " error={error} b2="Submit" onb2Click={onNextClick} >
 					<Text label="Name" name="name" value={name} onChange={onInputChange}/>
 					<Text label="E-Mail" name="email" value={email} onChange={onInputChange}/>
 					{ checkEditMode() } 
@@ -141,7 +140,26 @@ const Register = (props) => {
 		return <div>{personForm1()}</div> ;
 	else
 	{	if(props.user.name)
-			return <Redirect to='/' />
+		{
+			if(props.location.search)	{
+				let q = props.location.search.split('?')[1].split('=') ;
+				if (q[0] === 'rdr')
+				{	switch(q[1])
+					{
+						case 'ustop' : return <Redirect to='/test/ustop' /> ;
+						case 'leta' : return <Redirect to='/test/leta' /> ;
+						case 'accis' : return <Redirect to='/test/accis' /> ;
+						case 'consult' : return <Redirect to='/consult' /> ;
+						case 'aequess' : return <Redirect to='/program/AEQUESS' /> ;
+						default : return <Redirect to='/' /> ;
+					}	
+				}
+				else	
+					return <Redirect to='/' /> ;
+			}
+			else	
+				return <Redirect to='/' /> ;
+		}
 		else
 		{	return(
 				<div>

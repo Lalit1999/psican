@@ -78,9 +78,9 @@ const AQUESS = ({token, user}) => {
 			return (
 				<div className="blue-bg blue-form">
 					<p> You need to 
-						<Link to="/login" className="btn3"> Login </Link>
+						<Link to="/login?rdr=aequess" className="btn3"> Login </Link>
 						 or 
-						<Link to="/register" className="btn3"> Register </Link> 
+						<Link to="/register?rdr=aequess" className="btn3"> Register </Link> 
 						as a Student to send a query. 
 					</p>
 				</div>

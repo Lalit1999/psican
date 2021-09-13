@@ -316,9 +316,9 @@ const Personal = ({token, user}) => {
 			return (
 				<div className="blue-bg blue-form">
 					<p> You need to 
-						<Link to="/login" className="btn3"> Login </Link>
+						<Link to="/login?rdr=consult" className="btn3"> Login </Link>
 						 or 
-						<Link to="/register" className="btn3"> Register </Link> 
+						<Link to="/register?rdr=consult" className="btn3"> Register </Link> 
 						 to book an Appointment 
 					</p>
 				</div>
