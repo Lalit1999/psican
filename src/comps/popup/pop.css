@@ -3,17 +3,6 @@
 	background-color: inherit; 
 }
 
-.self .popup
-{	padding: 0.9em 1em 2em ;
-	font-size: 1.3rem ;
-	display: inline-block;
-}
-
-.self .popup h2
-{	margin-top : 0 ;
-	text-align: center; 
-}
-
 .popicon-div, .popicon-div p
 {	display: inline-block;
 	width: 60vw ;	
@@ -25,43 +14,14 @@
 {	margin: .5em 0;	
 }
 
-.self .popup-content
-{	border: 1px solid black;
-	border-radius: 0.9rem ;
-	z-index: 99 !important;
-	width: auto !important;
-	margin: 20vh auto auto !important;
-}
-
-.self .close
-{	text-decoration: none;
-	font-size: 3rem ;
-	color: darkred ;
-	z-index: 3;
-	padding: 0 .3em ;
-	display: inline-block ;
-	margin: 0 0 0 90% ;
-	cursor: pointer;
-}
-
-.self .close:hover
-{	background-color: salmon ;		}
-
 @media(max-width: 600px)
-{	.self .close
-	{	margin-left:80% ;
-	}
-
+{	
 	.popicon-div p
 	{	margin: .3em 0;
 	}
 
-	.popicon-div, .popicon-div p
-	{	width: 80vw ;	
+	.popicon-div, .popicon-div p {
+		width: auto ;	
 	}
 
-	.self .popup
-	{	padding: 0.2em 1em 1em ;
-		font-size: 1.2rem ;
-	}
 }

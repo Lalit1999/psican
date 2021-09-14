@@ -24,8 +24,37 @@
 .popup-content
 {
 	z-index: 19 ;
-	padding: 0 !important ;
-	margin: 0 !important ;
+	background-color: white ;
+	display: inline-block;
+	height: auto ;
+	width: auto ;
+	border-radius: .5rem ;
+	padding: 0.9em 1em 2em ;
+	font-size: 1.2rem ;
+}
+
+.popup-content h2 	{	
+	margin-top : 0 ;
+	text-align: center; 
+}
+
+.popup-content .close
+{	text-decoration: none;
+	font-size: 2rem ;
+	color: darkred ;
+	z-index: 3;
+	padding: 0 .3em ;
+	display: inline-block ;
+	margin: 0 0 0 90% ;
+	cursor: pointer;
+}
+
+.popup-content .close:hover
+{	background-color: salmon ;		}
+
+
+.popup-overlay {
+	background-color: rgba( 0, 0, 0, 0.5 ) ;
 }
 
 .popup-arrow
@@ -129,5 +158,14 @@ a.header-btn
 
 	a.header-btn
 	{	padding-top: .3em ; 
+	}
+
+	.popup-content {
+		padding: 0.2em 1em 1em ;
+		font-size: 1.2rem ;
+	}
+
+	.popup-content .close {	
+		margin-left:80% ;
 	}
 }

@@ -41,16 +41,20 @@
 {
   .lbel
   {  width: 42%;
-     /*text-align: left;*/
      font-size: 1.1rem ; 
   }
 
-  .inpu
-  {  font-size: 1.1rem ; 
-     width: 51% ;
+  .inpu {  
+    font-size: 1.1rem ; 
+    width: 51% ;
+    margin: 0 ;
   }
 
-  .text-div
-  {  width: 80vw;  }
+  .text-div {
+    display: flex ;
+    margin: 1em 0 ; 
+    width: 80vw; 
+    align-items: center; 
+  }
 
 }
