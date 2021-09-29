@@ -69,7 +69,7 @@ const AccisQuestion = ({changeMode, lang, ans}) => {
 	}
 
 	return (
-		<div className="question"> 
+		<div className="question accis"> 
 			<p> {parseInt(num,10) + 1}. &nbsp; {saatQues[num][lang]} </p>
 			<div className="radio-con"> 
 				{(num%3===0)?radioData.map(radioMap):radioData2.map(radioMap)}

@@ -38,8 +38,8 @@ const Payment = ({cost, token, display, change, couponChange, type}) => {
 			// console.log(data) ;
 		})  
 		.catch( err  => {
-			addNotif('Coupon Code Not Found', 'error') ;
 			remNotif() ;
+			addNotif('Coupon Code Not Found', 'error') ;
 			console.log(err.message) 
 		}) ;
 	}

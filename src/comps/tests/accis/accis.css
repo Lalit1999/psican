@@ -8,3 +8,16 @@
 	margin : 0 auto;
 	width: 90% ;
 }
+
+@media(max-width: 600px)
+{   
+	.accis .radio-con	{
+		display: flex; 
+		flex-direction: column;
+	}
+
+	.evalNumber {
+		width: 20vw ;
+	}
+
+}
