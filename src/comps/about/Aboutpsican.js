@@ -12,8 +12,8 @@ const Aboutpsican = () => {
 				<Title name = 'P S Y M E N T' items={["Home -"," Programs -", "PSYMENT"]}/>
 			</div>
 			<div className = 'flex'>
-				<div className = 'mb br2'>
-					<img className = 'br2' src = {Image} alt = 'Logo' />
+				<div className = 'mb'>
+					<img src = {Image} alt = 'Logo' />
 				</div>
 				<div className = 'about-right'>
 					<p>
@@ -41,7 +41,6 @@ const Aboutpsican = () => {
 						Empowerment to increase Self-Efficacy amongst its clients and audiences. 
 					</p>
 				</div>
-				
 			</div>
 		</div>
 	) ;

@@ -57,14 +57,8 @@ const Header = (props) => {
 						<Popup trigger={<span className="header-item"> Programs </span>}
 					      position="bottom center" on="hover" >
 					      <div className="pop-p">
-					      	<Popup trigger={<span className="header-item pop-item"> Students </span>}
-					      		position="right top" on="hover">
-								<Link className="header-item pop-item" to='/program/AEQUESS'> AEQUESS </Link>
-							</Popup>
-							<Popup trigger={<span className="header-item pop-item"> School/College </span>}
-					      		position="right top" on="hover">
-								<Link className="header-item pop-item" to='/program/sarathi'> Sarathi </Link>
-							</Popup>
+							<Link className="header-item pop-item" to='/program/AEQUESS'> AEQUESS </Link>
+							<Link className="header-item pop-item" to='/program/sarathi'> Sarathi </Link>
 					      </div>
 					    </Popup>
 						<Link className="header-item" to='/consult'> Consult </Link>

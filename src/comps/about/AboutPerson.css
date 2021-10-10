@@ -1,10 +1,9 @@
 .flex
 {	display: flex;
-	flex-direction: row ;
 	background-color: rgba(29, 41, 81,0.9); ; 
 	justify-content: space-between;
 	color: white ;
-	font-size: 1.5rem ;
+	font-size: 1.3rem ;
 	margin: 0 .7em ;
 }
 
@@ -18,7 +17,7 @@
 }
 
 .about-right
-{	padding: 0 4em ;
+{	padding: 0 2em ;
 }
 
 .about-list
@@ -41,23 +40,22 @@
 	overflow: hidden; 
 }
 
-.br, .br2
+.br
 {	display: block;
 	vertical-align: bottom;
 }
 
-.br2
-{	height: 35vh ;
+.mb		{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 2em ;
 }
 
-.mb
-{	margin-top: 4.2em ;
-	margin-left: 4em ;
-	width: 104% ;
-	height: 35vh ;
+.mb img {
+	display: inline-block;
 	border : 5px solid white ;
 	border-radius: 2rem ;
-	overflow: hidden;
 }
 
 .font
@@ -103,13 +101,12 @@
 	}
 
 	.br2
-	{	/*height: 25vh ;*/
+	{	height: auto ;
 	}
 
 	.mb
 	{	margin: 0 0 1em 1em ;
 		width: 88% ;
-		/*height: 25vh ;*/
 	}
 
 	.mb img
