@@ -1,6 +1,5 @@
 import React, {useState} from 'react' ;
 import { Link } from'react-router-dom' ;
-import { withRouter } from 'react-router' ;
 import { addNotif } from '.././notif.js' ;
 import CheeseburgerMenu from 'cheeseburger-menu' ;
 import HamburgerMenu from 'react-hamburger-menu' ;
@@ -115,4 +114,4 @@ const Header = (props) => {
 	) ;
 }
 
-export default withRouter(Header) ;
+export default Header ;

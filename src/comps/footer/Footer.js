@@ -2,7 +2,6 @@ import React from 'react' ;
 import { faPhoneAlt, faEnvelope, faMap} from '@fortawesome/free-solid-svg-icons' ;
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
 import { Link } from'react-router-dom' ;
-import { withRouter } from 'react-router' ;
 // import GoogleMapReact from 'google-map-react' ;
 
 import './Footer.css' ;
@@ -63,4 +62,4 @@ const Footer = () => {
 	) ;
 }
 
-export default withRouter(Footer) ;
+export default Footer ;

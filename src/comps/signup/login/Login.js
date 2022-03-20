@@ -1,5 +1,6 @@
 import React, {useState} from 'react' ;
-import { Redirect } from 'react-router-dom';
+import Redirect from '../../redirect/Redirect.js' ;
+
 
 import { addNotif, remNotif } from '../../notif.js' ;
 import { invalidEmail, isBlank } from '../../valid.js' ;

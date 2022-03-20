@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react' ;
-import {Redirect} from 'react-router-dom';
+
+import Redirect from '../../redirect/Redirect.js' ;
 
 import { addNotif, remNotif } from '../../notif.js' ;
 import {invalidEmail, invalidMobile, invalidPass, isBlank, isMaxMin, invalidName} from '../../valid.js' ;
