@@ -1,14 +1,20 @@
 // THIS FILE REQUIRES 'react-toastify' PACKAGE TO WORK
-
+import cogoToast from 'cogo-toast';
 import { toast } from 'react-toastify' ;
+
+const notifOption = {
+  position:'top-right', 
+  hideAfter : 4
+} ;
 
 const addNotif = (message, type) => {
   switch(type)
   {
-    case 'error' : toast.error(message, {autoClose: false, theme: "dark" }) ; break ;
-    case 'success' : toast.success(message, {autoClose: 3000, theme: "dark" }) ; break ;
-    case 'notif' : toast(message) ; break ;
-    default : toast.info(message, {autoClose: 7000, theme: "dark" }) ;
+    case 'success' : cogoToast.success(message, notifOption); break ;
+    case 'error' : cogoToast.error(message, notifOption); break ;
+    case 'warn' : cogoToast.warn(message, notifOption ); break ;
+    case 'notif' : cogoToast.info(message, notifOption ); break ;
+    default : cogoToast.info(message, notifOption );
   }
 
 }
