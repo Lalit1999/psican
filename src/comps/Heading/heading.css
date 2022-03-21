@@ -1,51 +1,23 @@
-/* DO NOT REMOVE COMMENTS OF THIS FILE, KYONKI THEY MIGHT BE USEFUL IN A FUTURE PROJECT
-    THEY ARE NOT INCLUDED IN CURRENT PROJECT SPECIFICALLY BASED ON CLIENT DEMAND */
-
-.left-title
-{ font-size: 1.5rem ;
-  padding: 0 1em ;
-  transition: all 0.4s ;
-  margin-top: 0 ;
-  /*margin-bottom: 0.4em ;*/
-}
-
-.small-title
-{ font-size: 1.4rem;
-  margin-top: 0 ;
-  /*margin-bottom: .4em ;*/
-  transition: all 0.4s ;
-  padding: 0 2em ;
-}
-
-.title-con
-{ /*border-bottom: 1px solid darkblue ;*/
-  color: rgb(29, 41, 81) ;
-  font-family: 'Signika' ;
-  letter-spacing: 0.02em ;
-  display: inline-block; 
+.title-con {
+  color: var(--dark) ;
   margin: 0 1em;
+  font-family: var(--font) ;
+  letter-spacing: 1px ;
+  display: inline-block; 
   text-align: left ;
 }
 
-.title-con h2
-{  margin-bottom: 0 ;   }
-
-/*
-.left-title:hover
-{
-	background-color: rgb(29, 41, 81);
-	color : rgb(70, 130, 180);
-}*/
+.left-title { 
+  font-size: 1.2rem ;
+  font-weight: bold;
+  padding: 0 1em ;
+  margin: 0 auto;
+}
 
 @media(max-width: 600px)
 { .left-title
   { font-size: 1.3rem ;
     padding: 0 .5em ;
-  }
-
-  .small-title
-  { font-size: 1.1rem;
-    padding: 0 1.5em ;
   }
 
   .title-con

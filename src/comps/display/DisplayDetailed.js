@@ -1,9 +1,8 @@
-import React from 'react' ;
 import Heading from '../Heading/Heading.js' ;
 
 import './Display.css' ;
 
-const DisplayDetailed = ({lidata, title, small}) => {
+const DisplayDetailed = ({lidata, title}) => {
 	
 	const createLi = () => {
  		return lidata.map( (li,i) => {
@@ -18,12 +17,8 @@ const DisplayDetailed = ({lidata, title, small}) => {
 
 	return (
 		<div className="display-detail">
-			<Heading text={title} small={small}/>
-			<div className="list">
-				<ul>
-					{createLi()}
-				</ul>
-			</div>
+			<Heading text={title}/>
+			<div className="list"> <ul> {createLi()} </ul> </div>
 		</div>
 	) ;
 }

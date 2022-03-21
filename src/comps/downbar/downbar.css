@@ -1,15 +1,16 @@
-.downbar
-{	font-weight: bold ;
+.downbar {	
+	font-weight: bold ;
+	font-family: var(--font);
 	text-align: center;
-	color: rgb(29, 41, 81);
+	color: var(--black);
 }
 
-.downbar p
-{	margin: .2em .2em .4em ;
+.downbar p {	
+	margin: .2em .2em .4em ;
 }
 
-.myarth
-{	width: 10vw ;
+.myarth {	
+	width: 6.5vw ;
 	cursor: pointer;
 }
 

@@ -1,17 +1,18 @@
-.list
-{	font-weight: normal; 
-	font-size: 1.3rem ;
-	margin: 0 1.5em 1em ;
+.list  {	
+	font-weight: normal; 
+	font-size: 1.2rem ;
+	margin: 0 1.2em 1em ;
 }
 
-.list ul
-{	margin-top: .2em ;		}
+.list ul {
+	margin-top: .2em ;
+}
 
-.list li
-{	margin-bottom: .3em  ;		}
-
-.list-li
-{    margin: 0.3em 0 ;		}
+.list-li {
+	margin: 0.3em 0 ;
+	font-size: 1rem ;
+	font-family: var(--font);
+}
 
 @media(max-width: 600px)
 {	.list

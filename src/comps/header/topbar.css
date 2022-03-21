@@ -1,76 +1,54 @@
-.topbar
-{
-	background-color: white ;
+.topbar {
 	display: flex ;
-	position: fixed; 
-  	width: 100% ;
-  	top: 0 ;
-  	z-index: 29 ;
-  	overflow: hidden;
-  	color: rgb(29, 41, 81);
+	justify-content: space-between;
+	background-color: var(--white) ;
+  	color: var(--dark);
 }
 
-.bar-item
-{
-	display: inline-block;
+.logo  {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.1em 1em ;
+	flex-basis: 10%;
+}
+
+.logo img {	
+	height: 65px;
+}
+
+.right-topbar {
+	display: flex; 
+	flex-direction: column;
+	flex-basis: 90%;
+}
+
+.bar-items {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.bar-item {
+	display: flex;
 	margin: 0 0.9vw ;
 	font-size: 1rem ;
-	padding: 0.7em 0.7vw;
+	padding: 0.6em 0.7vw;
 	transition: all 0.5s ;
 }
 
-.bar-item>div
-{
-	display: flex;
-	font-size: 3rem ;
-	margin: 0.1em ;
+.bar-item a {	
+	text-decoration: none ;
+	color: var(--dark) ;
 }
 
-.bar-item a 
-{	text-decoration: none ;
-	color: rgb(29, 41, 81) ;
-}
-
-.bar-item:hover
-{
+.bar-item:hover {
 	background-color: rgb(83, 154, 212, 0.3) ;
 }
 
-.item-txt
-{
-	font-size: 1.3rem ;
+.item-txt {
+	font-size: 1rem ;
+	font-family: var(--font);
 	margin-left: 0.3em ;
-}
-
-.item-txt .top
-{
-	text-align: center;
-}
-
-.topbar .right-topbar
-{
-	margin-left: auto;
-	display: inline-block; 
-}
-
-.right-topbar
-{
-	margin-right: 3vw ;
-}
-
-.logo
-{
-	font-size: 2rem ;
-	margin: 0.4em ;
-}
-
-.logo p
-{
-	margin: 0 ;
-}
-
-.logo img
-{	width: 9vw;
 }
 
 @media(max-width: 600px)

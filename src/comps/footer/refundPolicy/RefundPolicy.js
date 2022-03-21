@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Title from '../../title/Title.js' ;
 import DisplayDetailed from '../../display/DisplayDetailed.js' ;
 
@@ -12,8 +10,8 @@ const refund = [
 
 const RefundPolicy = () => {
 	return (
-		<div>
-			<Title name = 'Refund/Cancellation Policy' items={["Home -","Refund Policy"]}/>
+		<div className="policy-page">
+			<Title name = 'Refund/Cancellation Policy' items={["Home","Refund Policy"]}/>
 			<DisplayDetailed title="PSYMENT Refund/Cancellation Policy" lidata={refund} />
 		</div>
 	);

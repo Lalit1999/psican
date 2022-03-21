@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Title from '../../title/Title.js' ;
 import DisplayDetailed from '../../display/DisplayDetailed.js' ;
 
@@ -14,8 +12,8 @@ const tc = [
 
 const TermsCondition = () => {
 	return (
-		<div>
-			<Title name = 'Terms and Conditions' items={["Home -","Terms & Conditions"]}/>
+		<div className="policy-page">
+			<Title name = 'Terms and Conditions' items={["Home","Terms & Conditions"]}/>
 			<DisplayDetailed title="PSYMENT Website Terms & Conditions" lidata={tc} />
 		</div>
 	);

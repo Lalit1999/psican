@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Title from '../../title/Title.js' ;
 import DisplayDetailed from '../../display/DisplayDetailed.js' ;
 
@@ -40,8 +38,8 @@ const changes = [
 
 const PrivacyPolicy = () => {
 	return (
-		<div>
-			<Title name = 'Privacy Policy' items={["Home -","Privacy Policy"]}/>
+		<div className="policy-page">
+			<Title name = 'Privacy Policy' items={["Home","Privacy Policy"]}/>
 			<DisplayDetailed title="What Data we collect" lidata={data_collect} />
 			<DisplayDetailed title="How we Use your Data" lidata={data_usage} />
 			<DisplayDetailed title="Cookies Policy" lidata={cookies} />

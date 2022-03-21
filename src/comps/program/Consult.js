@@ -331,7 +331,7 @@ const Personal = ({token, user}) => {
 
 	return(
 		<div>
-			<Title name = 'Personal Consultation' items={["Home -"," Programs -", "Consult"]}/>
+			<Title name = 'Personal Consultation' items={["Home", "Programs", "Consult"]}/>
 			<p className="intro"> Human behavior and thinking constantly impact each other. 
 				Our fundamental attributions for objects, events and relations around us make us
 				emotionally susceptible</p>

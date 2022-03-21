@@ -1,5 +1,3 @@
-import React from 'react' ;
-
 import Title from '../title/Title.js' ;
 import './AboutPerson.css' ;
 
@@ -9,7 +7,7 @@ const Aboutpsican = () => {
 	return(
 		<div>
 			<div>
-				<Title name = 'P S Y M E N T' items={["Home -"," Programs -", "PSYMENT"]}/>
+				<Title name = 'About Us' items={["Home","About"]}/>
 			</div>
 			<div className = 'flex'>
 				<div className = 'mb'>

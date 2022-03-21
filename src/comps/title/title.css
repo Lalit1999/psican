@@ -1,45 +1,44 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-
-.layout
-{	display: inline-block;
-	font-weight: bold;
-	font-size : 1.8rem ;
-	font-family: 'Roboto', sans-serif;
-}
-
-.title
-{	font-size: 2.7rem ;
-	margin: 0 0 0.5em  ; 
-	padding-top: 0.5em ;
-	font-family: 'Roboto', sans-serif;
-}
-
-.subtitle
-{	margin-bottom: 1em ;	}
-
-.layout a
-{	text-decoration: none ;	
-	color : white ;
-}
-
-.bgimage
-{	background-image: url('../images/purple.webp');
-	text-align: center ;
+.main-title-con {
+	display: flex;
+	color : var(--white);
+	font-family: var(--font) , sans-serif;
+	background-image: url('../images/purple.webp');
 	background-size: cover ;
 	background-repeat: no-repeat ;
 	margin-bottom: .75em ;
-	color : white;
 }
 
-.colo
-{	background-color: rgba(0, 0, 0, 0.7) ;
+.black-overlay 	{
+	display: flex;
+	flex-direction: column;
+	background-color: rgba(0, 0, 0, 0.7) ;
 	width: 100% ;
-	height: 100% ;
-	padding-bottom: .65em ;
+	align-items: center;
+}
+
+.title {
+	font-size: 1.3rem ;
+	margin: 0.5em 0 ; 
+	letter-spacing: 1.5px;
+}
+
+.subtitle {
+	margin-bottom: .6em ;
+}
+
+.crumb {	
+	display: inline-block;
+	font-size : 1rem ;
+}
+
+.crumb a {	
+	text-decoration: none ;	
+	color: var(--white);
+	letter-spacing: 1px;
 }
 
 @media(max-width: 600px)
-{	.layout
+{	.crumb
 	{	font-size : 1.45rem ;
 	}
 
@@ -52,11 +51,11 @@
 	.subtitle
 	{	margin-bottom: .5em ;	}
 
-	.bgimage
+	.main-title-con
 	{	margin-bottom: .6em ;
 	}
 
-	.colo
+	.black-overlay
 	{	background-color: rgba(0, 0, 0, 0.5) ;
 		padding-bottom: .65em ;
 	}

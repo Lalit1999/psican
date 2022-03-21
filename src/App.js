@@ -7,8 +7,7 @@ import Home from './comps/home/Home.js' ;
 import AboutPerson from './comps/about/Aboutperson.js' ;
 import AboutPsican from './comps/about/Aboutpsican.js' ;
 import Contact from './comps/contact/Contact.js' ;
-import NotFound from './comps/home/Notfound.js' ; 
-import Header from './comps/header/Header.js' ;
+import NotFound from './comps/home/NotFound.js' ; 
 import TopBar from './comps/header/TopBar.js' ;
 import DownBar from './comps/downbar/DownBar.js' ;
 import Exam from './comps/tests/Exam.js' ;
@@ -16,7 +15,6 @@ import AnxietyTestPage from './comps/tests/anxiety/AnxietyTestPage.js' ;
 import TraitTest from './comps/tests/traits/TraitTest.js' ;
 import AccisTestPage from './comps/tests/accis/AccisTestPage.js' ;
 import Admin from './comps/admin/Admin.js' ;
-import './App.css' ;
 const AEQUESS = lazy(() => import('./comps/program/AEQUESS.js')) ;
 const Sarathi = lazy(() => import('./comps/program/Sarathi.js')) ;
 const Footer = lazy(() => import('./comps/footer/Footer.js'));
@@ -32,29 +30,6 @@ class App extends React.Component
 {	state = {
 		user: localStorage.getItem('user')?JSON.parse(localStorage.getItem('user')):{} ,
 		userToken: localStorage.getItem('userToken')?localStorage.getItem('userToken'):'' ,
-	}
-
-	footer = React.createRef() ;
-
-	handleScroll = e => {
-    e.preventDefault();
-    const footer = this.footer.current;
-    window.scrollTo({
-      top: footer.offsetTop,
-      left: 0,
-      behavior: "smooth"
-    	});
-  	};
-
-  	// screen ke size ke according turant layout adjust karna.
-	resize = () => this.forceUpdate() ;
-
-	componentDidMount() {
-	  window.addEventListener('resize', this.resize)
-	}
-
-	componentWillUnmount() {
-	  window.removeEventListener('resize', this.resize)
 	}
 
 	loadUser = (user) => {
@@ -82,8 +57,7 @@ class App extends React.Component
 						newestOnTop={false} closeOnClick rtl={false} pauseOnHover />
 		        <BrowserRouter>
 		          <div>
-		          	<TopBar scroll={this.handleScroll}/>
-		            <Header user={user} token={userToken} loadUser={this.loadUser} />
+		          	<TopBar user={user} token={userToken} loadUser={this.loadUser}/>
 		            <Routes>
 		              <Route path='/' exact element={<Home />}/>
 		              <Route path='/about/leader' exact element={<AboutPerson />}/>
@@ -105,7 +79,7 @@ class App extends React.Component
 		              <Route path='/refund-policy' exact element={<Suspense fallback={<div> Loading... </div>}><RefundPolicy/></Suspense>}/>
 		              <Route exact element={<NotFound />} />
 		            </Routes>
-		            <Suspense fallback={<div> Loading... </div>}>	<Footer footer={this.footer}/> </Suspense> 
+		            <Suspense fallback={<div> Loading... </div>}>	<Footer /> </Suspense> 
 		            <DownBar />
 		          </div>
 		        </BrowserRouter>

@@ -1,21 +1,17 @@
-import React from 'react' ;
 import {Link} from'react-router-dom' ;
 
 import './title.css' ;
 
 const itemMap = {
-	"Home -" : '',
-	" About -" : '',
+	"Home" : '',
+	"About" : 'about',
 	"Contact Us" : 'contact',
 	"Login" : 'login',
 	"Register" : 'register',
 	"Programs" : '',
-	" Programs -" : '',
 	"Consult" : 'consult',
 	"Sarathi" : 'program/Sarathi',
 	"AEQUESS" : 'program/AEQUESS',
-	"Leader" : 'about/leader',
-	"PSYMENT" : 'about/psyment',
 	"Test " : 'test',
 	"Test -" : 'test',
 	"USTOP" : "test/ustop",
@@ -27,23 +23,19 @@ const itemMap = {
 }
 
 const Title = ({items, name}) => {
-
-	const createSubTitle = () => {
-		return items.map(item => {
-			return (
-				<div className = 'layout' key = {item}>
-					<Link to={'/'+itemMap[item]}> &nbsp;{item}&nbsp; </Link>
-				</div>
-			);
-		}) ;
-	}
-
 	return(
-		<div className = 'bgimage '>
-			<div className="colo">		
+		<div className = 'main-title-con'>
+			<div className="black-overlay">		
 				<h1 className="title">{name}</h1>
 				<div className="subtitle">
-					{createSubTitle()} 
+					{
+						items.map( (item, i) => {
+							return <div className='crumb' key={i}> 
+								<Link to={`/${itemMap[item]}`}>&nbsp;{item}&nbsp;</Link>
+								{ i !== (items.length - 1)?'-':' ' }
+							</div> 
+						})
+					} 
 				</div>
 			</div>
 		</div>	

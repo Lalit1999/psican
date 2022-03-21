@@ -1,128 +1,82 @@
-@import url('https://fonts.googleapis.com/css?family=Mukta&display=swap');
-
-#bar
-{
-	background-color: rgb(29, 41, 81);
-	border-bottom: 2px solid darkblue ;
-	position: fixed; 
-  	width: 100% ;
-  	top: 84px ;
-  	z-index: 29 ;
-  	overflow: visible;
+.header {
+	background-color: var(--dark);
+	font-family: var(--font);
+	display: flex;
+	justify-content: space-between;
 }
 
-.cheeseburger-menu+div
-{
-	margin: 0.8em 5vw;
-}
-.pop
-{
-	z-index: 19;
-	background-color: white ;
+.mini-menu {
+	display: flex;
+	align-items: center;
 }
 
-.topbar .popup-content
-{
-	z-index: 19 ;
-	background-color: white ;
+.header-item {
 	display: inline-block;
-	height: auto ;
-	width: auto ;
-	border-radius: .5rem ;
-	padding: 0.9em 1em 2em ;
-	font-size: 1.2rem ;
-}
-
-.popup-content h2 	{	
-	margin-top : 0 ;
-	text-align: center; 
-}
-
-.popup-content .close
-{	text-decoration: none;
-	font-size: 2rem ;
-	color: darkred ;
-	z-index: 3;
-	padding: 0 .3em ;
-	display: inline-block ;
-	margin: 0 0 0 90% ;
-	cursor: pointer;
-}
-
-.popup-content .close:hover
-{	background-color: salmon ;		}
-
-
-.popup-overlay {
-	background-color: rgba( 0, 0, 0, 0.5 ) ;
-}
-
-.popup-arrow
-{
-	background-color: rgb(70, 130, 180) !important ;
-}
-
-.header-item
-{
-	color: whitesmoke;
+	color: var(--white);
 	text-decoration: none ;
-	font-size: 1.55rem ;
-	padding: 0 1.5vw;
-	transition: all 0.4s ;
+	font-size: 1.1rem ;
+	padding: .4vw 1.5vw;
 	margin: 0.1em ;
-	font-family: 'Mukta', sans-serif;
+	transition: all 0.4s ;
 }
 
-.header-item:hover
-{
-	background-color: white ;
-	color: rgb(29, 41, 81);
+.header-item:hover {
+	background-color: var(--white) ;
+	color: var(--dark);
 }
 
-.pop-item
-{
-	color: white;
-	background-color: rgb(70, 130, 180) ;
+.right-header {
+	margin-right: 1vw ;
+	display: flex;
+	align-items: center;
+}
+
+.header-btn	 {
+	border:none;
+	box-shadow: none; 
+	text-decoration: none ;
+	font-size: 1.1rem ;
+	margin: 0 0.1em ;
+	padding: .3vw 1.5vw ; 
+	background-color: transparent;
+	transition: all 0.4s ;
+	color: var(--golden);
+	border-right: 1px solid var(--golden);
+	border-left: 1px solid var(--golden);
+}
+
+.header-btn:hover {
+	background-color: var(--golden);
+	color: var(--dark);
+}
+
+.pop {
+	/*z-index: 19;*/
+}
+
+.header .popup-content {
+	/*z-index: 19 ;*/
+	font-size: 1.1rem ;
+}
+
+.pop-item {
+	color: var(--white);
+	background-color: var(--main) ;
+	border-bottom: 1px solid var(--dark) ;
+	font-size: 1.05rem;
+	font-family: var(--font);
 	display: block ;
-	border-bottom: 1px solid rgb(29, 41, 81) ;
 	margin: 0 ;
 }
 
-.pop-item:hover
-{
-	background-color: rgb(29, 41, 81);
-	color: white;
-}
-
-.right-header
-{
-	margin-left: auto;
-	margin-right: 1vw ;
-	display: flex;
+.pop-item:hover  {
+	background-color: var(--dark);
+	color: var(--white) ;
 }
 
 .menu-div
 {	margin: 1vh auto;
 	justify-content: center;	
-}
-
-a.header-btn
-{	padding-top: .2em ; 
-}
-
-.header-btn
-{
-	border:none;
-	box-shadow: none; 
-	text-decoration: none ;
-	font-size: 1.4rem ;
-	margin: 0 0.1em ;
-	padding: 0 1.4vw ; 
-	background-color: transparent;
-	transition: all 0.4s ;
-	color: rgb(212, 170, 32);
-	border-right: 1px solid rgb(212, 170, 32);
-	border-left: 1px solid rgb(212, 170, 32);
 }
 
 .menu-btn
@@ -135,12 +89,8 @@ a.header-btn
 	padding-bottom: 1.4vw ;
 }
 
-.header-btn:hover
-{
-	background-color: rgb(212, 170, 32);
-	color: rgb(29, 41, 81);
-	border-right: 1px solid rgb(29, 41, 81);
-	border-left: 1px solid rgb(29, 41, 81);
+.cheeseburger-menu+div {
+	margin: 0.8em 5vw;
 }
 
 @media (max-width: 600px)
@@ -152,7 +102,7 @@ a.header-btn
 	    padding-left: 3.7vw;
 	}
 
-	#bar
+	.header
 	{	top: 9.95vh ;		
 	}
 
@@ -160,12 +110,4 @@ a.header-btn
 	{	padding-top: .3em ; 
 	}
 
-	.popup-content {
-		padding: 0.2em 1em 1em ;
-		font-size: 1.2rem ;
-	}
-
-	.popup-content .close {	
-		margin-left:80% ;
-	}
 }
