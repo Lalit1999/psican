@@ -4,15 +4,17 @@
 - Header/TopBar/BarItem (mobile ke liye dubara dekhna padega)
 - Footer.js & css
 - PolicyPages.js & css
+- About.js & css
 
 + mobile css
-+ header ke hover options scroll hone par topbar ke upar ja rahe hai
 + scrolltopbar lagana hai
 + way to scroll on route change
 + cheeseburger ki jagah Bootstrap se menu banani hai
 + policy pages me flex-grow 1 lagana hai
 
-tomorrow:
-about page ko combine karna hai
-aequess and sarathi ko remove karna hai
-bhin bhin pages ko theek karna hai
+Back-End
+--------
+Appointment book ni ho rahi
+
++ Popup lagayenge
++ Login-Register me form recreate karenge

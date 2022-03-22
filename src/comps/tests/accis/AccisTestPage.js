@@ -2,7 +2,7 @@ import React from 'react';
 
 import Title from '../../title/Title.js' ;
 import ACCIS from './ACCIS.js' ;
-import '../../program/program.css' ;
+import '../../consult/program.css' ;
 
 const AccisTestPage = ({user, token}) => {
 	return(

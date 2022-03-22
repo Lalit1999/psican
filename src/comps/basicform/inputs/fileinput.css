@@ -1,0 +1,59 @@
+.image-upload {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.image-upload img {
+	max-width: 50% ;
+	max-height: 250px;
+}
+
+.upload-btns {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.multi-image-upload {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.image-thumb {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.image-thumb img {
+	max-height: 150px;
+	margin: .5em 1.5em;
+}
+
+.image-name {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	text-align: center;
+	max-width: 15vw ;
+}
+
+.image-cross {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: var(--white);
+	cursor: pointer;
+	color: darkred;
+}
+
+.image-cross svg {
+	border-radius: 50%;
+	padding: 0 3px;
+	font-size: 1rem;
+}
+
+.image-cross:hover svg{
+	transform: scale(1.3);
+}

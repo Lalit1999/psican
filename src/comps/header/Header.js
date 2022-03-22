@@ -2,7 +2,6 @@ import {useState} from 'react' ;
 import { Link } from'react-router-dom' ;
 import CheeseburgerMenu from 'cheeseburger-menu' ;
 import HamburgerMenu from 'react-hamburger-menu' ;
-import Popup from "reactjs-popup";
 
 import Menu from './Menu.js' ;
 import { addNotif } from '.././notif.js' ;
@@ -41,13 +40,7 @@ const Header = ({token, user, loadUser}) => {
 				<div className="mini-menu">
 					<div>
 						<Link className="header-item" to='/'> Home </Link>
-						<Popup trigger={<span className="header-item"> About </span>}
-						  position="bottom center" on="hover" >
-						  <div className="pop-p">
-							<Link className="header-item pop-item" to='/about/leader'> Our Leader </Link>
-							<Link className="header-item pop-item" to='/about/psyment'> PSYMENT </Link>
-					      </div>
-						</Popup>					
+						<Link className="header-item" to='/about'> About </Link>
 						<Link className="header-item" to='/test'> Tests </Link>
 						<Link className="header-item" to='/consult'> Consult </Link>
 						<Link className="header-item" to='/contact'> Contact </Link>

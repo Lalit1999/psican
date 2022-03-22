@@ -63,4 +63,14 @@ const isMaxMin = (str, field, min, max) => {
 		return false ;
 }
 
-export { isBlank, isMaxMin, invalidPass, invalidMobile, invalidEmail, invalidName} ;
+const invalidDate = (date) => {
+	let current = new Date().toString() ;
+	if(!valid.isDate(date))
+		return 'Invalid Date' ;
+	else if(!valid.isAfter(date, current))
+		return 'Date must be after today' ;
+	else
+		return false ;
+}
+
+export { isBlank, isMaxMin, invalidPass, invalidMobile, invalidEmail, invalidName, invalidDate} ;

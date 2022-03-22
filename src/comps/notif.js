@@ -1,6 +1,5 @@
-// THIS FILE REQUIRES 'react-toastify' PACKAGE TO WORK
+// THIS FILE REQUIRES 'cogo-toast' PACKAGE TO WORK
 import cogoToast from 'cogo-toast';
-import { toast } from 'react-toastify' ;
 
 const notifOption = {
   position:'top-right', 
@@ -19,8 +18,4 @@ const addNotif = (message, type) => {
 
 }
 
-const remNotif = ( ) => {
-  toast.dismiss() ;  
-}
-
-export {remNotif, addNotif} ;
+export {addNotif} ;

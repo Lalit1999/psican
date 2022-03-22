@@ -1,6 +1,6 @@
-import React,{useState} from 'react' ;
+import {useState} from 'react' ;
 
-import { addNotif, remNotif } from '../../notif.js' ;
+import { addNotif} from '../../notif.js' ;
 import Text from '../../signup/text/Text.js' ;
 import './payment.css' ;
 
@@ -38,7 +38,6 @@ const Payment = ({cost, token, display, change, couponChange, type}) => {
 			// console.log(data) ;
 		})  
 		.catch( err  => {
-			remNotif() ;
 			addNotif('Coupon Code Not Found', 'error') ;
 			console.log(err.message) 
 		}) ;

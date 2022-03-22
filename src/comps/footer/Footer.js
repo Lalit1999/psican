@@ -30,9 +30,9 @@ const FooterLinks = () => {
 const FooterMenu = () => {
 	return (
 		<div className="footer-links">
-			<Link to="/about"> About </Link>
 			<Link to="/test"> Tests </Link>
 			<Link to="/consult"> Consult </Link>
+			<Link to="/contact"> Contact </Link>
 		</div>
 	) ;
 }

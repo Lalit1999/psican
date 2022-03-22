@@ -1,14 +1,13 @@
 import React, {useState} from 'react' ;
 
 import Redirect from '../redirect/Redirect.js' ;
-import { addNotif, remNotif } from '.././notif.js' ;
+import { addNotif } from '.././notif.js' ;
 import { invalidPass, isBlank } from '../valid.js' ;
 import Title from '../title/Title.js' ;
 import Data from '../data/Data.js' ;
 import Register from '../signup/register/Register.js' ;
 import LoginForm from '../signup/forms/LoginForm.js' ;
 import Text from '../signup/text/Text.js' ;
-import Pop from '../popup/Pop.js' ;
 import ResultRecord from '../admin/ResultRecord.js' ;
 import './UserProfile.css' ;
 
@@ -59,12 +58,12 @@ const UserProfile = ({token, loadUser, user}) => {
 				throw Error(res.statusText) ;
 		})
 		.then(data =>{	
-			remNotif() ;
+			
 			addNotif('Successfully Logged Out', 'success') ;	
 			loadUser({}) ;
 		}) 
 		.catch( err  => {
-			remNotif() ;
+			
 			addNotif('Error Logging Out', 'error') ;	
 			console.log(err) ; 
 		}) ;
@@ -85,12 +84,12 @@ const UserProfile = ({token, loadUser, user}) => {
 				throw Error(res.statusText) ;
 		})
 		.then(data =>{	
-			remNotif() ;
+			
 			addNotif('Successfully Deleted', 'success') ;
 			loadUser({}) ;
 		}) 
 		.catch( err  => {
-			remNotif() ;
+			
 			addNotif('Error Deleting Profile', 'error') ;	
 			console.log(err) ; 
 		}) ;
@@ -123,7 +122,7 @@ const UserProfile = ({token, loadUser, user}) => {
 						throw Error(res.statusText) ;
 				})
 				.then(data =>{	
-					remNotif() ;
+					
 					addNotif('Successfully changed the password', 'success') ;
 					loadUser({}) ;
 				})
@@ -147,7 +146,7 @@ const UserProfile = ({token, loadUser, user}) => {
 		.then( data => setResData(data) ) 
 		.catch( err  => {
 			console.log(err) ; 
-			remNotif() ;
+			
 			addNotif(err.message, 'error') ;
 		}) ;
 	}
@@ -200,14 +199,14 @@ const UserProfile = ({token, loadUser, user}) => {
 									{checkResult()}
 								</div> 
 							</div>
-							<Pop btn="Change Password" classes="buttone ">
+							{/*<Pop btn="Change Password" classes="buttone ">
 								<LoginForm title=" Basic Details " error={error} near="near"
 									b2="Change" onb2Click={onChangeClick} >
 									<Text label="Old Password" name="oldpass" type="pw" value={data.oldpass} onChange={onInputChange}/>
 									<Text label="New Password" name="newpass" type="pw" value={data.newpass} onChange={onInputChange}/>
 									<Text label="Retype Password" name="repass" type="pw" value={data.repass} onChange={onInputChange}/>
 								</LoginForm>
-							</Pop>								
+							</Pop>*/}								
  							<button className = "buttone" onClick={onLogoutClick} >Logout</button>
 							<button className = "buttone " onClick = {onEditClick}>
 								{(mode==='edit'?'Go Back':'Edit profile')}

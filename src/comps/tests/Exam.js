@@ -1,8 +1,6 @@
-import React from 'react' ;
-
 import Title from '../title/Title.js' ;
 import TestBox from './testbox/TestBox.js' ;
-import '../program/program.css' ;
+import '../consult/program.css' ;
 
 const Exam = () => {
 	return(

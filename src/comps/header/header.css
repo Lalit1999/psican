@@ -50,30 +50,6 @@
 	color: var(--dark);
 }
 
-.pop {
-	/*z-index: 19;*/
-}
-
-.header .popup-content {
-	/*z-index: 19 ;*/
-	font-size: 1.1rem ;
-}
-
-.pop-item {
-	color: var(--white);
-	background-color: var(--main) ;
-	border-bottom: 1px solid var(--dark) ;
-	font-size: 1.05rem;
-	font-family: var(--font);
-	display: block ;
-	margin: 0 ;
-}
-
-.pop-item:hover  {
-	background-color: var(--dark);
-	color: var(--white) ;
-}
-
 .menu-div
 {	margin: 1vh auto;
 	justify-content: center;	

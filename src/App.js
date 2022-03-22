@@ -1,11 +1,8 @@
-import React,{ lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom' ;
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import Home from './comps/home/Home.js' ;
-import AboutPerson from './comps/about/Aboutperson.js' ;
-import AboutPsican from './comps/about/Aboutpsican.js' ;
+import About from './comps/about/About.js' ;
 import Contact from './comps/contact/Contact.js' ;
 import NotFound from './comps/home/NotFound.js' ; 
 import TopBar from './comps/header/TopBar.js' ;
@@ -15,13 +12,11 @@ import AnxietyTestPage from './comps/tests/anxiety/AnxietyTestPage.js' ;
 import TraitTest from './comps/tests/traits/TraitTest.js' ;
 import AccisTestPage from './comps/tests/accis/AccisTestPage.js' ;
 import Admin from './comps/admin/Admin.js' ;
-const AEQUESS = lazy(() => import('./comps/program/AEQUESS.js')) ;
-const Sarathi = lazy(() => import('./comps/program/Sarathi.js')) ;
 const Footer = lazy(() => import('./comps/footer/Footer.js'));
 const PrivacyPolicy = lazy(() => import('./comps/footer/privacyPolicy/PrivacyPolicy.js'));
 const TermsCondition = lazy(() => import('./comps/footer/termsCondition/TermsCondition.js'));
 const RefundPolicy = lazy(() => import('./comps/footer/refundPolicy/RefundPolicy.js'));
-const Consult = lazy(() => import('./comps/program/Consult.js')) ;
+const Consult = lazy(() => import('./comps/consult/Consult.js')) ;
 const Login = lazy(() => import('./comps/signup/login/Login.js')) ;
 const Register = lazy(() => import('./comps/signup/register/Register.js')) ;
 const Profile = lazy(() => import('./comps/UserProfile/UserProfile.js')) ;
@@ -39,7 +34,6 @@ class App extends React.Component
 			localStorage.setItem('user', JSON.stringify(user.user) );
 			localStorage.setItem('userToken', user.token);
 		}
-		//
 		else if(user.name)
 		{
 			this.setState({user: user}) ;
@@ -53,20 +47,15 @@ class App extends React.Component
 	{	const {user, userToken} = this.state ;
 		return(
 			<div className="App">
-				<ToastContainer position="bottom-left" autoClose={5000} hideProgressBar={false}
-						newestOnTop={false} closeOnClick rtl={false} pauseOnHover />
 		        <BrowserRouter>
 		          <div>
 		          	<TopBar user={user} token={userToken} loadUser={this.loadUser}/>
 		            <Routes>
 		              <Route path='/' exact element={<Home />}/>
-		              <Route path='/about/leader' exact element={<AboutPerson />}/>
-		              <Route path='/about/psyment' exact element={<AboutPsican />}/>
+		              <Route path='/about' exact element={<About />}/>
 		              <Route path='/contact' exact element={<Contact />}/>
 		              <Route path='/login' element={<Suspense fallback={<div> Loading... </div>}><Login user={user} loadUser={this.loadUser}/></Suspense>}/>
 		              <Route path='/register' element={<Suspense fallback={<div> Loading... </div>}><Register user={user} loadUser={this.loadUser}/></Suspense>} />
-		              <Route path='/program/Sarathi' element={<Suspense fallback={<div> Loading... </div>}><Sarathi user={user} token={userToken}/></Suspense>}/>
-		              <Route path='/program/AEQUESS' element={<Suspense fallback={<div> Loading... </div>}><AEQUESS user={user} token={userToken}/></Suspense>}/>
 		              <Route path='/consult' element={<Suspense fallback={<div> Loading... </div>}><Consult user={user} token={userToken}/></Suspense>}/>
 		              <Route path='/profile' element={<Suspense fallback={<div> Loading... </div>}><Profile user={user} token={userToken} loadUser={this.loadUser}/></Suspense>}/>
 		              <Route path='/test' exact element={<Suspense fallback={<div> Loading... </div>}><Exam/></Suspense>}/>

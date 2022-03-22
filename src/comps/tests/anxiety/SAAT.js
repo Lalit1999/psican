@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react' ;
 import {Link} from 'react-router-dom' ;
 
-import { addNotif, remNotif } from '../../notif.js' ;
+import { addNotif} from '../../notif.js' ;
 import './saat.css' ;
 import Payment from '../payment/Payment.js' ;
 
@@ -304,7 +304,6 @@ const SAAT = ({token, user}) => {
 						})
 						.catch( err  => {
 							console.log(err) ; 
-							remNotif() ;
 							addNotif(err.message, 'error') ;
 						}) ;
 

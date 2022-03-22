@@ -5,7 +5,7 @@ import RadioSet from '../radioset/RadioSet.js' ;
 import Payment from '../payment/Payment.js' ;
 
 import logo from '../../images/Psyment.webp' ;
-import { addNotif, remNotif } from '../../notif.js' ;
+import { addNotif } from '../../notif.js' ;
 import { inst, subData, quesData, resultData } from './langData.js' ;
 import { ttpQues } from './queData.js' ;
 import './ttp.css' ;
@@ -327,7 +327,6 @@ const LETA = ({token, user}) => {
 							})
 							.catch( err  => {
 								console.log(err) ; 
-								remNotif() ;
 								addNotif(err.message, 'error') ;
 							}) ;
 							return (

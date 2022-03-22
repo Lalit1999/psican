@@ -2,7 +2,7 @@ import React from 'react' ;
 
 import Title from '../../title/Title.js' ;
 import SAAT from './SAAT.js' ;
-import '../../program/program.css' ;
+import '../../consult/program.css' ;
 
 const AnxietyTestPage = ({user, token}) => {
 	return(

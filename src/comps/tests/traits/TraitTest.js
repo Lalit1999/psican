@@ -3,7 +3,7 @@ import React from 'react' ;
 
 import TTP from './TTP.js' ;
 import Title from '../../title/Title.js' ;
-import '../../program/program.css' ;
+import '../../consult/program.css' ;
 
 const TraitTest = ({user, token}) => {
 	return(
