@@ -13,8 +13,8 @@ const Aboutpsican=() => {
 		height=302 ;
 	}
 	else {	
-		width=184 ;
-		height=103 ;
+		width=377 ;
+		height=211 ;
 	}
 
 	return(

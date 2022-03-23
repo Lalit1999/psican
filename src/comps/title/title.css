@@ -38,26 +38,13 @@
 }
 
 @media(max-width: 600px)
-{	.crumb
-	{	font-size : 1.45rem ;
+{	
+	.title {
+		font-size: .9rem ;
+		letter-spacing: 1px;
 	}
 
-	.title
-	{	font-size: 2rem ;
-		margin: 0 0 0.3em  ; 
-		padding-top: 0.3em ;
+	.crumb {	
+		font-size : .7rem ;
 	}
-
-	.subtitle
-	{	margin-bottom: .5em ;	}
-
-	.main-title-con
-	{	margin-bottom: .6em ;
-	}
-
-	.black-overlay
-	{	background-color: rgba(0, 0, 0, 0.5) ;
-		padding-bottom: .65em ;
-	}
-
 }

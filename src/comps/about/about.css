@@ -90,35 +90,13 @@
 {	.flex
 	{	flex-direction: column-reverse;
 		justify-content: space-around;
-		font-size: 1.2rem ;
+		font-size: .7rem ;
 		margin: 0 ;
 	}
 
-	.after-div
-	{	font-size: 1.2rem ;
-		padding-right: 1em ;
-	}
-
-	.about-person, .about-psyment
-	{	padding: 0 1em ;
-	}
-
-	.txt
-	{	margin-left: .5em ;
-		margin-bottom: 1em ;
-	}
-
-	.about-photo
-	{	margin: 1.2em 3.6em .5em ;
-	}
-
-	.br2
-	{	height: auto ;
-	}
-
 	.about-logo
-	{	margin: 0 0 1em 1em ;
-		width: 88% ;
+	{	margin: 0 0 1em ;
+		width: 40% ;
 	}
 
 	.about-logo img
@@ -126,9 +104,45 @@
 		width: 100% ;
 	}
 
-	.font
-	{
-		font-size: 1.6rem ; 
-		margin-top: .4em ;
+	.blue-flex {
+		flex-direction: column;
+		padding-top: 1em ;
+	}
+
+	.about-left {
+		/*margin-top: 1em ;*/
+	}
+
+	.after-div {
+		font-size: .8rem ;
+		padding-right: 1em ;
+	}
+
+	.after-div ul {
+		padding-inline-start: .2em ;
+	}
+
+	.txt {
+		margin-left: .5em ;
+		margin-bottom: 1em ;
+	}
+
+	.about-photo {
+		margin : 0 1em ;
+	}
+
+	.font {
+		font-size: .8rem ; 
+	}
+
+	.frame-con {
+		flex-direction: column;
+		padding-top: .5em ;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.frame-con iframe {
+		margin-bottom: .3em ;
 	}
 }

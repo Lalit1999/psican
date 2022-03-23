@@ -9,7 +9,7 @@ const Address = () => {
 	return (
 		<div className='footer-right'>
 			<div>
-				<p><FontAwesomeIcon icon = {faMap} />&nbsp;Unit No. 4, First Floor, CSC, Pocket B & C, Phase - 4, Ashok Vihar, Delhi - 110052.</p>
+				<p><FontAwesomeIcon icon = {faMap} />&nbsp;Unit No. 4, F.F., CSC, Pocket B & C, Phase - 4, Ashok Vihar, Delhi - 110052.</p>
 				<p><FontAwesomeIcon icon = {faPhoneAlt} />&nbsp;+91-9555-235-231</p>
 				<p><FontAwesomeIcon icon = {faEnvelope} />&nbsp;info.psyment@gmail.com</p>
 			</div>
