@@ -5,7 +5,7 @@ import './topbar.css' ;
 import {BarItem, BarItemBig} from './BarItem.js' ;
 import Image from '../images/Psyment2.webp' ;
 
-const TopBar = (props) => {
+const TopBar = () => {
 	const checkMobile = () => {
 		if(window.screen.availWidth > 600)
 			return (
@@ -28,7 +28,7 @@ const TopBar = (props) => {
 	return (
 		<div className="topbar"> 
 			<div className="logo"> <img src={Image} alt="logo" /> </div>
-			<div className="right-topbar"> {checkMobile()} <Header {...props} /> </div>
+			<div className="right-topbar"> {checkMobile()} <Header /> </div>
 		</div>
 	) ;
 }

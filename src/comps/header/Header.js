@@ -1,14 +1,16 @@
-import {useState} from 'react' ;
+import {useState, useContext} from 'react' ;
 import { Link } from'react-router-dom' ;
 import CheeseburgerMenu from 'cheeseburger-menu' ;
 import HamburgerMenu from 'react-hamburger-menu' ;
 
 import Menu from './Menu.js' ;
+import {UserContext} from '../../context/UserContext.js' ;
 import { addNotif } from '.././notif.js' ;
 import './header.css' ;
 
-const Header = ({token, user, loadUser}) => {
+const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false) ;
+	const {token, user, loadUser} = useContext(UserContext) ;
 
 	const onLogoutClick = () => {
 		
