@@ -1,0 +1,35 @@
+.login-con {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1em ;
+	font-family: var(--font);
+}
+
+.login {
+	padding-top: 1em ;
+}
+
+.login * {
+	font-size: .9rem;
+}
+
+.login .form-control {
+	width: 30vw;
+}
+
+.login a {
+	color: var(--white);
+	text-decoration: none;
+}
+
+.login a:hover {
+	color: var(--white);
+}
+
+.login-heading {
+	font-size: 1.2rem;
+	text-align: center;
+	color: var(--dark);
+	margin: .5em ;
+}

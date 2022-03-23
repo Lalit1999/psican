@@ -1,4 +1,5 @@
 import {useEffect, useState, Fragment} from 'react' ;
+import {Link} from 'react-router-dom' ;
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
@@ -31,6 +32,7 @@ const BasicForm = ({initData, onClick, data, errors}) => {
 			password : <Text type = "password" data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]}/>,
 			disabled : <Text data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]} disabled={true}/>,
 			plainText : <Text data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]} plaintext={true}/>,
+			link: <Link to={element.to} className={element.style}>{name}</Link>,
 			btn: <Btn data={element} userData={userData} onClick={onClick[name]}/>,
 			iconBtn: <IconBtn data={element} userData={userData} onClick={onClick[name]} />,
 			file : <FileInput data={element} onInputChange={onFileChange} error={errors[name]} />,

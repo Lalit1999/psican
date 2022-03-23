@@ -1,0 +1,64 @@
+.payment  {
+	display: flex ;
+	font-size: 1rem;
+	justify-content: space-evenly;
+	align-items: center;
+	font-family: var(--font);
+}
+
+.payment .form-control { 
+	min-width: 20vw;
+}
+
+.payment-right	{
+	display: flex;
+	justify-content: center;
+}
+
+.payment-right * {
+	font-size: .8rem;
+}
+
+.payment-right button	{
+	margin-top: 1em ;
+}
+
+.payment-left	{
+	font-size: 1.1rem ;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.payment-left p {
+	font-weight: 500 ;
+	margin: 0;
+}
+
+.payment-left .sched-btn {
+	margin-bottom: 0;
+}
+
+@media(max-width: 600px)
+{	.payment 
+	{
+		flex-direction: column ;
+	}
+
+	.payment-left, .payment-right	{
+		text-align: center; 
+	}
+
+	.payment-left	{
+		font-size: 1.2rem ;
+	}
+
+	.payment-right {
+		padding-top: .7em ;
+	}
+
+	.payment-right button	{
+		margin-top: 1em ;
+	}
+
+}

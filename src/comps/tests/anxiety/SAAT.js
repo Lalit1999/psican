@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom' ;
 
 import { addNotif} from '../../notif.js' ;
 import './saat.css' ;
-import Payment from '../payment/Payment.js' ;
+import Payment from '../../payment/Payment.js' ;
 
 import logo from '../../images/Psyment.webp' ;
 import {inst, quesData, subData, resultData, evalData} from './langdata.js' ;

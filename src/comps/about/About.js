@@ -23,9 +23,6 @@ const Aboutpsican=() => {
 			<div className='flex'>
 				<div className='about-psyment'>
 					<p>
-						Psyment is a&nbsp;<strong>S</strong>ocial&nbsp;<strong>B</strong>usiness&nbsp;<strong>O</strong>rganisation.
-					</p>
-					<p>
 						Psyment aspires to provide counselling and mentoring solutions to those
 						who need it.
 					</p>
@@ -69,8 +66,6 @@ const Aboutpsican=() => {
 						<li>Diploma in Pharmacy</li>
 						<li>Diploma in System Management</li>
 						<li>Hails an illustrous multi-year association with esteemed organisations like Mahavir Senior Model School (Delhi), NGO - Udayan Care (Delhi), Tatva Pranic Healing (Pune) as a trainer and motivator</li>
-						<li>He has been born and brought-up in Delhi. Most of his education has also been based in Delhi.</li>
-						<li>In the initial part of his career, he served in top Pharmaceutical companies like Sun Pharma, Natco Pharma & USV Ltd. </li> 
 					</ul>
 				</div>
 			</div>

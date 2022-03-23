@@ -5,7 +5,7 @@ import { addNotif } from '.././notif.js' ;
 import { invalidPass, isBlank } from '../valid.js' ;
 import Title from '../title/Title.js' ;
 import Data from '../data/Data.js' ;
-import Register from '../signup/register/Register.js' ;
+import Register from '../register/Register.js' ;
 import LoginForm from '../signup/forms/LoginForm.js' ;
 import Text from '../signup/text/Text.js' ;
 import ResultRecord from '../admin/ResultRecord.js' ;

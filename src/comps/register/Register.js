@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react' ;
 
-import Redirect from '../../redirect/Redirect.js' ;
-import { addNotif} from '../../notif.js' ;
-import {invalidEmail, invalidMobile, invalidPass, isBlank, isMaxMin, invalidName} from '../../valid.js' ;
-import Title from '../../title/Title.js' ;
-import LoginForm from '../forms/LoginForm.js' ;
-import Text from '../text/Text.js' ;
-import Number from '../number/Number.js' ;
-import Dropdown from '../dropdown/Dropdown.js' ;
-import '../signup.css' ;
+import Redirect from '../redirect/Redirect.js' ;
+import { addNotif} from '../notif.js' ;
+import {invalidEmail, invalidMobile, invalidPass, isBlank, isMaxMin, invalidName} from '../valid.js' ;
+import Title from '../title/Title.js' ;
+import LoginForm from '../signup/forms/LoginForm.js' ;
+import Text from '../signup/text/Text.js' ;
+import Number from '../signup/number/Number.js' ;
+import Dropdown from '../signup/dropdown/Dropdown.js' ;
+import '../signup/signup.css' ;
 
 const initPerson = {
 	name: '' ,		email: '' ,		password: '',		

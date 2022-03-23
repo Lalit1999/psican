@@ -1,14 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import { isBlank, invalidDate } from '../valid.js' ;
 import BasicForm from '../basicform/BasicForm.js' ;
 import { addNotif } from '../notif.js' ;
+import {UserContext} from '../../context/UserContext.js' ;
 
 const initData = { title: '', reason: '', appointDate: '' } ;
 
-const ConsultForm = ({token}) => {
+const ConsultForm = () => {
 	const [data, setData] = useState(initData) ;
 	const [error, setError] = useState({}) ;
+	const {token} = useContext(UserContext) ;
 
 	const formData = [
 		[	{type: "text", name: "title", label: "Enter Consultation Title", id:"consultTitle"},

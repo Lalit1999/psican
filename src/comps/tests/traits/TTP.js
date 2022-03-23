@@ -2,7 +2,7 @@ import React, {useState, useEffect } from 'react' ;
 import {Link} from 'react-router-dom' ;
 
 import RadioSet from '../radioset/RadioSet.js' ;
-import Payment from '../payment/Payment.js' ;
+import Payment from '../../payment/Payment.js' ;
 
 import logo from '../../images/Psyment.webp' ;
 import { addNotif } from '../../notif.js' ;

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react' ;
 import {Link} from 'react-router-dom' ;
 
 import { addNotif} from '../../notif.js' ;
-import Payment from '../payment/Payment.js' ;
+import Payment from '../../payment/Payment.js' ;
 import AccisQuestion from './AccisQuestion.js' ;
 
 import {inst, subData, resultData, evalData } from './langdata.js' ;

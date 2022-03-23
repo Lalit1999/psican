@@ -8,7 +8,6 @@ const itemMap = {
 	"Contact Us" : 'contact',
 	"Login" : 'login',
 	"Register" : 'register',
-	"Programs" : '',
 	"Consult" : 'consult',
 	"Sarathi" : 'program/Sarathi',
 	"AEQUESS" : 'program/AEQUESS',

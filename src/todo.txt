@@ -11,6 +11,7 @@
 + way to scroll on route change
 + cheeseburger ki jagah Bootstrap se menu banani hai
 + policy pages me flex-grow 1 lagana hai
++ payment ki checking karni hai paise dekar
 
 Back-End
 --------
