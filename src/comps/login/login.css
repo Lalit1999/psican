@@ -18,6 +18,10 @@
 	width: 30vw;
 }
 
+.register .form-control {
+	width: auto;
+}
+
 .login a {
 	color: var(--white);
 	text-decoration: none;
@@ -32,4 +36,21 @@
 	text-align: center;
 	color: var(--dark);
 	margin: .5em ;
+}
+
+.fp, .nfp	{
+	text-align: right ;
+	cursor: pointer;
+	transition: all .3s;
+}
+
+.nfp	{
+	margin-right: 3em ;
+	cursor: text ;
+	max-width: 30vw;
+}
+
+.fp:hover	{
+	font-weight: bold ;
+	text-decoration: underline;
 }

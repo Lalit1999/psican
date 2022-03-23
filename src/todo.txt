@@ -1,10 +1,13 @@
-- Title.js & css
-- DisplayDetailed.js & css
-- Heading.js & css
 - Header/TopBar/BarItem (mobile ke liye dubara dekhna padega)
-- Footer.js & css
-- PolicyPages.js & css
-- About.js & css
+- Admin
+- banner
+- data
+- home
+- popup
+- signup
+- slider
+- tests
+- userprofile
 
 + mobile css
 + scrolltopbar lagana hai
@@ -15,8 +18,5 @@
 
 Back-End
 --------
-Appointment book ni ho rahi
-
-+ context lagana padega
-+ Popup lagayenge
-+ Login-Register me form recreate karenge
++ Appointment book ni ho rahi
++ register me gender ko lamba karna hai

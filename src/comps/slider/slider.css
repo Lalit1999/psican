@@ -17,7 +17,7 @@
 	min-height: 40vw ;
 }
 
-.row
+/*.row
 {	display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -26,17 +26,17 @@
     margin-right: 10vw ;
 	font-family: 'Rubik' ;
 	color: whitesmoke;
-}
+}*/
 
 .logo-slide
 {	background-color: white ;
 }
-
+/*
 .row img
 {	margin: auto ;
 	width: 89%;
 }
-
+*/
 .arrow
 {
 	position: absolute;

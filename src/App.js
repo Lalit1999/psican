@@ -16,13 +16,13 @@ import Popup from './comps/popup/Popup.js' ;
 import Footer from './comps/footer/Footer.js';
 import { AppContextProvider, AppContext } from './context/AppContext.js' ;
 import { UserContextProvider } from './context/UserContext.js' ;
+import Consult from './comps/consult/Consult.js' ;
+import Login from './comps/login/Login.js' ;
+import Register from './comps/register/Register.js' ;
+import Profile from './comps/UserProfile/UserProfile.js' ;
 const PrivacyPolicy = lazy(() => import('./comps/footer/privacyPolicy/PrivacyPolicy.js'));
 const TermsCondition = lazy(() => import('./comps/footer/termsCondition/TermsCondition.js'));
 const RefundPolicy = lazy(() => import('./comps/footer/refundPolicy/RefundPolicy.js'));
-const Consult = lazy(() => import('./comps/consult/Consult.js')) ;
-const Login = lazy(() => import('./comps/login/Login.js')) ;
-const Register = lazy(() => import('./comps/register/Register.js')) ;
-const Profile = lazy(() => import('./comps/UserProfile/UserProfile.js')) ;
 
 const returnContent = {
 	// login: <Login />,
@@ -40,15 +40,15 @@ const AppRoutes = () => {
               <Route path='/' exact element={<Home />}/>
               <Route path='/about' exact element={<About />}/>
               <Route path='/contact' exact element={<Contact />}/>
-              <Route path='/login' element={<Suspense fallback={<div> Loading... </div>}><Login /></Suspense>}/>
-              <Route path='/register' element={<Suspense fallback={<div> Loading... </div>}><Register /></Suspense>} />
-              <Route path='/consult' element={<Suspense fallback={<div> Loading... </div>}><Consult /></Suspense>}/>
-              <Route path='/profile' element={<Suspense fallback={<div> Loading... </div>}><Profile /></Suspense>}/>
-              <Route path='/test' exact element={<Suspense fallback={<div> Loading... </div>}><Exam/></Suspense>}/>
-              <Route path='/admin' element={<Suspense fallback={<div> Loading... </div>}><Admin /></Suspense>}/>
-              <Route path='/test/ustop' exact element={<Suspense fallback={<div> Loading... </div>}><AnxietyTestPage /></Suspense>}/>
-              <Route path='/test/leta' exact element={<Suspense fallback={<div> Loading... </div>}><TraitTest /></Suspense>}/>
-              <Route path='/test/accis' exact element={<Suspense fallback={<div> Loading... </div>}><AccisTestPage /></Suspense>}/>
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/consult' element={<Consult />} />
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/test' exact element={<Exam/>} />
+              <Route path='/admin' element={<Admin />} />
+              <Route path='/test/ustop' exact element={<AnxietyTestPage />} />
+              <Route path='/test/leta' exact element={<TraitTest />} />
+              <Route path='/test/accis' exact element={<AccisTestPage />} />
               <Route path='/privacy-policy' exact element={<Suspense fallback={<div> Loading... </div>}><PrivacyPolicy/></Suspense>}/>
               <Route path='/terms-condition' exact element={<Suspense fallback={<div> Loading... </div>}><TermsCondition/></Suspense>}/>
               <Route path='/refund-policy' exact element={<Suspense fallback={<div> Loading... </div>}><RefundPolicy/></Suspense>}/>
