@@ -15,16 +15,16 @@
 }
 
 @media(max-width: 600px)
-{	.downbar
-	{	font-weight: bold ;
+{	
+	.downbar {	
+		font-size: .6rem ;
 	}
 
-	.downbar p
-	{	margin: .2em .2em .4em ;
-		font-size: 0.7rem;
+	.downbar p {	
+		margin: .2em .2em .4em ;
 	}
 
-	.myarth
-	{	width: 20vw ;
+	.myarth {	
+		width: 15vw ;
 	}
 }

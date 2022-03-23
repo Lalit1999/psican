@@ -35,16 +35,6 @@
 	margin: 1em 2em ;
 }
 
-.date-cont input[type="text"]
-{	
-  font-size: 1.5rem ; 
-  background-color: white;
-  border : 1px solid black;
-  outline: 2px solid #ccddff;
-  box-shadow: 4px 4px 8px 0 rgba( 0, 0, 0, .2 );
-  margin-top: 0.5em ;
-}
-
 .blue-bg {
 	padding: .3em 2em ;
 	text-align: center;
@@ -106,45 +96,51 @@
 }
 
 @media(max-width: 600px)
-{	.intro
-	{	font-size: 1.05rem ;
-		margin: 1em 1em ;
+{	.consult-page {
+		font-size: .7rem ;
 	}
 
-	.brand, .ngo
-	{	font-size: 1.1rem ;
+	.intro {
+		margin: 1em ;
+		text-align: justify;
 	}
 
-	.cen
-	{	text-align: center; 	}
-
-	.bold
-	{	margin: 1.4em 1em ;
+	.consult-flex {
+		display: flex;
+		flex-direction: column;
+		padding-top: .5em ;
 	}
 
-	.date-cont input[type="text"]
-	{	font-size: 1.2rem ; 
-		margin-top: 0.5em ;
+	.consult-flex-text {
+		margin: .8em 2em ;
 	}
 
-	.blue-bg
-	{	font-size: 1.28rem ;
-		padding: .5em ;
-		line-height: 2em ;
+	.blue-bg {
+		padding: .3em 2em ;
+		text-align: center;
+		max-width: 40%;
 	}
 
-	.blue-form .btn2, .blue-form .btn3
-	{	margin: .2em .5em 0;
+	.consult-form * {
+		font-size: .8rem ;
 	}
 
-	.sched-btn
-	{	font-size: 1.4rem ;
+	.blue-form .btn2, .blue-form .btn3 {
+		margin: auto .4em ;
+		padding: .2em .5em ;
+	}
+
+	.sched-btn {
+		font-size: .7rem ;
+		border-radius: 0.4rem ;
 		padding: 0.5em 1em ;
-		margin-bottom: 1em ; 
+		margin: 0 1em 1em ; 
+		width: auto;
 	}
 
-	.btn3
-	{	font-size: 1.05rem ;
-		padding: 0em 0.5em ;
+	.btn3 {
+		font-size: 1rem ;
+		padding: 0em 0.7em ;
+		border-radius: .5rem;
 	}
 }

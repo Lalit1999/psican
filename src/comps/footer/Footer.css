@@ -42,20 +42,34 @@
 }
 
 @media(max-width: 600px) {	
-	.psyment-footer
-	{	display: block;
+	.psyment-footer {	
+		/*flex-direction: row;*/
+		display: block;
 		margin : .2em  0;
+		padding: .5em 0 ;
+	}
+
+	.footer-logo {
+		display: none
 	}
 
 	.footer-right
 	{	margin-top: .5em ;
-		padding: 0 1em 1em ;
-		margin-right: 5.8vw ;
-		font-size: 1.3rem ;
+		padding: 0 1em .5em ;
+		margin-right: 2vw ;
+		font-size: .7rem ;
+	}
+
+	.footer-right p {
+		margin-bottom: .5em ;
+	}
+
+	.footer-links {
+		flex-direction: row;
 	}
 
 	.footer-links a {
-		font-size: .8rem ;
+		font-size: .7rem ;
 		padding: 0 .6em 0 0.2em ;
 		margin: 0 ;
 	}
