@@ -1,15 +1,18 @@
-import React, {useState, useEffect} from 'react' ;
+import React, {useState, useEffect, useContext} from 'react' ;
 import Redirect from '../redirect/Redirect.js' ;
 
 import Dropdown from '../signup/dropdown/Dropdown.js' ;
 import ResultRecord from './ResultRecord.js' ;
 import UserRecord from './UserRecord.js' ;
+import {UserContext} from '../../context/UserContext.js' ;
 import { addNotif } from '../notif.js' ;
 import './admin.css' ;
 
-const Admin = ({token, user}) => {
-	const [data, setData] = useState({results: [], users: []}) ;
+const Admin = () => {
+	const [results, setResults] = useState([]) ;
+	const [users, setUsers] = useState([]) ;
 	const [mode, setMode] = useState('users') ;
+	const {user, token} = useContext(UserContext) ;
 	const [searchText, setSearchText] = useState('') ;
 
 	useEffect(() => {
@@ -24,12 +27,14 @@ const Admin = ({token, user}) => {
 			else
 				throw Error(res.statusText) ;
 		})
-		.then(users => setData({...data, users}) ) 
+		.then(users => setUsers(users) ) 
 		.catch( err  => {
 			console.log(err) ; 
 			addNotif(err.message, 'error') ;
 		}) ;
+	}, [token]) ;
 
+	useEffect(() => {
 		fetch('https://psy-api.herokuapp.com/test',{
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json' ,
@@ -41,23 +46,21 @@ const Admin = ({token, user}) => {
 			else
 				throw Error(res.statusText) ;
 		})
-		.then(results => setData({...data, results}) ) 
+		.then(results => setResults(results) ) 
 		.catch( err  => {
 			console.log(err) ; 
 			addNotif(err.message, 'error') ;
 		}) ;
-
-	}, [data, token]) ;
+	}, [token]) ;
 
 	const filterRecords = (user) => user.name.toLowerCase().includes(searchText.toLowerCase()) 
 
 	const createRecords = () => {
-		if(data[mode].length > 0)
-			switch(mode)
-			{	case 'results' : return data.results.map((one, i)=><ResultRecord token={token} key={i} ki={i} data={one} /> ) ;
-				case 'users' : return data.users.filter(filterRecords).map((one, i)=><UserRecord token={token} key={i} ki={i} data={one} /> ) ;
-				default: return 'unexpected input' ;
-			}
+		if(mode === 'results')
+			return results.map((one, i)=><ResultRecord token={token} key={i} ki={i} data={one} /> ) ;
+		else if(mode === 'users')
+			return users.filter(filterRecords).map((one, i)=><UserRecord token={token} key={i} ki={i} data={one} /> ) ;
+		else return null ;
 	}
 
 	const onSC = (event) => setSearchText(event.target.value) 
@@ -73,7 +76,6 @@ const Admin = ({token, user}) => {
 			<div className = 'admin'>
 				<div className = 'admin-bar'>
 					<Dropdown label="Mode" name="mode" value={mode} options={['users','results']} onChange={onInputChange}/>
-					<p className = 'task' >Total Rows&nbsp;:&nbsp;{data[mode].length}</p>
 					{/*<Dropdown label="Search By" name="searchby" value={mode} options={['name','phone','email']} onChange={onInputChange}/>*/}
 					<input className = 'task' onChange={onSC} value={searchText} type='text' placeholder='search' />
 				</div>
