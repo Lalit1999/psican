@@ -7,6 +7,7 @@
 + scrolltopbar lagana hai
 + way to scroll on route change
 + payment ki checking karni hai paise dekar
++ basicform mobile css
 
 Back-End
 --------
