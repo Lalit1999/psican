@@ -1,19 +1,11 @@
 - Header/TopBar/BarItem (mobile ke liye dubara dekhna padega)
 - Admin
-- banner
-- data
 - home
-- popup
-- signup
-- slider
 - tests
-- userprofile
 
 + mobile css
 + scrolltopbar lagana hai
 + way to scroll on route change
-+ cheeseburger ki jagah Bootstrap se menu banani hai
-+ policy pages me flex-grow 1 lagana hai, contact ki mobile css me bhi
 + payment ki checking karni hai paise dekar
 
 Back-End

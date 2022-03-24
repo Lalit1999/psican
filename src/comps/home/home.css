@@ -1,11 +1,30 @@
-.testim
-{	color: white;
-	font-weight: bold ;
-	font-size: 3rem ;
+.home {
+	font-family: var(--font);
+	flex-grow: 1;
 }
 
-@media(max-width: 600px)
-{	.testim
+.home-top {
+	background-image: url('../images/dblue.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 90vh;
+	position: relative;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* DONT DELETE */
+/*.testim {
+	color: var(--white);
+	font-weight: bold ;
+	font-size: 1.3rem ;
+}*/
+
+@media(max-width: 600px) {
+	/* DONT DELETE */
+	/*.testim
 	{	font-size: 2rem ;		
-	}	
+	}*/	
 }

@@ -1,0 +1,65 @@
+.test-boxes {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.testbox 	{
+	/*border: 2px solid black;*/
+	margin: 1em ;
+	padding: 1em ;
+	border-radius: 1rem ;
+	display: flex ;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--lightBlue) ;
+	max-width: 25vw ;
+	transition: all .2s ;
+}
+
+.testbox:hover	{
+	background-color: var(--darkLightBlue) ;
+}
+
+.testbox h2 {
+	font-size: 1.1rem ;
+	text-align: center;
+}
+
+.testbox-right	{
+	padding-top: .5em ;
+}
+
+.testbox p 	{
+	font-size: .9rem ;
+	text-align: center;
+	margin: 0 0 0.5em ;
+}
+
+.testbox a	{
+	text-decoration: none ;
+}
+
+@media(max-width: 600px)
+{	.testbox 	{
+		margin: 1em 1em ;
+		display: block ;
+	}
+
+	.testbox p 	{
+		font-size: 1.2rem ;
+	}
+
+	.testbox-left	{
+		padding: 0 2em ;
+	}
+
+	.testbox-right	{
+		padding-top: .8em ;
+		padding-right: 0 ;
+		text-align: center;
+		margin-bottom: 2.5em ;
+	}
+
+}

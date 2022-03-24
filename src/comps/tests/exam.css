@@ -1,0 +1,4 @@
+.test-page {
+	font-family: var(--font);
+	flex-grow: 1;
+}

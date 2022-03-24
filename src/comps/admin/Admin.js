@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react' ;
 import Redirect from '../redirect/Redirect.js' ;
 
-import Dropdown from '../signup/dropdown/Dropdown.js' ;
 import ResultRecord from './ResultRecord.js' ;
 import UserRecord from './UserRecord.js' ;
 import {UserContext} from '../../context/UserContext.js' ;
@@ -75,8 +74,7 @@ const Admin = () => {
 		return(
 			<div className = 'admin'>
 				<div className = 'admin-bar'>
-					<Dropdown label="Mode" name="mode" value={mode} options={['users','results']} onChange={onInputChange}/>
-					{/*<Dropdown label="Search By" name="searchby" value={mode} options={['name','phone','email']} onChange={onInputChange}/>*/}
+					{/*<Dropdown label="Mode" name="mode" value={mode} options={['users','results']} onChange={onInputChange}/>*/}
 					<input className = 'task' onChange={onSC} value={searchText} type='text' placeholder='search' />
 				</div>
 				<div className="records-table">

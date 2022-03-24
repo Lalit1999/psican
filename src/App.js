@@ -1,4 +1,4 @@
-import { lazy, Suspense, useContext, Fragment } from 'react';
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom' ;
 
 import Home from './comps/home/Home.js' ;
@@ -12,9 +12,7 @@ import AnxietyTestPage from './comps/tests/anxiety/AnxietyTestPage.js' ;
 import TraitTest from './comps/tests/traits/TraitTest.js' ;
 import AccisTestPage from './comps/tests/accis/AccisTestPage.js' ;
 import Admin from './comps/admin/Admin.js' ;
-import Popup from './comps/popup/Popup.js' ;
 import Footer from './comps/footer/Footer.js';
-import { AppContextProvider, AppContext } from './context/AppContext.js' ;
 import { UserContextProvider } from './context/UserContext.js' ;
 import Consult from './comps/consult/Consult.js' ;
 import Login from './comps/login/Login.js' ;
@@ -26,17 +24,11 @@ const PrivacyPolicy = lazy(() => import('./comps/footer/privacyPolicy/PrivacyPol
 const TermsCondition = lazy(() => import('./comps/footer/termsCondition/TermsCondition.js'));
 const RefundPolicy = lazy(() => import('./comps/footer/refundPolicy/RefundPolicy.js'));
 
-const returnContent = {
-	// login: <Login />,
-	// register: <Register />,
-	// checkout: <Checkout />
-} ;
-
-const AppRoutes = () => {
-	const {popContent, popOpen, togglePop} = useContext(AppContext) ;
-
-	return (
-		<Fragment>
+const App = () => {
+	return(
+		<UserContextProvider>
+		<div className="App">
+      <BrowserRouter>
       	<TopBar />
         <Routes>
           <Route path='/' exact element={<Home />}/>
@@ -58,25 +50,8 @@ const AppRoutes = () => {
         </Routes>
         <Footer /> 
         <DownBar />
-        <Popup open={popOpen} onCloseClick={togglePop}>
-				<div className="psyment-popup"> 
-					{returnContent[popContent]}
-				</div> 
-      </Popup>
-    </Fragment>
-	) ;
-}
-
-const App = () => {
-	return(
-		<UserContextProvider>
-		<AppContextProvider>
-		<div className="App">
-      <BrowserRouter>
-      	<AppRoutes />
       </BrowserRouter>
     </div>
-    </AppContextProvider>
     </UserContextProvider>
 	) ;
 }

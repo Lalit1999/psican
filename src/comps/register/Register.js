@@ -8,35 +8,6 @@ import {UserContext} from '../../context/UserContext.js' ;
 const Register = () => {
 	const {user} = useContext(UserContext) ;
 
-	// const sendRegisterRequest = () => {
-	// 	addNotif('Please Wait...') ;
-
-	// 	fetch('https://psy-api.herokuapp.com/users/me',{
-	// 		method : 'PATCH' ,
-	// 		headers : { 'Content-Type' : 'application/json', 
-	// 					'Authorization' : `Bearer ${token}` },
-	// 		body :JSON.stringify(data) ,
-	// 	})
-	// 	.then(res => {
-	// 		if(res.ok)
-	// 			return res.json() ;
-	// 		else
-	// 			throw Error(res.statusText) ;
-	// 	})
-	// 	.then(data => {	
-			
-	// 		addNotif('Successfully Updated Profile', 'success') ;
-
-	// 		loadUser(data) ;
-	// 		edit() ;
-	// 	}) 
-	// 	.catch( err  => {
-	// 		console.log(err) ;
-			
-	// 		addNotif('Error updating profile' , 'error') ;
-	// 	}) ;
-	// }
-
     if(user.name)  {
 		if(window.location.search)	{
 			let q = window.location.search.split('?')[1].split('=') ;

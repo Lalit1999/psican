@@ -1,103 +1,111 @@
-.propfileBoxe
-{  border: 1px solid black;
-  padding: 1.5em ;
-  background-color: rgb(83, 154, 212) ;
-  border-radius: .5rem;
+.user-profile-page {
+  flex-grow: 1;
+}
+
+.user-profile {
+  font-size: 1rem ;
+  font-family: var(--font);
+  padding: 0 4em ;
+  display: flex;
+  flex-direction: column;
+}
+
+.up-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: center ;
+  padding: .5em 0;
+}
+
+.up-bottom {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 1em ;
 }
  
-.lefte
-{ display: flex ;
+.up-left {
+  display: flex ;
   flex-direction: column ;
-  margin-left: 1em ;
-}
-
-.righte
-{ display: flex;
-  width: 70% ;
-  margin-left: 3em ;
-  margin-right: 3em ;
-  flex-direction: column ;
-  justify-content: space-between; 
-  padding-left: 2em ;
-}
-
-.propfileboxe div 
-{ border : 1px solid black ;
+  padding-left: 1em ;
+  flex-basis: 50% ;
 }
 
 .test-result-con  {
-  border-radius: 1rem ;
-  border: 2px solid black ;
-  background-color: white ;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .test-result-con h3 {
-  background-color: rgb(29, 41, 81) ;
-  color: white ;
+  background-color: var(--dark) ;
+  color: var(--white) ;
   border-top-left-radius: 0.8rem ; 
   border-top-right-radius: 0.8rem ; 
-  margin-top: 0 ;
+  font-size: 1.1rem ;
+  text-align: center;
+  margin: 0;
   padding: .5em ;
 }
 
 .results-con .record  {
-  background-color: white ;
-  border-radius: 1rem ;
-  justify-content: space-evenly;
+  /*justify-content: space-evenly;*/
 }
 
 .results-con .record p {
   width: 5vw ;
 }
 
-.buttone
-{ margin: 1em 0.4em 0.5em 0.4em ;
-  padding: 0.5em 2em ;
-  text-align: center;
-  text-decoration: none;
-  background-color: white;
-  font-size: 1.5rem ;
-  font-weight: bold ;
-  letter-spacing: 0.05em ;
-  color: black ;
-  border : 2px solid black;
-  border-radius: 99rem ;
-  transition: all 0.5s ;
+.up-right {
+  display: flex;
+  flex-basis: 50% ;
+  flex-direction: column ;
+  padding-left: 2em ;
 }
 
-.buttone:hover
-{ transform: scale(1.1);
-  background-color: rgb(29, 41, 81) ; 
-  border: 2px solid black ;
-  color: white ;
-}
-
-.dele
-{ background-color: darkred ;
-  border : 2px solid red;
+.del {
+  background-color: darkred ;
+  border: none;
   color: white;
 }
 
-.dele:hover
-{ background-color: red ;
-  border : 2px solid black;
+.del:hover {
+  background-color: #570101 ;
+}
+
+.data-bold {
+  font-weight: bold;
+}
+
+.data-flex {
+   display: flex ;
+   justify-content: space-between;
+}
+
+.data-right {
+  margin-left: 5em ;
+}
+
+.changepass {
+  max-width: 80% ;
+}
+
+.changepass * {
+  font-size: .8rem ;
 }
 
 @media(max-width: 600px)
 {  
-  .propfileBoxe
+  .user-profile
   { padding: .5em ;
   }
 
-  .lefte
+  .up-left
   { display: flex ;
     flex-direction: row ;
     flex-wrap: wrap;
     margin-left: 0 ;
   }
 
-  .righte
+  .up-right
   { width: 90% ;
     margin-left: 0 ;
     /*margin-right: 3em ;*/
@@ -108,9 +116,18 @@
     width: 100%;
   }
 
-  .buttone
-  { margin: .5em .2em 0.3em 0.2em ;
-    padding: 0.5em 1em ;
-    font-size: 1.2rem ;
+  .data-flex p
+  { margin-top: .5em ;
+    margin-bottom: .5em ;
+    max-width: 100% ;
+  }
+
+  .data-right
+  { margin-left: 10vw ;
+    width: 65%;   
+  }
+
+  .data-bold
+  { width: 35%;
   }
 }

@@ -1,8 +1,3 @@
-import i5 from '../images/i5.webp' ;
-import stress from '../images/stress.webp' ;
-import sar2 from '../images/sar2.webp' ;
-import pc2 from '../images/pc2.webp' ;
-
 const testimArr = [
 { 	name: 'Dr. Kiran Modi' ,
   	img: 'Kiran' ,
@@ -40,40 +35,4 @@ const testimArr = [
 	msg: 'I have known Ashish Aggarwal as a sincere learner and a person with bold initiatives. Compassion, empathy and working towards helping others comes naturally to him. He is one of my dear students and cherished friends. I have always known him as a go to person in any hour of need.I wish him success in his new endeavours.'
 }	] ;
 
-const sliderData = [ { link :'/' },	{	style : {
-        	backgroundImage: 'url(' + i5+ ')',
-    	},
-        message: 'Welcome to the world of',
-        link : '/' ,
-        message2: 'Realisation ( तत् त्वमसि ) - Mentoring',
-        message3: '&' ,
-        message4: 'Actualisation ( अहम् ब्रह्मास्मि ) - Psychology',
-        title: 'PSYMENT'
- 	},{	style : {
-        	backgroundImage: 'url(' + sar2+ ')',
-    	},
-        subtitle: 'PSYMENT : Program 1',
-        title: 'Sarathi',
-        message: 'School Academic Attitude Training & Health Initiative' ,
-        message2: 'A Mentoring Program for Educational Instituitions' ,
-        link : '/program/Sarathi'
-    },{	style : {
-        	backgroundImage: 'url(' + stress+ ')',
-    	},
-        title: 'AEQUESS',
-        subtitle: 'PSYMENT : Program 2',
-        link : '/program/AEQUESS' ,
-        message: 'Abhinav E-Query System for Students',
-        message2 : 'An E-Counselling System for Classes 11-12 & UG level students',
- 	},{	style : {
-        	backgroundImage: 'url(' + pc2+ ')',
-    	},
-        subtitle: 'PSYMENT : Program 3',
-        title: 'Personal Consultation',
-        link : '/consult' ,
-        message: 'Get PSYCHOLOGICAL MENTORING and COUNSELLING personally',
-        message2: 'Schedule your appointment NOW'
- 	},
-];
-
-export {testimArr, sliderData} ;
+export {testimArr} ;

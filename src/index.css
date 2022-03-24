@@ -46,6 +46,8 @@ textarea {
   --gray: gray;
   --lightGray: lightgray ;
   --golden: rgb(212, 170, 32);
+  --lightBlue: rgba(83, 154, 212, 0.5);
+  --darkLightBlue: rgba(83, 154, 212, 0.7);
 
   --font: 'Lexend', sans-serif ;
 }
