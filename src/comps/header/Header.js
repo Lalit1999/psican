@@ -74,7 +74,7 @@ const Header = () => {
 	else
 		return (
 			<div className="header">
-				<Link className = "header-bars" to="/login"> <FontAwesomeIcon icon={faUser} /> Login</Link>
+				{(user.name)?null:(<Link className = "header-bars" to="/login"> <FontAwesomeIcon icon={faUser} /> Login</Link>)}
 				<FontAwesomeIcon icon={faBars} onClick={() => setMenuOpen(true)} />
 				<Menu handleClose={() => setMenuOpen(false)} show={menuOpen} onLogoutClick={onLogoutClick} />
 			</div>

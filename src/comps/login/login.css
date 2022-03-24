@@ -12,18 +12,15 @@
 
 .login {
 	padding-top: 1em ;
+	width: 30vw;
 }
 
 .login * {
 	font-size: .9rem;
 }
 
-.login .form-control {
-	width: 30vw;
-}
-
-.register .form-control {
-	width: auto;
+.register {
+	width: 60vw ;
 }
 
 .login a {
@@ -57,4 +54,41 @@
 .fp:hover	{
 	font-weight: bold ;
 	text-decoration: underline;
+}
+
+@media(max-width: 600px) {
+	.login .form-control {
+		width: 70vw;
+	}
+
+	.register {
+		width: 80% ;
+	}
+
+	.register .form-floating {
+		justify-content: center;
+	}
+
+	.register .form-control {
+		width: 100% ;
+	}
+
+	.register .form-select {
+		width: 100% ;
+	}
+
+	.login-heading {
+		font-size: 1.2rem;
+		text-align: center;
+		margin: .5em ;
+	}
+
+	.fp, .nfp	{
+		text-align: center ;
+	}
+
+	.nfp	{
+		margin-right: 0 ;
+		max-width: 80vw;
+	}
 }

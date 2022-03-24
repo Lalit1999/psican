@@ -2,7 +2,7 @@ import { faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons' ;
 
 import Header from './Header.js' ;
 import './topbar.css' ;
-import {BarItem, BarItemBig} from './BarItem.js' ;
+import BarItem from './BarItem.js' ;
 import Image from '../images/Psyment2.webp' ;
 
 const TopBar = () => {

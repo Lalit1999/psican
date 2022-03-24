@@ -1,6 +1,6 @@
 import ContactForm from './ContactForm.js' ;
 import Title from '../title/Title.js' ;
-import './Contact.css' ;
+// import './Contact.css' ;
 
 const Contact = () => {	
 	return(

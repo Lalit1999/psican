@@ -9,7 +9,7 @@ const Address = () => {
 	return (
 		<div className='footer-right'>
 			<div>
-				<p><a href="https://www.google.com/maps/place/ORN+Remedies+Pvt.+Ltd./@28.6837717,77.1702569,18z/data=!4m5!3m4!1s0x390d03cb3bdd2fff:0x396a094b8bb9d820!8m2!3d28.6837717!4d77.1713512" target="_blank"><FontAwesomeIcon icon = {faMap} />&nbsp;Unit No. 4, F.F., CSC, Pocket B & C, Phase - 4, Ashok Vihar, Delhi - 110052.</a></p>
+				<p><a href="https://www.google.com/maps/place/ORN+Remedies+Pvt.+Ltd./@28.6837717,77.1702569,18z/data=!4m5!3m4!1s0x390d03cb3bdd2fff:0x396a094b8bb9d820!8m2!3d28.6837717!4d77.1713512" target="_blank" rel="noreferrer"><FontAwesomeIcon icon = {faMap} />&nbsp;Unit No. 4, F.F., CSC, Pocket B & C, Phase - 4, Ashok Vihar, Delhi - 110052.</a></p>
 				<p><a href="tel:09555235231" ><FontAwesomeIcon icon = {faPhoneAlt} />&nbsp;+91-9555-235-231</a></p>
 				<p><a href="mailto:info.psyment@gmail.com"><FontAwesomeIcon icon = {faEnvelope} />&nbsp;info.psyment@gmail.com</a></p>
 			</div>
