@@ -1,7 +1,7 @@
 import {useState, useContext} from 'react' ;
 import { Link } from'react-router-dom' ;
-import CheeseburgerMenu from 'cheeseburger-menu' ;
-import HamburgerMenu from 'react-hamburger-menu' ;
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
+import { faBars, faUser } from '@fortawesome/free-solid-svg-icons' ;
 
 import Menu from './Menu.js' ;
 import {UserContext} from '../../context/UserContext.js' ;
@@ -36,35 +36,6 @@ const Header = () => {
 			}) ;
 	}
 
-	const checkMobile = () => {
-		if(window.screen.availWidth > 923)
-		{	return (
-				<div className="mini-menu">
-					<div>
-						<Link className="header-item" to='/'> Home </Link>
-						<Link className="header-item" to='/about'> About </Link>
-						<Link className="header-item" to='/test'> Tests </Link>
-						<Link className="header-item" to='/consult'> Consult </Link>
-						<Link className="header-item" to='/contact'> Contact </Link>
-						{user.name==='admin'?<Link className="header-item" to='/admin'> Admin </Link>:null}
-					</div>
-				</div>
-				) ;
-		}
-		else {
-			return (
-				<div>
-					<CheeseburgerMenu isOpen={menuOpen} closeCallback={() => setMenuOpen(false)}>
-							<Menu closeCallback={() => setMenuOpen(false)} checkLoggedIn={checkLoggedIn} user={user}/>
-					</CheeseburgerMenu>
-					<HamburgerMenu isOpen={menuOpen} menuClicked={() => setMenuOpen(true)} 
-								   width={32} height={24} strokeWidth={8} color='white' 
-								   borderRadius={1} animationDuration={0.5} />
-				</div>
-				) ;
-		}
-	}
-
 	const checkLoggedIn = () => {
 		if(token === '') 	{
 			return (
@@ -84,7 +55,31 @@ const Header = () => {
 		}
 	}
 
-	return <div className="header"> {checkMobile()} {checkLoggedIn()} </div> ;
+	if(window.screen.availWidth > 923)
+		return (
+			<div className = "header">
+				<div className="mini-menu">
+					<div>
+						<Link className="header-item" to='/'> Home </Link>
+						<Link className="header-item" to='/about'> About </Link>
+						<Link className="header-item" to='/test'> Tests </Link>
+						<Link className="header-item" to='/consult'> Consult </Link>
+						<Link className="header-item" to='/contact'> Contact </Link>
+						{user.name==='admin'?<Link className="header-item" to='/admin'> Admin </Link>:null}
+					</div>
+				</div>
+				{checkLoggedIn()}
+			</div>
+		) ;
+	else
+		return (
+			<div className="header">
+				<Link className = "header-bars" to="/login"> <FontAwesomeIcon icon={faUser} /> Login</Link>
+				<FontAwesomeIcon icon={faBars} onClick={() => setMenuOpen(true)} />
+				<Menu handleClose={() => setMenuOpen(false)} show={menuOpen} onLogoutClick={onLogoutClick} />
+			</div>
+		) ;
+	// return <div className="header"> {checkMobile()}  </div> ;
 }
 
 export default Header ;

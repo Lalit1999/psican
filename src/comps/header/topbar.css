@@ -53,27 +53,24 @@
 
 @media(max-width: 600px)
 {
-	.logo
-	{	margin: 0.2em 0.2em 0; }
-
-	.logo img
-	{	width: 29vw ; 
+	.logo {	
+		padding: 0.2em 0 0; 
 	}
 
-	.topbar
-	{	max-width: 100vw ;
+	.logo img {	
+		width: 20vw ;
+		height: 5vh ; 
+	}
+
+	.topbar {
+		max-width: 100vw ;
 	} 
 
-	.topbar .right-topbar
-	{	margin-left: auto ;
+	.topbar .right-topbar {
+		margin-left: auto ;
 	}
 
-	.bar-item
-	{
-		padding: 0 0.7vw 0.7em;
-	}
-
-	.bar-item svg
-	{	font-size: 2rem ;	
+	.bar-items {
+		display: none ;
 	}
 }

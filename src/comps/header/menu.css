@@ -1,47 +1,30 @@
-.burger a, .burger div
-{
-	display: block ;
-	border-bottom: 1px solid rgb(29, 41, 81);
-}
 
-.burger .no-border
-{	border-bottom: none ;
-}
-
-.burger, .cheeseburger-menu-inner
-{
-	background-color: rgb(70, 130, 180) ;
-}
-
-.burger a:hover, .burger div:hover
-{
-	background-color: rgb(29, 41, 81);
-	color: white;
+.offcanvas-menu {
+	display: flex ;
+	flex-direction: column;
+	font-family: var(--font);
+	justify-content: center;
+	margin-right: 5em ;
 }
 
 .menu-item
 {
-	color: whitesmoke;
-	font-size: 1.6rem ;
+	color: var(--dark);
+	font-size: 1rem ;
 	text-decoration: none ;
-	transition: all 0.5s ;
-	margin: 0.1em ;
-	font-family: 'Mukta', sans-serif;
+	margin: .5em 0 0;
+	padding: 0 0 .5em 1em;
+	font-family: var(--font);
+	border-bottom: 2px solid;
+	border-image-slice: 1;
+	border-image-source: linear-gradient(to right, var(--dark), var(--white));
 }
 
-.sub-item
-{	font-size: 1.3rem ;
-	border-bottom: none;
-	background-color: rgb(43, 98, 143) ;
+.offcanvas-login {
+	display: flex;
+	flex-direction: column;
 }
 
-.innerburger
-{
-	border-bottom: 1px solid rgb(70, 130, 180) !important;
-	text-align: center; 
-}
-
-.innerburger:hover
-{
-	background-color: rgb(70, 130, 180) !important ;
+.menu-item:focus , .menu-btn:focus {
+	color: var(--dark);
 }

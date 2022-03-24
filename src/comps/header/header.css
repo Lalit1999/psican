@@ -50,40 +50,31 @@
 	color: var(--dark);
 }
 
-.menu-div
-{	margin: 1vh auto;
-	justify-content: center;	
-}
-
-.menu-btn
-{	display: block ;
-	font-size: 1.55rem ;
-	margin: 2vw auto ;
-	border-right: none ;
-	border-left: none ;
-	padding-top: 1.4vw ;
-	padding-bottom: 1.4vw ;
-}
-
-.cheeseburger-menu+div {
-	margin: 0.8em 5vw;
-}
-
 @media (max-width: 600px)
 {
-	.right-header>div
-	{
-		padding-right: 6.1vw;
-	    padding-top: 3.6vh;
-	    padding-left: 3.7vw;
+	.header {
+		justify-content: flex-end;
+		padding: .5em 1em ;
 	}
 
-	.header
-	{	top: 9.95vh ;		
+	.header svg {
+		font-size: 2rem ;
+		color: var(--white);
+		padding-left: .5em ;
 	}
 
-	a.header-btn
-	{	padding-top: .3em ; 
+	.header-bars {
+		font-size: .8rem ;
+		color: var(--white);
+		padding: .5em ;
+		text-decoration: none;
 	}
 
+	.header-bars:focus {
+		color: var(--white);
+	}
+
+	.header-bars svg {
+		font-size: .8rem ;
+	}	
 }

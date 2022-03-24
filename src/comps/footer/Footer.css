@@ -32,7 +32,7 @@
 	justify-content: space-evenly;
 }
 
-.footer-links a {
+.footer-links a , .footer-right a{
 	font-size: 1rem ;
 	padding: 0 .7em ;
 	color: var(--white) ;
