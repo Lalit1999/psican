@@ -38,7 +38,7 @@ const Login = ( ) => {
 	}
 	else
 		return(
-			<div>
+			<div className="login-page">
 				<Title name='Login' items={["Home", "Login"]}/>
 				<div className="login-con"> {checkMode()} </div>
 			</div>

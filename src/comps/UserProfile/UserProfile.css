@@ -5,14 +5,6 @@
   border-radius: .5rem;
 }
  
-.pteste
-{	justify-content: space-evenly ;
-	font-size: 1.5rem ;
-	text-decoration: none ;
-	font-family: 'Roboto', sans-serif;
-  display : flex ;
-}
-
 .lefte
 { display: flex ;
   flex-direction: column ;
@@ -96,11 +88,6 @@
 {  
   .propfileBoxe
   { padding: .5em ;
-  }
-   
-  .pteste
-  { font-size: 1.2rem ;
-    flex-direction: column-reverse;
   }
 
   .lefte

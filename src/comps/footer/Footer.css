@@ -1,7 +1,7 @@
 .psyment-footer {	
 	display: flex;
 	justify-content: space-evenly ;
-	margin : .5em  0;
+	margin : .5em 0 0 ;
 	color: var(--white) ;
 	background-color: var(--dark) ;
 	font-family: var(--font);
@@ -13,7 +13,6 @@
 	align-items: center;
 	padding: .5em 0 ;
 	height: 110px;
-	/*width: 25%;*/
 }
 
 .footer-logo img {
@@ -39,6 +38,10 @@
 	color: var(--white) ;
 	margin: 0 ;
 	text-decoration: none ;
+}
+
+.policy-page {
+	flex-grow: 1;
 }
 
 @media(max-width: 600px) {	

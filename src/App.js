@@ -1,4 +1,4 @@
-import { lazy, Suspense, useContext } from 'react';
+import { lazy, Suspense, useContext, Fragment } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom' ;
 
 import Home from './comps/home/Home.js' ;
@@ -20,6 +20,8 @@ import Consult from './comps/consult/Consult.js' ;
 import Login from './comps/login/Login.js' ;
 import Register from './comps/register/Register.js' ;
 import Profile from './comps/UserProfile/UserProfile.js' ;
+import './app.css'
+
 const PrivacyPolicy = lazy(() => import('./comps/footer/privacyPolicy/PrivacyPolicy.js'));
 const TermsCondition = lazy(() => import('./comps/footer/termsCondition/TermsCondition.js'));
 const RefundPolicy = lazy(() => import('./comps/footer/refundPolicy/RefundPolicy.js'));
@@ -34,34 +36,34 @@ const AppRoutes = () => {
 	const {popContent, popOpen, togglePop} = useContext(AppContext) ;
 
 	return (
-		<div>
-          	<TopBar />
-            <Routes>
-              <Route path='/' exact element={<Home />}/>
-              <Route path='/about' exact element={<About />}/>
-              <Route path='/contact' exact element={<Contact />}/>
-              <Route path='/login' element={<Login />} />
-              <Route path='/register' element={<Register />} />
-              <Route path='/consult' element={<Consult />} />
-              <Route path='/profile' element={<Profile />} />
-              <Route path='/test' exact element={<Exam/>} />
-              <Route path='/admin' element={<Admin />} />
-              <Route path='/test/ustop' exact element={<AnxietyTestPage />} />
-              <Route path='/test/leta' exact element={<TraitTest />} />
-              <Route path='/test/accis' exact element={<AccisTestPage />} />
-              <Route path='/privacy-policy' exact element={<Suspense fallback={<div> Loading... </div>}><PrivacyPolicy/></Suspense>}/>
-              <Route path='/terms-condition' exact element={<Suspense fallback={<div> Loading... </div>}><TermsCondition/></Suspense>}/>
-              <Route path='/refund-policy' exact element={<Suspense fallback={<div> Loading... </div>}><RefundPolicy/></Suspense>}/>
-              <Route exact element={<NotFound />} />
-            </Routes>
-            <Footer /> 
-            <DownBar />
-            <Popup open={popOpen} onCloseClick={togglePop}>
+		<Fragment>
+      	<TopBar />
+        <Routes>
+          <Route path='/' exact element={<Home />}/>
+          <Route path='/about' exact element={<About />}/>
+          <Route path='/contact' exact element={<Contact />}/>
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/consult' element={<Consult />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/test' exact element={<Exam/>} />
+          <Route path='/admin' element={<Admin />} />
+          <Route path='/test/ustop' exact element={<AnxietyTestPage />} />
+          <Route path='/test/leta' exact element={<TraitTest />} />
+          <Route path='/test/accis' exact element={<AccisTestPage />} />
+          <Route path='/privacy-policy' exact element={<Suspense fallback={<div> Loading... </div>}><PrivacyPolicy/></Suspense>}/>
+          <Route path='/terms-condition' exact element={<Suspense fallback={<div> Loading... </div>}><TermsCondition/></Suspense>}/>
+          <Route path='/refund-policy' exact element={<Suspense fallback={<div> Loading... </div>}><RefundPolicy/></Suspense>}/>
+          <Route exact element={<NotFound />} />
+        </Routes>
+        <Footer /> 
+        <DownBar />
+        <Popup open={popOpen} onCloseClick={togglePop}>
 				<div className="psyment-popup"> 
 					{returnContent[popContent]}
 				</div> 
-	        </Popup>
-        </div>
+      </Popup>
+    </Fragment>
 	) ;
 }
 
@@ -70,12 +72,12 @@ const App = () => {
 		<UserContextProvider>
 		<AppContextProvider>
 		<div className="App">
-	        <BrowserRouter>
-	        	<AppRoutes />
-	        </BrowserRouter>
-	    </div>
-	    </AppContextProvider>
-	    </UserContextProvider>
+      <BrowserRouter>
+      	<AppRoutes />
+      </BrowserRouter>
+    </div>
+    </AppContextProvider>
+    </UserContextProvider>
 	) ;
 }
 

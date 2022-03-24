@@ -3,6 +3,7 @@
 	font-family: var(--font);
 	text-align: center;
 	color: var(--black);
+	font-size: .8rem ;
 }
 
 .downbar p {	

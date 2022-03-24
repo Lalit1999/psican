@@ -1,3 +1,7 @@
+.login-page {
+	flex-grow: 1;
+}
+
 .login-con {
 	display: flex;
 	justify-content: center;

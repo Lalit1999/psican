@@ -1,4 +1,4 @@
-import React, {useState} from 'react' ;
+import {useState, useContext} from 'react' ;
 
 import Redirect from '../redirect/Redirect.js' ;
 import { addNotif } from '.././notif.js' ;
@@ -9,6 +9,7 @@ import Register from '../register/Register.js' ;
 import LoginForm from '../signup/forms/LoginForm.js' ;
 import Text from '../signup/text/Text.js' ;
 import ResultRecord from '../admin/ResultRecord.js' ;
+import {UserContext} from '../../context/UserContext.js' ;
 import './UserProfile.css' ;
 
 const returnKey = {
@@ -34,14 +35,15 @@ const initData = {
 	repass: '',
 } ;
 
-const UserProfile = ({token, loadUser, user}) => {
+const UserProfile = () => {
+	const {user, token, loadUser} = useContext(UserContext) ;
 	const [mode, setMode] = useState('normal') ;
 	const [error, setError] = useState('') ;
 	const [resData, setResData] = useState({}) ;
 	const [data, setData] = useState(initData) ;	
 
 	const formatDate = (dt) => {
-		const dat = new Date(dt).toLocaleString("en-US", {timeZone: "Asia/Kolkata"}); ;
+		const dat = new Date(dt).toLocaleString("en-GB", {timeZone: "Asia/Kolkata"}); ;
 		return dat ;
 	}
 
@@ -58,12 +60,10 @@ const UserProfile = ({token, loadUser, user}) => {
 				throw Error(res.statusText) ;
 		})
 		.then(data =>{	
-			
 			addNotif('Successfully Logged Out', 'success') ;	
 			loadUser({}) ;
 		}) 
 		.catch( err  => {
-			
 			addNotif('Error Logging Out', 'error') ;	
 			console.log(err) ; 
 		}) ;
@@ -189,33 +189,31 @@ const UserProfile = ({token, loadUser, user}) => {
 	{
 		return (
 			<div>
-				<Title name = 'Profile' items={["Home -", "profile"]}/>
+				<Title name = 'Profile' items={["Home", "profile"]}/>
 				<div className="propfileBoxe">
-					<div className="pteste">
-						<div className="lefte">
-							<div className="test-result-con">
-								<h3> Test Results </h3>
-								<div className="results-con">
-									{checkResult()}
-								</div> 
-							</div>
-							{/*<Pop btn="Change Password" classes="buttone ">
-								<LoginForm title=" Basic Details " error={error} near="near"
-									b2="Change" onb2Click={onChangeClick} >
-									<Text label="Old Password" name="oldpass" type="pw" value={data.oldpass} onChange={onInputChange}/>
-									<Text label="New Password" name="newpass" type="pw" value={data.newpass} onChange={onInputChange}/>
-									<Text label="Retype Password" name="repass" type="pw" value={data.repass} onChange={onInputChange}/>
-								</LoginForm>
-							</Pop>*/}								
- 							<button className = "buttone" onClick={onLogoutClick} >Logout</button>
-							<button className = "buttone " onClick = {onEditClick}>
-								{(mode==='edit'?'Go Back':'Edit profile')}
-							</button>
- 							<button className = "buttone dele" onClick={onDeleteClick}>Delete profile</button>
+					<div className="lefte">
+						<div className="test-result-con">
+							<h3> Test Results </h3>
+							<div className="results-con">
+								{checkResult()}
+							</div> 
 						</div>
-						<div className="righte">
-							{checkMode()}
-						</div>
+						{/*<Pop btn="Change Password" classes="buttone ">
+							<LoginForm title=" Basic Details " error={error} near="near"
+								b2="Change" onb2Click={onChangeClick} >
+								<Text label="Old Password" name="oldpass" type="pw" value={data.oldpass} onChange={onInputChange}/>
+								<Text label="New Password" name="newpass" type="pw" value={data.newpass} onChange={onInputChange}/>
+								<Text label="Retype Password" name="repass" type="pw" value={data.repass} onChange={onInputChange}/>
+							</LoginForm>
+						</Pop>*/}								
+							<button className = "buttone" onClick={onLogoutClick} >Logout</button>
+						<button className = "buttone " onClick = {onEditClick}>
+							{(mode==='edit'?'Go Back':'Edit profile')}
+						</button>
+							<button className = "buttone dele" onClick={onDeleteClick}>Delete profile</button>
+					</div>
+					<div className="righte">
+						{checkMode()}
 					</div>
 				</div>
 			</div>
