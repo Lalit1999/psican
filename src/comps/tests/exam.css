@@ -8,12 +8,6 @@
 	flex-grow: 1;	
 }
 
-.test-con {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
 .support {
 	text-align: center;
 	font-size: .8rem ;
@@ -29,14 +23,11 @@
 
 	.support {
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
 	}
 
 	.support .sched-btn {
 		margin: .5em 0 ;
-		width: 60vw ;
 	}
-
 }

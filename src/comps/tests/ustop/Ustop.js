@@ -351,13 +351,14 @@ const SAAT = () => {
 	const checkPayment = () => {
 		// if(payment)
 			return (
-				<div className="test-box">
-					<h3> Understanding Self Through Observed Perceptions (USTOP) </h3> 
-					<div className="lang-con"> Change Language: 
-						<input type="radio" id={0} name={'lang'} checked={lang==='english'} onChange={() => setLang('english') } /> English 
-						<input type="radio" id={1} name={'lang'} checked={lang==='hindi'} onChange={() => setLang('hindi') }/> हिन्दी 
+				<div className="test-box-con">
+					<div className="test-box">
+						<div className="lang-con"> Change Language: 
+							<input type="radio" id={0} name={'lang'} checked={lang==='english'} onChange={() => setLang('english') } /> English 
+							<input type="radio" id={1} name={'lang'} checked={lang==='hindi'} onChange={() => setLang('hindi') }/> हिन्दी 
+						</div>
+						{checkMode()}
 					</div>
-					{checkMode()}
 				</div>
 			) ;
 		// else 
