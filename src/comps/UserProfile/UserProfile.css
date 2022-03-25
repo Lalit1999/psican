@@ -92,42 +92,55 @@
   font-size: .8rem ;
 }
 
+.user-profile-btns Button {
+  margin: .5em;
+}
+
 @media(max-width: 600px)
 {  
-  .user-profile
-  { padding: .5em ;
+  .user-profile {
+    font-size: .8rem ;
+    flex-direction: column-reverse;
+    padding: 0 .5em ;
   }
 
-  .up-left
-  { display: flex ;
-    flex-direction: row ;
-    flex-wrap: wrap;
-    margin-left: 0 ;
+  .up-top {
+    flex-direction: column;
+    padding: .5em 8em ;
   }
 
-  .up-right
-  { width: 90% ;
-    margin-left: 0 ;
-    /*margin-right: 3em ;*/
-    padding-left: 0.5em ;
+  .up-bottom {
+    flex-direction: column-reverse;
+    align-items: center;
+    padding-top: 1em ;
+  }
+   
+  .up-left {
+    width: 90%;
   }
 
-  .test-result-con  {
+  .test-result-con h3 {
+    font-size: .8rem ;
+    margin: 0;
+    padding: .5em ;
+  }
+
+  .results-con .record p {
+    width: 15vw ;
+  }
+
+  .up-right {
+    padding-left: 1em ;
     width: 100%;
+    align-items: center;
   }
 
-  .data-flex p
-  { margin-top: .5em ;
-    margin-bottom: .5em ;
-    max-width: 100% ;
+  .data-right {
+    margin-left: 10em ;
   }
 
-  .data-right
-  { margin-left: 10vw ;
-    width: 65%;   
+  .changepass {
+    width: 100% ;
   }
 
-  .data-bold
-  { width: 35%;
-  }
 }

@@ -42,6 +42,7 @@
 	.title {
 		font-size: .9rem ;
 		letter-spacing: 1px;
+		text-align: center;
 	}
 
 	.crumb {	

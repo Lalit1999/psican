@@ -7,14 +7,11 @@
 	padding-bottom: 2em ;
 }
 
-.payment .form-control { 
-	min-width: 20vw;
-}
-
 .payment-right	{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	min-width: 30vw;
 }
 
 .payment-right * {
@@ -41,6 +38,7 @@
 {	.payment 
 	{
 		flex-direction: column ;
+		padding-bottom: .5em ;
 	}
 
 	.payment-left, .payment-right	{
@@ -48,11 +46,16 @@
 	}
 
 	.payment-left	{
-		font-size: 1.2rem ;
+		font-size: .8rem ;
 	}
 
 	.payment-right {
 		padding-top: .7em ;
+		/*min-width: 90vw ;*/
+	}
+
+	.payment-right .form-control {
+		min-width: 60vw;
 	}
 
 	.payment-right button	{
