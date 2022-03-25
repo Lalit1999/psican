@@ -8,7 +8,7 @@ import NotFound from './comps/home/NotFound.js' ;
 import TopBar from './comps/header/TopBar.js' ;
 import DownBar from './comps/downbar/DownBar.js' ;
 import Exam from './comps/tests/Exam.js' ;
-import AnxietyTestPage from './comps/tests/anxiety/AnxietyTestPage.js' ;
+import UstopPage from './comps/tests/ustop/UstopPage.js' ;
 import TraitTest from './comps/tests/traits/TraitTest.js' ;
 import AccisTestPage from './comps/tests/accis/AccisTestPage.js' ;
 import Admin from './comps/admin/Admin.js' ;
@@ -40,7 +40,7 @@ const App = () => {
           <Route path='/profile' element={<Profile />} />
           <Route path='/test' exact element={<Exam/>} />
           <Route path='/admin' element={<Admin />} />
-          <Route path='/test/ustop' exact element={<AnxietyTestPage />} />
+          <Route path='/test/ustop' exact element={<UstopPage />} />
           <Route path='/test/leta' exact element={<TraitTest />} />
           <Route path='/test/accis' exact element={<AccisTestPage />} />
           <Route path='/privacy-policy' exact element={<Suspense fallback={<div> Loading... </div>}><PrivacyPolicy/></Suspense>}/>

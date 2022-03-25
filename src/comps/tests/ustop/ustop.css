@@ -1,7 +1,8 @@
 .test-box {
-	border: 3px solid rgb(29, 41, 81);
+	border: 3px solid var(--dark);
 	border-radius: 1rem ;
-	margin: 1em 4em ;
+	margin: 1em 0 ;
+	max-width: 70%;
 	background-color: white ;
 }
 
@@ -121,17 +122,6 @@
 	color: orangered ;
 }
 
-.support {
-	text-align: center;
-}
-
-.support .sched-btn {
-	margin-left: 1em ;
-	font-size: 1.1rem ;
-	font-weight: normal ;
-	text-decoration: none ;
-}
-
 @media(max-width: 600px)
 {	.test-box {
 		margin: 1em ;
@@ -202,17 +192,4 @@
 	.proceed-con button	{
 		margin-right: 2em ;	
 	}
-
-	.support {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.support .sched-btn {
-		margin: .5em 0 ;
-		width: 60vw ;
-	}
-
 }

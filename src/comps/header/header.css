@@ -3,6 +3,7 @@
 	font-family: var(--font);
 	display: flex;
 	justify-content: space-between;
+	border-bottom: 2px solid var(--white);
 }
 
 .mini-menu {

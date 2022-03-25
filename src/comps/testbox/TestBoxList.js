@@ -2,15 +2,15 @@ import TestBox from './TestBox.js' ;
 
 const data = [
 	{ 
-		title: "Understanding Self Through Observed Perceptions (USTOP)",
+		title: "USTOP : Understanding Self Through Observed Perceptions",
 		link: "/test/ustop",
 		desc: "Anxiety test designed for evaluating anxiety levels of an individual.",
 	}, { 
-		title: "Learning Environment Trait Assessment (LETA)",
+		title: "LETA : Learning Environment Trait Assessment",
 		link: "/test/leta",
 		desc: "Test designed to measure the level of 30 personality traits in parents of children (2 - 12 years old)",
 	}, { 
-		title: "Assessment of COVID Cognitive Impact on Self (ACCIS)",
+		title: "ACCIS : Assessment of COVID Cognitive Impact on Self",
 		link: "/test/accis",
 		desc: "Test to help a person understand the impact of COVID-related anxiety on his/her behaviour & well-being",
 	},

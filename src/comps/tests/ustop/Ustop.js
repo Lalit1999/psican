@@ -1,16 +1,16 @@
-import React, {useState, useEffect} from 'react' ;
+import {useState, useEffect, useContext, Fragment} from 'react' ;
 import {Link} from 'react-router-dom' ;
 
 import { addNotif} from '../../notif.js' ;
-import './saat.css' ;
 import Payment from '../../payment/Payment.js' ;
-
+import {UserContext} from '../../../context/UserContext.js' ;
 import logo from '../../images/Psyment.webp' ;
 import {inst, quesData, subData, resultData, evalData} from './langdata.js' ;
 import {radioData} from './radioData.js' ;
 import {saatQues} from './queData.js' ;
+import './ustop.css' ;
 
-const coupon_amount = {
+const couponAmount = {
     noPayment: 500,
     fullPayment: 0,
     quarterPayment: 125,
@@ -112,21 +112,22 @@ const Question = ({lang, changeMode}) => {
 
 const EvalDisplay = ({stage, type, lang}) => {
 	return (
-		<React.Fragment>
+		<Fragment>
 			{evalData[stage].l1[lang]} 
 			<span className={"eval "+type}>{evalData[stage].l2[lang]}</span>
 			{evalData[stage].l3[lang]} <br/><br/>
 			{evalData[stage].l4[lang]}
-		</React.Fragment>
+		</Fragment>
 	) ;
 }
 
 
-const SAAT = ({token, user}) => {
+const SAAT = () => {
 	const [mode, setMode] = useState('start') ;
 	const [lang, setLang] = useState('english') ;
 	const [payment, setPayment] = useState(false) ;
 	const [coupon, setCoupon] = useState('noPayment') ;
+	const {token, user} = useContext(UserContext) ;
 
 	useEffect( () => {
 		fetch("https://psy-api.herokuapp.com/saat-payment/check", {
@@ -348,7 +349,7 @@ const SAAT = ({token, user}) => {
 	}
 
 	const checkPayment = () => {
-		if(payment)
+		// if(payment)
 			return (
 				<div className="test-box">
 					<h3> Understanding Self Through Observed Perceptions (USTOP) </h3> 
@@ -359,8 +360,8 @@ const SAAT = ({token, user}) => {
 					{checkMode()}
 				</div>
 			) ;
-		else 
-			return <Payment cost={coupon_amount[coupon]} token={token} display={displayRazorpay} change={() => setPayment(true)} couponChange={changeCoupon} type='ustop'/> ;
+		// else 
+		// 	return <Payment cost={couponAmount[coupon]} token={token} display={displayRazorpay} change={() => setPayment(true)} couponChange={changeCoupon} type='ustop'/> ;
 	}	
 
 	if(token === "")
@@ -370,7 +371,7 @@ const SAAT = ({token, user}) => {
 					<Link to="/login?rdr=ustop" className="btn3"> Login </Link>
 					 or 
 					<Link to="/register?rdr=ustop" className="btn3"> Register </Link> 
-					to take this test (you will be redirected to home page) 
+					to take this test 
 				</p>
 			</div>
 		) ; 

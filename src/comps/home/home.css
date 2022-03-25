@@ -4,15 +4,20 @@
 }
 
 .home-top {
-	background-image: url('../images/dblue.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	min-height: 90vh;
-	position: relative;
-
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color: var(--dark);
+	
+	/*background-image: url('../images/dblue.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;*/
+	min-height: 55vh;
+	/*position: relative;*/
+}
+
+.home-float {
+	/*transform: translateY(-50px);*/
 }
 
 /* DONT DELETE */

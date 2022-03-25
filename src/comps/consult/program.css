@@ -38,6 +38,9 @@
 .blue-bg {
 	padding: .3em 2em ;
 	text-align: center;
+}
+
+.consult-form {
 	max-width: 40%;
 }
 
@@ -93,6 +96,7 @@
 
 .btn3:hover {
 	background-color: var(--darker) ;
+	color: var(--white) ;
 }
 
 @media(max-width: 600px)
