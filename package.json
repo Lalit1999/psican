@@ -9,17 +9,12 @@
     "@fortawesome/free-regular-svg-icons": "^6.1.0",
     "@fortawesome/free-solid-svg-icons": "^6.1.0",
     "@fortawesome/react-fontawesome": "^0.1.18",
-    "cheeseburger-menu": "0.0.13",
     "cogo-toast": "^4.2.3",
     "react": "^17.0.2",
     "react-bootstrap": "^2.2.0",
-    "react-datepicker": "^4.7.0",
     "react-dom": "^17.0.2",
-    "react-hamburger-menu": "^1.2.1",
-    "react-id-swiper": "^4.0.0",
     "react-router-dom": "^6.2.2",
     "react-scripts": "^5.0.0",
-    "swiper": "^6.6.1",
     "validator": "^13.5.2"
   },
   "scripts": {
