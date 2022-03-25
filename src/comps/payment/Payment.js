@@ -25,7 +25,19 @@ const payData = {
 		checkUrl: "https://psy-api.herokuapp.com/appoint-payment",
 		gatewayDescr: "Psyment Appointment Booking",
 		successUrl: "https://psy-api.herokuapp.com/appoint-payment/success",
-	}
+	},
+	ustop : {
+		couponAmount : {
+		    noPayment: 500,
+		    fullPayment: 0,
+		    quarterPayment: 125,
+		    halfPayment: 250,
+		    threeQuarter: 375,
+		},
+		checkUrl: "https://psy-api.herokuapp.com/saat-payment",
+		gatewayDescr: "Psyment USTOP Test",
+		successUrl: "https://psy-api.herokuapp.com/saat-payment/success",
+	},
 }
 
 const Payment = ({success, type}) => {
@@ -81,7 +93,7 @@ const Payment = ({success, type}) => {
 	        amount: amount.toString(),
 	        currency: currency,
 	        name: user.name,
-	        description: currentData.gatewayDescr,
+	        description: `${currentData.gatewayDescr} for ${user.name}`,
 	        image: { logo },
 	        order_id: order_id,
 	        handler: async (response) => {

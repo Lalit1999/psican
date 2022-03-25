@@ -4,6 +4,7 @@
 	justify-content: space-evenly;
 	align-items: center;
 	font-family: var(--font);
+	padding-bottom: 2em ;
 }
 
 .payment .form-control { 
@@ -18,10 +19,6 @@
 
 .payment-right * {
 	font-size: .8rem;
-}
-
-.payment-right button	{
-	margin-top: 1em ;
 }
 
 .payment-left	{

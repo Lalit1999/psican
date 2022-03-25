@@ -2,35 +2,69 @@
 	background-color: var(--dark);
 	display: flex;
 	justify-content: center;
+    font-size: 1rem ; 
 }
 
 .test-box {
 	border: 3px solid var(--dark);
+	background-color: var(--white) ;
 	border-radius: 1rem ;
 	margin: 1em 0 ;
-	max-width: 70%;
-	background-color: var(--white) ;
+	padding: 1em ;
+	width: 70%;
+}
+
+.lang-con	{
+	display: flex;
+	justify-content: flex-end;	
+}
+
+.check-btn {
+	background-color: var(--dark);
+	color: var(--white) ;
+	border: none;
+	box-shadow: none ;
+	cursor: pointer;
+	border-radius: 0.4rem ;
+	padding: .2em .3em ;
+	margin: 0 .2em ; 
+	width: auto;
+
+	display: flex;
+	align-items: center;
+	transition: all 0.3s ;
+}
+
+.check-btn svg {
+	font-size: 1.5rem;
+}
+
+.check-btn:focus {
+	outline: 0 ;
+	box-shadow: none ;
+	background-color: var(--darker) ;
+}
+
+.check-btn:active:focus {
+	outline: 0 ;
+	box-shadow: none ;
+	background-color: var(--darker) ;
+}
+
+.check-btn:hover	{
+	background-color: var(--darker) ;
+	color: var(--white);
 }
 
 .test-box h2{
 	text-align: center;
-	text-decoration: underline;
-}
-
-.test-box h3
-{	margin: 0;
-	color: white;
-	background-color: rgb(29, 41, 81) ;
-	text-align: center;
-	padding: 0.1em 0 ;
-	font-size: 1.5rem ;
-	border-top-left-radius: .7rem ;
-	border-top-right-radius: .7rem ; 	
+	font-size: 1.2rem ;
+	font-weight: bold;
+	/*text-decoration: underline;*/
 }
 
 .test-box li{ 
     list-style: none;
-    font-size: 1.2rem ; 
 } 
 
 .test-box li::before{ 
@@ -41,13 +75,11 @@
 
 .start-btn-con {
 	text-align: center;
-	padding-top: 1.3em ;
+	padding-top: .2em ;
 }
 
-.lang-con	{
-	margin-left: 2em ;
-	margin-top: .5em ; 
-	cursor: pointer ;
+.start-btn-con .sched-btn {
+	font-size: 1rem ;
 }
 
 .question p , .question2 p {

@@ -1,22 +1,22 @@
 import {useState, useEffect, useContext, Fragment} from 'react' ;
+import Button from 'react-bootstrap/Button';
 import {Link} from 'react-router-dom' ;
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
+import { faSquareCheck, faSquare } from '@fortawesome/free-solid-svg-icons' ;
 
 import { addNotif} from '../../notif.js' ;
 import Payment from '../../payment/Payment.js' ;
 import {UserContext} from '../../../context/UserContext.js' ;
-import logo from '../../images/Psyment.webp' ;
 import {inst, quesData, subData, resultData, evalData} from './langdata.js' ;
 import {radioData} from './radioData.js' ;
 import {saatQues} from './queData.js' ;
 import './ustop.css' ;
 
-const couponAmount = {
-    noPayment: 500,
-    fullPayment: 0,
-    quarterPayment: 125,
-    halfPayment: 250,
-    threeQuarter: 375,
-}
+const CheckBtn = ({styles, onClick, checked, text}) => {
+	const icon = checked?faSquareCheck:faSquare ;
+
+	return <Button className={styles} onClick={onClick}><FontAwesomeIcon icon={icon}/>&nbsp;{text}&nbsp;</Button>
+} 
 
 let ans = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
@@ -126,7 +126,6 @@ const SAAT = () => {
 	const [mode, setMode] = useState('start') ;
 	const [lang, setLang] = useState('english') ;
 	const [payment, setPayment] = useState(false) ;
-	const [coupon, setCoupon] = useState('noPayment') ;
 	const {token, user} = useContext(UserContext) ;
 
 	useEffect( () => {
@@ -151,105 +150,6 @@ const SAAT = () => {
 				 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,] ;
 		}) ;
 	}, [token] ) ;
-
-	const loadScript = (src) => {
-	    return new Promise((resolve) => {
-	        const script = document.createElement("script");
-	        script.src = src;
-	        script.onload = () => {
-	            resolve(true);
-	        };
-	        script.onerror = () => {
-	            resolve(false);
-	        };
-	        document.body.appendChild(script);
-	    });
-	}
-
-	const displayRazorpay = async () => {
-	    const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
-
-	    if (!res) {
-	        alert("Payment Gateway failed to load");
-	        return;
-	    }
-
-	    let result = await fetch("https://psy-api.herokuapp.com/saat-payment", {
-			method : 'post' ,
-			headers : { 'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '+ token
-					  } ,
-			body : JSON.stringify({ coupon }) 
-		});
-
-	    if(result.ok)
-	    	result =  await result.json() ;
-	    else
-			throw Error(result.statusText) ;
-
-	    const { amount, id: order_id, currency } = result;
-
-	    const options = {
-	        key: "rzp_live_7U3eAyAgr3NCgu", // Enter the Key ID generated from the Dashboard
-	        amount: amount.toString(),
-	        currency: currency,
-	        name: user.name,
-	        description: "SAAT Test for "+user.name,
-	        image: { logo },
-	        order_id: order_id,
-	        handler: async (response) => {
-	            const data = {
-	                orderCreationId: order_id,
-	                razorpayPaymentId: response.razorpay_payment_id,
-	                razorpayOrderId: response.razorpay_order_id,
-	                razorpaySignature: response.razorpay_signature,
-	                amount ,
-	            };
-
-	            let result2 = await fetch("https://psy-api.herokuapp.com/saat-payment/success", {
-					method : 'post' ,
-					headers : { 'Content-Type' : 'application/json',
-								'Authorization' : 'Bearer '+ token
-						} ,
-					body: JSON.stringify(data) ,
-				});
-
-				if(result2.ok)
-			    	result2 =  await result2.json() ;
-
-	            setPayment(true) ;
-	        },
-	        prefill: {
-	            name: user.name,
-	            email: user.email,
-	            contact: user.mobile,
-	        },
-	        notes: {
-	            address: user.name + ' ' + user.mobile + ' ' + user.email ,
-	        },
-	        theme: {
-	            color: "#61dafb",
-	        },
-	    };
-
-	    const paymentObject = new window.Razorpay(options);
-	    paymentObject.open();
-	}
-
-	const changeCoupon = (str) => {
-		if(str === 'fullPayment')
-		{
-			addNotif('Coupon Applied Successfully', 'success') ;
-			setPayment(true) ;
-		}
-		else
-		{	if(str === 'noPayment')
-				addNotif('Coupon Invalid or already used', 'error') ;
-			else
-				addNotif('Coupon Applied Successfully', 'success') ;
-			setCoupon(str) ;
-		}					
-	}
 
 	const calculateScore = (type) => {
 		switch(type)
@@ -349,20 +249,20 @@ const SAAT = () => {
 	}
 
 	const checkPayment = () => {
-		// if(payment)
+		if(payment)
 			return (
 				<div className="test-box-con">
 					<div className="test-box">
-						<div className="lang-con"> Change Language: 
-							<input type="radio" id={0} name={'lang'} checked={lang==='english'} onChange={() => setLang('english') } /> English 
-							<input type="radio" id={1} name={'lang'} checked={lang==='hindi'} onChange={() => setLang('hindi') }/> हिन्दी 
+						<div className="lang-con">
+							<CheckBtn styles="check-btn" onClick={() => setLang('english')} checked={lang==='english'} text="English" />
+							<CheckBtn styles="check-btn" onClick={() => setLang('hindi')} checked={lang==='hindi'} text="हिन्दी" />
 						</div>
 						{checkMode()}
 					</div>
 				</div>
 			) ;
-		// else 
-		// 	return <Payment cost={couponAmount[coupon]} token={token} display={displayRazorpay} change={() => setPayment(true)} couponChange={changeCoupon} type='ustop'/> ;
+		else 
+			return <Payment success={() => setPayment(true)} type='ustop'/> ;
 	}	
 
 	if(token === "")
