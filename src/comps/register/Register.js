@@ -25,7 +25,7 @@ const Register = () => {
 	}
 	else
 		return(
-			<div>
+			<div className="register-con">
 				<Title name='Register' items={["Home", "Register"]}/>
 				<div className="login-con"> <RegisterForm /> </div>
 			</div>
