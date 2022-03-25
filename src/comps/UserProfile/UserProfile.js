@@ -1,5 +1,6 @@
 import {useState, useEffect, useContext} from 'react' ;
 
+import Button from 'react-bootstrap/Button';
 import Redirect from '../redirect/Redirect.js' ;
 import { addNotif } from '.././notif.js' ;
 import Title from '../title/Title.js' ;
@@ -122,6 +123,17 @@ const UserProfile = () => {
 			return <EditForm />
 		else if(mode === 'change')
 			return <ChangePassForm /> ;
+		else if(mode === 'delete')
+			return (
+				<div className="delete-profile"> 
+					<h4 className="dp-heading"> Are you Sure? </h4> 
+					<p className="dp-description"> All data associated with your account, including your marks would be deleted. Are your sure you want to proceed?</p>
+					<div className="user-profile-btns">
+					    <Button variant="danger" onClick={onDeleteClick}>I&apos;m Sure</Button>
+						<Button variant="success" onClick={()=>setMode('normal')}>Cancel</Button>
+					</div>
+				</div> 
+			) ;
 		else
 			return (
 				<div className="data-con">
@@ -141,7 +153,7 @@ const UserProfile = () => {
 						<button className="sched-btn" onClick={()=>setMode('change')}>Change Password</button>
 						<button className="sched-btn" onClick={onLogoutClick}>Logout</button>
 						<button className="sched-btn" onClick={()=>setMode('edit')}>Edit profile</button>
-						<button className="sched-btn del" onClick={onDeleteClick}>Delete profile</button>
+						<button className="sched-btn del" onClick={()=>setMode('delete')}>Delete profile</button>
 					</div>
 					<div className="up-bottom">
 						<div className="up-left">
