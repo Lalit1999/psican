@@ -27,7 +27,7 @@ const Consult = () => {
 			return checkPayment() ;
 		else
 			return (
-				<div className="blue-bg blue-form">
+				<div className="blue-bg blue-form consult-login">
 					<p> You need to 
 						<Link to="/login?rdr=consult" className="btn3"> Login </Link>
 						 or 
@@ -59,7 +59,7 @@ const Consult = () => {
 					<p className="consult-flex-text"> Unit No. 4, First Floor, CSC, Pocket B & C, Phase-4, Ashok Vihar, Delhi-110052 </p>
 				</div>
 			</div>
-			<div className="consult-flex">
+			<div className="consult-flex ">
 				<DisplayDetailed title="Personality Appraisal Counselling" small="yes" lidata={pData} />
 				<DisplayDetailed title="Post Trauma Counselling" small="yes" lidata={ptData} />
 				<DisplayDetailed title="Metamorphosis Counselling" small="yes" lidata={mData} />
@@ -67,7 +67,7 @@ const Consult = () => {
 			<p className="intro bold"> Note : All Personal Queries and details shall be kept confidential. They will never be shared with any third-person. </p>
 			<Heading text="Schedule Your Appointment" />
 			{ checkLogin() }
-			<p className="intro bold support"> Having Technical issues? <a className="sched-btn" href="mailto:myarth.tech@gmail.com" target="_blank" rel="noopener noreferrer"> Contact Technical Support </a>
+			<p className="intro bold support "> Having Technical issues? <a className="sched-btn technical-support" href="mailto:myarth.tech@gmail.com" target="_blank" rel="noopener noreferrer"> Contact Technical Support </a>
 			</p>
 		</div>
 	) ;

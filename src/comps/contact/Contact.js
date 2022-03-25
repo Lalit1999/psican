@@ -1,10 +1,10 @@
 import ContactForm from './ContactForm.js' ;
 import Title from '../title/Title.js' ;
-// import './Contact.css' ;
+import './contact.css' ;
 
 const Contact = () => {	
 	return(
-		<div>
+		<div className="contact-con">
 			<Title name = 'Contact Us' items={["Home", "Contact Us"]}/>
 			<div className="login-con"> <ContactForm /> </div>
 		</div>

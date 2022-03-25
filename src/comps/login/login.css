@@ -1,4 +1,4 @@
-.login-page {
+.login-page, .register-con {
 	flex-grow: 1;
 }
 
@@ -57,24 +57,8 @@
 }
 
 @media(max-width: 600px) {
-	.login .form-control {
-		width: 70vw;
-	}
-
-	.register {
+	.login, .register, .contact {
 		width: 80% ;
-	}
-
-	.register .form-floating {
-		justify-content: center;
-	}
-
-	.register .form-control {
-		width: 100% ;
-	}
-
-	.register .form-select {
-		width: 100% ;
 	}
 
 	.login-heading {

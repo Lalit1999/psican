@@ -73,7 +73,7 @@ const ContactForm = () => {
 	const onContactClick = (obj) => setData({...obj, flag: 'yes'}) 
 
 	return (
-		<div className="login">	
+		<div className="login contact">	
 			<BasicForm data={formData} errors={error} onClick={{"Send Message" : onContactClick}} initData={initData}/>
 		</div>
 	) ;
