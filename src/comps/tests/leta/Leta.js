@@ -1,31 +1,16 @@
-import React, {useState, useEffect } from 'react' ;
+import {useState, useEffect, useContext} from 'react' ;
 import {Link} from 'react-router-dom' ;
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons' ;
 
+import CheckBtn from '../CheckBtn.js' ;
 import RadioSet from '../radioset/RadioSet.js' ;
 import Payment from '../../payment/Payment.js' ;
-
-import logo from '../../images/Psyment.webp' ;
+import {UserContext} from '../../../context/UserContext.js' ;
 import { addNotif } from '../../notif.js' ;
 import { inst, subData, quesData, resultData } from './langData.js' ;
-import { ttpQues } from './queData.js' ;
-import './ttp.css' ;
-
-// const coupon_amount = {
-//     noPayment: 100,
-//     fullPayment: 0,
-//     quarterPayment: 25,
-//     halfPayment: 50,
-//     threeQuarter: 75,
-// }
-
-const coupon_amount = {
-    noPayment: 250,
-    fullPayment: 0,
-    quarterPayment: 65,
-    halfPayment: 125,
-    threeQuarter: 185,
-    sevenPayment: 75, //70%
-}
+import { letaQues } from './queData.js' ;
+import './leta.css' ;
 
 let ansf = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 			 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
@@ -83,7 +68,7 @@ const Question2 = ({lang, changeMode}) => {
 			let arrm = [false, false, false, false, false, false] ;
 			ansf[num]= (5-ans.f)*2 ;
 			ansm[num]= (5-ans.m)*2 ;
-			if(ttpQues[num+1])
+			if(letaQues[num+1])
 			{	
 				if(ansf[num+1] !== -1)
 				{	arrf[5-ansf[num+1]/2] = true ;
@@ -125,7 +110,7 @@ const Question2 = ({lang, changeMode}) => {
 	return (
 		<div className="question2"> 
 			<p> {parseInt(num,10) + 1}. &nbsp; {quesData.pre[lang]} &nbsp;&nbsp;
-				<span className="ques-color">{ttpQues[num][lang]} 
+				<span className="ques-color">{letaQues[num][lang]} 
 			</span></p>
 			<div className="radio-con ttp-radio-con">
 				<div> <strong>{quesData.father[lang]}:</strong> 
@@ -136,11 +121,9 @@ const Question2 = ({lang, changeMode}) => {
 				 </div>
 			</div>
 			<div className="next-btn-con">
-				{	(num===0)?null:<button className="sched-btn next-btn" onClick={onPrevClick}>
-				 					&lt;&nbsp;{quesData.prevBtn[lang]} </button>
+				{	(num===0)?null:<button className="sched-btn next-btn" onClick={onPrevClick}><FontAwesomeIcon icon={faChevronLeft} />&nbsp;{quesData.prevBtn[lang]}</button>
 				} 
-				<button className="sched-btn next-btn ttp-btn" onClick={onNextClick}>
-				 {quesData.nextBtn[lang]}&nbsp;&gt; </button>
+				<button className="sched-btn next-btn ttp-btn" onClick={onNextClick}>{quesData.nextBtn[lang]}&nbsp;<FontAwesomeIcon icon={faChevronRight} /> </button>
 			</div>
 			{ checkWarning() }
 			<h4> {quesData.note[lang]} </h4>
@@ -148,16 +131,14 @@ const Question2 = ({lang, changeMode}) => {
 	) ;
 }
 
-const LETA = ({token, user}) => {
-	
+const LETA = () => {
+	const {token} = useContext(UserContext) ;
 	const [mode, setMode] = useState('start') ;
 	const [lang, setLang] = useState('english') ;
 	const [checked, setChecked] = useState([true, false]) ;
 	const [payment, setPayment] = useState(false) ;
-	const [coupon, setCoupon] = useState('noPayment') ;
 
 	useEffect( () => {
-		
 		fetch("https://psy-api.herokuapp.com/leta-payment/check", {
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json',
@@ -184,105 +165,6 @@ const LETA = ({token, user}) => {
 		) ;
 	}, [token]) ;
 
-	const loadScript = (src) => {
-	    return new Promise((resolve) => {
-	        const script = document.createElement("script");
-	        script.src = src;
-	        script.onload = () => {
-	            resolve(true);
-	        };
-	        script.onerror = () => {
-	            resolve(false);
-	        };
-	        document.body.appendChild(script);
-	    });
-	}
-
-	const displayRazorpay = async () => {
-	    const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
-
-	    if (!res) {
-	        alert("Payment Gateway failed to load");
-	        return;
-	    }
-
-	    let result = await fetch("https://psy-api.herokuapp.com/leta-payment", {
-			method : 'post' ,
-			headers : { 'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '+ token
-					  } ,
-			body : JSON.stringify({ coupon }) 
-		});
-
-	    if(result.ok)
-	    	result =  await result.json() ;
-	    else
-			throw Error(result.statusText) ;
-
-	    const { amount, id: order_id, currency } = result;
-
-	    const options = {
-	        key: "rzp_live_7U3eAyAgr3NCgu", // Enter the Key ID generated from the Dashboard
-	        amount: amount.toString(),
-	        currency: currency,
-	        name: user.name,
-	        description: "LETA Test for "+user.name,
-	        image: { logo },
-	        order_id: order_id,
-	        handler: async (response) => {
-	            const data = {
-	                orderCreationId: order_id,
-	                razorpayPaymentId: response.razorpay_payment_id,
-	                razorpayOrderId: response.razorpay_order_id,
-	                razorpaySignature: response.razorpay_signature,
-	                amount ,
-	            };
-
-	            let result2 = await fetch("https://psy-api.herokuapp.com/leta-payment/success", {
-					method : 'post' ,
-					headers : { 'Content-Type' : 'application/json',
-								'Authorization' : 'Bearer '+ token
-						} ,
-					body: JSON.stringify(data) ,
-				});
-
-				if(result2.ok)
-			    	result2 =  await result2.json() ;
-
-	            setPayment(true) ;
-	        },
-	        prefill: {
-	            name: user.name,
-	            email: user.email,
-	            contact: user.mobile,
-	        },
-	        notes: {
-	            address: user.name + ' ' + user.mobile + ' ' + user.email ,
-	        },
-	        theme: {
-	            color: "#61dafb",
-	        },
-	    };
-
-	    const paymentObject = new window.Razorpay(options);
-	    paymentObject.open();
-	}
-
-	const changeCoupon = (str) => {
-		if(str === 'fullPayment')
-		{
-			addNotif('Coupon Applied Successfully', 'success') ;
-			setPayment(true) ;
-		}
-		else
-		{	if(str === 'noPayment')
-				addNotif('Coupon Invalid or already used', 'error') ;
-			else
-				addNotif('Coupon Applied Successfully', 'success') ;
-			setCoupon(str) ;
-		}					
-	}
-	
 	const calculateScore = () => ansf.map( (x ,i) => (x+ansm[i])/4) 
 
 	const checkMode = () => {
@@ -355,7 +237,7 @@ const LETA = ({token, user}) => {
 			return(
 				<div key={i} className="result-row">
 					<p className="res-sno">{i+1}.</p>
-					<p className="res-ques">{ttpQues[i][lang]}</p>
+					<p className="res-ques">{letaQues[i][lang]}</p>
 					<p className="res-res">{one}</p>
 					<p className="res-lvl">{returnLevel(one)}</p>
 				</div>
@@ -384,18 +266,18 @@ const LETA = ({token, user}) => {
 	const checkPayment = () => {
 		if(payment)
 			return (
-			<div  className="test-box">
-				<h3> Learning Environment Trait Assessment (LETA) </h3> 
-				<div className="lang-con"> Change Language: 
-					<input type="radio" id={0} name={'lang'} checked={checked[0]} onChange={() => { setChecked([true, false]) ; setLang('english') ; } }/> English 
-					<input type="radio" id={1} name={'lang'} checked={checked[1]} onChange={() => { setChecked([false, true]) ; setLang('hindi') ; } }/> हिन्दी 
+				<div className="test-box-con">
+					<div  className="test-box">
+						<div className="lang-con">
+							<CheckBtn styles="check-btn" onClick={() => { setChecked([true, false]) ; setLang('english') ; }} checked={checked[0]} text="English" />
+							<CheckBtn styles="check-btn" onClick={() => { setChecked([false, true]) ; setLang('hindi') ; } } checked={checked[1]} text="हिन्दी" />
+						</div>
+						{checkMode()}
+					</div>
 				</div>
-				{checkMode()}
-			</div>
-		) ;
-
+			) ;
 		else 
-			return <Payment cost={coupon_amount[coupon]} token={token} display={displayRazorpay} change={() => setPayment(true)} couponChange={changeCoupon} type='leta'/> ;
+			return <Payment success={() => setPayment(true)} type='leta'/> ;
 	}
 
 	if(token === "")
@@ -405,7 +287,7 @@ const LETA = ({token, user}) => {
 					<Link to="/login?rdr=leta" className="btn3"> Login </Link>
 					 or 
 					<Link to="/register?rdr=leta" className="btn3"> Register </Link> 
-					to take this test (you will be redirected to home page) 
+					to take this test
 				</p>
 			</div>
 		) ; 

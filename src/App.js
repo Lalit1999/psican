@@ -9,7 +9,7 @@ import TopBar from './comps/header/TopBar.js' ;
 import DownBar from './comps/downbar/DownBar.js' ;
 import Exam from './comps/tests/Exam.js' ;
 import UstopPage from './comps/tests/ustop/UstopPage.js' ;
-import TraitTest from './comps/tests/traits/TraitTest.js' ;
+import LetaPage from './comps/tests/leta/LetaPage.js' ;
 import AccisTestPage from './comps/tests/accis/AccisTestPage.js' ;
 import Admin from './comps/admin/Admin.js' ;
 import Footer from './comps/footer/Footer.js';
@@ -41,7 +41,7 @@ const App = () => {
           <Route path='/test' exact element={<Exam/>} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/test/ustop' exact element={<UstopPage />} />
-          <Route path='/test/leta' exact element={<TraitTest />} />
+          <Route path='/test/leta' exact element={<LetaPage />} />
           <Route path='/test/accis' exact element={<AccisTestPage />} />
           <Route path='/privacy-policy' exact element={<Suspense fallback={<div> Loading... </div>}><PrivacyPolicy/></Suspense>}/>
           <Route path='/terms-condition' exact element={<Suspense fallback={<div> Loading... </div>}><TermsCondition/></Suspense>}/>

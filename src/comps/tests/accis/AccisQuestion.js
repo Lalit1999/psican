@@ -1,5 +1,8 @@
-import React, {useState} from 'react' ;
+import {useState} from 'react' ;
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons' ;
 
+import CheckBtn from '../CheckBtn.js' ;
 import {quesData} from './langdata.js' ;
 import {radioData, radioData2} from './radioData.js' ;
 import {saatQues} from './queData.js' ;
@@ -47,14 +50,7 @@ const AccisQuestion = ({changeMode, lang, ans}) => {
 			setWarning(quesData.error[lang]) ;
 	}
 
-	const radioMap = (one,i) => {
-		return (
-			<div className="radio-div" key={i}> 
-				<input type="radio" id={i} name={one[lang]} checked={checked[i]} onChange={()=>onRadioClick(num, i)}/> 
-					{one[lang]} 
-			</div>
-		) ;
-	}
+	const radioMap = (one,i) => <CheckBtn key={i} styles="check-btn" onClick={()=>onRadioClick(num, i)} checked={checked[i]} text={one[lang]} />
 
 	const onRadioClick = (no, opt) => {
 		const tempArr = [false, false, false, false] ;
@@ -75,11 +71,9 @@ const AccisQuestion = ({changeMode, lang, ans}) => {
 				{(num%3===0)?radioData.map(radioMap):radioData2.map(radioMap)}
 			</div>
 			<div className="next-btn-con">
-				{	(num===0)?null:<button className="sched-btn next-btn" onClick={onPrevClick}>
-				 					&lt;&nbsp;{quesData.prevBtn[lang]} </button>
+				{	(num===0)?null:<button className="sched-btn next-btn" onClick={onPrevClick}><FontAwesomeIcon icon={faChevronLeft} />&nbsp;{quesData.prevBtn[lang]} </button>
 				} 
-				<button className="sched-btn next-btn" onClick={onNextClick}>
-				 {quesData.nextBtn[lang]}&nbsp;&gt; </button>
+				<button className="sched-btn next-btn" onClick={onNextClick}> {quesData.nextBtn[lang]}&nbsp;<FontAwesomeIcon icon={faChevronRight} /> </button>
 			</div>
 			{ checkWarning() }
 			<h4> {quesData.note[lang]} </h4>

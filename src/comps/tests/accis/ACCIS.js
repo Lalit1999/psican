@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from 'react' ;
+import {useState, useEffect, useContext, Fragment} from 'react' ;
 import {Link} from 'react-router-dom' ;
 
+import CheckBtn from '../CheckBtn.js' ;
 import { addNotif} from '../../notif.js' ;
 import Payment from '../../payment/Payment.js' ;
 import AccisQuestion from './AccisQuestion.js' ;
-
+import {UserContext} from '../../../context/UserContext.js' ;
 import {inst, subData, resultData, evalData } from './langdata.js' ;
-import logo from '../../images/Psyment.webp' ;
 
 import './accis.css' ;
 
@@ -17,17 +17,9 @@ let ans = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 		 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 		 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,] ;
 
-const coupon_amount = {
-    noPayment: 200,
-    fullPayment: 0,
-    quarterPayment: 50,
-    halfPayment: 100,
-    threeQuarter: 150,
-}
-
 const EvalDisplay = ({stage, type, lang}) => {
 	return (
-		<React.Fragment>
+		<Fragment>
 			{evalData.you[lang]} 
 			<span className={"eval "+type}>{evalData[stage].l1[lang]}</span>
 			{evalData[stage].l2[lang]}
@@ -37,15 +29,15 @@ const EvalDisplay = ({stage, type, lang}) => {
 					<li> {evalData[stage].s2[lang]} </li>
 				</ul>:null 
 			}
-		</React.Fragment>
+		</Fragment>
 	) ;
 }
 
-const ACCIS = ({user, token}) => {
+const ACCIS = () => {
 	const [mode, setMode] = useState('start') ;
 	const [lang, setLang] = useState('english') ;
 	const [payment, setPayment] = useState(false) ;
-	const [coupon, setCoupon] = useState('noPayment') ;
+	const {token} = useContext(UserContext) ;
 
 	useEffect( () => {
 		fetch("https://psy-api.herokuapp.com/accis-payment/check", {
@@ -69,105 +61,6 @@ const ACCIS = ({user, token}) => {
 				 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,] ;
 		}) ;
 	}, [token] ) ;
-
-	const loadScript = (src) => {
-	    return new Promise((resolve) => {
-	        const script = document.createElement("script");
-	        script.src = src;
-	        script.onload = () => {
-	            resolve(true);
-	        };
-	        script.onerror = () => {
-	            resolve(false);
-	        };
-	        document.body.appendChild(script);
-	    });
-	}
-
-	const displayRazorpay = async () => {
-	    const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
-
-	    if (!res) {
-	        alert("Payment Gateway failed to load");
-	        return;
-	    }
-
-	    let result = await fetch("https://psy-api.herokuapp.com/accis-payment", {
-			method : 'post' ,
-			headers : { 'Content-Type' : 'application/json',
-						'Authorization' : 'Bearer '+ token
-					  } ,
-			body : JSON.stringify({ coupon }) 
-		});
-
-	    if(result.ok)
-	    	result =  await result.json() ;
-	    else
-			throw Error(result.statusText) ;
-
-	    const { amount, id: order_id, currency } = result;
-
-	    const options = {
-	        key: "rzp_live_7U3eAyAgr3NCgu", // Enter the Key ID generated from the Dashboard
-	        amount: amount.toString(),
-	        currency: currency,
-	        name: user.name,
-	        description: "SAAT Test for "+user.name,
-	        image: { logo },
-	        order_id: order_id,
-	        handler: async (response) => {
-	            const data = {
-	                orderCreationId: order_id,
-	                razorpayPaymentId: response.razorpay_payment_id,
-	                razorpayOrderId: response.razorpay_order_id,
-	                razorpaySignature: response.razorpay_signature,
-	                amount ,
-	            };
-
-	            let result2 = await fetch("https://psy-api.herokuapp.com/accis-payment/success", {
-					method : 'post' ,
-					headers : { 'Content-Type' : 'application/json',
-								'Authorization' : 'Bearer '+ token
-						} ,
-					body: JSON.stringify(data) ,
-				});
-
-				if(result2.ok)
-			    	result2 =  await result2.json() ;
-
-	            setPayment(true) ;
-	        },
-	        prefill: {
-	            name: user.name,
-	            email: user.email,
-	            contact: user.mobile,
-	        },
-	        notes: {
-	            address: user.name + ' ' + user.mobile + ' ' + user.email ,
-	        },
-	        theme: {
-	            color: "#61dafb",
-	        },
-	    };
-
-	    const paymentObject = new window.Razorpay(options);
-	    paymentObject.open();
-	}
-
-	const changeCoupon = (str) => {
-		if(str === 'fullPayment')
-		{
-			addNotif('Coupon Applied Successfully', 'success') ;
-			setPayment(true) ;
-		}
-		else
-		{	if(str === 'noPayment')
-				addNotif('Coupon Invalid or already used', 'error') ;
-			else
-				addNotif('Coupon Applied Successfully', 'success') ;
-			setCoupon(str) ;
-		}					
-	}
 
 	const checkMode = () => {
 		switch(mode)
@@ -264,17 +157,18 @@ const ACCIS = ({user, token}) => {
 	const checkPayment = () => {
 		if(payment)
 			return (
-				<div className="test-box">
-					<h3> Assessment of COVID Cognitive Impact on Self (ACCIS) </h3> 
-					<div className="lang-con"> Change Language: 
-						<input type="radio" id={0} name={'lang'} checked={lang==='english'} onChange={() => setLang('english') }/> English 
-						<input type="radio" id={1} name={'lang'} checked={lang==='hindi'} onChange={() => setLang('hindi') }/> हिन्दी 
+				<div className="test-box-con">
+					<div className="test-box">
+						<div className="lang-con">
+							<CheckBtn styles="check-btn" onClick={() => setLang('english')} checked={lang==='english'} text="English" />
+							<CheckBtn styles="check-btn" onClick={() => setLang('hindi')} checked={lang==='hindi'} text="हिन्दी" />
+						</div>
+						{checkMode()}
 					</div>
-					{checkMode()}
 				</div>
 			) ;
 		else 
-			return <Payment cost={coupon_amount[coupon]} token={token} display={displayRazorpay} change={() => setPayment(true)} couponChange={changeCoupon} type='accis'/> ;
+			return <Payment success={() => setPayment(true)} type='accis'/> ;
 	}
 
 	if(token === "")
@@ -284,7 +178,7 @@ const ACCIS = ({user, token}) => {
 					<Link to="/login?rdr=accis" className="btn3"> Login </Link>
 					 or 
 					<Link to="/register?rdr=accis" className="btn3"> Register </Link> 
-					to take this test (you will be redirected to home page) 
+					to take this test
 				</p>
 			</div>
 		) ; 

@@ -1,4 +1,4 @@
- const ttpQues = [
+ const letaQues = [
 { english : "Truthful",
 hindi:'सत्यभाषी'},
 { english : "Being Sensitive",
@@ -60,4 +60,4 @@ hindi:'दूरदर्शिता'},
 { english : "Humility",
 hindi:'विनम्रता'},
 ];
-export {ttpQues} ;
+export {letaQues} ;

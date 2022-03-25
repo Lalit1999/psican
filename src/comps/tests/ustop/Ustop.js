@@ -1,22 +1,16 @@
 import {useState, useEffect, useContext, Fragment} from 'react' ;
-import Button from 'react-bootstrap/Button';
 import {Link} from 'react-router-dom' ;
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
-import { faSquareCheck, faSquare } from '@fortawesome/free-solid-svg-icons' ;
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons' ;
 
+import CheckBtn from '../CheckBtn.js' ;
 import { addNotif} from '../../notif.js' ;
 import Payment from '../../payment/Payment.js' ;
 import {UserContext} from '../../../context/UserContext.js' ;
 import {inst, quesData, subData, resultData, evalData} from './langdata.js' ;
 import {radioData} from './radioData.js' ;
-import {saatQues} from './queData.js' ;
+import {ustopQues} from './queData.js' ;
 import './ustop.css' ;
-
-const CheckBtn = ({styles, onClick, checked, text}) => {
-	const icon = checked?faSquareCheck:faSquare ;
-
-	return <Button className={styles} onClick={onClick}><FontAwesomeIcon icon={icon}/>&nbsp;{text}&nbsp;</Button>
-} 
 
 let ans = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
@@ -42,10 +36,6 @@ const Question = ({lang, changeMode}) => {
 			return <p className="warn"> {warning} </p> ;
 	}
 
-	const generateRadioBtn = (x) => {
-		return radioData.map( (one,i) => <div className="radio-div" key={i}> <input type="radio" id={i} name={one[lang]} checked={checked[i]} onChange={()=>onRadioClick(x, i)}/> {one[lang]} </div>)
-	}
-
 	const onRadioClick = (no, opt) => {
 		const tempArr = [false, false, false, false, false] ;
 		tempArr[opt] = true ;
@@ -54,6 +44,7 @@ const Question = ({lang, changeMode}) => {
 	}
 
 	const onNextClick = () => {
+		console.log(checked, ans) ;
 		if( checked[0] || checked[1] || checked[2] || checked[3] || checked[4] )
 		{	let arr = [false, false, false, false, false] ;
 			if(checked[0] || checked[1])
@@ -71,8 +62,8 @@ const Question = ({lang, changeMode}) => {
 				else
 					ans[num] = 3 ;
 			}	
-			if(saatQues[num+1])
-			{	if(saatQues[num+1][lang] !== 0)
+			if(ustopQues[num+1])
+			{	if(ustopQues[num+1][lang] !== 0)
 					arr[ans[num+1]- 1] = true ;
 				setNum(num+1);
 				setChecked(arr) ;
@@ -93,16 +84,17 @@ const Question = ({lang, changeMode}) => {
 
 	return (
 		<div className="question"> 
-			<p> {parseInt(num,10) + 1}. &nbsp; {saatQues[num][lang]} </p>
+			<p> {parseInt(num,10) + 1}. &nbsp; {ustopQues[num][lang]} </p>
 			<div className="radio-con"> 
-				{generateRadioBtn(num)}
+			{	radioData.map( (one,i) => <CheckBtn key={i} styles="check-btn" onClick={()=>onRadioClick(num, i)} checked={checked[i]} text={one[lang]} />)
+			}
 			</div>
 			<div className="next-btn-con">
-				{	(num===0)?null:<button className="sched-btn next-btn" onClick={onPrevClick}>
-				 					&lt;&nbsp;{quesData.prevBtn[lang]} </button>
+				{	(num===0)?null:<button className="sched-btn next-btn" onClick={onPrevClick}><FontAwesomeIcon icon={faChevronLeft}/>&nbsp;{quesData.prevBtn[lang]} </button>
 				} 
 				<button className="sched-btn next-btn" onClick={onNextClick}>
-				 {quesData.nextBtn[lang]}&nbsp;&gt; </button>
+					{quesData.nextBtn[lang]}&nbsp;<FontAwesomeIcon icon={faChevronRight} /> 
+				</button>
 			</div>
 			{ checkWarning() }
 			<h4> {quesData.note[lang]} </h4>
@@ -122,11 +114,11 @@ const EvalDisplay = ({stage, type, lang}) => {
 }
 
 
-const SAAT = () => {
+const Ustop = () => {
 	const [mode, setMode] = useState('start') ;
 	const [lang, setLang] = useState('english') ;
 	const [payment, setPayment] = useState(false) ;
-	const {token, user} = useContext(UserContext) ;
+	const {token} = useContext(UserContext) ;
 
 	useEffect( () => {
 		fetch("https://psy-api.herokuapp.com/saat-payment/check", {
@@ -280,4 +272,4 @@ const SAAT = () => {
 		return checkPayment() ;
 }
 
-export default SAAT ;
+export default Ustop ;

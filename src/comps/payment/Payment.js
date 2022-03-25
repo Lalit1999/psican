@@ -38,6 +38,30 @@ const payData = {
 		gatewayDescr: "Psyment USTOP Test",
 		successUrl: "https://psy-api.herokuapp.com/saat-payment/success",
 	},
+	accis: {
+		couponAmount : {
+		    noPayment: 200,
+		    fullPayment: 0,
+		    quarterPayment: 50,
+		    halfPayment: 100,
+		    threeQuarter: 150,
+		},
+		checkUrl: "https://psy-api.herokuapp.com/accis-payment",
+		gatewayDescr: "Psyment ACCIS Test",
+		successUrl: "https://psy-api.herokuapp.com/accis-payment/success",
+	},
+	leta: {
+		couponAmount : {
+		    noPayment: 250,
+		    fullPayment: 0,
+		    quarterPayment: 65,
+		    halfPayment: 125,
+		    threeQuarter: 185,
+		},
+		checkUrl: "https://psy-api.herokuapp.com/leta-payment",
+		gatewayDescr: "Psyment LETA Test",
+		successUrl: "https://psy-api.herokuapp.com/leta-payment/success",
+	}
 }
 
 const Payment = ({success, type}) => {

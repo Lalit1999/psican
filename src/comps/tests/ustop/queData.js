@@ -1,4 +1,4 @@
- const saatQues = [
+ const ustopQues = [
  { english : "I am alert about my surroundings and my neighbourhood",
 	hindi:'मैं अपने आस – पड़ोस और वातावरण को लेकर सतर्क रहता/रहती हूँ'},
  { english : "I can become easily irritated by others",
@@ -100,4 +100,4 @@
 	{ english : "I am not able to go along well with friends and relatives long term",
 	hindi:' मैं दोस्तों और रिश्तेदारों से लम्बे समय तक बनाकर नहीं रख पाता/पाती हूँ'},
 ];
-export {saatQues} ;
+export {ustopQues} ;
