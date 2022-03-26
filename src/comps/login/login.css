@@ -58,6 +58,8 @@
 
 @media(max-width: 600px) {
 	.login, .register, .contact {
+		display: flex;
+		flex-direction: column;
 		width: 80% ;
 	}
 
@@ -74,5 +76,11 @@
 	.nfp	{
 		margin-right: 0 ;
 		max-width: 80vw;
+	}
+
+	.login .sched-btn, .register .sched-btn {
+		min-width: 40vw ;
+		text-align: center ;
+		align-self: center;
 	}
 }

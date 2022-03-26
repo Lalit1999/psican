@@ -60,16 +60,23 @@ const BasicForm = ({initData, onClick, data, errors}) => {
 			setUserData({...userData, [event.target.name] : []}) ; 
 	}
 
-	return (
-		<Form noValidate >
-			{	data.map( (one, i) => {
-					return (<Row className="mb-3" key={i}> 
-						{one.map((two, i) => <Fragment key={i}>{createElement(two)}</Fragment> )} 
-					</Row>)
-				}) 
-			}
-		</Form>
-	) ;
+	if(window.screen.availWidth > 923)
+		return (
+			<Form noValidate >
+				{	data.map( (one, i) => {
+						return (<Row className="mb-3" key={i}> 
+							{one.map((two, i) => <Fragment key={i}>{createElement(two)}</Fragment> )} 
+						</Row>)
+					}) 
+				}
+			</Form>
+		) ;
+	else
+		return (
+			<Form noValidate >
+			{	data.flat().map((one,i)=><Row className="mb-2" key={i}>{createElement(one)}</Row>)   }
+			</Form>
+		) ;
 }
 
 export default BasicForm ;

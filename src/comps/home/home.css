@@ -32,4 +32,12 @@
 	/*.testim
 	{	font-size: 2rem ;		
 	}*/	
+
+	.home-top {
+		min-height: 30vh;
+	}
+
+	.home-top img {
+		height: 25vh ;
+	}
 }
