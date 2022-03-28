@@ -40,12 +40,12 @@
 @media(max-width: 600px)
 {	
 	.title {
-		font-size: .9rem ;
+		font-size: 1.05rem ;
 		letter-spacing: 1px;
 		text-align: center;
 	}
 
 	.crumb {	
-		font-size : .7rem ;
+		font-size : .8rem ;
 	}
 }

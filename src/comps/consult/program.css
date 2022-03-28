@@ -105,6 +105,7 @@
 	}
 
 	.intro {
+		font-size: .7rem;
 		margin: 1em ;
 		text-align: justify;
 	}
@@ -143,6 +144,8 @@
 		padding: 0.5em ;
 		margin: 0 1em 1em ; 
 		width: auto;
+		/*min-width: 40vw;
+		text-align: center;*/
 	}
 
 	.btn3 {
