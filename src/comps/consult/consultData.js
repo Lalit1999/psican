@@ -1,7 +1,7 @@
 const features = [
-'All Sessions within this programs are PAID BASIS ONLY',
-'htmlFee for each session of 30/60 minutes is &#8377; 1000 / &#8377; 2000 Only',
-'Timings: 6pm to 8pm (Weekdays) and 9am to 1pm (Saturday) '
+'Consultation is through appointment only.',
+'htmlFees : Preliminary Consultation &#8377; 1000, Therapy Session &#8377; 2000 ',
+'Timings: (Mon-Fri) 11am-2pm and 5pm-7pm'
 ] ;
 
 const pData = [ 'Career & Self-Esteem', 'Financial Self-Esteem', 'Goal Setting', 

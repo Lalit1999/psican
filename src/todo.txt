@@ -1,13 +1,5 @@
-- Header/TopBar/BarItem (mobile ke liye dubara dekhna padega)
 - Admin
-- home
-- tests
 
-+ mobile css
-+ scrolltopbar lagana hai
-+ way to scroll on route change
-+ payment ki checking karni hai paise dekar
-+ basicform mobile css
 
 Back-End
 --------

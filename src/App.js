@@ -18,6 +18,7 @@ import Consult from './comps/consult/Consult.js' ;
 import Login from './comps/login/Login.js' ;
 import Register from './comps/register/Register.js' ;
 import Profile from './comps/UserProfile/UserProfile.js' ;
+import ScrollToTop from './comps/ScrollToTop.js' ;
 import './app.css'
 
 const PrivacyPolicy = lazy(() => import('./comps/footer/privacyPolicy/PrivacyPolicy.js'));
@@ -30,6 +31,7 @@ const App = () => {
 		<div className="App">
       <BrowserRouter>
       	<TopBar />
+        <ScrollToTop>
         <Routes>
           <Route path='/' exact element={<Home />}/>
           <Route path='/about' exact element={<About />}/>
@@ -48,6 +50,7 @@ const App = () => {
           <Route path='/refund-policy' exact element={<Suspense fallback={<div> Loading... </div>}><RefundPolicy/></Suspense>}/>
           <Route exact element={<NotFound />} />
         </Routes>
+        </ScrollToTop>
         <Footer /> 
         <DownBar />
       </BrowserRouter>
