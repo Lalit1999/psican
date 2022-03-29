@@ -101,11 +101,11 @@
 
 @media(max-width: 600px)
 {	.consult-page {
-		font-size: .7rem ;
+		font-size: .8rem ;
 	}
 
 	.intro {
-		font-size: .7rem;
+		font-size: .8rem;
 		margin: 1em ;
 		text-align: justify;
 	}

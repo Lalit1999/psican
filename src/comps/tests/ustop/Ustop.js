@@ -206,6 +206,14 @@ const Ustop = () => {
 								<p> {resultData.aScore[lang]} : {A} </p> 
 								<p> {resultData.eScore[lang]} : {E} </p> 
 								<p> {resultData.tScore[lang]} : {T} </p> 
+								<hr/>
+								<p> {resultData.ustopKey[lang]} </p>
+								<p> <span className="evalNumber"> 0-30 </span> : <span className="low">{resultData.l1[lang]}</span> <br/>
+									<span className="evalNumber"> 31-60 </span> : <span className="mild">{resultData.l2[lang]}</span> <br/>
+									<span className="evalNumber"> 61-90 </span> : <span className="moderate">{resultData.l3[lang]}</span> <br/>
+									<span className="evalNumber"> 91-120 </span> : <span className="high">{resultData.l4[lang]}</span> <br/>
+								</p>
+								<hr/>
 								<p> {getEvaluation(T)} </p>
 								<p> {resultData.p1[lang]} </p>
 								<p> {resultData.p2[lang]} <br/>

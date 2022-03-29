@@ -29,7 +29,8 @@ const ConsultForm = () => {
 
 		console.log(title, reason, appointDate) ;
 
-		fetch('https://psy-api.herokuapp.com/consult',{
+		// fetch('https://psy-api.herokuapp.com/consult',{
+		fetch('http://localhost:8000/consult',{
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json' ,
 						'Authorization' : `Bearer ${token}` },

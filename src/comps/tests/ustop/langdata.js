@@ -95,7 +95,27 @@ const resultData = {
 	p3 :{
 		english: 'Mr. Ashish Aggarwal +91-95552-35231' ,
 		hindi: 'श्री आशीष अग्रवाल +91-95552-35231 '
-	} 
+	},
+	l1 :{
+		english : ' No Major Impact ' ,
+		hindi : ' कोई प्रमुख प्रभाव नहीं'
+	} ,
+	l2 : {
+		english : ' Mild Impact' ,
+		hindi : 'हल्का प्रभाव '
+	} ,
+	l3 : {
+		english : ' Severe Impact ' ,
+		hindi : 'गंभीर प्रभाव'
+	} ,
+	l4 : {
+		english : ' Critical Impact ' ,
+		hindi : 'विकट प्रभाव'
+	} ,
+	ustopKey: {
+		english: 'USTOP Score Interpretation Key',
+		hindi: 'स्कोर व्याख्या कुंजी'
+	} , 
 } ;
 
 const evalData = {

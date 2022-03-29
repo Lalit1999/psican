@@ -1,7 +1,3 @@
 - Admin
-
-
-Back-End
---------
-+ Appointment book ni ho rahi
-+ register me gender ko lamba karna hai
+- Home Page
+- Consult me Choice

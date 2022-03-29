@@ -34,7 +34,8 @@ const RegisterForm = ({setMode}) => {
 	const sendRegisterRequest = () => {
 		addNotif('Please Wait...') ;
 
-		fetch('https://psy-api.herokuapp.com/users' ,{
+		// fetch('https://psy-api.herokuapp.com/users' ,{
+		fetch('http://localhost:8000/users' ,{
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json'} ,
 			body :JSON.stringify(data) ,

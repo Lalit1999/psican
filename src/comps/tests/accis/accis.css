@@ -20,4 +20,8 @@
 		width: 20vw ;
 	}
 
+	.result hr {
+		margin : 1em auto;
+		width: 90% ;
+	}
 }

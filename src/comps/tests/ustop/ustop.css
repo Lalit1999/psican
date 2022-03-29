@@ -155,74 +155,85 @@
 	color: orangered ;
 }
 
-@media(max-width: 600px)
-{	.test-box {
-		margin: 1em ;
+@media(max-width: 600px) {	
+	.test-box-con {
+	    font-size: .8rem ; 
 	}
 
-	.start-title 	{
-		margin: .4em 0 ;
+	.test-box {
+		margin: 1em 0 ;
+		padding: 1em ;
+		width: 95%;
 	}
 
-	.test-box h3 	{	
-		margin: 0;
-		font-size: 1.3rem ;
+	.test-box ul {
+		padding-inline-start: 0;
 	}
 
-	.start-div ul 	{
-		margin-top: 0 ;
-		padding-inline-start: 1.5vh ; 
-		padding-right: 1vh ;
+	.lang-con	{
+		margin-bottom: .5em ;
 	}
 
-	.test-box li{ 
-	    font-size: 1rem ; 
-	} 
+	.check-btn {
+		font-size: .7rem ;
+	}
+
+	.check-btn svg {
+		font-size: 1.4rem;
+		margin-right: .5em ;
+	}
+
+	.test-box h2{
+		font-size: 1rem ;
+	}
 
 	.start-btn-con {
 		padding-top: 0 ;
 	}
 
+	.start-btn-con .sched-btn {
+		font-size: .7rem ;
+	}
+
+	.question {
+		padding: 0;
+	}
+
 	.question p , .question2 p {
-		font-size: 1.1rem ;
-		padding-left: 1em ;
-		padding-right: 1em ;
-		margin-bottom: 0 ;
+		font-size: .8rem ;
 	}
 
 	.question h4 , .question2 h4 {
-		padding-left: .5em ;
-		font-size: .95rem ;
-		margin-top: .4em ;
+		font-size: .7rem;
 	}
 
-	.warn	{
-		font-size: .8rem ;
-	  	margin-left: .6em ;
-	  	margin-right: .6em ;
-	}
-	
 	.radio-con {
-		font-size: 1rem ;
-		padding-left: 2em ;
+		flex-direction: column;
+		align-items: flex-start;
 	}
 
-	.radio-con input {
-		margin-top: .9em ;
+	.radio-con .check-btn{
+		min-width: 30vw ;
 	}
 
-	.next-btn-con	{
-		margin-top: .5em ;
-		padding: 0.2em 0;
+	.next-btn-con {
+		padding: .5em 0;
+		display: flex;
+		justify-content: space-evenly;
 	}
 
-	.next-btn	{ 
-		font-size: 1rem ; 
+	.next-btn-con .next-btn {
+		font-size: .7rem ;
 		padding: 0.4em 1em ;
-		margin-right: 10vw ;
+	}
+
+	.question .warn, .question2 .warn	{
+		font-size: .6rem ;
+	  	margin: .8em 0 ;
 	}
 
 	.proceed-con button	{
-		margin-right: 2em ;	
+		margin: 0 ;	
 	}
+
 }

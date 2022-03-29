@@ -22,9 +22,11 @@ const payData = {
 		    halfPayment: 500,
 		    threeQuarter: 750,
 		},
-		checkUrl: "https://psy-api.herokuapp.com/appoint-payment",
+		checkUrl: "http://localhost:8000/appoint-payment",
+		// checkUrl: "https://psy-api.herokuapp.com/appoint-payment",
 		gatewayDescr: "Psyment Appointment Booking",
-		successUrl: "https://psy-api.herokuapp.com/appoint-payment/success",
+		successUrl: "http://localhost:8000/appoint-payment/success",
+		// successUrl: "https://psy-api.herokuapp.com/appoint-payment/success",
 	},
 	ustop : {
 		couponAmount : {
@@ -165,7 +167,8 @@ const Payment = ({success, type}) => {
 	const onInputChange = (event) => setCoupon(event.target.value)
 
 	const checkCoupon = () => {
-		fetch(`https://psy-api.herokuapp.com/coupon?coupon=${coupon}&type=${type}`, {
+		// fetch(`https://psy-api.herokuapp.com/coupon?coupon=${coupon}&type=${type}`, {
+		fetch(`http://localhost:8000/coupon?coupon=${coupon}&type=${type}`, {
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json',
 						'Authorization' : `Bearer ${token}` } ,
