@@ -14,7 +14,7 @@ const Header = () => {
 
 	const onLogoutClick = () => {
 		
-		fetch('https://psy-api.herokuapp.com/logoutAll' ,{
+		fetch('http://api.psyment.com/logoutAll' ,{
 				method : 'post' ,
 				headers : { 'Content-Type' : 'application/json', 
 							'Authorization' : 'Bearer ' + token} ,
@@ -79,7 +79,6 @@ const Header = () => {
 				<Menu handleClose={() => setMenuOpen(false)} show={menuOpen} onLogoutClick={onLogoutClick} />
 			</div>
 		) ;
-	// return <div className="header"> {checkMobile()}  </div> ;
 }
 
 export default Header ;

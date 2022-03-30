@@ -139,7 +139,7 @@ const LETA = () => {
 	const [payment, setPayment] = useState(false) ;
 
 	useEffect( () => {
-		fetch("https://psy-api.herokuapp.com/leta-payment/check", {
+		fetch("http://api.psyment.com/leta-payment/check", {
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '+ token

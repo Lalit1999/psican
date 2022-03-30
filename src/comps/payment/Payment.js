@@ -22,11 +22,9 @@ const payData = {
 		    halfPayment: 500,
 		    threeQuarter: 750,
 		},
-		checkUrl: "http://localhost:8000/appoint-payment",
-		// checkUrl: "https://psy-api.herokuapp.com/appoint-payment",
+		checkUrl: "http://api.psyment.com/appoint-payment",
 		gatewayDescr: "Psyment Appointment Booking",
-		successUrl: "http://localhost:8000/appoint-payment/success",
-		// successUrl: "https://psy-api.herokuapp.com/appoint-payment/success",
+		successUrl: "http://api.psyment.com/appoint-payment/success",
 	},
 	ustop : {
 		couponAmount : {
@@ -36,9 +34,9 @@ const payData = {
 		    halfPayment: 250,
 		    threeQuarter: 375,
 		},
-		checkUrl: "https://psy-api.herokuapp.com/saat-payment",
+		checkUrl: "http://api.psyment.com/saat-payment",
 		gatewayDescr: "Psyment USTOP Test",
-		successUrl: "https://psy-api.herokuapp.com/saat-payment/success",
+		successUrl: "http://api.psyment.com/saat-payment/success",
 	},
 	accis: {
 		couponAmount : {
@@ -48,9 +46,9 @@ const payData = {
 		    halfPayment: 100,
 		    threeQuarter: 150,
 		},
-		checkUrl: "https://psy-api.herokuapp.com/accis-payment",
+		checkUrl: "http://api.psyment.com/accis-payment",
 		gatewayDescr: "Psyment ACCIS Test",
-		successUrl: "https://psy-api.herokuapp.com/accis-payment/success",
+		successUrl: "http://api.psyment.com/accis-payment/success",
 	},
 	leta: {
 		couponAmount : {
@@ -60,9 +58,9 @@ const payData = {
 		    halfPayment: 125,
 		    threeQuarter: 185,
 		},
-		checkUrl: "https://psy-api.herokuapp.com/leta-payment",
+		checkUrl: "http://api.psyment.com/leta-payment",
 		gatewayDescr: "Psyment LETA Test",
-		successUrl: "https://psy-api.herokuapp.com/leta-payment/success",
+		successUrl: "http://api.psyment.com/leta-payment/success",
 	}
 }
 
@@ -167,8 +165,8 @@ const Payment = ({success, type}) => {
 	const onInputChange = (event) => setCoupon(event.target.value)
 
 	const checkCoupon = () => {
-		// fetch(`https://psy-api.herokuapp.com/coupon?coupon=${coupon}&type=${type}`, {
-		fetch(`http://localhost:8000/coupon?coupon=${coupon}&type=${type}`, {
+		
+		fetch(`http://api.psyment.com/coupon?coupon=${coupon}&type=${type}`, {
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json',
 						'Authorization' : `Bearer ${token}` } ,
@@ -190,7 +188,7 @@ const Payment = ({success, type}) => {
 					addNotif('Coupon Applied Successfully', 'success') ;
 				setStatus(data) ;
 			}	
-			// console.log(data) ;
+			
 		})  
 		.catch( err  => {
 			addNotif('Coupon Code Not Found', 'error') ;

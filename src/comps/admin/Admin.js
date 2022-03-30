@@ -15,7 +15,7 @@ const Admin = () => {
 	const [searchText, setSearchText] = useState('') ;
 
 	useEffect(() => {
-		fetch('https://psy-api.herokuapp.com/users',{
+		fetch('http://api.psyment.com/users',{
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json' ,
 						'Authorization' : 'Bearer ' + token} ,
@@ -34,7 +34,7 @@ const Admin = () => {
 	}, [token]) ;
 
 	useEffect(() => {
-		fetch('https://psy-api.herokuapp.com/test',{
+		fetch('http://api.psyment.com/test',{
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json' ,
 						'Authorization' : 'Bearer ' + token} ,

@@ -26,7 +26,7 @@ const ContactForm = () => {
 	const sendContactRequest = () => {
 		addNotif('Please Wait...') ;
 
-		fetch('https://psy-api.herokuapp.com/contact',{
+		fetch('http://api.psyment.com/contact',{
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json'} ,
 			body : JSON.stringify(data) ,

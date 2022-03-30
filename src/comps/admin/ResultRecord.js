@@ -24,7 +24,7 @@ const ResultRecord = ({data, token, lite, date, ki}) => {
 			else
 			{	const str = 'Bearer ' + token ;
 				
-				fetch('https://psy-api.herokuapp.com/user/'+owner, {
+				fetch('http://api.psyment.com/user/'+owner, {
 					method : 'get' ,
 					headers : { 'Content-Type' : 'application/json' ,
 								'Authorization' : str} ,

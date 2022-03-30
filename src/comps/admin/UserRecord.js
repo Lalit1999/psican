@@ -30,7 +30,7 @@ class UserRecord extends React.Component
 			else
 			{	const str = 'Bearer ' + this.props.token ;
 				// console.log(str) ;
-				fetch('https://psy-api.herokuapp.com/result/'+_id, {
+				fetch('http://api.psyment.com/result/'+_id, {
 					method : 'get' ,
 					headers : { 'Content-Type' : 'application/json' ,
 								'Authorization' : str} ,

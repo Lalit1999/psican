@@ -31,7 +31,7 @@ const EditForm = () => {
 	const sendEditRequest = () => {
 		addNotif('Please Wait...') ;
 
-		fetch('https://psy-api.herokuapp.com/users/me',{
+		fetch('http://api.psyment.com/users/me',{
 			method : 'PATCH' ,
 			headers : { 'Content-Type' : 'application/json', 
 						'Authorization' : `Bearer ${token}` },

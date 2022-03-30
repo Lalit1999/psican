@@ -29,7 +29,7 @@ const Menu = ({handleClose, show, onLogoutClick}) => {
 	}
 
 	return (
-		<Offcanvas show={show} onHide={handleClose}>
+		<Offcanvas className="psyment-menu" show={show} onHide={handleClose}>
 	        <Offcanvas.Header closeButton>
 	          	<Offcanvas.Title>Menu</Offcanvas.Title>
 	        </Offcanvas.Header>

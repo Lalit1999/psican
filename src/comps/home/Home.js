@@ -3,13 +3,20 @@
 // import {testimArr} from './homeData.js' ;
 import TestBoxList from '../testbox/TestBoxList.js' ;
 import Image from '../images/Psyment.webp' ;
+import LeaderImage from '../images/leader.webp' ;
 import './home.css' ;
 
 const Home = () => {
 	return(
 		<div className="home">
 			<div className="home-top">
-            	<img src={Image} alt="psyment logo"/>
+            	<img className="home-logo" src={Image} alt="psyment logo"/>
+            	<h3>Make <span className="mental-health">Mental Health</span> your priority</h3>
+            	<div className='leader'>
+					<img src={LeaderImage} alt="Leader"/>
+					<p className='leader-name'>Ashish Aggarwal</p>
+					<p className="leader-data" >Counsellor, Mentor, Motivator</p>
+				</div>
             </div>
             <div className="home-float">
             	<TestBoxList />

@@ -1,4 +1,5 @@
 import {useState, useContext} from 'react' ;
+import Button from 'react-bootstrap/Button';
 import {Link} from 'react-router-dom' ;
 
 import ConsultForm from './ConsultForm.js' ;
@@ -13,18 +14,30 @@ import './program.css' ;
 
 const Consult = () => {
 	const [payment, setPayment] = useState(false) ;
+	const [choice , setChoice] = useState('blank') ;
 	const {user} = useContext(UserContext) ;
 
 	const checkPayment = () => {
-		if(payment)
+		if(choice === 'noAdvance')
+			return <div className="blue-bg"> <ConsultForm /> </div> ;
+		else if( (choice === 'withAdvance') && payment)
 			return <div className="blue-bg"> <ConsultForm /> </div> ;
 		else 
 			return <Payment success={() => setPayment(true)} type='appoint'/> ;
 	}	
 
 	const checkLogin = () => {
-		if(user.name)
-			return checkPayment() ;
+		if(user.name) {
+			if(choice === 'blank')
+				return(
+					<div className="check-appointment">
+						<Button className="sched-btn" onClick={()=> setChoice('noAdvance')}>Request Appointment (No advance payment)</Button>
+						<Button className="sched-btn" onClick={()=> setChoice('withAdvance')}>Book Appointment (With advance payment)</Button>
+					</div>
+				) ;
+			else
+				return checkPayment() ;
+		}
 		else
 			return (
 				<div className="blue-bg blue-form consult-login">

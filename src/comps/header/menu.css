@@ -1,3 +1,6 @@
+.psyment-menu {
+	background-color: var(--lightBlue);
+}
 
 .offcanvas-menu {
 	display: flex ;
@@ -17,16 +20,16 @@
 	font-family: var(--font);
 	border-bottom: 2px solid;
 	border-image-slice: 1;
-	border-image-source: linear-gradient(to right, var(--dark), var(--white));
+	border-image-source: linear-gradient(to right, var(--white), var(--lightBlue));
 }
 
 button.menu-item {
 	border: none;
-	background-color: var(--white);
 	text-align: left;
+	background-color: var(--lightBlue);
 	border-bottom: 2px solid;
 	border-image-slice: 1;
-	border-image-source: linear-gradient(to right, var(--dark), var(--white));
+	border-image-source: linear-gradient(to right, var(--white), var(--lightBlue));
 }
 
 .offcanvas-login {

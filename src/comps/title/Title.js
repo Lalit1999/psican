@@ -11,7 +11,7 @@ const itemMap = {
 	"Consult" : 'consult',
 	"Sarathi" : 'program/Sarathi',
 	"AEQUESS" : 'program/AEQUESS',
-	"Test " : 'test',
+	"Test" : 'test',
 	"USTOP" : "test/ustop",
 	"LETA" : "test/leta",
 	"ACCIS" : "test/accis",
