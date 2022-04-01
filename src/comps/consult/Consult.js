@@ -18,10 +18,8 @@ const Consult = () => {
 	const {user} = useContext(UserContext) ;
 
 	const checkPayment = () => {
-		if(choice === 'noAdvance')
-			return <div className="blue-bg"> <ConsultForm /> </div> ;
-		else if( (choice === 'withAdvance') && payment)
-			return <div className="blue-bg"> <ConsultForm /> </div> ;
+		if((choice === 'noAdvance') || ((choice === 'withAdvance') && payment))
+			return <div className="blue-bg"> <ConsultForm choice={choice}/> </div> ;
 		else 
 			return <Payment success={() => setPayment(true)} type='appoint'/> ;
 	}	

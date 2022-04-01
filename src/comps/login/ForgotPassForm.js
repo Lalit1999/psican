@@ -19,7 +19,7 @@ const ForgotPassForm = ({setMode}) => {
 	const sendForgotRequest = () => {
 		addNotif('Please Wait...') ;
 
-		fetch('http://api.psyment.com/forgot',{
+		fetch('https://api.psyment.com/forgot',{
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json'} ,
 			body : JSON.stringify({ email: data.email}) ,

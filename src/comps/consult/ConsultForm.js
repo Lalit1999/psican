@@ -1,23 +1,49 @@
 import { useState, useEffect, useContext } from 'react';
 
-import { isBlank, invalidDate } from '../valid.js' ;
+import { isBlank } from '../valid.js' ;
 import BasicForm from '../basicform/BasicForm.js' ;
 import { addNotif } from '../notif.js' ;
 import {UserContext} from '../../context/UserContext.js' ;
 
-const initData = { title: '', reason: '', appointDate: '' } ;
+const initData = { title: '', reason: '', appointDate: 'default' } ;
 
-const ConsultForm = () => {
+const ConsultForm = ({choice}) => {
 	const [data, setData] = useState(initData) ;
 	const [error, setError] = useState({}) ;
+	const [dates, setDates] = useState([]) ;
+	const [empty, setEmpty] = useState(true) ;
 	const {token} = useContext(UserContext) ;
+
+	useEffect( () => {
+		fetch('https://api.psyment.com/appoint-list',{
+			method : 'get' ,
+			headers : { 'Content-Type' : 'application/json' ,
+						'Authorization' : `Bearer ${token}` },
+		})
+		.then(res => {
+			if(res.ok)
+				return res.json() ;
+			throw Error(res.statusText) ;
+		})
+		.then(data => setDates(data)) 
+		.catch(err => console.log(err));
+	}, [token]) ;
 
 	const formData = [
 		[	{type: "text", name: "title", label: "Enter Consultation Title", id:"consultTitle"},
 		],
-		[	{type: "textArea", name: "reason", label: "Enter Reason for Consultation", id:"consultReason"},
+		[	{type: "textArea", name: "reason", label: "Reason for Consultation", id:"consultReason"},
 		],
-		[	{type: "date", name: "appointDate", label: "Choose Date of Consultation", id: "consultDate"}
+		[	{type: "dropdown", name: "appointDate", label:"Choose Date of Consultation", options: dates},
+		],
+		[	{type: "btn", name: "Request Consultation", style: "sched-btn"},
+		],
+	] ;
+
+	const formData2 = [
+		[	{type: "text", name: "title", label: "Enter Consultation Title", id:"consultTitle"},
+		],
+		[	{type: "textArea", name: "reason", label: "Reason for Consultation", id:"consultReason"},
 		],
 		[	{type: "btn", name: "Request Consultation", style: "sched-btn"},
 		],
@@ -27,9 +53,8 @@ const ConsultForm = () => {
 	const sendConsultRequest = () => {
 		const {title, reason, appointDate} = data ;
 
-		console.log(title, reason, appointDate) ;
-
-		fetch('http://api.psyment.com/consult',{
+		// fetch('http://localhost:8000/consult',{
+		fetch('https://api.psyment.com/consult',{
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json' ,
 						'Authorization' : `Bearer ${token}` },
@@ -42,6 +67,7 @@ const ConsultForm = () => {
 		})
 		.then(data => {	
 			setData(initData) ;
+			setEmpty(!empty)
 			addNotif('Successfully Sent Request for Consultation', 'success') ;
 		}) 
 		.catch( err  => {
@@ -60,13 +86,12 @@ const ConsultForm = () => {
 	}, [error]) ;
 
 	useEffect(()=>{
-		const {flag, title, reason, appointDate} = data ;
+		const {flag, title, reason} = data ;
 
 		if(flag === 'yes') {
 			const newError = {
 				title: isBlank(title, 'Title'),
 				reason: isBlank(reason, 'Reason'),
-				appointDate: invalidDate(appointDate), 
 			}
 
 			setError(newError) ;
@@ -77,7 +102,7 @@ const ConsultForm = () => {
 
 	return (
 		<div className="consult-form">	
-			<BasicForm data={formData} errors={error} onClick={{"Request Consultation" : onBookConsultClick}} initData={initData}/>
+			<BasicForm data={choice === 'noAdvance'?formData2:formData} errors={error} onClick={{"Request Consultation" : onBookConsultClick}} initData={initData} empty={empty}/>
 		</div>
 	) ;
 }

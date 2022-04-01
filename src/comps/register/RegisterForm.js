@@ -34,7 +34,7 @@ const RegisterForm = ({setMode}) => {
 	const sendRegisterRequest = () => {
 		addNotif('Please Wait...') ;
 
-		fetch('http://api.psyment.com/users' ,{
+		fetch('https://api.psyment.com/users' ,{
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json'} ,
 			body :JSON.stringify(data) ,

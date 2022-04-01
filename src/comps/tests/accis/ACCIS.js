@@ -40,7 +40,7 @@ const ACCIS = () => {
 	const {token} = useContext(UserContext) ;
 
 	useEffect( () => {
-		fetch("http://api.psyment.com/accis-payment/check", {
+		fetch("https://api.psyment.com/accis-payment/check", {
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '+ token
@@ -90,7 +90,7 @@ const ACCIS = () => {
 							}
 						} ;
 						
-						fetch('http://api.psyment.com/test',{
+						fetch('https://api.psyment.com/test',{
 							method : 'post' ,
 							headers : { 'Content-Type' : 'application/json' ,
 										'Authorization' : 'Bearer ' + token} ,

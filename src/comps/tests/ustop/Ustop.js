@@ -121,7 +121,7 @@ const Ustop = () => {
 	const {token} = useContext(UserContext) ;
 
 	useEffect( () => {
-		fetch("http://api.psyment.com/saat-payment/check", {
+		fetch("https://api.psyment.com/saat-payment/check", {
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '+ token
@@ -183,7 +183,7 @@ const Ustop = () => {
 							} 
 						} ;
 						
-						fetch('http://api.psyment.com/test',{
+						fetch('https://api.psyment.com/test',{
 							method : 'post' ,
 							headers : { 'Content-Type' : 'application/json' ,
 										'Authorization' : 'Bearer ' + token} ,

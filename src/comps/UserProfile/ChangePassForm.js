@@ -29,7 +29,7 @@ const ChangePassForm = () => {
 	const sendChangeRequest = () => {
 		const {oldpass, newpass} = data ;
 
-		fetch('http://api.psyment.com/users/me/change',{
+		fetch('https://api.psyment.com/users/me/change',{
 				method : 'post' ,
 				headers : { 'Content-Type' : 'application/json', 
 							'Authorization' : `Bearer ${token}` } ,

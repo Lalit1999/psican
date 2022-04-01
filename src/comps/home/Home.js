@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom' ;
+
 // import Parallax from '../Parallax/Parallax.js' ;
 // import TestimonialSlider from '../slider/TestimonialSlider.js' ;
 // import {testimArr} from './homeData.js' ;
@@ -11,7 +13,10 @@ const Home = () => {
 		<div className="home">
 			<div className="home-top">
             	<img className="home-logo" src={Image} alt="psyment logo"/>
-            	<h3>Make <span className="mental-health">Mental Health</span> your priority</h3>
+            	<div className="home-top-middle">
+            		<h3>Make <span className="mental-health">Mental Health</span> your priority</h3>
+            		<Link className="sched-btn home-btn" to='/consult'> Book Appointment </Link>
+				</div>
             	<div className='leader'>
 					<img src={LeaderImage} alt="Leader"/>
 					<p className='leader-name'>Ashish Aggarwal</p>

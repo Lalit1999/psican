@@ -139,7 +139,7 @@ const LETA = () => {
 	const [payment, setPayment] = useState(false) ;
 
 	useEffect( () => {
-		fetch("http://api.psyment.com/leta-payment/check", {
+		fetch("https://api.psyment.com/leta-payment/check", {
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '+ token
@@ -195,7 +195,7 @@ const LETA = () => {
 							 	} 
 							} ;
 							
-							fetch('https://psy-api.herokuapp.com/test',{
+							fetch('https://api.psyment.com/test',{
 								method : 'post' ,
 								headers : { 'Content-Type' : 'application/json' ,
 											'Authorization' : 'Bearer ' + token} ,

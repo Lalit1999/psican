@@ -9,6 +9,7 @@ const initData = {	name: '',	email: '',	mobile: '',	message: ''	} ;
 const ContactForm = () => {
 	const [data, setData] = useState(initData) ;
 	const [error, setError] = useState({}) ;
+	const [empty, setEmpty] = useState(true) ;
 	
 	const formData = [
 		[	{type: "text", name: "name", label: "Name", id:"userName"},
@@ -26,7 +27,7 @@ const ContactForm = () => {
 	const sendContactRequest = () => {
 		addNotif('Please Wait...') ;
 
-		fetch('http://api.psyment.com/contact',{
+		fetch('https://api.psyment.com/contact',{
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json'} ,
 			body : JSON.stringify(data) ,
@@ -38,6 +39,7 @@ const ContactForm = () => {
 		})
 		.then(data => {	
 			setData(initData) ;
+			setEmpty(!empty) ;
 			addNotif('Successfully Sent Message/Feedback', 'success') ;
 		}) 
 		.catch( err  => {
@@ -74,7 +76,7 @@ const ContactForm = () => {
 
 	return (
 		<div className="login contact">	
-			<BasicForm data={formData} errors={error} onClick={{"Send Message" : onContactClick}} initData={initData}/>
+			<BasicForm data={formData} errors={error} onClick={{"Send Message" : onContactClick}} initData={initData} empty={empty}/>
 		</div>
 	) ;
 }

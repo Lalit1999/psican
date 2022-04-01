@@ -33,7 +33,7 @@ const UserProfile = () => {
 	const [resData, setResData] = useState({}) ;
 
 	useEffect( () => {
-		fetch('http://api.psyment.com/result/me', {
+		fetch('https://api.psyment.com/result/me', {
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json' ,
 						'Authorization' : 'Bearer '+ token} ,
@@ -57,7 +57,7 @@ const UserProfile = () => {
 	}
 
 	const onLogoutClick = () => {
-		fetch('http://api.psyment.com/logoutAll' ,{
+		fetch('https://api.psyment.com/logoutAll' ,{
 				method : 'post' ,
 				headers : { 'Content-Type' : 'application/json', 
 							'Authorization' : 'Bearer ' + token} ,
@@ -79,7 +79,7 @@ const UserProfile = () => {
 	}
 
 	const onDeleteClick = () => {
-		fetch('http://api.psyment.com/users/me',{
+		fetch('https://api.psyment.com/users/me',{
 				method : 'delete' ,
 				headers : { 'Content-Type' : 'application/json', 
 							'Authorization' : 'Bearer ' + token} ,

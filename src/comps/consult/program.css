@@ -40,6 +40,10 @@
 	text-align: center;
 }
 
+.check-appointment {
+	padding-left: 2em;
+}
+
 .consult-form {
 	max-width: 40%;
 }
@@ -125,8 +129,18 @@
 		text-align: center;
 	}
 
+	.check-appointment {
+		display: flex;
+		flex-direction: column;
+		padding:  0;
+	}
+
 	.consult-login p {
 		margin : 1em 0 0 ;
+	}
+
+	.consult-form {
+		max-width: 100%;
 	}
 
 	.consult-form * {

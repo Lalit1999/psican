@@ -16,12 +16,12 @@ import IconBtn from './inputs/IconBtn.js' ;
 
 import './form.css' ;
 
-const BasicForm = ({initData, onClick, data, errors}) => {
+const BasicForm = ({initData, onClick, data, errors, empty=false}) => {
 	const [userData, setUserData] = useState(initData) ;
 
 	useEffect( () => {
 		setUserData(initData) ;
-	}, [initData]) ;
+	}, [initData, empty]) ;
 
 	const createElement = (element) => {
 		const {type, name} = element ;

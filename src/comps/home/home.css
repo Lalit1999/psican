@@ -9,17 +9,33 @@
 	align-items: center;
 	background-color: var(--dark);
 	
-	/*background-image: url('../images/dblue.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;*/
 	min-height: 55vh;
-	/*position: relative;*/
+}
+
+.home-top-middle {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .home-top h3 {
 	font-size: 2.5rem ;
 	color: var(--white);
 	max-width: 30vw ;
+	margin-bottom: 1.6em ;
+}
+
+.home-btn {
+	text-decoration: none;
+	background-color: var(--white) !important;
+	color: var(--dark) !important;
+	font-size: 1rem !important;
+	white-space: nowrap;
+}
+
+.home-btn:hover {
+	background-color: var(--lightBlue) !important;
 }
 
 .mental-health {
@@ -30,7 +46,7 @@
 	color: var(--white);
 }
 
- .leader img {
+.leader img {
 	border-radius: 1.5rem ;
 	max-height: 300px;
 }
@@ -40,10 +56,6 @@
 	font-size: 1rem ;
 	text-align: center;
 
-}
-
-.home-float {
-	/*transform: translateY(-50px);*/
 }
 
 /* DONT DELETE */
@@ -65,15 +77,18 @@
 	}
 
 	.home-logo {
-		height: 25vh ;
-		/*display: none;*/
+		height: 20vh ;
 	}
 
 	.home-top h3 {
-		font-size: 1.5rem ;
+		font-size: 1.3rem ;
 		color: var(--white);
 		max-width: 100% ;
 		margin: .5em 0;
+	}
+
+	.home-btn {
+		font-size: .8rem !important;
 	}
 
 	.mental-health {

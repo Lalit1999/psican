@@ -14,7 +14,7 @@ const Header = () => {
 
 	const onLogoutClick = () => {
 		
-		fetch('http://api.psyment.com/logoutAll' ,{
+		fetch('https://api.psyment.com/logoutAll' ,{
 				method : 'post' ,
 				headers : { 'Content-Type' : 'application/json', 
 							'Authorization' : 'Bearer ' + token} ,

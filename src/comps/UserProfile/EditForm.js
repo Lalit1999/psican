@@ -31,7 +31,7 @@ const EditForm = () => {
 	const sendEditRequest = () => {
 		addNotif('Please Wait...') ;
 
-		fetch('http://api.psyment.com/users/me',{
+		fetch('https://api.psyment.com/users/me',{
 			method : 'PATCH' ,
 			headers : { 'Content-Type' : 'application/json', 
 						'Authorization' : `Bearer ${token}` },

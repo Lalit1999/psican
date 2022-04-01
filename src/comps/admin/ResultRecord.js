@@ -24,7 +24,7 @@ const ResultRecord = ({data, token, lite, date, ki}) => {
 			else
 			{	const str = 'Bearer ' + token ;
 				
-				fetch('http://api.psyment.com/user/'+owner, {
+				fetch('https://api.psyment.com/user/'+owner, {
 					method : 'get' ,
 					headers : { 'Content-Type' : 'application/json' ,
 								'Authorization' : str} ,

@@ -22,9 +22,9 @@ const payData = {
 		    halfPayment: 500,
 		    threeQuarter: 750,
 		},
-		checkUrl: "http://api.psyment.com/appoint-payment",
+		checkUrl: "https://api.psyment.com/appoint-payment",
 		gatewayDescr: "Psyment Appointment Booking",
-		successUrl: "http://api.psyment.com/appoint-payment/success",
+		successUrl: "https://api.psyment.com/appoint-payment/success",
 	},
 	ustop : {
 		couponAmount : {
@@ -34,9 +34,9 @@ const payData = {
 		    halfPayment: 250,
 		    threeQuarter: 375,
 		},
-		checkUrl: "http://api.psyment.com/saat-payment",
+		checkUrl: "https://api.psyment.com/saat-payment",
 		gatewayDescr: "Psyment USTOP Test",
-		successUrl: "http://api.psyment.com/saat-payment/success",
+		successUrl: "https://api.psyment.com/saat-payment/success",
 	},
 	accis: {
 		couponAmount : {
@@ -46,9 +46,9 @@ const payData = {
 		    halfPayment: 100,
 		    threeQuarter: 150,
 		},
-		checkUrl: "http://api.psyment.com/accis-payment",
+		checkUrl: "https://api.psyment.com/accis-payment",
 		gatewayDescr: "Psyment ACCIS Test",
-		successUrl: "http://api.psyment.com/accis-payment/success",
+		successUrl: "https://api.psyment.com/accis-payment/success",
 	},
 	leta: {
 		couponAmount : {
@@ -58,9 +58,9 @@ const payData = {
 		    halfPayment: 125,
 		    threeQuarter: 185,
 		},
-		checkUrl: "http://api.psyment.com/leta-payment",
+		checkUrl: "https://api.psyment.com/leta-payment",
 		gatewayDescr: "Psyment LETA Test",
-		successUrl: "http://api.psyment.com/leta-payment/success",
+		successUrl: "https://api.psyment.com/leta-payment/success",
 	}
 }
 
@@ -166,7 +166,7 @@ const Payment = ({success, type}) => {
 
 	const checkCoupon = () => {
 		
-		fetch(`http://api.psyment.com/coupon?coupon=${coupon}&type=${type}`, {
+		fetch(`https://api.psyment.com/coupon?coupon=${coupon}&type=${type}`, {
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json',
 						'Authorization' : `Bearer ${token}` } ,
