@@ -156,7 +156,7 @@ const ACCIS = () => {
 	}
 
 	const checkPayment = () => {
-		// if(payment)
+		if(payment)
 			return (
 				<div className="test-box-con">
 					<div className="test-box">
@@ -168,8 +168,8 @@ const ACCIS = () => {
 					</div>
 				</div>
 			) ;
-		// else 
-		// 	return <Payment success={() => setPayment(true)} type='accis'/> ;
+		else 
+			return <Payment success={() => setPayment(true)} type='accis'/> ;
 	}
 
 	if(token === "")
