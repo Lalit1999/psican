@@ -28,6 +28,7 @@ const LoginForm = ({setMode}) => {
 		addNotif('Please Wait...') ;
 
 		fetch('https://api.psyment.com/login',{
+		// fetch('http://localhost:8000/login',{
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json'} ,
 			body :JSON.stringify({ password, email	}) ,

@@ -91,6 +91,7 @@ const ACCIS = () => {
 						} ;
 						
 						fetch('https://api.psyment.com/test',{
+						// fetch('http://localhost:8000/test',{
 							method : 'post' ,
 							headers : { 'Content-Type' : 'application/json' ,
 										'Authorization' : 'Bearer ' + token} ,
@@ -155,7 +156,7 @@ const ACCIS = () => {
 	}
 
 	const checkPayment = () => {
-		if(payment)
+		// if(payment)
 			return (
 				<div className="test-box-con">
 					<div className="test-box">
@@ -167,8 +168,8 @@ const ACCIS = () => {
 					</div>
 				</div>
 			) ;
-		else 
-			return <Payment success={() => setPayment(true)} type='accis'/> ;
+		// else 
+		// 	return <Payment success={() => setPayment(true)} type='accis'/> ;
 	}
 
 	if(token === "")
