@@ -19,7 +19,8 @@ import Login from './comps/login/Login.js' ;
 import Register from './comps/register/Register.js' ;
 import Profile from './comps/UserProfile/UserProfile.js' ;
 import ScrollToTop from './comps/ScrollToTop.js' ;
-import './app.css'
+import Planner from './comps/dr/Planner.js' ;
+import './app.css' ;
 
 const PrivacyPolicy = lazy(() => import('./comps/footer/privacyPolicy/PrivacyPolicy.js'));
 const TermsCondition = lazy(() => import('./comps/footer/termsCondition/TermsCondition.js'));
@@ -45,6 +46,7 @@ const App = () => {
           <Route path='/test/ustop' exact element={<UstopPage />} />
           <Route path='/test/leta' exact element={<LetaPage />} />
           <Route path='/test/accis' exact element={<AccisTestPage />} />
+          <Route path='/planner' element={<Planner />} />
           <Route path='/privacy-policy' exact element={<Suspense fallback={<div> Loading... </div>}><PrivacyPolicy/></Suspense>}/>
           <Route path='/terms-condition' exact element={<Suspense fallback={<div> Loading... </div>}><TermsCondition/></Suspense>}/>
           <Route path='/refund-policy' exact element={<Suspense fallback={<div> Loading... </div>}><RefundPolicy/></Suspense>}/>
