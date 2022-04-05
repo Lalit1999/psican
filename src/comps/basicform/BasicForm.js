@@ -8,6 +8,8 @@ import DateInput from './inputs/DateInput.js' ;
 import FileInput from './inputs/FileInput.js' ;
 import Range from './inputs/Range.js' ;
 import DropDown from './inputs/DropDown.js' ;
+import Calendar from './inputs/Calendar.js' ;
+import Calendar2 from './inputs/Calendar2.js' ;
 import ColorInput from './inputs/ColorInput.js' ;
 import Text from './inputs/Text.js' ;
 import TextArea from './inputs/TextArea.js' ;
@@ -39,6 +41,8 @@ const BasicForm = ({initData, onClick, data, errors, empty=false}) => {
 			multiFile : <FileInput data={element} onInputChange={onFileChange} error={errors[name]} multiple={true}/>,
 			color: <ColorInput data={element} onInputChange={onInputChange} error={errors[name]}/>,
 			dropdown : <DropDown data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]} />,
+			calendar: <Calendar data={element} onInputChange={onDataChange} value={userData[name]} />,
+			calendar2: <Calendar2 data={element} onInputChange={onDataChange} value={userData[name]} />,
 			range: <Range data={element} onInputChange={onInputChange} value={userData[name]} />,
 			date: <DateInput data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]}/>,
 			number: <NumberInput data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]}/>,
@@ -49,6 +53,10 @@ const BasicForm = ({initData, onClick, data, errors, empty=false}) => {
 
 	const onInputChange = (event) => {
 		setUserData({...userData, [event.target.name] : event.target.value}) ;
+	}
+
+	const onDataChange = (str, value) => {
+		setUserData({...userData, [str]:value}) ;
 	}
 
 	const onFileChange = (event) => {

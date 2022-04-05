@@ -20,9 +20,9 @@ const features = [
 'htmlFees : &#8377; 500 '
 ] ;
 
-const Planner = () => {
+const Planner = ({type}) => {
 	const [payment, setPayment] = useState(false) ;
-	const [choice , setChoice] = useState('blank') ;
+	// const [choice , setChoice] = useState('blank') ;
 	const {user} = useContext(UserContext) ;
 
 	// const checkPayment = () => {
@@ -50,8 +50,8 @@ const Planner = () => {
 				</div>
 				<DisplayDetailed title="Features" lidata={features} />
 			</div>
-			<div className="blue-bg"> 
-				<PlannerForm choice={choice}/> 
+			<div className="blue-bg planner-con"> 
+				<PlannerForm type={type}/> 
 			</div>
 		</div>
 	) ;

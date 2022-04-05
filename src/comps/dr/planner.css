@@ -1,3 +1,8 @@
+.planner-con {
+	display: flex;
+	justify-content: center;
+}
+
 .planner-form {
 	display: flex;
 	justify-content: center;
