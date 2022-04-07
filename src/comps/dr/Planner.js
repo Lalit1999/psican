@@ -1,14 +1,14 @@
-import {useState, useContext} from 'react' ;
-import Button from 'react-bootstrap/Button';
-import {Link} from 'react-router-dom' ;
+// import {useState, useContext} from 'react' ;
+// import Button from 'react-bootstrap/Button';
+// import {Link} from 'react-router-dom' ;
 
 import PlannerForm from './PlannerForm.js' ;
-import Payment from '../payment/Payment.js' ;
+// import Payment from '../payment/Payment.js' ;
 import Title from '../title/Title.js' ;
 import DisplayDetailed from '../display/DisplayDetailed.js' ;
 import Heading from '../Heading/Heading.js' ;
 // import {pData, ptData, mData, features} from './consultData.js' ; 
-import {UserContext} from '../../context/UserContext.js' ;
+// import {UserContext} from '../../context/UserContext.js' ;
 
 import '../consult/program.css' ;
 import './planner.css' ;
@@ -21,9 +21,9 @@ const features = [
 ] ;
 
 const Planner = ({type}) => {
-	const [payment, setPayment] = useState(false) ;
+	// const [payment, setPayment] = useState(false) ;
 	// const [choice , setChoice] = useState('blank') ;
-	const {user} = useContext(UserContext) ;
+	// const {user} = useContext(UserContext) ;
 
 	// const checkPayment = () => {
 	// 	// if((choice === 'noAdvance') || ((choice === 'withAdvance') && payment))

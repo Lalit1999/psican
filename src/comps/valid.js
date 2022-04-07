@@ -73,4 +73,25 @@ const invalidDate = (date) => {
 		return false ;
 }
 
-export { isBlank, isMaxMin, invalidPass, invalidMobile, invalidEmail, invalidName, invalidDate} ;
+const isNonZero = (str, field) => {
+	if(str === 0)
+		return `${field} can not be 0` ;
+	else
+		return false ;
+}
+
+const isLink = (str, field) => {
+	if(typeof str === 'object')
+		return `${field} needs to be uploaded first`
+	else {
+		str = str.trim() ;
+		if(str === '')
+			return `${field} can not be blank` ;
+		else if(!valid.isURL(str))
+			return `${field} might not be a valid URL`;
+		else
+			return false ;
+	}
+}
+
+export { isBlank, isMaxMin, invalidPass, invalidMobile, invalidEmail, invalidName, invalidDate, isLink, isNonZero} ;

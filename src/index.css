@@ -35,6 +35,10 @@ textarea {
   resize: none;
 }
 
+table.table {
+  width: 98% ;
+}
+
 :root {
   --main: rgb(70, 130, 180) ;
   --dark: rgb(29, 41, 81) ;

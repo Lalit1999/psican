@@ -11,7 +11,7 @@ const PlannerForm = ({type}) => {
 	const [data, setData] = useState(initData) ;
 	const [error, setError] = useState({}) ;
 	const [dates, setDates] = useState([]) ;
-	const [empty, setEmpty] = useState(true) ;
+	// const [empty, setEmpty] = useState(true) ;
 	const {token} = useContext(UserContext) ;
 
 	useEffect( () => {
@@ -51,7 +51,7 @@ const PlannerForm = ({type}) => {
 	
 	//  2 : register karne ki request bhej raha hai.
 	const sendConsultRequest = () => {
-		const {name, reason, appointDate} = data ;
+		// const {name, reason, appointDate} = data ;
 
 		console.log(data) ;
 
@@ -104,7 +104,7 @@ const PlannerForm = ({type}) => {
 
 	return (
 		<div className="consult-form">	
-			<BasicForm data={formData} errors={error} onClick={{"Request Appointment" : onBookConsultClick}} initData={initData} empty={empty}/>
+			<BasicForm data={formData} errors={error} onClick={{"Request Appointment" : onBookConsultClick}} initData={initData} />
 		</div>
 	) ;
 }

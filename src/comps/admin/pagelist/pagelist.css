@@ -1,0 +1,10 @@
+.page-list {
+	margin: auto 2em 0 ;
+	display: flex;
+	align-items: center;
+	min-width: 219px ;
+}
+
+.page-list ul {
+	margin: 0;
+}

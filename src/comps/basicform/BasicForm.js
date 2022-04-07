@@ -29,8 +29,8 @@ const BasicForm = ({initData, onClick, data, errors, empty=false}) => {
 		const {type, name} = element ;
 
 		const formComps = {
-			text: <Text data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]}/>,
-			textArea: <TextArea data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]}/>,
+			text: <Text data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]} handleEnter={handleEnter}/>,
+			textArea: <TextArea data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]} handleEnter={handleEnter}/>,
 			password : <Text type = "password" data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]}/>,
 			disabled : <Text data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]} disabled={true}/>,
 			plainText : <Text data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]} plaintext={true}/>,
@@ -49,6 +49,11 @@ const BasicForm = ({initData, onClick, data, errors, empty=false}) => {
 		} ;
 
 		return formComps[type] ;
+	}
+
+	const handleEnter = event => {
+		if(event.which === 13)
+			onClick[Object.keys(onClick)[0]](userData) ;
 	}
 
 	const onInputChange = (event) => {

@@ -1,0 +1,103 @@
+.gtable {
+	font-size: .8rem ;
+}
+
+.table-title {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: .5em 0 ;
+}
+
+.total-rows {
+	margin: 0;
+	font-size: 0.8rem ;
+}
+
+.dd-con {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-right: 2em ;
+}
+
+.dd-con * {
+	font-size: .8rem ;
+}
+
+.gtable .gtable-head .btn-light {
+	font-size: .8rem;
+	text-transform: capitalize;
+	font-weight: bold;
+}
+
+.gtable .btn-light {
+	display: flex;
+	align-items: center;
+}
+
+.gtable .btn-light svg {
+	margin-left: 1rem ;
+}
+
+.gtable .admin-panel-links {
+	margin-bottom: 0;
+}
+
+.gtable .gtable-eye, .gtable .gtable-pen {
+	cursor: pointer;
+}
+
+.gtable .gtable-trash {
+	color: darkred;
+	cursor: pointer;
+}
+
+.gtable .btn-danger {
+	font-size: .8rem ;
+	padding: .2em .5em  ;
+}
+
+.data-flex {
+	display: flex;
+	justify-content: space-between;
+	font-family: 'Lexend', sans-serif;
+}
+
+.data-bold {
+	font-weight: bold;
+	flex-basis: 40%;
+}
+
+.data-right {
+	/*margin-left: 2em;*/
+}
+
+.table-title .search-con {
+	border: 1px solid #e4e4e4 ;
+	padding-right: 0 ;
+}
+
+.table-title .search-con input {
+	padding: 0.3em 1em ; 
+	font-size: .7rem ;
+	width: 17vw ;
+}
+
+.table-title .search-con>svg {
+	margin-right: .5em  ;
+	font-size: 1rem ;
+}
+
+@media(max-width: 600px)
+{
+	/* Change */
+	.table-title .search-con input {
+		padding: 0.3em 1em ; 
+		margin: 0 ;
+		font-size: 1rem ;
+		width: 70vw ;
+		background-color: transparent; 
+	}
+}
