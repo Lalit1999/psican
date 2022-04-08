@@ -28,7 +28,10 @@ const TableHeader = ({columns, before, after, filter, changeFilter, filterOrder}
 
 const TableCell = ({col, cellData}) => {
 	if(col.format)
-		return <td>{col.format(cellData)}</td>
+		if(col.args)
+			return <td>{col.format(cellData, col.args)}</td>
+		else
+			return <td>{col.format(cellData)}</td>
 	else
 		return <td>{cellData}</td> ;
 }

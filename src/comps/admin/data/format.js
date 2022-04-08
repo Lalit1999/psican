@@ -25,4 +25,6 @@ const formatLinks = (value) => {
 
 const formatAddress = (value) => value.replaceAll(' && ', ', ') ;
 
-export {formatSize, formatDate, formatLink, formatLinks, formatAddress} ;
+const formatObj = (data, arg) => data[arg] ;
+
+export {formatSize, formatDate, formatLink, formatLinks, formatAddress, formatObj } ;

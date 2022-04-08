@@ -1,7 +1,7 @@
 import {formatDate} from './format.js' ;
 
 const messageColumns = [
-	{ name: 'name'}, { name: 'email'}, { name: 'mobile'}, { name: 'message'}, 
+	{ name: 'sno'}, { name: 'name'}, { name: 'email'}, { name: 'mobile'}, { name: 'message'}, 
 	{ name: 'createdAt', format: formatDate}
 ] ;
 
@@ -17,7 +17,7 @@ const msg = {
 	columns: messageColumns, 
 	display: messageDisplay,
 	actions: {
-		before: ['sno'], 
+		before: [], 
 		after: ['view', 'delete'],
 		search: ['name', 'mobile', 'email', 'message'],
 		delete: onDeleteClick

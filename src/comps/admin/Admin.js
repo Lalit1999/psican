@@ -11,6 +11,10 @@ import {msg} from './data/message.js' ;
 import {ustopData, letaData, accisData} from './data/results.js' ;
 import './admin.css' ;
 
+const addSno = (obj, num) => {
+	return {...obj, sno: num+1}
+}
+
 const Admin = () => {
 	const [results, setResults] = useState({}) ;
 	const [users, setUsers] = useState([]) ;
@@ -32,7 +36,7 @@ const Admin = () => {
 				return res.json() ;
 			throw Error(res.statusText) ;
 		})
-		.then(users => setUsers(users) ) 
+		.then(users => setUsers(users.map(addSno)) ) 
 		.catch( err  => {
 			console.log(err) ; 
 			addNotif(err.message, 'error') ;
@@ -52,11 +56,11 @@ const Admin = () => {
 		})
 		.then(results => {
 			let obj = {
-				ustop : results.filter(one => one.test === 'ustop'),
-				leta : results.filter(one => one.test === 'leta'),
-				accis : results.filter(one => one.test === 'accis'),
+				ustop : results.filter(one => one.test === 'ustop').map(addSno),
+				leta : results.filter(one => one.test === 'leta').map(addSno),
+				accis : results.filter(one => one.test === 'accis').map(addSno),
 			}
-			console.log(results) ;
+			// console.log() ;
 			setResults(obj) ;
 		}) 
 		.catch( err  => {
@@ -76,7 +80,7 @@ const Admin = () => {
 				return res.json() ;
 			throw Error(res.statusText) ;
 		})
-		.then(resp => setAppointments(resp) ) 
+		.then(resp => setAppointments(resp.map(addSno)) ) 
 		.catch( err  => {
 			console.log(err) ; 
 			addNotif(err.message, 'error') ;
@@ -94,7 +98,7 @@ const Admin = () => {
 				return res.json() ;
 			throw Error(res.statusText) ;
 		})
-		.then(resp => setMessages(resp) ) 
+		.then(resp => setMessages(resp.map(addSno)) ) 
 		.catch( err  => {
 			console.log(err) ; 
 			addNotif(err.message, 'error') ;
@@ -112,7 +116,7 @@ const Admin = () => {
 				return res.json() ;
 			throw Error(res.statusText) ;
 		})
-		.then(resp => setCoupons(resp) ) 
+		.then(resp => setCoupons(resp.map(addSno)) ) 
 		.catch( err  => {
 			console.log(err) ; 
 			addNotif(err.message, 'error') ;

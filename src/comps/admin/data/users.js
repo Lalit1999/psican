@@ -1,7 +1,7 @@
 import {formatDate} from './format.js' ;
 
 const userColumns = [
-	{ name: 'name'}, { name: 'email'}, { name: 'mobile'}, { name: 'createdAt', format: formatDate},  
+	{name: 'sno'}, { name: 'name'}, { name: 'email'}, { name: 'mobile'}, { name: 'createdAt', format: formatDate},  
 ] ;
 
 const userDisplay = [
@@ -18,7 +18,7 @@ const onDeleteClick = () => {
 const usersData = {
 	columns: userColumns, 
 	actions: {
-		before: ['sno'], 
+		before: [], 
 		after: ['view', 'delete'],
 		search: ['name', 'email', 'mobile'],
 		delete: onDeleteClick

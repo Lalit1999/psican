@@ -1,12 +1,11 @@
-import {formatDate} from './format.js' ;
-
-const formatTotal = (data) => {
-	console.log(data) ;
-	return data ;
-}
+import {formatDate, formatObj} from './format.js' ;
 
 const ustopColumns = [
-	{ name: 'owner'}, { name: 'createdAt', format: formatDate}, { name: 'result', title: 'Total', format: formatTotal}, 	
+	{name: 'sno'}, { name: 'owner'}, { name: 'createdAt', format: formatDate}, 
+	{ name: 'result', title: 'S Score', format: formatObj, args: 's'},
+	{ name: 'result', title: 'A Score', format: formatObj, args: 'a'},
+	{ name: 'result', title: 'E Score', format: formatObj, args: 'e'},
+	{ name: 'result', title: 'Total', format: formatObj, args: 't'}, 	
 ] ;
 
 const messageDisplay = [
@@ -24,9 +23,9 @@ const ustopData = {
 	columns: ustopColumns, 
 	display: messageDisplay,
 	actions: {
-		before: ['sno'], 
+		before: [], 
 		after: ['view'],
-		search: [],
+		search: ['sno'],
 		delete: onDeleteClick
 	}
 } ;

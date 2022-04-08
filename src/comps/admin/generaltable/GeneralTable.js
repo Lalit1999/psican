@@ -15,7 +15,7 @@ const GeneralTable = ({name, data, columns, actions, display, editData}) => {
 	const [sideMenu, setSideMenu] = useState(null) ;
 	const [sideMenuOpen, setSideMenuOpen] = useState(false) ;
 	const [selected, setSelected] = useState([]) ;
-	const [filter, setFilter] = useState('createdAt') ;
+	const [filter, setFilter] = useState('sno') ;
 	const [filterOrder, setFilterOrder] = useState('asc') ;
 	const [qty, setQty] = useState(15) ;
 	const [page, setPage] = useState(0) ;
@@ -60,7 +60,7 @@ const GeneralTable = ({name, data, columns, actions, display, editData}) => {
 			if(filterOrder === 'asc')
 				setFilterOrder('desc') ;
 			else {
-				setFilter('createdAt') ;
+				setFilter('sno') ;
 				setFilterOrder('asc') ;
 			}
 		}
