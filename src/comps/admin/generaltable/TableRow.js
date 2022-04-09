@@ -31,7 +31,7 @@ const TableRow = ({sno, rowData, columns, actions, selected, setSelected, setSid
 	}
 
 	const onViewClick = () => {
-		// console.log(rowData) ;
+		console.log(rowData) ;
 		if(display)
 			setSideMenu(display.map((dis, i)=> <DisplayElement key={i} dis={dis} data={rowData[dis.name]} />)) ;
 	}

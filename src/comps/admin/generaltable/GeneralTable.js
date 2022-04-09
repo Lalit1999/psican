@@ -11,7 +11,7 @@ import TableRow from './TableRow.js' ;
 import {TableHeader} from './TableComps.js' ;
 import './gtable.css' ;
 
-const GeneralTable = ({name, data, columns, actions, display, editData}) => {
+const GeneralTable = ({name, data, columns, actions, display, editData, small=false}) => {
 	const [sideMenu, setSideMenu] = useState(null) ;
 	const [sideMenuOpen, setSideMenuOpen] = useState(false) ;
 	const [selected, setSelected] = useState([]) ;
@@ -76,9 +76,22 @@ const GeneralTable = ({name, data, columns, actions, display, editData}) => {
 
 	const getMax = () => (filteredData.length%qty===0)?(filteredData.length/qty)-1:(Math.floor(filteredData.length/qty))
 
-	if(data.length > 0)
-		return (
-			<div>
+	const returnTableHeader = () => {
+		if(small)
+			return (
+				<div className="table-title">
+					<p className="total-rows"> Total No. of Rows : {filteredData.length} </p>
+					<div className="dd-con">
+						<PageList current={page} setPage={setPage} max={getMax()}/>
+						<DropDown onInputChange={e=>{
+							setQty(Number.parseInt(e.target.value)) ;
+							setPage(0) ;
+						}} value={qty} error={false} data={ {name: 'qty', label: 'No. of Rows', options: [5, 15, 30, 50, 100, 250]} }/>
+					</div>
+				</div>
+			) ;
+		else
+			return (
 				<div className="table-title">
 					<h3 className="login-heading">{name}</h3>
 					<p className="total-rows"> Total No. of Rows : {filteredData.length} </p>
@@ -98,6 +111,13 @@ const GeneralTable = ({name, data, columns, actions, display, editData}) => {
 						}} value={qty} error={false} data={ {name: 'qty', label: 'No. of Rows', options: [5, 15, 30, 50, 100, 250]} }/>
 					</div>
 				</div>
+			) ;
+	}
+
+	if(data.length > 0)
+		return (
+			<div>
+				{ returnTableHeader() }
 	            <Table className="gtable" striped bordered hover responsive>
 				  <TableHeader {...headProps} />
 				  <tbody>{createRows()}</tbody>

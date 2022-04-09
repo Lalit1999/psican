@@ -2,9 +2,10 @@ import {useState, useEffect, useContext} from 'react' ;
 
 import Button from 'react-bootstrap/Button';
 import Redirect from '../redirect/Redirect.js' ;
+import GeneralTable from '../admin/generaltable/GeneralTable.js' ;
+import {formatDate, formatObj} from '../admin/data/format.js' ;
 import { addNotif } from '.././notif.js' ;
 import Title from '../title/Title.js' ;
-import ResultRecord from '../admin/ResultRecord.js' ;
 import ChangePassForm from './ChangePassForm.js' ;
 import EditForm from './EditForm.js' ;
 import {UserContext} from '../../context/UserContext.js' ;
@@ -51,7 +52,7 @@ const UserProfile = () => {
 		}) ;
 	}, [token]) ;
 
-	const formatDate = (dt) => {
+	const formatDat = (dt) => {
 		const dat = new Date(dt).toLocaleString("en-GB", {timeZone: "Asia/Kolkata"}); ;
 		return dat ;
 	}
@@ -103,10 +104,24 @@ const UserProfile = () => {
 	}
 
 	const returnResult = () => {
+		const obj = {
+			data: resData,
+			columns: [
+				{ name: 'test'}, { name: 'result', title: 'Total', format: formatObj, args: 't'}, 
+				{ name: 'createdAt', format: formatDate},	
+			], 
+			display: {},
+			actions: {
+				before: [], 
+				after: [],
+				search: [],
+			}
+		}
+
 		if(resData.length > 0)
-			return resData.map((one, i) => <ResultRecord key={i} data={one} lite="yes"/>) ;
+			return <GeneralTable {...obj} small={true}/> ;
 		else 
-			return <p className="result-loading"> Loading... </p> ;
+			return <p className="result-loading"> No Test(s) found </p> ;
 	}
 	
 	const generateData = () => {
@@ -138,7 +153,7 @@ const UserProfile = () => {
 			return (
 				<div className="data-con">
 					{generateData()}
-					<Data name="Created at" value={formatDate(user.createdAt)} />
+					<Data name="Created at" value={formatDat(user.createdAt)} />
 				</div>
 			) ;
 	}

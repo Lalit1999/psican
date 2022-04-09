@@ -40,7 +40,7 @@ const DisplayElement = ({dis, data}) =>{
 	return(
 		<div className="data-flex"> 
 			<p className="data-bold">{dis.title?dis.title:dis.name}</p>
-			<div className="data-right">{dis.format?dis.format(data):data} </div>
+			<div className="data-right">{dis.format?(dis.args?dis.format(data, dis.args):dis.format(data)):data} </div>
 		</div>
 	) ;
 }

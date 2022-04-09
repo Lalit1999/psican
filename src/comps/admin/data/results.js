@@ -1,32 +1,64 @@
 import {formatDate, formatObj} from './format.js' ;
 
 const ustopColumns = [
-	{name: 'sno'}, { name: 'owner'}, { name: 'createdAt', format: formatDate}, 
+	{name: 'sno'}, { name: 'owner'}, 
 	{ name: 'result', title: 'S Score', format: formatObj, args: 's'},
 	{ name: 'result', title: 'A Score', format: formatObj, args: 'a'},
 	{ name: 'result', title: 'E Score', format: formatObj, args: 'e'},
-	{ name: 'result', title: 'Total', format: formatObj, args: 't'}, 	
+	{ name: 'result', title: 'Total', format: formatObj, args: 't'},
+	{ name: 'createdAt', format: formatDate},  	
 ] ;
 
-const messageDisplay = [
-	{ name: 'name', title:'Name'}, { name: 'email', title:'E-Mail'}, { name: 'mobile', title:'Mobile No.'}, { name: 'message', title:'Message'}, { name: 'createdAt', title:'Date', format: formatDate}
+const ustopDisplay = [
+	{ name: 'owner', title:'Name'}, { name: 'email', title:'E-Mail'}, 
+	{ name: 'mobile', title:'Mobile No.'}, 
+	{ name: 'result', title: 'S Score', format: formatObj, args: 's'}, 	
+	{ name: 'result', title: 'A Score', format: formatObj, args: 'a'},
+	{ name: 'result', title: 'E Score', format: formatObj, args: 'e'},
+	{ name: 'result', title: 'Total', format: formatObj, args: 't'}, 
+	{ name: 'createdAt', title:'Date', format: formatDate}
 ] ;
 
-const onDeleteClick = () => {
-	console.log('deleted') ;
-}
+const accisColumns = [
+	{ name: 'sno'}, { name: 'owner'}, { name: 'email'}, { name: 'mobile'}, 
+	{ name: 'result', title: 'Total', format: formatObj, args: 't'}, 
+	{ name: 'createdAt', format: formatDate},	
+] ;
 
-const letaData = {} ;
-const accisData = {} ;
+const accisDisplay = [
+	{ name: 'owner', title:'Name'}, { name: 'email', title:'E-Mail'}, 
+	{ name: 'mobile', title:'Mobile No.'}, 
+	{ name: 'result', title: 'Total', format: formatObj, args: 't'}, 
+	{ name: 'createdAt', title:'Date', format: formatDate}
+] ;
 
-const ustopData = {
-	columns: ustopColumns, 
-	display: messageDisplay,
+const letaData = {
+	columns: accisColumns, 
+	display: accisDisplay,
 	actions: {
 		before: [], 
 		after: ['view'],
 		search: ['sno'],
-		delete: onDeleteClick
+	}
+} ;
+
+const accisData = {
+	columns: accisColumns, 
+	display: accisDisplay,
+	actions: {
+		before: [], 
+		after: ['view'],
+		search: ['sno'],
+	}
+} ;
+
+const ustopData = {
+	columns: ustopColumns, 
+	display: ustopDisplay,
+	actions: {
+		before: [], 
+		after: ['view'],
+		search: ['sno'],
 	}
 } ;
 

@@ -1,9 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react' ;
 import Redirect from '../redirect/Redirect.js' ;
 
-import ResultRecord from './ResultRecord.js' ;
 import AdminPanel from './AdminPanel.js' ; 
-import UserRecord from './UserRecord.js' ;
 import {UserContext} from '../../context/UserContext.js' ;
 import { addNotif } from '../notif.js' ;
 import {usersData} from './data/users.js' ;
@@ -21,9 +19,7 @@ const Admin = () => {
 	const [messages, setMessages] = useState([]) ;
 	const [appointments, setAppointments] = useState([]) ;
 	const [coupons, setCoupons] = useState([]) ;
-	const [mode, setMode] = useState('users') ;
 	const {user, token} = useContext(UserContext) ;
-	const [searchText, setSearchText] = useState('') ;
 
 	useEffect(() => {
 		fetch('https://api.psyment.com/users',{
