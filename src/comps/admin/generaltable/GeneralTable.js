@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons' ;
 import { Link } from'react-router-dom' ;
 
-import DropDown from '../../../comps/basicform/inputs/DropDown.js' ;
+import DropDown from '../../basicform/inputs/DropDown.js' ;
 import PageList from '../pagelist/PageList.js' ;
 import TableRow from './TableRow.js' ;
 import {TableHeader} from './TableComps.js' ;

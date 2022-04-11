@@ -11,6 +11,7 @@ import Exam from './comps/tests/Exam.js' ;
 import UstopPage from './comps/tests/ustop/UstopPage.js' ;
 import LetaPage from './comps/tests/leta/LetaPage.js' ;
 import AccisTestPage from './comps/tests/accis/AccisTestPage.js' ;
+import Test4TestPage from './comps/tests/test4/Test4TestPage.js' ;
 import Admin from './comps/admin/Admin.js' ;
 import Footer from './comps/footer/Footer.js';
 import { UserContextProvider } from './context/UserContext.js' ;
@@ -46,6 +47,7 @@ const App = () => {
           <Route path='/test/ustop' exact element={<UstopPage />} />
           <Route path='/test/leta' exact element={<LetaPage />} />
           <Route path='/test/accis' exact element={<AccisTestPage />} />
+          <Route path='/test/test4' exact element={<Test4TestPage />} />
           <Route path='/planner' element={<Planner type="calendar" />} />
           <Route path='/planner2' element={<Planner type="calendar2" />} />
           <Route path='/privacy-policy' exact element={<Suspense fallback={<div> Loading... </div>}><PrivacyPolicy/></Suspense>}/>
