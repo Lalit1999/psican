@@ -15,6 +15,7 @@ const ConsultForm = ({choice}) => {
 	const {token} = useContext(UserContext) ;
 
 	useEffect( () => {
+		// fetch('http://localhost:8000/appoint-list',{
 		fetch('https://api.psyment.com/appoint-list',{
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json' ,
@@ -40,15 +41,6 @@ const ConsultForm = ({choice}) => {
 		],
 	] ;
 
-	const formData2 = [
-		[	{type: "text", name: "title", label: "Enter Consultation Title", id:"consultTitle"},
-		],
-		[	{type: "textArea", name: "reason", label: "Reason for Consultation", id:"consultReason"},
-		],
-		[	{type: "btn", name: "Request Consultation", style: "sched-btn"},
-		],
-	] ;
-	
 	//  2 : register karne ki request bhej raha hai.
 	const sendConsultRequest = () => {
 		const {title, reason, appointDate} = data ;
@@ -58,7 +50,7 @@ const ConsultForm = ({choice}) => {
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json' ,
 						'Authorization' : `Bearer ${token}` },
-			body : JSON.stringify({date: appointDate, reason, title }) ,
+			body : JSON.stringify({date: appointDate, reason, title, choice }) ,
 		})
 		.then(res => {
 			if(res.ok)
@@ -102,7 +94,7 @@ const ConsultForm = ({choice}) => {
 
 	return (
 		<div className="consult-form">	
-			<BasicForm data={choice === 'noAdvance'?formData2:formData} errors={error} onClick={{"Request Consultation" : onBookConsultClick}} initData={initData} empty={empty}/>
+			<BasicForm data={formData} errors={error} onClick={{"Request Consultation" : onBookConsultClick}} initData={initData} empty={empty}/>
 		</div>
 	) ;
 }

@@ -1,1 +1,2 @@
-- Admin
+- mail sahi nahi ja raha
+- adminauth comment ho gaya galti se

@@ -12,13 +12,20 @@ import './gtable.css' ;
 const TableRow = ({sno, rowData, columns, actions, selected, setSelected, setSideMenu, display, editData}) => {
 	const [active, setActive] = useState(true) ;
 	const [checked, setChecked] = useState(false) ;
+	const [checked2, setChecked2] = useState(false) ;
 
 	const toggleActive = () => setActive(!active) ;	
 	const toggleCheckBox = () => setChecked(!checked) ;	
+	const toggleCheckBox2 = () => setChecked2(!checked2) ;	
 
 	const onSwitchClick = (event) => {
 		toggleActive() ;
 		actions['switch'](event) ;
+	}
+
+	const onOffSwitchClick = (event) => {
+		toggleCheckBox2() ;
+		actions['offswitch'](event) ;
 	}
 
 	const onCheckBoxClick = (event) => {
@@ -37,7 +44,7 @@ const TableRow = ({sno, rowData, columns, actions, selected, setSelected, setSid
 	}
 
 	const onEditClick = () => {
-		// console.log(rowData) ;
+		console.log(rowData) ;
 		// setSideMenu('qwerty') ;
 		if(editData) 
 			setSideMenu(<AdminForm {...editData} initData={rowData}/>) ;
@@ -52,13 +59,18 @@ const TableRow = ({sno, rowData, columns, actions, selected, setSelected, setSid
 	}
 
 	const createTableComps = (one, sno) => {
+		const {_id, owner, email} = rowData ;
+
+		const aria = `${one}+${_id}+${owner}+${email}` ;
+
 		const tableComps = {
 			sno: <td onClick={actions['sno']}>{sno}</td>,
 			view: <td onClick={onViewClick}><FontAwesomeIcon className="gtable-icon gtable-eye" icon={faEye} /></td>,
-			checkbox: <td><Form.Check aria-label={one+sno} onChange={onCheckBoxClick} checked={checked}/></td>,
+			checkbox: <td><Form.Check aria-label={aria} onChange={onCheckBoxClick} checked={checked}/></td>,
 			delete: <td onClick={onDeleteClick}><FontAwesomeIcon className="gtable-icon gtable-trash" icon={faTrash} /></td>,
 			edit: <td onClick={onEditClick}><FontAwesomeIcon className="gtable-icon gtable-pen" icon={faPenToSquare} /></td>,
-			switch: <td><Form.Check aria-label={one+sno} type="switch" checked={active} onChange={onSwitchClick}/></td>,
+			switch: <td><Form.Check aria-label={aria} type="switch" checked={active} onChange={onSwitchClick}/></td>,
+			offswitch: <td><Form.Check aria-label={aria} type="switch" checked={checked2} onChange={onOffSwitchClick}/></td>,
 			cancel: <td onClick={actions['cancel']}><Button variant="danger">Cancel</Button></td>,
 		}
 

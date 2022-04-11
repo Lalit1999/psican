@@ -11,6 +11,7 @@ const TableHeader = ({columns, before, after, filter, changeFilter, filterOrder}
 		edit: 'Edit',
 		checkbox: <Form.Check aria-label="select-all" />,
 		switch: 'Active',
+		offswitch: 'Confirm',
 		cancel: 'Cancel Order'
 	}
 

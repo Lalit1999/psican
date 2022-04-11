@@ -7,10 +7,15 @@ import { addNotif } from '../notif.js' ;
 import {usersData} from './data/users.js' ;
 import {msg} from './data/message.js' ;
 import {ustopData, letaData, accisData} from './data/results.js' ;
+import {confirmedAppoint, appointRequest} from './data/appointments.js' ;
 import './admin.css' ;
 
 const addSno = (obj, num) => {
 	return {...obj, sno: num+1}
+}
+
+const filterAppoints = (data, str) => {
+	return data.filter(one => one.choice === str)
 }
 
 const Admin = () => {
@@ -129,7 +134,11 @@ const Admin = () => {
 			], 
 		},
 		{ 	name: "Messages", type: "table", data: messages, ...msg },
-		{ 	name: "Appointments", type: "table", data: appointments/*, ...message*/ },
+		{ 	name: "Appointments", type: "parent", children: [
+				{ 	name: "Confirmed", type: "table", data: filterAppoints(appointments, 'withAdvance'), ...confirmedAppoint },
+				{ 	name: "Requests", type: "table", data: filterAppoints(appointments, 'noAdvance'), ...appointRequest },
+			], 
+		},
 		{ 	name: "Coupon Management", type: "parent", children: [
 				{ 	name: "Add Coupon", type: "form"/*, ...addProduct*/ },
 				{ 	name: "Manage Coupon", type: "table", data: coupons/*, ...manageProduct*/ },
