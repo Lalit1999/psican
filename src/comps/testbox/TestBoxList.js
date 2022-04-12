@@ -13,11 +13,11 @@ const data = [
 		title: "ACCIS : Assessment of COVID Cognitive Impact on Self",
 		link: "/test/accis",
 		desc: "Test to help a person understand the impact of COVID-related anxiety on his/her behaviour & well-being",
-	}, { 
+	}/*, { 
 		title: "Test4 : Assessment of Test 4",
 		link: "/test/test4",
 		desc: "Test 4 ki dscription",
-	},
+	},*/
 ] ;
 
 const TestBoxList = (/*{data}*/) => {
