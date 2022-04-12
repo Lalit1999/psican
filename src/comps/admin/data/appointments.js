@@ -5,9 +5,9 @@ const conAppColumns = [
 ] ;
 
 const conAppDisplay = [
-	{name: 'owner', title: 'Name'}, { name: 'date', title: 'Appointment Time'}, 
-	{ name: 'title', title: 'Reason'}, { name: 'reason', title: 'Details'},
-	{ name: 'createdAt', title: 'Booked At', format: formatDate}
+	{name: 'owner', title: 'Name'}, { name: 'mobile'}, { name: 'email'}, 
+	{name: 'date', title: 'Appointment Time'}, { name: 'title', title: 'Reason'}, 
+	{name: 'reason', title: 'Details'}, { name: 'createdAt', title: 'Booked At', format: formatDate}
 ] ;
 
 const confirmedAppoint = {
