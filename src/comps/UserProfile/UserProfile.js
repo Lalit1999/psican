@@ -48,7 +48,7 @@ const UserProfile = () => {
 		.then( data => setResData(data) ) 
 		.catch( err  => {
 			console.log(err) ; 
-			addNotif(err.message, 'error') ;
+			addNotif("No Tests Taken by this User", 'error') ;
 		}) ;
 	}, [token]) ;
 
