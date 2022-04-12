@@ -31,7 +31,7 @@ const BasicForm = ({initData, onClick, data, errors, empty=false}) => {
 		const formComps = {
 			text: <Text data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]} handleEnter={handleEnter}/>,
 			textArea: <TextArea data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]} handleEnter={handleEnter}/>,
-			password : <Text type = "password" data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]}/>,
+			password : <Text type = "password" data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]} handleEnter={handleEnter}/>,
 			disabled : <Text data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]} disabled={true}/>,
 			plainText : <Text data={element} onInputChange={onInputChange} value={userData[name]} error={errors[name]} plaintext={true}/>,
 			link: <Link to={element.to} className={element.style}>{name}</Link>,
