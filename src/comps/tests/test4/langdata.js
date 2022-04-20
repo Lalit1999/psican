@@ -38,13 +38,9 @@ const quesData = {
 		english: 'Save & Next' ,
 		hindi: 'दर्ज & अगला'
 	},
-	note : {
-		english: '*Note: Your answers will not be recorded if you do not click "Save & Next"' ,
-		hindi: '*नोट: अगर आप "दर्ज & अगला" पर क्लिक नहीं करेंगे तो आपका जवाब मान्य नहीं होगा'
-	},
 	error : {
-		english: 'Selecting an option is compulsary',
-		hindi: 'जवाब चुनना अनिवार्य है'
+		english: 'Selecting an option is compulsary for all qualities',
+		hindi: 'सभी गुणों के लिए जवाब चुनना अनिवार्य है'
 	},
 } ;
 

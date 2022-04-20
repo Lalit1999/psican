@@ -1,4 +1,4 @@
- const saatQues = [
+ const accisQues = [
  { english : "Life is uncertain",
 	hindi:'जिंदगी अनिश्चित है'},
  { english : "I experienced uncertainty of life during COVID times",
@@ -120,4 +120,4 @@
 	{ english : "I experience painful movement and reduced activity post-COVID ", 
 	hindi:'मुझे COVID के बाद दर्दनाक और कम गतिविधि महसूस हो रही है '},
 ];
-export {saatQues} ;
+export {accisQues} ;

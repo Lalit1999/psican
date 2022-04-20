@@ -44,7 +44,7 @@ const Question = ({lang, changeMode}) => {
 	}
 
 	const onNextClick = () => {
-		console.log(checked, ans) ;
+		// console.log(checked, ans) ;
 		if( checked[0] || checked[1] || checked[2] || checked[3] || checked[4] )
 		{	let arr = [false, false, false, false, false] ;
 			if(checked[0] || checked[1])

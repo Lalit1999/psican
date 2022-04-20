@@ -4,19 +4,9 @@ import {Link} from 'react-router-dom' ;
 import CheckBtn from '../CheckBtn.js' ;
 import { addNotif} from '../../notif.js' ;
 import Payment from '../../payment/Payment.js' ;
-import Test4Question from './Test4Question.js' ;
+import Test4QuestionList from './Test4Question.js' ;
 import {UserContext} from '../../../context/UserContext.js' ;
 import {inst, subData, resultData, evalData } from './langdata.js' ;
-
-import '../accis/accis.css' ;
-// import './test4.css' ;
-
-let ans = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-		 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
-		 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-		 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-		 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-		 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,] ;
 
 const EvalDisplay = ({stage, type, lang}) => {
 	return (
@@ -35,6 +25,7 @@ const EvalDisplay = ({stage, type, lang}) => {
 }
 
 const Test4 = () => {
+	const [checkedValues, setCheckedValues] = useState({}) ;
 	const [mode, setMode] = useState('start') ;
 	const [lang, setLang] = useState('english') ;
 	const [payment, setPayment] = useState(false) ;
@@ -57,11 +48,6 @@ const Test4 = () => {
 		.then(data => setPayment(data.answer))  
 		.catch(err => console.log(err, err.message) ) ;
 
-		return (() =>{
-			ans = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
-				 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-				 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,] ;
-		}) ;
 	}, [token] ) ;
 
 	const checkMode = () => {
@@ -82,14 +68,17 @@ const Test4 = () => {
 							</div> 
 						);
 
-		case 'test' : return <Test4Question changeMode={setMode} lang={lang} ans={ans}/> ;
+		case 'test' : let objProps = {checkedValues, setCheckedValues, lang, changeMode:setMode }
+					  return <Test4QuestionList {...objProps} /> ;
 
-		case 'finish' : let obj2 = {
+		case 'finish' : let checkedArr = Object.keys(checkedValues).map(one => checkedValues[one])
+
+						let obj2 = {
 							// test: 'test4',
 							test: 'accis',
 							result: {
-								answers: ans,
-								t: ans.reduce((a,b)=>a+b),
+								answers: checkedArr,
+								t: checkedArr.reduce((a,b)=>a+b),
 							}
 						} ;
 						
@@ -160,10 +149,10 @@ const Test4 = () => {
 	}
 
 	const checkPayment = () => {
-		if(payment)
+		// if(payment)
 			return (
 				<div className="test-box-con">
-					<div className="test-box">
+					<div className="test-box test-box-4">
 						<div className="lang-con">
 							<CheckBtn styles="check-btn" onClick={() => setLang('english')} checked={lang==='english'} text="English" />
 							<CheckBtn styles="check-btn" onClick={() => setLang('hindi')} checked={lang==='hindi'} text="हिन्दी" />
@@ -172,8 +161,8 @@ const Test4 = () => {
 					</div>
 				</div>
 			) ;
-		else 
-			return <Payment success={() => setPayment(true)} type='accis'/> ;
+		// else 
+		// 	return <Payment success={() => setPayment(true)} type='accis'/> ;
 			// return <Payment success={() => setPayment(true)} type='test4'/> ;
 	}
 

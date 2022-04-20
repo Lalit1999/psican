@@ -5,7 +5,7 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import CheckBtn from '../CheckBtn.js' ;
 import {quesData} from './langdata.js' ;
 import {radioData, radioData2} from './radioData.js' ;
-import {saatQues} from './queData.js' ;
+import {accisQues} from './queData.js' ;
 
 const val = [ [1, 0], [0, 2, 3], [0, 1, 2, 3] ] ;
 
@@ -37,8 +37,8 @@ const AccisQuestion = ({changeMode, lang, ans}) => {
 				else
 					ans[num] = (num%3===2?3:2) ;
 			}	
-			if(saatQues[num+1])
-			{	if(saatQues[num+1][lang] !== 0)
+			if(accisQues[num+1])
+			{	if(accisQues[num+1][lang] !== 0)
 					arr[ val[ (num+1)%3 ][ ans[num+1] ] ] = true ;
 				setNum(num+1);
 				setChecked(arr) ;
@@ -66,7 +66,7 @@ const AccisQuestion = ({changeMode, lang, ans}) => {
 
 	return (
 		<div className="question accis"> 
-			<p> {parseInt(num,10) + 1}. &nbsp; {saatQues[num][lang]} </p>
+			<p> {parseInt(num,10) + 1}. &nbsp; {accisQues[num][lang]} </p>
 			<div className="radio-con"> 
 				{(num%3===0)?radioData.map(radioMap):radioData2.map(radioMap)}
 			</div>

@@ -1,0 +1,41 @@
+.test-box-4 {
+	width: 75% ;
+}
+
+.test4 {
+
+}
+
+.test4-radio-con {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.test4-radio {
+	display: flex;
+	flex-grow: 1;
+	justify-content: flex-end;
+}
+
+.test4-radio-con p {
+	margin-bottom: 0 ;
+}
+
+.test4-check-btn {
+	padding: .2em .3em ;
+	margin: 0 .2em ; 
+	width: auto;
+	display: flex;
+	align-items: center;
+	transition: all 0.3s ;
+}
+
+.test4-check-btn svg {
+	font-size: 1.5rem;
+}
+
+.test4-radio-con .test4-check-btn{
+	margin: .5em;
+	min-width: 3.5vw ;
+}

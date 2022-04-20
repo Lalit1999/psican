@@ -1,48 +1,60 @@
-import {useState} from 'react' ;
+import {useState, useEffect} from 'react' ;
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons' ;
 
 import CheckBtn from '../CheckBtn.js' ;
 import {quesData} from './langdata.js' ;
-import {radioData, radioData2} from './radioData.js' ;
-import {saatQues} from './queData.js' ;
+import {test4Ques} from './queData.js' ;
 
-const val = [ [1, 0], [0, 2, 3], [0, 1, 2, 3] ] ;
+import './test4.css' ;
+ 
+const optionData = [0, 1, 2, 3, 4, 5] ;
 
-const Test4Question = ({changeMode, lang, ans}) => {
-	const [checked, setChecked] = useState([false, false, false, false]) ;
-	const [warning, setWarning] = useState('') ;	
-	const [num, setNum] = useState(0) ;	
+const Test4Question = ({setWarning, checkedValues, lang, setCheckedValues, num}) => {
+	const [checked, setChecked] = useState([false, false, false, false, false, false]) ;
 
-	const onPrevClick = () => {
-		let arr = [false, false, false, false] ;
-		arr[ val[ (num-1)%3 ][ ans[num-1] ] ] = true ;
-		setNum(num-1) ;
+	useEffect( () => {
+		let arr = [false, false, false, false, false, false] ;
+		arr[checkedValues[num]] = true ;
 		setChecked(arr) ;
+		//eslint-disable-next-line
+	}, [num]) ; 
+
+	const onRadioClick = (opt) => {
+		const tempArr = [false, false, false, false, false, false] ;
+		tempArr[opt] = true ;
+		setChecked(tempArr) ;
+		setWarning('') ;
+		setCheckedValues({ ...checkedValues, [num]:opt}) ;
 	}
 
+	const radioMap = (one,i) => <CheckBtn key={i} styles="check-btn test4-check-btn" onClick={()=>onRadioClick(i)} checked={checked[i]} text={one} />
+
+	return (
+		<div className="radio-con test4-radio-con"> 
+			<p> {num+1}. &nbsp; {test4Ques[num][lang]} </p>
+			<div className="test4-radio">{optionData.map(radioMap)}</div>
+		</div>
+	) ;
+}
+
+const Test4QuestionList = ({changeMode, lang, checkedValues, setCheckedValues}) => {
+	const [warning, setWarning] = useState('') ;	
+	const [page, setPage] = useState(0) ;	
+
+	useEffect(()=> {
+		if (warning.length > 0)
+			setWarning(quesData.error[lang]) ;
+		//eslint-disable-next-line
+	}, [lang]) ;
+
+	const onPrevClick = () => setPage(page-6)
+
 	const onNextClick = () => {
-		if( checked[0] || checked[1] || checked[2] || checked[3])
-		{	let arr = [false, false, false, false] ;
-			if(checked[0] || checked[1])
-			{	if(checked[0])
-					ans[num] = (num%3===0?1:0) ;
-				else
-					ans[num] = (num%3===2?1:0) ; 
-			}
-			else
-			{	
-				if(checked[2])
-					ans[num] = (num%3===2?2:1) ;
-				else
-					ans[num] = (num%3===2?3:2) ;
-			}	
-			if(saatQues[num+1])
-			{	if(saatQues[num+1][lang] !== 0)
-					arr[ val[ (num+1)%3 ][ ans[num+1] ] ] = true ;
-				setNum(num+1);
-				setChecked(arr) ;
-			}				
+		console.log(checkedValues) ;
+		if(Object.keys(checkedValues).filter(one =>(one >= page)&&(one < page+6)).length > 5) {	
+			if(test4Ques[page+6]) 
+				setPage(page+6);
 			else
 				changeMode('confirm') ;
 		}
@@ -50,35 +62,26 @@ const Test4Question = ({changeMode, lang, ans}) => {
 			setWarning(quesData.error[lang]) ;
 	}
 
-	const radioMap = (one,i) => <CheckBtn key={i} styles="check-btn" onClick={()=>onRadioClick(num, i)} checked={checked[i]} text={one[lang]} />
-
-	const onRadioClick = (no, opt) => {
-		const tempArr = [false, false, false, false] ;
-		tempArr[opt] = true ;
-		setChecked(tempArr) ;
-		setWarning('');
-	}
-
 	const checkWarning = () => {
 		if (warning.length > 0)
 			return <p className="warn"> {warning} </p> ;
 	}
 
+	const t4qProps = {setWarning, setCheckedValues, checkedValues, lang} ;
+
 	return (
-		<div className="question accis"> 
-			<p> {parseInt(num,10) + 1}. &nbsp; {saatQues[num][lang]} </p>
-			<div className="radio-con"> 
-				{(num%3===0)?radioData.map(radioMap):radioData2.map(radioMap)}
-			</div>
+		<div className="question test4">
+			{   // iska optionData se lena dena nahi hai, kyonki same array thi isilye use map kara hai
+				optionData.map( one => <Test4Question key={one} num={page+one} {...t4qProps} />)
+			} 
 			<div className="next-btn-con">
-				{	(num===0)?null:<button className="sched-btn next-btn" onClick={onPrevClick}><FontAwesomeIcon icon={faChevronLeft} />&nbsp;{quesData.prevBtn[lang]} </button>
+				{	(page===0)?null:<button className="sched-btn next-btn" onClick={onPrevClick}><FontAwesomeIcon icon={faChevronLeft} />&nbsp;{quesData.prevBtn[lang]} </button>
 				} 
 				<button className="sched-btn next-btn" onClick={onNextClick}> {quesData.nextBtn[lang]}&nbsp;<FontAwesomeIcon icon={faChevronRight} /> </button>
 			</div>
 			{ checkWarning() }
-			<h4> {quesData.note[lang]} </h4>
 		</div>
 	) ;
 }
 
-export default Test4Question ;
+export default Test4QuestionList ;
