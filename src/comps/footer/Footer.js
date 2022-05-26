@@ -2,7 +2,7 @@ import { faPhoneAlt, faEnvelope, faMap} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
 import { Link } from'react-router-dom' ;
 
-import Image from '../images/Psyment.webp' ;
+import Image from '../../images/Psyment.webp' ;
 import './Footer.css' ;
 
 const Address = () => {

@@ -4,7 +4,7 @@ import { addNotif} from '../notif.js' ;
 import Text from '../basicform/inputs/Text.js' ;
 import {UserContext} from '../../context/UserContext.js' ;
 
-import logo from '../images/Psyment.webp' ;
+import logo from '../../images/Psyment.webp' ;
 import './payment.css' ;
 
 const inputData = {

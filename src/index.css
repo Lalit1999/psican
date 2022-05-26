@@ -45,13 +45,14 @@ table.table {
   --light: rgb(83, 154, 212) ;
   --darker: rgb(9, 21, 41) ;
   --white: white ;
-  --dusraWhite: #f7f7f9;
+  --dusraWhite: #f7f7f9 ;
   --black: black ;
-  --gray: gray;
+  --gray: gray ;
   --lightGray: lightgray ;
-  --golden: rgb(212, 170, 32);
-  --lightBlue: rgba(187, 223, 252);
-  --darkLightBlue: rgba(164, 213, 252);
+  --golden: rgb(212, 170, 32) ;
+  --lightBlue: rgba(187, 223, 252) ;
+  --darkLightBlue: rgba(164, 213, 252) ;
+  --green: #05f545 ;
 
   --font: 'Lexend', sans-serif ;
 }

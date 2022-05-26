@@ -1,8 +1,8 @@
 import Title from '../title/Title.js' ;
 import './about.css' ;
 
-import Image from '../images/Psyment.webp' ;
-import LeaderImage from '../images/leader.webp' ;
+import Image from '../../images/Psyment.webp' ;
+import LeaderImage from '../../images/leader.webp' ;
 
 const Aboutpsican=() => {
 	let width=0 ;

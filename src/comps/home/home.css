@@ -39,7 +39,7 @@
 }
 
 .mental-health {
-	color: #05f545 ;
+	color: var(--green) ;
 }
 
 .leader {

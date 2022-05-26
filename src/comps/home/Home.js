@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom' ;
 // import TestimonialSlider from '../slider/TestimonialSlider.js' ;
 // import {testimArr} from './homeData.js' ;
 import TestBoxList from '../testbox/TestBoxList.js' ;
-import Image from '../images/Psyment.webp' ;
-import LeaderImage from '../images/leader.webp' ;
+import Image from '../../images/Psyment.webp' ;
+import LeaderImage from '../../images/leader.webp' ;
 import './home.css' ;
 
 const Home = () => {

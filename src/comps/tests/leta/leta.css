@@ -36,6 +36,15 @@
 	color: brown;
 }
 
+.leta-text {
+	display: flex ;
+	padding-top: 1em ;
+}
+
+.leta-text>div {
+	flex-basis: 50% ;
+}
+
 @media(max-width: 600px)
 {   .question2 .radio-con > div
 	{	display: block ;
@@ -50,4 +59,3 @@
 		margin-top: 0 ;
 	}
 }
-

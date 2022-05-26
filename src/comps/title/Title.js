@@ -9,12 +9,8 @@ const itemMap = {
 	"Login" : 'login',
 	"Register" : 'register',
 	"Consult" : 'consult',
-	"Sarathi" : 'program/Sarathi',
-	"AEQUESS" : 'program/AEQUESS',
 	"Test" : 'test',
 	"USTOP" : "test/ustop",
-	"LETA" : "test/leta",
-	"ACCIS" : "test/accis",
 	"Privacy Policy" : "privacy-policy",
 	"Refund Policy" : "refund-policy",
 	"Terms & Conditions" : "terms-condition"

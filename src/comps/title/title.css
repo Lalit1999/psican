@@ -2,7 +2,7 @@
 	display: flex;
 	color : var(--white);
 	font-family: var(--font) , sans-serif;
-	background-image: url('../images/purple.webp');
+	background-image: url('../../images/purple.webp');
 	background-size: cover ;
 	background-repeat: no-repeat ;
 	margin-bottom: .75em ;

@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react' ;
-import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 
 import './calendar.css' ;
@@ -8,7 +7,7 @@ const times = ['11:00 am', '11:30 am', '12:00 pm', '12:30 pm', '01:00 pm']
 
 const Calendar = ({data, onInputChange, value}) => {
 	const [dates, setDates] = useState([]) ;
-	const {name, label, options} = data ;
+	const {name, options} = data ;
 
 	useEffect(() => {
 		//Dates ki array me se split use karke only date ko alag kar rahe hai, then usko "Set" (maths wala) banaya taaki duplicate dates hat jaye, then us "Set" ko ... use karke vapas array banaya, aur fir us array ko setDates me bhej kar set karwa rahe hai
