@@ -1,21 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App.js';
-import * as serviceWorker from './serviceWorker';
+import App from './App';
 
-// const rootElement = document.getElementById('root');
-// if (rootElement.hasChildNodes()) {
-//     ReactDOM.hydrate(<App />, rootElement);
-// } else {
-//     ReactDOM.render(<App />, rootElement);
-// }
-
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
 
-serviceWorker.register() ;
+// import reportWebVitals from './reportWebVitals';
+// reportWebVitals();
