@@ -10,6 +10,8 @@ import './test4.css' ;
  
 const optionData = [0, 1, 2, 3, 4, 5] ;
 
+const returnEngHindi = (value) => `${value.english} / ${value.hindi}` 
+
 const Test4Question = ({setWarning, checkedValues, lang, setCheckedValues, num}) => {
 	const [checked, setChecked] = useState([false, false, false, false, false, false]) ;
 
@@ -32,7 +34,7 @@ const Test4Question = ({setWarning, checkedValues, lang, setCheckedValues, num})
 
 	return (
 		<div className="radio-con test4-radio-con"> 
-			<p> {num+1}. &nbsp; {test4Ques[num][lang]} </p>
+			<p> {num+1}. &nbsp; {returnEngHindi(test4Ques[num])} </p>
 			<div className="test4-radio">{optionData.map(radioMap)}</div>
 		</div>
 	) ;
@@ -44,14 +46,14 @@ const Test4QuestionList = ({changeMode, lang, checkedValues, setCheckedValues}) 
 
 	useEffect(()=> {
 		if (warning.length > 0)
-			setWarning(quesData.error[lang]) ;
+			setWarning(returnEngHindi(quesData.error)) ;
 		//eslint-disable-next-line
 	}, [lang]) ;
 
 	const onPrevClick = () => setPage(page-6)
 
 	const onNextClick = () => {
-		console.log(checkedValues) ;
+		// console.log(checkedValues) ;
 		if(Object.keys(checkedValues).filter(one =>(one >= page)&&(one < page+6)).length > 5) {	
 			if(test4Ques[page+6]) 
 				setPage(page+6);
@@ -59,7 +61,7 @@ const Test4QuestionList = ({changeMode, lang, checkedValues, setCheckedValues}) 
 				changeMode('confirm') ;
 		}
 		else
-			setWarning(quesData.error[lang]) ;
+			setWarning(returnEngHindi(quesData.error)) ;
 	}
 
 	const checkWarning = () => {
@@ -67,7 +69,7 @@ const Test4QuestionList = ({changeMode, lang, checkedValues, setCheckedValues}) 
 			return <p className="warn"> {warning} </p> ;
 	}
 
-	const t4qProps = {setWarning, setCheckedValues, checkedValues, lang} ;
+	const t4qProps = {setWarning, setCheckedValues, checkedValues} ;
 
 	return (
 		<div className="question test4">
@@ -75,9 +77,9 @@ const Test4QuestionList = ({changeMode, lang, checkedValues, setCheckedValues}) 
 				optionData.map( one => <Test4Question key={one} num={page+one} {...t4qProps} />)
 			} 
 			<div className="next-btn-con">
-				{	(page===0)?null:<button className="sched-btn next-btn" onClick={onPrevClick}><FontAwesomeIcon icon={faChevronLeft} />&nbsp;{quesData.prevBtn[lang]} </button>
+				{	(page===0)?null:<button className="sched-btn next-btn" onClick={onPrevClick}><FontAwesomeIcon icon={faChevronLeft} />&nbsp;{returnEngHindi(quesData.prevBtn)} </button>
 				} 
-				<button className="sched-btn next-btn" onClick={onNextClick}> {quesData.nextBtn[lang]}&nbsp;<FontAwesomeIcon icon={faChevronRight} /> </button>
+				<button className="sched-btn next-btn" onClick={onNextClick}> {returnEngHindi(quesData.nextBtn)}&nbsp;<FontAwesomeIcon icon={faChevronRight} /> </button>
 			</div>
 			{ checkWarning() }
 		</div>

@@ -3,21 +3,30 @@ import {Link} from 'react-router-dom' ;
 
 import CheckBtn from '../CheckBtn.js' ;
 import { addNotif} from '../../notif.js' ;
-import Payment from '../../payment/Payment.js' ;
+// import Payment from '../../payment/Payment.js' ;
 import Test4QuestionList from './Test4Question.js' ;
 import {UserContext} from '../../../context/UserContext.js' ;
 import {inst, subData, resultData, evalData } from './langdata.js' ;
+import {test4Ques} from './queData.js' ;
+
+const obj = {
+	n: 0,
+	h: 0,
+	a: 0 
+} ;
+
+const returnEngHindi = (value) => `${value.english} / ${value.hindi}` 
 
 const EvalDisplay = ({stage, type, lang}) => {
 	return (
 		<Fragment>
-			{evalData.you[lang]} 
-			<span className={"eval "+type}>{evalData[stage].l1[lang]}</span>
-			{evalData[stage].l2[lang]}
+			{returnEngHindi(evalData.you)} 
+			<span className={"eval "+type}>{returnEngHindi(evalData[stage].l1)}</span>
+			{returnEngHindi(evalData[stage].l2)}
 			{ 	(stage !== 'stage1')?
-				<ul> {evalData.sugg[lang]}:
-					<li> {evalData[stage].s1[lang]} </li>
-					<li> {evalData[stage].s2[lang]} </li>
+				<ul> {returnEngHindi(evalData.sugg)}:
+					<li> {returnEngHindi(evalData[stage].s1)} </li>
+					<li> {returnEngHindi(evalData[stage].s2)} </li>
 				</ul>:null 
 			}
 		</Fragment>
@@ -28,7 +37,7 @@ const Test4 = () => {
 	const [checkedValues, setCheckedValues] = useState({}) ;
 	const [mode, setMode] = useState('start') ;
 	const [lang, setLang] = useState('english') ;
-	const [payment, setPayment] = useState(false) ;
+	// const [payment, setPayment] = useState(false) ;
 	const {token} = useContext(UserContext) ;
 
 	useEffect( () => {
@@ -45,91 +54,96 @@ const Test4 = () => {
 			else
 				throw Error(res.statusText) ;
 		})
-		.then(data => setPayment(data.answer))  
+		// .then(data => setPayment(data.answer))  
 		.catch(err => console.log(err, err.message) ) ;
 
 	}, [token] ) ;
 
 	const checkMode = () => {
 		switch(mode)
-		{	case 'start' : return (
+		{	
+			case 'start' : return (
 							<div className="start-div">
-								<h2 className="start-title"> {inst.head[lang]} </h2>
+								<h2 className="start-title"> {returnEngHindi(inst.head)} </h2>
 								<ul>
-									<li>{inst.l1[lang]}</li>
-									<li>{inst.l2[lang]}</li>
-									<li>{inst.l3[lang]}</li>
-									<li>{inst.l4[lang]}</li>
-									<li>{inst.l5[lang]}</li>
+									<li>{returnEngHindi(inst.l1)}</li>
+									<li>{returnEngHindi(inst.l2)}</li>
+									<li>{returnEngHindi(inst.l3)}</li>
+									<li>{returnEngHindi(inst.l4)}</li>
+									<li>{returnEngHindi(inst.l5)}</li>
 								</ul>
 								<div className="start-btn-con">
-									<button className="sched-btn" onClick={() => setMode('test')}>{inst.btnText[lang]} </button>
+									<button className="sched-btn" onClick={() => setMode('test')}>{returnEngHindi(inst.btnText)} </button>
 								</div>
 							</div> 
 						);
 
-		case 'test' : let objProps = {checkedValues, setCheckedValues, lang, changeMode:setMode }
-					  return <Test4QuestionList {...objProps} /> ;
+			case 'test' : let objProps = {checkedValues, setCheckedValues, changeMode:setMode }
+					  	return <Test4QuestionList {...objProps} /> ;
 
-		case 'finish' : let checkedArr = Object.keys(checkedValues).map(one => checkedValues[one])
-
-						let obj2 = {
-							// test: 'test4',
-							test: 'accis',
-							result: {
-								answers: checkedArr,
-								t: checkedArr.reduce((a,b)=>a+b),
-							}
-						} ;
-						
-						fetch('https://api.psyment.com/test',{
-						// fetch('http://localhost:8000/test',{
-							method : 'post' ,
-							headers : { 'Content-Type' : 'application/json' ,
-										'Authorization' : 'Bearer ' + token} ,
-							body : JSON.stringify(obj2) ,
-						})
-						.then(res => {
-							if(res.ok)
-								return res.json() ;
-							else
-								throw Error(res.statusText) ;
-						})
-						.catch( err  => {
-							console.log(err) ; 
+			case 'finish' : let checkedArr = Object.keys(checkedValues).map(one => checkedValues[one]) ;
+							checkedArr.forEach((one,i)=>{
+								console.log(one, test4Ques[i].type) ;
+								obj[test4Ques[i].type] += one ;
+							}) ;
+							console.log(obj) ;
+							let obj2 = {
+								// test: 'test4',
+								test: 'nhapass',
+								result: {
+									answers: checkedArr,
+									t: obj,
+								}
+							} ;
 							
-							addNotif(err.message, 'error') ;
-						}) ;
-						return (
-							<div className="question result"> 
-								<p> {resultData.score[lang]} : {obj2.result.t} </p> 
-								<p> {getEvaluation(obj2.result.t)} </p>
-								<hr/>
-								<p> {resultData.accisKey[lang]} </p>
-								{/*<p> {resultData.test4Key[lang]} </p>*/}
-								<p> <span className="evalNumber"> 0-30 </span> : <span className="low">{resultData.l1[lang]}</span> <br/>
-									<span className="evalNumber"> 31-60 </span> : <span className="mild">{resultData.l2[lang]}</span> <br/>
-									<span className="evalNumber"> 61-90 </span> : <span className="moderate">{resultData.l3[lang]}</span> <br/>
-									<span className="evalNumber"> 91-120 </span> : <span className="high">{resultData.l4[lang]}</span> <br/>
-								</p>
-								<hr/>
-								<p> {resultData.p1[lang]} </p>
-								<p> {resultData.p2[lang]} <br/>
-									{resultData.p3[lang]} </p>
-							</div>
-						) ;
-
-		case 'confirm': return (
-							<div className="question">
-								<p>{subData.subNote[lang]}</p>
-								<div className="next-btn-con proceed-con">
-									<button className="sched-btn" onClick={()=>setMode('test')}>{subData.revBtn[lang]} </button>
-									<button className="sched-btn" onClick={()=>setMode('finish')}>{subData.subBtn[lang]}</button>
+							fetch('https://api.psyment.com/test',{
+							// fetch('http://localhost:8000/test',{
+								method : 'post' ,
+								headers : { 'Content-Type' : 'application/json' ,
+											'Authorization' : 'Bearer ' + token} ,
+								body : JSON.stringify(obj2) ,
+							})
+							.then(res => {
+								if(res.ok)
+									return res.json() ;
+								else
+									throw Error(res.statusText) ;
+							})
+							.catch( err  => {
+								console.log(err) ; 
+								
+								addNotif(err.message, 'error') ;
+							}) ;
+							return (
+								<div className="question result"> 
+									<p> {returnEngHindi(resultData.score)} : {/*obj2.result.t*/} </p> 
+									<p> {getEvaluation(obj2.result.t)} </p>
+									<hr/>
+									<p> {returnEngHindi(resultData.accisKey)} </p>
+									{/*<p> {returnEngHindi(resultData.test4Key)} </p>*/}
+									<p> <span className="evalNumber"> 0-30 </span> : <span className="low">{returnEngHindi(resultData.l1)}</span> <br/>
+										<span className="evalNumber"> 31-60 </span> : <span className="mild">{returnEngHindi(resultData.l2)}</span> <br/>
+										<span className="evalNumber"> 61-90 </span> : <span className="moderate">{returnEngHindi(resultData.l3)}</span> <br/>
+										<span className="evalNumber"> 91-120 </span> : <span className="high">{returnEngHindi(resultData.l4)}</span> <br/>
+									</p>
+									<hr/>
+									<p> {returnEngHindi(resultData.p1)} </p>
+									<p> {returnEngHindi(resultData.p2)} <br/>
+										{returnEngHindi(resultData.p3)} </p>
 								</div>
-							</div>   
-						) ;
+							) ;
 
-		default: return <div>{subData.error[lang]} </div> ;
+			case 'confirm': return (
+								<div className="question">
+									<p>{returnEngHindi(subData.subNote)}</p>
+									<div className="next-btn-con proceed-con">
+										<button className="sched-btn" onClick={()=>setMode('test')}>{returnEngHindi(subData.revBtn)} </button>
+										<button className="sched-btn" onClick={()=>setMode('finish')}>{returnEngHindi(subData.subBtn)}</button>
+									</div>
+								</div>   
+							) ;
+
+			default: return <div>{returnEngHindi(subData.error)} </div> ;
 		}
 	}
 

@@ -35,8 +35,8 @@ const quesData = {
 		hindi: 'पिछला'
 	},
 	nextBtn : {
-		english: 'Save & Next' ,
-		hindi: 'दर्ज & अगला'
+		english: 'Next' ,
+		hindi: 'अगला'
 	},
 	error : {
 		english: 'Selecting an option is compulsary for all qualities',
@@ -69,14 +69,22 @@ const resultData = {
 		hindi :'आपके अंक हैं'
 	},
 	p1 :{
-		english: 'We request you to remember your Final score (they are stored in your profile) as they may be useful in further consultations with mental health professionals.' ,
+		english: 'If you score anywhere in the range of A - C on Nature, Habit and Attitute grade, then you may work on it on your own and try to move up to a better grade.' ,
 		hindi: 'आपसे अनुरोध है कि, आप अपने समापक अंको को सम्भाल कर रखे क्योंकि अगर आप किसी मनोविशेषज्ञ की सलाह  लेते हैं तो ये उनकी सहायता करेंगे।'
 	} ,
 	p2 :{
+		english: 'If you score D or lower grade on any domain then it is advised to take a personal consultation to cope up with the deficiency.' ,
+		hindi: 'आपसे अनुरोध है कि, आप अपने समापक अंको को सम्भाल कर रखे क्योंकि अगर आप किसी मनोविशेषज्ञ की सलाह  लेते हैं तो ये उनकी सहायता करेंगे।'
+	} ,
+	p3 :{
+		english: 'If you wish to discuss your grades on a video call you may do so by booking a video call session(10 minutes or more) by paying Rs. 500 or more on Whatsapp Number 9555235231.' ,
+		hindi: 'आपसे अनुरोध है कि, आप अपने समापक अंको को सम्भाल कर रखे क्योंकि अगर आप किसी मनोविशेषज्ञ की सलाह  लेते हैं तो ये उनकी सहायता करेंगे।'
+	} ,
+	p4 :{
 		english: 'For further consultations/support, Call' ,
 		hindi: 'आगे के परामर्श/समर्थन के लिये, फोन करे '
 	} ,
-	p3 :{
+	p5 :{
 		english: 'Mr. Ashish Aggarwal +91-95552-35231' ,
 		hindi: 'श्री आशीष अग्रवाल +91-95552-35231 '
 	} ,
@@ -177,8 +185,4 @@ const evalData = {
 	}
 } ; 
 
-export {inst, quesData, subData, resultData, evalData} ;
-
-
-  
-								 
+export {inst, quesData, subData, resultData, evalData} ;						 
