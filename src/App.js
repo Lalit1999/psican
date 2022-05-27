@@ -47,7 +47,7 @@ const App = () => {
           <Route path='/test/ustop' exact element={<UstopPage />} />
           <Route path='/test/leta' exact element={<LetaPage />} />
           <Route path='/test/accis' exact element={<AccisTestPage />} />
-          <Route path='/test/test4' exact element={<Test4TestPage />} />
+          <Route path='/test/nhapass' exact element={<Test4TestPage />} />
           <Route path='/planner' element={<Planner type="calendar" />} />
           <Route path='/planner2' element={<Planner type="calendar2" />} />
           <Route path='/privacy-policy' exact element={<Suspense fallback={<div> Loading... </div>}><PrivacyPolicy/></Suspense>}/>

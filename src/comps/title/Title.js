@@ -10,7 +10,6 @@ const itemMap = {
 	"Register" : 'register',
 	"Consult" : 'consult',
 	"Test" : 'test',
-	"USTOP" : "test/ustop",
 	"Privacy Policy" : "privacy-policy",
 	"Refund Policy" : "refund-policy",
 	"Terms & Conditions" : "terms-condition"
