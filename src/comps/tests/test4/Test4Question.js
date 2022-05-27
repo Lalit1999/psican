@@ -12,7 +12,7 @@ const optionData = [0, 1, 2, 3, 4, 5] ;
 
 const returnEngHindi = (value) => `${value.english} / ${value.hindi}` 
 
-const Test4Question = ({setWarning, checkedValues, lang, setCheckedValues, num}) => {
+const Test4Question = ({setWarning, checkedValues, setCheckedValues, num}) => {
 	const [checked, setChecked] = useState([false, false, false, false, false, false]) ;
 
 	useEffect( () => {
@@ -40,20 +40,14 @@ const Test4Question = ({setWarning, checkedValues, lang, setCheckedValues, num})
 	) ;
 }
 
-const Test4QuestionList = ({changeMode, lang, checkedValues, setCheckedValues}) => {
+const Test4QuestionList = ({changeMode, checkedValues, setCheckedValues}) => {
 	const [warning, setWarning] = useState('') ;	
 	const [page, setPage] = useState(0) ;	
-
-	useEffect(()=> {
-		if (warning.length > 0)
-			setWarning(returnEngHindi(quesData.error)) ;
-		//eslint-disable-next-line
-	}, [lang]) ;
 
 	const onPrevClick = () => setPage(page-6)
 
 	const onNextClick = () => {
-		// console.log(checkedValues) ;
+		console.log(checkedValues) ;
 		if(Object.keys(checkedValues).filter(one =>(one >= page)&&(one < page+6)).length > 5) {	
 			if(test4Ques[page+6]) 
 				setPage(page+6);

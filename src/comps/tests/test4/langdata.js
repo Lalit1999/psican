@@ -64,9 +64,17 @@ const subData = {
 } ;
 
 const resultData = {
-	score :{
-		english :'Your Score is' ,
-		hindi :'आपके अंक हैं'
+	score1 :{
+		english :'Your grade N is ' ,
+		hindi :'आपका N अंक हैं'
+	},
+	score2 :{
+		english :'Your grade H is ' ,
+		hindi :'आपका H अंक हैं'
+	},
+	score3 :{
+		english :'Your grade A is ' ,
+		hindi :'आपका A अंक हैं'
 	},
 	p1 :{
 		english: 'If you score anywhere in the range of A - C on Nature, Habit and Attitute grade, then you may work on it on your own and try to move up to a better grade.' ,

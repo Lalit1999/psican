@@ -17,7 +17,7 @@ const obj = {
 
 const returnEngHindi = (value) => `${value.english} / ${value.hindi}` 
 
-const EvalDisplay = ({stage, type, lang}) => {
+const EvalDisplay = ({stage, type}) => {
 	return (
 		<Fragment>
 			{returnEngHindi(evalData.you)} 
@@ -36,7 +36,6 @@ const EvalDisplay = ({stage, type, lang}) => {
 const Test4 = () => {
 	const [checkedValues, setCheckedValues] = useState({}) ;
 	const [mode, setMode] = useState('start') ;
-	const [lang, setLang] = useState('english') ;
 	// const [payment, setPayment] = useState(false) ;
 	const {token} = useContext(UserContext) ;
 
@@ -60,6 +59,7 @@ const Test4 = () => {
 	}, [token] ) ;
 
 	const checkMode = () => {
+		console.log(mode, checkedValues) ;
 		switch(mode)
 		{	
 			case 'start' : return (
@@ -83,10 +83,10 @@ const Test4 = () => {
 
 			case 'finish' : let checkedArr = Object.keys(checkedValues).map(one => checkedValues[one]) ;
 							checkedArr.forEach((one,i)=>{
-								console.log(one, test4Ques[i].type) ;
+								// console.log(one, test4Ques[i].type) ;
 								obj[test4Ques[i].type] += one ;
 							}) ;
-							console.log(obj) ;
+							// console.log(obj) ;
 							let obj2 = {
 								// test: 'test4',
 								test: 'nhapass',
@@ -114,10 +114,12 @@ const Test4 = () => {
 								
 								addNotif(err.message, 'error') ;
 							}) ;
+
 							return (
 								<div className="question result"> 
-									<p> {returnEngHindi(resultData.score)} : {/*obj2.result.t*/} </p> 
-									<p> {getEvaluation(obj2.result.t)} </p>
+									<p> {returnEngHindi(resultData.score1)} : {obj2.result.t.n} </p> 
+									<p> {returnEngHindi(resultData.score2)} : {obj2.result.t.h} </p> 
+									<p> {returnEngHindi(resultData.score3)} : {obj2.result.t.a} </p> 
 									<hr/>
 									<p> {returnEngHindi(resultData.accisKey)} </p>
 									{/*<p> {returnEngHindi(resultData.test4Key)} </p>*/}
@@ -147,30 +149,11 @@ const Test4 = () => {
 		}
 	}
 
-	const getEvaluation = (t) => {
-		if(t <= 60)
-		{	if( t <= 30)
-				return <EvalDisplay stage="stage1" type="low" lang={lang}/> ; 
-			else
-				return <EvalDisplay stage="stage2" type="mild" lang={lang}/> ; 
-		}
-		else
-		{	if(t <= 90)
-				return <EvalDisplay stage="stage3" type="moderate" lang={lang}/> ; 
-			else
-				return <EvalDisplay stage="stage4" type="high" lang={lang}/> ; 
-		} 
-	}
-
 	const checkPayment = () => {
 		// if(payment)
 			return (
 				<div className="test-box-con">
 					<div className="test-box test-box-4">
-						<div className="lang-con">
-							<CheckBtn styles="check-btn" onClick={() => setLang('english')} checked={lang==='english'} text="English" />
-							<CheckBtn styles="check-btn" onClick={() => setLang('hindi')} checked={lang==='hindi'} text="हिन्दी" />
-						</div>
 						{checkMode()}
 					</div>
 				</div>
