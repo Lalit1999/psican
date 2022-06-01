@@ -47,7 +47,6 @@ const Test4QuestionList = ({changeMode, checkedValues, setCheckedValues}) => {
 	const onPrevClick = () => setPage(page-6)
 
 	const onNextClick = () => {
-		console.log(checkedValues) ;
 		if(Object.keys(checkedValues).filter(one =>(one >= page)&&(one < page+6)).length > 5) {	
 			if(test4Ques[page+6]) 
 				setPage(page+6);

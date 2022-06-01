@@ -30,6 +30,7 @@ const Login = ( ) => {
 					case 'ustop' : return <Redirect to='/test/ustop' /> ;
 					case 'leta' : return <Redirect to='/test/leta' /> ;
 					case 'accis' : return <Redirect to='/test/accis' /> ;
+					case 'nhapass' : return <Redirect to='/test/nhapass' /> ;
 					case 'consult' : return <Redirect to='/consult' /> ;
 					default : return <Redirect to='/' /> ;
 				}	
