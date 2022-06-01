@@ -22,7 +22,7 @@ const Test4 = () => {
 	const [checkedValues, setCheckedValues] = useState({}) ;
 	const [mode, setMode] = useState('start') ;
 	const [answerObj, setAnswerObj] = useState({}) ;
-	// const [payment, setPayment] = useState(false) ;
+	const [payment, setPayment] = useState(false) ;
 	const {token} = useContext(UserContext) ;
 
 	useEffect( () => {
