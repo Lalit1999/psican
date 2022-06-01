@@ -4,13 +4,12 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 
 import CheckBtn from '../CheckBtn.js' ;
 import {quesData} from './langdata.js' ;
+import returnEngHindi from '../../returnEnglishHindi.js' ;
 import {test4Ques} from './queData.js' ;
 
 import './test4.css' ;
  
 const optionData = [0, 1, 2, 3, 4, 5] ;
-
-const returnEngHindi = (value) => `${value.english} / ${value.hindi}` 
 
 const Test4Question = ({setWarning, checkedValues, setCheckedValues, num}) => {
 	const [checked, setChecked] = useState([false, false, false, false, false, false]) ;

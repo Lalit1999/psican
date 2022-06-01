@@ -5,11 +5,12 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import CheckBtn from '../CheckBtn.js' ;
 import {quesData} from './langdata.js' ;
 import {radioData, radioData2} from './radioData.js' ;
+import returnEngHindi from '../../returnEnglishHindi.js' ;
 import {accisQues} from './queData.js' ;
 
 const val = [ [1, 0], [0, 2, 3], [0, 1, 2, 3] ] ;
 
-const AccisQuestion = ({changeMode, lang, ans}) => {
+const AccisQuestion = ({changeMode, ans}) => {
 	const [checked, setChecked] = useState([false, false, false, false]) ;
 	const [warning, setWarning] = useState('') ;	
 	const [num, setNum] = useState(0) ;	
@@ -38,7 +39,7 @@ const AccisQuestion = ({changeMode, lang, ans}) => {
 					ans[num] = (num%3===2?3:2) ;
 			}	
 			if(accisQues[num+1])
-			{	if(accisQues[num+1][lang] !== 0)
+			{	if(returnEngHindi(accisQues[num+1]) !== 0)
 					arr[ val[ (num+1)%3 ][ ans[num+1] ] ] = true ;
 				setNum(num+1);
 				setChecked(arr) ;
@@ -47,10 +48,10 @@ const AccisQuestion = ({changeMode, lang, ans}) => {
 				changeMode('confirm') ;
 		}
 		else
-			setWarning(quesData.error[lang]) ;
+			setWarning(returnEngHindi(quesData.error)) ;
 	}
 
-	const radioMap = (one,i) => <CheckBtn key={i} styles="check-btn" onClick={()=>onRadioClick(num, i)} checked={checked[i]} text={one[lang]} />
+	const radioMap = (one,i) => <CheckBtn key={i} styles="check-btn" onClick={()=>onRadioClick(num, i)} checked={checked[i]} text={returnEngHindi(one)} />
 
 	const onRadioClick = (no, opt) => {
 		const tempArr = [false, false, false, false] ;
@@ -66,17 +67,16 @@ const AccisQuestion = ({changeMode, lang, ans}) => {
 
 	return (
 		<div className="question accis"> 
-			<p> {parseInt(num,10) + 1}. &nbsp; {accisQues[num][lang]} </p>
+			<p> {parseInt(num,10) + 1}. &nbsp; {returnEngHindi(accisQues[num])} </p>
 			<div className="radio-con"> 
 				{(num%3===0)?radioData.map(radioMap):radioData2.map(radioMap)}
 			</div>
 			<div className="next-btn-con">
-				{	(num===0)?null:<button className="sched-btn next-btn" onClick={onPrevClick}><FontAwesomeIcon icon={faChevronLeft} />&nbsp;{quesData.prevBtn[lang]} </button>
+				{	(num===0)?null:<button className="sched-btn next-btn" onClick={onPrevClick}><FontAwesomeIcon icon={faChevronLeft} />&nbsp;{returnEngHindi(quesData.prevBtn)} </button>
 				} 
-				<button className="sched-btn next-btn" onClick={onNextClick}> {quesData.nextBtn[lang]}&nbsp;<FontAwesomeIcon icon={faChevronRight} /> </button>
+				<button className="sched-btn next-btn" onClick={onNextClick}> {returnEngHindi(quesData.nextBtn)}&nbsp;<FontAwesomeIcon icon={faChevronRight} /> </button>
 			</div>
 			{ checkWarning() }
-			<h4> {quesData.note[lang]} </h4>
 		</div>
 	) ;
 }

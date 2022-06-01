@@ -9,6 +9,10 @@
 	width: 90% ;
 }
 
+.accis p {
+	font-weight: bold;
+}
+
 @media(max-width: 600px)
 {   
 	.accis .radio-con	{

@@ -1,13 +1,13 @@
 import {useState, useEffect, useContext} from 'react' ;
 import {Link} from 'react-router-dom' ;
 
-// import CheckBtn from '../CheckBtn.js' ;
 import { addNotif} from '../../notif.js' ;
-// import Payment from '../../payment/Payment.js' ;
+import Payment from '../../payment/Payment.js' ;
 import Test4QuestionList from './Test4Question.js' ;
 import {StartDisplay, ConfirmDisplay} from './T4Comps.js' ;
 import {UserContext} from '../../../context/UserContext.js' ;
 import {subData, resultData } from './langdata.js' ;
+import returnEngHindi from '../../returnEnglishHindi.js' ;
 import {test4Ques} from './queData.js' ;
 
 const obj = {
@@ -15,8 +15,6 @@ const obj = {
 	h: 0,
 	a: 0 
 } ;
-
-const returnEngHindi = (value) => `${value.english} / ${value.hindi}` 
 
 const Test4 = () => {
 	const [checkedValues, setCheckedValues] = useState({}) ;
@@ -38,7 +36,7 @@ const Test4 = () => {
 			else
 				throw Error(res.statusText) ;
 		})
-		.then(data => setPayment(data.answer))  
+		// .then(data => setPayment(data.answer))  
 		.catch(err => console.log(err, err.message) ) ;
 
 	}, [token] ) ;
@@ -90,22 +88,14 @@ const Test4 = () => {
 					  		return <Test4QuestionList {...objProps} /> ;
 
 			case 'finish' : return (
-								<div className="question result"> 
-									<p> {returnEngHindi(resultData.score1)} : {answerObj.result.t.n} </p> 
-									<p> {returnEngHindi(resultData.score2)} : {answerObj.result.t.h} </p> 
-									<p> {returnEngHindi(resultData.score3)} : {answerObj.result.t.a} </p> 
-									<hr/>
-									<p> {returnEngHindi(resultData.accisKey)} </p>
-									{/*<p> {returnEngHindi(resultData.test4Key)} </p>*/}
-									<p> <span className="evalNumber"> 0-30 </span> : <span className="low">{returnEngHindi(resultData.l1)}</span> <br/>
-										<span className="evalNumber"> 31-60 </span> : <span className="mild">{returnEngHindi(resultData.l2)}</span> <br/>
-										<span className="evalNumber"> 61-90 </span> : <span className="moderate">{returnEngHindi(resultData.l3)}</span> <br/>
-										<span className="evalNumber"> 91-120 </span> : <span className="high">{returnEngHindi(resultData.l4)}</span> <br/>
-									</p>
-									<hr/>
-									<p> {returnEngHindi(resultData.p1)} </p>
-									<p> {returnEngHindi(resultData.p2)} <br/>
-										{returnEngHindi(resultData.p3)} </p>
+								<div className="result "> 
+									<p className="final-consult"> {returnEngHindi(resultData.score1)} : <span className="moderate" >{answerObj.result.t.n}</span> </p> 
+									<p className="final-consult"> {returnEngHindi(resultData.score2)} : <span className="moderate" >{answerObj.result.t.h}</span> </p> 
+									<p className="final-consult"> {returnEngHindi(resultData.score3)} : <span className="moderate" >{answerObj.result.t.a}</span> </p> 
+									
+									{resultData.p.map( one => returnEngHindi(one, 'p') )}
+									<p className="final-consult" children={returnEngHindi(resultData.p1)} />
+									<p className="final-consult" children={returnEngHindi(resultData.p2)} />
 								</div>
 							) ;
 

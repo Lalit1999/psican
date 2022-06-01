@@ -2,10 +2,6 @@
 	width: 75% ;
 }
 
-.test4 {
-
-}
-
 .test4-radio-con {
 	display: flex;
 	justify-content: space-evenly;
@@ -38,4 +34,8 @@
 .test4-radio-con .test4-check-btn{
 	margin: .5em;
 	min-width: 3.5vw ;
+}
+
+.test-box-4 .final-consult {
+	font-weight: bold ;
 }
