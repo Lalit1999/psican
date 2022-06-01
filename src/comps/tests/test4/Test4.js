@@ -26,8 +26,7 @@ const Test4 = () => {
 	const {token} = useContext(UserContext) ;
 
 	useEffect( () => {
-		// fetch("https://api.psyment.com/test4-payment/check", {
-		fetch("https://api.psyment.com/accis-payment/check", {
+		fetch("https://api.psyment.com/nhapass-payment/check", {
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '+ token
@@ -39,7 +38,7 @@ const Test4 = () => {
 			else
 				throw Error(res.statusText) ;
 		})
-		// .then(data => setPayment(data.answer))  
+		.then(data => setPayment(data.answer))  
 		.catch(err => console.log(err, err.message) ) ;
 
 	}, [token] ) ;
@@ -126,8 +125,7 @@ const Test4 = () => {
 				</div>
 			) ;
 		// else 
-		// 	return <Payment success={() => setPayment(true)} type='accis'/> ;
-			// return <Payment success={() => setPayment(true)} type='test4'/> ;
+			// return <Payment success={() => setPayment(true)} type='nhapass'/> ;
 	}
 
 	if(token === "")
