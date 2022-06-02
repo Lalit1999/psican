@@ -34,9 +34,9 @@ const payData = {
 		    halfPayment: 250,
 		    threeQuarter: 375,
 		},
-		checkUrl: "https://api.psyment.com/saat-payment",
+		checkUrl: "https://api.psyment.com/ustop-payment",
 		gatewayDescr: "Psyment USTOP Test",
-		successUrl: "https://api.psyment.com/saat-payment/success",
+		successUrl: "https://api.psyment.com/ustop-payment/success",
 	},
 	accis: {
 		couponAmount : {
@@ -61,6 +61,18 @@ const payData = {
 		checkUrl: "https://api.psyment.com/leta-payment",
 		gatewayDescr: "Psyment LETA Test",
 		successUrl: "https://api.psyment.com/leta-payment/success",
+	},
+	nhapass: {
+		couponAmount : {
+		    noPayment: 500,
+		    fullPayment: 0,
+		    quarterPayment: 125,
+		    halfPayment: 250,
+		    threeQuarter: 375,
+		},
+		checkUrl: "https://api.psyment.com/nhapass-payment",
+		gatewayDescr: "Psyment NHAPASS Test",
+		successUrl: "https://api.psyment.com/nhapass-payment/success",
 	}
 }
 

@@ -36,7 +36,7 @@ const Test4 = () => {
 			else
 				throw Error(res.statusText) ;
 		})
-		// .then(data => setPayment(data.answer))  
+		.then(data => setPayment(data.answer))  
 		.catch(err => console.log(err, err.message) ) ;
 
 	}, [token] ) ;
@@ -106,7 +106,7 @@ const Test4 = () => {
 	}
 
 	const checkPayment = () => {
-		// if(payment)
+		if(payment)
 			return (
 				<div className="test-box-con">
 					<div className="test-box test-box-4">
@@ -114,8 +114,8 @@ const Test4 = () => {
 					</div>
 				</div>
 			) ;
-		// else 
-			// return <Payment success={() => setPayment(true)} type='nhapass'/> ;
+		else 
+			return <Payment success={() => setPayment(true)} type='nhapass'/> ;
 	}
 
 	if(token === "")
