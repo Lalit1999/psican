@@ -16,7 +16,24 @@ const ustopDisplay = [
 	{ name: 'result', title: 'A Score', format: formatObj, args: 'a'},
 	{ name: 'result', title: 'E Score', format: formatObj, args: 'e'},
 	{ name: 'result', title: 'Total', format: formatObj, args: 't'}, 
-	{ name: 'createdAt', title:'Date', format: formatDate}
+	{ name: 'createdAt', title:'Date', format: formatDate},
+] ;
+
+const nhapassColumns = [
+	{name: 'sno'}, { name: 'owner'}, 
+	{ name: 'result', title: 'N Grade', format: formatObj, args: 'n'},
+	{ name: 'result', title: 'H Grade', format: formatObj, args: 'h'},
+	{ name: 'result', title: 'A Grade', format: formatObj, args: 'a'},
+	{ name: 'createdAt', format: formatDate},  	
+] ;
+
+const nhapassDisplay = [
+	{ name: 'owner', title:'Name'}, { name: 'email', title:'E-Mail'}, 
+	{ name: 'mobile', title:'Mobile No.'}, 
+	{ name: 'result', title: 'N Grade', format: formatObj, args: 'n'}, 	
+	{ name: 'result', title: 'H Grade', format: formatObj, args: 'h'},
+	{ name: 'result', title: 'A Grade', format: formatObj, args: 'a'},
+	{ name: 'createdAt', title:'Date', format: formatDate},
 ] ;
 
 const accisColumns = [
@@ -62,4 +79,14 @@ const ustopData = {
 	}
 } ;
 
-export {ustopData, letaData, accisData}
+const nhapassData = {
+	columns: nhapassColumns, 
+	display: nhapassDisplay,
+	actions: {
+		before: [], 
+		after: ['view'],
+		search: ['sno'],
+	}
+} ;
+
+export {ustopData, letaData, accisData, nhapassData}

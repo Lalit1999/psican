@@ -6,7 +6,7 @@ import {UserContext} from '../../context/UserContext.js' ;
 import { addNotif } from '../notif.js' ;
 import {usersData} from './data/users.js' ;
 import {msg} from './data/message.js' ;
-import {ustopData, letaData, accisData} from './data/results.js' ;
+import {ustopData, letaData, accisData, nhapassData} from './data/results.js' ;
 import {confirmedAppoint, appointRequest} from './data/appointments.js' ;
 import './admin.css' ;
 
@@ -57,9 +57,10 @@ const Admin = () => {
 		})
 		.then(results => {
 			let obj = {
-				ustop : results.filter(one => one.test === 'ustop').map(addSno),
+				ustop : results.filter(one => one.test === 'ustop' || one.test === 'saat' ).map(addSno),
 				leta : results.filter(one => one.test === 'leta').map(addSno),
 				accis : results.filter(one => one.test === 'accis').map(addSno),
+				nhapass : results.filter(one => one.test === 'nhapass').map(addSno),
 			}
 			// console.log() ;
 			setResults(obj) ;
@@ -131,6 +132,7 @@ const Admin = () => {
 				{ 	name: "USTOP", type: "table", data: results.ustop, ...ustopData },
 				{ 	name: "ACCIS", type: "table", data: results.accis, ...accisData },
 				{ 	name: "LETA", type: "table", data: results.leta, ...letaData },
+				{ 	name: "NHAPASS", type: "table", data: results.nhapass, ...nhapassData },
 			], 
 		},
 		{ 	name: "Messages", type: "table", data: messages, ...msg },
