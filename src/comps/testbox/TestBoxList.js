@@ -2,22 +2,26 @@ import TestBox from './TestBox.js' ;
 
 const data = [
 	{ 
-		title: "USTOP : Understanding Self Through Observed Perceptions",
+		hin: { __html: "अपने मन में <p class=\"moderate\"> चिंता </p> के स्तर को स्वयं जानें"},
+		eng: { __html: "Know your mental level of <p class=\"moderate\"> ANXIETY </p> yourself."},
 		link: "/test/ustop",
-		desc: "Anxiety test designed for evaluating anxiety levels of an individual.",
+		title : "USTOP"
 	}, { 
-		title: "LETA : Learning Environment Trait Assessment",
+		hin: { __html: "कौन से <p class=\"low\"> आपके गुण </p> आपके बच्चों में आ सकते हैं स्वयं जानें"},
+		eng: { __html: "Which <p class=\"low\"> Qualities of Yours </p> have higher chances to reflect in your children"},
 		link: "/test/leta",
-		desc: "Test designed to measure the level of 30 personality traits in parents of children (2 - 12 years old)",
+		title : "LETA"
 	}, { 
-		title: "ACCIS : Assessment of COVID Cognitive Impact on Self",
+		hin: { __html: "क्या आपके व्यक्तित्व या व्‍यवहार पर <p class=\"high\"> COVID - 19 </p> का कोई प्रभाव प्रभाव हुआ है"},
+		eng: { __html: "Has <p class=\"high\"> COVID - 19 </p> affected your personality / behaviour"},
 		link: "/test/accis",
-		desc: "Test to help a person understand the impact of COVID-related anxiety on his/her behaviour & well-being",
-	}, //  { 
-	// 	title: "Test4 : Assessment of Test 4",
-	// 	link: "/test/test4",
-	// 	desc: "Test 4 ki dscription",
-	// },
+		title : "ACCIS"
+	}, { 
+		hin: { __html: "अपने गुणों और आदतों से <p class=\"low\"> व्यक्तित्व का आकलन </p> स्वयं करें"},
+		eng: { __html: "Do your <p class=\"low\"> Personality Study </p> yourself from your natures & habits"},
+		link: "/test/nhapass",
+		title : "NHAPASS"
+	},
 ] ;
 
 const TestBoxList = (/*{data}*/) => {

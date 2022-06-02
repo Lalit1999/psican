@@ -9,7 +9,11 @@
 	align-items: center;
 	background-color: var(--dark);
 	text-align: center;
-	min-height: 55vh;
+	padding: .5em 0;
+}
+
+.home-logo {
+	border-radius: 1.5rem ;
 }
 
 .home-top-middle {
@@ -48,7 +52,7 @@
 
 .leader img {
 	border-radius: 1.5rem ;
-	max-height: 300px;
+	max-height: 240px;
 }
 
 .leader p {

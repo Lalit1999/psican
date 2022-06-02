@@ -2,39 +2,51 @@
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
+	background: linear-gradient(to bottom, var(--dark) 0%, var(--dark) 30%, transparent 31%, transparent 100% );
 }
 
 .testbox 	{
-	margin: 1em ;
-	padding: 1em ;
-	border-radius: 1rem ;
 	display: flex ;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	background-color: var(--lightBlue) ;
+	
+	border: 4px solid var(--dark) ;
+	border-radius: 1rem ;
+	min-width: 20vw ;
 	max-width: 23vw ;
+
+	background-color: var(--white);
+	margin: 0 .5em 1em ;
+	padding: .5em 0 0 ;
 	transition: all .2s ;
 }
 
-.testbox:hover	{
-	background-color: var(--darkLightBlue) ;
-}
-
 .testbox h2 {
-	font-size: 1.05rem ;
+	font-size: 1.1rem ;
 	text-align: center;
 	font-weight: bold;
+	background-color: var(--dark) ;
+	color: var(--white) ;
+	margin: 0 ;
+	padding: .3em 0 ;
+	width: 100% ;
 }
 
-.testbox-right	{
-	padding-top: .5em ;
-}
-
-.testbox p 	{
-	font-size: .9rem ;
+.testbox p {
+	font-size: 1rem ;
 	text-align: center;
-	margin: 0 0 0.5em ;
+	margin: .5em 0 ;
+}
+
+.testbox .tb-hin {
+	font-weight: bold ;
+}
+
+.testbox .moderate, .testbox .low, .testbox .high {
+	font-size: 1.2rem;
+	font-weight: bold ;
+	margin: .2em 0 ;
 }
 
 .testbox a	{
