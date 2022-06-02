@@ -78,6 +78,7 @@
 	.home-top {
 		min-height: 30vh;
 		flex-direction: column;
+		padding-bottom: 0 ;
 	}
 
 	.home-logo {

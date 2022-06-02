@@ -58,4 +58,8 @@
 	.ttp-btn	{	
 		margin-top: 0 ;
 	}
+
+	.leta-text {
+		flex-direction: column ;
+	}
 }

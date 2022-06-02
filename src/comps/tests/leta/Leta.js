@@ -262,7 +262,7 @@ const LETA = () => {
 	}
 
 	const checkPayment = () => {
-		// if(payment)
+		if(payment)
 			return (
 				<div className="test-box-con">
 					<div  className="test-box">
@@ -270,8 +270,8 @@ const LETA = () => {
 					</div>
 				</div>
 			) ;
-		// else 
-		// 	return <Payment success={() => setPayment(true)} type='leta'/> ;
+		else 
+			return <Payment success={() => setPayment(true)} type='leta'/> ;
 	}
 
 	if(token === "")

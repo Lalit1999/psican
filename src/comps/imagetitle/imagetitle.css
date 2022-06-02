@@ -55,3 +55,43 @@
 .it-image img {
 	width: 100% ;
 }
+
+@media(max-width: 600px) {
+	.image-title {
+		flex-direction: column ;
+	}
+
+	.it-left {
+		width: 100% ;
+	}
+
+	.it-left-top {
+		padding: 1.5em ;
+	}
+
+	.it-left h4 {
+		font-size: 1.8rem ;
+	}
+
+	.green {
+		font-size: 1.3rem ;
+	}
+
+	.it-left-bottom {
+		padding: 1.5em ;
+		font-size: 1.1rem ;
+	}
+
+	.it-left .sched-btn {
+		font-size: 1.1rem ;
+	}
+
+	.it-image { 
+	  	width: 100% ;
+	}
+
+	.it-img-con {
+	  	border-radius: 0 ;
+	  	border: none ;
+	}
+}

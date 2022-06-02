@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-	background: linear-gradient(to bottom, var(--dark) 0%, var(--dark) 30%, transparent 31%, transparent 100% );
+	background: linear-gradient(to bottom, var(--dark) 0%, var(--dark) 30%, transparent 30%, transparent 100% );
 }
 
 .testbox 	{
@@ -37,6 +37,7 @@
 	font-size: 1rem ;
 	text-align: center;
 	margin: .5em 0 ;
+	padding: 0 .5em ;
 }
 
 .testbox .tb-hin {
@@ -57,6 +58,7 @@
 {	
 	.test-boxes {
 		flex-direction: column;
+		background: linear-gradient(to bottom, var(--dark) 0%, var(--dark) 10%, transparent 10%, transparent 25%, var(--dark) 25%, var(--dark) 35%, transparent 35%, transparent 50%, var(--dark) 50%, var(--dark) 60%, transparent 60%, transparent 75%, var(--dark) 75%, var(--dark) 85%, transparent 85%, transparent 100%);
 	}
 
 	.testbox 	{
