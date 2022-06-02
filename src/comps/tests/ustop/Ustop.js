@@ -10,6 +10,7 @@ import {UserContext} from '../../../context/UserContext.js' ;
 import {inst, quesData, subData, resultData, evalData} from './langdata.js' ;
 import {radioData} from './radioData.js' ;
 import {ustopQues} from './queData.js' ;
+import returnEngHindi from '../../returnEnglishHindi.js' ;
 import './ustop.css' ;
 
 let ans = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -18,7 +19,7 @@ let ans = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,] ;
 
-const Question = ({lang, changeMode}) => {
+const Question = ({changeMode}) => {
 	const [checked, setChecked] = useState([false, false, false, false, false]) ;
 	const [warning, setWarning] = useState('') ;	
 	const [num, setNum] = useState(0) ;	
@@ -63,7 +64,7 @@ const Question = ({lang, changeMode}) => {
 					ans[num] = 3 ;
 			}	
 			if(ustopQues[num+1])
-			{	if(ustopQues[num+1][lang] !== 0)
+			{	if(ustopQues[num+1].english !== 0)
 					arr[ans[num+1]- 1] = true ;
 				setNum(num+1);
 				setChecked(arr) ;
@@ -72,7 +73,7 @@ const Question = ({lang, changeMode}) => {
 				changeMode('confirm') ;
 		}
 		else
-			setWarning(quesData.error[lang]) ;
+			setWarning(returnEngHindi(quesData.error)) ;
 	}
 
 	const onPrevClick = () => {
@@ -84,31 +85,35 @@ const Question = ({lang, changeMode}) => {
 
 	return (
 		<div className="question"> 
-			<p> {parseInt(num,10) + 1}. &nbsp; {ustopQues[num][lang]} </p>
+			<p> {parseInt(num,10) + 1}. &nbsp; {returnEngHindi(ustopQues[num])} </p>
 			<div className="radio-con"> 
-			{	radioData.map( (one,i) => <CheckBtn key={i} styles="check-btn" onClick={()=>onRadioClick(num, i)} checked={checked[i]} text={one[lang]} />)
+			{	radioData.map( (one,i) => <CheckBtn key={i} styles="check-btn" onClick={()=>onRadioClick(num, i)} checked={checked[i]} text={returnEngHindi(one)} />)
 			}
 			</div>
 			<div className="next-btn-con">
-				{	(num===0)?null:<button className="sched-btn next-btn" onClick={onPrevClick}><FontAwesomeIcon icon={faChevronLeft}/>&nbsp;{quesData.prevBtn[lang]} </button>
+				{	(num===0)?null:<button className="sched-btn next-btn" onClick={onPrevClick}><FontAwesomeIcon icon={faChevronLeft}/>&nbsp;{returnEngHindi(quesData.prevBtn)} </button>
 				} 
 				<button className="sched-btn next-btn" onClick={onNextClick}>
-					{quesData.nextBtn[lang]}&nbsp;<FontAwesomeIcon icon={faChevronRight} /> 
+					{returnEngHindi(quesData.nextBtn)}&nbsp;<FontAwesomeIcon icon={faChevronRight} /> 
 				</button>
 			</div>
 			{ checkWarning() }
-			<h4> {quesData.note[lang]} </h4>
 		</div> 
 	) ;
 }
 
-const EvalDisplay = ({stage, type, lang}) => {
+const EvalDisplay = ({stage, type}) => {
 	return (
 		<Fragment>
-			{evalData[stage].l1[lang]} 
-			<span className={"eval "+type}>{evalData[stage].l2[lang]}</span>
-			{evalData[stage].l3[lang]} <br/><br/>
-			{evalData[stage].l4[lang]}
+			<p> {evalData[stage].l1.english}
+				<span className={"eval "+type}>&nbsp;{evalData[stage].l2.english}&nbsp;</span>
+				{evalData[stage].l3.english} 
+			</p>
+			<p> {evalData[stage].l1.hindi}
+				<span className={"eval "+type}>&nbsp;{evalData[stage].l2.hindi}&nbsp;</span>
+				{evalData[stage].l3.hindi} 
+			</p>
+			{returnEngHindi(evalData[stage].l4, 'p')}
 		</Fragment>
 	) ;
 }
@@ -116,7 +121,6 @@ const EvalDisplay = ({stage, type, lang}) => {
 
 const Ustop = () => {
 	const [mode, setMode] = useState('start') ;
-	const [lang, setLang] = useState('english') ;
 	const [payment, setPayment] = useState(false) ;
 	const {token} = useContext(UserContext) ;
 
@@ -153,98 +157,91 @@ const Ustop = () => {
 		}
 	}
 
+	const onSubmitClick = () => {
+		let obj2 = {
+			test: 'ustop',
+			result: {
+				s: calculateScore('s'), 
+				a: calculateScore('a'), 
+				e:calculateScore('e'), 
+				t:calculateScore('t'),
+				answers: ans 
+			} 
+		} ;
+
+		fetch('https://api.psyment.com/test',{
+			method : 'post' ,
+			headers : { 'Content-Type' : 'application/json' ,
+						'Authorization' : 'Bearer ' + token} ,
+			body : JSON.stringify(obj2) ,
+		})
+		.then(res => {
+			if(res.ok)
+				return res.json() ;
+			throw Error(res.statusText) ;
+		})
+		.then(() => setMode('finish'))
+		.catch( err  => {
+			console.log(err) ; 
+			addNotif(err.message, 'error') ;
+		}) ;
+	}
+
 	const checkMode = () => {
 		switch(mode)
 		{	case 'start' : return (
 							<div className="start-div">
-								<h2 className="start-title"> {inst.head[lang]} </h2>
-								<ul>
-									<li>{inst.l1[lang]}</li>
-									<li>{inst.l2[lang]}</li>
-									<li>{inst.l3[lang]}</li>
-									<li>{inst.l4[lang]}</li>
-									<li>{inst.l5[lang]}</li>
-								</ul>
+								<h2 className="start-title"> {returnEngHindi(inst.head)} </h2>
+								<ul children={inst.l.map((one,i)=><Fragment key={i}>{returnEngHindi(one, 'li')}</Fragment>)} />
 								<div className="start-btn-con">
-									<button className="sched-btn" onClick={() => setMode('test')}>{inst.btnText[lang]} </button>
+									<button className="sched-btn" onClick={() => setMode('test')}>{returnEngHindi(inst.btnText)} </button>
 								</div>
 							</div> 
 						);
-		case 'test' : return <Question changeMode={setMode} lang={lang}/> ;
-		case 'finish' : let S = calculateScore('s') ;
-						let A = calculateScore('a') ;
-						let E = calculateScore('e') ;
-						let T = calculateScore('t') ;
-						let obj2 = {
-							test: 'saat',
-							result: {
-								s: S, a: A, e:E, t:T,
-								answers: ans 
-							} 
-						} ;
-						
-						fetch('https://api.psyment.com/test',{
-							method : 'post' ,
-							headers : { 'Content-Type' : 'application/json' ,
-										'Authorization' : 'Bearer ' + token} ,
-							body : JSON.stringify(obj2) ,
-						})
-						.then(res => {
-							if(res.ok)
-								return res.json() ;
-							else
-								throw Error(res.statusText) ;
-						})
-						.catch( err  => {
-							console.log(err) ; 
-							addNotif(err.message, 'error') ;
-						}) ;
-
-						return (
+		case 'test' : return <Question changeMode={setMode}/> ;
+		case 'finish' : return (
 							<div className="question result"> 
-								<p> {resultData.sScore[lang]} : {S} </p> 
-								<p> {resultData.aScore[lang]} : {A} </p> 
-								<p> {resultData.eScore[lang]} : {E} </p> 
-								<p> {resultData.tScore[lang]} : {T} </p> 
+								<p> {returnEngHindi(resultData.sScore)} : {calculateScore('s')} </p> 
+								<p> {returnEngHindi(resultData.aScore)} : {calculateScore('a')} </p> 
+								<p> {returnEngHindi(resultData.eScore)} : {calculateScore('e')} </p> 
+								<p> {returnEngHindi(resultData.tScore)} : {calculateScore('t')} </p> 
 								<hr/>
-								<p> {resultData.ustopKey[lang]} </p>
-								<p> <span className="evalNumber"> 0-30 </span> : <span className="low">{resultData.l1[lang]}</span> <br/>
-									<span className="evalNumber"> 31-60 </span> : <span className="mild">{resultData.l2[lang]}</span> <br/>
-									<span className="evalNumber"> 61-90 </span> : <span className="moderate">{resultData.l3[lang]}</span> <br/>
-									<span className="evalNumber"> 91-120 </span> : <span className="high">{resultData.l4[lang]}</span> <br/>
+								<p> {returnEngHindi(resultData.ustopKey)} </p>
+								<p> <span className="evalNumber"> 0-30 </span> : <span className="low">{returnEngHindi(resultData.l[0])}</span> <br/>
+									<span className="evalNumber"> 31-60 </span> : <span className="mild">{returnEngHindi(resultData.l[1])}</span> <br/>
+									<span className="evalNumber"> 61-90 </span> : <span className="moderate">{returnEngHindi(resultData.l[2])}</span> <br/>
+									<span className="evalNumber"> 91-120 </span> : <span className="high">{returnEngHindi(resultData.l[3])}</span> <br/>
 								</p>
 								<hr/>
-								<p> {getEvaluation(T)} </p>
-								<p> {resultData.p1[lang]} </p>
-								<p> {resultData.p2[lang]} <br/>
-									{resultData.p3[lang]} </p>
+								<p> {getEvaluation(calculateScore('t'))} </p>
+								{resultData.p.map((one,i)=><Fragment key={i}>{returnEngHindi(one, 'p')}</Fragment>)}
 							</div>
 						) ;
 		case 'confirm' : return (
 							<div className="question">
-								<p>{subData.subNote[lang]}</p>
+								{returnEngHindi(subData.subNote, 'p')}
 								<div className="next-btn-con proceed-con">
-									<button className="sched-btn" onClick={()=>setMode('test')}>{subData.revBtn[lang]} </button>
-									<button className="sched-btn" onClick={()=>setMode('finish')}>{subData.subBtn[lang]}</button>
+									<button className="sched-btn" onClick={()=>setMode('test')}>{returnEngHindi(subData.revBtn)} </button>
+									<button className="sched-btn" onClick={onSubmitClick}>{returnEngHindi(subData.subBtn)}</button>
 								</div>
 							</div>   
 						) ;
-		default: return <div>{subData.error[lang]} </div> ;
+		default: return <div>{returnEngHindi(subData.error)} </div> ;
 		}
 	}
 
 	const getEvaluation = (t) => {
 		if(t <= 60)
 		{	if( t <= 30)
-				return <EvalDisplay stage="stage1" type="low" lang={lang}/> ; 
+				return <EvalDisplay stage="stage1" type="low" /> ; 
 			else
-				return <EvalDisplay stage="stage2" type="mild" lang={lang}/> ; 
+				return <EvalDisplay stage="stage2" type="mild" /> ; 
 		}
 		else
 		{	if(t <= 90)
-				return <EvalDisplay stage="stage3" type="moderate" lang={lang}/> ; 
+				return <EvalDisplay stage="stage3" type="moderate" /> ; 
 			else
-				return <EvalDisplay stage="stage4" type="high" lang={lang}/> ; 
+				return <EvalDisplay stage="stage4" type="high" /> ; 
 		} 
 	}
 
@@ -252,13 +249,7 @@ const Ustop = () => {
 		if(payment)
 			return (
 				<div className="test-box-con">
-					<div className="test-box">
-						<div className="lang-con">
-							<CheckBtn styles="check-btn" onClick={() => setLang('english')} checked={lang==='english'} text="English" />
-							<CheckBtn styles="check-btn" onClick={() => setLang('hindi')} checked={lang==='hindi'} text="हिन्दी" />
-						</div>
-						{checkMode()}
-					</div>
+					<div className="test-box" children={checkMode()} />
 				</div>
 			) ;
 		else 

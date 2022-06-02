@@ -3,26 +3,23 @@ const inst = {
 		english : 'INSTRUCTIONS',
 		hindi : 'निर्देश' 
 	},
-	l1: {
-		english : 'Please read each statement carefully and answer as per your best understanding and true feelings.',
-		hindi : 'कृपया सभी निर्देश ध्यानपूर्वक पढ़ें और सभी जवाब अपनी समझदारी और सच्ची भावनाओं के साथ दें |'
-	},
-	l2: {
-		english : 'All statements must be answered (No Question can be left blank).',
-		hindi : 'सभी सवालों का उत्तर देना अनिवार्य है ( कोई भी सवाल खाली न छोड़ें ) |'
-	},
-	l3: {
-		english : 'There is no right or wrong answer to any question, everything is specific to each person.',
-		hindi : 'किसी भी सवाल का कोई सही या गलत जवाब नहीं है, हर व्यक्ति के लिए सवाल का जवाब अलग होगा |'
-	},
-	l4: {
-		english : 'There is no time limit for this test however people generally finish this test before 30 minutes.',
-		hindi : 'इन सवालों का जवाब देने के लिए कोई निर्धारित समय सीमा नहीं है, परन्तु सामान्यतः लोग इसे 30 मिनट से पहले समाप्त कर लेतें हैं |'
-	},
-	l5: {
-		english : 'The Score received at the end of the test should be saved by the taker of the test.',
-		hindi : 'इन सवालों के जवाबों का परिणाम, कृपया अपने पास संभाल कर रखें |'
-	},
+	l: [{
+			english : 'Please read each statement carefully and answer as per your best understanding and true feelings.',
+			hindi : 'कृपया सभी निर्देश ध्यानपूर्वक पढ़ें और सभी जवाब अपनी समझदारी और सच्ची भावनाओं के साथ दें |'
+		}, {
+			english : 'All statements must be answered (No Question can be left blank).',
+			hindi : 'सभी सवालों का उत्तर देना अनिवार्य है ( कोई भी सवाल खाली न छोड़ें ) |'
+		}, {
+			english : 'There is no right or wrong answer to any question, everything is specific to each person.',
+			hindi : 'किसी भी सवाल का कोई सही या गलत जवाब नहीं है, हर व्यक्ति के लिए सवाल का जवाब अलग होगा |'
+		}, {
+			english : 'There is no time limit for this test however people generally finish this test before 30 minutes.',
+			hindi : 'इन सवालों का जवाब देने के लिए कोई निर्धारित समय सीमा नहीं है, परन्तु सामान्यतः लोग इसे 30 मिनट से पहले समाप्त कर लेतें हैं |'
+		}, {
+			english : 'The Score received at the end of the test should be saved by the taker of the test.',
+			hindi : 'इन सवालों के जवाबों का परिणाम, कृपया अपने पास संभाल कर रखें |'
+		},
+	],
 	btnText: {
 		english : 'Start Test',
 		hindi : 'शुरू करें'
@@ -84,34 +81,26 @@ const resultData = {
 		english :'Your Total Score is' ,
 		hindi :'आपके कुल अंक हैं'
 	},
-	p1 :{
+	p : [{
 		english: 'We request you to remember your S, A and E score (they are stored in your profile) as they may be useful in further consultations with mental health professionals.' ,
-		hindi: 'आपसे अनुरोध है कि, आप अपने S , A , E और कुल अंको को सम्भाल कर रखे क्योंकि अगर आप किसी मनोविशेषज्ञ की सलाह  लेते हैं तो ये उनकी सहायता करेंगे।'
-	} ,
-	p2 :{
-		english: 'For further consultations/support, Call' ,
-		hindi: 'आगे के परामर्श/समर्थन के लिये, फोन करे '
-	} ,
-	p3 :{
-		english: 'Mr. Ashish Aggarwal +91-95552-35231' ,
-		hindi: 'श्री आशीष अग्रवाल +91-95552-35231 '
-	},
-	l1 :{
+		hindi: 'आपसे अनुरोध है कि, आप अपने S, A, E और कुल अंको को सम्भाल कर रखे क्योंकि अगर आप किसी मनोविशेषज्ञ की सलाह लेते हैं तो ये उनकी सहायता करेंगे।'
+	}, {
+		english: 'For further consultations or support, Call Mr. Ashish Aggarwal +91-95552-35231' ,
+		hindi: 'आगे के परामर्श या समर्थन के लिये, फोन करे, श्री आशीष अग्रवाल +91-95552-35231 '
+	}, ],
+	l :[{
 		english : ' No Major Impact ' ,
 		hindi : ' कोई प्रमुख प्रभाव नहीं'
-	} ,
-	l2 : {
+	}, {
 		english : ' Mild Impact' ,
 		hindi : 'हल्का प्रभाव '
-	} ,
-	l3 : {
+	}, {
 		english : ' Severe Impact ' ,
 		hindi : 'गंभीर प्रभाव'
-	} ,
-	l4 : {
+	}, {
 		english : ' Critical Impact ' ,
 		hindi : 'विकट प्रभाव'
-	} ,
+	}],
 	ustopKey: {
 		english: 'USTOP Score Interpretation Key',
 		hindi: 'स्कोर व्याख्या कुंजी'
@@ -129,7 +118,7 @@ const evalData = {
 			hindi : ' तनाव अनुकूल स्तर '
 		} ,
 		l3 :{
-			english : ',which means you have anxiety within normal range and at an optimum level.' ,
+			english : ', which means you have anxiety within normal range and at an optimum level.' ,
 			hindi : 'पर है। जिसका मतलब है कि आपका तनाव सामान्य सीमा में ही है।'
 		} ,
 		l4 :{

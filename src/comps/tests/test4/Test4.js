@@ -65,8 +65,7 @@ const Test4 = () => {
 		.then(res => {
 			if(res.ok)
 				return res.json() ;
-			else
-				throw Error(res.statusText) ;
+			throw Error(res.statusText) ;
 		})
 		.then(() => {
 			setAnswerObj(obj2) ;
@@ -92,7 +91,6 @@ const Test4 = () => {
 									<p className="final-consult"> {returnEngHindi(resultData.score1)} : <span className="moderate" >{answerObj.result.t.n}</span> </p> 
 									<p className="final-consult"> {returnEngHindi(resultData.score2)} : <span className="moderate" >{answerObj.result.t.h}</span> </p> 
 									<p className="final-consult"> {returnEngHindi(resultData.score3)} : <span className="moderate" >{answerObj.result.t.a}</span> </p> 
-									
 									{resultData.p.map( one => returnEngHindi(one, 'p') )}
 									<p className="final-consult" children={returnEngHindi(resultData.p1)} />
 									<p className="final-consult" children={returnEngHindi(resultData.p2)} />
