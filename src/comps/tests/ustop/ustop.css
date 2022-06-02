@@ -213,18 +213,25 @@
 	}
 
 	.radio-con .check-btn{
-		min-width: 30vw ;
+		min-width: 42vw ;
 	}
 
 	.next-btn-con {
 		padding: .5em 0;
 		display: flex;
-		justify-content: space-evenly;
+		flex-direction: column ;
+		align-items: center ;
 	}
 
 	.next-btn-con .next-btn {
 		font-size: .7rem ;
 		padding: 0.4em 1em ;
+		margin: .5em ;
+	}
+
+	.next-btn-con .sched-btn {
+		margin: .5em ;
+		width: auto ;
 	}
 
 	.question .warn, .question2 .warn	{
