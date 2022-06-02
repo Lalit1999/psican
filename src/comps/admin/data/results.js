@@ -1,4 +1,4 @@
-import {formatDate, formatObj} from './format.js' ;
+import {formatDate, formatObj, formatDeepObj} from './format.js' ;
 
 const ustopColumns = [
 	{name: 'sno'}, { name: 'owner'}, 
@@ -21,18 +21,18 @@ const ustopDisplay = [
 
 const nhapassColumns = [
 	{name: 'sno'}, { name: 'owner'}, 
-	{ name: 'result', title: 'N Grade', format: formatObj, args: 'n'},
-	{ name: 'result', title: 'H Grade', format: formatObj, args: 'h'},
-	{ name: 'result', title: 'A Grade', format: formatObj, args: 'a'},
+	{ name: 'result', title: 'N Grade', format: formatDeepObj, args: ['t', 'n'] },
+	{ name: 'result', title: 'H Grade', format: formatDeepObj, args: ['t', 'h'] },
+	{ name: 'result', title: 'A Grade', format: formatDeepObj, args: ['t', 'a'] },
 	{ name: 'createdAt', format: formatDate},  	
 ] ;
 
 const nhapassDisplay = [
 	{ name: 'owner', title:'Name'}, { name: 'email', title:'E-Mail'}, 
 	{ name: 'mobile', title:'Mobile No.'}, 
-	{ name: 'result', title: 'N Grade', format: formatObj, args: 'n'}, 	
-	{ name: 'result', title: 'H Grade', format: formatObj, args: 'h'},
-	{ name: 'result', title: 'A Grade', format: formatObj, args: 'a'},
+	{ name: 'result', title: 'N Grade', format: formatDeepObj, args: ['t', 'n'] }, 	
+	{ name: 'result', title: 'H Grade', format: formatDeepObj, args: ['t', 'h'] },
+	{ name: 'result', title: 'A Grade', format: formatDeepObj, args: ['t', 'a'] },
 	{ name: 'createdAt', title:'Date', format: formatDate},
 ] ;
 

@@ -23,8 +23,10 @@ const formatLinks = (value) => {
 	) ;
 }
 
-const formatAddress = (value) => value.replaceAll(' && ', ', ') ;
+const formatAddress = (value) => value.replaceAll(' && ', ', ') 
 
-const formatObj = (data, arg) => data[arg] ;
+const formatObj = (data, arg) => data[arg] 
 
-export {formatSize, formatDate, formatLink, formatLinks, formatAddress, formatObj } ;
+const formatDeepObj = (data, arg) => data[arg[0]][arg[1]] 
+
+export {formatSize, formatDate, formatLink, formatLinks, formatAddress, formatObj, formatDeepObj } ;
