@@ -1,7 +1,7 @@
  const accisQues = [
- { english : "Life is uncertain",
+ 	{ english : "Life is uncertain",
 	hindi:'जिंदगी अनिश्चित है'},
- { english : "I experienced uncertainty of life during COVID times",
+ 	{ english : "I experienced uncertainty of life during COVID times",
 	hindi:'COVID काल में मैंने जिंदगी की अनिश्चितता को महसूस करा'},
 	{ english : "I think I will be cautious and well-planned after COVID",
 	hindi:'मुझे लगता है कि COVID काल के बाद मैं सुनियोजित और सतर्क रहूंगा/रहूँगी'},

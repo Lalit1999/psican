@@ -20,9 +20,16 @@ let ans = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 const EvalDisplay = ({stage, type}) => {
 	return (
 		<Fragment>
-			{returnEngHindi(evalData.you)} 
-			<span className={"eval "+type}>{returnEngHindi(evalData[stage].l1)}</span>
-			{returnEngHindi(evalData[stage].l2)}
+			<p>
+				{evalData.you.english} 
+				<span className={"eval "+type}>{evalData[stage].l1.english}</span>
+				{evalData[stage].l2.english}
+			</p>
+			<p>
+				{evalData.you.hindi} 
+				<span className={"eval "+type}>{evalData[stage].l1.hindi}</span>
+				{evalData[stage].l2.hindi}
+			</p>
 			{ 	(stage !== 'stage1')?
 				<ul> {returnEngHindi(evalData.sugg)}:
 					<li> {returnEngHindi(evalData[stage].s1)} </li>
@@ -112,7 +119,7 @@ const ACCIS = () => {
 		{	case 'start' : return (
 							<div className="start-div">
 								<h2 className="start-title"> {returnEngHindi(inst.head)} </h2>
-								<ul children={inst.l.map( one => returnEngHindi(one, 'li') )} />
+								<ul children={ inst.l.map( (one, i) =><Fragment key={i}>{returnEngHindi(one, 'li') } </Fragment> ) } />
 								<div className="start-btn-con">
 									<button className="sched-btn" onClick={() => setMode('test')} children={returnEngHindi(inst.btnText)} />
 								</div>
@@ -124,7 +131,7 @@ const ACCIS = () => {
 		case 'finish' : return (
 							<div className="question result">							 
 								<p> {returnEngHindi(resultData.score)} : {answerObj.result.t} </p> 
-								<p> {getEvaluation(answerObj.result.t)} </p>
+								{getEvaluation(answerObj.result.t)}
 								<hr/>
 								<p> {returnEngHindi(resultData.accisKey)} </p>
 								<p> <span className="evalNumber"> 0-30 </span> : <span className="low">{returnEngHindi(resultData.l1)}</span> <br/>
@@ -133,9 +140,9 @@ const ACCIS = () => {
 									<span className="evalNumber"> 91-120 </span> : <span className="high">{returnEngHindi(resultData.l4)}</span> <br/>
 								</p>
 								<hr/>
-								{resultData.p.map( one => returnEngHindi(one, 'p') )}
-								<p className="final-consult" children={returnEngHindi(resultData.p1)} />
+								{resultData.p.map( (one,i) => <Fragment key={i}> { returnEngHindi(one, 'p')} </Fragment> )}
 								<p className="final-consult" children={returnEngHindi(resultData.p2)} />
+								<p className="final-consult" children={returnEngHindi(resultData.p3)} />
 							</div>
 						) ;
 
@@ -161,7 +168,7 @@ const ACCIS = () => {
 	}
 
 	const checkPayment = () => {
-		// if(payment)
+		if(payment)
 			return (
 				<div className="test-box-con">
 					<div className="test-box test-box-4">
@@ -169,8 +176,8 @@ const ACCIS = () => {
 					</div>
 				</div>
 			) ;
-		// else 
-		// 	return <Payment success={() => setPayment(true)} type='accis'/> ;
+		else 
+			return <Payment success={() => setPayment(true)} type='accis'/> ;
 	}
 
 	if(token === "")
