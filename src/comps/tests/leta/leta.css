@@ -59,6 +59,10 @@
 		margin-top: 0 ;
 	}
 
+	.result-row {
+		flex-wrap: wrap ;
+	}
+
 	.leta-text {
 		flex-direction: column ;
 	}

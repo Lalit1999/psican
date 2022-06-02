@@ -39,3 +39,14 @@
 .test-box-4 .final-consult {
 	font-weight: bold ;
 }
+
+@media(max-width: 600px) {	
+	.test-box-4 {
+		width: 95% ;
+	}
+
+	.test4-check-btn svg {
+		font-size: 1.3rem;
+	}
+
+}
