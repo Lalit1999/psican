@@ -45,8 +45,8 @@ const ConsultForm = ({choice}) => {
 	const sendConsultRequest = () => {
 		const {title, reason, appointDate} = data ;
 
-		// fetch('http://localhost:8000/consult',{
-		fetch('https://api.psyment.com/consult',{
+		// fetch('http://localhost:8000/appoint',{
+		fetch('https://api.psyment.com/appoint',{
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json' ,
 						'Authorization' : `Bearer ${token}` },
