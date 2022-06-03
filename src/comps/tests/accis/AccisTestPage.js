@@ -15,7 +15,7 @@ const AccisTestPage = () => {
 		subTitle: <h6><span className="green">A</span>SSESSMENT of&ensp;<span className="green">C</span>OGNITIVE&ensp;<span className="green">C</span>OVID&ensp;<span className="green">I</span>MPACT on&ensp;<span className="green">S</span>ELF</h6>,
 		btnText: 'Take Test Now',
 		btnClick: () => myRef.current.scrollIntoView() ,
-		p1: 'COVID ने आपके सोच, व्यक्तिक्त्व और व्यवहार को प्रभावित किया है या नहीं... स्वयँ जाने',
+		p1: 'COVID ने आपके सोच, व्यक्तित्व और व्यवहार को प्रभावित किया है या नहीं... स्वयं जानें',
 		p2: 'Has COVID impacted your Thinking, Personality and Behavior... Know Yourself',
 	}
 
@@ -32,8 +32,8 @@ const AccisTestPage = () => {
 				<div className="leta-right">
 					<Heading text="About ACCIS Test" />
 					<p className="intro"> ACCIS is aimed at helping an individual to understand the impact of COVID environment and COVID-related anxiety on his/her behaviour, expression, functioning and well-being.</p>
-					<p className="intro bold"> DISCLAIMER : The current assessment is a non-standard test. It may give only an assessment of few aspects and may only give a partial assessment. </p>
-					<p className="intro bold"> It is advised to understand and correlate the findings with clinical assessment or with presented symptoms with the help of a healthcare Professional/Psychologist.
+					<p className="intro bold"> DISCLAIMER : The current assessment is a non-standardized test. It may give only an assessment of few aspects and may only give a partial assessment. </p>
+					<p className="intro bold"> It is advised to understand and correlate the findings with clinical assessment or with presented symptoms, with the help of a healthcare Professional/Psychologist.
 					</p>
 				</div>
 			</div>

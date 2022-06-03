@@ -3,12 +3,12 @@ import TestBox from './TestBox.js' ;
 const data = [
 	{ 
 		hin: { __html: "अपने मन में <p class=\"moderate\"> चिंता </p> के स्तर को स्वयं जानें"},
-		eng: { __html: "Know your mental level of <p class=\"moderate\"> ANXIETY </p> yourself."},
+		eng: { __html: "Know the level of your mental <p class=\"moderate\"> ANXIETY </p> yourself."},
 		link: "/test/ustop",
 		title : "USTOP"
 	}, { 
 		hin: { __html: "कौन से <p class=\"low\"> आपके गुण </p> आपके बच्चों में आ सकते हैं स्वयं जानें"},
-		eng: { __html: "Which <p class=\"low\"> Qualities of Yours </p> have higher chances to reflect in your children"},
+		eng: { __html: "Which <p class=\"low\"> Qualities of Yours </p> have higher chances of reflecting in your children"},
 		link: "/test/leta",
 		title : "LETA"
 	}, { 
