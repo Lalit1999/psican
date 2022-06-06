@@ -12,7 +12,7 @@ const data = [
 		link: "/test/leta",
 		title : "LETA"
 	}, { 
-		hin: { __html: "क्या आपके व्यक्तित्व या व्‍यवहार पर <p class=\"high\"> COVID - 19 </p> का कोई प्रभाव प्रभाव हुआ है"},
+		hin: { __html: "क्या आपके व्यक्तित्व या व्‍यवहार पर <p class=\"high\"> COVID - 19 </p> का कोई प्रभाव हुआ है"},
 		eng: { __html: "Has <p class=\"high\"> COVID - 19 </p> affected your personality / behaviour"},
 		link: "/test/accis",
 		title : "ACCIS"
