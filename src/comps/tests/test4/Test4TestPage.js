@@ -4,7 +4,7 @@ import Heading from '../../Heading/Heading.js' ;
 import Test4 from './Test4.js' ;
 import ImageTitle from '../../imagetitle/ImageTitle.js' ;
 
-import test from '../../../images/test3.jpeg' ;
+import test from '../../../images/nhapass.png' ;
 
 const Test4TestPage = () => {
 	const myRef = useRef(null) ;

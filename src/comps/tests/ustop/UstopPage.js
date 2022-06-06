@@ -4,7 +4,7 @@ import Heading from '../../Heading/Heading.js' ;
 import Ustop from './Ustop.js' ;
 import ImageTitle from '../../imagetitle/ImageTitle.js' ;
 
-import test from '../../../images/test2.jpeg' ;
+import test from '../../../images/ustop1.jpg' ;
 
 const UstopPage = () => {
 	const myRef = useRef(null) ;

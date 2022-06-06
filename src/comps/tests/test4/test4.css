@@ -40,6 +40,26 @@
 	font-weight: bold ;
 }
 
+.nha-interpretation p {
+	margin-bottom: 0;
+}
+
+.nha-grade-one {
+	color: seagreen;
+}
+
+.nha-grade-two {
+	color: goldenrod ;
+}
+
+.nha-grade-three {
+	color: orangered ;
+}
+
+.nha-grade-four {
+	color: darkred;
+}
+
 @media(max-width: 600px) {	
 	.test-box-4 {
 		width: 95% ;

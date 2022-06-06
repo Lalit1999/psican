@@ -4,7 +4,7 @@ import Leta from './Leta.js' ;
 import Heading from '../../Heading/Heading.js' ;
 import ImageTitle from '../../imagetitle/ImageTitle.js' ;
 
-import test from '../../../images/test.jpeg' ;
+import test from '../../../images/leta1.jpg' ;
 
 const LetaPage = () => {
 	const myRef = useRef(null) ;

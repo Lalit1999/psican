@@ -16,6 +16,33 @@ const obj = {
 	a: 0 
 } ;
 
+const checkGrade = (num) => {
+  if(num>42) {
+    if(num>48) {
+      if(num>54 && num<=60)
+        return 'A' ;
+      else
+        return 'B' ;
+    }
+    else
+      return 'C' ;
+  }
+  else {
+    if(num>30) {
+      if(num>36)
+        return 'D' ;
+      else 
+        return 'E' ;
+    }
+    else {
+      if(num>24)
+        return 'F' ;
+      else
+        return 'G' ;
+    }
+  }
+}
+
 const Test4 = () => {
 	const [checkedValues, setCheckedValues] = useState({}) ;
 	const [mode, setMode] = useState('start') ;
@@ -88,9 +115,19 @@ const Test4 = () => {
 
 			case 'finish' : return (
 								<div className="result "> 
-									<p className="final-consult"> {returnEngHindi(resultData.score1)} : <span className="moderate" >{answerObj.result.t.n}</span> </p> 
-									<p className="final-consult"> {returnEngHindi(resultData.score2)} : <span className="moderate" >{answerObj.result.t.h}</span> </p> 
-									<p className="final-consult"> {returnEngHindi(resultData.score3)} : <span className="moderate" >{answerObj.result.t.a}</span> </p> 
+									<p className="final-consult"> {returnEngHindi(resultData.score1)} : <span className="moderate" >{checkGrade(answerObj.result.t.n)}</span> </p> 
+									<p className="final-consult"> {returnEngHindi(resultData.score2)} : <span className="moderate" >{checkGrade(answerObj.result.t.h)}</span> </p> 
+									<p className="final-consult"> {returnEngHindi(resultData.score3)} : <span className="moderate" >{checkGrade(answerObj.result.t.a)}</span> </p> 
+									<div className="nha-interpretation">
+										<h6>General Interpretation</h6>
+										<p className="nha-grade-one" >Grade 'A' :&emsp; Excellent</p>
+										<p className="nha-grade-one" >Grade 'B' :&emsp; Good</p>
+										<p className="nha-grade-two" >Grade 'C' :&emsp; Average</p>
+										<p className="nha-grade-two" >Grade 'D' :&emsp; Below Average</p>
+										<p className="nha-grade-three" >Grade 'E' :&emsp; Poor</p>
+										<p className="nha-grade-three" >Grade 'F' :&emsp; Deficient</p>
+										<p className="nha-grade-four" >Grade 'G' :&emsp; Critical Deficient</p><br/>
+									</div>
 									{resultData.p.map( one => returnEngHindi(one, 'p') )}
 									<p className="final-consult" children={returnEngHindi(resultData.p1)} />
 									<p className="final-consult" children={returnEngHindi(resultData.p2)} />
