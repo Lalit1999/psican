@@ -170,6 +170,7 @@ const Ustop = () => {
 		} ;
 
 		fetch('https://api.psyment.com/test',{
+		// fetch('http://localhost:8000/test',{
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json' ,
 						'Authorization' : 'Bearer ' + token} ,
