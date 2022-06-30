@@ -33,18 +33,19 @@ const LoginForm = ({setMode}) => {
 			headers : { 'Content-Type' : 'application/json'} ,
 			body :JSON.stringify({ password, email	}) ,
 		})
-		.then(res => {
-			if(res.ok)
-				return res.json() ;
-			throw Error(res.statusText) ;
+		.then(res =>  res.json())
+		.then(resp => {
+			if(resp.user) {
+                setData(initData);
+                addNotif("Logged In Successfully", 'success') ;
+                loadUser(resp) ;      
+            }
+            else {
+            	addNotif(resp, 'error') ;
+            }
 		})
-		.then(data =>{	
-			setData(initData);
-			addNotif('Successfully Logged In', 'success') ;
-			loadUser(data) ;
-		})  
 		.catch( err  => {
-			console.log(err) ;
+			console.log(JSON.stringify(err)) ;
 			addNotif('Error Logging in', 'error') ;	
 		}) ;
 	}
@@ -64,7 +65,6 @@ const LoginForm = ({setMode}) => {
 				email: invalidEmail(data.email) ,
 				password: isBlank(data.password, 'Password', 6, 30),
 			}
-
 			setError(newError) ;
 		}
 	}, [data])

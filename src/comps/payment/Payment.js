@@ -183,27 +183,26 @@ const Payment = ({success, type}) => {
 			headers : { 'Content-Type' : 'application/json',
 						'Authorization' : `Bearer ${token}` } ,
 		})
-		.then(res => {
-			if(res.ok)
-				return res.json() ;
-			throw Error(res.statusText) ;
-		})
+		.then(res => res.json() )
 		.then(data =>{	
-			if(data === 'fullPayment') {
-				addNotif('Coupon Applied Successfully', 'success') ;
-				success() ;
+			if(data.endsWith('Payment') || data.endsWith('Quarter')) {
+				if(data === 'fullPayment') {
+					addNotif('Coupon Applied Successfully', 'success') ;
+					success() ;
+				}
+				else
+				{	if(data === 'noPayment')
+						addNotif('Coupon already used', 'error') ;
+					else
+						addNotif('Coupon Applied Successfully', 'success') ;
+					setStatus(data) ;
+				}	
 			}
 			else
-			{	if(data === 'noPayment')
-					addNotif('Coupon Invalid or already used', 'error') ;
-				else
-					addNotif('Coupon Applied Successfully', 'success') ;
-				setStatus(data) ;
-			}	
-			
+				addNotif(data, 'error') ;
 		})  
 		.catch( err  => {
-			addNotif('Coupon Code Not Found', 'error') ;
+			addNotif(err.message, 'error') ;
 			console.log(err.message) 
 		}) ;
 	}

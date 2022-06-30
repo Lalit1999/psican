@@ -50,6 +50,8 @@ const invalidMobile = (str) => {
 		return 'Mobile No. must only contain digits or -';
 	else if(str.length < 10)
 		return 'Mobile No. must be at least 10 digits long' ;
+	else if(str.length > 14)
+		return 'Mobile No. can not be this long' ;
 	else
 		return false ;
 }

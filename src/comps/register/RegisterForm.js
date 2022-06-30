@@ -35,23 +35,26 @@ const RegisterForm = ({setMode}) => {
 		addNotif('Please Wait...') ;
 
 		fetch('https://api.psyment.com/users' ,{
+		// fetch('http://localhost:8000/users' ,{
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json'} ,
 			body :JSON.stringify(data) ,
 		})
-		.then(res => {
-			if(res.ok)
-				return res.json() ;
-			throw Error(res.statusText) ;
+		.then(res =>  res.json())
+		.then(resp => { 
+            console.log(resp) ;  
+            if(resp.user) {
+                setData(initData) ;
+				addNotif('Successfully Registered', 'success') ;
+				loadUser(data) ;
+            }
+            else {
+                addNotif(resp, 'error') ;
+            }
 		})
-		.then(data => {	
-			setData(initData) ;
-			addNotif('Successfully Registered', 'success') ;
-			loadUser(data) ;
-		}) 
 		.catch( err  => {
 			console.log(err) ;
-			addNotif('Error while registration' , 'error') ;
+			addNotif(err , 'error') ;
 		}) ;
 	}
 
