@@ -1,9 +1,21 @@
-import {useContext} from 'react' ;
-import {Link} from'react-router-dom' ;
+import { useContext } from 'react' ;
+import { Link } from'react-router-dom' ;
+import { UserContext } from '../../context/UserContext.js' ;
+import { faPhoneAlt, faEnvelope, faMap} from '@fortawesome/free-solid-svg-icons' ;
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import {UserContext} from '../../context/UserContext.js' ;
 
 import './menu.css' ;
+
+const Address = () => {
+	return (
+		<div className="footerIcons menu-item">
+			<a href="https://www.google.com/maps/place/ORN+Remedies+Pvt.+Ltd./@28.6837717,77.1702569,18z/data=!4m5!3m4!1s0x390d03cb3bdd2fff:0x396a094b8bb9d820!8m2!3d28.6837717!4d77.1713512" target="_blank" rel="noreferrer"><FontAwesomeIcon icon = {faMap} /></a>
+			<a href="tel:09555235231" ><FontAwesomeIcon icon = {faPhoneAlt} /></a>
+			<a href="mailto:info.psyment@gmail.com"><FontAwesomeIcon icon = {faEnvelope} /></a>
+		</div>
+	) ;
+}
 
 const Menu = ({handleClose, show, onLogoutClick}) => {	
 	
@@ -42,6 +54,7 @@ const Menu = ({handleClose, show, onLogoutClick}) => {
 	 				<Link className="menu-item " to='/contact'> Contact Us </Link>
 	 				{user.name==='admin'?<Link className="menu-item" to='/admin'> Admin </Link>:null}
 	 				{checkLoggedIn()}
+	 				<Address />
 	 			</div>
 	        </Offcanvas.Body>
       	</Offcanvas>

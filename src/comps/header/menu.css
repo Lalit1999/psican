@@ -40,3 +40,14 @@ button.menu-item {
 .menu-item:focus , .menu-btn:focus {
 	color: var(--dark);
 }
+
+.footerIcons {
+	display: flex ;
+	justify-content: space-evenly ;
+	gap: 1.5em ;
+	align-items: center ;
+}
+
+.footerIcons svg {
+	color: var(--dark) ;
+}

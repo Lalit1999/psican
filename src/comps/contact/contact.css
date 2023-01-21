@@ -1,3 +1,45 @@
 .contact-con {
 	flex-grow: 1 ;
 }
+
+.contact-page {
+	display: flex ;
+	justify-content: space-evenly ;
+}
+
+.contact-psyment {
+	display: flex ;
+	flex-direction: column ;
+	justify-content: center ;
+	max-width: 30% ;
+}
+
+.contact-links {
+	padding-top: 2em ;
+}
+
+.contact-links p {
+	display: flex ;
+	gap: 1em ;
+	align-items: center ;
+}
+
+.contact-links svg {
+	color: var(--dark) ;
+	font-size: 1.2rem ;
+}
+
+@media(max-width: 600px) {
+	.contact-page {
+		flex-direction: column ;
+	}
+
+	.contact-psyment {
+		max-width: 100% ;
+		padding: 1em 2em ;
+	}
+
+	.contact-links p {
+		font-size: .8rem ;
+	}
+}
