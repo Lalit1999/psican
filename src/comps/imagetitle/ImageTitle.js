@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button' ;
 
 import './imagetitle.css' ;
 
-const ImageTitle = ({image, title, subTitle, btnText, btnClick, p1, p2}) => {
+const ImageTitle = ({image, title, subTitle, btnText, btnClick, p1, p2, value="test"}) => {
 
 	return(
 		<div className="image-title">
@@ -15,7 +15,7 @@ const ImageTitle = ({image, title, subTitle, btnText, btnClick, p1, p2}) => {
 				<div className="it-left-bottom">
 					<p children={p1} />
 					<p children={p2} /> 
-					<Button className="sched-btn" onClick={btnClick}> Take Test Now </Button>
+					{value==="test"?(<Button className="sched-btn" onClick={btnClick}> Take Test Now </Button>):null}
 				</div>
 			</div>
 			<div className="it-image">

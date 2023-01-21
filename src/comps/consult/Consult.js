@@ -4,11 +4,13 @@ import {Link} from 'react-router-dom' ;
 
 import ConsultForm from './ConsultForm.js' ;
 import Payment from '../payment/Payment.js' ;
-import Title from '../title/Title.js' ;
+// import Title from '../title/Title.js' ;
 import DisplayDetailed from '../display/DisplayDetailed.js' ;
 import Heading from '../Heading/Heading.js' ;
 import {pData, ptData, mData, features} from './consultData.js' ; 
 import {UserContext} from '../../context/UserContext.js' ;
+import ImageTitle from '../imagetitle/ImageTitle.js' ;
+import test from '../../images/test4.jpeg' ;
 
 import './program.css' ;
 
@@ -49,11 +51,17 @@ const Consult = () => {
 		) ; 
 	}
 
+	const itProps = {
+		image: test,
+		title: 'Personal Consultation',
+		p1: `Human behavior and thinking constantly impact each other. Our fundamental attributions for objects, events and relations around us make us emotionally susceptible`,
+		p2: `This may lead to cognitive dissonance and inept self-appraisal. Such events often disturb the flow of our capability.`,
+		value: `consult`,
+	}
+
 	return(
 		<div className="consult-page">
-			<Title name = 'Personal Consultation' items={["Home", "Consult"]}/>
-			<p className="intro"> Human behavior and thinking constantly impact each other. Our fundamental attributions for objects, events and relations around us make us emotionally susceptible</p>
-			<p className="intro"> This may lead to cognitive dissonance and inept self-appraisal. Such events often disturb the flow of our capability.</p>
+			<ImageTitle {...itProps} />
 			<p className="intro"> <span className="ngo"> PERSONAL PSYCHOLOGICAL COUNSELLING</span> &nbsp;and <span className="ngo"> MENTORING </span> is of prime help in such situations.
 			</p>
 			<p className="intro"> You may consult us for all such needs. </p> 
