@@ -41,13 +41,13 @@
 	padding: .3vw 1.5vw ; 
 	background-color: transparent;
 	transition: all 0.4s ;
-	color: var(--golden);
-	border-right: 1px solid var(--golden);
-	border-left: 1px solid var(--golden);
+	color: var(--white);
+	border-right: 1px solid var(--white);
+	border-left: 1px solid var(--white);
 }
 
 .header-btn:hover {
-	background-color: var(--golden);
+	background-color: var(--white);
 	color: var(--dark);
 }
 

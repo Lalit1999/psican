@@ -38,8 +38,6 @@ const UstopPage = () => {
 			</div>
 			<Heading text="Take USTOP Test" ref={myRef} />
 			<Ustop />
-			<p className="intro bold support"> Having Technical issues? <a className="sched-btn" href="mailto:myarth.tech@gmail.com" target="_blank" rel="noopener noreferrer"> Contact Technical Support </a>
-			</p>
 		</div>
 	) ;
 }

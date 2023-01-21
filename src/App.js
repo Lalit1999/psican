@@ -6,7 +6,6 @@ import About from './comps/about/About.js' ;
 import Contact from './comps/contact/Contact.js' ;
 import NotFound from './comps/home/NotFound.js' ; 
 import TopBar from './comps/header/TopBar.js' ;
-import DownBar from './comps/downbar/DownBar.js' ;
 import Exam from './comps/tests/Exam.js' ;
 import UstopPage from './comps/tests/ustop/UstopPage.js' ;
 import LetaPage from './comps/tests/leta/LetaPage.js' ;
@@ -57,7 +56,6 @@ const App = () => {
         </Routes>
         </ScrollToTop>
         <Footer /> 
-        <DownBar />
       </BrowserRouter>
     </div>
     </UserContextProvider>

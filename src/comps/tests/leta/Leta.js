@@ -278,10 +278,10 @@ const LETA = () => {
 	if(token === "")
 		return (
 			<div className="blue-bg blue-form">
-				<p> You need to 
-					<Link to="/login?rdr=leta" className="btn3"> Login </Link>
+				<p> Please 
+					<Link to="/login?rdr=leta" className="sched-btn"> Login </Link>
 					 or 
-					<Link to="/register?rdr=leta" className="btn3"> Register </Link> 
+					<Link to="/register?rdr=leta" className="sched-btn"> Register </Link> 
 					to take this test
 				</p>
 			</div>

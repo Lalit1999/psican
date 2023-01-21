@@ -39,10 +39,10 @@ const Consult = () => {
 		else
 			return (
 				<div className="blue-bg blue-form consult-login">
-					<p> You need to 
-						<Link to="/login?rdr=consult" className="btn3"> Login </Link>
+					<p> Please
+						<Link to="/login?rdr=consult" className="sched-btn"> Login </Link>
 						 or 
-						<Link to="/register?rdr=consult" className="btn3"> Register </Link> 
+						<Link to="/register?rdr=consult" className="sched-btn"> Register </Link> 
 						 to book an Appointment 
 					</p>
 				</div>
@@ -78,8 +78,6 @@ const Consult = () => {
 			<p className="intro bold"> Note : All Personal Queries and details shall be kept confidential. They will never be shared with any third-person. </p>
 			<Heading text="Schedule Your Appointment" />
 			{ checkLogin() }
-			<p className="intro bold support "> Having Technical issues? <a className="sched-btn technical-support" href="mailto:myarth.tech@gmail.com" target="_blank" rel="noopener noreferrer"> Contact Technical Support </a>
-			</p>
 		</div>
 	) ;
 }

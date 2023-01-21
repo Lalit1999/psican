@@ -156,10 +156,10 @@ const Test4 = () => {
 	if(token === "")
 		return (
 			<div className="blue-bg blue-form">
-				<p> You need to 
-					<Link to="/login?rdr=nhapass" className="btn3"> Login </Link>
+				<p> Please
+					<Link to="/login?rdr=nhapass" className="sched-btn"> Login </Link>
 					 or 
-					<Link to="/register?rdr=nhapass" className="btn3"> Register </Link> 
+					<Link to="/register?rdr=nhapass" className="sched-btn"> Register </Link> 
 					to take this test
 				</p>
 			</div>

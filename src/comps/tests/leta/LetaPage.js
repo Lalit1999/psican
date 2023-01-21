@@ -38,8 +38,6 @@ const LetaPage = () => {
 			</div>
 			<Heading text="Take LETA Test" ref={myRef}/>
 			<Leta />
-			<p className="intro bold support"> Having Technical issues? <a className="sched-btn" href="mailto:myarth.tech@gmail.com" target="_blank" rel="noopener noreferrer"> Contact Technical Support </a>
-			</p>
 		</div>
 	) ;
 }

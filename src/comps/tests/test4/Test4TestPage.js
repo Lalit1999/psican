@@ -37,8 +37,6 @@ const Test4TestPage = () => {
 			</div>
 			<Heading text="Take NHA PASS Test" ref={myRef}/>
 			<Test4 />
-			<p className="intro bold support"> Having Technical issues? <a className="sched-btn" href="mailto:myarth.tech@gmail.com" target="_blank" rel="noopener noreferrer"> Contact Technical Support </a>
-			</p>
 		</div>
 	) ;
 }
