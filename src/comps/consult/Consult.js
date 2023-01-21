@@ -10,7 +10,7 @@ import Heading from '../Heading/Heading.js' ;
 import {pData, ptData, mData, features} from './consultData.js' ; 
 import {UserContext} from '../../context/UserContext.js' ;
 import ImageTitle from '../imagetitle/ImageTitle.js' ;
-import test from '../../images/test4.jpeg' ;
+import test from '../../images/consult1.jpg' ;
 
 import './program.css' ;
 
@@ -64,7 +64,12 @@ const Consult = () => {
 			<ImageTitle {...itProps} />
 			<p className="intro"> <span className="ngo"> PERSONAL PSYCHOLOGICAL COUNSELLING</span> &nbsp;and <span className="ngo"> MENTORING </span> is of prime help in such situations.
 			</p>
-			<p className="intro"> You may consult us for all such needs. </p> 
+			<p className="intro"> You may consult us for all such needs. <strong>All Personal Queries and details shall be kept confidential. They will never be shared with any third-person.</strong> </p> 
+			<div className="consult-flex ">
+				<DisplayDetailed title="Personality Appraisal Counselling" small="yes" lidata={pData} />
+				<DisplayDetailed title="Post Trauma Counselling" small="yes" lidata={ptData} />
+				<DisplayDetailed title="Metamorphosis Counselling" small="yes" lidata={mData} />
+			</div>
 			<div className="consult-flex">
 				<DisplayDetailed title="Features" lidata={features} />
 				<div className="consult-flex-ch">
@@ -77,13 +82,7 @@ const Consult = () => {
 					<Heading text="Venue" />
 					<p className="consult-flex-text"> Unit No. 4, First Floor, CSC, Pocket B & C, Phase-4, Ashok Vihar, Delhi-110052 </p>
 				</div>
-			</div>
-			<div className="consult-flex ">
-				<DisplayDetailed title="Personality Appraisal Counselling" small="yes" lidata={pData} />
-				<DisplayDetailed title="Post Trauma Counselling" small="yes" lidata={ptData} />
-				<DisplayDetailed title="Metamorphosis Counselling" small="yes" lidata={mData} />
-			</div>
-			<p className="intro bold"> Note : All Personal Queries and details shall be kept confidential. They will never be shared with any third-person. </p>
+			</div>			
 			<Heading text="Schedule Your Appointment" />
 			{ checkLogin() }
 		</div>
