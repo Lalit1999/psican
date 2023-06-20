@@ -10,12 +10,6 @@ import {subData, resultData } from './langdata.js' ;
 import returnEngHindi from '../../returnEnglishHindi.js' ;
 import {test4Ques} from './queData.js' ;
 
-const obj = {
-	n: 0,
-	h: 0,
-	a: 0 
-} ;
-
 const checkGrade = (num) => {
   if(num>42) {
     if(num>48) {
@@ -69,6 +63,12 @@ const Test4 = () => {
 	}, [token] ) ;
 
 	const onSubmitClick = () => {
+		const obj = {
+			n: 0,
+			h: 0,
+			a: 0 
+		} ;
+		
 		let checkedArr = Object.keys(checkedValues).map(one => checkedValues[one]) ;
 		checkedArr.forEach((one,i)=>{
 			obj[test4Ques[i].type] += one ;
