@@ -125,7 +125,7 @@ const Ustop = () => {
 	const {token} = useContext(UserContext) ;
 
 	useEffect( () => {
-		fetch("https://api.psyment.com/saat-payment/check", {
+		fetch("https://api.psyment.com/ustop-payment/check", {
 			method : 'get' ,
 			headers : { 'Content-Type' : 'application/json',
 						'Authorization' : 'Bearer '+ token

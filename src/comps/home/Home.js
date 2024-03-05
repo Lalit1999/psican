@@ -1,16 +1,23 @@
-import {Link} from 'react-router-dom' ;
+import { Link } from 'react-router-dom' ;
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+// import { Carousel } from 'react-responsive-carousel';
 
-// import Parallax from '../Parallax/Parallax.js' ;
-// import TestimonialSlider from '../slider/TestimonialSlider.js' ;
-// import {testimArr} from './homeData.js' ;
 import TestBoxList from '../testbox/TestBoxList.js' ;
 import Image from '../../images/Psyment.webp' ;
 import LeaderImage from '../../images/leader.webp' ;
 import './home.css' ;
 
+// const sliderArr = [
+// 	"https://web.myarthhardware.com/static/images/cupro-slider.webp", 
+// ] ;
+
 const Home = () => {
 	return(
 		<div className="home">
+			{/*<Carousel showStatus={false} showArrows={false} autoPlay={true} infiniteLoop={true} interval={4000} stopOnHover={false} showThumbs={false}>
+                { sliderArr.map( (one, i)=> <div className="homeImageCon" key={i}><img className="homeImg" src={one.image} alt={one.name} /></div> )
+                }
+            </Carousel>*/}
 			<div className="home-top">
             	<img className="home-logo" src={Image} alt="psyment logo"/>
             	<div className="home-top-middle">
@@ -26,10 +33,6 @@ const Home = () => {
             <div className="home-float">
             	<TestBoxList />
             </div>
-			{/*<Parallax>
-				<div className="testim"> Our Testimonials </div>
-				<TestimonialSlider data={testimArr}/>
-			</Parallax>*/}
 		</div>
 	) ;
 }

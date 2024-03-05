@@ -11,6 +11,7 @@ const itemMap = {
 	"Consult" : 'consult',
 	"Test" : 'test',
 	"Privacy Policy" : "privacy-policy",
+	"App Privacy Policy" : "app/privacy-policy",
 	"Refund Policy" : "refund-policy",
 	"Terms & Conditions" : "terms-condition"
 }

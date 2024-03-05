@@ -19,6 +19,7 @@ import Login from './comps/login/Login.js' ;
 import Register from './comps/register/Register.js' ;
 import Profile from './comps/UserProfile/UserProfile.js' ;
 import ScrollToTop from './comps/ScrollToTop.js' ;
+import AppPrivacyPolicy from './comps/footer/privacyPolicy/AppPrivacyPolicy.js' ;
 import './app.css' ;
 
 const PrivacyPolicy = lazy(() => import('./comps/footer/privacyPolicy/PrivacyPolicy.js'));
@@ -47,6 +48,7 @@ const App = () => {
           <Route path='/test/accis' exact element={<AccisTestPage />} />
           <Route path='/test/nhapass' exact element={<Test4TestPage />} />
           <Route path='/privacy-policy' exact element={<Suspense fallback={<div> Loading... </div>}><PrivacyPolicy/></Suspense>}/>
+          <Route path='/app/privacy-policy' exact element={<AppPrivacyPolicy/>}/>
           <Route path='/terms-condition' exact element={<Suspense fallback={<div> Loading... </div>}><TermsCondition/></Suspense>}/>
           <Route path='/refund-policy' exact element={<Suspense fallback={<div> Loading... </div>}><RefundPolicy/></Suspense>}/>
           <Route exact element={<NotFound />} />
