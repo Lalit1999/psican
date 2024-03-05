@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom' ;
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+// import "react-responsive-carousel/lib/styles/carousel.min.css";
 // import { Carousel } from 'react-responsive-carousel';
 
 import TestBoxList from '../testbox/TestBoxList.js' ;
