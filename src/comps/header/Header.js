@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
 import { faBars, faUser } from '@fortawesome/free-solid-svg-icons' ;
 
 import Menu from './Menu.js' ;
-import {UserContext} from '../../context/UserContext.js' ;
+import { UserContext } from '../../context/UserContext.js' ;
 import { addNotif } from '.././notif.js' ;
 import './header.css' ;
 
@@ -63,7 +63,7 @@ const Header = () => {
 						<Link className="header-item" to='/'> Home </Link>
 						<Link className="header-item" to='/about'> About </Link>
 						<Link className="header-item" to='/test'> Tests </Link>
-						<Link className="header-item" to='/consult'> Consult </Link>
+						<a className="header-item" href='https://play.google.com/store/apps/details?id=com.myarth.psyment'> Consult </a>
 						<Link className="header-item" to='/contact'> Contact </Link>
 						{user.name==='admin'?<Link className="header-item" to='/admin'> Admin </Link>:null}
 					</div>

@@ -6,7 +6,7 @@ import Header from './Header.js' ;
 import ScrollTopBar from './scrolltopbar/ScrollTopBar.js' ;
 import './topbar.css' ;
 import BarItem from './BarItem.js' ;
-import Image from '../../images/Psyment2.webp' ;
+import Image from '../../images/Psyment.webp' ;
 
 const InnerTopBar = () => {
 	return (

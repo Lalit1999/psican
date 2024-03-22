@@ -2,14 +2,15 @@ import { Link } from'react-router-dom' ;
 
 import './tb.css' ;
 
-const TestBox = ({title, hin, eng, link}) => {
+const TestBox = ({title, hin, eng, link, image}) => {
 
 	return(
 		<div className = 'testbox'>
-			<p className="tb-hin" dangerouslySetInnerHTML={hin} />
-			<Link className="sched-btn" to={link}> Take the Test / टेस्ट लें </Link> 
-			<p dangerouslySetInnerHTML={eng} />
 			<h2 children={title} />
+			<img className="tb-img" src={image} alt={title} />
+			<p className="tb-hin" dangerouslySetInnerHTML={hin} />
+			<p dangerouslySetInnerHTML={eng} />
+			<Link className="sched-btn" to={link}> Take the Test / टेस्ट लें </Link> 
 		</div>
 	) ;
 }

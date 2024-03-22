@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-	background: linear-gradient(to bottom, var(--dark) 0%, var(--dark) 30%, transparent 30%, transparent 100% );
+	background: var(--dark) ;
 }
 
 .testbox 	{
@@ -10,15 +10,15 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	gap: .5em ;
 	
-	border: 4px solid var(--dark) ;
+	border: 4px solid var(--white) ;
 	border-radius: 1rem ;
-	min-width: 20vw ;
-	max-width: 23vw ;
+	width: 23vw ;
 
 	background-color: var(--white);
-	margin: 0 .5em 1em ;
-	padding: .5em 0 0 ;
+	margin: 1em .5em ;
+	padding-bottom: .5em ;
 	transition: all .2s ;
 }
 
@@ -27,6 +27,7 @@
 	text-align: center;
 	font-weight: bold;
 	background-color: var(--dark) ;
+	border-radius: 1rem ;
 	color: var(--white) ;
 	margin: 0 ;
 	padding: .3em 0 ;
@@ -36,8 +37,14 @@
 .testbox p {
 	font-size: 1rem ;
 	text-align: center;
-	margin: .5em 0 ;
+	margin: 0 ;
 	padding: 0 .5em ;
+}
+
+.tb-img {
+	width: 100% ;
+	height: auto ;
+	border-radius: 1rem ;
 }
 
 .testbox .tb-hin {
@@ -58,17 +65,26 @@
 {	
 	.test-boxes {
 		flex-direction: column;
-		background: linear-gradient(to bottom, var(--dark) 0%, var(--dark) 10%, transparent 10%, transparent 25%, var(--dark) 25%, var(--dark) 35%, transparent 35%, transparent 50%, var(--dark) 50%, var(--dark) 60%, transparent 60%, transparent 75%, var(--dark) 75%, var(--dark) 85%, transparent 85%, transparent 100%);
+		background-color: var(--white) ;
 	}
 
 	.testbox 	{
 		margin: .8em ;
 		border-radius: 1rem ;
 		max-width: 100% ;
+		width: 93vw ;
+		padding: 0 ;
+	}
+
+	.testbox .sched-btn {
+		margin: 0 1em .5em ;
+		font-size: .9rem ;
+		padding: 0.5em 1.2em ;
 	}
 
 	.testbox h2 {
 		font-size: .9rem ;
+		padding: .5em 0 ;
 	}
 
 	.testbox p 	{

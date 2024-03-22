@@ -5,7 +5,7 @@ import ACCIS from './ACCIS.js' ;
 import ImageTitle from '../../imagetitle/ImageTitle.js' ;
 import '../../consult/program.css' ;
 
-import test from '../../../images/test4.jpeg' ;
+import test from '../../../images/accis.webp' ;
 
 const AccisTestPage = () => {
 	const myRef = useRef(null) ;

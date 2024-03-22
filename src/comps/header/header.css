@@ -3,7 +3,6 @@
 	font-family: var(--font);
 	display: flex;
 	justify-content: space-between;
-	border-bottom: 2px solid var(--white);
 }
 
 .mini-menu {
@@ -56,6 +55,7 @@
 	.header {
 		justify-content: flex-end;
 		padding: .5em 1em ;
+		height: 50px ;
 	}
 
 	.header svg {

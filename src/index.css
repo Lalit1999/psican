@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap');
 
 html, #root {
   height: 100%;
@@ -40,19 +40,30 @@ table.table {
 }
 
 :root {
-  --main: rgb(70, 130, 180) ;
-  --dark: rgb(29, 41, 81) ;
-  --light: rgb(83, 154, 212) ;
-  --darker: rgb(9, 21, 41) ;
+  --main: #319B54 ;
+  /* --main: rgb(70, 130, 180) ; */
+
+  --halfMain : rgba(49, 155, 84, 0.5) ;
+
+  --dark: #1D5D33 ;
+  /* --dark: rgb(29, 41, 81) ; */
+  --light: #50C878 ;
+  /* --light: rgb(83, 154, 212) ; */
+  --darker: #0e3d1f ;
+  /* --darker: rgb(9, 21, 41) ; */
+
+  --lightBlue: rgba(187, 223, 252) ;
+  --darkLightBlue: rgba(164, 213, 252) ;
+  
   --white: white ;
   --dusraWhite: #f7f7f9 ;
   --black: black ;
-  --gray: gray ;
-  --lightGray: lightgray ;
+  --gray: #999999 ;
+  --lightGray: #f1f1f1 ;
+  --medGray: #cccccc ;
+  --darkGray: #555555 ;
+  
   --golden: rgb(212, 170, 32) ;
-  --lightBlue: rgba(187, 223, 252) ;
-  --darkLightBlue: rgba(164, 213, 252) ;
-  --green: #05f545 ;
 
   --font: 'Lexend', sans-serif ;
 }

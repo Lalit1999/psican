@@ -49,7 +49,7 @@ const Menu = ({handleClose, show, onLogoutClick}) => {
 	          	<div className="offcanvas-menu" onClick={handleClose}>
 	 				<Link className="menu-item " to='/'> Home </Link>
 	 				<Link className="menu-item " to='/about'> About </Link>
-	 				<Link className="menu-item " to='/consult'> Consult </Link>
+	 				<a className="menu-item " href='https://play.google.com/store/apps/details?id=com.myarth.psyment'> Consult </a>
 	 				<Link className="menu-item " to='/test'> Tests </Link>
 	 				<Link className="menu-item " to='/contact'> Contact Us </Link>
 	 				{user.name==='admin'?<Link className="menu-item" to='/admin'> Admin </Link>:null}

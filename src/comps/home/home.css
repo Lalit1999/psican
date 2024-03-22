@@ -7,16 +7,26 @@
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
-	background-color: var(--dark);
 	text-align: center;
-	padding: .5em 0;
+	padding: 1em 0;
 }
 
 .home-logo {
 	border-radius: 1.5rem ;
+	width: 85% ;
 }
 
-.home-top-middle {
+.home-float h3 {
+	font-size: 2rem ;
+	color: var(--white) ;
+	background-color: var(--dark) ;
+	font-weight: 500 ;
+	text-align: center ;
+	padding-top: .5em ;
+	margin: 0 ;
+}
+
+/* .home-top-middle {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -25,86 +35,65 @@
 
 .home-top h3 {
 	font-size: 2.5rem ;
-	color: var(--white);
+	color: var(--main);
 	max-width: 30vw ;
 	margin-bottom: 1.6em ;
+	font-weight: 500 ;
 }
 
 .home-btn {
 	text-decoration: none;
-	background-color: var(--white) !important;
-	color: var(--dark) !important;
 	font-size: 1rem !important;
 	white-space: nowrap;
 }
 
-.home-btn:hover {
-	background-color: var(--lightBlue) !important;
-}
-
-.mental-health {
-	color: var(--green) ;
-}
-
 .leader {
-	color: var(--white);
+	color: var(--dark);
 }
 
 .leader img {
-	border-radius: 1.5rem ;
+	border-radius: 8px ;
+	border: 3px solid var(--dark) ;
 	max-height: 240px;
+	margin-bottom: 1em ;
 }
 
 .leader p {
 	margin : 0 ;
 	font-size: 1rem ;
 	text-align: center;
-
-}
-
-/* DONT DELETE */
-/*.testim {
-	color: var(--white);
-	font-weight: bold ;
-	font-size: 1.3rem ;
-}*/
+	font-weight: 500 ;
+} */
 
 @media(max-width: 600px) {
-	/* DONT DELETE */
-	/*.testim
-	{	font-size: 2rem ;		
-	}*/	
-
 	.home-top {
-		min-height: 30vh;
 		flex-direction: column;
-		padding-bottom: 0 ;
 	}
 
 	.home-logo {
-		height: 20vh ;
+		width: 100%;
 	}
 
-	.home-top h3 {
+	.home-float h3 {
+		font-size: 1.2rem ;
+		padding: .5em 0 ;
+	}
+
+	/* .home-top h3 {
 		font-size: 1.3rem ;
 		color: var(--white);
 		max-width: 100% ;
 		margin: .5em 0;
-	}
+	} */
 
-	.home-btn {
+	/* .home-btn {
 		font-size: .8rem !important;
-	}
-
-	.mental-health {
-		color: #05f545 ;
 	}
 
 	.leader {
 		display: none;
 		color: var(--white);
 		margin-bottom: 1em ;
-		/*display: flex;*/
 		flex-direction: column;
 		align-items: center;
 	}
@@ -118,5 +107,5 @@
 		margin : 0 ;
 		font-size: 1rem ;
 		text-align: center;
-	}
+	} */
 }
