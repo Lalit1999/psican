@@ -7,6 +7,7 @@ import Contact from './comps/contact/Contact.js' ;
 import NotFound from './comps/home/NotFound.js' ; 
 import TopBar from './comps/header/TopBar.js' ;
 import Exam from './comps/tests/Exam.js' ;
+import Payment from './comps/payment/PaymentPage.js' ;
 import UstopPage from './comps/tests/ustop/UstopPage.js' ;
 import LetaPage from './comps/tests/leta/LetaPage.js' ;
 import AccisTestPage from './comps/tests/accis/AccisTestPage.js' ;
@@ -42,6 +43,7 @@ const App = () => {
           <Route path='/consult' element={<Consult />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/test' exact element={<Exam/>} />
+          <Route path='/payment' element={<Payment />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/test/ustop' exact element={<UstopPage />} />
           <Route path='/test/leta' exact element={<LetaPage />} />

@@ -34,6 +34,33 @@
 	margin-bottom: 0;
 }
 
+.intro-pay {
+	display: flex; 
+	justify-content: space-between;
+	padding: .3em 1em ;
+}
+
+.intro-pay p {
+	margin: 0 ;
+}
+
+.ip-left {
+	font-size: .9rem ;
+}
+
+.ip-right {
+	font-weight: 500 ;
+	text-align: center;
+}
+
+.green {
+	color: var(--main)
+}
+
+.gray {
+	color: var(--medGray)
+}
+
 @media(max-width: 600px)
 {	.payment 
 	{

@@ -52,8 +52,8 @@ table.table {
   --darker: #0e3d1f ;
   /* --darker: rgb(9, 21, 41) ; */
 
-  --lightBlue: rgba(187, 223, 252) ;
-  --darkLightBlue: rgba(164, 213, 252) ;
+  --lightBlue: #aef2c0 ;
+  --darkLightBlue: #91e6a7 ;
   
   --white: white ;
   --dusraWhite: #f7f7f9 ;
