@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react' ;
+import { useState, useEffect, Fragment } from 'react' ;
 import { useSearchParams } from 'react-router-dom';
 import Image from 'react-bootstrap/Image' ;
 
 import { decrypt } from './crypt.js' ;
 import { addNotif } from '../notif.js';
 import Heading from '../Heading/Heading.js' ;
-// import Ustop from './Ustop.js' ;
+import Payment2 from './Payment2.js' ;
 
 import test from '../../images/mainImage.png' ;
 
@@ -104,7 +104,7 @@ const PaymentPage = () => {
             }
             else {
                 if(resp?.code) {
-                    console.log(resp) ;
+                    // console.log(resp) ;
                     setData(resp) ;  
                 }
                 else {
@@ -163,7 +163,7 @@ const PaymentPage = () => {
                     <div className="leta-left">
                         <Heading text="Complete Payment" />
                         {
-                            data.payMethod==='Offline'?(
+                            data.payMethod==='Offline'&&data.title!=="MirstAid"?(
                                 <div className="intro-pay">
                                     <p className="ip-right gray">Payment Method is Offline for this booking</p> 
                                 </div>
@@ -173,14 +173,18 @@ const PaymentPage = () => {
                                         <p className="ip-right green">Payment Completed</p> 
                                     </div>
                                 ):(
+                                    <Fragment>
                                     <div className="intro-pay">
                                         <p className="ip-left">Amount Payable :</p> 
                                         <p className="ip-right">₹ {data.price}</p> 
                                     </div> 
+                                    <Payment2 price={data.price} receipt={data.code} title={data.title} user={{
+                                        name: data.name, email: data.email, mobile: data.mobile
+                                    }}/> 
+                                    </Fragment>
                                 )
                             )
                         }
-                        {/* <Ustop /> */}
                     </div>
                 </div>
             </div>
