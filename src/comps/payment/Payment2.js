@@ -30,8 +30,8 @@ const Payment = ({success, user, price, receipt, title }) => {
 	        return;
 	    }
 
-	    let result = await fetch("http://localhost:3001/app-payment", {
-	    // let result = await fetch("https://api.psyment.com/app-payment", {
+	    // let result = await fetch("http://localhost:3001/app-payment", {
+	    let result = await fetch("https://api.psyment.com/app-payment", {
 			method : 'post' ,
 			headers : { 'Content-Type' : 'application/json' } ,
 			body : JSON.stringify({ amount: price*100, receipt }), 
