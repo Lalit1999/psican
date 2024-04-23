@@ -10,15 +10,6 @@ const Home = () => {
 				<a href="https://play.google.com/store/apps/details?id=com.myarth.psyment">
             		<img className="home-logo" src={Image} alt="psyment logo"/>
             	</a>
-				{/* <div className="home-top-middle">
-            		<h3>Make Mental Health your priority</h3>
-            		<a href="https://play.google.com/store/apps/details?id=com.myarth.psyment" className="sched-btn home-btn"> Book Appointment </a>
-				</div>
-            	<div className='leader'>
-					<img src={LeaderImage} alt="Leader"/>
-					<p className='leader-name'>Ashish Aggarwal</p>
-					<p className="leader-data">Counsellor, Mentor, Motivator</p>
-				</div> */}
             </div>
             <div className="home-float">
 				<h3> Self Assessment Tests </h3>
@@ -29,3 +20,12 @@ const Home = () => {
 }
 
 export default Home ;
+/* <div className="home-top-middle">
+	<h3>Make Mental Health your priority</h3>
+	<a href="https://play.google.com/store/apps/details?id=com.myarth.psyment" className="sched-btn home-btn"> Book Appointment </a>
+</div>
+<div className='leader'>
+	<img src={LeaderImage} alt="Leader"/>
+	<p className='leader-name'>Ashish Aggarwal</p>
+	<p className="leader-data">Counsellor, Mentor, Motivator</p>
+</div> */
