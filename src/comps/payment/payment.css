@@ -34,6 +34,11 @@
 	margin-bottom: 0;
 }
 
+.payment2 .sched-btn {
+	padding: .5em 1em ;
+	font-size: 1.1rem !important ;
+}
+
 .intro-pay {
 	display: flex; 
 	justify-content: space-between;

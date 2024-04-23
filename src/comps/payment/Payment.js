@@ -162,7 +162,7 @@ const Payment = ({success, type}) => {
 	            address: `${user.name} ${user.mobile} ${user.email}` ,
 	        },
 	        theme: {
-	            color: "#61dafb",
+	            color: "#319B54",
 	        },
 	    };
 
