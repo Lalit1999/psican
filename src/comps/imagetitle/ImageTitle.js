@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button' ;
 
 import './imagetitle.css' ;
 
-const ImageTitle = ({image, title, subTitle, btnText, btnClick, p1, p2, value="test"}) => {
+const ImageTitle = ({image, title, subTitle, btnClick, p1, p2, value="test"}) => {
 
 	return(
 		<div className="image-title">
