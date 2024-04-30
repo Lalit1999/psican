@@ -58,10 +58,10 @@ const subData = {
 		english: 'Your test will be submitted and result will be calculated, are you sure you want to proceed? You can also go back to the test and review your answers.' ,
 		hindi: 'आपके जवाब जमा हो जायेंगे और परिणाम निकाला जायेगा, क्या आप आगे बढना चाहते है? आप वापस जाकर अपने उत्तरो की समीक्षा भी कर सकते हैं।'
 	},
-	error : {
-		english: 'We have entered an unexpected mode',
-		hindi: 'ये कहाँ आ गये हम'
-	},
+	// error : {
+	// 	english: 'We have entered an unexpected mode',
+	// 	hindi: 'ये कहाँ आ गये हम'
+	// },
 } ;
 
 const resultData = {
